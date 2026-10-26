@@ -34,6 +34,7 @@ python exp/drive_r2.py
 
 # 6. Independent FEMM cross-check (requires FEMM 4.2 + pywin32)
 python exp/femm_validate.py
+python exp/femm_tap50_withz.py          # 36-point coverage-trained tap50 check
 
 # 7. All paper figures
 python exp/make_figures.py
@@ -71,9 +72,10 @@ python exp/make_figures.py
   `platform.win32_ver()` inside scipy imports; it is imported first
   everywhere it is needed.
 - Torque uses the full Lorentz integral including stack length. The
-  drive-cycle result is calibrated to a 400-kg micro-EV with four identical
-  motors; the original single-motor calibration was incompatible with the
-  corrected torque scale.
+  drive-cycle result is calibrated to a 540-kg light EV with four identical
+  800-V SiC wheel drives; the original single-motor/low-voltage calibration
+  was incompatible with the corrected torque scale and produced unrealistic
+  inverter losses.
 - The demo machine's original phase grouping is non-standard (phase-C axis
   at 60 deg electrical). This is irrelevant to the coil-level benchmark
   (all connections are just linear maps); for the synchronous drive-cycle
@@ -81,20 +83,22 @@ python exp/make_figures.py
   `exp/drive_cycle.py:connection_matrix` - no retraining needed, which is
   rather the point of the method.
 
-## Correction log (2026-10-26)
+## Correction log (2026-10-27)
 
 - The Lorentz torque integral had omitted `L_STACK`. Because the omission is
   a Cartesian factor, existing torque labels were corrected exactly by
   multiplying by `L_STACK = 0.1`; the solver now includes the factor directly.
-- The original 540-kg single-motor drive calibration became infeasible after
-  that correction. The case study is now explicitly a 400-kg micro-EV with
-  four identical wheel motors, with torque split and energy aggregated over
-  all four drives.
+- The original single-motor/low-voltage drive calibration became infeasible
+  after that correction. The case study is now a 540-kg light EV with four
+  identical wheel motors, an 800-V SiC inverter model, 50% slot fill and a
+  matching reduction ratio; torque and energy are aggregated over all four
+  drives.
 - FEMM slot coordinates were aligned to the polar-grid slot sectors, and the
   torque post-processor now sums each slot-Lorentz integral explicitly.
-- Consequently, the old `15.1%` drive result is obsolete. The corrected
-  direct-MLP result is `41.0%` versus fixed 4P (`36.7%` after
-  current-class-matched inverter rescaling).
+- Consequently, the old drive percentages are obsolete. The corrected
+  direct-MLP result saves `0.56%` versus the best fixed delta connection
+  (`3.99%` versus fixed 4P), while the co-energy surrogate estimates `4.2%`.
+  This spread is reported rather than hidden.
 
 ## License / citation
 

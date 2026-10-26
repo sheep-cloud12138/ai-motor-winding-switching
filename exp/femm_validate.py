@@ -1,14 +1,14 @@
 # -*- coding: utf-8 -*-
 """Independent validation of the in-house solver against FEMM 4.2 (ActiveX).
 
-Builds the SAME machine (same radii, wedge slots, 0.8-pole-arc PMs, stack
+Builds the SAME machine (same radii, wedge slots, radial PM waveform, stack
 length) in FEMM and compares:
   V1  linear mutual-inductance matrix L (12x12, one coil excited at a time,
       PM removed, linear iron mu_r = 4000)
   V2  PM-only coil flux linkage psi(theta) over 12 rotor positions
   V3  one nonlinear saturated case (Fröhlich BH curve imported into FEMM)
 Reference: coil_linear_reciprocity.json, coil_zero.npz, coil_fea.solve_coils.
-Radial magnetisation approximated by 9 sub-arcs per pole.
+Radial magnetisation approximated by 72 sector blocks around the full ring.
 """
 
 import json
@@ -26,6 +26,7 @@ RIN, ROUT = 0.005, 0.065
 R_SHAFT, R_ROTOR, R_BORE = 0.012, 0.0295, 0.0310
 R_SLOT_IN, R_SLOT_OUT = 0.0355, 0.0475
 N_SLOT, N_POLE = 12, 4
+PPAIR = N_POLE // 2
 SLOT_W = 2 * np.pi / N_SLOT * 0.52
 L_STACK = 0.1
 N_TURN = 40
@@ -156,12 +157,10 @@ def build_geometry(f, theta_deg, pm_on, linear_iron):
         circle(pm_r1)
         circle(pm_r2)
     else:
-        # Approximate the smooth radial magnetisation of the reference
-        # solver with nine radial sub-arcs per pole.
-        pm_angles_deg = []
-        for p in range(N_POLE):
-            start = np.degrees(th) + 90.0 * p + 9.0
-            pm_angles_deg += [(start + 8.0 * k) % 360 for k in range(10)]
+        # Match the reference solver's full-ring tanh field with 5-degree
+        # radial sectors. The reference does not introduce 20% air gaps.
+        pm_angles_deg = [(np.degrees(th) + 5.0 * k) % 360
+                         for k in range(72)]
         circle(pm_r1, pm_angles_deg)
         circle(pm_r2, pm_angles_deg)
         for a_deg in pm_angles_deg:
@@ -194,17 +193,12 @@ def build_geometry(f, theta_deg, pm_on, linear_iron):
     label((R_ROTOR + R_BORE) / 2 * np.cos(np.pi / 7),
           (R_ROTOR + R_BORE) / 2 * np.sin(np.pi / 7), "Air")
     if pm_on:
-        for p in range(N_POLE):
-            rm = (pm_r1 + pm_r2) / 2
-            mat = "PMp" if p % 2 == 0 else "PMm"
-            start = th + p * np.pi / 2 + np.pi / 20
-            for s in range(9):
-                center = start + (s + 0.5) * 4 * np.pi / 90
-                label(rm * np.cos(center), rm * np.sin(center), mat,
-                      magdir=float(np.degrees(center) % 360), group=1)
-            gap_center = th + (p + 1) * np.pi / 2
-            label(rm * np.cos(gap_center), rm * np.sin(gap_center), "Air",
-                  group=1)
+        rm = (pm_r1 + pm_r2) / 2
+        for s in range(72):
+            center = th + (s + 0.5) * np.pi / 36
+            mat = "PMp" if np.sin(PPAIR * (center - th)) >= 0 else "PMm"
+            label(rm * np.cos(center), rm * np.sin(center), mat,
+                  magdir=float(np.degrees(center) % 360), group=1)
     iron = "IronLin" if linear_iron else "IronNL"
     for a in (0.0,):
         label((R_BORE + R_SLOT_IN) / 2 * np.cos(a),
@@ -352,6 +346,26 @@ def main():
     res["L_femm"] = L.tolist()
     res["L_femm_diag"] = np.diag(L).tolist()
 
+    # Separate discretisation error from the remaining absolute convention
+    # scale by repeating the reference solve on the fine calibration mesh.
+    from coil_fea import solve_coils
+    L_fine = np.zeros((12, 12))
+    for k in range(12):
+        ic = e.copy(); ic[k] = 1.0
+        L_fine[:, k] = solve_coils(
+            0.0, ic, nr=120, nt=288, pm_on=False, linear_iron=True,
+        )["psi"]
+    scale_f = float(np.sum(L * L_fine) / np.sum(L_fine * L_fine))
+    res["L_fine_mesh"] = [120, 288]
+    res["L_fine_scale_alpha"] = scale_f
+    res["L_fine_relnorm_diff_raw"] = float(
+        np.linalg.norm(L - L_fine) / np.linalg.norm(L_fine)
+    )
+    res["L_fine_relerr_after_scale"] = float(
+        np.linalg.norm(L - scale_f * L_fine) / np.linalg.norm(L)
+    )
+    res["L_fine_corr"] = float(np.corrcoef(L.ravel(), L_fine.ravel())[0, 1])
+
     # ---- V2: PM-only flux linkage vs theta ----
     print("V2: PM-only flux linkage (12 angles)", flush=True)
     ths = np.arange(0, 180, 15)
@@ -379,8 +393,6 @@ def main():
 
     # ---- V3: one nonlinear saturated case ----
     print("V3: nonlinear case (4S at 60 A, theta=30)", flush=True)
-    sys.path.insert(0, str(ROOT))
-    from coil_fea import solve_coils
     from gen_coil_dataset import connection_currents
     ip = 60.0 * np.array([np.cos(np.pi / 4), np.cos(np.pi / 4 - 2 * np.pi / 3),
                           np.cos(np.pi / 4 + 2 * np.pi / 3)])

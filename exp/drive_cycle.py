@@ -36,22 +36,22 @@ DEVICE = "cuda" if torch.cuda.is_available() else "cpu"
 # ---------------- machine / powertrain parameters (declared case study) -----
 RHO_CU = 1.68e-8
 SLOT_AREA = (0.0475 - 0.0355) * (2 * np.pi / 12 * 0.52) * (0.0355 + 0.0475) / 2
-A_COPPER_PER_COIL = 0.40 * SLOT_AREA             # 40% slot fill
+A_COPPER_PER_COIL = 0.50 * SLOT_AREA             # 50% slot fill
 R_COIL = RHO_CU * N_TURN * 2 * (L_STACK + 0.0217) / A_COPPER_PER_COIL
 I_COIL_MAX = 60.0                                # A peak coil current (FEA range)
-V_DC = 320.0
+V_DC = 800.0
 V_SV_MAX = V_DC / np.sqrt(3)                     # SVPWM linear region
 # Bertotti proxy, M250-35A-class steel
 K_H, K_C = 0.026, 1.2e-4                         # W/(kg Hz T^2), W/(kg Hz^2 T^2)
-M_FE_PER_COIL = 0.5                              # kg equivalent core mass/coil
+M_FE_PER_COIL = 0.20                             # kg equivalent core mass/coil
 A_TOOTH_FE = 0.012 * L_STACK                     # m^2 tooth cross-section
 # Inverter (declared device parameters)
-V_CE0, R_CE = 0.85, 0.009
-E_SW_DEV = 2.7e-3                                # J per device period @ refs
+V_CE0, R_CE = 0.0, 0.0005                        # 800-V SiC conduction model
+E_SW_DEV = 0.1e-3                                # J per device period
 F_SW = 10e3
 E_CHANGEOVER = 25e-3                             # J per winding reconfiguration
 # Vehicle (light EV with four identical wheel motors)
-M_VEH, CDA, CRR, R_WHEEL, GEAR, ETA_G = 400.0, 0.50, 0.008, 0.25, 13.0, 0.96
+M_VEH, CDA, CRR, R_WHEEL, GEAR, ETA_G = 540.0, 0.50, 0.008, 0.25, 20.0, 0.96
 N_MOTORS = 4
 P_AUX = 250.0
 RHO_AIR = 1.20
@@ -312,6 +312,9 @@ def simulate(ev, mode_seq, Tm_dem, omega_m, e_sw=E_CHANGEOVER):
     """Battery energy for one mode command applied to all wheel motors."""
     machine_energy = 0.0
     aux_energy = 0.0
+    mech_pos = 0.0
+    mech_neg = 0.0
+    peak_unmet = 0.0
     sw = 0
     br = {"cu": 0.0, "fe": 0.0, "inv": 0.0, "mech": 0.0, "sw": 0.0}
     unmet = 0.0
@@ -324,6 +327,7 @@ def simulate(ev, mode_seq, Tm_dem, omega_m, e_sw=E_CHANGEOVER):
             T_cap = ev.T_max(m, omega_m[t])
             if T_cap <= abs(T_star):
                 unmet += abs(T_star) - T_cap
+                peak_unmet = max(peak_unmet, abs(T_star) - T_cap)
             T_star = np.sign(T_star) * min(abs(T_star), 0.999 * T_cap)
             r = ev.best(m, T_star, omega_m[t]) if abs(T_star) > 1e-6 else None
         if r is None:
@@ -332,6 +336,8 @@ def simulate(ev, mode_seq, Tm_dem, omega_m, e_sw=E_CHANGEOVER):
             prev = m
             continue
         P_mech = T_star * omega_m[t]
+        mech_pos += max(P_mech, 0.0)
+        mech_neg += min(P_mech, 0.0)
         machine_energy += P_mech + r["P_cu"] + r["P_fe"] + r["P_inv"]
         aux_energy += P_AUX
         br["cu"] += r["P_cu"]; br["fe"] += r["P_fe"]
@@ -343,9 +349,20 @@ def simulate(ev, mode_seq, Tm_dem, omega_m, e_sw=E_CHANGEOVER):
         br[k] *= N_MOTORS
     br["sw"] = sw * e_sw
     E = N_MOTORS * machine_energy + aux_energy + br["sw"]
+    loss_energy = sum(br[k] for k in ("cu", "fe", "inv"))
+    traction_eff = N_MOTORS * mech_pos / max(
+        N_MOTORS * mech_pos + loss_energy, 1e-12
+    )
+    demand_integral = N_MOTORS * float(np.sum(np.abs(Tm_dem)))
     return {"E_Wh": E / 3600.0, "switches": sw,
             "breakdown_Wh": {k: x / 3600.0 for k, x in br.items()},
-            "unmet_Nm_s": N_MOTORS * unmet}
+            "unmet_Nm_s": N_MOTORS * unmet,
+            "unmet_fraction": N_MOTORS * unmet / max(demand_integral, 1e-12),
+            "peak_unmet_Nm": peak_unmet,
+            "demand_integral_Nm_s": demand_integral,
+            "mech_positive_Wh": N_MOTORS * mech_pos / 3600.0,
+            "mech_negative_Wh": N_MOTORS * mech_neg / 3600.0,
+            "traction_efficiency": float(traction_eff)}
 
 
 def dp_schedule(ev, Tm_dem, omega_m, e_sw=E_CHANGEOVER, dwell=10):
@@ -479,7 +496,11 @@ def main():
         ev2 = ModeEval(build_mode_data(msd, iron_scale=scale))
         rd = simulate(ev2, seq_dp, Tm_dem, omega_m)
         rf = simulate(ev2, ["4P"] * N, Tm_dem, omega_m)
-        sens["iron"][f"x{scale:g}"] = {"dp_Wh": rd["E_Wh"], "fixed4P_Wh": rf["E_Wh"]}
+        rdlt = simulate(ev2, ["delta"] * N, Tm_dem, omega_m)
+        sens["iron"][f"x{scale:g}"] = {
+            "dp_Wh": rd["E_Wh"], "fixed4P_Wh": rf["E_Wh"],
+            "fixedDelta_Wh": rdlt["E_Wh"],
+        }
     results["sensitivity"] = sens
 
     # surrogate robustness: same schedule evaluated with the energy surrogate
@@ -487,10 +508,19 @@ def main():
         en = load_model("energy", "ckpt_energy_drive.pt")
         ev_en = ModeEval(build_mode_data(en))
         r_en = simulate(ev_en, seq_dp, Tm_dem, omega_m)
-        r_4p_en = simulate(ev_en, ["4P"] * N, Tm_dem, omega_m)
-        results["energy_check"] = {"dp_Wh": r_en["E_Wh"],
-                                   "fixed4P_Wh": r_4p_en["E_Wh"],
-                                   "saving_pct": 100 * (1 - r_en["E_Wh"] / r_4p_en["E_Wh"])}
+        fixed_en = {m: simulate(ev_en, [m] * N, Tm_dem, omega_m)
+                    for m in MODES}
+        complete_en = {m: r for m, r in fixed_en.items()
+                       if r["unmet_Nm_s"] < 1.0}
+        best_en = min(complete_en, key=lambda m: complete_en[m]["E_Wh"])
+        results["energy_check"] = {
+            "dp_Wh": r_en["E_Wh"],
+            "best_fixed_mode": best_en,
+            "best_fixed_Wh": complete_en[best_en]["E_Wh"],
+            "fixed4P_Wh": fixed_en["4P"]["E_Wh"],
+            "saving_vs_best_fixed_pct": 100 * (
+                1 - r_en["E_Wh"] / complete_en[best_en]["E_Wh"]),
+        }
         print("energy check:", results["energy_check"], flush=True)
     except Exception as e:
         results["energy_check"] = {"error": str(e)}

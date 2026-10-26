@@ -47,8 +47,13 @@ def main():
         print(" ", m, "E=%.1f unmet=%.1f" % (r["E_Wh"], r["unmet_Nm_s"]), flush=True)
     complete = {m: r for m, r in fixed.items() if r["unmet_Nm_s"] < 1.0}
     best_fixed = min(complete, key=lambda m: complete[m]["E_Wh"])
-    out["fixed"] = {m: {"E_Wh": r["E_Wh"], "unmet": r["unmet_Nm_s"],
-                        "switches": r["switches"]} for m, r in fixed.items()}
+    out["fixed"] = {m: {
+        "E_Wh": r["E_Wh"], "unmet": r["unmet_Nm_s"],
+        "unmet_fraction": r["unmet_fraction"],
+        "peak_unmet_Nm": r["peak_unmet_Nm"],
+        "efficiency": r["traction_efficiency"],
+        "switches": r["switches"],
+    } for m, r in fixed.items()}
     out["best_fixed"] = {"mode": best_fixed,
                          "E_Wh": complete[best_fixed]["E_Wh"]}
     print(" best fixed:", out["best_fixed"], flush=True)
@@ -57,7 +62,10 @@ def main():
     seq_dp, J = dc.dp_schedule(ev, Tm, omega_m)
     r_dp = dc.simulate(ev, seq_dp, Tm, omega_m)
     out["dp"] = {"E_Wh": r_dp["E_Wh"], "switches": r_dp["switches"],
-                 "unmet": r_dp["unmet_Nm_s"]}
+                 "unmet": r_dp["unmet_Nm_s"],
+                 "unmet_fraction": r_dp["unmet_fraction"],
+                 "peak_unmet_Nm": r_dp["peak_unmet_Nm"],
+                 "efficiency": r_dp["traction_efficiency"]}
     saving_best = 100 * (1 - r_dp["E_Wh"] / complete[best_fixed]["E_Wh"])
     out["dp_saving_vs_best_fixed_pct"] = saving_best
     print(" DP vs best fixed saving %.1f%%" % saving_best, flush=True)
@@ -119,7 +127,7 @@ def main():
     print("R5 inverter rescaling", flush=True)
     # current-class-matched devices: halve r_CE, +10% V_CE0 for all modes
     old = dc.R_CE, dc.V_CE0
-    dc.R_CE, dc.V_CE0 = 0.0045, 0.935
+    dc.R_CE, dc.V_CE0 = 0.5 * old[0], 1.1 * old[1]
     dataR = dc.build_mode_data(msd)
     evR = dc.ModeEval(dataR)
     seqR, _ = dc.dp_schedule(evR, Tm, omega_m)
