@@ -1,9 +1,8 @@
-Vehicle: 540 kg, four identical wheel motors, 800 V SiC, gear 20
+Vehicle: 540 kg, four identical wheel motors, 400 V SiC, gear 20
 Peak per-motor demand: 1.485 N m
 Fixed 4P: 472.7 Wh (41.36 Wh/km), 0 switches, complete, 81.8% efficiency
-2-mode rule: 408.3 Wh on an incomplete trajectory, 8 switches, 55.9 N m s unmet
-Pointwise greedy: 453.7 Wh (39.70 Wh/km), 28 switches, complete
-DP: 453.8 Wh (39.71 Wh/km), 16 switches, complete, 85.6% efficiency
-Best fixed delta: 456.4 Wh, complete, 85.1% efficiency
-Co-energy cross-check: 438.0 Wh, 4.2% below fixed delta
+2-mode rule: 195.9 Wh on an incomplete trajectory, 5 switches, 775.4 N m s unmet
+Pointwise greedy: 457.6 Wh (40.05 Wh/km), 139 switches, complete
+DP: 458.3 Wh (40.10 Wh/km), 54 switches, complete, 84.7% efficiency
+Co-energy cross-check: 438.1 Wh, 7.5% below fixed 4P
 See exp/results_drive.json for full breakdowns.

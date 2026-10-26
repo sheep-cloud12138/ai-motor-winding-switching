@@ -1,4 +1,4 @@
-"""Validate tap50 coverage models against a 36-point FEMM trajectory."""
+"""Validate coverage models for an unseen connection against FEMM."""
 
 import argparse
 import json
@@ -20,10 +20,7 @@ from exp.femm_validate import (
 from exp.models import make_features
 from exp.run_benchmark import Runner, metrics
 
-OUT = ROOT / "exp" / "results_tap50_femm_withz.json"
-
-
-def trajectory():
+def trajectory(kind):
     theta_g, gamma_g, amp_g = np.meshgrid(
         np.array([0.0, 45.0, 90.0, 135.0]),
         np.array([0.0, 2 * np.pi / 3, 4 * np.pi / 3]),
@@ -36,7 +33,7 @@ def trajectory():
         [np.cos(s), np.cos(s - 2 * np.pi / 3), np.cos(s + 2 * np.pi / 3)],
         axis=1,
     )
-    ic = ip @ connection_matrix("tap50").T
+    ic = ip @ connection_matrix(kind).T
     dphi = np.stack([
         np.zeros_like(theta),
         2 * np.cos(2 * np.deg2rad(theta)),
@@ -87,12 +84,14 @@ def compare(pred, psi_femm, torque_femm):
 
 def main():
     ap = argparse.ArgumentParser()
+    ap.add_argument("--holdout", choices=("4P", "tap50"), default="tap50")
     ap.add_argument("--reuse-femm", action="store_true",
                     help="Reuse the FEMM arrays already stored in results JSON.")
     args = ap.parse_args()
 
-    theta, gamma, amp, ic, dphi = trajectory()
-    old = json.loads(OUT.read_text()) if args.reuse_femm and OUT.exists() else None
+    out_path = ROOT / "exp" / f"results_{args.holdout.lower()}_femm_withz.json"
+    theta, gamma, amp, ic, dphi = trajectory(args.holdout)
+    old = json.loads(out_path.read_text()) if args.reuse_femm and out_path.exists() else None
     if old is not None:
         psi_femm = np.asarray(old["psi_femm"])
         torque_femm = np.asarray(old["torque_femm"])
@@ -100,7 +99,7 @@ def main():
         psi_femm, torque_femm = solve_femm(theta, ic)
 
     X, Y, K = load_all()
-    split = make_split(X, Y, K, "tap50", variant="withz")
+    split = make_split(X, Y, K, args.holdout, variant="withz")
     runner = Runner(X, Y, K)
     fit_rows = split["fit"][2]
     mu, sd = Y[fit_rows].mean(0), Y[fit_rows].std(0) + 1e-8
@@ -118,7 +117,7 @@ def main():
         model, predict, fit_s = runner.fit_standardized(split, name)
         Fte, dphite, rows = split["test"]
         bench = metrics(predict(Fte, dphite), Y[rows])
-        ckpt = ROOT / "exp" / f"ckpt_{name}_tap50_withz.pt"
+        ckpt = ROOT / "exp" / f"ckpt_{name}_{args.holdout.lower()}_withz.pt"
         torch.save({"state": model.state_dict(),
                     "mu": torch.tensor(mu, dtype=torch.float32),
                     "sd": torch.tensor(sd, dtype=torch.float32)}, ckpt)
@@ -136,7 +135,7 @@ def main():
             indent=1,
         ), flush=True)
 
-    OUT.write_text(json.dumps(result, indent=1), encoding="utf-8")
+    out_path.write_text(json.dumps(result, indent=1), encoding="utf-8")
 
 
 if __name__ == "__main__":

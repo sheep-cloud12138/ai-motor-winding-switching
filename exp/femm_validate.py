@@ -32,6 +32,7 @@ L_STACK = 0.1
 N_TURN = 40
 HC = 1.2 / MU0
 SLOT_CENTER_DEG = 7.5
+SLOT_HALF_WIDTH_DEG = np.degrees(SLOT_W / 2)
 
 
 def lua_lit(v):
@@ -85,8 +86,8 @@ def build_geometry(f, theta_deg, pm_on, linear_iron):
         for b, hi in zip(bs, h):
             f.mi_addbhpoint("IronNL", float(b), float(hi))
     if pm_on:
-        f.mi_addmaterial("PMp", 1.0, 1.0, HC, 0)
-        f.mi_addmaterial("PMm", 1.0, 1.0, -HC, 0)
+        for level in range(-10, 11):
+            f.mi_addmaterial(f"PM{level:+d}", 1.0, 1.0, HC * level / 10.0, 0)
     f.mi_addboundprop("azero", 0, 0, 0, 0, 0, 0, 0, 0, 0)
     for k in range(N_SLOT):
         f.mi_addcircprop(f"c{k}", 0, 1)
@@ -113,7 +114,7 @@ def build_geometry(f, theta_deg, pm_on, linear_iron):
     wedge_angs = []
     for k in range(N_SLOT):
         c = SLOT_CENTER_DEG + 30 * k
-        wedge_angs += [c - np.degrees(SLOT_W / 2), c + np.degrees(SLOT_W / 2)]
+        wedge_angs += [c - SLOT_HALF_WIDTH_DEG, c + SLOT_HALF_WIDTH_DEG]
 
     for r in (RIN, R_SHAFT, R_BORE, ROUT):
         circle(r)
@@ -157,10 +158,10 @@ def build_geometry(f, theta_deg, pm_on, linear_iron):
         circle(pm_r1)
         circle(pm_r2)
     else:
-        # Match the reference solver's full-ring tanh field with 5-degree
-        # radial sectors. The reference does not introduce 20% air gaps.
-        pm_angles_deg = [(np.degrees(th) + 5.0 * k) % 360
-                         for k in range(72)]
+        # Match the reference solver's full-ring tanh field with 4-degree
+        # radial sectors and ten discrete magnetisation levels.
+        pm_angles_deg = [(np.degrees(th) + 4.0 * k) % 360
+                         for k in range(90)]
         circle(pm_r1, pm_angles_deg)
         circle(pm_r2, pm_angles_deg)
         for a_deg in pm_angles_deg:
@@ -172,7 +173,7 @@ def build_geometry(f, theta_deg, pm_on, linear_iron):
     # slot wedges: radial edges only (corner nodes/arcs already exist)
     for k in range(N_SLOT):
         c = np.deg2rad(SLOT_CENTER_DEG + 30 * k)
-        h = SLOT_W / 2
+        h = np.deg2rad(SLOT_HALF_WIDTH_DEG)
         for sgn in (-1, 1):
             a = c + sgn * h
             x1, y1 = R_SLOT_IN * np.cos(a), R_SLOT_IN * np.sin(a)
@@ -194,9 +195,12 @@ def build_geometry(f, theta_deg, pm_on, linear_iron):
           (R_ROTOR + R_BORE) / 2 * np.sin(np.pi / 7), "Air")
     if pm_on:
         rm = (pm_r1 + pm_r2) / 2
-        for s in range(72):
-            center = th + (s + 0.5) * np.pi / 36
-            mat = "PMp" if np.sin(PPAIR * (center - th)) >= 0 else "PMm"
+        for s in range(90):
+            center = th + (s + 0.5) * np.pi / 45
+            level = int(round(10 * np.tanh(
+                np.sin(PPAIR * (center - th)) / 0.12
+            )))
+            mat = "Air" if level == 0 else f"PM{level:+d}"
             label(rm * np.cos(center), rm * np.sin(center), mat,
                   magdir=float(np.degrees(center) % 360), group=1)
     iron = "IronLin" if linear_iron else "IronNL"

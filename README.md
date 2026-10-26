@@ -34,7 +34,8 @@ python exp/drive_r2.py
 
 # 6. Independent FEMM cross-check (requires FEMM 4.2 + pywin32)
 python exp/femm_validate.py
-python exp/femm_tap50_withz.py          # 36-point coverage-trained tap50 check
+python exp/femm_unseen_withz.py --holdout tap50
+python exp/femm_unseen_withz.py --holdout 4P
 
 # 7. All paper figures
 python exp/make_figures.py
@@ -73,7 +74,7 @@ python exp/make_figures.py
   everywhere it is needed.
 - Torque uses the full Lorentz integral including stack length. The
   drive-cycle result is calibrated to a 540-kg light EV with four identical
-  800-V SiC wheel drives; the original single-motor/low-voltage calibration
+  400-V SiC wheel drives; the original single-motor/low-voltage calibration
   was incompatible with the corrected torque scale and produced unrealistic
   inverter losses.
 - The demo machine's original phase grouping is non-standard (phase-C axis
@@ -90,15 +91,27 @@ python exp/make_figures.py
   multiplying by `L_STACK = 0.1`; the solver now includes the factor directly.
 - The original single-motor/low-voltage drive calibration became infeasible
   after that correction. The case study is now a 540-kg light EV with four
-  identical wheel motors, an 800-V SiC inverter model, 50% slot fill and a
+  identical wheel motors, a 400-V SiC inverter model, 50% slot fill and a
   matching reduction ratio; torque and energy are aggregated over all four
   drives.
 - FEMM slot coordinates were aligned to the polar-grid slot sectors, and the
   torque post-processor now sums each slot-Lorentz integral explicitly.
-- Consequently, the old drive percentages are obsolete. The corrected
-  direct-MLP result saves `0.56%` versus the best fixed delta connection
-  (`3.99%` versus fixed 4P), while the co-energy surrogate estimates `4.2%`.
-  This spread is reported rather than hidden.
+- The fine-mesh inductance shape agrees with FEMM to 2.1%, but a 1.13x
+  absolute normalisation difference remains. Re-solving with the actual
+  discretised slot area removes about half of it, but that convention change
+  is not applied to the released benchmark data; it is documented as an
+  unresolved solver-alignment issue rather than hidden by rescaling.
+- Consequently, the old drive percentages are obsolete. At 400 V, fixed 4P
+  is the only fully feasible fixed mode and the direct-MLP DP saves about
+  `3.1%`. At 700 V and above, fixed delta becomes feasible and the gain
+  collapses to `0.4-0.6%`. Either way the claim is conditional.
+- Independent FEMM checks now use the same turns, stack length, BH curve,
+  slot positions and full-ring radial PM waveform. The 12-slot fine-mesh
+  inductance shape agrees to `2.1%` after a remaining `1.13x` global scale;
+  PM fundamental amplitudes still differ by `41.8%`.
+- Over 36 synchronous points, the coverage-trained MLP transfers torque to
+  unseen 4P (`r=0.87`, MAE `0.049 N m`) but not to tap50 (`r=0.59`).
+  No hardware or HIL measurement is available in this workspace.
 
 ## License / citation
 

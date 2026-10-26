@@ -39,7 +39,7 @@ SLOT_AREA = (0.0475 - 0.0355) * (2 * np.pi / 12 * 0.52) * (0.0355 + 0.0475) / 2
 A_COPPER_PER_COIL = 0.50 * SLOT_AREA             # 50% slot fill
 R_COIL = RHO_CU * N_TURN * 2 * (L_STACK + 0.0217) / A_COPPER_PER_COIL
 I_COIL_MAX = 60.0                                # A peak coil current (FEA range)
-V_DC = 800.0
+V_DC = 400.0
 V_SV_MAX = V_DC / np.sqrt(3)                     # SVPWM linear region
 # Bertotti proxy, M250-35A-class steel
 K_H, K_C = 0.026, 1.2e-4                         # W/(kg Hz T^2), W/(kg Hz^2 T^2)

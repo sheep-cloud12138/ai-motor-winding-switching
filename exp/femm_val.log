@@ -2,9 +2,11 @@ FEMM 4.2 validation (successful)
 L correlation vs 120x288 reference: 0.999996
 L residual after one global scale: 0.02099
 L remaining global scale factor: 1.13194
-PM flux correlation: 0.97851
-PM fundamental relative difference: 0.44281
-Nonlinear 4S flux correlation: 0.98698
-Nonlinear 4S torque relative difference: 0.02674
+PM flux correlation: 0.97841
+PM fundamental relative difference: 0.41823
+Nonlinear 4S flux correlation: 0.98714
+Nonlinear 4S torque relative difference: 0.01212
 See exp/results_femm.json for the numerical arrays.
-Coverage-trained tap50 results are in results_tap50_femm_withz.json.
+Coverage-trained 4P: torque correlation 0.870, MAE 0.049 N m.
+Coverage-trained tap50: torque correlation 0.594, shape error 0.847.
+See the results_{4p,tap50}_femm_withz.json files for all 36 points.

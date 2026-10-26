@@ -1,25 +1,25 @@
 R1 fixed baselines
-  4S     E=368.0 Wh unmet=104.0
-  2S2P   E=457.8 Wh unmet=0.0
-  delta  E=456.4 Wh unmet=0.0
+  4S     E=146.8 Wh unmet=876.8
+  2S2P   E=371.9 Wh unmet=102.2
+  delta  E=387.3 Wh unmet=224.1
   4P     E=472.7 Wh unmet=0.0
-  best fixed: delta, 456.4 Wh
-  DP vs best fixed saving: 0.56%
+  best fixed: 4P, 472.7 Wh
+  DP vs best fixed saving: 3.1%
 R2 changeover-energy sweep
-  DP: 453.8-454.3 Wh with 16 switches from 5 mJ to 100 J
-  Greedy: 453.7-454.5 Wh with 28 switches
+  DP: 458.3-459.8 Wh with 54 switches from 5 mJ to 100 J
+  Greedy: 457.6-461.5 Wh with 139 switches
 R3 zero-shot tap50 in DP
   tap50 receives 0 seconds; this screening result is not trusted because
-  the FEMM trajectory check shows a 97.1% torque-shape discrepancy.
+  the FEMM trajectory check shows an 84.7% torque-shape discrepancy.
 R4 design screening
-  4S     E=368.0 Wh unmet=104.0
-  2S2P   E=457.8 Wh unmet=0.0
-  delta  E=456.4 Wh unmet=0.0
+  4S     E=146.8 Wh unmet=876.8
+  2S2P   E=371.9 Wh unmet=102.2
+  delta  E=387.3 Wh unmet=224.1
   4P     E=472.7 Wh unmet=0.0
-  3S1P   E=310.3 Wh unmet=537.3
-  tap75  E=134.4 Wh unmet=182.1
-  tap50  E=145.0 Wh unmet=136.6
-  tap25  E=116.1 Wh unmet=1132.8
+  3S1P   E=132.0 Wh unmet=793.4
+  tap75  E=108.0 Wh unmet=1117.3
+  tap50  E=93.1 Wh unmet=748.9
+  tap25  E=118.2 Wh unmet=1508.4
 R5 inverter rescaling
-  DP 453.1 Wh, fixed delta 454.8 Wh, saving 0.37%
+  DP 455.9 Wh, fixed 4P 464.7 Wh, saving 1.90%
 See exp/results_drive_r2.json for the numerical arrays.

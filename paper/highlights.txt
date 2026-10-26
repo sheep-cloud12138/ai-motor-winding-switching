@@ -2,7 +2,6 @@ Highlights
 
 - One coil-level surrogate can query unseen winding connections.
 - Co-energy structure gives exact reciprocity (4.6e-4 vs 0.22 for an MLP).
-- Pattern kind beats pattern count: nRMSE 1.00 -> 0.11 on unbalanced links.
-- Phase-random patterns fix open-phase hold-outs (1.38 -> 0.07) at 1/4 cost.
-- WLTC DP saves only 0.6% versus the best fixed connection; model spread is 4.2%.
-- FEMM validates inductance trends but exposes a tap50 zero-shot torque failure.
+- Pattern kind beats count: unbalanced nRMSE 0.11; open-phase 0.07.
+- FEMM transfers torque to unseen 4P (r=0.87) but not tap50 (r=0.59).
+- At 400 V, WLTC DP saves 3.1%; at 700 V the gain collapses below 0.6%.

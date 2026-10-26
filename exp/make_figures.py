@@ -200,8 +200,11 @@ def fig_drive():
     fixed = dr2["fixed"]
     E = [fixed[m]["E_Wh"] for m in ("4S", "2S2P", "delta", "4P")]
     E.append(dr2["dp"]["E_Wh"])
-    labs = ["4S\n4.1% unmet", "2S2P\ncomplete", "delta\ncomplete",
-            "4P\ncomplete", "DP\ncomplete"]
+    labels = []
+    for m in ("4S", "2S2P", "delta", "4P"):
+        gap = 100 * fixed[m]["unmet_fraction"]
+        labels.append(f"{m}\n$\\Delta${gap:.1f}%" if gap else f"{m}\nok")
+    labs = labels + ["DP\nok"]
     colors = ["#bbbbbb", "#c8c8c8", "#b8c7d9", "#8fb8de", "#2e7ebc"]
     ax1.bar(labs, E, color=colors, width=0.62)
     ax1.set_ylabel("Cycle energy (Wh)")
