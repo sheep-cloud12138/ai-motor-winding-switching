@@ -1,0 +1,202 @@
+[
+  {
+    "doi": "10.1109/tie.2021.3091919",
+    "title": "Predictive Control With Battery Power Sharing Scheme for Dual Open-End-Winding Induction Motor Based Four-Wheel Drive Electric Vehicle",
+    "year": 2021,
+    "cites": 88,
+    "venue": "IEEE Transactions on Industrial Electronics",
+    "abstract": "For high-power electric vehicles (EVs), the drive propulsion based on induction motors is emerging as economical alternative. Compared to conventional induction motors, the open-end winding induction motor (OEWIM) requires only half the dc-bus voltage for the given torque. The EV power train based on the dual two-level voltage-source inverter (VSI)-fed OEWIM with isolated dc sources is used in this research. For uniform state-of-charge (SoC) distribution, the power flow from each isolated source needs to be controlled. A two-stage model-predictive direct torque control (MPDTC) scheme is proposed to balance the SoC of batteries by proper selection of the VSI voltage vectors. The proposed MPDTC scheme is free from weighting factor tuning and uses a ranking method to predict the optimal voltage vectors. The superiority of the proposed controller in terms of battery SoC balancing is demonstrated. The performance of the proposed MPDTC EV drive is verified for the FTP75 and HFET driving cycles under different operating conditions, both by simulation and hardware experimental tests.",
+    "oa_url": "https://ieeexplore.ieee.org/ielx7/41/9703198/09467492.pdf",
+    "url": "https://openalex.org/W3175374979"
+  },
+  {
+    "doi": "10.3390/en17020476",
+    "title": "Enhancing the Efficiency of Failure Recognition in Induction Machines through the Application of Deep Neural Networks",
+    "year": 2024,
+    "cites": 1,
+    "venue": "Energies",
+    "abstract": "The objective of the investigation was to increase the effectiveness of damage detection in the stator of the squirrel-cage induction machine. The analysis aimed to enhance the operational trustworthiness of the squirrel-cage induction machine by employing nonintrusive diagnostic methods based on a current signal and modern artificial intelligence methods. The authors of the study introduced a diagnostic technique for identifying multiphase interturn short circuits of stator winding. These short circuits are one of the most common faults in induction machines. The proposed method focusses on deriving a diagnostic signal from the phase-current waveforms of the machine. The noninvasive nature of the diagnostic technique presented is attributed to the application of the field model of electromagnetic phenomena to determine the diagnostic signal. For this purpose, a field model of a squirrel-cage machine was developed. The waveforms of phase currents obtained from the field model were used as input into an elaborated machine failure neural classifier. A deep neural network was used to develop a neural classifier. The effectiveness of the developed classifier has been experimentally verified, and the obtained results have been presented, concluded, and discussed. The scientific novelty presented in the article is the presentation of research results on the use of a neural classifier to detect damage in all phases of the stator winding at an early stage of its appearance. The features of this type of damage are very difficult to observe in signal waveforms such as a phase current or torque.",
+    "oa_url": "https://www.mdpi.com/1996-1073/17/2/476/pdf?version=1705587156",
+    "url": "https://openalex.org/W4390972596"
+  },
+  {
+    "doi": "10.3390/en15239081",
+    "title": "Real-Time Power Quality Enhancement in a Hybrid Micro-Grid Using Nonlinear Autoregressive Neural Network",
+    "year": 2022,
+    "cites": 16,
+    "venue": "Energies",
+    "abstract": "The extensive use of renewable energy sources (RESs) in energy sectors plays a vital role in meeting the present energy demand. The widespread utilization of allocated resources leads to multiple usages of converters for synchronization with the power grid, introducing poor power quality. The integration of distributed energy resources produces uncertainties which are reflected in the distribution system. The major power quality problems such as voltage sag/swell, voltage unbalancing, poor power factor, harmonics distortion (THD), and power transients appear during the transition of micro-grids (MGs). In this research, a single micro-grid is designed with PVs, wind generators, and fuel cells as distributed energy resources (DERs). A nonlinear auto regressive exogenous input neural network (NARX-NN) controller has been investigated in this micro-grid in order to maintain the above power quality issues within the specific standard range (IEEE/IEC standards). The performance of the NARX-NN controller is compared with PID and fuzzy-PID controllers. The single micro-grid is extended to design a three-phase large-scale realistic micro-grid structure to test the feasibility of the proposed controller. The realistic micro-grid is verified through addition of line-impedance, communication delay, demand response, and off-nominal situations. The proposed controller is also validated by simulating different test scenarios using MATLAB/Simulink and TMS320-based processor-in-loop (PIL) for real-time implementation.",
+    "oa_url": "https://www.mdpi.com/1996-1073/15/23/9081/pdf?version=1669891337",
+    "url": "https://openalex.org/W4310386970"
+  },
+  {
+    "doi": "10.13052/2026.aces.j.410607",
+    "title": "Design and Open-Circuit Fault Analysis of Modular E-Type Stator Switched Reluctance Motor for High-Reliability Applications",
+    "year": 2026,
+    "cites": 0,
+    "venue": "The Applied Computational Electromagnetics Society Journal (ACES)",
+    "abstract": "This study proposes a modular switched reluctance motor (SRM), featuring an E-shaped stator core structure, suitable for high-reliability applications. The stator comprises six independent E-shaped cores with windings mounted on the core yokes. A two-dimensional simplified model evaluates static performance, including torque, magnetic flux (MMF), and inductance under both normal and winding fault conditions. Simulation results demonstrate the high reliability of the designed SRM.",
+    "oa_url": "https://journals.riverpublishers.com/index.php/ACES/article/download/32267/24297",
+    "url": "https://openalex.org/W7222327536"
+  },
+  {
+    "doi": "10.35940/ijeat.f1580.089620",
+    "title": "Automatic Switching of Three Phase Induction Motor during Fault Condition",
+    "year": 2020,
+    "cites": 0,
+    "venue": "International Journal of Engineering and Advanced Technology",
+    "abstract": "This paper proposes the automatic switching of a three-phase induction motor to provide an uninterrupted motor operation in industrial applications. To accomplish this aim, two motors are employed one is a primary motor and another one is a back-up machine that is automatically made switched on in the case of primary motor fails to operate. All the process is controlled by the Arduino controller design. Moreover, the continuous running of motors causes the motor temperature to rise, which is effectively handled by the proposed controller design, which automatically switches the primary and backup motor for every 24 hours. The motor operating status is automatically updated by means of GSM strategy to the operator. Here arduino controller used to control the induction motor with the help of relay. In the case of unexpected fault conditions, to protect the system both the motors are automatically switched off and a message is passed to the operator about the fault condition. The proposed methodology is experimentally validated by a hardware model with better working performance.",
+    "oa_url": "https://doi.org/10.35940/ijeat.f1580.089620",
+    "url": "https://openalex.org/W3202096918"
+  },
+  {
+    "doi": "10.15680/ijirset.2014.0312015",
+    "title": "Regenerative Braking System of Electric Vehicle Driven By BLDC Motor Using Neuro-Fuzzy and PID",
+    "year": 2014,
+    "cites": 15,
+    "venue": "International Journal of Innovative Research in Science Engineering and Technology",
+    "abstract": "Regenerative braking can improve energy usage efficiency and can extend the driving distance of Electric Vehicles.Innovative Regenerative Braking System of EV driven by BLDC motor is recommended.In this technique, Brushless DC motor is controlled by traditional Proportional Integral Derivative control, and the braking force distribution is done by ANFIS.This reasoning is quite sluggish compared to PID.Thus PID is used to control the negative torque of the motor when brake is pressed.This fresh elucidation has improved performance in regard to insight, strength, and efficiency.The suggested system grants the simulation results by analysing the speed of motor with its braking force and the vehicle's battery charge under the IDE of Simulink.The results illustrates that the Neurofuzzy logic and PID control can recognize the regenerative braking can prolong the driving distance of EVs under the condition of confirming quality of braking condition.Eventually, the proposed method is proved using MATLAB R2014a software.",
+    "oa_url": "https://doi.org/10.15680/ijirset.2014.0312015",
+    "url": "https://openalex.org/W2184146652"
+  },
+  {
+    "doi": "",
+    "title": "Position Estimation in Switched Reluctance Motor Drives Using the First Switching Harmonics of Phase Voltage and Current",
+    "year": 2008,
+    "cites": 6,
+    "venue": "VTechWorks (Virginia Tech)",
+    "abstract": "Position estimation using only active phase voltage and current is presented to perform high accuracy position sensorless control of a SRM drive. By extracting the amplitude of the first switching harmonic terms of phase voltage and current for a PWM period through Fourier analysis, flux-linkage and position are estimated without external hardware circuitry such as a modulator and demodulator, resulting in increasing cost, as well as large position estimation error produced when the motional back emf is ignored near zero speed. Hence the proposed position estimation scheme covers the entire speed range including the standstill under various loads and it has high resolution information depending on switching frequency. Fourier series and Fast Fourier transform are employed to decompose the phase voltage and current into its first switching harmonic. A two-phase SRM drive system, consisting of an asymmetrical converter and a conventional closed-loop PI current controller, is utilized to validate the performance of the proposed position estimation scheme in comprehensive operating conditions. The estimated values very closely track the actual values in dynamic simulations and experiments. It is shown that the proposed position estimation scheme using Fourier analysis is sufficiently accurate and works satisfactorily at various operating points. This research also proposes an accurate self-inductance measurement method. In general, when applying circulating currents within the body of a ferromagnetic material under conditions of a time varying magnetic flux, the effects of eddy current losses and resistance changes due to heating decrease the magnetic field strength and thereby the reduced magnetic field decreases the magnetic flux-linkage of SRM. These losses make a challenge to the measurement of magnetic characteristics of SRM. These motives lead to propose a measurement methodology based on 60 Hz sinusoidal excitation using a variable AC power supply, which provides an alternative to time domain integration approaches for self-inductance or flux-linkage measurement as well as eliminates error arising from thermal and eddy currents effects. The validation of the proposed method is verified with the correlation between the measurement and FEA results of flux-linkage. Furthermore, this research proposes the solutions for low cost and high efficiency drive systems, consisting of a split AC converter and a two-phase SRM. Its performance is analyzed and verified with experiments at the rated speed under various loads. It is believed that this drive system combined with the proposed position estimation scheme using Fourier analysis is a strong contender to be a low cost motor drive system with single switch per phase having comparable efficiency and acoustic noise level as an asymmetric drive system.",
+    "oa_url": "http://hdl.handle.net/10919/28296",
+    "url": "https://openalex.org/W2341846507"
+  },
+  {
+    "doi": "10.3390/math10203842",
+    "title": "A Combined Control Scheme of Direct Torque Control and Field-Oriented Control Algorithms for Three-Phase Induction Motor: Experimental Validation",
+    "year": 2022,
+    "cites": 40,
+    "venue": "Mathematics",
+    "abstract": "In this paper, a combined structure of algorithms based on field-oriented control (FOC) and direct torque control (DTC) is proposed for improving the performance of a three-phase induction motor (IM) over a wide range of torque loads. The objective of this study is to investigate the state-of-the-art research performed on the resilient intersection control management between FOC and DTC algorithms for IM drive. Three algorithms are employed in the proposed scheme: Direct Torque Stator Flux Control (DTSFC), Direct Torque Rotor Flux Control (DTRFC), and the FOC algorithm. The main aim of the control law is to launch the drive system by selecting DTSFC or DTRFC during the transient state while FOC is switched smoothly to the steady-state. The proposed method had several advantages, including the ability to produce torque beyond the pull-out torque range at 340%, high torque dynamics during transient state within 0.5 ms, low chattering up to 0.05 N.m, and fixed frequency at steady-state operation. Furthermore, a comprehensive comparison study has been conducted, including the most recent research, to verify the effectiveness and superiority of the proposed technique. Results were obtained using both MATLAB/Simulink environment and also were experimentally performed by using a dSPACE DS1103 digital signal processing board to verify the concept of the proposed control scheme.",
+    "oa_url": "https://www.mdpi.com/2227-7390/10/20/3842/pdf?version=1666596257",
+    "url": "https://openalex.org/W4306658475"
+  },
+  {
+    "doi": "10.62225/2583049x.2026.6.2.6020",
+    "title": "Design and Development of Automatic Induction Motor Star/Delta Starter Using Timer with Overvoltage and Undervoltage Protection System",
+    "year": 2026,
+    "cites": 1,
+    "venue": "International Journal of Advanced Multidisciplinary Research and Studies",
+    "abstract": "This project aims to design and develop an automatic induction motor star/delta starter using a timer with overvoltage and undervoltage protection system. The system will ensure efficient and safe operation of induction motors by automatically switching between star and delta connections based on the motor's operating conditions. The inclusion of overvoltage and undervoltage protection enhances the system's reliability and prevents motor damage due to voltage fluctuations, which are common in industrial settings. The project will involve a comprehensive literature review, design and development of the system's hardware and software components, simulation and testing of the prototype, and performance evaluation. The expected outcome is a reliable, efficient, and cost-effective automatic induction motor star/delta starter system that can be readily deployed in various industrial applications to improve motor performance and longevity. The system incorporates advanced features including real- time voltage monitoring, fault indication through LED displays, emergency stop capabilities, and provisions for remote monitoring integration. Testing results validate the system's effectiveness in protecting three-phase induction motors ranging from 5 HP to 50 HP across various industrial applications. The economic analysis reveals significant benefits including reduced maintenance costs, improved motor lifespan, enhanced operational reliability, and decreased downtime. The payback period for the investment is estimated at 18-24 months for typical industrial installations. This research contributes to the field of industrial automation by providing a comprehensive solution that addresses multiple challenges in motor starting and protection. The system's modular design allows for easy customization and scalability, making it suitable for diverse industrial applications from manufacturing plants to water treatment facilities.",
+    "oa_url": "https://www.multiresearchjournal.com/admin/uploads/archives/archive-1774516715.pdf",
+    "url": "https://openalex.org/W7140474523"
+  },
+  {
+    "doi": "10.1049/tje2.12171",
+    "title": "Current sensor fault‐tolerant control strategy for surface‐permanent‐magnet‐synchronous motor drives based on improved full‐order sliding‐mode observer",
+    "year": 2022,
+    "cites": 4,
+    "venue": "The Journal of Engineering",
+    "abstract": "Abstract This paper exhibits a sensorless speed control method based on full‐order‐sliding‐mode observer applied to a fault‐tolerant permanent‐magnet‐synchronous motor (PMSM) drive system. So, this paper proposes a rapid method of fault switch detection in the power converters aiming to make sure of the continuity of service despite the fault presence of an opening phase. In fact, the full‐order‐sliding‐mode observer (FO‐SMO) observer is used to replace the mechanical sensor and a redundant inverter leg is equally employed to replace the faulty leg. The proposed new fast fault diagnosis method has the features of a simple algorithm, independent of the transient states and being simply integrated without any additional sensors.",
+    "oa_url": "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1049/tje2.12171",
+    "url": "https://openalex.org/W4285093182"
+  },
+  {
+    "doi": "",
+    "title": "Voltage and stability analysis of distribution networks with non-conventional energy sources",
+    "year": 1997,
+    "cites": 1,
+    "venue": "Victoria University Research Repository (Victoria University)",
+    "abstract": "The impact of renewable energy installations connected to the utility grid is an important issue concerning the technical and economic viability of harnessing these emerging energy sources. Distribution networks must be carefully controlled in order to maintain an acceptable power supply quality. The major sources of non-conventional energy are small scale generation and storage from mini hydro, photovoltaic, wind power, fuel cells, battery, flywheel, pump storage and biomass. The aim of this thesis is to analyse the variation in voltage of the distribution network when renewable energy sources are interconnected to the distribution network, in terms of it's stability. In particular this study analyses the impact of interconnection of small synchronous generators to the utility power grid. Dynamic stability analysis is mainly concerned with analysing the response of electrical power system to small perturbation about a given operating point. These studies are particularly important due to the growing interest in interconnecting small renewable energy sources to large and complex power systems. Simulation studies were carried out in order to find out the transient stability and voltage stability of the non-conventional energy sources under different operating conditions. A 5-second simulation was conducted using explicit numerical integration (Euler method) and an integration time step of 0.002 second. Power System Toolbox was used for analysis.The multimachine power system models used in this thesis are generated in MATLAB code. The load flow is performed on the multimachine power system correponding to the loading condition to be investigated. The machines are represented by the two-axis models, the exciters by IEEE Type-1 models and the loads are modelled as constant impedances. To save programming time, it has become common to limit the machine and exciter representations to some specified models. The network admittance matrix is reduced by retaining only the internal buses of the generators. The reduced network, machine and exciter data are then combined to form a linearised state-space model representing the entire system. The simulation studies are applied to a four machine ten bus system. It is clear from the analysis that much care should be taken based on the stability point of view while interconnecting the small renewable energy sources to the utility. The renewable energy sources should be interconnected at a point which provides higher stability margin.The renewable energy sources is a viable option if it is connected to the distribution network with necessary methods of improving transient stability and voltage stability.",
+    "oa_url": "https://vuir.vu.edu.au/17910/",
+    "url": "https://openalex.org/W1530735044"
+  },
+  {
+    "doi": "10.5152/iujeee.2018.1805",
+    "title": "Comparison of ANN and ANFIS Methods for the Voltage-Drop Prediction on an Electric Railway Line",
+    "year": 2018,
+    "cites": 3,
+    "venue": "Istanbul University - Journal of Electrical & Electronics Engineering",
+    "abstract": "Railway electrification systems are designed with regard to the operating data and design parameters.The minimum voltage rating required by traction during the operation should be provided.The maximum voltage drop on a line determines the minimum traction voltage.This voltage should be maintened within certain limits for the continuity of operation.In this study, the maximum voltage drop generated via traction was determined using artificial neural network (ANN) and adaptive neuro-fuzzy inference system (ANFIS) for a 25-kV AC-supplied railway.The voltage drop on line was calculated with regard to the operating data using ANN and ANFIS.ANN and ANFIS were explained, and the results were compared.The Levenberg-Marquardt (LM) algorithm was used for the ANN model.The LM algorithm is preferred because of the speed and stability it provides for the training of ANNs.The data created for one-way supply status were examined for simulation.",
+    "oa_url": "https://electricajournal.org/en/comparison-of-ann-and-anfis-methods-for-the-voltage-drop-prediction-on-an-electric-railway-line-16795",
+    "url": "https://openalex.org/W2791147147"
+  },
+  {
+    "doi": "10.13140/rg.2.2.33555.37924",
+    "title": "Optimal Control of Induction Machines to Minimize Transient Energy Losses",
+    "year": 2017,
+    "cites": 1,
+    "venue": "UND Scholarly Commons (University of North Dakota)",
+    "abstract": "Induction machines are electromechanical energy conversion devices comprised of a stator and a rotor. Torque is generated due to the interaction between the rotating magnetic field from the stator, and the current induced in the rotor conductors. Their speed and torque output can be precisely controlled by manipulating the magnitude, frequency, and phase of the three input sinusoidal voltage waveforms. Their ruggedness, low cost, and high efficiency have made them ubiquitous component of nearly every industrial application. Thus, even a small improvement in their energy efficient tend to give a large amount of electrical energy savings over the lifetime of the machine. Hence, increasing energy efficiency (reducing energy losses) in induction machines is a constrained optimization problem that has attracted attention from researchers. The energy conversion efficiency of induction machines depends on both the speed-torque operating point, as well as the input voltage waveform. It also depends on whether the machine is in the transient or steady state. Maximizing energy efficiency during steady state is a Static Optimization problem, that has been extensively studied, with commercial solutions available. On the other hand, improving energy efficiency during transients is a Dynamic Optimization problem that is sparsely studied. This dissertation exclusively focuses on improving energy efficiency during transients. This dissertation treats the transient energy loss minimization problem as an optimal control problem which consists of a dynamic model of the machine, and a cost functional. The rotor field oriented current fed model of the induction machine is selected as the dynamic model. The rotor speed and rotor d-axis flux are the state variables in the dynamic model. The stator currents referred to as d-and q-axis currents are the control inputs. A cost functional is proposed that assigns a cost to both the energy losses in the induction machine, as well as the deviations from desired speed-torque-magnetic flux setpoints. Using Pontryagin’s minimum principle, a set of necessary conditions that must be satisfied by the optimal control trajectories are derived. The conditions are in the form a two-point boundary value problem, that can be solved numerically. The conjugate gradient method that was modified using the Hestenes-Stiefel formula was used to obtain the numerical solution of both the control and state trajectories. Using the distinctive shape of the numerical trajectories as inspiration, analytical expressions were derived for the state, and control trajectories. It was shown that the trajectory could be fully described by finding the solution of a one-dimensional optimization problem. The sensitivity of both the optimal trajectory and the optimal energy efficiency to different induction machine parameters were analyzed. A non-iterative solution that can use feedback for generating optimal control trajectories in real time was explored. It was found that an artificial neural network could be trained using the numerical solutions and made to emulate the optimal control trajectories with a high degree of accuracy. Hence a neural network along with a supervisory logic was implemented and used in a real-time simulation to control the Finite Element Method model of the induction machine. The results were compared with three other control regimes and the optimal control system was found to have the highest energy efficiency for the same drive cycle.",
+    "oa_url": "https://commons.und.edu/theses/2313",
+    "url": "https://openalex.org/W3035643269"
+  },
+  {
+    "doi": "10.1038/s41598-024-79857-3",
+    "title": "Implementation of high step up converter using RBFN MPPT controller for fuel cell based electric vehicle application",
+    "year": 2024,
+    "cites": 13,
+    "venue": "Scientific Reports",
+    "abstract": "Fuel cell-based electric vehicles (EVs) are gaining popularity in the automotive industry due to strict carbon emissions and fuel efficiency regulations. Fuel cells have inherently low voltage characteristics, making it challenging to interface with EV drive systems. This work proposes a unique topology implementing a non-isolated high step-up DC-DC converter to integrate the Proton Exchange Membrane Fuel (PEMF) cell with the EV motor drive. The converter combines a modified Single-Ended Primary Inductor Converter (m-SEPIC) with two winding-coupled inductors, enabling high voltage gain, minimizing conduction losses, and ensuring high efficiency. The output power of a fuel cell is highly dependent on cell temperature and membrane water content, making a maximum power point tracking controller essential for extracting optimal power from the fuel cell stack. The optimum power point of the PEMF cell is identified using a Neural Network (NN)-based Maximum Power Point Tracking (MPPT) technique, employing the Radial Basis Function Network (RBFN) approach compared to the Perturb & Observe (P&O) method. The performance of the RBFN MPPT method is validated under various temperature conditions of the fuel cell system. An extensive analysis and comparison with alternative converters validate the efficacy of the proposed system. The converter is designed for an input voltage of 24 V and boosts it to an output voltage of 240 V, with high static voltage gain, high power density, and minimized total losses. The system is tested and validated through both simulation and real-time implementation using the dSPACE 1104 real-time controller. A 200 W, 3000 rpm, 240 V VSI-based BLDC motor drive integrated with the proposed converter topology is developed as a real-time setup in the laboratory which would confirm the converter's functionality. Both theoretical analysis and real-time outcomes affirm the suitability of the proposed converter topology for electric vehicle applications.",
+    "oa_url": "https://www.nature.com/articles/s41598-024-79857-3.pdf",
+    "url": "https://openalex.org/W4404712319"
+  },
+  {
+    "doi": "10.5988/jime.50.752",
+    "title": "Novel Concept of Inverter-less Electric Drive for Ship Propulsion System",
+    "year": 2015,
+    "cites": 2,
+    "venue": "Marine Engineering",
+    "abstract": "Electric propulsion systems are found to be a more effective way of propulsion, especially in several applications such as supply vessels, shuttle-tankers, ice-breakers, etc., where a varying velocity profile is preferred. At the same time, the conventional design includes inverters to control propeller rotational speed and/or controllable pitch propeller, thus making the total system very expensive, complex and with additional space requirements. In this study, the authors propose a novel concept of electric propulsion direct drive consisting of a diesel engine and a synchronous generator which directly feeds the induction motor connected to a fixed pitch propeller. By changing the voltage applied to field windings of the generator and rotational speed of the diesel engine an inverter like control of propulsion motor rotational speed can be achieved. This paper presents general concept of a Direct Drive Electric Propulsion (DDEP) system and the simulation results of a complete diesel-electric propulsion system model.",
+    "oa_url": "https://www.jstage.jst.go.jp/article/jime/50/6/50_752/_pdf",
+    "url": "https://openalex.org/W2560572064"
+  },
+  {
+    "doi": "10.3390/electronics13091721",
+    "title": "Explainable Artificial Intelligence Approach for Diagnosing Faults in an Induction Furnace",
+    "year": 2024,
+    "cites": 10,
+    "venue": "Electronics",
+    "abstract": "For over a century, induction furnaces have been used in the core of foundries for metal melting and heating. They provide high melting/heating rates with optimal efficiency. The occurrence of faults not only imposes safety risks but also reduces productivity due to unscheduled shutdowns. The problem of diagnosing faults in induction furnaces has not yet been studied, and this work is the first to propose a data-driven framework for diagnosing faults in this application. This paper presents a deep neural network framework for diagnosing electrical faults by measuring real-time electrical parameters at the supply side. Experimental and sensory measurements are collected from multiple energy analyzer devices installed in the foundry. Next, a semi-supervised learning approach, known as the local outlier factor, has been used to discriminate normal and faulty samples from each other and label the data samples. Then, a deep neural network is trained with the collected labeled samples. The performance of the developed model is compared with several state-of-the-art techniques in terms of various performance metrics. The results demonstrate the superior performance of the selected deep neural network model over other classifiers, with an average F-measure of 0.9187. Due to the black box nature of the constructed neural network, the model predictions are interpreted by Shapley additive explanations and local interpretable model-agnostic explanations. The interpretability analysis reveals that classified faults are closely linked to variations in odd voltage/current harmonics of order 3, 11, 13, and 17, highlighting the critical impact of these parameters on the model’s prediction.",
+    "oa_url": "",
+    "url": "https://openalex.org/W4396217134"
+  },
+  {
+    "doi": "10.1541/ieejjia.25003852",
+    "title": "Fault Diagnosis Methods for Resolvers: A Review",
+    "year": 2025,
+    "cites": 2,
+    "venue": "IEEJ Journal of Industry Applications",
+    "abstract": "With the advantages of high precision, high reliability, and strong environmental adaptability, resolvers play a central role in position detection across various fields, including aerospace, automotive, and servo systems. However, prolonged operation in harsh environments can lead to faults such as eccentricity and short/open winding, and interference from non-ideal factors. These issues lead to a decrease in position detection accuracy and potentially cause system failure. Thus, fault diagnosis technology has become the focus of considerable research interest. This paper summarizes the research progress related to fault diagnosis of the resolver. First, it explains the working principle of the resolvers and rotor position extraction methods, clarifying their signal output characteristics. Next, it classifies and analyzes typical faults such as eccentricity, winding faults, and those caused by non-ideal factors. systematically summarizes diagnostic methods, including those based on signal processing, model resolution, and artificial intelligence, comparing their diagnostic accuracy, real-time performance, and applicability. Finally, it identifies common challenges in current research, such as unclear fault characteristics, insufficient synergy between diagnosis and fault tolerance, and poor adaptability of diagnostic methods to new structures, and proposes future research directions aligned with technological trends. This review aims to provide a reference for both engineering applications and academic research in resolver fault diagnosis and fault-tolerant control.",
+    "oa_url": "https://www.jstage.jst.go.jp/article/ieejjia/advpub/0/advpub_25003852/_pdf",
+    "url": "https://openalex.org/W4415487071"
+  },
+  {
+    "doi": "10.1186/s10033-023-00868-8",
+    "title": "Review of Design and Control Optimization of Axial Flux PMSM in Renewable-energy Applications",
+    "year": 2023,
+    "cites": 32,
+    "venue": "Chinese Journal of Mechanical Engineering",
+    "abstract": "Abstract Axial flux permanent magnet synchronous motors (AFPMSMs) have been widely used in wind-power generation, electric vehicles, aircraft, and other renewable-energy applications owing to their high power density, operating efficiency, and integrability. To facilitate comprehensive research on AFPMSM, this article reviews the developments in the research on the design and control optimization of AFPMSMs. First, the basic topologies of AFPMSMs are introduced and classified. Second, the key points of the design optimization of core and coreless AFPMSMs are summarized from the aspects of parameter design, structure design, and material optimization. Third, because efficiency improvement is an issue that needs to be addressed when AFPMSMs are applied to electric or other vehicles, the development status of efficiency-optimization control strategies is reviewed. Moreover, control strategies proposed to suppress torque ripple caused by the small inductance of disc coreless permanent magnet synchronous motors (DCPMSMs) are summarized. An overview of the rotor-synchronization control strategies for disc contra-rotating permanent magnet synchronous motors (CRPMSMs) is presented. Finally, the current difficulties and development trends revealed in this review are discussed.",
+    "oa_url": "https://cjme.springeropen.com/counter/pdf/10.1186/s10033-023-00868-8",
+    "url": "https://openalex.org/W4362578083"
+  },
+  {
+    "doi": "10.3846/16484142.2007.9638122",
+    "title": "ELECTRODYNAMIC BRAKING IN HIGH‐SPEED RAIL TRANSPORT",
+    "year": 2007,
+    "cites": 38,
+    "venue": "Transport",
+    "abstract": "The paper considers electrodynamic braking of trains, which is of particular importance for high‐speed railway transport from theoretical and technical perspectives. Braking methods used for high‐speed trains should ensure compatibility and redundancy of braking systems. They include a mechanical method (based on adding frictional disks to wheelsets), as well as magnetic braking, which is being currently implemented and based on eddy currents, etc. High‐speed trains have AC/DC engines, for which the principles of electric braking can be applied. Electrodynamic braking is of particular importance for high‐speed transport using linear motors and developing the speed of 400–500 km/h. These traction rolling stocks will not have commonly used trucks. The tests in this area are being conducted in Japan and Germany now. The paper suggests some theoretical and practical solutions to these problems. Schematic diagrams of the locomotive braking and ways of controlling the braking force by varying electric circuit parameters are presented. The authors suggested contact‐free regulation of braking rheostat resistor for controlling braking force in rheostatic braking. A schematic diagram of harmonizing electrified railways and power system's upgrading aimed at ensuring power regeneration is also presented.",
+    "oa_url": "https://journals.vgtu.lt/index.php/Transport/article/download/7793/6729",
+    "url": "https://openalex.org/W1565058046"
+  },
+  {
+    "doi": "10.1002/2050-7038.12973",
+    "title": "A new design and feasible architecture of DC microgrid for rural electrification",
+    "year": 2021,
+    "cites": 10,
+    "venue": "International Transactions on Electrical Energy Systems",
+    "abstract": "A new microgrid architecture suitable for rural electrification of remote hamlets is proposed. The proposed architecture utilizes a new system design that caters both energy as well as the water needs of the community. An intuitive Solar Photovoltaic (SPV) arrangement using a changeover switch is introduced to meet both lighting and water pumping requirements. Before implementation, a feasibility study is made for proposed Mid-way architecture using MATLAB/Simulink and the results are compared with existing architectures. The computed results indicate that the proposed architecture achieves the lowest voltage drop of 1.7 V and an energy loss of 4.2 Wh compared to other architectures. Further, to validate the system effectiveness an economic analysis is also performed in a practical viewpoint. To demonstrate the prophecy of the proposed architecture, the DC microgrid system is practically installed at Gundichattanahalli village, Karnataka. Besides, an efficient energy management system (EMS) on IoT platform for remote monitoring and control is also integrated with Mid-way architecture. Both simulation and real time system implementation ascertains system suitability for electrification of remote village or hamlets and its sustainable development.",
+    "oa_url": "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1002/2050-7038.12973",
+    "url": "https://openalex.org/W3167340863"
+  }
+]

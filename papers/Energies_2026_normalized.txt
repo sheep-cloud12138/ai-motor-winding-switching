@@ -1,0 +1,3123 @@
+
+
+===== PAGE 1 =====
+
+Academic Editors: Natalia
+Radwan-Pragłowska, Tomasz Wegiel
+and Maciej Sułowicz
+Received: 9 September 2026
+Revised: 1 October 2026
+Accepted: 6 October 2026
+Published: 13 October 2026
+Copyright: © 2026 by the authors.
+Licensee MDPI, Basel, Switzerland.
+This article is an open access article
+distributed under the terms and
+conditions of the Creative Commons
+Attribution (CC BY) license.
+Article
+Normalized-Characteristic-Current-Based Methodology for
+Quantifying Active Winding Reconfiguration Benefits in
+Permanent Magnet Synchronous Machines
+Rajesh Kallur-Krishnamoorthy *
+, Haoran Wang
+, Hassan Currimbhoy
+, Markus Eisenbarth
+and Jakob Andert *
+Chair of Mechatronics in Mobile Propulsion, Faculty of Mechanical Engineering, RWTH Aachen University,
+52062 Aachen, Germany; wang_h@mmp.rwth-aachen.de (H.W.)
+* Correspondence: kallur@mmp.rwth-aachen.de (R.K.-K.); andert@mmp.rwth-aachen.de (J.A.)
+Abstract
+Traction electric machines in electrified mobility are constrained by limited supply volt-
+age and critical materials. Active winding reconfiguration (AWR) changes the winding
+connection during operation to improve voltage utilization and field-weakening (FW)
+capability. However, general design rules for AWR remain limited. This work extends the
+characteristic-current-based normalized parameter-plane framework to AWR via topology-
+dependent reconfiguration factors and evaluates the resulting torque-speed-power behavior
+over the design space. The analytical model is compared against finite-element analysis
+of six baseline machines and test-bench measurements from one machine. Normalized
+characteristic current is the dominant design parameter, capturing the balance between
+magnetic and current loading, while saliency and the reconfiguration factor set the magni-
+tude of the benefit. Figures of merit are defined to quantify reconfiguration benefit across
+peak performance, crossover points, torque-speed envelopes, and part-load performance.
+Across these figures of merit, three explicit thresholds for normalized characteristic current
+are analytically derived and identified. Below the lowest threshold, designs such as syn-
+chronous reluctance and ferrite-assisted machines gain up to four times higher constant
+power speed range and 40% higher peak power, based on the analytical model. Above it
+and up to the middle threshold, conventional rare-earth traction machines gain mainly in
+part-load efficiency instead. Above the highest threshold, narrow-FW designs gain mainly
+in speed-range extension. These thresholds provide generalized, geometry-independent
+early-stage AWR screening for traction machine concepts.
+Keywords: active winding reconfiguration; normalized parameter plane; characteristic
+current; saliency; traction electric machine; field weakening; permanent magnet synchronous
+machine; star-delta; series-parallel; winding reconfiguration; open-end winding;
+1. Introduction
+Primary traction electric drives for electrified mobility must balance cost, sustain-
+ability, and high-speed performance under a fixed direct current (DC) link voltage con-
+straint. Several rare-earth-free rotor solutions exist, including induction machines (IM),
+synchronous reluctance machines (SynRM), permanent magnet (PM)-assisted SynRMs
+(PMaSynRM), and externally excited synchronous machines (EESM). Each introduces
+varying trade-offs with torque density, efficiency, volume, or thermal margin for reduced
+Energies 2026, 19, 4849
+https://doi.org/10.3390/en19204849
+
+
+===== PAGE 2 =====
+
+Energies 2026, 19, 4849
+2 of 32
+critical-material content. A general survey in [1] compares EESMs with permanent magnet
+synchronous machines (PMSMs) and highlights this trade-off at a broad level. Under
+common stator and inverter constraints [2] shows that thermally limited EESMs achieve
+lower performance than neodymium–iron–boron (NdFeB)-PMSMs. Extending the compar-
+ison to ferrite-magnet PMaSynRMs and induction machines, ref. [3] shows that both are
+limited to about two-thirds of the best-case NdFeB-PMSM performance. When machine
+volume is not constrained, ref. [4] shows that ferrite-magnet PMaSynRMs require about
+50% larger machine volume and 37% higher inverter current rating to match rare-earth
+machine performance.
+Active winding reconfiguration (AWR) has regained attention as a means to address
+this trade-off. Early traction PMSM studies in [5] introduced star (Υ), delta (∆), and parallel
+(Π) reconfiguration using thyristors and electromechanical contactors. Tapped-winding
+layout using two three-phase diode bridges and two insulated-gate bipolar transistor
+(IGBT) switches were introduced in [6], including an unequally split tapped-winding
+topology [7], while ref. [8] proposed a combined tapped and Υ–∆topology for agricul-
+tural tractor application with a symmetric torque-interrupted switching sequence. More
+recently, ref. [9] applied an AWR series-parallel (Υ–Π) topology to a ferrite-PMaSynRM.
+For induction machines, ref. [10] determined AWR for a single phase machine can provide
+three times speed extension, while ref. [11] applied Υ–Π AWR to demonstrate three times
+increased power at extended speed range, whereas, a variable stator pole machine topol-
+ogy was proposed in [12]. A modeling method using winding function approach for the
+analysis of transient winding reconfiguration was proposed in [13]. Υ–Π concepts with
+anti-parallel thyristor modules were studied in [14]. In [9], an AWR Υ–Π topology was
+applied to a rotating 80 kW machine, but reconfiguration was limited to low speed and low
+torque because of high current transients. By contrast, ref. [15] demonstrated Υ–Π AWR at
+moderate speed and torque representative of an automotive traction machine. While these
+studies addressed low-level reconfiguration switching using symmetric winding states
+during transition, asymmetric switching states were examined in [16] to minimize torque
+interruption, while ref. [17] considered similar sequencing for smaller machines. Ref. [18]
+proposed a fast reconfiguration control method for Υ–Π switching within a single inverter
+switching period. The design proposed in [19] additionally discussed a fail-safe transition
+sequence using active short circuit during switching. Thus, several works have dealt with
+the wide ranging aspects around AWR design and control, and show the performance
+impact of the proposed design in terms of speed, torque, power and losses improvement.
+However, they remain largely at the level of single-point design demonstrations.
+Reported gains in several of these studies are substantial and span a wide-range,
+including 20% to 80% increases in torque or power density and up to 60% reductions
+in total losses [20]. Yet, there is a lack of clear design parameters or threshold ranges to
+predict this benefit without a full design study. A sensitivity analysis [21] found that
+designs with weak rotor magnetic loading benefit more from AWR, albeit based on a
+single rotor design. However, the trend begins to reverse at very low magnetic loading
+and therefore does not generalize further. This work and a comprehensive review [20]
+identified the need for research on design methodologies for machines with reconfigurable
+windings from the conceptual stage. Identifying benefits currently requires a full AWR
+design study. Conventional multi-objective optimization methods require numerous detail
+design evaluations [22]. While data-driven approaches reduce this evaluation count [23,24],
+such design studies benefit from analytical methods to further reduce computational effort.
+Generalized design-space explorations have used analytical normalized parameter-
+plane (NPP) models based on the flux-linkage–saliency (ΨPM −ξ) parameter-plane intro-
+duced in [25]. Practical saturation effects on the analytical model were examined in [26],
+https://doi.org/10.3390/en19204849
+
+
+===== PAGE 3 =====
+
+Energies 2026, 19, 4849
+3 of 32
+where constant power speed range (CPSR) predictions deviated by up to 69% for Syn-
+RMs, whereas surface PMSMs showed a deviation of about 7% when the parameters were
+obtained from an unsaturated state. This was further supported using results from finite-
+element-analysis (FEA) for an interior-PMSM (IPMSM) in [27], which showed saturation-
+induced CPSR deviations of roughly 47–54%, depending on the chosen parameters. Works
+in [28] applied ΨPM −ξ NPP model to AWR at selected points. In [29], this ΨPM −ξ NPP
+approach was extended to winding reconfiguration across the parameter plane, using a
+turns-ratio factor to compare operating-range improvements and validated the model with
+FEA. Ref. [30] expanded this framework into a common model covering several topologies
+including phase-number changes up to nine phases, and pole changing, thereby showing
+that different reconfiguration options can be compared within one framework; analytical
+results indicated the possibility of nearly doubling the torque-speed area. A volume-
+optimization study in [31] then applied the extended parameter plane to co-optimize motor
+and inverter volume, showing up to 27% total volume reduction and confirming the analyt-
+ical trends experimentally. However, the boundaries identified in the NPP vary along the
+input parameters, requiring iterative solving or look-up tables (LUTs) for each design [32],
+even if these remain less resource intensive than multiple FEA simulations.
+In [33] the importance of characteristic current (Ich) in strongly influencing CPSR
+under field-weakening (FW) is highlighted. Ref. [34] shows that, although positioning the
+Ich close to the rated current maximizes FW capability, it does not improve high-speed effi-
+ciency. Ref. [35] builds on this to propose an design-optimization criterion for positioning
+the characteristic current to enhance high-speed efficiency region. The normalized charac-
+teristic current ( ˆIch)-based NPP model introduced in [36] expresses a design-independent,
+closed-form boundary at ˆIch = 1. This threshold value represents theoretical infinite CPSR
+capability. Moreover, the work showed that saturation can cause large deviations of up to
+50% in peak torque from the analytical prediction, while the CPSR and FW envelope exhibit
+only minor deviation. Since AWR benefit is fundamentally governed by FW capability, this
+type of NPP model is well suited for extension to AWR topologies, although ref. [36] did
+not originally address AWR.
+One study [37] extended the ˆIch based NPP model to AWR by introducing a third
+parameter, normalized FW current, for series-parallel reconfiguration topology. However,
+the study omitted the effect of turns ratio on PM flux linkage, as otherwise expected [28,30].
+The same single threshold from [36], ˆIch = 1, is identified qualitatively, without any figure
+of merit (FoM) to quantify torque or power gain over the CPSR. Validation is limited to
+a design at ˆIch = 4, a machine with inherently narrow FW. The recommendation is that
+machines with narrow FW (large ˆIch and low saliency) primarily benefit from AWR and
+contradicts the findings in [21]. Broader case-study evidence [20] also indicate substantial
+AWR benefit for machines with wide FW and CPSR capability ( ˆIch ≈1).
+The gap therefore remains threefold: an AWR-extended ˆIch based NPP model that
+accounts for the turns-ratio effect on PM flux linkage, expression of reconfiguration benefit
+through quantified FoMs, and validation across the wide-FW region near ˆIch ≈1.
+The goals of this work are:
+1.
+Extend the two-parameter NPP model from [36] with turns-ratio effect to obtain a
+geometry-independent analytical model that predicts the torque-speed-power behav-
+ior of AWR topologies over the design space.
+2.
+Derive a reduced set of FoMs from this model that quantify the benefit of AWR
+reconfiguration.
+3.
+Identify explicit parameter thresholds that separate AWR-favorable from AWR-
+unfavorable design regions.
+https://doi.org/10.3390/en19204849
+
+
+===== PAGE 4 =====
+
+Energies 2026, 19, 4849
+4 of 32
+The remainder of this manuscript is organized as follows. Section 2 presents the analyt-
+ical framework, AWR topologies, FoM definitions, and validation setup. Section 3 reports
+the model results and compares the analytical predictions with FEA and measurements.
+Section 4 interprets the main findings, limitations and derives design implications. Finally,
+Section 5 summarizes the conclusions, and outlines future work.
+2. Materials and Methods
+2.1. AWR Topologies and Notation
+Most conventional traction machines use a three-phase winding driven by a two-level
+voltage source inverter (VSI) with one end of the phases joined at a common neutral point,
+i.e., in a star (Υ) configuration. Actively reconfiguring the windings from this state changes
+the voltage utilization and FW capability. The following topologies are considered in this
+work, as summarized in Table 1 and represented in Figure 1.
+•
+Star (Υ): The anchor (anc) configuration; the three phases are joined at a common
+neutral point, driven by a single inverter.
+•
+Delta (∆): The three phases form a closed triangular loop, requiring a minimum of
+five switches [20,38]. Relative to Υ, this increases effective phase voltage by
+√
+3 and
+reduces effective phase current by 1/
+√
+3.
+•
+Parallel (Π): Each phase winding is reconnected from series to parallel, giving an
+effective turns ratio kt = 1/2 relative to Υ; current per parallel branch is halved while
+the induced voltage is unchanged. This typically requires nine switches [20].
+Table 1. AWR topologies and normalized reconfiguration parameters used in this work.
+Topology
+Symbol
+Uphase,rec
+Uphase,anc
+a
+Iphase,rec
+Iphase,anc
+kt
+Switches
+Star
+Υ
+1
+1
+1
+-
+Delta
+∆
+√
+3
+1
+√
+3
+1
+5
+Parallel
+Π
+1
+1
+1
+2
+9
+a Anchor configuration denoted by anc; reconfigured state denoted by rec. Voltage and current ratios
+are defined at the phase terminals — for parallel configuration, the phase current is unchanged, but
+the current density in each parallel branch is halved.
+VDC
+2L-VSI
+Υ
+∆
+Π
+Figure 1. Machine winding topologies considered in this work connected to a two-level voltage
+source inverter.
+2.2. NPP Model
+Following standard assumptions apply to the simplified d-q model representation of
+IPMSM machines [25,30,36]:
+https://doi.org/10.3390/en19204849
+
+
+===== PAGE 5 =====
+
+Energies 2026, 19, 4849
+5 of 32
+1.
+Lossless machine: stator (phase) resistance and all loss terms (iron loss, friction,
+leakage etc.) are set to zero.
+2.
+Fundamental-wave, sinusoidal operation: higher harmonics are neglected, and sinu-
+soidal quantities are assumed.
+3.
+No cross-coupling: cross-coupling is neglected. Ψd and Ψq are solely dependent on Id
+and Iq, respectively.
+4.
+Linear magnetic properties: saturation effects and temperature-dependent changes of
+PM flux are neglected.
+5.
+Steady-state operation: time-derivative terms in the voltage equations are zero.
+6.
+No temperature dependence: Temperature-dependent electromagnetic and resistive
+properties are neglected assuming equal thermal conditions.
+2.2.1. Fundamentals of NPP Model Equations
+The normalized voltage and torque equations, derived from the established absolute d-
+q model is described in [36], with normalization base quantities reproduced in Appendix A,
+as used in this work are:
+ˆ
+Ud = −ˆΨq ˆωe
+(1)
+ˆUq = + ˆ
+Ψd ˆωe
+(2)
+ˆ
+Ψd = ˆLd ˆId +
+ˆ
+ΨPM
+(3)
+ˆΨq = ˆLq ˆIq
+(4)
+ˆTe =
+ˆ
+ΨPM ˆIq +
+(︁ˆLd −ˆLq
+)︁ˆId ˆIq
+(5)
+ˆP = ˆTe ˆωe
+(6)
+ˆ
+Ilim =
+√︂
+ˆId
+2 + ˆIq
+2
+(7)
+ˆ
+Ulim =
+√︂
+ˆ
+Ud
+2 + ˆUq
+2
+(8)
+The voltage limit Equations (1)–(4) and (8), show an ellipse whose d- and q-axes diameters
+are inversely proportional to the product of machine speed ˆωe and the respective induc-
+tances, ˆLd and ˆLq. The center of these ellipses is given by the characteristic current, ˆIch, and
+the ratio of the q- and d-axis inductances defines the saliency, ξ, of the machine.
+ξ =
+ˆLq
+ˆLd
+(9)
+ˆIch = −
+ˆ
+ΨPM
+ˆLd
+(10)
+The normalization of any given reference drive and reference machine is made with
+the drive current and voltage limits set to one. The base speed of the reference machine,
+defined as the speed at which the voltage and current limits of the reference drive under
+maximum torque per ampere (MTPA) control are reached, is normalized to one. With this
+convention, the reference drive and machine transitions from current-limited operation
+to FW operation at this normalized speed value of one. This convention is consistent
+with standard parameter-plane formulations discussed in Section 1 and coincides with the
+method of normalization in [36].
+2.2.2. Significance of Normalized Characteristic Current
+Previous research established NPP models for describing the FW capability of IPMSM.
+In this work, the formulation based on normalized characteristic current ˆIch and saliency
+ratio ξ is used. The characteristic current is a fundamental machine parameter and forms a
+https://doi.org/10.3390/en19204849
+
+
+===== PAGE 6 =====
+
+Energies 2026, 19, 4849
+6 of 32
+key boundary recognized for its role in determining FW performance. In its normalized
+form (i.e., ˆIch), values above one indicate that the voltage limit ellipse intersect is outside
+the current limit circle, so the machine becomes speed-limited, whereas values below one
+allow continued FW toward higher speed with diminishing torque. Saliency ξ modifies the
+shape of the voltage-limit ellipse and therefore the effectiveness of current utilization in
+FW; higher saliency reduces the d-axis current needed to remain within the voltage limit
+and improves torque-per-ampere output.
+The characteristic current represents the ratio of the magnet flux to the d-axis induc-
+tance. When normalized against maximum stator current limit, it points to the machine’s
+relative magnetic loading and current loading, both fundamental design parameters in
+preliminary, analytical machine design.
+The characteristic current also equals the balanced three-phase steady-state short-
+circuit current of the machine at high-speeds under idealized assumptions. ˆIch placed near
+the maximum current limit therefore implies that a stator short circuit alone can approach
+the magnet’s demagnetizing field. Reduced- and rare-earth-free magnet designs, with
+lower demagnetization resistance, thus often target ˆIch below this limit, most notably in
+ferrite PMaSynRM. ˆIch thus also captures the trade-off between demagnetization resistance
+and FW capability.
+Together, ˆIch and ξ provide a physically grounded way to locate traction-machine
+designs in the NPP. In this plane, most wide-CPSR machines, including those in automotive
+traction use, typically occupy the region with characteristic current around the rated
+maximum current limit (i.e., 0.8 < ˆIch < 1.2) and a saliency, ξ > 1 [34].
+2.3. Extension of the ˆIch–ξ NPP Model to AWR
+The equivalent effect of winding reconfiguration on the voltage, current and torque
+equations is represented by a factor, kw,rec. The anchor state (anc) is the Υ configuration,
+and the reconfigured states (rec) are the ∆and Π configurations.
+The peak phase MMF (F) of the anchor configuration is defined as:
+ˆFanc = Nt ·
+ˆ
+Ilim
+(11)
+where Nt is the number of series turns per phase and
+ˆ
+Ilim is the normalized current limit.
+The peak phase MMF ( ˆF) of the reconfigured state is then defined as:
+ˆFrec =
+ˆFanc
+kw,rec
+(12)
+The turns-ratio also affects the flux linkage and the inductances. The underlying
+reluctance and the PM flux remain unchanged , but the effect of the turns ratio appears in
+the flux linkage and in the inductance: the flux linkage scales proportionally with the turns
+ratio, while the inductance scales quadratically [28,30,38].
+kt = Nt,rec
+Nt,anc
+(13)
+ΨPM,rec = kt · ΨPM,anc
+(14)
+Ld,rec = k2
+t · Ld,anc
+(15)
+Lq,rec = k2
+t · Lq,anc
+(16)
+https://doi.org/10.3390/en19204849
+
+
+===== PAGE 7 =====
+
+Energies 2026, 19, 4849
+7 of 32
+For any configuration, the onset of FW is the point at which the induced voltage
+reaches the voltage limit. The reconfiguration factor can be used to relate the voltage limit
+of the reconfigured state to that of the anchor state as follows:
+ˆUind,max =
+ˆ
+Ulim
+(17)
+ˆUlim,∆= kw,rec,∆· ˆUlim,Υ
+(18)
+ˆUind,max,Π = kw,rec,Π · ˆUind,max,Υ
+(19)
+For the ∆configuration, kw,rec is the ratio of the current and voltage limits between
+line and phase quantities. For the Π configuration, kw,rec is the inverse of the turns-ratio
+between the reconfigured and anchor windings. The flux linkage, inductances, the voltage-
+and current-limits collectively make up the torque-speed Equations (1)–(8). Thus, the kw,rec
+factor is incorporated into those equations using these relationships, as summarized in
+Table 2.
+Table 2. Normalized model parameters for the AWR configurations.
+Parameter
+Υ
+∆
+Π
+Remark
+kw,rec
+1.0
+√
+3
+2.0
+Reconfiguration factor
+ˆ
+Ilim
+1.0
+1
+kw,rec
+1.0
+Normalized current limit
+ˆ
+Ulim
+1.0
+kw,rec
+1.0
+Normalized voltage limit
+kt
+1
+1
+1
+kw,rec
+Turns per phase ratio
+Analysis is then carried out pointwise in the
+(︁ˆIch, ξ
+)︁
+plane. Each point representing
+the parameter pair defines an anchor machine in the Υ configuration. For each anchor
+machine, the AWR topologies defined in Section 2.1 are evaluated as alternative reconfig-
+ured operating states of the underlying anchor machine by applying topology-dependent
+changes in current limit, voltage limit, or effective turns per phase, as summarized in the
+Table 2. This interpretation reflects the physical premise of AWR: the winding connection
+is reconfigured during operation whereas the machine geometry and material system
+remain unchanged.
+The normalization established for the Υ configuration remains applicable across all
+reconfigured states. Thus, keeping a normalized circle diagram from the Υ configuration
+as the anchoring reference, MTPA and Maximum torque per voltage (MTPV) loci are
+generated for each topology, along with the resulting torque–speed envelopes, following
+the methodology in [36]. The corner-speed of the anchoring Υ configuration always appears
+at the normalized value of unity, whereas the corner-speed of the reconfigured topologies
+appears at different normalized values.
+All configurations are compared at the same inverter line current and voltage limits;
+for the Π configuration the current density in each parallel branch is halved (see note:
+Table 1) which is the equivalent of halving the total turns in series per phase. For the ∆
+configuration the phase current limit is reduced by
+√
+3, as shown in Table 2.
+The resulting comparison at each point in the parameter plane represents the effect
+of reconfiguration on one underlying machine design. This avoids renormalization per
+topology and ensures that all the corresponding torque–speed envelopes of the underlying
+machine design are directly comparable.
+The comparison of torque–speed envelopes at selected ˆIch–ξ value pairs (Figure 2)
+provides only a preliminary view of the effect of reconfiguration. In a subsequent section,
+scalar FoM are defined to systematically identify beneficial design regions across the entire
+parameter plane and to facilitate machine-level benchmarking.
+https://doi.org/10.3390/en19204849
+
+
+===== PAGE 8 =====
+
+Energies 2026, 19, 4849
+8 of 32
+Normalized speed, ^! !
+Normalized torque and power, ^T; ^P !
+0
+0.5
+1
+^
+Ich = 0
+^
+Ich = 0:3
+^
+Ich = 0:7
+^
+Ich = 1
+^
+Ich = 1:5
+^
+Ich = 2
+9 = 4
+0
+0.5
+1
+9 = 2
+0 1 2 3 4 5 6
+0
+0.5
+1
+0 1 2 3 4 5 6 0 1 2 3 4 5 6 0 1 2 3 4 5 6 0 1 2 3 4 5 6 0 1 2 3 4 5 6
+9 = 1
+^T(
+^P(
+^T"
+^P"
+^T&
+^P&
+Figure 2. Selected value pairs from the
+(︁ˆIch, ξ
+)︁
+parameter plane, with corresponding torque-speed
+envelopes for the anchor and reconfigured topologies.
+2.4. CPSR Potential Speed Ratio and Threshold Values for ˆIch
+Under the assumptions of the NPP model, a ratio is defined called the CPSR potential
+speeds ratio of the reconfigured and anchor states, and is given by:
+rω =⃓⃓⃓⃓
+ω0,rec
+ω0,anc⃓⃓⃓⃓
+=⃓⃓⃓⃓⃓kw,rec( ˆIch −1)
+ˆIch −
+1
+kw,rec⃓⃓⃓⃓⃓
+(20)
+The behaviour of this ratio is shown in Figure 3. It is independent of saliency, ξ, and
+valid for the normalization framework used in this study.
+0.1
+t1
+t2t3
+10
+Normalized characteristic current, ^Ich
+0.1
+1
+kw;rec
+kw;rec
+kw;rec
+2
+10
+100
+Ratio of CPSR potential speeds, r!
+( ! "
+kw;rec =
+p
+3
+0.1
+t1
+t2t3
+10
+Normalized characteristic current, ^Ich
+0.1
+1
+kw;rec
+kw;rec
+kw;rec
+2
+10
+100
+Ratio of CPSR potential speeds, r!
+( ! &
+kw;rec = 2
+Figure 3. Behaviour of ratio of CPSR potential speeds rω as a function of ˆIch. Dashed lines highlight
+important thresholds of rω and ˆIch.
+From this ratio, three threshold values are obtained. The first threshold is the point
+where the reconfigured state has a theoretical infinte CPSR, so that rω →∞, the envelope
+and the resulting benefits are maximized. Solving for the anchor-referenced characteristic
+current gives,
+https://doi.org/10.3390/en19204849
+
+
+===== PAGE 9 =====
+
+Energies 2026, 19, 4849
+9 of 32
+t1 :
+ˆIch =
+1
+kw,rec
+(21)
+The second threshold follows is the point where the anchor state has theoretically
+infinite CPSR, which corresponds to rω →0. This means that the anchor state already
+has theoretically infinite CPSR, i.e., a maximal envelope and the reconfigured state cannot
+significantly improve the composite envelope. This gives
+t2 :
+ˆIch = 1
+(22)
+Beyond t2, the reconfigured and anchor CPSR potential speeds approach each other
+again. At the point where the CPSR potential speed of the anchor state is reconfiguration
+factor times the reconfigured state, the reconfigured state envelope starts showing potential
+to improve the composite envelope.
+rω =
+1
+kw,rec
+(23)
+Solving this condition gives
+t3 :
+ˆIch =
+k3
+w,rec −1
+kw,rec(k2w,rec −1) = 1 +
+1
+kw,rec(kw,rec + 1)
+(24)
+Thresholds t2 coincides with [36]. Threshold t1 and t3 are direct results of kw,rec from
+this study. Whereas threshold t2 holds additional meaning based on the implication for the
+reconfigured state with kw,rec. The derivation of the CPSR potential speed ratio and the ˆIch
+threshold values is provided in Appendix B.
+Note: The threshold values above are ideal values from the ideal lossless, linear
+assumptions. Upon considering resistance and saturation, the analytical solution of the
+thresholds are offset by:
+tn,non−ideal = tn,ideal +
+ˆR
+ˆLd
+,
+n ∈{1, 2, 3}
+(25)
+2.5. FoM for Evaluating Reconfiguration Benefit
+FoMs are defined to systematically identify behavior around thresholds and derive
+implication for design-rules across the parameter plane.
+A summary of the different FoMs are given in Tables 3 and 4, while Figure 4 illustrates
+the reference points used in their definitions. The FoMs are primarily grouped in to
+four types.
+1.
+Maximum performance
+2.
+Crossover point
+3.
+CPSR and FW range
+4.
+Part-load performance
+Table 3. Definitions used in the derivation of FoMs.
+Helper
+Symbol
+Equation
+Physical Meaning/Design Relevance
+Torque difference
+∆ˆT( ˆω)
+= ∆ˆT( ˆω) = ˆTrec( ˆω) −ˆTanc( ˆω)
+Pointwise torque difference used to locate
+the first crossover speed.
+Common valid speed
+interval
+Ωc
+=
+[︁
+0, min( ˆωend,anc, ˆωend,rec)
+]︁
+Shared speed range over which anchor and
+reconfigured envelopes are compared.
+Composite envelope
+torque
+ˆTenv( ˆω)
+= max
+(︁ˆTanc( ˆω), ˆTrec( ˆω)
+)︁
+Point-wise composite torque envelope used
+in the area-ratio definition.
+https://doi.org/10.3390/en19204849
+
+
+===== PAGE 10 =====
+
+Energies 2026, 19, 4849
+10 of 32
+Table 3. Cont.
+Helper
+Symbol
+Equation
+Physical Meaning/Design Relevance
+CPSR threshold speed
+ˆωe,CPSR
+= max
+{︂
+ˆωe ∈[ ˆωe,c, ˆωe,end]⃓⃓
+ˆP( ˆωe) ≥ˆPc
+}︂
+Speed at which constant-power operation
+ends for a given torque level.
+Rated CPSR power
+ˆPc
+= ˆTc ˆωe,c
+Constant-power threshold fixed at the
+corner point. For the composite envelope,
+the first corner point of the combined
+envelope is the consistent reference across
+the parameter plane.
+Composite power
+envelope
+ˆPenv( ˆω)
+= max
+(︁ˆPanc( ˆω), ˆPrec( ˆω)
+)︁
+Pointwise power envelope used to compute
+composite CPSR.
+Common operating
+area
+Ac
+=
+∫︂∫︂
+Ωc
+d ˆω d ˆT
+Intersection of feasible operating areas of
+both configurations.
+Dimensionless normalized speed, ^!
+0
+1
+2
+3
+4
+5
+6
+7
+8
+Dimensionless normalized torque, ^T
+0
+0.25
+0.5
+0.75
+1
+anc
+rec
+^!x;1
+5T;env
+^Tmax;anc
+^Tmax;rec
+Dimensionless normalized speed, ^!
+0
+1
+2
+3
+4
+5
+6
+7
+8
+Dimensionless normalized power, ^P
+0
+0.25
+0.5
+0.75
+1
+5T;env
+CPSRanc
+CPSRrec
+^Pmax;anc
+^Pmax;rec
+Figure 4. Exemplary torque-speed envelopes of anchor and reconfigured configurations, with the
+corresponding points of reference used in the definitions of FoMs in Table 4.
+Table 4. FoMs used to quantify the benefit of reconfiguration.
+FoM a
+Symbol
+Equation
+Physical Meaning/Design Relevance
+Maximum performance FoMs
+Corner-point
+torque ratio
+κT,c
+=
+ˆTrec( ˆωe,c,rec)
+ˆTanc( ˆωe,c,anc)
+Base-speed torque ratio; values below
+unity indicate a torque penalty for
+reconfiguration.
+Peak power ratio
+κP,max
+= max ˆω∈ΩˆPrec( ˆω)
+max ˆω∈ΩˆPanc( ˆω)
+Ratio of absolute peak powers,
+(rec)/(anc); values above unity indicate a
+peak-power benefit.
+Crossover point FoMs
+First crossover
+speed
+ˆωx,1
+= arg min
+ˆω∈Ω⃓⃓
+∆ˆT( ˆω)⃓⃓
+Speed at which the torque envelopes first
+crossover; lower values indicate earlier
+benefit from reconfiguration.
+Crossover
+voltage-stress
+factor
+κu,x,1
+= ˆωx,1 ·
+ˆ
+ΨPM
+Normalized induced voltage at the
+crossover speed; indicates voltage-stress
+and mode-shift risk.
+CPSR FoMs
+Composite AWR
+CPSR
+κCPSR,env
+= ˆωCPSR,env
+ˆωCPSR,anc
+System-level CPSR gain of the
+reconfigured drive relative to the
+anchor drive.
+Composite
+torque-area ratio
+κT,env
+=
+∫︁
+ˆω∈ΩˆTenv( ˆω) d ˆω
+∫︁
+ˆω∈ΩˆTanc( ˆω) d ˆω
+Fractional expansion of the torque–speed
+operating area over the common
+speed interval.
+https://doi.org/10.3390/en19204849
+
+
+===== PAGE 11 =====
+
+Energies 2026, 19, 4849
+11 of 32
+Table 4. Cont.
+FoM a
+Symbol
+Equation
+Physical Meaning/Design Relevance
+Part-load performance FoMs
+Mean PF
+improvement
+¯κPF
+= 1
+Ac
+∫︂∫︂
+Ωc
+[PFrec( ˆω, ˆT) −PFanc( ˆω, ˆT)] d ˆω d ˆT
+Area-averaged PF gain over the common
+operating map.
+Mean copper-loss
+improvement
+¯κCu
+= 1
+Ac
+∫︂∫︂
+Ωc
+[︁ˆPCu,anc( ˆω, ˆT) −ˆPCu,rec( ˆω, ˆT)
+]︁
+d ˆω d ˆT
+Area-averaged copper-loss reduction over
+the common operating map.
+a All κ ratios are (rec)/(anc) (reconfigured over anchor) unless stated otherwise. Values above
+unity indicate an improvement relative to the anchor configuration. The subscript (env) denotes the
+composite envelope formed from the pointwise maximum of both configurations.
+2.6. Baseline Traction-Machine Set and Finite-Element Models
+The results from the analytical extended NPP model, and the FoMs derived from it, are
+evaluated using numerical models of representative automotive traction machines. Using
+detailed cross-sectional geometry, FEA models can provide sufficient fidelity in capturing
+nonlinear, saturation-dependent electromagnetic behavior across the full operational range.
+The evaluation is to quantify the correlation of important trends between the analytical
+model and the numerical models, and to identify any limitations of the analytical model. This
+section describes in brief the approach to FEA of the four representative automotive traction
+machines and two benchmark virtual designs of automotive traction machines (Table 5).
+Table 5. Machine specifications for baseline machines M1–M6.
+Parameter
+M1
+M2
+M3 b
+M4
+M5 c
+M6 c
+Symbol a
+•
+■
+⋆
+▼
+♦
+▲
+Rotor topology
+IPMSM
+IPMSM
+IPMSM
+IPMSM
+PMaSynRM
+PMaSynRM
+Magnet material
+NdFeB
+N30UH
+NdFeB
+N38UH
+NdFeB
+N38UH
+NdFeB
+N48UH
+Ferrite
+NMF-15G
+Ferrite
+NMF-15G
+Magnet layout d
+▽
+2∨
+2∨
+1∨
+4∪
+5∪
+Lamination Material
+NO27-1400H
+NO25-1350H
+NO25-1350H
+NO27-1400H
+NO27-1400H
+NO27-1400H
+Stator slots e
+48
+48
+48
+72
+72
+72
+Pole-pairs e
+4
+4
+4
+3
+3
+3
+System rated DC-link voltage
+in V
+400
+800
+800
+800
+1200
+1200
+Nominal DC-link voltage e in
+V
+350
+650
+650
+650
+1000
+1000
+Modulation index e
+0.924
+0.924
+0.924
+0.95
+0.95
+0.95
+Maximum RMS line current e
+in A
+600
+230
+180
+530
+280
+280
+Maximum mechanical torque
+in N m
+310
+350
+342
+455
+387
+391
+Maximum mechanical power
+f in kW
+170
+155
+100
+250
+192
+169
+Maximum rotational speed e
+in min−1
+16,000
+17,000
+17,000
+20,000
+15,000
+15,000
+Active parts outer diameter e
+in mm
+220
+200
+200
+234
+234
+234
+Active length e in mm
+175
+156
+156
+130
+130
+130
+a Used to represent the machines in Figures 6 and 7. b Machine M3 is an open-end winding machine used for
+measurement. c M1–M3, M4 are commercially available traction machines used as reference machines. M5 and
+M6 are virtual ferrite PMaSynRM benchmark designs derived from M4. d Magnet-layout symbols: ▽denotes an
+inverse-delta layout; 1∨and 2∨denote single- and double-layer V-shaped layouts; 4∪and 5∪denote four- and
+five-layer U-shaped layouts. e Values used in FEA simulations. All machines use copper winding. f At nominal
+voltage and maximum RMS line current.
+FEM Modeling
+Electromagnetic modeling and FEA of the baseline machines is performed with the
+commercial software Ansys Motor-CAD (2025R1) [39] using its two-dimensional (2D)
+transient finite-element-method solver. The geometry of machines M1–M3 is reconstructed
+https://doi.org/10.3390/en19204849
+
+
+===== PAGE 12 =====
+
+Energies 2026, 19, 4849
+12 of 32
+after direct measurement from the machines’ active parts. Whereas, the geometry and
+model parameters of M4–M6 are derived from manufacturer design data. The machines are
+radial flux machines. Transient 2D FEA model of the smallest symmetric machine sector
+is used with ideal balanced sinusoidal current excitation and constant rotor speed. End
+effects are handled separately, and materials are modeled as isotropic at a fixed uniform
+temperature of 318 K. Background information on the FEA modeling approach and the
+assumptions made in the modeling of the baseline machines are provided in Appendix D.
+2.7. Measurement of Machine M3
+Machine M3, the device under test (DUT) is an open-end winding machine that can
+be reconfigured between Υ and ∆configurations. It was measured on a dynamometer test
+bench (Figure 5 and Table 6) to validate the FEA model and to provide experimental data
+for comparison with the analytical model. The machine was operated using field-oriented
+control, while the dynamometer imposed the speed setpoint. Manual reconfiguration
+between Υ and ∆was performed using the terminal box shown in Figure 5. Shaft torque,
+shaft speed, three-phase line currents and voltages were recorded using the measurement
+equipment summarized in Appendix C. The experimental results are limited to the steady-
+state characteristics of machine M3 in the Υ and ∆configurations, reconfigured manually
+via a terminal box. Switching transients and voltage stresses during reconfiguration were
+not experimentally investigated.
+Figure 5. Dynamometer test bench for machine M3. Numbered components are listed in Table A3.
+Blue: DUT and associated high voltage power supply chain components. Black: Measurement sensors.
+Green: Dynamometer equipment.
+Table 6. Numbered components of the dynamometer test bench for machine M3 shown in Figure 5.
+No.
+Component
+No.
+Component
+1
+Device under test
+5
+Electrical signal acquisition
+2
+Reconfiguration terminal box
+6
+Torque and speed measurement
+3
+Inverter terminal box and electrical sensor unit
+7
+Load machine
+4
+Inverter
+8
+Cooling system
+3. Results
+3.1. Maximum Performance FoMs
+The inverse torque ratio in Figure 6 transitions between two limits. For ξ = 1, torque
+depends only on ˆIq. Consequently, the inverse torque ratio equals kw,rec. For ˆIch = 0, the
+https://doi.org/10.3390/en19204849
+
+
+===== PAGE 13 =====
+
+Energies 2026, 19, 4849
+13 of 32
+optimum occurs at ˆId = ˆIq. As a result, torque becomes proportional to the square of the
+current magnitude and the inverse torque ratio becomes k2
+w,rec.
+Peak power and its FoM,κP,max, in Figure 6 shows three distinct regions of behavior
+with respect to ˆIch and kw,rec:
+•
+For ˆIch = 0, reconfiguration only shifts the speed at which maximum power occurs,
+resulting in κP,max = 1.
+•
+For ˆIch ≤
+1
+kw,rec , the reconfigured state can raise maximum power, and κP,max ≃kw,rec
+for ξ = 1. Machines with ξ > 1 show improvement of more than 40% in peak power.
+•
+For ˆIch >
+1
+kw,rec , the benefit vanishes towards κP,max ≤1 at a threshold of ˆIch ≃1, and
+stays below unity for higher ˆIch.
+Figure 6. Single point metric: Maximum performance FoMs (κT,c, κP,max) and Crossover point FoMs
+( ˆωx,1, κu,x,1) for Υ–∆and Υ–Π AWR topologies.
+3.2. Crossover Point FoMs
+The crossover FoMs identify where the reconfigured envelope begins to dominate the
+anchor envelope and the voltage stress associated with such a mode transition. Values
+of κu,x,1 above unity indicate that the open-circuit induced voltage exceeds the available
+DC-link voltage. Under a short-circuit condition, this can lead to a risk of uncontrolled
+generating operation if no active control is applied. In an open-circuit condition, the
+resulting terminal voltage must remain below the blocking-voltage rating of the inverter
+switching devices, as observed in [30].
+Increasing ξ improves the anchor-state FW capability and therefore shifts the crossover
+to higher speed, while the dependence on ˆIch produces a ridge near ˆIch ≈1. Below this
+region, the reconfigured state extends useful high-speed operation; above it, the FW benefit
+weakens and the crossover speed decreases. The voltage-stress factor follows the same
+https://doi.org/10.3390/en19204849
+
+
+===== PAGE 14 =====
+
+Energies 2026, 19, 4849
+14 of 32
+ridge qualitatively, but is moderated by the reduction in
+ˆ
+ΨPM with increasing ξ in the
+normalized model.
+3.3. CPSR FoMs
+The impact of the characteristic current ˆIch on the FW capability, and hence on CPSR
+and the torque–speed envelope FoM, as seen in Figure 7, is established with three thresholds
+defined by ˆIch and kw,rec:
+•
+For ˆIch ≤
+1
+kw,rec , both κCPSR,env and κT,env increase with ˆIch. However, the gain de-
+creases with increasing ξ, since ξ improves the anchor state’s own CPSR. Machines
+with moderate ξ show improvements of up to four times in CPSR from the analytical
+model. Machines with low ξ and low ˆIch show the largest improvement in κT,env of
+more than 20% over the anchor state.
+•
+For
+1
+kw,rec < ˆIch ≤
+k3w,rec−1
+kw,rec(k2w,rec−1), the reconfigured state’s finite maximum speed limits
+its advantage, and both ratios remain close to unity.
+•
+For ˆIch >
+k3w,rec−1
+kw,rec(k2w,rec−1), both states are speed-limited with a narrow CPSR; the ratios
+rise slightly above unity, but the absolute improvement stays limited to until just
+before ˆIch < 1 +
+1
+kw,rec which corresponds to the CPSR speed potential of both the
+anchor and reconfigured states being equal.
+The composite envelope FoMs show that the largest AWR benefit occurs when recon-
+figuration moves the machine from a voltage-limited anchor state into a more favorable
+high-speed operating regime. This confirms that AWR should be evaluated by the compos-
+ite envelope rather than by peak values alone.
+Figure 7. Envelope & area metrics: CPSR FoMs (κCPSR,env, κT,env) and part-load performance FoMs
+(¯κPF, ¯κCu) for Υ–∆and Υ–Π AWR topologies.
+https://doi.org/10.3390/en19204849
+
+
+===== PAGE 15 =====
+
+Energies 2026, 19, 4849
+15 of 32
+3.4. Part-Load Performance FoMs
+The FoMs described so far characterize performance along the rated torque–speed
+envelope only. To address part-load performance, two additional FoMs, ¯κPF and ¯κCu, are
+defined based on indicative power factor (PF) and ohmic losses, respectively. Though
+stator ohmic losses were neglected in the derivation of the normalized voltage and torque
+equations, a representation of these losses is useful for design analysis and is post-processed
+from the analytical model results [36].
+Both FoMs are area-weighted means of the point wise difference between the reconfig-
+ured and anchor states, normalized over the common feasible operating region Ωcommon;
+positive values indicate that reconfiguration is favorable. ¯κPF captures the reduction in
+apparent power demand on the inverter for a given torque and speed, while ¯κCu captures
+the improvement in part-load efficiency through reduced stator ohmic (DC) loss.
+Figure 7 shows ¯κPF in the base-speed region improves with ˆIch but degrades with ξ,
+whereas in deep FW the trend reverses. Since Ωcommon is dominated by the base-speed
+region, and predominantly by that of the reconfigured state, ¯κPF follows the base-speed
+trend: it decreases with ξ and increases with ˆIch.
+Reconfiguration reduces phase current in the ∆state and the resistance Reff in the
+Π state. As copper loss scales with I2Reff, the advantage is largest near the current limit
+and shrinks at part load. ¯κCu is further constrained by the definition of Ωcommon itself: for
+ˆIch ≤1/kw,rec, a large fraction of the reconfigured envelope lies outside Ωcommon. Therefore,
+the advantage is only partially captured, whereas at higher ˆIch the overlap grows and the
+copper-loss reduction is more fully reflected in ¯κCu.
+3.5. Verification on Baseline Machines
+The baseline machines M1–M6 (Table 5) are used to compare nonlinear FEA results
+against the extended NPP model at matched normalized design points. Measurement
+results of machine M3 are additionally included. The original winding connection is treated
+as the Υ anchor, and the ∆state is obtained by reconfiguring the FEA models and the test
+machine M3 while holding geometry, materials, temperatures, system voltage and current
+limits as fixed boundary conditions. Switching transients and voltage stresses during
+reconfiguration were not experimentally investigated in this study.
+The torque-speed curves from the FEA results and measurement results are normalized
+in the same normalization framework as the analytical model as from [36], restated in
+Appendix A. Corner speed of the anchor configuration is taken as the speed normalization
+reference (ωm,0). Torque is normalized to the corner point speed with unity PF electrical
+power (T0). The FEA-derived normalized characteristic current ( ˆIch) and corner-point
+ξ locate each machine on the NPP to generate the corresponding analytical envelopes
+and FoMs.
+For the machines M1-M6, Figure 8 shows the torque-speed envelopes. Figure 9
+compares the analytical and FEA-based FoMs by showing both trend correlation and
+deviation as error. The dashed gray line in Figure 9 represents perfect agreement between
+the two models, corresponding to zero error. The dotted stems connecting the scatter
+points to this line visualize the individual errors. For The error distributions shown in
+Figure 10, each box spans the middle 50% of the error data (25th to 75th percentile), with
+the median denoted by the internal line, and whiskers extending to the most extreme
+non-outlier values. Data from the FoMs for machine M3 are provided in Table 7 and for all
+the machines including error metrics in Appendix E.
+https://doi.org/10.3390/en19204849
+
+
+===== PAGE 16 =====
+
+Energies 2026, 19, 4849
+16 of 32
+Normalized speed, ^!
+Normalized torque, ^T
+^!
+0
+2
+4
+6
+^T
+0
+0.25
+0.5
+0.75
+1
+M1
+^!
+0
+2
+4
+6
+^T
+0
+0.25
+0.5
+0.75
+1
+M2
+^!
+0
+2
+4
+6
+^T
+0
+0.25
+0.5
+0.75
+1
+M3
+( (analytical)
+" (analytical)
+& (analytical)
+( (FEA)
+" (FEA)
+& (FEA)
+( (measured)
+" (measured)
+^!
+0
+2
+4
+6
+^T
+0
+0.25
+0.5
+0.75
+1
+M4
+^!
+0
+2
+4
+6
+^T
+0
+0.25
+0.5
+0.75
+1
+M5
+^!
+0
+2
+4
+6
+^T
+0
+0.25
+0.5
+0.75
+1
+M6
+Figure 8. Torque–speed envelopes from FEA and the analytical NPP model for the Υ–∆pair across
+M1–M6.
+The envelopes in Figure 8 show the largest discrepancies in the base-speed region,
+with good agreement in FW, consistent with prior literature [36]. The analytical model
+under-predicts peak torque for the reconfigured state, particularly at low ˆIch and high ξ
+(Figure 11), i.e., machines with relatively higher current loading to magnetic loading. This
+is due to the constant-inductance NPP model not being able to capture current-dependent
+saturation resolved by FEA, an effect also reported in other works utilizing the analytical
+NPP model [36,40]. The measurement results from machine M3 show good agreement
+with the FEA results in FW region for both configurations. For both configuration, the
+maximum torque is in between the analytical and FEA results, while for the reconfigured
+configuration, the maximum torque is closer to the FEA results.
+As a result of the non-linear saturation, the analytical model consistently overestimates
+κ−1
+T,c particularly, at low ˆIch (machines M3–M6). The error with the peak torque due to
+saturation effect in the reconfigured state, as represented in Figure 11, therefore also
+systematically impacts the analytical crossover point, ωx,1. The corner-point torque ratio,
+κT,c, has the largest error and practically no correlation. Therefore, it is not reliable as an
+absolute metric under the linear model, constant-inductance assumption. However, for
+ωx,1, the analytical model captures the relative trend, so this crossover point FoM is still
+useful for comparative screening purposes but not for absolute prediction.
+Overall, the analytical model shows strong trend correlation for the FoMs covering
+composite CPSR, envelope expansion, peak-power ratio, crossover voltage-stress factor,
+and relative copper-loss improvement. The errors quantify the corresponding devia-
+tions and support the interpretation that these FoMs are suitable for relative preliminary
+design-space screening.
+https://doi.org/10.3390/en19204849
+
+
+===== PAGE 17 =====
+
+Energies 2026, 19, 4849
+17 of 32
+0
+1
+2
+5T;c!1: ( ! ", r = !0:19
+0
+2
+4
+5T;c!1: ( ! &, r = !0:15
+1:5 2 2:5 3 3:5
+Analytical
+1:5
+2
+2:5
+3
+3:5
+FEA
+0
+0:5
+1
+5P;max: ( ! ", r = 0:89
+0
+0.5
+1
+5P;max: ( ! &, r = 0:86
+1:1 1:2 1:3
+Analytical
+1:1
+1:2
+1:3
+FEA
+0
+2
+!x;1: ( ! ", r = 0:99
+0
+2
+4
+!x;1: ( ! &, r = 0:97
+1:5 2 2:5 3 3:5
+Analytical
+1:5
+2
+2:5
+3
+3:5
+FEA
+0
+0:5
+1
+5u;x;1: ( ! ", r = 1:00
+0
+1
+5u;x;1: ( ! &, r = 1:00
+0:5
+1
+1:5
+Analytical
+0:5
+1
+1:5
+FEA
+0
+2
+4
+5CPSR: ( ! ", r = 1:00
+0
+2
+4
+5CPSR: ( ! &, r = 1:00
+1
+2
+3
+Analytical
+1
+1:5
+2
+2:5
+3
+3:5
+FEA
+0
+1
+2
+5T;env: ( ! ", r = 0:99
+0
+1
+2
+5T;env: ( ! &, r = 0:98
+1
+1:5
+Analytical
+1
+1:2
+1:4
+1:6
+FEA
+!0:1
+75PF: ( ! ", r = !0:83
+M1
+M2
+M3
+M4
+M5
+M6
+!0:1
+0:1
+75PF: ( ! &, r = !0:42
+!0:1 0
+0:1
+Analytical
+!0:15
+!0:1
+!0:05
+0
+0:05
+0:1
+FEA
+0
+0:1
+0:2
+75Cu: ( ! ", r = 0:99
+M1
+M2
+M3
+M4
+M5
+M6
+0
+0.1
+0.2
+75Cu: ( ! &, r = 1:00
+0
+0:1 0:2
+Analytical
+0
+0:05
+0:1
+0:15
+0:2
+0:25
+FEA
+( ! " analytical
+( ! " FEA
+( ! " measurement
+( ! & analytical
+( ! & FEA
+Figure 9. Comparison of analytical and FEA-based FoM values across M1–M6, including measure-
+ment results from machine M3; correlation coefficient r indicates trend agreement.
+As seen in Figure 11, the current, torque and hence, also the PF non-linearities are not
+captured well by the analytical model especially in the base-speed as discussed also in [36],
+in their comparison between saturated and linear NPP model. Since Ωcommon is dominated
+the base-speed region of the both states especially that of reconfigured state, ¯κPF is prone
+to errors. As a result ¯κPF is not reliable for design ranking because its trend is opposite
+to the FEA result. On the other hand, ohmic losses related FoM, ¯κCu, shows deviation to
+analytical model, but the trends are catpured. Hence, this FoM can be used for relative
+screening in the design space but not for absolute prediction.
+https://doi.org/10.3390/en19204849
+
+
+===== PAGE 18 =====
+
+Energies 2026, 19, 4849
+18 of 32
+5!1
+T;c
+5P;max
+^!x;1
+5u;x;1 5CPSR;env 5T;env
+75P F
+75Cu
+!0:2
+0
+0:2
+0:4
+0:6
+0:8
+1
+1:2
+1:4
+Error (Analytical - FEA)
+5!1
+T;c
+5P;max
+^!x;1
+5u;x;1 5CPSR;env 5T;env
+75P F
+75Cu
+!1
+!0:5
+0
+0:5
+1
+Pearson correlation coe/cient, r
+Analytical vs. FEA
+({"
+({&
+Figure 10. Distribution of deviation (shown as errors) and correlation coefficient between analytical
+and FEA-based FoM values across M1–M6, including measurement results from machine M3.
+Figure 11. FEA vs. analytical NPP normalized torque–current characteristics for the Υ–∆pair,
+machine M6, base-speed region.
+https://doi.org/10.3390/en19204849
+
+
+===== PAGE 19 =====
+
+Energies 2026, 19, 4849
+19 of 32
+Table 7. Comparison of FoMs from analytical, FEA, and measurement results for machine M3.
+Method
+ˆIch
+ξ
+κ−1
+T,c
+κP,max
+ˆωx,1
+κu,x,1
+κCPSR,env
+κT,env
+¯κPF
+¯κCu
+Analytical
+2.20
+1.11
+3.05
+1.23
+1.00
+1.05
+0.06
+0.12
+FEA a
+0.84
+2.57
+1.78
+1.09
+2.13
+1.18
+1.00
+1.07
+−0.14
+0.23
+Measurement
+0.81
+2.66
+1.82
+1.14
+2.03
+1.13
+1.00
+1.11
+−0.01
+0.20
+a FEA simulation for machine M3 was performed at same conditions as measurement, listed in
+Appendix C.
+4. Discussion
+The relevant transition regions in the normalized design space occur at three charac-
+teristic thresholds:
+1.
+t1 :
+ˆIch ≤
+1
+kw,rec marks the region of maximum CPSR and torque–speed envelope
+improvement.
+2.
+t2 : ˆIch ≈1 is where maximum-power improvement flattens and crossover voltage
+stress become critical.
+3.
+t3 : 1 < ˆIch ≤
+k3w,rec−1
+kw,rec(k2w,rec−1) is where torque–speed envelope improvement is least.
+Thresholds t1, t2, and t3 are analytical thresholds based on CPSR speed ratio of the
+lossless, linear NPP-based formulation used in this work. Their locations are given by ˆIch
+and kw,rec, whereas their locations can be offset when considering losses and saturation
+(25). The FoMs themselves depend on the selected speed range, normalization base, and
+common operating region, even if the thresholds are analytically fixed. For a meaningful
+comparison, the evaluated speed range should cover a wide enough normalized FW region
+and be referenced consistently to the corner point definition used in this framework.
+In the present results, the FoMs associated with the composite CPSR, maximum-power
+ratio, torque-envelope improvement, crossover speed, and voltage-stress behaviour show
+characteristic contours around the threshold values. Saturation modifies the torque-current
+relationships, particularly around the base-speed peak torque and crossover regions, and
+can therefore influence the transition behaviour observed via FEA models of saturated
+machine designs. Accordingly, the thresholds should be interpreted as analytical design-
+region boundaries for normalized preliminary screening, rather than as universal physical
+transition points.
+The key implications are summarized in Table 8. The analytical ˆIch −ξ NPP model
+shows poor to no agreement with torque and PF related FoMs, as also observed in the
+grounding framework in [36]. Agreement is better for envelope, CPSR and ohmic loss
+related FoMs which are valuable for determining benefits of AWR. Thus, based on these
+FoMs several design recommendations can be made for automotive traction machines with
+the AWR topologies considered.
+Low ( ˆIch) designs
+Machines with low Low ( ˆIch) benefit most from reconfiguration in terms of CPSR and
+torque–speed envelope expansion. The maximum benefit occurs up to a threshold value of
+ˆIch <
+1
+kw,rec . This observation motivates a design approach of reducing magnetic loading
+relative to current-loading, which in turn, can move the machine into the low- ˆIch region
+where reconfiguration yields stronger high-speed benefits. Following designs benefit most:
+SynRM
+designs without PM
+PMaSynRM designs with weaker magnets and higher current loading, and
+IPMSM
+designs with significantly reduced rare-earth magnet content.
+SPMSM
+designs with weaker magnets and higher current loading.
+https://doi.org/10.3390/en19204849
+
+
+===== PAGE 20 =====
+
+Energies 2026, 19, 4849
+20 of 32
+In all four cases, conventional designs required a trade-off with high speed perfor-
+mance and low-end torque. Reconfiguration significantly enhances the machine’s high-
+speed performance and extends its operational range while saving on magnet material
+costs. The torque ratio from FEA models suggest availability of around kw,rec times the
+torque in the anchor state as compared to the reconfigured state. This means the benefit in
+high-speed FoMs is achieved without compromising the low-speed torque requirements
+for traction applications.
+Table 8. Key implications of the AWR comparison FoMs over the
+(︁ˆIch, ξ
+)︁
+parameter plane, including
+correlation trend with FEA models.
+FoM
+Symbol
+Key Implication (Design Message)
+FEA Agreement
+Maximum performance FoMs
+Corner-point torque ra-
+tio
+κT,c
+Reconfiguration incurs a base-speed torque penalty relative
+to the anchor state; the disadvantage is most pronounced at
+low ˆIch and high ξ.
+Low
+Peak power ratio
+κP,max
+Peak-power benefit depends on ˆIch: for ˆIch ≥1, reconfigura-
+tion does not increase the achievable peak power, indepen-
+dent of ξ.
+High
+Crossover point FoMs
+First crossover speed
+ˆωx,1
+Reconfiguration becomes advantageous at lower speed
+when both ˆIch and ξ are low; ∆tends to earlier crossover
+than Π due to its lower kw,rec.
+Trends only
+Crossover voltage-stress
+factor
+κu,x,1
+The highest voltage stress and associated mode-shift risk
+occur near ˆIch ≈1 across ξ; ∆generally yields lower stress
+than Π.
+High
+CPSR FoMs
+Composite AWR CPSR
+κCPSR,env
+ˆIch determines CPSR gain: strong improvement occurs for
+ˆIch ≤1/kw,rec, while designs near ˆIch ≈1 show negligible
+benefit; higher ξ reduces the relative gain.
+High
+Composite
+torque-
+envelope area ratio
+κT,env
+Torque–speed area expands significantly for ˆIch ≤1/kw,rec,
+with the largest gains at low ξ; for 1 < ˆIch <
+k3w,rec−1
+kw,rec(k2w,rec−1),
+no gain is expected.
+High
+Part-load performance FoMs
+Mean PF improvement
+¯κPF
+Improvement is favored by higher ˆIch and lower ξ; low ˆIch
+combined with high ξ can lead to deterioration.
+Low
+Mean copper-loss im-
+provement
+¯κCu
+Reconfiguration can reduce part-load ohmic losses even
+when envelope gains are small, subject to the common op-
+erating area; for the same parameters, Υ–Π gives a larger
+reduction than Υ–∆.
+Trends only
+Designs with ˆIch ≈1
+Designs with ˆIch ≈1 which make up most conventional rare-earth magnet based
+traction IPMSM designs, show limited gains in CPSR and torque–speed envelope from
+reconfiguration. However, they benefit in part-load ohmic losses, particularly during
+high-speed FW operation. Thus, the motivation here is that for designs with strong-
+magnet machines which suffer higher losses in FW, reconfiguration can mitigate part
+of these losses by optimizing the operating point. An alternative design approach is to
+reduce magnetic strength and material cost to utilize the potential of reconfiguration as
+mentioned in the previous point. However, it is to be noted that while the analytical model
+shows benefit in part-load PF FoM, FEA models show deterioration. Overall losses and
+efficiency, therefore, need detailed evaluation beyond the preliminary screening offered by
+the analytical NPP model.
+https://doi.org/10.3390/en19204849
+
+
+===== PAGE 21 =====
+
+Energies 2026, 19, 4849
+21 of 32
+Designs with high ˆIch
+For machines with high ˆIch, i.e., with high magnetic strength and low current loading
+with limited FW capability, reconfiguration may not improve the rated maximum power. It
+does, however, improve the torque–speed envelope and part-load ohmic losses, thereby
+providing a viable route to extend speed range despite limited FW capability.
+Choice between reconfiguration pairs
+The absolute improvement in high speed performance and torque–speed envelope
+FoMs is higher for Υ–Π reconfiguration pair than the Υ–∆pair. This follows from the larger
+effective reconfiguration factor kw,rec of the Υ–Π pair. However, following aspects favor
+Υ–∆pair:
+1.
+The crossover speed is lower for the Υ–∆pair, hence, the benefits are already available
+at lower speeds.
+2.
+The crossover voltage-stress is lower for the Υ–∆pair, hence, the risk of mode-shift
+is lower.
+3.
+The threshold value for CPSR and torque–speed envelope improvement is inversely
+proportional to kw,rec. More machine designs are covered by the Υ–∆pair than the
+Υ–Π pair.
+Limitations
+The present study is intentionally limited to high-level, geometry-independent, nor-
+malized, scalable AWR screening for machine designs. The objective of this work is the
+relative identification of AWR-favorable regions in the normalized design space before
+deeper electromagnetic FEA based design space exploration.
+Temperature-dependent electromagnetic and resistive properties, are neglected assum-
+ing equal thermal conditions for the envelopes. In practice transient thermal conditions
+influence the continuous operation capabilities and are not addressed in this study. Copper
+utilization and its impact on losses are also neglected in this analytical lossless framework.
+Triplen-harmonic circulating currents in the ∆connection are not represented by
+the fundamental-wave d-q model, which is consistent with the present scope. In such
+machines, circulating currents can represent a significant fraction of the maximum fun-
+damental current rating, also impacting losses. These require dedicated voltage-source
+transient simulations and measurement equipment. These are are outside the scope of the
+present work.
+Torque ripple is outside the present steady-state fundamental envelope analysis. How-
+ever, torque ripple may differ between configurations through the saturation dependent
+harmonic effects such as with delta-winding connection and requires dedicated voltage-
+source, time-domain and harmonic investigation
+Reconfiguration transients and inverter switching dynamics of active and online
+winding reconfiguration are not considered because the model addresses steady-state
+operating envelopes. Switching transients and voltage stresses during reconfiguration were
+not experimentally investigated, but they remain important for implementation and control
+validation and are left for future work.
+5. Conclusions
+This work addressed the need for a geometry-independent method to assess when
+AWR is beneficial for traction PMSM designs. Overall, the three goals stated in the introduc-
+tion were achieved. First, the ˆIch-based NPP model was extended to AWR by introducing
+topology-dependent reconfiguration factors, kw,rec, for the Υ–∆and Υ–Π configurations,
+while keeping the Υ machine as the normalization anchor.The resulting model predicts
+https://doi.org/10.3390/en19204849
+
+
+===== PAGE 22 =====
+
+Energies 2026, 19, 4849
+22 of 32
+the torque-speed-power behavior of AWR topologies over the ˆIch–ξ design space. Sec-
+ond, a reduced set of FoMs are presented to quantify reconfiguration benefit across peak
+performance, crossover behavior, CPSR, torque-speed envelope expansion, and part-load
+performance. Third, from ˆIch and kw,rec, a definition of CPSR potential speed ratio be-
+tween the reconfigured and anchor state gives analytically three thresholds at ˆIch =
+1
+kw,rec ,
+ˆIch = 1, and ˆIch =
+k3w,rec−1
+kw,rec(k2w,rec−1). These thresholds separate favorable and unfavorable re-
+gions for AWR benefits within the scope of FoMs of composite CPSR, envelope expansion,
+peak-power ratio, crossover voltage-stress factor.
+Together they show that the benefits from AWR for a given machine type depend on
+its position in the ˆIch–ξ parameter plane for a given kw,rec. The primary result is that the
+normalized characteristic current is the dominant design parameter because it captures the
+relative strength of PM flux linkage, or magnetic loading, with respect to current loading.
+Comparison with nonlinear FEA results for six representative traction-machine de-
+signs. Measurement results from one machine (M3) covering steady-state characteristics
+without active reconfiguration switching is also compared. These confirmed that the ana-
+lytical model captures the main system-level trends, including composite CPSR, envelope
+expansion, peak-power ratio, crossover voltage-stress factor, and relative copper-loss im-
+provement. Torque ratio and part-load power-factor metrics are the least reliable of the
+presented metrics compared with the FEA model, due to the absence of nonlinear saturation
+effects in the analytical model. The extended analytical NPP model is therefore suitable for
+early-stage design screening and for identifying machine concepts that can benefit from
+reconfiguration, while final performance prediction still requires nonlinear FEA due to
+saturation-dependent inductance effects influencing several important peak-performance
+and part-load loss metrics.
+Overall, the proposed NPP-based framework provides a compact design-screening
+tool for exploring AWR machine concepts and identifying promising regions of the design
+space before detailed electromagnetic optimization.
+Author Contributions: Conceptualization, R.K.-K., H.W. and J.A.; methodology, R.K.-K.; formal
+analysis, R.K.-K.; investigation, R.K.-K., H.W. and H.C.; writing—original draft preparation, R.K.-K.;
+writing—review and editing, H.W., H.C., M.E. and J.A.; visualization, R.K.-K.; supervision, M.E. and
+J.A.; resources, M.E. and J.A.; funding acquisition, M.E. and J.A. All authors have read and agreed to
+the published version of the manuscript.
+Funding: This work was supported by the European Union’s Horizon Europe research and innovation
+program under Grant Agreement No.101192720 (HIGH-VOLTAGE FAST-CHARGING EFFICIENT
+ELECTRIC VEHICLE POWERTRAINS).
+Data Availability Statement: The original measured and simulated torque-speed envelope data
+presented in this study are openly available in the Zenodo repository at https://doi.org/10.5281/
+zenodo.22647758.
+Acknowledgments: The authors acknowledge Onur Kara, Fabian Jonczyck, and Oliver Kusche
+from the Chair of Mechatronics in Mobile Propulsion, RWTH Aachen University for support with
+measurements. The authors also acknowledge Michael Schröder and Christoph Neuhaus from FEV
+Europe GmbH, as well as Christian Milwisch and Peter Pišek, from Magna Powertrain GmbH, for
+their support.
+Conflicts of Interest: The authors declare no conflicts of interest.
+https://doi.org/10.3390/en19204849
+
+
+===== PAGE 23 =====
+
+Energies 2026, 19, 4849
+23 of 32
+Abbreviations
+SynRM
+Synchronous reluctance machine
+PM
+Permanent magnet
+PMaSynRM
+Permanent magnet assisted synchronous reluctance machine
+PMSM
+Permanent magnet synchronous machine
+IPMSM
+Interior permanent magnet synchronous machine
+SPMSM
+Surface-mounted permanent magnet synchronous machine
+EESM
+Electrically excited synchronous machine
+AWR
+Active winding reconfiguration
+NPP
+Normalized Parameter Plane
+CPSR
+Constant power speed range
+FoM
+Figure of Merit
+MTPA
+Maximum torque per ampere
+MTPV
+Maximum torque per voltage
+FW
+Field weakening
+PF
+Power factor
+FEA
+Finite element analysis
+NdFeB
+Neodymium iron boron
+DC
+Direct current
+LUT
+Look-up table
+2D
+Two-dimensional
+IGBT
+Insulated gate bi-polar transistor
+e.g.
+exempli gratia
+i.e.
+id est
+Appendix A. Base Quantities for the NPP Model
+Table A1. Base quantities for the NPP model.
+Quantity
+Base Definition
+Normalized Quantities
+Current
+I0 = Ilim
+ˆ
+Ilim, ˆId, ˆIq,
+ˆIch
+Voltage
+U0 = Ulim
+ˆ
+Ulim,
+ˆ
+Ud,
+ˆUq
+Power
+Pel,0 = 3
+2 Ulim Ilim
+ˆP
+Flux linkage
+Ψ0 = Ulim/ωe,0;
+Ψ0 =
+√︂
+Ψ2
+d + Ψ2q
+ˆ
+ΨPM,
+ˆ
+Ψd,
+ˆΨq
+Electrical speed
+ωe,0: speed at which the voltage-limit ellipse meets the current-limit
+circle at the MTPA point
+ˆωe
+Mechanical speed
+ωm,0 = ωe,0/p
+ωm
+Inductance
+L0 = Ψ0/Ilim
+ˆLd,
+ˆLq
+Torque
+T0 = Pel,0/ωm,0 = 3
+2 p Ψ0 Ilim
+ˆTe
+Appendix B. Derivation of Ideal CPSR Capability Ratio and
+Threshold Values
+Assuming maximum available d-axis current, and zero q-Axis current within the
+current limit circle,
+ˆId = −ˆ
+Ilim
+ˆIq = 0
+(A1)
+Using the lossless steady-state voltage relation from Equations (1)–(4),
+ˆ
+Ulim
+2 = ˆω02[︂(︁ˆLd ˆId +
+ˆ
+ΨPM
+)︁2 +
+(︁ˆLq ˆIq
+)︁2]︂
+,
+(A2)
+https://doi.org/10.3390/en19204849
+
+
+===== PAGE 24 =====
+
+Energies 2026, 19, 4849
+24 of 32
+and applying Equation (10), we get a relationship for a speed
+ˆ
+Ulim = ˆω0 ˆLd( ˆIch −
+ˆ
+Ilim)
+(A3)
+ˆω0 =
+ˆ
+Ulim
+ˆLd( ˆIch −
+ˆ
+Ilim)
+(A4)
+Similarly it can be shown that with ohmic voltage drop, the expression is:
+ˆω0 =
+ˆ
+Ulim
+ˆLd( ˆIch −
+ˆ
+Ilim) + ˆRs(−
+ˆ
+Ilim)
+(A5)
+where
+ˆRs =
+Uohmic,drop,lim
+U0
+= RsIlim
+U0
+(A6)
+The relationship with ˆIch and
+ˆ
+Ilim is however, also a reference to inferred CPSR capa-
+bility as observed in [36] and similar works around characteristic current [33,35,41]:
+•
+For ˆIch <
+ˆ
+Ilim, the voltage limit ellipses collapse to a point at ˆIch within the current-
+limit circle. Theoretically infinite speed is possible but power,
+ˆ
+Pw,max →
+ˆIch, thus
+limiting the CPSR to a finite value.
+•
+For ˆIch =
+ˆ
+Ilim, theoretical infinite CPSR is achieved.
+•
+For ˆIch >
+ˆ
+Ilim, Torque and power capability collapse at a finite speed at ˆId =
+ˆ
+Ilim < ˆIch,
+as the voltage ellipses of higher speeds lie entirely outside the current limit circle.
+Thus, limiting CPSR to a finite value. In fact, for this case (A4) is the maximum no-load
+speed equation.
+The magnitude | ˆIch −
+ˆ
+Ilim|, thus represents the reduction in infinite CPSR potential.
+Consequently, the speed | ˆω0| in (A4) is a representation of the CPSR potential. The ratio
+of the CPSR potential speed between reconfigured state to anchor state is then of interest,
+when considering the overall torque-speed envelope from AWR topologies.
+For the anchor state,
+ˆ
+Ulim,anc = 1
+ˆ
+Ilim,anc = 1
+(A7)
+and therefore
+ˆ
+ω0,anc =
+1
+ˆ
+Ld,anc(
+ˆ
+Ich,anc −1)
+(A8)
+For the Υ–∆state,
+ˆ
+Ulim,rec = kw,rec
+ˆ
+Ilim,rec =
+1
+kw,rec
+ˆ
+Ich,rec =
+ˆ
+Ich,anc
+ˆ
+Ld,rec =
+ˆ
+Ld,anc
+(A9)
+which gives
+ˆ
+ω0,rec =
+kw,rec
+ˆ
+Ld,anc(
+ˆ
+Ich,anc −
+1
+kw,rec )
+(A10)
+For the Υ–Π state
+ˆ
+Ulim,rec = 1
+ˆ
+Ilim,rec = 1
+ˆ
+Ich,rec = kw,rec
+ˆ
+Ich,anc
+ˆ
+Ld,rec =
+ˆ
+Ld,anc
+k2w,rec
+(A11)
+which gives
+ˆ
+ω0,rec =
+1
+ˆ
+Ld,anc
+k2w,rec (kw,rec
+ˆ
+Ich,anc −1)
+=
+kw,rec
+ˆ
+Ld,anc(
+ˆ
+Ich,anc −
+1
+kw,rec )
+(A12)
+https://doi.org/10.3390/en19204849
+
+
+===== PAGE 25 =====
+
+Energies 2026, 19, 4849
+25 of 32
+Hence, both reconfiguration cases yield the same ratio of magnitude of the CPSR
+potential speeds:
+rω =⃓⃓⃓⃓
+ˆ
+ω0,rec
+ˆ
+ω0,anc⃓⃓⃓⃓
+(A13)
+=⃓⃓⃓⃓⃓kw,rec( ˆIch −1)
+ˆIch −
+1
+kw,rec⃓⃓⃓⃓⃓
+(A14)
+The first threshold follows from the reconfigured-state having infinite CPSR, i.e.,
+rω →∞. Setting,
+ˆIch −
+1
+kw,rec
+= 0
+(A15)
+Thus,
+t1 :
+ˆIch =
+1
+kw,rec
+(A16)
+The second threshold follows from the anchor-state to have infinite CPSR, i.e., rω →0.
+Setting
+kw,rec( ˆIch −1) = 0
+t2 : ˆIch = 1
+(A17)
+The third threshold is defined by
+rω =
+1
+kw,rec
+(A18)
+Solving (A14) and (A18) for ˆIch =
+ˆ
+Ich,anc⃓⃓⃓⃓⃓
+kw,rec( ˆIch −1)
+ˆIch −
+1
+kw,rec⃓⃓⃓⃓⃓
+=
+1
+kw,rec
+(A19)
+We get,
+t3 :
+ˆIch =
+k3
+w,rec −1
+kw,rec(k2w,rec −1)
+(A20)
+This can also be written as
+t3 = 1 +
+1
+kw,rec(kw,rec + 1)
+(A21)
+When considering ohmic voltage drop, the thresholds can be shown to solve to :
+t1 :
+ˆIch =
+1
+kw,rec
++
+ˆRs
+ˆLd
+(A22)
+t2 :
+ˆIch = 1 +
+ˆRs
+ˆLd
+(A23)
+t3 :
+ˆIch =
+k3
+w,rec −1
+kw,rec(k2w,rec −1) +
+ˆRs
+ˆLd
+(A24)
+https://doi.org/10.3390/en19204849
+
+
+===== PAGE 26 =====
+
+Energies 2026, 19, 4849
+26 of 32
+Other values of note include,
+lim
+ˆIch→0
+rω = k2
+w,rec
+(A25)
+lim
+ˆIch→∞
+rω = kw,rec
+(A26)
+The CPSR potential speed ratio balance point is obtained from rω = 1, which gives,
+ˆIch = 1 +
+1
+kw,rec
+(A27)
+Normalized speed, ^! !
+Normalized torque and power, ^T; ^P !
+0
+0.5
+1
+^
+Ich = 1
+2
+^
+Ich =
+1
+p
+3
+^
+Ich = 1
+^
+Ich = 7
+6
+^
+Ich = 4+
+p
+3
+3+
+p
+3
+9 = 4
+0
+0.5
+1
+9 = 2
+0 1 2 3 4 5 6 7 8
+0
+0.5
+1
+0 1 2 3 4 5 6 7 8 0 1 2 3 4 5 6 7 8 0 1 2 3 4 5 6 7 8 0 1 2 3 4 5 6 7 8
+9 = 1
+^T(
+^P(
+^T"
+^P"
+^T&
+^P&
+Figure A1. Torque-speed envelopes of the different reconfiguration pairs at the important threshold
+values of ˆIch.
+Table A2. Thresholds and characteristic values from the CPSR potential speed ratio, rω.
+Condition
+ˆIch Expression
+ˆ
+Ich,Υ−∆Value
+ˆ
+Ich,Υ−Π Value
+rω
+Expression
+rω,Υ−∆Value
+rω,Υ−Π
+Value
+Very low ˆIch
+ˆIch →0
+0
+0
+lim ˆIch→0 rω =
+k2
+w,rec
+3
+4
+t1
+ˆIch =
+1
+kw,rec
+1
+√
+3
+1
+2
+rω(t1)
+∞
+∞
+t2
+ˆIch = 1
+1
+1
+rω(t2)
+0
+0
+t3
+ˆIch =
+k3w,rec−1
+kw,rec(k2w,rec−1)
+4+
+√
+3
+3+
+√
+3
+7
+6
+rω(t3) =
+1
+kw,rec
+1
+√
+3
+1
+2
+rω unity
+ˆIch = 1 +
+1
+kw,rec
+√
+3+1
+√
+3
+3
+2
+rω = 1
+1
+1
+Very high ˆIch
+ˆIch →∞
+∞
+∞
+lim ˆIch→∞rω =
+kw,rec
+√
+3
+2
+https://doi.org/10.3390/en19204849
+
+
+===== PAGE 27 =====
+
+Energies 2026, 19, 4849
+27 of 32
+Appendix C. Machine M3 Dynamometer Test Bench Setup and
+Operating Conditions
+Table A3. Numbered components and measurement equipment of the dynamometer test bench for
+machine M3 shown in Figure 5.
+No.
+Component
+Function/Equipment
+Equipment Manufacturer/Source a
+1
+Device under test
+Machine M3, operated in Υ and ∆
+winding configurations.
+MOBIS Parts Europe,
+Sandersdorf-Brehna, Germany
+2
+Reconfiguration
+terminal box
+Terminal box at the open-ended winding
+terminals of DUT for manual winding
+reconfiguration between Υ and ∆.
+Custom-built prototype, RWTH
+Aachen University, Germany
+3
+Inverter terminal box
+and electrical sensor unit
+Three-phase cable hand-over from
+inverter to reconfiguration terminal, as
+well as housing for 3-phase current
+sensors (LEM-ITS 600) and Voltage probes
+Custom Prototype; Current sensors
+and voltage probes: LEM International
+SA, Meyrin, Switzerland
+4
+Inverter
+Universal inverter operating the device
+under test
+Inverter: AixControl GmbH, Aachen,
+Germany; Controller: dSpace GmbH,
+Paderborn, Germany;
+Field-oriented-control: Chair of
+Mechatronics in Mobile Propulsion,
+RWTH Aachen University, Germany
+5
+Electrical signal
+acquisition
+Matuschek PowerAnalyzer used for
+recording electrical signals.
+Matuschek Meßtechnik GmbH,
+Alsdorf, Germany
+6
+Torque and speed
+measurement
+HBM T40B torque transducer used for
+shaft torque and speed measurement.
+Hottinger Brüel & Kjaer GmbH,
+Darmstadt, Germany
+7
+Load machine
+High-speed dynamometer imposing the
+speed set-point.
+Test-bench automation: FEV Europe
+GmbH, Aachen, Germany; Load
+machine: OSWALD Elektromotoren
+GmbH, Miltenberg, Germany
+8
+Cooling system
+Closed-loop cooling water thermal
+conditioning unit. DUT has an oil-water
+heat exchanger.
+Center for Mobile Propulsion, RWTH
+Aachen University, Germany
+a Provided for information (lege artis) only. Apart from RWTH Aachen University, strictly
+no affiliation in any form to the study or to the authors.
+Table A4. Operating conditions for machine M3 measurements.
+Parameter
+Value/Description
+DC-link voltage
+650 V
+Control strategy
+Field-oriented control with space-vector PWM
+Modulation index
+0.924
+Stator winding temperature
+318(5) K
+Appendix D. FEA Modeling of the Baseline Machines
+The modeling workflow is organized into three levels:
+1.
+2D FEA of a single operating-point: The two-dimensional cross-section of the machine
+including the active parts of stator and rotor laminations, the PM, and the air gap is
+modelled. Based on the number of poles and slots, geometry and winding configu-
+ration, only a section (for e.g., one pole section) of the whole machine is modelled
+based on assumptions of symmetry and continuity of electromagnetic fields. For
+this selected section, a mesh is generated and fields are calculated (Figure A2). The
+electromagnetic field solution is post-processed to determine output quantities such
+as flux linkages, currents, voltages, torque, torque ripple, and losses at each simulated
+operating point. Five loss mechanisms are addressed: core loss in the stator and
+https://doi.org/10.3390/en19204849
+
+
+===== PAGE 28 =====
+
+Energies 2026, 19, 4849
+28 of 32
+rotor laminations based on modified and improved generalized Steinmetz equation
+coefficient curve fitting [42,43], magnet eddy-current loss [44], ohmic losses (DC and
+AC winding [45]), and friction loss. PWM switching losses and stray load losses are
+neglected. Other standard assumptions for 2D FEA of rotating machinery apply :
+•
+Stator windings are driven by ideal balanced sinusoidal three-phase current
+excitation. Supply harmonics, inverter switching effects, and control dynamics
+are neglected.
+•
+The electromagnetic field is solved using transient 2D FEA with prescribed rotor
+motion.
+•
+End effects and end-winding leakage inductances are not accounted for in the
+2D FEA, rather they are accounted for separately.
+•
+Laminated core is modeled with isotropic magnetic properties and a stacking
+factor of 0.97. Inter-lamination eddy currents are assumed to be negligible.
+•
+Fixed uniform temperature, and mechanically rigid body at each simulated
+operating point.
+2.
+Saturation and losses LUT: FEA is carried out across the full id–iq plane at a fixed speed
+matching the corresponding measurements; the resulting LUT of output quantities
+are stored as scalable coefficients [46]. These are then used to evaluate results for any
+other speed, current, or torque set point.
+3.
+Scaled models operating points sweep and losses evaluation: The method is ex-
+tended to further scaling to different turns-ratio, axial length, voltage- and current-
+limits [27,47].
+A 2D FEA model is used here because the normalized FoMs target the steady-state
+fundamental-wave torque–speed envelope and all machines are compared under identical
+assumptions. It provides acceptable accuracy relative to three-dimensional FEA, while
+balancing fidelity against simulation time and cost.
+Figure A2. FEA model of machine M3 with (a) reconstructed 2D cross-sectional geometry, (b) mesh,
+and (c) flux density distribution at open-circuit condition and (d) flux density distribution at rated
+corner-point on-load condition.
+https://doi.org/10.3390/en19204849
+
+
+===== PAGE 29 =====
+
+Energies 2026, 19, 4849
+29 of 32
+Appendix E. FoM Comparison Between Analytical and FEA Models for the Baseline Machines
+Table A5. Analytical and FEA figure-of-merit (FoM) comparison for Υ–∆and Υ–Π configurations, machines M1–M6, rounded to two decimal places.
+FoM
+M1
+M2
+M3
+M4
+M5
+M6
+Υ–∆
+Υ–Π
+Υ–∆
+Υ–Π
+Υ–∆
+Υ–Π
+Υ–∆
+Υ–Π
+Υ–∆
+Υ–Π
+Υ–∆
+Υ–Π
+Anl.
+FEA
+Anl.
+FEA
+Anl.
+FEA
+Anl.
+FEA
+Anl.
+FEA
+Anl.
+FEA
+Anl.
+FEA
+Anl.
+FEA
+Anl.
+FEA
+Anl.
+FEA
+Anl.
+FEA
+Anl.
+FEA
+κ−1
+T,c
+2.23
+1.83
+2.74
+2.10
+2.17
+1.82
+2.66
+2.17
+2.20
+1.78
+2.71
+2.13
+2.40
+1.58
+2.99
+1.95
+2.60
+1.83
+3.31
+2.15
+2.70
+1.74
+3.47
+2.09
+κP,max
+1.11
+1.08
+1.11
+1.09
+1.07
+1.06
+1.07
+1.07
+1.11
+1.09
+1.11
+1.10
+1.30
+1.38
+1.38
+1.36
+1.19
+1.28
+1.25
+1.35
+1.14
+1.29
+1.19
+1.35
+ˆωx,1
+3.09
+2.08
+3.64
+2.32
+3.10
+2.23
+3.64
+2.61
+3.05
+2.13
+3.60
+2.50
+2.34
+1.49
+2.77
+1.69
+2.33
+1.60
+2.74
+1.73
+2.26
+1.50
+2.65
+1.65
+κu,x,1
+1.20
+1.15
+1.41
+1.28
+1.32
+1.27
+1.56
+1.49
+1.23
+1.18
+1.44
+1.39
+0.51
+0.55
+0.61
+0.63
+0.31
+0.37
+0.37
+0.40
+0.22
+0.26
+0.25
+0.28
+κCPSR,env
+1.00
+1.01
+1.00
+1.01
+1.00
+1.00
+1.00
+1.00
+1.00
+1.00
+1.00
+1.00
+2.77
+2.51
+2.77
+2.51
+3.16
+2.90
+3.16
+2.90
+3.47
+3.30
+3.47
+3.30
+κT,env
+1.05
+1.06
+1.04
+1.05
+1.03
+1.03
+1.03
+1.03
+1.05
+1.07
+1.04
+1.06
+1.39
+1.37
+1.34
+1.29
+1.49
+1.46
+1.43
+1.44
+1.58
+1.65
+1.54
+1.66
+¯κPF
+0.06
+−0.11
+0.12
+0.04
+0.07
+−0.13
+0.13
+−0.13
+0.06
+−0.14
+0.12
+−0.15
+0.01
+0.04
+0.05
+0.03
+−0.03
+−0.03
+0.01
+−0.04
+−0.03
+−0.01
+−0.01
+−0.01
+¯κCu
+0.11
+0.19
+0.12
+0.25
+0.13
+0.26
+0.14
+0.27
+0.12
+0.23
+0.12
+0.26
+0.02
+0.06
+0.02
+0.03
+0.02
+0.00
+0.01
+0.01
+0.01
+0.00
+0.01
+0.01
+https://doi.org/10.3390/en19204849
+
+
+===== PAGE 30 =====
+
+Energies 2026, 19, 4849
+30 of 32
+Table A6. Error between analytical and FEA FoMs for Υ–∆and Υ–Π configurations, machines
+M1–M6, rounded to two decimal places.
+FoM
+M1
+M2
+M3
+M4
+M5
+M6
+Υ–∆
+Υ–Π
+Υ–∆
+Υ–Π
+Υ–∆
+Υ–Π
+Υ–∆
+Υ–Π
+Υ–∆
+Υ–Π
+Υ–∆
+Υ–Π
+κ−1
+T,c
+0.4
+0.64
+0.35
+0.49
+0.42
+0.58
+0.81
+1.04
+0.77
+1.16
+0.95
+1.38
+κP,max
+0.03
+0.02
+0.01
+0
+0.02
+0.01
+−0.08
+0.02
+−0.09
+−0.1
+−0.15
+−0.16
+ˆωx,1
+1.01
+1.33
+0.88
+1.04
+0.93
+1.09
+0.86
+1.07
+0.74
+1.01
+0.76
+0.99
+κu,x,1
+0.05
+0.13
+0.05
+0.07
+0.04
+0.05
+−0.04
+−0.02
+−0.05
+−0.03
+−0.04
+−0.03
+κCPSR,env
+−0.01
+−0.01
+0
+0
+0
+0
+0.26
+0.26
+0.26
+0.26
+0.16
+0.16
+κT,env
+0
+−0.01
+0.01
+−0.01
+−0.01
+−0.02
+0.03
+0.05
+0.03
+−0.01
+−0.07
+−0.12
+¯κPF
+0.17
+0.08
+0.19
+0.27
+0.2
+0.27
+−0.03
+0.02
+0
+0.05
+−0.02
+0.01
+¯κCu
+−0.07
+−0.13
+−0.13
+−0.13
+−0.12
+−0.13
+−0.04
+−0.01
+0.01
+0
+0.01
+0
+Table A7. Summary of selected metrics between analytical and FEA FoMs for Υ–∆and Υ–Π configu-
+rations, machines M1–M6, rounded to two decimal places.
+FoM
+Median of Error
+Standard Deviation of Error
+r a: Υ–∆
+r a: Υ–Π
+κ−1
+T,c
+0.7
+0.33
+−0.19
+−0.15
+κP,max
+0.01
+0.07
+0.89
+0.86
+ˆωx,1
+1
+0.16
+0.99
+0.97
+κu,x,1
+0.01
+0.06
+1
+1
+κCPSR,env
+0.08
+0.13
+1
+1
+κT,env
+−0.01
+0.05
+0.99
+0.98
+¯κPF
+0.06
+0.11
+−0.83
+−0.42
+¯κCu
+−0.06
+0.06
+0.99
+1
+a Pearson correlation coefficient between analytical and FEA FoMs.
+References
+1.
+Petrelli, G.; Nuzzo, S.; Zou, T.; Barater, D.; Franceschini, G.; Gerada, C. Review and Future Developments of Wound Field
+Synchronous Motors in Automotive. In Proceedings of the 2023 IEEE International Conference on Electrical Systems for Aircraft,
+Railway, Ship Propulsion and Road Vehicles & International Transportation Electrification Conference (ESARS-ITEC), Venice,
+Italy, 29–31 March 2023; pp. 1–6. https://doi.org/10.1109/ESARS-ITEC57127.2023.10114826.
+2.
+Tokat, A.; Nguyen, D.K. Drive Cycle Comparison of a PMSM and an EESM for a Traction Application Utilizing Modular Stator
+Manufacturing. In Proceedings of the 2024 International Conference on Electrical Machines (ICEM), Torino, Italy, 1–4 September
+2024; pp. 1–7. https://doi.org/10.1109/ICEM60801.2024.10700379.
+3.
+Kallur-Krishnamoorthy, R.; Schröder, M.; Rosen, T.; Andert, J. Rare-Earth-Free Electric Machines with Interchangeable Rotors.
+MTZ Worldw. 2025, 86, 16–25. https://doi.org/10.1007/s38313-025-2095-5.
+4.
+Dilevrano, G.; Ragazzo, P.; Ferrari, S.; Pellegrino, G. Comparative Design of Ferrite- and NdFeB-PMSMs Using the (x,b) Design
+Plane. In Proceedings of the 2023 IEEE International Electric Machines & Drives Conference (IEMDC), San Francisco, CA, USA,
+15–18 May 2023; pp. 1–7. https://doi.org/10.1109/IEMDC55163.2023.10238969.
+5.
+Nipp, E.; Norberg, E. On the Feasibility of Switched Stator Windings in Permanent Magnet Motors for Traction Drives. In
+Proceedings of the Proceedings of the 1998 ASME/IEEE Joint Railroad Conference, Philadelphia, PA, USA, 16 April 1998;
+pp. 33–39. https://doi.org/10.1109/RRCON.1998.668069.
+6.
+Swamy, M.; Kume, T.; Maemura, A.; Morimoto, S. Extended High-Speed Operation via Electronic Winding-Change Method for
+AC Motors. IEEE Trans. Ind. Appl. 2006, 42, 742–752. https://doi.org/10.1109/TIA.2006.873657.
+7.
+Nair, S.V.; Layek, K.; Hatua, K. An Unequal Split Dual Three-Phase PMSM With Extended Torque-Speed Characteristics for
+Automotive Application. IEEE Trans. Power Electron. 2022, 37, 12437–12449. https://doi.org/10.1109/TPEL.2022.3169335.
+8.
+Geissler, M.; Osinenko, P.; Herlitzius, T. Winding Switching Strategy for Electric Wheel Drives in Agricultural Machinery.
+In Proceedings of the 2015 IEEE International Conference on Industrial Technology (ICIT), Seville, Spain, 17–19 March 2015;
+pp. 851–856. https://doi.org/10.1109/ICIT.2015.7125204.
+9.
+Cha, K.S.; Park, G.H.; Park, M.R.; Jung, Y.H. Application of Electric Transmission Using Winding Changeover for Performance
+Improvement of Multilayer Ipmsm Using Ferrite PM. In Proceedings of the 2025 Energy Conversion Congress & Expo Europe
+(ECCE Europe), Birmingham, UK, 1–4 September 2025; pp. 1–6. https://doi.org/10.1109/ECCE-Europe62795.2025.11238385.
+10.
+Fuchs, E.; Schraud, J.; Fuchs, F. Analysis of Critical-Speed Increase of Induction Machines via Winding Reconfiguration with
+Solid-State Switches. IEEE Trans. Energy Convers. 2008, 23, 774–780. https://doi.org/10.1109/TEC.2008.921478.
+https://doi.org/10.3390/en19204849
+
+
+===== PAGE 31 =====
+
+Energies 2026, 19, 4849
+31 of 32
+11.
+Scharfenstein, D.; De Doncker, R.W. Extended Operating Range of Induction Machines Using Switched Stator Windings. In
+Proceedings of the 2019 IEEE International Electric Machines & Drives Conference (IEMDC), San Diego, CA, USA, 12–15 May
+2019; pp. 97–103. https://doi.org/10.1109/IEMDC.2019.8785298.
+12.
+Dajaku, G.; Gerling, D. Low Costs and High Efficiency Asynchronous Machine with Stator Cage Winding. In Proceedings
+of the 2014 IEEE International Electric Vehicle Conference (IEVC), Florence, Italy, 17–19 December 2014; pp. 1–6.
+https:
+//doi.org/10.1109/IEVC.2014.7056083.
+13.
+Scharfenstein, D.; Schuller, S.; Quabeck, S.; Doncker, R.W.D. Modeling of Induction Machines with Switched Stator Windings.
+In Proceedings of the 2020 IEEE Transportation Electrification Conference & Expo (ITEC), Chicago, IL, USA, 23–26 June 2020;
+pp. 1050–1055. https://doi.org/10.1109/ITEC48692.2020.9161729.
+14.
+Tang, L.; Burress, T.; Pries, J. A Reconfigurable-Winding System for Electric Vehicle Drive Applications. In Proceedings of
+the 2017 IEEE Transportation Electrification Conference and Expo (ITEC), Chicago, IL, USA, 22–24 June 2017; pp. 656–661.
+https://doi.org/10.1109/ITEC.2017.7993347.
+15.
+Lee, C.H.; Shin, H.S.; Noh, H.R.; Kim, K.C. A Study on The Electromagnetic Multi-Step Transmission Characteristics of Interior
+Permanent Magnet Synchronous Motors. Energies 2022, 15, 9615. https://doi.org/10.3390/en15249615.
+16.
+Nipp, E. Permanent Magnet Motor Drives with Switched Stator Windings. Ph.D. Thesis, KTH Royal Institute of Technology,
+Stockholm, Sweden, 1999.
+17.
+Copt, F.; Araujo, D.M.; Koechli, C.; Perriard, Y. Current Control Strategy for Dynamic Winding Reconfiguration of Slotless
+Brushless DC Motors. IEEE Trans. Ind. Appl. 2019, 55, 417–425. https://doi.org/10.1109/TIA.2018.2869102.
+18.
+Guo, Q.; Zhang, X.; Liu, Y.; Yang, L.; Cai, W.; Zhang, C.; Zhang, C. Transient Control of Winding Reconfiguration for PMSMs
+Based on Deadbeat Predictive Control and Zero-Vector Switching. Electronics 2026, 15, 3120. https://doi.org/10.3390/electronics1
+5143120.
+19.
+Oestreicher, R.; Schneider, J.; Von Ohlen, D.; Fuchs, P.; Kulzer, A.C. Design and Prototyping of a Winding Reconfiguration System
+for Electric Traction Applications. In Proceedings of the 2026 Stuttgart International Symposium, Stuttgart, Germany, 8 July 2026.
+https://doi.org/10.4271/2026-01-0730.
+20.
+Best, J.; Asef, P.; Vagg, C. A Review of Motors with Reconfigurable Windings for Automotive Traction Drives. IEEE Access 2025,
+13, 140187–140204. https://doi.org/10.1109/ACCESS.2025.3591184.
+21.
+Oestreicher, R.; Koenen, C.; Kulzer, A.C. Analysis of Factors Influencing the Efficiency Improvement Potential of a Winding
+Changeover in an Electric Machine. SAE Int. J. Adv. Curr. Pract. Mobil. 2026, 8, 1035–1041. https://doi.org/10.4271/2025-01-0518.
+22.
+Clauer, M.; Bauer, D.; Parspour, N. High-Speed Oil-Cooled PMSM with Novel Permanent Magnet Shape and Carbon Fiber Sleeved
+Rotor for High-Performance Powertrain. e+i Elektrotech. Inftech. 2025, 142, 114–141. https://doi.org/10.1007/s00502-025-01310-8.
+23.
+Wellmann, C.; Khaleel, A.R.; Brinkmann, T.; Wahl, A.; Monissen, C.; Eisenbarth, M.; Andert, J. Electric Machine Co-Optimization
+for EV Drive Technology Development: Integrating Bayesian Optimization and Nonlinear Model Predictive Control. eTransporta-
+tion 2025, 23, 100392. https://doi.org/10.1016/j.etran.2024.100392.
+24.
+Wellmann, C.; Rahkola, P.; Tota, S.S.; Pihlatie, M.; Khaleel, A.R.; Marx, C.; Sharma, A.; Eisenbarth, M.; Andert, J. Machine-
+Learning Integrated Multi-Domain Co-Optimization for Electrified Heavy Duty Fleets. eTransportation 2026, 27, 100511. https:
+//doi.org/10.1016/j.etran.2025.100511.
+25.
+Soong, W.; Miller, T. Theoretical Limitations to the Field-Weakening Performance of the Five Classes of Brushless Synchronous AC
+Motor Drive. In Proceedings of the International Conference on Electrical Machines and Drives 1993, Oxford, UK, 8–10 September
+1993; pp. 127–132.
+26.
+Soong, W.; Miller, T. Field-Weakening Performance of Brushless Synchronous AC Motor Drives. IEE Proc. Electr. Power Appl.
+1994, 141, 331–340. https://doi.org/10.1049/ip-epa:19941470.
+27.
+Jansson, E.; Grunditz, E.; Thiringer, T. Impact of Saturation and Scaling on the Field Weakening Performance of an Interior PM
+Machine. In Proceedings of the 2020 International Conference on Electrical Machines (ICEM), Gothenburg, Sweden, 23–26 August
+2020; pp. 1136–1142. https://doi.org/10.1109/ICEM49940.2020.9271033.
+28.
+Hao, L.; Namuduri, C.; Naik, S.M.; Freitas, C. High Speed Performance of PM Machine with Reconfigurable Winding. In
+Proceedings of the 2015 IEEE Energy Conversion Congress and Exposition (ECCE), Montreal, QC, Canada, 20–24 September
+2015; pp. 1840–1848. https://doi.org/10.1109/ECCE.2015.7309919.
+29.
+Boxriker, M.; Winzer, P.; Kolb, J.; Doppelbauer, M. Increasing the Operating Range of Permanent Magnet Synchronous Motors by
+Switching the Winding Configurations. In Proceedings of the 2016 IEEE 2nd Annual Southern Power Electronics Conference
+(SPEC), Auckland, New Zealand, 5–8 December 2016; pp. 1–6. https://doi.org/10.1109/SPEC.2016.7846062.
+30.
+Boxriker, M.; Kolb, J.; Doppelbauer, M. Effects of Coil Configuration Switching, Pole-Changing and Multi-Phase Windings on
+Permanent Magnet Synchronous Motors. In Proceedings of the IECON 2017—43rd Annual Conference of the IEEE Industrial
+Electronics Society, Beijing, China, 29 October–1 November 2017; pp. 1925–1932. https://doi.org/10.1109/IECON.2017.8216325.
+https://doi.org/10.3390/en19204849
+
+
+===== PAGE 32 =====
+
+Energies 2026, 19, 4849
+32 of 32
+31.
+Boxriker, M.; Kolb, J.; Doppelbauer, M. Determining the Volume Optimal Parameter Values for Multi-Phase Permanent Magnet
+Synchronous Motors with Switchable Coil Configuration. In Proceedings of the 2018 20th European Conference on Power
+Electronics and Applications (EPE’18 ECCE Europe), Riga, Latvia, 17–21 September 2018.
+32.
+Layek, K.; Roy, D.; Hatua, K. A Split-Tapped Interior Permanent Magnet Synchronous Machine Topology for Electric Vehicles
+Requiring 3-Speed Transmission. IEEE Trans. Ind. Electron. 2026, 73, 207–218. https://doi.org/10.1109/TIE.2025.3591670.
+33.
+Pellegrino, G.; Vagati, A.; Guglielmi, P. Design Tradeoffs Between Constant Power Speed Range, Uncontrolled Generator
+Operation, and Rated Current of IPM Motor Drives. IEEE Trans. Ind. Appl. 2011, 47, 1995–2003. https://doi.org/10.1109/TIA.20
+11.2161429.
+34.
+Fatemi, A.; Demerdash, N.A.O.; Ionel, D.M. Design Optimization of IPM Machines for Efficient Operation in Extended Speed
+Range.
+In Proceedings of the 2015 IEEE Transportation Electrification Conference and Expo (ITEC), Dearborn, MI, USA,
+14–17 June 2015; pp. 1–8. https://doi.org/10.1109/ITEC.2015.7165802.
+35.
+Vera, L.J.F.C.; Hsieh, M.F. Investigating the Impact of Characteristic Current on IPMSM Efficiency Area in Flux-Weakening
+Region. IEEE Trans. Magn. 2024, 60, 1–6. https://doi.org/10.1109/TMAG.2024.3429178.
+36.
+Ge, H.; Jiang, J.; Ye, J.; Emadi, A. Behavior Study of Permanent Magnet Synchronous Machines Based on a New Normalized
+Model. IEEE Trans. Ind. Electron. 2019, 66, 7539–7550. https://doi.org/10.1109/tie.2018.2877117.
+37.
+Chen, T.; Chen, L.; Chai, F. Behavior Modeling and Design of Winding-Switching Permanent Magnet Synchronous Machine
+System Based on Normalized Model. In Proceedings of the 2023 26th International Conference on Electrical Machines and
+Systems (ICEMS), Zhuhai, China, 5–8 November 2023; pp. 5228–5232. https://doi.org/10.1109/ICEMS59686.2023.10344841.
+38.
+Wang, H.; Kallur-Krishnamoorthy, R.; Neuhaus, C.; Andert, J. Integrated DC Boost Charger in Post-800V Architecture with Open-
+End Winding Machine—Magnetic-Domain Modelling and Torque Analysis. In Proceedings of the 2026 Stuttgart International
+Symposium, Stuttgart, Germany, 8 July 2026. https://doi.org/10.4271/2026-01-0739.
+39.
+Ansys, Inc. Ansys Motor-CAD User Guide Version 2025. Available online: https://ansyshelp.ansys.com/public/account/
+secured?returnurl=/Views/Secured/MotorCAD/v252/en/Motor-CAD_UG/MotorCAD/topics/motor-cadmanual.html (ac-
+cessed on 8 September 2026).
+40.
+Fornasiero, E.; Bianchi, N.; Soong, W.L. Analysis of Torque versus Current Capability of Reluctance and Interior PM Machines
+under Limited Current and Flux-Linkage Operation. In Proceedings of the 2014 IEEE Energy Conversion Congress and Exposition
+(ECCE), Pittsburgh, PA, USA, 14–18 September 2014; pp. 4162–4169. https://doi.org/10.1109/ECCE.2014.6953968.
+41.
+Pellegrino, G.; Bianchi, N.; Cupertino, F.; Jahns, T.M.; Soong, W.L. The Rediscovery of Synchronous Reluctance and Ferrite Permanent
+Magnet Motors: Tutorial Course Notes, 1st ed.; SpringerBriefs in Electrical and Computer Engineering; Springer: Cham, Switzerland,
+2016. https://doi.org/10.1007/978-3-319-32202-5.
+42.
+Reinert, J.; Brockmeyer, A.; De Doncker, R. Calculation of Losses in Ferro- and Ferrimagnetic Materials Based on the Modified
+Steinmetz Equation. IEEE Trans. Ind. Appl. 2001, 37, 1055–1061. https://doi.org/10.1109/28.936396.
+43.
+Li, J.; Abdallah, T.; Sullivan, C. Improved Calculation of Core Loss with Nonsinusoidal Waveforms.
+In Proceedings of the
+Conference Record of the 2001 IEEE Industry Applications Conference. 36th IAS Annual Meeting (Cat. No.01CH37248), Chicago, IL, USA,
+30 September–4 October 2001; IEEE: New York, NY, USA, 2001; Volume 4, pp. 2203–2210. https://doi.org/10.1109/IAS.2001.955931.
+44.
+Ruoho, S.; Santa-Nokki, T.; Kolehmainen, J.; Arkkio, A. Modeling Magnet Length in 2-D Finite-Element Analysis of Electric
+Machines. IEEE Trans. Magn. 2009, 45, 3114–3120. https://doi.org/10.1109/TMAG.2009.2018621.
+45.
+Volpe, G.; Popescu, M.; Marignetti, F.; Goss, J. AC Winding Losses in Automotive Traction E-Machines: A New Hybrid Calculation
+Method. In Proceedings of the 2019 IEEE International Electric Machines & Drives Conference (IEMDC), San Diego, CA, USA,
+12–15 May 2019; pp. 2115–2119. https://doi.org/10.1109/IEMDC.2019.8785409.
+46.
+Goss, J.; Mellor, P.H.; Wrobel, R.; Staton, D.A.; Popescu, M. The Design of AC Permanent Magnet Motors for Electric Vehicles:
+A Computationally Efficient Model of the Operational Envelope. In Proceedings of the 6th IET International Conference on Power
+Electronics, Machines and Drives (PEMD 2012); IET: Stevenage, UK, 2012; pp. 1–6. https://doi.org/10.1049/cp.2012.0251.
+47.
+Stipetic, S.; Goss, J.; Zarko, D.; Popescu, M. Calculation of Efficiency Maps Using a Scalable Saturated Model of Synchronous
+Permanent Magnet Machines. IEEE Trans. Ind. Appl. 2018, 54, 4257–4267. https://doi.org/10.1109/TIA.2018.2837672.
+Disclaimer/Publisher’s Note: The statements, opinions and data contained in all publications are solely those of the individual
+author(s) and contributor(s) and not of MDPI and/or the editor(s). MDPI and/or the editor(s) disclaim responsibility for any injury to
+people or property resulting from any ideas, methods, instructions or products referred to in the content.
+https://doi.org/10.3390/en19204849

@@ -1,0 +1,122 @@
+{
+ "asym/0pat/mlp": {
+  "flux_nrmse": 1.0015122890472412,
+  "torque_r2": 0.9490545988082886,
+  "n_train": 896,
+  "seconds": 22.4
+ },
+ "asym/0pat/energy": {
+  "flux_nrmse": 1.0002111196517944,
+  "torque_r2": 0.3969457745552063,
+  "n_train": 896,
+  "seconds": 167.5
+ },
+ "asym/2pat/mlp": {
+  "flux_nrmse": 0.5099288821220398,
+  "torque_r2": 0.8339776396751404,
+  "n_train": 1065,
+  "seconds": 3.9
+ },
+ "asym/2pat/energy": {
+  "flux_nrmse": 0.4538253843784332,
+  "torque_r2": -3.814589023590088,
+  "n_train": 1065,
+  "seconds": 116.2
+ },
+ "asym/8pat/mlp": {
+  "flux_nrmse": 0.21724481880664825,
+  "torque_r2": 0.8303961157798767,
+  "n_train": 1572,
+  "seconds": 17.1
+ },
+ "asym/8pat/energy": {
+  "flux_nrmse": 0.20944488048553467,
+  "torque_r2": 0.1788526177406311,
+  "n_train": 1572,
+  "seconds": 172.9
+ },
+ "asym/24pat/mlp": {
+  "flux_nrmse": 0.16228607296943665,
+  "torque_r2": 0.9381296634674072,
+  "n_train": 2924,
+  "seconds": 15.2
+ },
+ "asym/24pat/energy": {
+  "flux_nrmse": 0.19379164278507233,
+  "torque_r2": 0.6344677209854126,
+  "n_train": 2924,
+  "seconds": 136.4
+ },
+ "asym/48pat/mlp": {
+  "flux_nrmse": 0.11277175694704056,
+  "torque_r2": 0.8992917537689209,
+  "n_train": 4951,
+  "seconds": 20.4
+ },
+ "asym/48pat/energy": {
+  "flux_nrmse": 0.1612975299358368,
+  "torque_r2": 0.5555678009986877,
+  "n_train": 4951,
+  "seconds": 175.4
+ },
+ "delta/0pat/mlp": {
+  "flux_nrmse": 0.2710284888744354,
+  "torque_r2": 0.8414862751960754,
+  "n_train": 896,
+  "seconds": 16.6
+ },
+ "delta/0pat/energy": {
+  "flux_nrmse": 0.28563186526298523,
+  "torque_r2": 0.17413491010665894,
+  "n_train": 896,
+  "seconds": 181.1
+ },
+ "delta/2pat/mlp": {
+  "flux_nrmse": 0.3340834379196167,
+  "torque_r2": 0.8978055119514465,
+  "n_train": 1065,
+  "seconds": 7.8
+ },
+ "delta/2pat/energy": {
+  "flux_nrmse": 0.631981611251831,
+  "torque_r2": -3.992743968963623,
+  "n_train": 1065,
+  "seconds": 52.1
+ },
+ "delta/8pat/mlp": {
+  "flux_nrmse": 0.3269936144351959,
+  "torque_r2": 0.8517929911613464,
+  "n_train": 1572,
+  "seconds": 20.2
+ },
+ "delta/8pat/energy": {
+  "flux_nrmse": 0.21530677378177643,
+  "torque_r2": -1.4263510704040527,
+  "n_train": 1572,
+  "seconds": 192.4
+ },
+ "delta/24pat/mlp": {
+  "flux_nrmse": 0.26262953877449036,
+  "torque_r2": 0.9544501304626465,
+  "n_train": 2924,
+  "seconds": 24.0
+ },
+ "delta/24pat/energy": {
+  "flux_nrmse": 0.17071014642715454,
+  "torque_r2": -0.387306809425354,
+  "n_train": 2924,
+  "seconds": 201.2
+ },
+ "delta/48pat/mlp": {
+  "flux_nrmse": 0.3576188385486603,
+  "torque_r2": 0.8434195518493652,
+  "n_train": 4951,
+  "seconds": 27.2
+ },
+ "delta/48pat/energy": {
+  "flux_nrmse": 0.20909036695957184,
+  "torque_r2": -0.18417596817016602,
+  "n_train": 4951,
+  "seconds": 120.7
+ }
+}

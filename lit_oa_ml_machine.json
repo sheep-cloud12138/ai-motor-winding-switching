@@ -1,0 +1,302 @@
+[
+  {
+    "doi": "",
+    "title": "Machine learning surrogates of high-fidelity electrical models.",
+    "year": 2022,
+    "cites": 0,
+    "venue": "OSTI OAI (U.S. Department of Energy Office of Scientific and Technical Information)",
+    "abstract": "Abstract not provided.",
+    "oa_url": "",
+    "url": "https://openalex.org/W4292770523"
+  },
+  {
+    "doi": "10.1002/bem.22535",
+    "title": "Characterization of Machine Learning‐Based Surrogate Models of Neural Activation Under Electrical Stimulation",
+    "year": 2024,
+    "cites": 8,
+    "venue": "Bioelectromagnetics",
+    "abstract": "Electrical stimulation of peripheral nerves via implanted electrodes has been shown to be a promising approach to restore sensation, movement, and autonomic functions across a wide range of illnesses and injuries. While in principle computational models of neuromodulation can allow the exploration of large parameter spaces and the automatic optimization of stimulation devices and strategies, their high time complexity hinders their use on a large scale. We recently proposed the use of machine learning-based surrogate models to estimate the activation of nerve fibers under electrical stimulation, producing a considerable speed-up with respect to biophysically accurate models of fiber excitation while retaining good predictivity. Here, we characterize the performance of four frequently employed machine learning algorithms and provide an illustrative example of their ability to generalize to unseen stimulation protocols, stimulating sites, and nerve sections. We then discuss how the ability to generalize to such scenarios is relevant to different optimization protocols, paving the way for the automatic optimization of neuromodulation applications.",
+    "oa_url": "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1002/bem.22535",
+    "url": "https://openalex.org/W4405912892"
+  },
+  {
+    "doi": "10.1002/jnm.70203",
+    "title": "Machine Learning Surrogate Modeling for Accurate Prediction of GAA ‐ MOSFET Electrical Characteristics",
+    "year": 2026,
+    "cites": 0,
+    "venue": "International Journal of Numerical Modelling Electronic Networks Devices and Fields",
+    "abstract": "ABSTRACT Machine learning regression models were employed to predict the electrical characteristics of GAA‐MOSFETs using a dataset of 459 simulation points. The models considered input features including gate voltage, drain voltage, channel length, silicon thickness, and metal work functions, with the logarithm of the drain current as the target. Various algorithms—including MLPRegressor, GradientBoostingRegressor, XGBRegressor, and ensemble tree‐based models—were trained with cross‐validation and evaluated on an independent test set. The MLPRegressor achieved the highest predictive performance ( R 2 = 0.9990, RMSE = 0.0946, MAE = 0.0612), closely reproducing simulation results for ON‐ and OFF‐state currents and threshold voltage. Feature importance analysis identified gate voltage and metal work function as the most influential parameters. The model accurately captured the effects of channel length and silicon thickness on device behavior, demonstrating its potential as a fast and reliable surrogate for computationally intensive numerical simulations, enabling rapid design and optimization of nanoscale transistors. In excess of DC behavior, the study is extended to small‐signal RF analysis and the linearity of the cylindrical GAA MOSFET: the transconductance ( g m ), output conductance ( g d ), transconductance generation factor (TGF), unity‐gain cutoff frequency ( f T ), and two‐port Y/S parameters. The simulated device exhibits a maximum transconductance ( g m ) of 107 μS, an intrinsic gain g m / g d of 54.5, and a cutoff frequency f T of 139 GHz. The same MLP model reproduces these RF performance metrics with a coefficient of determination R 2 > 0.97, enabling rapid design and optimization of nanoscale RF transistors.",
+    "oa_url": "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1002/jnm.70203",
+    "url": "https://openalex.org/W7204587670"
+  },
+  {
+    "doi": "10.1038/s41524-024-01375-7",
+    "title": "Machine learning surrogate for 3D phase-field modeling of ferroelectric tip-induced electrical switching",
+    "year": 2024,
+    "cites": 18,
+    "venue": "npj Computational Materials",
+    "abstract": "Phase-field modeling offers a powerful tool for investigating the electrical control of the domain structure in ferroelectrics. However, its broad application is constrained by demanding computational requirements, limiting its utility in inverse design scenarios. Here, we introduce a machine-learning surrogate to accelerate 3D phase-field modeling of tip-induced electrical switching. By dynamically handling the boundary conditions, the surrogate achieves accurate reproduction of switching trajectories under various tip locations and applied voltages. With stable predictions throughout entire morphological evolution pathways and a relative error inferior to 10% compared to direct solvers, the model efficiently emulates intricate switching sequences. By successfully replicating the boundary conditions, the presented framework strides towards a holistic surrogate for the ferroelectric phase field. With up to 2500-fold speed-ups over classical methods, our approach opens the path for the tractable design of the domain structure and the resolution of realistic inverse problems.",
+    "oa_url": "https://www.nature.com/articles/s41524-024-01375-7.pdf",
+    "url": "https://openalex.org/W4402053163"
+  },
+  {
+    "doi": "10.1109/access.2020.3042834",
+    "title": "Surrogate Modeling of Electrical Machine Torque Using Artificial Neural Networks",
+    "year": 2020,
+    "cites": 77,
+    "venue": "IEEE Access",
+    "abstract": "Machine learning and artificial neural networks have shown to be applicable in modeling and simulation of complex physical phenomena as well as creating surrogate models trained with physics-based simulation data for numerous applications that require good computational performance. In this article, we review widely the surrogate modeling concept and its applications in the electrical machine context. We present comprehensively a workflow for developing data-driven surrogate models including data generation with physics-based simulation and design of experiments, preprocessing of training data, and training and testing of the surrogates. We compare neural networks and gradient boosting decision trees in modeling and simulation of torque behavior of a permanent magnet synchronous machine together with selected design of experiments approaches with respect to surrogate accuracy and computational efficiency. In addition, an approach to utilizing domain knowledge to create a hybrid surrogate model in order to improve the surrogate accuracy is shown. The accuracy of the selected hybrid neural network was better than with the gradient boosting approach and was close to the finite element simulation, whereas its run-time efficiency was significantly better compared to the finite element simulation with a speed-up factor of over 2,000. In addition, combining the sampling methods provided better results than the selected methods alone.",
+    "oa_url": "https://ieeexplore.ieee.org/ielx7/6287639/6514899/09284635.pdf",
+    "url": "https://openalex.org/W3111814331"
+  },
+  {
+    "doi": "10.1016/j.rser.2025.115609",
+    "title": "Review of surrogate model assisted multi-objective design optimization of electrical machines: New opportunities and challenges",
+    "year": 2025,
+    "cites": 126,
+    "venue": "Renewable and Sustainable Energy Reviews",
+    "abstract": "",
+    "oa_url": "",
+    "url": "https://openalex.org/W4408657848"
+  },
+  {
+    "doi": "10.48550/arxiv.2406.18990",
+    "title": "A Fast Learning-Based Surrogate of Electrical Machines using a Reduced Basis",
+    "year": 2024,
+    "cites": 0,
+    "venue": "arXiv (Cornell University)",
+    "abstract": "A surrogate model approximates the outputs of a solver of Partial Differential Equations (PDEs) with a low computational cost. In this article, we propose a method to build learning-based surrogates in the context of parameterized PDEs, which are PDEs that depend on a set of parameters but are also temporal and spatial processes. Our contribution is a method hybridizing the Proper Orthogonal Decomposition and several Support Vector Regression machines. This method is conceived to work in real-time, thus aimed for being used in the context of digital twins, where a user can perform an interactive analysis of results based on the proposed surrogate. We present promising results on two use cases concerning electrical machines. These use cases are not toy examples but are produced an industrial computational code, they use meshes representing non-trivial geometries and contain non-linearities.",
+    "oa_url": "https://arxiv.org/pdf/2406.18990",
+    "url": "https://openalex.org/W4400103369"
+  },
+  {
+    "doi": "10.1016/j.apenergy.2020.116024",
+    "title": "A machine learning-based surrogate model to approximate optimal building retrofit solutions",
+    "year": 2020,
+    "cites": 129,
+    "venue": "Applied Energy",
+    "abstract": "The building sector has the highest share of operational energy consumption and greenhouse gas emissions among all sectors. Environmental targets set by many countries impose the need to improve the environmental footprint of the existing building stock. Building retrofit is considered one of the most promising solutions towards this direction. In this paper, a surrogate model for evaluating the necessary building envelope and energy system measures for building retrofit is presented. Artificial neural networks are exploited to build up this model in order to provide a good balance between accuracy and computational cost. The proposed model is trained and tested for the case study of the city of Zurich, in Switzerland, and is compared with one of the most advanced models for building retrofit that uses building simulation and optimization tools. The surrogate model operates on a smaller input set and the time required to derive retrofit solutions is reduced from 3.5 min to 16.4 μsec. Results show that the proposed model can provide significantly reduced computational cost without compromising accuracy for most of the retrofit dimensions. For instance, the retrofit costs and the energy system selections are approximated with an average accuracy of R2=0.9408 and f1score=0.9450, respectively. Finally, yet importantly, such surrogate retrofit models may effectively be used for bottom-up retrofit analyses for wide areas and can contribute towards accelerating the adoption of retrofit measures.",
+    "oa_url": "https://www.sciencedirect.com/science/article/pii/S0306261920314665/pdf",
+    "url": "https://openalex.org/W3096533084"
+  },
+  {
+    "doi": "10.1016/j.renene.2025.123657",
+    "title": "Topology-aware surrogate for future offshore wind farms using machine learning",
+    "year": 2025,
+    "cites": 4,
+    "venue": "Renewable Energy",
+    "abstract": "",
+    "oa_url": "",
+    "url": "https://openalex.org/W4411593468"
+  },
+  {
+    "doi": "10.1038/s41524-017-0056-5",
+    "title": "Machine learning in materials informatics: recent applications and prospects",
+    "year": 2017,
+    "cites": 1921,
+    "venue": "npj Computational Materials",
+    "abstract": "Abstract Propelled partly by the Materials Genome Initiative, and partly by the algorithmic developments and the resounding successes of data-driven efforts in other domains, informatics strategies are beginning to take shape within materials science. These approaches lead to surrogate machine learning models that enable rapid predictions based purely on past data rather than by direct experimentation or by computations/simulations in which fundamental equations are explicitly solved. Data-centric informatics methods are becoming useful to determine material properties that are hard to measure or compute using traditional methods—due to the cost, time or effort involved—but for which reliable data either already exists or can be generated for at least a subset of the critical cases. Predictions are typically interpolative, involving fingerprinting a material numerically first, and then following a mapping (established via a learning algorithm) between the fingerprint and the property of interest. Fingerprints, also referred to as “descriptors”, may be of many types and scales, as dictated by the application domain and needs. Predictions may also be extrapolative—extending into new materials spaces—provided prediction uncertainties are properly taken into account. This article attempts to provide an overview of some of the recent successful data-driven “materials informatics” strategies undertaken in the last decade, with particular emphasis on the fingerprint or descriptor choices. The review also identifies some challenges the community is facing and those that should be overcome in the near future.",
+    "oa_url": "https://www.nature.com/articles/s41524-017-0056-5.pdf",
+    "url": "https://openalex.org/W2963784900"
+  },
+  {
+    "doi": "10.1109/ner61569.2025.11588945",
+    "title": "Machine Learning-Based Surrogates of Musculoskeletal Models to Link Maintained Muscle Activations to Joint Angles",
+    "year": 2025,
+    "cites": 0,
+    "venue": "International IEEE/EMBS Conference on Neural Engineering",
+    "abstract": "While electrical stimulation can restore functional movements in paralyzed patients, stimulation parameter tuning is mostly performed by clinicians through trial-and-error. Computational models may enable automatic parameter optimization on digital twins, substantially reducing the required testing. Nonetheless, current computational models of electrical stimulation do not consider how neural activation is converted into movement through the musculoskeletal system. Musculoskeletal models may fill this gap, but exploring a large set of candidate stimulation protocols requires solving the forward dynamics problem for a very large number of degrees of freedom. Here, we show that traditional machine learning can be used to train surrogates of musculoskeletal models to predict the steady-state value of a specific joint angle given a set of tetanic muscle activations. We show that such machine learningbased surrogate models enable accurate angle prediction across different joints and musculoskeletal models, while providing an acceleration of more than three orders of magnitude. Additionally, these models are interpretable, and feature importance analysis correctly identifies the agonist-antagonist muscle groups maximally influencing the movement of a specific joint. Machine learning-based acceleration of musculoskeletal models paves the way for their integration into computational models to predict and optimize the effects of electrical stimulation in motor neuroprostheses.",
+    "oa_url": "",
+    "url": "https://openalex.org/W7167824868"
+  },
+  {
+    "doi": "10.1109/access.2018.2888903",
+    "title": "Machine Learning and Uncertainty Quantification for Surrogate Models of Integrated Devices With a Large Number of Parameters",
+    "year": 2018,
+    "cites": 110,
+    "venue": "IEEE Access",
+    "abstract": "This paper deals with the application of the support vector machine (SVM) and the least-squares SVM regressions to the uncertainty quantification of complex systems with a high-dimensional parameter space. The above regression techniques are used to build accurate and compact surrogate models of the system responses from a limited set of training samples. The accuracy and the feasibility of the proposed modeling techniques are then investigated by comparing their results with the ones predicted by a sparse polynomial chaos expansion by considering two real-life problems with 8 and 30 random variables, respectively.",
+    "oa_url": "https://ieeexplore.ieee.org/ielx7/6287639/8600701/08584446.pdf",
+    "url": "https://openalex.org/W2906356283"
+  },
+  {
+    "doi": "10.1016/j.microrel.2025.115775",
+    "title": "Machine learning-based surrogate models for finned heatsink thermal modeling",
+    "year": 2025,
+    "cites": 5,
+    "venue": "Microelectronics Reliability",
+    "abstract": "With the continuous increase in power density in modern power converter, there is a growing focus on thermal system design, as its performance is a key factor influencing power density and determining the reliability of power converter. As the main heat dissipation component in the power conversion field, the heatsink plays a significant role in improving the reliability of power converters. However, it is difficult to forecast the accurate thermal performance of the device in field use. Thus, the purpose of this work is to present and propose a methodology for heatsink modeling that are based on high-performance computing and machine learning. The developed ML-based surrogate models can predict the thermal performances of the heatsink without a complicated analytical model.",
+    "oa_url": "",
+    "url": "https://openalex.org/W4411092203"
+  },
+  {
+    "doi": "10.1038/s43588-022-00264-7",
+    "title": "Enhancing computational fluid dynamics with machine learning",
+    "year": 2022,
+    "cites": 602,
+    "venue": "Nature Computational Science",
+    "abstract": "",
+    "oa_url": "https://arxiv.org/pdf/2110.02085",
+    "url": "https://openalex.org/W4286909924"
+  },
+  {
+    "doi": "10.3390/electronics10233045",
+    "title": "Estimation and Interpretation of Machine Learning Models with Customized Surrogate Model",
+    "year": 2021,
+    "cites": 12,
+    "venue": "Electronics",
+    "abstract": "Machine learning has the potential to predict unseen data and thus improve the productivity and processes of daily life activities. Notwithstanding its adaptiveness, several sensitive applications based on such technology cannot compromise our trust in them; thus, highly accurate machine learning models require reason. Such models are black boxes for end-users. Therefore, the concept of interpretability plays the role if assisting users in a couple of ways. Interpretable models are models that possess the quality of explaining predictions. Different strategies have been proposed for the aforementioned concept but some of these require an excessive amount of effort, lack generalization, are not agnostic and are computationally expensive. Thus, in this work, we propose a strategy that can tackle the aforementioned issues. A surrogate model assisted us in building interpretable models. Moreover, it helped us achieve results with accuracy close to that of the black box model but with less processing time. Thus, the proposed technique is computationally cheaper than traditional methods. The significance of such a novel technique is that data science developers will not have to perform strenuous hands-on activities to undertake feature engineering tasks and end-users will have the graphical-based explanation of complex models in a comprehensive way—consequently building trust in a machine.",
+    "oa_url": "https://www.mdpi.com/2079-9292/10/23/3045/pdf?version=1639034805",
+    "url": "https://openalex.org/W4200352784"
+  },
+  {
+    "doi": "10.1109/icems59686.2023.10345235",
+    "title": "Optimal Design of Electrical Machine Utilizing Hybrid Kernel Extreme Learning Machine Method",
+    "year": 2023,
+    "cites": 2,
+    "venue": "International Conference on Electrical Machines and Systems (ICEMS)",
+    "abstract": "In the field of electrical engineering, aiming at the optimization design of electrical machine, this paper investigates one novel optimization strategy based on hybrid kernel extreme learning machine. To improve the prediction precision of surrogate model, the improved sparrow search algorithm is applied to solve optimization subproblems in the novel optimization strategy. The parallel infill strategy based on the distance density and the minimum response surface criteria is adopted to seek the optimal solution faster. Finally, test functions and the design of electrical machine are used to test the feasibility, practicability and superiority of the proposed optimization strategy.",
+    "oa_url": "",
+    "url": "https://openalex.org/W4389723839"
+  },
+  {
+    "doi": "10.1201/9781003641582-2",
+    "title": "Deep learning architectures for optimization of electrical machine design",
+    "year": 2026,
+    "cites": 0,
+    "venue": "CRC Press eBooks",
+    "abstract": "The optimization of electrical machine design is inherently multiobjective, involving the simultaneous consideration of torque ripple, efficiency, thermal behavior, weight, and manufacturability. Conventional optimization techniques rely on high-fidelity simulations using finite element analysis (FEA) and thermal modeling, which are computationally expensive and time-consuming. Deep learning offers a compelling solution via the potential to create rapid, very accurate surrogate models that replicate simulation response and allow fast design exploration. The chapter presents a comprehensive overview of the use of deep neural networks (DNNs) utilized in surrogate modeling and optimization of electrical machines. The methodology includes architecture design, activation functions, training, and performance measures, with functional MATLAB examples provided throughout. A case study involving efficiency optimization of a brushless DC (BLDC) motor is employed to demonstrate model tuning, validation, and deployment. Closing the design simulation loop with real-time feedback, deep learning not only accelerates design cycles but also enables intelligent, adaptive design paradigms for next-generation electrical machines.",
+    "oa_url": "",
+    "url": "https://openalex.org/W7131155421"
+  },
+  {
+    "doi": "10.1109/tmag.2014.2364031",
+    "title": "Modeling Finite-Element Constraint to Run an Electrical Machine Design Optimization Using Machine Learning",
+    "year": 2015,
+    "cites": 14,
+    "venue": "IEEE Transactions on Magnetics",
+    "abstract": "This paper proposes a method to the model constraints from different models to run an optimization over models with different granularities. Through machine learning, the proposed method has proven to be able to accurately map the constraints and minimize the number of call to the model. It handles both continuous and discrete variables and mixes design rules to statistic approach to create a surrogate of the model.",
+    "oa_url": "",
+    "url": "https://openalex.org/W2069311272"
+  },
+  {
+    "doi": "10.3934/mina.2024011",
+    "title": "Machine learning-based surrogates for eVTOL performance prediction and design optimization",
+    "year": 2024,
+    "cites": 4,
+    "venue": "Metascience in Aerospace",
+    "abstract": "Predicting the performance of different electric vertical take-off and landing (eVTOL) vehicle designs is paramount to vehicle manufacturers and hobbyists. These vehicles' maximum flight time (endurance) and maximum flight distance (range) depend on design and operational parameters relating to their structure, propulsion system, payload, and mission profile. In recent years, sophisticated physics-based models have been developed to estimate and optimize their aerodynamic, propulsion, and electrical performance. Integrating and simulating those models can closely estimate a vehicle's endurance and range. However, this demands advanced knowledge of different subsystems utilized and extensive computational resources limiting the wide-scale utilization of such models. This paper showcases the development and implementation of a framework to train simpler machine learning-based surrogates. The surrogate models are trained on a limited number of eVTOL performance estimates generated by physics-based models and can mimic them accurately. Forty-seven thousand eVTOL vehicle designs were simulated to generate the training data for various machine-learning models. These include several decision tree models, K-nearest neighbor models, linear regression models, and a multi-perceptron neural network model. Vehicle design and operational parameters such as propeller size, payload mass, drag coefficient, velocity, and motor and battery parameters are used as features, and vehicle endurance and range estimates are used as targets. Compared to the alternative approaches, these surrogate models are computationally very efficient and easy to understand and use. Testing on hold-out datasets shows excellent performance, with multiple models having a mean average percentage error of less than 2% in estimating vehicle endurance and range.",
+    "oa_url": "http://www.aimspress.com/aimspress-data/mina/2024/3/PDF/mina-01-03-011.pdf",
+    "url": "https://openalex.org/W4400516470"
+  },
+  {
+    "doi": "",
+    "title": "Machine Learning based Surrogate Modeling of Electronic Devices and Circuits",
+    "year": 2023,
+    "cites": 0,
+    "venue": "PORTO@Iris",
+    "abstract": "L'abstract è presente nell'allegato / the abstract is in the attachment",
+    "oa_url": "https://iris.polito.it/bitstream/11583/2981494/2/NS_PhD_thesis.pdf",
+    "url": "https://openalex.org/W7217129005"
+  },
+  {
+    "doi": "10.3390/computation8010015",
+    "title": "Machine-Learning Methods for Computational Science and Engineering",
+    "year": 2020,
+    "cites": 223,
+    "venue": "Computation",
+    "abstract": "The re-kindled fascination in machine learning (ML), observed over the last few decades, has also percolated into natural sciences and engineering. ML algorithms are now used in scientific computing, as well as in data-mining and processing. In this paper, we provide a review of the state-of-the-art in ML for computational science and engineering. We discuss ways of using ML to speed up or improve the quality of simulation techniques such as computational fluid dynamics, molecular dynamics, and structural analysis. We explore the ability of ML to produce computationally efficient surrogate models of physical applications that circumvent the need for the more expensive simulation techniques entirely. We also discuss how ML can be used to process large amounts of data, using as examples many different scientific fields, such as engineering, medicine, astronomy and computing. Finally, we review how ML has been used to create more realistic and responsive virtual reality applications.",
+    "oa_url": "https://www.mdpi.com/2079-3197/8/1/15/pdf?version=1583246110",
+    "url": "https://openalex.org/W3009386672"
+  },
+  {
+    "doi": "10.1109/wipda63755.2025.11303433",
+    "title": "Machine-Learning-Enabled p-Gate GaN HEMT Surrogate Model for Semiconductor Database",
+    "year": 2025,
+    "cites": 2,
+    "venue": "IEEE Workshop on Wide Bandgap Power Devices and Applications",
+    "abstract": "Electrical data for emerging non-silicon semiconductor devices (e.g., GaN) remain scarce due to high fabrication costs. While Technology Computer-Aided Design (TCAD) tools can simulate device behavior, TCAD licenses are generally not available to the public, and the required computational resources can be substantial. Therefore, it is desirable to have a universal automated framework to generate surrogate models for various devices. This paper demonstrates the concept using machine learning (ML) applied to TCAD-generated data for a p-gate GaN high-electron-mobility transistor (HEMT). The proposed framework enables the extraction of electrical characteristics (IDVD, IDVG, IGVG, BV) under the variations of seven device parameters. High accuracy was obtained through the use of modified autoencoders, which can learn the latent physics. The TCAD data and the surrogate models are implemented on an online semiconductor database for research and education purposes.",
+    "oa_url": "",
+    "url": "https://openalex.org/W7117458466"
+  },
+  {
+    "doi": "10.1016/j.ejrh.2022.101087",
+    "title": "Predicting combined tidal and pluvial flood inundation using a machine learning surrogate model",
+    "year": 2022,
+    "cites": 57,
+    "venue": "Journal of Hydrology Regional Studies",
+    "abstract": "Flooding increases in recent years, in particular for coastal communities facing sea level rise, have brought renewed attention to real-time, street-scale flood forecasting. Such flood models using conventional physics-based modeling approaches are often unrealistic for real-time decision support use cases due to their long model runtime. Machine learning offers an alternative strategy whereby a surrogate model can be trained to mimic relationships present within the physics-based model and, after training, can run in seconds rather than hours. This study used the Random Forest (RF) algorithm to emulate a 1D/2D physics-based model simulating surface water depths in an urban coastal watershed in Norfolk, Virginia. Environmental features from a selected set of pluvial and tidal flood events and topographic information of the roadway were the input variables to train the surrogate model. Results show the potential for the surrogate model to predict flood extent and depth for both pluvial and tidal flood events. Furthermore, the surrogate model can differentiate between flooding locations dominated by pluvial or tidal flooding or impacted by both flooding mechanisms. Flood reports from the mobile app Waze were used for model validation and show 90% agreement with flooding locations from the surrogate model. Finally, feature importance methods were investigated to interpret the performance of the RF models and understand the contribution of different physical features to localized flooding.",
+    "oa_url": "https://www.sciencedirect.com/science/article/pii/S2214581822001008/pdf",
+    "url": "https://openalex.org/W4224244033"
+  },
+  {
+    "doi": "10.1109/access.2023.3282453",
+    "title": "A Machine Learning-Based Surrogate Finite Element Model for Estimating Dynamic Response of Mechanical Systems",
+    "year": 2023,
+    "cites": 71,
+    "venue": "IEEE Access",
+    "abstract": "An efficient approach for improving the predictive understanding of dynamic mechanical system variability is developed in this work. The approach requires low model assessment time through the fitting of surrogate models. ML-based surrogate algorithms for finite element analysis (FEA) are developed in this study to accelerate FEA and prevent rerunning complex simulations. The research begins with an overview of the recent novelties in ML algorithms applied to finite element (FE) and other physics-based computational schemes. To predict the time-varying response variables, that is, the displacement of a two-dimensional truss structure, a surrogate FE technique based on ML algorithms is developed. In this work, several ML regression algorithms, including decision trees (DTs) and deep neural networks, are developed, and their efficacies are compared. In this study, the ML-based surrogate FE models are able to effectively predict the response of the truss structure in two dimensions over the entire structure. Extreme gradient-boosting DTs provide more precise outcomes and outperform other ML algorithms.",
+    "oa_url": "https://ieeexplore.ieee.org/ielx7/6287639/10005208/10143077.pdf",
+    "url": "https://openalex.org/W4379113503"
+  },
+  {
+    "doi": "10.58248/pn633",
+    "title": "Interpretable machine learning",
+    "year": 2020,
+    "cites": 951,
+    "venue": "",
+    "abstract": "Machine learning (ML, a type of artificial intelligence) is increasingly being used to support decision making in a variety of applications including recruitment and clinical diagnoses. While ML has many advantages, there are concerns that in some cases it may not be possible to explain completely how its outputs have been produced. This POSTnote gives an overview of ML and its role in decision-making. It examines the challenges of understanding how a complex ML system has reached its output, and some of the technical approaches to making ML easier to interpret. It also gives a brief overview of some of the proposed tools for making ML systems more accountable.",
+    "oa_url": "https://researchbriefings.files.parliament.uk/documents/POST-PN-0633/POST-PN-0633.pdf",
+    "url": "https://openalex.org/W4402843978"
+  },
+  {
+    "doi": "10.1016/j.jdbs.2026.08.003",
+    "title": "Comparison of machine learning surrogate models for prediction of single-fiber activation in deep brain stimulation",
+    "year": 2026,
+    "cites": 0,
+    "venue": "Deep Brain Stimulation",
+    "abstract": "Abstract Machine-learning surrogate models are positioned to help optimize deep brain stimulation (DBS) usage by predicting neural activation in response to electrical stimulation, while minimizing tradeoffs between computational expense and accuracy. Previous work has developed high accuracy artificial neural network (ANN) and convolutional neural network (CNN) surrogate models that predict activation of individual, myelinated axons, to extracellular electrical stimulation for subsets of DBS programming configurations. Moreover, more traditional machine learning methods including extreme gradient boosting (XGBoost) have been used effectively for peripheral-nerve single-fiber activation predictions. We build upon the previous work and compare ANN, CNN and XGBoost methods to a much expanded set of electrode programming configurations including: monopolar, bipolar, tripolar, quadrupolar, multiple monopolar, and multiple cases of directional leads. Training used datasets generated from a finite-element model of an implanted DBS lead together with multi-compartment cable models of synthetically generated axons. We evaluated the machine learning predictors using white matter pathways derived from group-averaged connectome data within a patient-specific tissue conductivity field, comparing both predicted stimulus activation thresholds and pathway recruitment across a clinically relevant range of stimulus amplitudes and pulse widths. Our ANN and CNN models successfully predicted neural fiber activation for almost all electrode configurations with low error, expanding the scope of our previous predictor model. Results also showed key limitations of XGBoost models and superior performance of CNNs for more complex electrostatic fields of the directional leads.",
+    "oa_url": "",
+    "url": "https://openalex.org/W7161230593"
+  },
+  {
+    "doi": "10.1109/lemcpa.2020.3042122",
+    "title": "Machine Learning for the Uncertainty Quantification of Power Networks",
+    "year": 2020,
+    "cites": 10,
+    "venue": "IEEE Letters on Electromagnetic Compatibility Practice and Applications",
+    "abstract": "This letter addresses the uncertainty quantification of a power network and is based on surrogate models built via Machine Learning techniques. Specifically, the least-square support vector machine regression is combined with the principal component analysis to generate a compressed surrogate model capable of predicting all the nodal voltages of the network as a function of the uncertain electrical parameters of the transmission lines. The surrogate model is built from a limited number of system responses provided by the computational model. The power flow analysis of the benchmark IEEE-118 bus system with 250 parameters is considered as a test case. The performance of the proposed modeling strategy in terms of accuracy, efficiency and convergence, are assessed and compared with those of an alternative surrogate model based on a sparse implementation of the polynomial chaos expansion. The results of a Monte Carlo simulation are used as reference in the above comparison.",
+    "oa_url": "https://iris.polito.it/bitstream/11583/2960715/3/jnl-2020-LEMCPA-Variability.pdf",
+    "url": "https://openalex.org/W3128881243"
+  },
+  {
+    "doi": "10.1038/s41578-022-00490-5",
+    "title": "Machine learning for a sustainable energy future",
+    "year": 2022,
+    "cites": 521,
+    "venue": "Nature Reviews Materials",
+    "abstract": "",
+    "oa_url": "https://www.nature.com/articles/s41578-022-00490-5.pdf",
+    "url": "https://openalex.org/W4306698380"
+  },
+  {
+    "doi": "10.3390/su14084832",
+    "title": "Machine Learning and Deep Learning in Energy Systems: A Review",
+    "year": 2022,
+    "cites": 346,
+    "venue": "Sustainability",
+    "abstract": "With population increases and a vital need for energy, energy systems play an important and decisive role in all of the sectors of society. To accelerate the process and improve the methods of responding to this increase in energy demand, the use of models and algorithms based on artificial intelligence has become common and mandatory. In the present study, a comprehensive and detailed study has been conducted on the methods and applications of Machine Learning (ML) and Deep Learning (DL), which are the newest and most practical models based on Artificial Intelligence (AI) for use in energy systems. It should be noted that due to the development of DL algorithms, which are usually more accurate and less error, the use of these algorithms increases the ability of the model to solve complex problems in this field. In this article, we have tried to examine DL algorithms that are very powerful in problem solving but have received less attention in other studies, such as RNN, ANFIS, RBN, DBN, WNN, and so on. This research uses knowledge discovery in research databases to understand ML and DL applications in energy systems’ current status and future. Subsequently, the critical areas and research gaps are identified. In addition, this study covers the most common and efficient applications used in this field; optimization, forecasting, fault detection, and other applications of energy systems are investigated. Attempts have also been made to cover most of the algorithms and their evaluation metrics, including not only algorithms that are more important, but also newer ones that have received less attention.",
+    "oa_url": "https://www.mdpi.com/2071-1050/14/8/4832/pdf?version=1650272052",
+    "url": "https://openalex.org/W4224282610"
+  },
+  {
+    "doi": "10.3390/info11040193",
+    "title": "Machine Learning in Python: Main Developments and Technology Trends in Data Science, Machine Learning, and Artificial Intelligence",
+    "year": 2020,
+    "cites": 713,
+    "venue": "Information",
+    "abstract": "Smarter applications are making better use of the insights gleaned from data, having an impact on every industry and research discipline. At the core of this revolution lies the tools and the methods that are driving it, from processing the massive piles of data generated each day to learning from and taking useful action. Deep neural networks, along with advancements in classical machine learning and scalable general-purpose graphics processing unit (GPU) computing, have become critical components of artificial intelligence, enabling many of these astounding breakthroughs and lowering the barrier to adoption. Python continues to be the most preferred language for scientific computing, data science, and machine learning, boosting both performance and productivity by enabling the use of low-level libraries and clean high-level APIs. This survey offers insight into the field of machine learning with Python, taking a tour through important topics to identify some of the core hardware and software paradigms that have enabled it. We cover widely-used libraries and concepts, collected together for holistic comparison, with the goal of educating the reader and driving the field of Python machine learning forward.",
+    "oa_url": "https://www.mdpi.com/2078-2489/11/4/193/pdf?version=1587379966",
+    "url": "https://openalex.org/W3006150655"
+  }
+]

@@ -1,0 +1,8 @@
+{
+ "n": 64,
+ "flux_max_rel_diff": 0.30345019698143005,
+ "flux_mean_rel_diff": 0.10419259965419769,
+ "torque_max_rel_diff": 4.66550874710083,
+ "torque_mean_rel_diff": 0.339213103055954,
+ "torque_median_rel_diff": 0.12723124027252197
+}

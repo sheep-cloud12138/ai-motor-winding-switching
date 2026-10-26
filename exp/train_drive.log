@@ -1,0 +1,3 @@
+pool {np.str_('2S2P'): 336, np.str_('4S'): 336, np.str_('asym'): 336, np.str_('delta'): 336, np.str_('densebeta'): 2304, np.str_('random'): 4608, np.str_('random3'): 1152, np.str_('sync'): 10368, np.str_('zero'): 12}
+mlp val flux_nrmse 0.0392 torque_r2 0.9931 (21s)
+energy val flux_nrmse 0.0610 torque_r2 0.9457 (227s)

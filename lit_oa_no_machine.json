@@ -1,0 +1,302 @@
+[
+  {
+    "doi": "10.1115/detc2025-168594",
+    "title": "Accelerating Electric-Magnetic Machine Simulation Using the Fourier Neural Operator (FNO)",
+    "year": 2025,
+    "cites": 0,
+    "venue": "",
+    "abstract": "Abstract Electrical machines traditionally rely on Finite Element Analysis (FEA) to evaluate or simulate their properties by solving the associated partial differential equations (PDEs). However, FEA is computationally costly, which limits its capability for rapid design iteration and real-time simulations. While recent surrogate models such as Physics-Informed Neural Networks (PINNs) have shown promise, they often suffer from slow convergence and scalability issues in complex geometries. In this paper, we propose the use of the Fourier Neural Operator (FNO) as a resolution-invariant surrogate model to significantly reduce the computation time required for FEA-based PDE solutions in electric machines. Previous research has demonstrated the FNO’s ability to learn mappings for time-sequence problems by approximating operators between function spaces. Building on this, we present a methodology to directly predict the later-state electromagnetic fields of a rotating interior permanent magnet (IPM) motor based on its earlier-stage data by approximating the underlying operator that governs these transitions. Our framework enables full-geometry modeling without relying on segmentation, preserving accuracy while dramatically improving computational efficiency. The model was trained and validated on an FEA dataset with multiple boundary conditions and motor configurations, demonstrating strong generalization across different designs and resolutions. Experimental results show that the proposed FNO method achieves a significant reduction in computational time compared to traditional FEA simulations while maintaining an acceptable level of accuracy. This study highlights the potential of neural operators for accelerating electromagnetic simulations, enabling faster design iterations and offering new possibilities for real-time and optimization-based applications in electric machine design.",
+    "oa_url": "",
+    "url": "https://openalex.org/W4415598860"
+  },
+  {
+    "doi": "10.1016/j.brs.2019.06.015",
+    "title": "Real-time estimation of electric fields induced by transcranial magnetic stimulation with deep neural networks",
+    "year": 2019,
+    "cites": 60,
+    "venue": "Brain stimulation",
+    "abstract": "BACKGROUND: Transcranial magnetic stimulation (TMS) plays an important role in treatment of mental and neurological illnesses, and neurosurgery. However, it is difficult to target specific brain regions accurately because the complex anatomy of the brain substantially affects the shape and strength of the electric fields induced by the TMS coil. A volume conductor model can be used for determining the accurate electric fields; however, the construction of subject-specific anatomical head structures is time-consuming. OBJECTIVE: The aim of this study is to propose a method to estimate electric fields induced by TMS from only T1 magnetic resonance (MR) images, without constructing a subject-specific anatomical model. METHODS: Very large sets of electric fields in the brain of subject-specific anatomical models, which are constructed from T1 and T2 MR images, are computed by a volume conductor model. The relation between electric field distribution and T1 MR images is used for machine learning. Deep neural network (DNN) models are applied for the first time to electric field estimation. RESULTS: By determining the relationships between the T1 MR images and electric fields by DNN models, the process of electric field estimation is markedly accelerated (to 0.03 s) due to the absence of a requirement for anatomical head structure reconstruction and volume conductor computation. Validation shows promising estimation accuracy, and rapid computations of the DNN model are apt for practical applications. CONCLUSION: The study showed that the DNN model can estimate the electric fields from only T1 MR images and requires low computation time, suggesting the possibility of using machine learning for real-time electric field estimation in navigated TMS.",
+    "oa_url": "https://www.brainstimjrnl.com/article/S1935-861X(19)30266-9/pdf",
+    "url": "https://openalex.org/W2951693320"
+  },
+  {
+    "doi": "10.1038/s41598-026-74936-z",
+    "title": "Physics-informed neural operators for rapid electric field prediction in transcranial magnetic stimulation of healthy and tumor subjects",
+    "year": 2026,
+    "cites": 0,
+    "venue": "Scientific Reports",
+    "abstract": "Accurate and rapid prediction of transcranial magnetic stimulation (TMS)-induced electric fields is essential for personalized clinical applications, from individualized therapy in major depressive disorder to presurgical functional mapping in neuro-oncology. Yet conventional finite element methods are often too computationally expensive for interactive use. Existing deep learning surrogate models partly address this limitation but are largely constrained to fixed voxel-grid representations that cannot naturally accommodate the irregular geometry of subject-specific head meshes. We present the first physics-informed neural operator (PINO) for subject-specific prediction of vector TMS electric fields, built on a mesh-native dual-encoder architecture that jointly encodes head anatomy and coil configuration. By incorporating a curl-based regularization term aligned with the curl-free nature of the TMS secondary field, the PINO model promotes physical consistency as a soft regularizer alongside data-driven supervision. Trained on 75 subjects from the IXI dataset, the framework was evaluated across four independent held-out test datasets, including healthy subjects from two additional MRI cohorts and, for the first time in learning-based TMS electric-field prediction, tumor patients. The resolution-agnostic formulation generalizes across subjects, coil types, and spatial resolutions without retraining, predicting vector electric fields on approximately 300,000 gray matter volume nodes in under 100 ms on a consumer-grade GPU. Across all test datasets within the focality-50% region, the PINO model achieved median center-of-gravity errors of 0.39–0.43 mm, RMSE of 0.12–0.16 V/m, and mean angular deviations of 6.7°–7.3°, with performance within or below the error ranges reported by recent deep-learning approaches. At the selected 5% physics-loss weighting, curl loss decreased by 9.1% relative to the data-only model, while RMSE and MAD increased by only 1.6% and 1.3%, respectively. These results suggest that physics-informed neural operators provide a scalable technical foundation for rapid gray-matter electric-field approximation, supporting future studies on real-time electric-field-guided TMS workflows",
+    "oa_url": "https://www.nature.com/articles/s41598-026-74936-z_reference.pdf",
+    "url": "https://openalex.org/W7222746061"
+  },
+  {
+    "doi": "10.1109/access.2021.3099760",
+    "title": "Electric and Magnetic Field Estimation Under Overhead Transmission Lines Using Artificial Neural Networks",
+    "year": 2021,
+    "cites": 40,
+    "venue": "IEEE Access",
+    "abstract": "In this paper, a novel method for electric field intensity and magnetic flux density estimation in the vicinity of the high voltage overhead transmission lines is proposed. The proposed method is based on two fully connected feed-forward neural networks to independently estimate electric field intensity and magnetic flux density. The artificial neural networks are trained using the scaled conjugate gradient algorithm. Training datasets corresponds to different overhead transmission line configurations that are generated using an algorithm that is especially developed for this purpose. The target values for the electric field intensity and magnetic flux density datasets are calculated using the charge simulation method and Biot-Savart law based method, respectively. This data is generated for fixed applied voltage and current intensity values. In instances when the applied voltage and current intensity values differ from those used in the artificial neural network training, the electric field intensity and magnetic flux density results are appropriately scaled. In order to verify the validity of the proposed method, a comparative analysis of the proposed method with the charge simulation method for electric field intensity calculation and Biot-Savart law-based method for magnetic flux density calculation is presented. Furthermore, the results of the proposed method are compared to measurement results obtained in the vicinity of two 400 kV transmission lines. The performance analysis results showed that proposed method can produce accurate electric field intensity and magnetic flux density estimation results for different overhead transmission line configurations.",
+    "oa_url": "https://ieeexplore.ieee.org/ielx7/6287639/9312710/09495772.pdf",
+    "url": "https://openalex.org/W3184346571"
+  },
+  {
+    "doi": "10.1088/0031-9155/37/4/001",
+    "title": "Non-ionizing radiation safety: radiofrequency radiation, electric and magnetic fields",
+    "year": 1992,
+    "cites": 52,
+    "venue": "Physics in Medicine and Biology",
+    "abstract": "The static, low-frequency and radiofrequency parts of the electromagnetic spectrum are used in various areas of human activity. Equipment utilizing this energy today is to be found in industry, medicine, commerce and private homes. The author provides a short survey of the biological effects and concentrates on the principal experimental and theoretical bases which allow the assessment of data on potential hazards to human health resulting from exposure to electromagnetic fields.",
+    "oa_url": "https://iopscience.iop.org/article/10.1088/0031-9155/37/4/001/pdf",
+    "url": "https://openalex.org/W1984999667"
+  },
+  {
+    "doi": "10.1109/bigdata62323.2024.10825452",
+    "title": "Global-local Fourier Neural Operator for Accelerating Coronal Magnetic Field Model",
+    "year": 2024,
+    "cites": 6,
+    "venue": "IEEE International Conference on Big Data (BigData)",
+    "abstract": "Exploring the outer atmosphere of the sun has remained a significant bottleneck in astrophysics, given the intricate magnetic formations that significantly influence diverse solar events. Magnetohydrodynamics (MHD) simulations allow us to model the complex interactions between the sun’s plasma, magnetic fields, and the surrounding environment. However, MHD simulation is extremely time-consuming, taking days or weeks for simulation. The goal of this study is to accelerate coronal magnetic field simulation using deep learning, specifically, the Fourier Neural Operator (FNO). FNO has been proven to be an ideal tool for scientific computing and discovery in the literature. In this paper, we proposed a global-local Fourier Neural Operator (GL-FNO) that contains two branches of FNOs: the global FNO branch takes downsampled input to reconstruct global features while the local FNO branch takes original resolution input to capture fine details. The performance of the GL-FNO is compared with state-of-the-art deep learning methods, including FNO, U-NO, U-FNO, Vision Transformer, CNN-RNN, and CNN-LSTM, to demonstrate its accuracy, computational efficiency, and scalability. Furthermore, physics-based analysis from domain experts is also performed to demonstrate the reliability of GL-FNO. The results show that GL-FNO not only accelerates the MHD simulation (a few seconds for prediction, more than ×20,000 speed up) but also provides reliable prediction capabilities, thus greatly contributing to the understanding of space weather dynamics. Our code implementation is available at https://github.com/Yutao-0718/GL-FNO.",
+    "oa_url": "https://arxiv.org/pdf/2405.12754",
+    "url": "https://openalex.org/W4406459268"
+  },
+  {
+    "doi": "10.1371/journal.pcbi.1014283",
+    "title": "Spatial richness of neural magnetic fields",
+    "year": 2026,
+    "cites": 1,
+    "venue": "PLoS Computational Biology",
+    "abstract": "Brain implants that measure neural magnetic fields, rather than electrical potentials, are expected to confer significant clinical advantages related to implant longevity and signal fidelity due to the elimination of the electrode-tissue interface. However, the informational differences between neural electrical potentials and magnetic fields remain poorly understood. Using a mathematical formalism based on neuronal current sources, we directly establish the complementary informational content of extracellular magnetic fields and electrical potentials. This formalism also reveals that extracellular magnetic fields generated by spiking neurons inherently exhibit one order lower spatial polarity than electric fields, resulting in more favorable distance-scaling characteristics. We then use computational modeling to illustrate how dense networks of neurons are easier to distinguish and spike sort on the basis of their magnetic, rather than electrical, spike templates. Lastly, we show how the solenoidal nature of neural magnetic fields facilitates approximate morphological reconstruction, even with sparse sensor arrays. Our findings highlight the unique experimental advantages of neural magnetic field sensing, motivating the development of compact, low-noise devices capable of meeting the stringent sensitivity requirements for cortical recordings.",
+    "oa_url": "https://journals.plos.org/ploscompbiol/article/file?id=10.1371/journal.pcbi.1014283&type=printable",
+    "url": "https://openalex.org/W4410256442"
+  },
+  {
+    "doi": "",
+    "title": "Generalizable Data-Driven Machine Learning Surrogates for Characterizing Hysteresis:Applied to Piezoelectric and Magnetic Materials",
+    "year": 2025,
+    "cites": 0,
+    "venue": "TU/e Research Portal",
+    "abstract": "Electric machines based on piezoelectric and soft magnetic materials are integral to modern technology. Soft magnetic material-based electric machines consume more than 40% of global electricity production. Furthermore, piezoelectric materials are foundational in high-end engineering systems with applications in semiconductor manufacturing, advanced robotics, and automation. Hence, accurately modeling and characterizing these machines is essential for designing and optimizing the operation, minimizing energy losses, and stimulating scientific advancements. Consequently, a thorough understanding of their constitutive behavior holds societal and scientific significance. Hysteresis, a common constitutive property of piezoelectric and soft magnetic materials, arises from delayed response and irreversible changes at the microstructural level under the action of external stimuli, such as an applied electrical or magnetic field. This nonlinear, history-dependent behavior introduces challenges in predicting system responses. In electromechanical actuators and devices, hysteresis affects control strategies and increases energy losses, limiting the performance and efficiency of these systems. Therefore, characterizing hysteresis is important for improving control, reducing power consumption, and enhancing reliability across applications. This research develops advanced data-driven machine learning-based surrogates to model hysteresis. Traditionally approached using domain-specific methods, hysteresis modeling often lacks generalizability and is limited by cross-domain knowledge transfer. Machine learning, particularly deep learning, offers a promising alternative to overcome these limitations by contributing efficient and adaptable surrogate models capable of capturing complex nonlinear behaviors. The research presented in this thesis leverages three main methodologies from the field of machine learning and is subsequently divided into three parts: symbolic modeling, neural differential equations, and neural operator learning. Symbolic models, owing to their interpretability, are pivotal for constitutive modeling. This research employs a sparse regression framework for discovering closed-form dynamical hysteresis models in piezoelectric materials. Numerical experimental results demonstrate that the proposed approach generates accurate and computationally efficient symbolic expressions for real-world piezoelectric actuators, where the closed-form dynamics are initially unknown. Modeling soft magnetic hysteresis in the form of differential equations is challenging, prompting reliance on black-box machine learning surrogates. For piezoelectric hysteresis, the developed framework achieves similar accuracy with up to a four times reduction in computational time compared to benchmark deep learning methods. The research mitigates the challenge of discovering symbolic models for soft magnetic hysteresis by exploring deep learning as an alternative. Fragmented works in recurrent neural architectures capture the sequential nature of magnetic hysteresis. However, these methods lack generalization to unseen magnetic excitations outside the training data (excitations that are not used to train the machine learning surrogates) for various magnitudes or unseen hysteresis loops. Furthermore, phenomenological models like the Preisach face challenges in scarce-data regimes. This research proposes a neural differential equation framework to mitigate these challenges and predict first-order reversal curves and minor loops using data only from major loops. By preserving physical symmetries, this framework generalizes to unseen excitations with up to 70x greater accuracy and 80x less computational cost than conventional recurrent neural architectures, advancing modeling in scarce-data scenarios. Despite the success of neural differential equations in extrapolating excitation-response relationships, they fail to generalize to entirely unseen excitation fields that are not used to train the network. This limitation motivates the need for a paradigm shift towards learning hysteresis operators that efficiently map diverse excitations to responses. This research introduces the widely used operator learning algorithms and tailors them for hysteresis modeling. These methods outperform traditional recurrent approaches quantitatively by two to three orders of magnitude and qualitatively in their generalization capabilities. The efficacy of the proposed approach is shown for both piezoelectric and soft magnetic hysteresis, highlighting its versatility and cross-domain potential. While powerful, the conventional neural operator methods are limited to the specific excitation spaces they are trained on, which creates challenges when predictions are needed for unseen piezoelectric or magnetic excitations, beyond the trained excitation spaces. To address this limitation, the research introduces a neuro-symbolic operator framework that combines the Fourier neural operator with symbolic model discovery techniques to extract interpretable symbolic representations from the learned black-box models. This approach achieves nearly 100-fold improvements in accuracy over traditional neural operators and offers approximately ten percent improvement over conventional model discovery methods, thereby broadening the applicability of operator learning to more diverse excitations. In conclusion, the research presented in this thesis advances hysteresis modeling by the fusion of machine learning with the study of piezoelectric and soft magnetic materials. It addresses key gaps in constitutive modeling through cross-domain methodological developments. The proposed frameworks provide robust, generalizable surrogates for analyzing complex piezoelectric and soft magnetic materials, highlighting the transformative potential of machine learning in characterizing electrical machines, addressing energy efficiency, and developing sustainable technologies.",
+    "oa_url": "",
+    "url": "https://openalex.org/W7111979417"
+  },
+  {
+    "doi": "10.1063/1.5053562",
+    "title": "Operators in quantum machine learning: Response properties in chemical space",
+    "year": 2019,
+    "cites": 131,
+    "venue": "The Journal of Chemical Physics",
+    "abstract": "The role of response operators is well established in quantum mechanics. We investigate their use for universal quantum machine learning models of response properties in molecules. After introducing a theoretical basis, we present and discuss numerical evidence based on measuring the potential energy's response with respect to atomic displacement and to electric fields. Prediction errors for corresponding properties, atomic forces, and dipole moments improve in a systematic fashion with training set size and reach high accuracy for small training sets. Prediction of normal modes and infrared-spectra of some small molecules demonstrates the usefulness of this approach for chemistry.",
+    "oa_url": "https://aip.scitation.org/doi/pdf/10.1063/1.5053562",
+    "url": "https://openalex.org/W2883239328"
+  },
+  {
+    "doi": "10.3389/fspas.2022.869740",
+    "title": "Revisiting the Ground Magnetic Field Perturbations Challenge: A Machine Learning Perspective",
+    "year": 2022,
+    "cites": 28,
+    "venue": "Frontiers in Astronomy and Space Sciences",
+    "abstract": "Forecasting ground magnetic field perturbations has been a long-standing goal of the space weather community. The availability of ground magnetic field data and its potential to be used in geomagnetically induced current studies, such as risk assessment, have resulted in several forecasting efforts over the past few decades. One particular community effort was the Geospace Environment Modeling (GEM) challenge of ground magnetic field perturbations that evaluated the predictive capacity of several empirical and first principles models at both mid- and high-latitudes in order to choose an operative model. In this work, we use three different deep learning models-a feed-forward neural network, a long short-term memory recurrent network and a convolutional neural network-to forecast the horizontal component of the ground magnetic field rate of change ( dB H / dt ) over 6 different ground magnetometer stations and to compare as directly as possible with the original GEM challenge. We find that, in general, the models are able to perform at similar levels to those obtained in the original challenge, although the performance depends heavily on the particular storm being evaluated. We then discuss the limitations of such a comparison on the basis that the original challenge was not designed with machine learning algorithms in mind.",
+    "oa_url": "https://www.frontiersin.org/articles/10.3389/fspas.2022.869740/pdf",
+    "url": "https://openalex.org/W4281492984"
+  },
+  {
+    "doi": "10.3390/en14144296",
+    "title": "A Review of Modeling and Diagnostic Techniques for Eccentricity Fault in Electric Machines",
+    "year": 2021,
+    "cites": 42,
+    "venue": "Energies",
+    "abstract": "Research on the modeling and fault diagnosis of rotor eccentricities has been conducted during the past two decades. A variety of diagnostic theories and methods have been proposed based on different mechanisms, and there are reviews following either one type of electric machines or one type of eccentricity. Nonetheless, the research routes of modeling and diagnosis are common, regardless of machine or eccentricity types. This article tends to review all the possible modeling and diagnostic approaches for all common types of electric machines with eccentricities and provide suggestions on future research roadmap. The paper indicates that a reliable low-cost non-intrusive real-time online visualized diagnostic method is the trend. Observer-based diagnostic strategies are thought promising for the continued research.",
+    "oa_url": "https://www.mdpi.com/1996-1073/14/14/4296/pdf?version=1626430524",
+    "url": "https://openalex.org/W3186912806"
+  },
+  {
+    "doi": "10.1103/physrevlett.121.111801",
+    "title": "Constraining Effective Field Theories with Machine Learning",
+    "year": 2018,
+    "cites": 161,
+    "venue": "Physical Review Letters",
+    "abstract": "We present powerful new analysis techniques to constrain effective field theories at the LHC. By leveraging the structure of particle physics processes, we extract extra information from Monte Carlo simulations, which can be used to train neural network models that estimate the likelihood ratio. These methods scale well to processes with many observables and theory parameters, do not require any approximations of the parton shower or detector response, and can be evaluated in microseconds. We show that they allow us to put significantly stronger bounds on dimension-six operators than existing methods, demonstrating their potential to improve the precision of the LHC legacy constraints.",
+    "oa_url": "http://link.aps.org/pdf/10.1103/PhysRevLett.121.111801",
+    "url": "https://openalex.org/W2798398359"
+  },
+  {
+    "doi": "10.1615/jmachlearnmodelcomput.2022041753",
+    "title": "A NEURAL SOLVER FOR VARIATIONAL PROBLEMS ON CAD GEOMETRIES WITH APPLICATION TO ELECTRIC MACHINE SIMULATION",
+    "year": 2022,
+    "cites": 4,
+    "venue": "Journal of Machine Learning for Modeling and Computing",
+    "abstract": "This work presents a deep learning-based framework for the solution of partial differential equations on complex computational domains described with computer-aided design tools.To account for the underlying distribution of the training data caused by spline-based projections from the reference to the physical domain, a variational neural solver equipped with an importance sampling scheme is developed, such that the loss function based on the discretized energy functional obtained after the weak formulation is modified according to the sample distribution.To tackle multipatch domains possibly leading to solution discontinuities, the variational neural solver is additionally combined with a domain decomposition approach based on the discontinuous Galerkin formulation.The proposed neural solver is verified on a toy problem and then applied to a real-world engineering test case, namely, that of electric machine simulation.The numerical results show clearly that the neural solver produces physics-conforming solutions of significantly improved accuracy.",
+    "oa_url": "https://www.dl.begellhouse.com/download/article/496ff5d27002fb81/JMLMC0301(3)-41753.pdf",
+    "url": "https://openalex.org/W3213310542"
+  },
+  {
+    "doi": "10.1007/978-3-030-21293-3_3",
+    "title": "Estimates of Peak Electric Fields Induced by Transcranial Magnetic Stimulation in Pregnant Women as Patients or Operators Using an FEM Full-Body Model",
+    "year": 2019,
+    "cites": 7,
+    "venue": "Springer eBooks",
+    "abstract": "Transcranial magnetic stimulation (TMS) is increasingly used as a diagnostic and therapeutic tool for neuropsychiatric disorders. TMS for treatment of depression during pregnancy is an appealing alternative to fetus-threatening drugs. However, there are no studies to date that evaluate the safety of TMS for a pregnant mother and her fetus. Two scenarios are possible in practice: (i) pregnant woman as a patient and (ii) pregnant woman as an operator. The goal of the present study is to estimate maximum field exposures for the fetus in both scenarios. A full-body finite element method (FEM) compatible model of a pregnant woman with about 100 tissue parts has been developed for the present study. This model allows detailed computations of induced current/electric field in every tissue given different locations of a figure-eight coil, a biphasic pulse, common TMS pulse durations, and using different values of the TMS intensity measured in standard motor threshold (SMT) units. Along with the numerical simulations, we use a simple analytical estimation model; both approaches confirm and augment each other. Our simulation/analytical results estimate the maximum peak values of the electric field in the fetal area and beyond in 48 (operator/patient) representative cases, for every fetal tissue separately and for a TMS intensity of one SMT unit. This study provides the first detailed data on risk to fetal exposure to induced fields by TMS in pregnant patients and pregnant operators. It is expandable to any patient/operator configuration by applying a simple analytical upper estimate of field strength/eddy current density.",
+    "oa_url": "https://link.springer.com/content/pdf/10.1007%2F978-3-030-21293-3_3.pdf",
+    "url": "https://openalex.org/W4238693421"
+  },
+  {
+    "doi": "10.48550/arxiv.2302.06542",
+    "title": "Fourier Neural Operator for Plasma Modelling",
+    "year": 2023,
+    "cites": 13,
+    "venue": "arXiv (Cornell University)",
+    "abstract": "Predicting plasma evolution within a Tokamak is crucial to building a sustainable fusion reactor. Whether in the simulation space or within the experimental domain, the capability to forecast the spatio-temporal evolution of plasma field variables rapidly and accurately could improve active control methods on current tokamak devices and future fusion reactors. In this work, we demonstrate the utility of using Fourier Neural Operator (FNO) to model the plasma evolution in simulations and experiments. Our work shows that the FNO is capable of predicting magnetohydrodynamic models governing the plasma dynamics, 6 orders of magnitude faster than the traditional numerical solver, while maintaining considerable accuracy (NMSE $\\sim 10^{-5})$. Our work also benchmarks the performance of the FNO against other standard surrogate models such as Conv-LSTM and U-Net and demonstrate that the FNO takes significantly less time to train, requires less parameters and outperforms other models. We extend the FNO approach to model the plasma evolution observed by the cameras positioned within the MAST spherical tokamak. We illustrate its capability in forecasting the formation of filaments within the plasma as well as the heat deposits. The FNO deployed to model the camera is capable of forecasting the full length of the plasma shot within half the time of the shot duration.",
+    "oa_url": "https://arxiv.org/pdf/2302.06542",
+    "url": "https://openalex.org/W4320854962"
+  },
+  {
+    "doi": "10.3390/app132011180",
+    "title": "A New Intelligent Estimation Method Based on the Cascade-Forward Neural Network for the Electric and Magnetic Fields in the Vicinity of the High Voltage Overhead Transmission Lines",
+    "year": 2023,
+    "cites": 18,
+    "venue": "Applied Sciences",
+    "abstract": "The evaluation and estimation of the electric and magnetic field (EMF) intensity in the vicinity of overhead transmission lines (OHTL) is of paramount importance for residents’ healthcare and industrial monitoring purposes. Using artificial intelligence (AI) techniques makes researchers able to estimate EMF with extremely high accuracy in a significantly short time. In this paper, two models based on the Artificial Neural Network (ANN) have been developed for estimating electric and magnetic fields, i.e., feed-forward neural network (FFNN) and cascade-forward neural network (CFNN). By performing the sensitivity analysis on controlling/hyper-parameters of these two ANN models, the best setup resulting in the highest possible accuracy considering their response time has been chosen. Overall, the CFNN achieved a significant 56% reduction in Root Mean Squared Error (RMSE) for the electric field and a 5% reduction for the magnetic field, compared to the FFNN. This indicates that the CFNN model provided more accurate predictions, particularly for the electric field than the proposed methods in other recent works, making it a promising choice for this application. When the model is trained, it will be tested by a different dataset. Then, the accuracy and response time of the model for new data points of that layout will be evaluated through this process. The model can predict the fields with an accuracy near 99.999% of the actual values in times under 10 ms. Also, the results of sensitivity analysis indicated that the CFNN models with triple and double hidden layers are the best options for the electric and magnetic field estimation, respectively.",
+    "oa_url": "https://www.mdpi.com/2076-3417/13/20/11180/pdf?version=1697029663",
+    "url": "https://openalex.org/W4387576716"
+  },
+  {
+    "doi": "10.1093/mnras/stad3320",
+    "title": "Modelling solar coronal magnetic fields with physics-informed neural networks",
+    "year": 2023,
+    "cites": 15,
+    "venue": "Monthly Notices of the Royal Astronomical Society",
+    "abstract": "ABSTRACT We present a novel numerical approach aiming at computing equilibria and dynamics structures of magnetized plasmas in coronal environments. A technique based on the use of neural networks that integrates the partial differential equations of the model, and called physics-informed neural networks (PINNs), is introduced. The functionality of PINNs is explored via calculation of different magnetohydrodynamic (MHD) equilibrium configurations, and also obtention of exact two-dimensional steady-state magnetic reconnection solutions. Advantages and drawbacks of PINNs compared to traditional numerical codes are discussed in order to propose future improvements. Interestingly, PINNs is a meshfree method in which the obtained solution and associated different order derivatives are quasi-instantaneously generated at any point of the spatial domain. We believe that our results can help to pave the way for future developments of time dependent MHD codes based on PINNs.",
+    "oa_url": "https://academic.oup.com/mnras/advance-article-pdf/doi/10.1093/mnras/stad3320/52727348/stad3320.pdf",
+    "url": "https://openalex.org/W4388409634"
+  },
+  {
+    "doi": "10.48550/arxiv.2311.05964",
+    "title": "Multiscale Neural Operators for Solving Time-Independent PDEs",
+    "year": 2023,
+    "cites": 2,
+    "venue": "arXiv (Cornell University)",
+    "abstract": "Time-independent Partial Differential Equations (PDEs) on large meshes pose significant challenges for data-driven neural PDE solvers. We introduce a novel graph rewiring technique to tackle some of these challenges, such as aggregating information across scales and on irregular meshes. Our proposed approach bridges distant nodes, enhancing the global interaction capabilities of GNNs. Our experiments on three datasets reveal that GNN-based methods set new performance standards for time-independent PDEs on irregular meshes. Finally, we show that our graph rewiring strategy boosts the performance of baseline methods, achieving state-of-the-art results in one of the tasks.",
+    "oa_url": "https://arxiv.org/pdf/2311.05964",
+    "url": "https://openalex.org/W4388650910"
+  },
+  {
+    "doi": "10.1016/j.cma.2026.119223",
+    "title": "Equilibrium conserving neural operators for super-resolution operator learning in mechanics of materials",
+    "year": 2026,
+    "cites": 0,
+    "venue": "Computer Methods in Applied Mechanics and Engineering",
+    "abstract": "Neural surrogate solvers can estimate solutions to parametric partial differential equations in physical problems more efficiently than standard numerical methods, but they require extensive high-resolution training data. This is particularly limiting in mechanics of materials where non-smooth microstructure features such as grain boundaries lead to frequency-rich solutions that require high-resolution simulations to capture completely. We break this limitation by introducing a framework for ‘super-resolution operator learning’ — a paradigm we define as training a high-resolution operator using exclusively low-resolution data. Our Equilibrium Conserving Operator (ECO) architecture enables this by embedding known physics – specifically, conservation laws – directly into the network to make up for high-resolution information missing in the under-resolved training data. We demonstrate this approach using linear elastic problems in mechanics of materials as a testbed, illustrating its efficacy on frequency-rich problems of elastic deformation in porous and polycrystalline materials. This ECO framework eliminates the reliance on high-resolution training data, reducing the upfront cost of data collection by two orders of magnitude and offering a robust pathway for resource-efficient operator learning. ECO is readily generalizable to other physics-based problems.",
+    "oa_url": "https://www.sciencedirect.com/science/article/pii/S0045782526004962/pdf",
+    "url": "https://openalex.org/W7169813283"
+  },
+  {
+    "doi": "10.5772/13875",
+    "title": "Swarm Intelligence Based Controller for Electric Machines and Hybrid Electric Vehicles Applications",
+    "year": 2011,
+    "cites": 0,
+    "venue": "InTech eBooks",
+    "abstract": "Swarm Intelligence in the form of Particle Swarm Optimization (PSO) has potential applications in electric drives. The excellent characteristics of PSO may be successfully used to optimize the performance of electric machines and electric drives in many aspects. It is estimated that, electric machines consume more than 50 % of the world",
+    "oa_url": "https://www.intechopen.com/citation-pdf-url/14091",
+    "url": "https://openalex.org/W1490355814"
+  },
+  {
+    "doi": "10.1088/1741-4326/ad313a",
+    "title": "Plasma surrogate modelling using Fourier neural operators",
+    "year": 2024,
+    "cites": 41,
+    "venue": "Nuclear Fusion",
+    "abstract": "Abstract Predicting plasma evolution within a Tokamak reactor is crucial to realizing the goal of sustainable fusion. Capabilities in forecasting the spatio-temporal evolution of plasma rapidly and accurately allow us to quickly iterate over design and control strategies on current Tokamak devices and future reactors. Modelling plasma evolution using numerical solvers is often expensive, consuming many hours on supercomputers, and hence, we need alternative inexpensive surrogate models. We demonstrate accurate predictions of plasma evolution both in simulation and experimental domains using deep learning-based surrogate modelling tools, viz., Fourier neural operators (FNO). We show that FNO has a speedup of six orders of magnitude over traditional solvers in predicting the plasma dynamics simulated from magnetohydrodynamic models, while maintaining a high accuracy (Mean Squared Error in the normalised domain ≈ 10 − 5 ). Our modified version of the FNO is capable of solving multi-variable Partial Differential Equations, and can capture the dependence among the different variables in a single model. FNOs can also predict plasma evolution on real-world experimental data observed by the cameras positioned within the MAST Tokamak, i.e. cameras looking across the central solenoid and the divertor in the Tokamak. We show that FNOs are able to accurately forecast the evolution of plasma and have the potential to be deployed for real-time monitoring. We also illustrate their capability in forecasting the plasma shape, the locations of interactions of the plasma with the central solenoid and the divertor for the full (available) duration of the plasma shot within MAST. The FNO offers a viable alternative for surrogate modelling as it is quick to train and infer, and requires fewer data points, while being able to do zero-shot super-resolution and getting high-fidelity solutions.",
+    "oa_url": "",
+    "url": "https://openalex.org/W4392564583"
+  },
+  {
+    "doi": "10.21203/rs.3.rs-9452458/v1",
+    "title": "Performance Comparison of Neural Network Approaches for Electric Potential Field Generation in Surface Ion Traps",
+    "year": 2026,
+    "cites": 0,
+    "venue": "Research Square",
+    "abstract": "",
+    "oa_url": "https://www.researchsquare.com/article/rs-9452458/latest.pdf",
+    "url": "https://openalex.org/W7167735861"
+  },
+  {
+    "doi": "10.48550/arxiv.2606.16653",
+    "title": "The CREATOR Project: Towards a Computational Electric Machine Laboratory",
+    "year": 2026,
+    "cites": 0,
+    "venue": "arXiv (Cornell University)",
+    "abstract": "The Collaborative Research Centre TRR 361/F90 CREATOR (2022-2030) aims at establishing a new paradigm for the simulation-driven design of electric machines. Increasing demands on efficiency, power density and sustainability require the integration of multiphysical effects, advanced materials and complex geometries into the design process. Traditional sequential workflows are no longer sufficient to address these challenges. CREATOR therefore combines expertise from electrical engineering, applied mathematics, fluid dynamics and materials science to establish integrated modelling, simulation and optimisation methodologies in a single large-scale project funded by the German and Austrian national funding agencies. This article provides an overview of the research vision, key achievements from the first funding period (2022-2026) and current developments towards a computational electric machine laboratory.",
+    "oa_url": "https://arxiv.org/pdf/2606.16653",
+    "url": "https://openalex.org/W7164903794"
+  },
+  {
+    "doi": "10.1007/s10915-022-01939-z",
+    "title": "Scientific Machine Learning Through Physics–Informed Neural Networks: Where we are and What’s Next",
+    "year": 2022,
+    "cites": 2803,
+    "venue": "Journal of Scientific Computing",
+    "abstract": "Abstract Physics-Informed Neural Networks (PINN) are neural networks (NNs) that encode model equations, like Partial Differential Equations (PDE), as a component of the neural network itself. PINNs are nowadays used to solve PDEs, fractional equations, integral-differential equations, and stochastic PDEs. This novel methodology has arisen as a multi-task learning framework in which a NN must fit observed data while reducing a PDE residual. This article provides a comprehensive review of the literature on PINNs: while the primary goal of the study was to characterize these networks and their related advantages and disadvantages. The review also attempts to incorporate publications on a broader range of collocation-based physics informed neural networks, which stars form the vanilla PINN, as well as many other variants, such as physics-constrained neural networks (PCNN), variational hp-VPINN, and conservative PINN (CPINN). The study indicates that most research has focused on customizing the PINN through different activation functions, gradient optimization techniques, neural network structures, and loss function structures. Despite the wide range of applications for which PINNs have been used, by demonstrating their ability to be more feasible in some contexts than classical numerical techniques like Finite Element Method (FEM), advancements are still possible, most notably theoretical issues that remain unresolved.",
+    "oa_url": "https://link.springer.com/content/pdf/10.1007/s10915-022-01939-z.pdf",
+    "url": "https://openalex.org/W4288039037"
+  },
+  {
+    "doi": "10.1016/j.autcon.2021.103964",
+    "title": "Utilization of electric prime movers in hydraulic heavy-duty-mobile-machine implement systems",
+    "year": 2021,
+    "cites": 51,
+    "venue": "Automation in Construction",
+    "abstract": "Electrifying vehicles yields advantages such as reduced emissions, better performance and more flexibility. While electric machines can directly drive the wheels or tracks of heavy-duty mobile machines (HDMMs), the implements require a combination of electrics and hydraulics for robust, high-force linear actuation. This survey focuses on different of such electro-hydraulic implement systems that have been proposed by industry and academia over the last decades. For the hydraulic circuits, centralized valve-controlled architectures are identified as less progressive but easy to implement for a fast market penetration, while novel decentralized circuit concepts can be more efficient but also more challenging for HDMMs compared to stationary or aircraft applications. The electric machine (EM)-pump combinations are mostly formed out of standard components so far, while customized, integrated or even linear-pump concepts offer room for improvement. Different forms of non-stationary electric energy supplies were also found to be numerous, but many technologies require more development.",
+    "oa_url": "https://www.sciencedirect.com/science/article/pii/S0926580521004155/pdf",
+    "url": "https://openalex.org/W3206654307"
+  },
+  {
+    "doi": "10.36227/techrxiv.176617819.95258667/v2",
+    "title": "Toward the Fast Electromagnetic Solver with Physics-Informed Fourier Neural Operator",
+    "year": 2026,
+    "cites": 0,
+    "venue": "",
+    "abstract": "In this study, a Physics-Informed Fourier Neural Operator (PI-FNO) is proposed for solving electromagnetic problems. The imbalance among different loss terms in conventional Physics-Informed Neural Networks (PINNs) is avoided by directly approximating the integral physical laws. By leveraging the Green's function and neural operators, the PI-FNO exhibits strong adaptability to varying mesh densities with a single training run. Its effectiveness is validated through several electromagnetic scattering examples, including strong field-scattering interactions. Results indicate that proposed method delivers high accuracy and robustness while significantly reducing computational cost, providing a resolution-insensitive neural framework for fast electromagnetic modeling and solving.",
+    "oa_url": "https://www.techrxiv.org/doi/pdf/10.36227/techrxiv.176617819.95258667/v2",
+    "url": "https://openalex.org/W7118195554"
+  },
+  {
+    "doi": "10.3390/su15032603",
+    "title": "Electric Vehicle Charging System in the Smart Grid Using Different Machine Learning Methods",
+    "year": 2023,
+    "cites": 188,
+    "venue": "Sustainability",
+    "abstract": "Smart cities require the development of information and communication technology to become a reality (ICT). A “smart city” is built on top of a “smart grid”. The implementation of numerous smart systems that are advantageous to the environment and improve the quality of life for the residents is one of the main goals of the new smart cities. In order to improve the reliability and sustainability of the transportation system, changes are being made to the way electric vehicles (EVs) are used. As EV use has increased, several problems have arisen, including the requirement to build a charging infrastructure, and forecast peak loads. Management must consider how challenging the situation is. There have been many original solutions to these problems. These heavily rely on automata models, machine learning, and the Internet of Things. Over time, there have been more EV drivers. Electric vehicle charging at a large scale negatively impacts the power grid. Transformers may face additional voltage fluctuations, power loss, and heat if already operating at full capacity. Without EV management, these challenges cannot be solved. A machine-learning (ML)-based charge management system considers conventional charging, rapid charging, and vehicle-to-grid (V2G) technologies while guiding electric cars (EVs) to charging stations. This operation reduces the expenses associated with charging, high voltages, load fluctuation, and power loss. The effectiveness of various machine learning (ML) approaches is evaluated and compared. These techniques include Deep Neural Networks (DNN), K-Nearest Neighbors (KNN), Long Short-Term Memory (LSTM), Random Forest (RF), Support Vector Machine (SVM), and Decision Tree (DT) (DNN). According to the results, LSTM might be used to give EV control in certain circumstances. The LSTM model’s peak voltage, power losses, and voltage stability may all be improved by compressing the load curve. In addition, we keep our billing costs to a minimum, as well.",
+    "oa_url": "https://www.mdpi.com/2071-1050/15/3/2603/pdf?version=1675240701",
+    "url": "https://openalex.org/W4318827344"
+  },
+  {
+    "doi": "10.1007/s42452-026-08930-5",
+    "title": "Research and application of magnetic field mutation warning technology for seat belts under the coupling effect of multiple physical fields",
+    "year": 2026,
+    "cites": 0,
+    "venue": "Discover Applied Sciences",
+    "abstract": "Abstract When it comes to electric power workers’ safety, the capacity to self-rescue is paramount. The present safety belt system, nevertheless, can only prevent operators from falling to the ground; it is inconvenient for operators to do autonomous rescues and get back on the wire. This research proposes a novel safety belt design concept to enhance electric power workers’ self-rescue abilities. The newly developed safety belt differs most noticeably from the old one in that it incorporates a pedal belt and a new kind of buffer bag, making it easier for operators to shift their position and ascend. Results from testing the safety belt alongside the new buffer bag show that it significantly improves the level of protection for power line workers, in addition to having basic safety protection ability and effectively assisting workers to carry out self-rescue. In order to improve protection with usefulness on building sites, this study describes a smart seat belt that has a power switch and a warning light on the connected seat. The use of electrical seat belts in factories is not, however, covered in any detail. The half effect sensor is used to enhance the protection effectiveness of construction workers by determining the pre-tensioning the force for somatosensory notification reminders and for minimizing the gap in the web of seat belts.From an electromagnetic radiation safety perspective, electric motors may be able to be manufactured in accordance with suitable standards.While the magnet using Convolutional Neural Networks (CNNs) with Multi-Layered Perception (MLP). Power safety belt configuration is also required for high-voltage power lines, therefore it has potential applications in industrial production and manufacturing.In this paper, the suggests a new design of safety belts in high-risk settings, which should include magnetic field sensors and anomaly detectors based on machine learning. The system employs Hall-effect and reed switch sensors to measure the tension of belts and occupancy and machine learning models are used to classify possible failure states by sensor measurements. The experimental findings indicate that the proposed system has a classification accuracy of 97.56% to detect abnormal belt conditions with a loss of 0.001 in validation. The system also makes 30% less response time than the conventional seat belt monitoring systems, which proves to be a great enhancement in safety performance.",
+    "oa_url": "",
+    "url": "https://openalex.org/W7203840125"
+  },
+  {
+    "doi": "10.1016/j.cageo.2025.106052",
+    "title": "EFKAN: A KAN-integrated neural operator for efficient magnetotelluric forward modeling",
+    "year": 2025,
+    "cites": 1,
+    "venue": "Computers & Geosciences",
+    "abstract": "",
+    "oa_url": "https://arxiv.org/pdf/2502.02195",
+    "url": "https://openalex.org/W4414286509"
+  },
+  {
+    "doi": "10.1002/nap2.70242",
+    "title": "Broadband Electromagnetic Field Prediction at Unseen Wavelengths via Physics‐Guided Neural Operators",
+    "year": 2026,
+    "cites": 1,
+    "venue": "Nanophotonics",
+    "abstract": "ABSTRACT Surrogate solvers that deliver full‐wave accuracy across broad spectral ranges can unlock the rapid design and analysis of nanophotonic devices. We present a physics‐guided neural‐operator surrogate solver that predicts electromagnetic field distributions throughout the visible band from a permittivity map and a query wavelength, including wavelengths unseen during training. Our approach is built on two key ideas: (i) spectral consistency, which formalizes the intrinsic relationship between wavelength‐dependent field variations and spatial frequency, and (ii) a conditional embedding framework that comprises a refined wave prior. We validate the approach on three representative nanophotonic platforms—a single‐layer metasurface (metalenses), a five‐layer volumetric metasurface (spectrum‐splitters), and a freeform waveguide for photonic integrated circuits—achieving full‐wave fidelity while reducing mean field‐prediction error relative to prior operator‐learning baselines by up to 80.3% (single‐layer), 56.8% (multilayer), and 32.3% (waveguide). The solver remains compact (0.43 M parameters; 86.9% fewer than FNO) and accelerates simulation by compared with a finite‐difference frequency‐domain solver while yielding robust broadband generalization. By providing continuous‐wavelength field predictions with full‐wave accuracy, this surrogate solver eliminates a key bottleneck in modeling and inverse design of metalenses, spectrum splitters, and emerging large‐area meta‐optics, offering a drop‐in engine for system‐level co‐optimization in nanophotonics.",
+    "oa_url": "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1002/nap2.70242",
+    "url": "https://openalex.org/W7202075587"
+  }
+]

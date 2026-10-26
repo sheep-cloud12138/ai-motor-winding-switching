@@ -1,0 +1,21 @@
+asym/0pat/mlp nrmse 1.002 T_r2 0.949
+asym/0pat/energy nrmse 1.000 T_r2 0.397
+asym/2pat/mlp nrmse 0.510 T_r2 0.834
+asym/2pat/energy nrmse 0.454 T_r2 -3.815
+asym/8pat/mlp nrmse 0.217 T_r2 0.830
+asym/8pat/energy nrmse 0.209 T_r2 0.179
+asym/24pat/mlp nrmse 0.162 T_r2 0.938
+asym/24pat/energy nrmse 0.194 T_r2 0.634
+asym/48pat/mlp nrmse 0.113 T_r2 0.899
+asym/48pat/energy nrmse 0.161 T_r2 0.556
+delta/0pat/mlp nrmse 0.271 T_r2 0.841
+delta/0pat/energy nrmse 0.286 T_r2 0.174
+delta/2pat/mlp nrmse 0.334 T_r2 0.898
+delta/2pat/energy nrmse 0.632 T_r2 -3.993
+delta/8pat/mlp nrmse 0.327 T_r2 0.852
+delta/8pat/energy nrmse 0.215 T_r2 -1.426
+delta/24pat/mlp nrmse 0.263 T_r2 0.954
+delta/24pat/energy nrmse 0.171 T_r2 -0.387
+delta/48pat/mlp nrmse 0.358 T_r2 0.843
+delta/48pat/energy nrmse 0.209 T_r2 -0.184
+done

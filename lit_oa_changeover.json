@@ -1,0 +1,302 @@
+[
+  {
+    "doi": "10.1109/tmag.2012.2196266",
+    "title": "Winding Changeover Permanent-Magnet Generators for Renewable Energy Applications",
+    "year": 2012,
+    "cites": 29,
+    "venue": "IEEE Transactions on Magnetics",
+    "abstract": "This paper reports on the development of a permanent-magnet (PM) generator for a wind turbine which has variable winding connections for load matching. This means that the generator characteristics can be regulated via winding changeover so that the wind turbine can be controlled and maximum power point tacking (MPPT) followed; constant power output is possible without pitch control, complex algorithms or expensive power converters. The operating range (up to the cut-out point) can be extended into the high wind speed zone without drawing high power from the wind. This is achieved by maintaining the generator at the rated power when the wind speed increases beyond the rated point. Therefore, the specifications and costs of the generator and power electronics can be reduced. Experiments are conducted to demonstrate the effectiveness of the presented method.",
+    "oa_url": "",
+    "url": "https://openalex.org/W2013670858"
+  },
+  {
+    "doi": "10.1109/icem51905.2022.9910923",
+    "title": "Mechanical Winding Changeover System of Induction Motors for Vehicle Applications",
+    "year": 2022,
+    "cites": 4,
+    "venue": "International Conference on Electrical Machines (ICEM)",
+    "abstract": "This report presents a mechanical winding- changeover system to improve energy consumption of traction motors for automobiles. We have adopted multi contacts to downsize the winding-changeover device and established the operation principle which does not occur any contact arc, where the switching timing is controlled so that the motor internal voltage is constantly below the inverter DC voltage. A developed winding-changeover device is downsized by half compared with the conventional relay structure of 5L, with rated current of 440 Arms, and will ensure the longer lifetime of the switching contact. The actual test of 1.5 kW induction motor system demonstrated that the contact arc did not occur at the winding changeover operation during motor acceleration.",
+    "oa_url": "",
+    "url": "https://openalex.org/W4306148139"
+  },
+  {
+    "doi": "10.1109/tia.2024.3464567",
+    "title": "Induction Motor Drive System With Novel Mechanical Winding Changeover Device",
+    "year": 2024,
+    "cites": 4,
+    "venue": "IEEE Transactions on Industry Applications",
+    "abstract": "This report presents a mechanical winding-changeover system to improve energy consumption of traction motors for automobiles. Conventional mechanical winding changeover devices have two drawbacks: large volume for large current, and short lifetime due to contact arc. We have adopted multi contacts to downsize the winding changeover device, which results in half size compared with the conventional relay structure of 5 L, with rated current of 440 Arms. We also established the operation principle which does not occur any contact arc, where the switching timing is controlled so that the motor internal voltage is constantly below the inverter DC voltage. Our developed winding changeover device can be provided with the longer lifetime of the switching contact. The actual test of 1.5 kW induction motor (IM) system demonstrated that the contact arc did not occur at the winding changeover operation during motor acceleration. Measurement results also demonstrated that the proposed winding changeover devices would endure the switching more than 200,000 reciprocation. Furthermore, energy loss was estimated to be reduced by 4% at WLTC mode because of the improvement of system efficiency due to winding changeover.",
+    "oa_url": "",
+    "url": "https://openalex.org/W4402631229"
+  },
+  {
+    "doi": "10.1109/28.90350",
+    "title": "A wide constant power range vector-controlled AC motor drive using winding changeover technique",
+    "year": 1991,
+    "cites": 81,
+    "venue": "IEEE Transactions on Industry Applications",
+    "abstract": "A high-performance vector-controlled induction motor drive with a very wide constant power range of 1:10 to 1:30 has been developed and widely accepted in the spindle drives of machine tools. The motor has two combinations of winding connections, and one of them is selected in accordance with the operating conditions. The versatility of the winding changeover technique has been introduced and demonstrated. A wide constant power range is achieved, and the gear box used in a conventional machine is eliminated. In addition, it was proved by actual operations that the machining operation can be continued during the changeover without sacrificing the quality of the final product. The basic idea, features, and test results of this technique are described.>",
+    "oa_url": "",
+    "url": "https://openalex.org/W2149569180"
+  },
+  {
+    "doi": "10.1109/ecce.2019.8912540",
+    "title": "Novel Winding Changeover Method for A High Efficiency AC Motor Drive",
+    "year": 2019,
+    "cites": 9,
+    "venue": "IEEE Energy Conversion Congress and Exposition (ECCE)",
+    "abstract": "AC motors have been used in many applications owing to their wide speed range and their high efficiency. However, the maximum speed of the AC motor is limited by the back electromotive force(BEMF) which is determined by the mechanical parameter of a machine. By using the field-weakening control, it can be controlled above the base-speed, but this method also has its limitation. To extend a speed-range of machine under operation, the studies on the methods of changing mechanical elements that affect the BEMF have been conducted. The mechanical elements which affect the BEMF are number of poles, connection method, and the number of the turns in the winding changeover method. The conventional change over method of the number of the turns requires switch box with diode bridges and a snubber capacitor [7], [8]. These methods could generate the torque ripple by the long transient time occurred by winding-changeover circuit. In this paper, a novel method is proposed to complement the problems of power transmission and torque ripple without the need of the switch box. The experimental results show the reduced transient time when the winding is changed also show that no power transmission occurs since this method does not use the diode bridges and a snubber capacitor.",
+    "oa_url": "",
+    "url": "https://openalex.org/W2990141946"
+  },
+  {
+    "doi": "10.1109/icrera.2015.7418548",
+    "title": "Seamless star-delta winding changeover circuit for AC generators",
+    "year": 2015,
+    "cites": 4,
+    "venue": "International Conference on Renewable Energy Research and Applications (ICRERA)",
+    "abstract": "This paper proposes a circuit, which can change the winding connection of a generator from the star connection mode to the delta connection mode by changing the circuit operation. In the conventional method, the outage time exits during the dead-time of two magnet contactors. Therefore, the generator current cannot maintain its continuity. Moreover, the surge voltage occurs in the terminal of the generator. In order to achieve the seamless winding changeover, this paper proposes a new circuit, which consists of a PWM rectifier, a diode bridge rectifier and three additional switches. From the simulation results, the transition from the star connection mode to the delta connection mode, and the continuous generator current during the transition time are confirmed. In addition, it is confirmed that the current THD can reduce by supplying the reactive current with the generator of the delta connection mode. When the generator has percent reactance of 30%, the current THD is improved from 19% to 3%.",
+    "oa_url": "",
+    "url": "https://openalex.org/W2291313611"
+  },
+  {
+    "doi": "10.23919/icpe2019-ecceasia42246.2019.8797114",
+    "title": "A Thyristor-based Seamless Winding Changeover Circuit for high efficiency of Electric Vehicle Drive System",
+    "year": 2019,
+    "cites": 10,
+    "venue": "International Conference on Power Electronics and ECCE Asia (ICPE-ECCE Asia)",
+    "abstract": "This paper propose a novel winding changeover circuit that can maximize the average efficiency in the wide speed range to extend the driving distance of the Electric Vehicle and improve the fuel efficiency. Proposed circuit is Series-Parallel changeover circuit based thyristor. Due to the characteristics of the thyristor, it is possible to achieve a seamless transient state without interruption. So no additional snubber circuit is required and high efficiency and light weight of AC motor system can be expected because of low switch loss. The proposed winding changeover circuit is validated through simulation and experimental results with 80kW AC motor.",
+    "oa_url": "",
+    "url": "https://openalex.org/W2972314168"
+  },
+  {
+    "doi": "10.4271/2025-01-0518",
+    "title": "Analysis of Factors Influencing the Efficiency Improvement Potential of a Winding Changeover in an Electric Machine",
+    "year": 2025,
+    "cites": 0,
+    "venue": "SAE International Journal of Advances and Current Practices in Mobility",
+    "abstract": "The winding configuration of an electric machine has a decisive influence on the properties of a traction drive. When designing the electric drive, the optimum compromise must be found between maximum torque, maximum power and high efficiency over a wide operating range. A decisive factor in this design conflict is the choice of the winding configuration. The concept of winding switching offers a way of solving the design conflict and improving the characteristics of the drive through the additional degree of freedom of the variable winding configuration. Switching the number of parallel winding branches in a serial and parallel configuration is a promising approach to overcome the challenge of a high spread between maximum power and high efficiency in customer related driving scenarios of an electric vehicle. The aim of this study is to identify factors influencing the efficiency improvement potential of the winding switching topology under consideration compared to a reference drive without winding switching. For this purpose, a sensitivity analysis of various parameters of the electric drive consisting of the inverter and the electric machine is carried out with regard to increasing efficiency in customer related driving scenarios. The effects of winding switching are described in relation to the influencing factors of rotor design, active length of the electric machine, star/delta winding connection and the inverter design. The conditions of an electric drive under which a winding changeover offers efficiency advantages in the customer related driving range are to be derived from the findings on the influencing factors and the effects of a winding changeover.",
+    "oa_url": "",
+    "url": "https://openalex.org/W4416589350"
+  },
+  {
+    "doi": "10.1109/ipec.2014.6869844",
+    "title": "A wide speed range high efficiency EV drive system using winding changeover technique and SiC devices",
+    "year": 2014,
+    "cites": 44,
+    "venue": "International Power Electronics Conference (IPEC)",
+    "abstract": "The Silicon Carbide (SiC) based devices will become the mainstream in the motor drive technology in the near future. These next generation power devices give benefits of lower losses, higher voltage, and high temperature operation in the power conversion system, realizing its downsizing and high power density. The winding change over technique, on the other hand, is useful to extend the speed control range with high efficiency of ac motors. This paper describes the effects of using high power SiC MOSFET and SiC SBD, together with the electronic winding changeover technique in the EV motor drives.",
+    "oa_url": "",
+    "url": "https://openalex.org/W2313369548"
+  },
+  {
+    "doi": "10.1541/ieejias.142.591",
+    "title": "Energy Loss Evaluation and Verification of Permanent Magnet Synchronous Motor with Mechanical Winding Changeover Device",
+    "year": 2022,
+    "cites": 8,
+    "venue": "IEEJ Transactions on Industry Applications",
+    "abstract": "This report presents the energy loss evaluation and verification of a Permanent Magnet Synchronous Motor (PMSM) with mechanical winding changeover for electric vehicle traction applications in two standard driving schedules: JC08 and Worldwide Harmonized Light Vehicles Test Cycles (WLTC) modes. We designed a downsized mechanical winding-changeover device with a rated current of a few hundred ampere owing to the multiple contacts and aggregation of movable apparatuses. From the calculated results, the energy loss is observed to be reduced by 6% in the JC08 and 2% in the WLTC modes because of improvement in system efficiency by winding changeover. Actual tests performed on a 5kW PMSM illustrate that the system efficiency improves by up to 5% owing to the reduction of inverter loss and harmonic components of the motor current.",
+    "oa_url": "",
+    "url": "https://openalex.org/W4289076423"
+  },
+  {
+    "doi": "10.1109/pesc.2004.1355073",
+    "title": "A quick transition electronic winding changeover technique for extended speed ranges",
+    "year": 2004,
+    "cites": 21,
+    "venue": "PESC record",
+    "abstract": "In many applications it is often needed to extend the constant power range of an induction motor. In order to extend the constant power range without sacrificing the torque capability at higher speeds, the wye/delta switchover method was adopted and still remains popular in spindle drives for machine tools. Other techniques for extending the constant power range include use of modified machines with taps that are selected to achieve the desired speed-torque characteristic. All techniques that employ mechanical contactors have limited life and are associated with dead time in the range of tens to hundreds of milliseconds due to mechanical constraints. Power electronic versions for the contactors have been proposed but most methods are rather complicated and involve many switching devices. Pole amplitude modulation (PAM) and pole phase modulation (PPM) have also been proposed but these techniques require additional inverters. This paper describes a novel and simple switching technique involving only two three-phase diode bridges and two IGBT switches to extend the constant power range of induction motors. The proposed method requires a center tap to be placed in each phase of the motor and access to the ends and the center tap making the motor a nine-lead machine. The proposed method and the circuit used to extend the constant power range is described and supported by experimental results.",
+    "oa_url": "",
+    "url": "https://openalex.org/W2161054744"
+  },
+  {
+    "doi": "10.1541/ieejias.138.433",
+    "title": "PWM Rectifier for Seamless Winding Changeover with Reduced Number of Switches",
+    "year": 2018,
+    "cites": 1,
+    "venue": "IEEJ Transactions on Industry Applications",
+    "abstract": "",
+    "oa_url": "",
+    "url": "https://openalex.org/W2801782302"
+  },
+  {
+    "doi": "10.1109/tasc.2020.2987016",
+    "title": "Optimization Method to Maximize Efficiency Map of a Drive Motor With Electrical Winding Changeover Technique for Hybrid EV",
+    "year": 2020,
+    "cites": 23,
+    "venue": "IEEE Transactions on Applied Superconductivity",
+    "abstract": "The electrical winding changeover technique (EWCT) in hybrid electric vehicles will become key to improving the efficiency maps over the whole operating range in the future. This technique can enhance a flux weakening control and reduce a back electromotive force at high speed operation by changing the effective winding turn number. It can increase the efficiency at high speed by a reduction of winding resistance. In this paper, the motor is operated with two step modes, where the winding turn number of the first step mode is twice that of the second step mode. Each step mode is addressed in terms of torque production, back-EMF, voltage and efficiency. Finally, an optimal design of the interior permanent magnet synchronous motor with EWCT is implemented for maximizing the efficiency map based on finite element analysis.",
+    "oa_url": "",
+    "url": "https://openalex.org/W3017258628"
+  },
+  {
+    "doi": "10.1007/s42835-025-02263-w",
+    "title": "Advantages of Electrical Winding Changeover Technique and Its Effect on AC Copper Loss Reduction in IPMSM for EVs",
+    "year": 2025,
+    "cites": 3,
+    "venue": "Journal of Electrical Engineering and Technology",
+    "abstract": "As the torque density of traction motors for electric vehicles (EVs) increases, hairpin winding technology with a larger conductor area is widely adopted. However, this increase also raises the impact of AC copper loss in the high-speed operating region. This paper presents an electrical winding changeover technique (EWCT) that considers hairpin winding patterns to enhance the efficiency of the interior permanent magnet synchronous motor (IPMSM) for EVs in high-speed operation. The motor operates in a two-step mode, with the first step having twice the number of winding turns as the second. The tap-change method is applied for the winding changeover as EWCT. This approach allows the IPMSM with EWCT to achieve higher efficiency at each operating point by utilizing a switching logic that selects either first step or second step mode at each speed-torque point to minimize losses. The transients during winding changeover are also analyzed. As a result, mode changes in the high-speed region reduce back-EMF and the magnitude and phase of the current, decreasing DC copper and iron losses. Additionally, the reduced eddy current effect in the conductors lowers AC copper loss, resulting in higher efficiency of the IPMSM with EWCT compared to a typical IPMSM.",
+    "oa_url": "https://link.springer.com/content/pdf/10.1007/s42835-025-02263-w.pdf",
+    "url": "https://openalex.org/W4410302794"
+  },
+  {
+    "doi": "10.23919/icems52562.2021.9634404",
+    "title": "A Study on the Winding Changeover Circuit to Expand the High Efficient Operating Region of EV Traction Motor",
+    "year": 2021,
+    "cites": 4,
+    "venue": "International Conference on Electrical Machines and Systems (ICEMS)",
+    "abstract": "This paper proposes a winding changeover circuit that can change the characteristics of the motor in order to increase the practical driving efficiency of electric vehicles. The proposed circuit is constructed using a Thyristor switch device, and has an advantage that the overall system loss is relatively low. The proposed circuit control scheme was introduced, and the advantages and disadvantages of the existing developed circuit were compared. And the proposed circuit was verified with 80kW PMSM and inverter.",
+    "oa_url": "",
+    "url": "https://openalex.org/W4200197871"
+  },
+  {
+    "doi": "10.1109/icems56177.2022.9983395",
+    "title": "Winding Changeover System with Multi-Phase IPMSM for High-Torque Density and Wide Operating Region",
+    "year": 2022,
+    "cites": 1,
+    "venue": "International Conference on Electrical Machines and Systems (ICEMS)",
+    "abstract": "The application of multi-phase technique is one of the effective options for electric motors that require high power density and wide operating speed range (OSR). However, interior permanent magnet synchronous motors (IPMSMs) with hairpin windings and oil cooling systems suffer from power degradation in the high-speed region due to their high charge rate and current density. In this paper, a winding changeover system (WCS) of a dual three-phase IPMSM is proposed for wide OSR with high power density by shifting the number of phases from six to three. Using the finite element method (FEM), we analyze the effect of phase on torque and power characteristics according to speed and calculate the efficiency of the WCS. Finally, the changeover points for the two operating modes are determined for the system with better efficiency and torque density.",
+    "oa_url": "",
+    "url": "https://openalex.org/W4312096975"
+  },
+  {
+    "doi": "10.3390/math12213415",
+    "title": "High-Efficiency e-Powertrain Topology by Integrating Open-End Winding and Winding Changeover for Improving Fuel Economy of Electric Vehicles",
+    "year": 2024,
+    "cites": 1,
+    "venue": "Mathematics",
+    "abstract": "The fuel economy of electric vehicles (EVs) is an important factor in determining the competitiveness of EVs. Since the fuel economy is affected by the efficiency of an e-powertrain composed of a motor and inverter, it is necessary to select a high-efficiency topology for the e-powertrain. In this paper, a novel topology of e-powertrains to improve the fuel economy of EVs is proposed. The proposed topology aims to improve the system efficiency by integrating open-end winding (OEW) and winding changeover (WC). The proposed OEW-PMSM with WC enables to drive a permanent magnet synchronous motor (PMSM) in four different modes. Each mode can increase inverter efficiency and motor efficiency by changing motor parameters and maximum modulation index. In this paper, the system efficiency of the proposed topology was evaluated using electromagnetic finite element analysis and a loss model of power semiconductors. In addition, the vehicle simulations were performed to evaluate the fuel economy of the proposed topology, thereby proving the superiority of the proposed topology compared with the conventional PMSM.",
+    "oa_url": "https://www.mdpi.com/2227-7390/12/21/3415/pdf?version=1730448439",
+    "url": "https://openalex.org/W4403940411"
+  },
+  {
+    "doi": "10.1109/ecce-europe62795.2025.11238385",
+    "title": "Application of Electric Transmission Using Winding Changeover for Performance Improvement of Multilayer Ipmsm Using Ferrite PM",
+    "year": 2025,
+    "cites": 0,
+    "venue": "",
+    "abstract": "This paper proposes a method of improving the performance of multilayer interior permanent magnet synchronous motor (ML IPMSM) by applying an electric transmission using a winding changeover. The ML IPMSM can compensate for a low magnetic torque by maximizing the reluctance torque but has a problem with a low power factor in the high-speed region. Consequently, as the rotational speed increases, the power of the ML IPMSM decreases. To address this problem, this paper adjusts the number of series turns of an armature winding. Reducing the number of series turns improves the power factor and increases the region satisfying maximum power. Therefore, the operating mode of ML IPMSM with the electric transmission is divided into two modes according to the operating point; one is the large number of series turns, and the other is the small number of series turns. This paper examines the electrical performance of the two modes and introduces a method for determining the optimal mode selection based on the operating point. Before introducing those, the disadvantage of the ML IPMSM using ferrite PM and a concept of the electric transmission are explained in detail. Finally, to verify the proposed method, the test and finite element analysis results are compared.",
+    "oa_url": "",
+    "url": "https://openalex.org/W4416725579"
+  },
+  {
+    "doi": "10.3390/wevj15110501",
+    "title": "A Study on Series-Parallel Winding Changeover Circuit and Control Method for Expanding the High-Efficiency Operating Range of IPMSM for xEV Drive Systems",
+    "year": 2024,
+    "cites": 7,
+    "venue": "World Electric Vehicle Journal",
+    "abstract": "The motor characteristics control method using the winding changeover technique can improve the matching ratio between the most frequent operating point of electric vehicle (EV) and the motor’s high-efficiency operating point, thereby enhancing the overall average efficiency of the drive system. This technology reduces back electromotive force and winding resistance by adjusting the effective number of motor winding turns according to the EV’s operating speed, ultimately improving the average efficiency. In this paper, we propose a winding changeover circuit and control method that maximizes the average efficiency in the main driving regions to extend the driving range per charge and improve the fuel efficiency of EVs. The proposed circuit is constructed using thyristor switching devices, offering the advantage of relatively lower overall system losses compared to conventional circuits. Due to the characteristics of the thyristor switching devices used in the proposed circuit, seamless winding changeover is possible during motor operation. Additionally, no extra snubber circuits are required, and the relatively low switch losses suggest the potential for improved efficiency and lightweight design in EV drive systems. To verify the proposed winding changeover circuit and control scheme, experiments were conducted using a dynamometer with an 80 kW permanent magnet motor, inverter, and the developed prototype of the winding changeover circuit.",
+    "oa_url": "",
+    "url": "https://openalex.org/W4403938928"
+  },
+  {
+    "doi": "10.1109/ias.1988.25102",
+    "title": "A wide constant power range vector controlled AC motor drive using winding changeover technique",
+    "year": 2003,
+    "cites": 7,
+    "venue": "",
+    "abstract": "A high-performance vector-controlled induction-motor drive with a very wide constant power range of 1:10 to 1:30 has been developed for use in spindle drives of machine tools. The motor has two combinations of winding connections, and one of them is selected in accordance with the operating conditions. Using this technique, the gear box in the spindle drives is eliminated. Theoretical analysis and test results are presented.>",
+    "oa_url": "",
+    "url": "https://openalex.org/W4254172505"
+  },
+  {
+    "doi": "10.1109/itec63604.2025.11098062",
+    "title": "Enhanced Efficiency Inverter with Winding Changeover Circuit for Ultra High-Speed SPMSMs in Fuel-Cell Electric Vehicles",
+    "year": 2025,
+    "cites": 0,
+    "venue": "",
+    "abstract": "Ultra-high-speed motors typically have reduced efficiency at low speeds due to their design for wide-range operation. To address this issue, this study proposes a novel motor drive system that integrates a TRIAC-based changeover circuit and a silicon carbide (SiC) -based inverter. The proposed changeover circuit adjusts the motor's circuit, enabling the stator winding to switch between series and parallel modes. At low speeds, the motor operates in series mode to reduce stator current, while switching to parallel mode at high speeds to maintain optimal performance. This approach effectively improves motor efficiency, particularly at low speeds. Additionally, a zero current switching method prevents current spikes during switching during mode transitions. The proposed method was experimentally validated using surface mounted permanent magnet synchronous motor (SPMSM) and the results demonstrate the system's stability and improved efficiency.",
+    "oa_url": "",
+    "url": "https://openalex.org/W4412986975"
+  },
+  {
+    "doi": "",
+    "title": "A novel changeover technique for variable-winding brushless DC motor drives",
+    "year": 2010,
+    "cites": 12,
+    "venue": "Society of Instrument and Control Engineers of Japan",
+    "abstract": "For most electrical vehicular systems, there exists a tradeoff problem for the motors between large starting torque to enhance acceleration and climbing ability and wide constant power range to increase cruising distance. The method of winding switching over for various motor configurations has been extensively proposed in the literature. However, a dead time has to be inserted during changeover operation. In the paper, a novel changeover technique for variable-winding brushless DC motors with the application to electric scooters is presented. The dead time is eliminated during the winding configuration changed from wye to delta or vice versa. This scheme both protects the related hardware and preserves the speed performance. The experimental results will demonstrate the effectiveness.",
+    "oa_url": "",
+    "url": "https://openalex.org/W1507050461"
+  },
+  {
+    "doi": "",
+    "title": "New 150-tonne friction winch simplifies winding-rope changeover",
+    "year": 1985,
+    "cites": 0,
+    "venue": "OSTI OAI (U.S. Department of Energy Office of Scientific and Technical Information)",
+    "abstract": "The technique of installing and replacing winding ropes in main shafts has greatly benefited from the introduction of the new 150-t friction winch supplied by Eisenhuette Prinz Rudolph and designed in collaboration with the central workshops of Koenig Ludwig (friction winch operators) and the Division T 3.2. The rope-changing operation undertaken at Westerholt colliery provided new information on how this complex and often hazardous procedure can be carried out more easily and at less cost. The report presents guidelines, recommendations and suggestions, based on the latest expertise, which were obtained when replacing the winding rope on the ground-mounted winding machine serving shaft no. 2 at Westerholt.",
+    "oa_url": "",
+    "url": "https://openalex.org/W3185317849"
+  },
+  {
+    "doi": "10.1007/978-981-99-1328-2_27",
+    "title": "Application of Single Minute Exchange of Die to Reduce Changeover Time in a Winding Machine of a Capacitor Line",
+    "year": 2023,
+    "cites": 0,
+    "venue": "Lecture notes in mechanical engineering",
+    "abstract": "",
+    "oa_url": "",
+    "url": "https://openalex.org/W4382999681"
+  },
+  {
+    "doi": "10.1109/tte.2024.3416151",
+    "title": "Three-Switch Reconfigurable Winding Power Converter and Online Mode-Changeover Methods for SRM Speed Range Extension",
+    "year": 2024,
+    "cites": 4,
+    "venue": "IEEE Transactions on Transportation Electrification",
+    "abstract": "This article presents a new three-switch reconfigurable winding power converter and its online mode-changeover methods for switched reluctance motor (SRM). The suggested reconfigurable winding drive allows the motor to operate in both winding series and parallel modes. The series mode is suitable for low-speed and high-torque operation, while the parallel mode can extend the speed range and enhance the current modulation capability at high speed. First, the device types of the mode-changeover switches have been carefully considered for selection. The two working modes and typical operating states for the proposed power converter are illustrated. Then, the three-phase current-to-zero switching method is proposed to suppress the possible voltage spikes during the mode-changeover process. In addition, an adaptive fuzzy logic (AFL) speed controller is developed by combining the variable parameter proportional integral (PI) and fuzzy logic controller to reduce the speed shock. Finally, the simulation model and the experimental platform for the reconfigurable winding drive system are established to verify the effectiveness of the new three-switch power converter and the online mode-changeover methods.",
+    "oa_url": "",
+    "url": "https://openalex.org/W4399767358"
+  },
+  {
+    "doi": "10.1109/apec.2010.5433683",
+    "title": "Efficiency improvement by changeover of phase windings of multiphase permanent magnet synchronous motor with outer-rotor type",
+    "year": 2010,
+    "cites": 5,
+    "venue": "Conference proceedings/Conference proceedings - IEEE Applied Power Electronics Conference and Exposition",
+    "abstract": "In this paper, a new control algorithm is proposed to improve the efficiency of multiphase permanent magnet synchronous motor with outer-rotor type (MPMSM). The improved efficiency is obtained by using the change of the phase number from 6-phase motor to 3-phase motor and reducing the switching loss by using the bi-direction switch between two H-bridge inverter of six phase to change the number of the phase. The simulation and experimental results are presented to demonstrate the feasibility and advantages of the proposed algorithm.",
+    "oa_url": "",
+    "url": "https://openalex.org/W2117113089"
+  },
+  {
+    "doi": "10.1109/tie.2011.2164771",
+    "title": "Wide Operational Speed Range of Five-Phase Permanent Magnet Machines by Using Different Stator Winding Configurations",
+    "year": 2011,
+    "cites": 141,
+    "venue": "IEEE Transactions on Industrial Electronics",
+    "abstract": "The winding changeover technique is an effective method for extending the operational speed range of permanent magnet synchronous machines (PMSMs). Unlike three-phase machines which could be wound in wye or delta connections, there are three possible connections, i.e., star, pentagon, and pentacle for five-phase electric machines. In this work, the effects of these three winding connections on a five-phase PMSM performance are studied. First, based on the mathematical model and finite-element analysis, the effects of different stator winding connections on torque-speed and efficiency characteristics are investigated. Then, the complete electric machine drive system including the winding changeover mechanism is simulated to present its dynamic performance. Finally, experimental results are provided to show the transient and steady-state operation of a five-phase PMSM with star, pentagon, and pentacle winding connections.",
+    "oa_url": "",
+    "url": "https://openalex.org/W2154077047"
+  },
+  {
+    "doi": "10.1109/icems.2019.8921453",
+    "title": "5-phase double winding PMSM with integrated SiC inverter for In-Wheel Motor",
+    "year": 2019,
+    "cites": 9,
+    "venue": "International Conference on Electrical Machines and Systems (ICEMS)",
+    "abstract": "This research proposes a 5-phase double winding Permanent Magnet Synchronous Motor with integrated SiC inverter for In-Wheel Motor. By using 5-phase drive, the current value per output power can be reduced and failure safety system is realized. The motor is driven at high speed for application to the in-wheel structure. The motor can realize the variable characteristics by winding changeover technique without configuration circuit topology. This paper reveals that the variable torque characteristics by winding changeover. Furthermore, this paper shows that the proposed motor can realize winding changeover during driving.",
+    "oa_url": "",
+    "url": "https://openalex.org/W2993636403"
+  },
+  {
+    "doi": "10.1541/ieejias.142.526",
+    "title": "Performance Analysis of a Dual-Winding Reluctance Motor",
+    "year": 2022,
+    "cites": 0,
+    "venue": "IEEJ Transactions on Industry Applications",
+    "abstract": "A dual-winding reluctance motor (DWRM) comprises a stator with armature and field windings, which have different numbers of poles, and a reluctance rotor. This study analyzes the performance of a line-start DWRM that operates under a commercial power grid. To adjust the flux linkage during operation, changeover switches were provided to the stator windings in the analyzed DWRM. The steady-state and transient performances of the DWRM were simulated using a finite element analysis and supported by experiments on a small-scale prototype machine. By applying the winding changeover switch, the DWRM could perform well under the operating mode of both the induction motor and the synchronous motor.",
+    "oa_url": "",
+    "url": "https://openalex.org/W4283750318"
+  },
+  {
+    "doi": "10.1541/ieejjia.24001681",
+    "title": "Investigating on High-Efficiency Induction Motor with Switchable Motor Winding",
+    "year": 2024,
+    "cites": 1,
+    "venue": "IEEJ Journal of Industry Applications",
+    "abstract": "This study aims to improve the efficiency of an induction motor. The efficiency was measured under a load test using the inverter drive to verify the loss reduction effect when the winding changeover was applied. The stray load loss of series connection with a 184V synchronous 3 pulse could be reduced by 78% compared to the parallel connection with a 92V asynchronous pulse width modulation. Moreover, it was confirmed that the efficiency of the series connection is improved by approximately 4.4% compared to the parallel connection. Based on the above, it is confirmed that switching between series and parallel connections using a winding switcher can increase the efficiency of induction motors.",
+    "oa_url": "https://www.jstage.jst.go.jp/article/ieejjia/14/2/14_24001681/_pdf",
+    "url": "https://openalex.org/W4405312288"
+  }
+]

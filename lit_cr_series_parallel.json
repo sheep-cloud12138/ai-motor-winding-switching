@@ -1,0 +1,272 @@
+[
+  {
+    "doi": "10.1109/ias.1988.25102",
+    "title": "A wide constant power range vector controlled AC motor drive using winding changeover technique",
+    "venue": "Conference Record of the 1988 IEEE Industry Applications Society Annual Meeting",
+    "year": null,
+    "cites": 6,
+    "abstract": "",
+    "url": "https://doi.org/10.1109/ias.1988.25102"
+  },
+  {
+    "doi": "10.1109/ipec.2014.6869844",
+    "title": "A wide speed range high efficiency EV drive system using winding changeover technique and SiC devices",
+    "venue": "2014 International Power Electronics Conference (IPEC-Hiroshima 2014 - ECCE ASIA)",
+    "year": 2014,
+    "cites": 39,
+    "abstract": "",
+    "url": "https://doi.org/10.1109/ipec.2014.6869844"
+  },
+  {
+    "doi": "10.1109/28.90350",
+    "title": "A wide constant power range vector-controlled AC motor drive using winding changeover technique",
+    "venue": "IEEE Transactions on Industry Applications",
+    "year": 1991,
+    "cites": 74,
+    "abstract": "",
+    "url": "https://doi.org/10.1109/28.90350"
+  },
+  {
+    "doi": "10.3390/wevj15110501",
+    "title": "A Study on Series-Parallel Winding Changeover Circuit and Control Method for Expanding the High-Efficiency Operating Range of IPMSM for xEV Drive Systems",
+    "venue": "World Electric Vehicle Journal",
+    "year": 2024,
+    "cites": 7,
+    "abstract": "<jats:p>The motor characteristics control method using the winding changeover technique can improve the matching ratio between the most frequent operating point of electric vehicle (EV) and the motor’s high-efficiency operating point, thereby enhancing the overall average efficiency of the drive system. This technology reduces back electromotive force and winding resistance by adjusting the effective number of motor winding turns according to the EV’s operating speed, ultimately improving the average efficiency. In this paper, we propose a winding changeover circuit and control method that maximizes the average efficiency in the main driving regions to extend the driving range per charge and improve the fuel efficiency of EVs. The proposed circuit is constructed using thyristor switching devices, offering the advantage of relatively lower overall system losses compared to conventional circuits. Due to the characteristics of the thyristor switching devices used in the proposed circuit, seamless winding changeover is possible during motor operation. Additionally, no extra snubber circuits are required, and the relatively low switch losses suggest the potential for improved efficiency and lightweight design in EV drive systems. To verify the proposed winding changeover circuit and control scheme, experiments were conducted using a dynamometer with an 80 kW permanent magnet motor, inverter, and the developed prototype of the winding changeover circuit.</jats:p>",
+    "url": "https://doi.org/10.3390/wevj15110501"
+  },
+  {
+    "doi": "10.1109/eicemc.2003.1247946",
+    "title": "Future energy challenge: a novel low-cost adjustable speed motor with wide speed range",
+    "venue": "Proceedings: Electrical Insulation Conference and Electrical Manufacturing and Coil Winding Technology Conference (Cat. No.03CH37480)",
+    "year": null,
+    "cites": 0,
+    "abstract": "",
+    "url": "https://doi.org/10.1109/eicemc.2003.1247946"
+  },
+  {
+    "doi": "10.1109/pesc.2004.1355073",
+    "title": "A quick transition electronic winding changeover technique for extended speed ranges",
+    "venue": "2004 IEEE 35th Annual Power Electronics Specialists Conference (IEEE Cat. No.04CH37551)",
+    "year": null,
+    "cites": 16,
+    "abstract": "",
+    "url": "https://doi.org/10.1109/pesc.2004.1355073"
+  },
+  {
+    "doi": "10.1109/ias.1999.799209",
+    "title": "Analysis of a wide speed range starter/alternator system based on a novel converter topology for series/parallel stator winding configuration",
+    "venue": "Conference Record of the 1999 IEEE Industry Applications Conference. Thirty-Forth IAS Annual Meeting (Cat. No.99CH36370)",
+    "year": null,
+    "cites": 6,
+    "abstract": "",
+    "url": "https://doi.org/10.1109/ias.1999.799209"
+  },
+  {
+    "doi": "10.3390/act14050220",
+    "title": "Enhanced Speed Characteristics of High-Torque-Density BLDC Motor for Robot Applications Using Parallel Open-End Winding Configuration",
+    "venue": "Actuators",
+    "year": 2025,
+    "cites": 0,
+    "abstract": "<jats:p>High-torque-density motors are essential in humanoid, wearable, and rehabilitation robots due to their ability to minimize gear ratios, improve back-drivability, and support compact joint design. However, their inherently high back-EMF limits speed performance, and safety regulations often constrain supply voltages to below 50 V in human-interactive environments. To overcome these limitations, this study introduces a novel winding strategy called parallel open-end winding (POEW), which combines the benefits of two individual approaches: Parallel Connected Winding (PCW) and Open-End Winding (OEW). PCW reduces phase resistance and inductance, thereby mitigating voltage drop and back-EMF, while OEW eliminates the neutral point, allowing full-phase voltage utilization. Experimental results show that the POEW configuration achieves a 3.5-fold increase in maximum speed compared to the conventional Series-Connected Winding (SCW), without altering the rotor or stator structure. Torque constant measurements confirm that all proposed configurations maintain torque output with minimal variation. Although the motor constant slightly decreases due to the higher current in parallel paths, the significant speed enhancement under low-voltage conditions demonstrates the practicality and effectiveness of POEW for advanced robotic applications requiring both high torque and speed.</jats:p>",
+    "url": "https://doi.org/10.3390/act14050220"
+  },
+  {
+    "doi": "10.1109/ecce.2019.8912540",
+    "title": "Novel Winding Changeover Method for A High Efficiency AC Motor Drive",
+    "venue": "2019 IEEE Energy Conversion Congress and Exposition (ECCE)",
+    "year": 2019,
+    "cites": 9,
+    "abstract": "",
+    "url": "https://doi.org/10.1109/ecce.2019.8912540"
+  },
+  {
+    "doi": "10.1109/iemdc.2019.8785145",
+    "title": "Combined Winding Structure of a Consequent-Pole Bearingless Motor with Parallel Motor Winding Topology",
+    "venue": "2019 IEEE International Electric Machines &amp; Drives Conference (IEMDC)",
+    "year": 2019,
+    "cites": 5,
+    "abstract": "",
+    "url": "https://doi.org/10.1109/iemdc.2019.8785145"
+  },
+  {
+    "doi": "10.4271/2016-01-2060",
+    "title": "Topology Optimized End Winding for Additively Manufactured Induction Motor with Distributed Winding",
+    "venue": "SAE Technical Paper Series",
+    "year": 2016,
+    "cites": 11,
+    "abstract": "<jats:p>&lt;div class=\"section abstract\"&gt;&lt;div class=\"htmlview paragraph\"&gt;It is desired to reduce stator end winding length and mass to reduce associated resistive losses, increase efficiency and power density of an induction motor. With recent advancements in additive manufacturing technology, it is possible to deposit copper conductive paths and insulation layers in a selective controlled manner. This enables more compact end winding designs. The objective of this paper is to present a topology optimization based approach for design of stator end winding to minimize its overall length, volume and mass. Design approach and parametric study results for a representative stator design are presented in this paper. By reducing length of end winding, efficiency and power density of the induction motor can be increased enabling benefit realization for weight critical aerospace applications, incorporation in electric vehicle market and potentially reducing rare-earth dependency.&lt;/div&gt;&lt;/div&gt;</jats:p>",
+    "url": "https://doi.org/10.4271/2016-01-2060"
+  },
+  {
+    "doi": "10.1080/073135600268388",
+    "title": "Performance Analysis of Split-Winding Doubly Salient Permanent Magnet Motor for Wide Speed Operation",
+    "venue": "Electric Machines &amp; Power Systems",
+    "year": 2000,
+    "cites": 14,
+    "abstract": "",
+    "url": "https://doi.org/10.1080/073135600268388"
+  },
+  {
+    "doi": "10.21275/v5i5.nov163373",
+    "title": "H-Bridge Configuration for Wide Range Speed Control of DC Motor",
+    "venue": "International Journal of Science and Research (IJSR)",
+    "year": 2016,
+    "cites": 0,
+    "abstract": "",
+    "url": "https://doi.org/10.21275/v5i5.nov163373"
+  },
+  {
+    "doi": "10.1109/icems56177.2022.9983395",
+    "title": "Winding Changeover System with Multi-Phase IPMSM for High-Torque Density and Wide Operating Region",
+    "venue": "2022 25th International Conference on Electrical Machines and Systems (ICEMS)",
+    "year": 2022,
+    "cites": 1,
+    "abstract": "",
+    "url": "https://doi.org/10.1109/icems56177.2022.9983395"
+  },
+  {
+    "doi": "10.1109/tte.2024.3416151",
+    "title": "Three-Switch Reconfigurable Winding Power Converter and Online Mode-Changeover Methods for SRM Speed Range Extension",
+    "venue": "IEEE Transactions on Transportation Electrification",
+    "year": 2025,
+    "cites": 4,
+    "abstract": "",
+    "url": "https://doi.org/10.1109/tte.2024.3416151"
+  },
+  {
+    "doi": "10.1109/ecce.2013.6647019",
+    "title": "A principle and test results of a novel bearingless motor with motor parallel winding structure",
+    "venue": "2013 IEEE Energy Conversion Congress and Exposition",
+    "year": 2013,
+    "cites": 8,
+    "abstract": "",
+    "url": "https://doi.org/10.1109/ecce.2013.6647019"
+  },
+  {
+    "doi": "10.23919/icems52562.2021.9634404",
+    "title": "A Study on the Winding Changeover Circuit to Expand the High Efficient Operating Region of EV Traction Motor",
+    "venue": "2021 24th International Conference on Electrical Machines and Systems (ICEMS)",
+    "year": 2021,
+    "cites": 4,
+    "abstract": "",
+    "url": "https://doi.org/10.23919/icems52562.2021.9634404"
+  },
+  {
+    "doi": "10.21070/ups.6673",
+    "title": "Implementation of a 350W BLDC Motor to Increase the Speed of Fire Hose Winding",
+    "venue": "",
+    "year": 2024,
+    "cites": 0,
+    "abstract": "",
+    "url": "https://doi.org/10.21070/ups.6673"
+  },
+  {
+    "doi": "10.1109/tpel.2024.3460670",
+    "title": "Improved PWM Control With Wide Speed Range for a Double-Side Asynchronous Rotor AFPMM Series-End Winding Drive",
+    "venue": "IEEE Transactions on Power Electronics",
+    "year": 2025,
+    "cites": 12,
+    "abstract": "",
+    "url": "https://doi.org/10.1109/tpel.2024.3460670"
+  },
+  {
+    "doi": "10.4271/2025-01-8572",
+    "title": "Real Time Recognition Method for Wide Speed Range Rotor Position of Dual Three-Phase Motor based on Symmetrical Voltage Injection",
+    "venue": "SAE Technical Paper Series",
+    "year": 2025,
+    "cites": 0,
+    "abstract": "<jats:p>&lt;div class=\"section abstract\"&gt;&lt;div class=\"htmlview paragraph\"&gt;The rotor position information is an important variable in the control system of dual three-phase motors, and ensuring the real-time and correct information is a prerequisite for the reliable operation of the dual three-phase motor system. The paper analyzes the structural characteristics of a dual three-phase permanent magnet synchronous motor (DTP-PMSM) with a 30°misalignment of dual Y windings, and proposes a new high-frequency symmetrical voltage injection method that can effectively identify rotor position information in a wide speed range. It forms heterogeneous information verification with the hardware signals of the dual three-phase motor rotor position sensors, improving the functional safety level of the control system. Firstly, a DTP-PMSM mathematical model was constructed under high-frequency voltage injection, and the mapping relationship between injection voltage and response current was derived, revealing the characteristic relationship between rotor position information and response current. Secondly, utilizing the structural features of DTP-PMSM, real-time rotor position information is extracted from the current response by injecting high-frequency rotating voltage into a symmetrical sequence; Finally, the proposed high-frequency rotational voltage injection method was validated through bench testing and analysis. The results show that this method can effectively extract high-precision rotor position information over a wide speed range, meeting the needs of monitoring rotor position sensor information. The rotor position recognition accuracy of this method is high, and it also has good rotor position estimation performance in the steady-state and dynamic operation of the motor.&lt;/div&gt;&lt;/div&gt;</jats:p>",
+    "url": "https://doi.org/10.4271/2025-01-8572"
+  },
+  {
+    "doi": "10.1007/978-3-642-97646-9_7",
+    "title": "DC Motor with Series Field Winding",
+    "venue": "Control of Electrical Drives",
+    "year": 1996,
+    "cites": 0,
+    "abstract": "",
+    "url": "https://doi.org/10.1007/978-3-642-97646-9_7"
+  },
+  {
+    "doi": "10.1007/978-3-662-11371-4_7",
+    "title": "DC Motor with Series Field Winding",
+    "venue": "Control of Electrical Drives",
+    "year": 1985,
+    "cites": 0,
+    "abstract": "",
+    "url": "https://doi.org/10.1007/978-3-662-11371-4_7"
+  },
+  {
+    "doi": "10.1109/tia.2024.3464567",
+    "title": "Induction Motor Drive System With Novel Mechanical Winding Changeover Device",
+    "venue": "IEEE Transactions on Industry Applications",
+    "year": 2025,
+    "cites": 4,
+    "abstract": "",
+    "url": "https://doi.org/10.1109/tia.2024.3464567"
+  },
+  {
+    "doi": "10.1109/tia.2021.3096485",
+    "title": "A Novel Combined Winding and Test Result of a 20-Pole/24-Slot Consequent-Pole Bearingless Motor With Parallel Motor Winding",
+    "venue": "IEEE Transactions on Industry Applications",
+    "year": 2021,
+    "cites": 18,
+    "abstract": "",
+    "url": "https://doi.org/10.1109/tia.2021.3096485"
+  },
+  {
+    "doi": "10.1109/ias.2006.256800",
+    "title": "Optimization Technique for Improving Torque Performance of Concentrated Winding Interior PM Synchronous Motor with Wide Speed Range",
+    "venue": "Conference Record of the 2006 IEEE Industry Applications Conference Forty-First IAS Annual Meeting",
+    "year": 2006,
+    "cites": 6,
+    "abstract": "",
+    "url": "https://doi.org/10.1109/ias.2006.256800"
+  },
+  {
+    "doi": "10.23919/chicc.2017.8028813",
+    "title": "Control strategy of wide-speed-range doubly fed induction generator based on stator-winding short circuited in low speed mode",
+    "venue": "2017 36th Chinese Control Conference (CCC)",
+    "year": 2017,
+    "cites": 2,
+    "abstract": "",
+    "url": "https://doi.org/10.23919/chicc.2017.8028813"
+  },
+  {
+    "doi": "10.1109/epe.2013.6631945",
+    "title": "A series or parallel changeover system using battery with EDLC for EV",
+    "venue": "2013 15th European Conference on Power Electronics and Applications (EPE)",
+    "year": 2013,
+    "cites": 10,
+    "abstract": "",
+    "url": "https://doi.org/10.1109/epe.2013.6631945"
+  },
+  {
+    "doi": "10.1007/bf02916686",
+    "title": "Analysis and control of novel split-winding doubly salient permanent magnet motor for adjustable speed drive",
+    "venue": "Science in China Series E: Technological Sciences",
+    "year": 2001,
+    "cites": 15,
+    "abstract": "",
+    "url": "https://doi.org/10.1007/bf02916686"
+  },
+  {
+    "doi": "10.1109/icem51905.2022.9910855",
+    "title": "Winding Structure Impact On High Speed Permanent Magnet Motor Efficiency",
+    "venue": "2022 International Conference on Electrical Machines (ICEM)",
+    "year": 2022,
+    "cites": 2,
+    "abstract": "",
+    "url": "https://doi.org/10.1109/icem51905.2022.9910855"
+  },
+  {
+    "doi": "10.1109/iciea.2007.4318755",
+    "title": "Comparison of Unsymmetrical Two-winding Induction Motor Performances Under Variable Speed Control Techniques",
+    "venue": "2007 2nd IEEE Conference on Industrial Electronics and Applications",
+    "year": 2007,
+    "cites": 0,
+    "abstract": "",
+    "url": "https://doi.org/10.1109/iciea.2007.4318755"
+  }
+]

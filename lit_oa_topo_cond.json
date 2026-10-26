@@ -1,0 +1,202 @@
+[
+  {
+    "doi": "10.1109/tmag.2014.2359972",
+    "title": "Multimaterial Topology Optimization of Electric Machines Based on Normalized Gaussian Network",
+    "year": 2015,
+    "cites": 192,
+    "venue": "IEEE Transactions on Magnetics",
+    "abstract": "This paper presents a topology optimization method for multimaterial models based on the normalized Gaussian network. In this method, one can determine optimal shapes of machines that are composed of various materials, such as iron, magnetic, and non-magnetic material. The present method is applied to the optimization of the average torque for interior permanent magnet motor to determine the distributions of magnetic core and flux barrier as well as magnets. The optimization results show that average torque can be improved using as small amount of magnet as possible. In addition, the characteristic of the present method is discussed in detail.",
+    "oa_url": "https://eprints.lib.hokudai.ac.jp/dspace/bitstream/2115/59622/1/70053.pdf",
+    "url": "https://openalex.org/W2071020865"
+  },
+  {
+    "doi": "10.48550/arxiv.2004.06093",
+    "title": "Topology of deep neural networks",
+    "year": 2020,
+    "cites": 77,
+    "venue": "arXiv (Cornell University)",
+    "abstract": "We study how the topology of a data set $M = M_a \\cup M_b \\subseteq \\mathbb{R}^d$, representing two classes $a$ and $b$ in a binary classification problem, changes as it passes through the layers of a well-trained neural network, i.e., with perfect accuracy on training set and near-zero generalization error ($\\approx 0.01\\%$). The goal is to shed light on two mysteries in deep neural networks: (i) a nonsmooth activation function like ReLU outperforms a smooth one like hyperbolic tangent; (ii) successful neural network architectures rely on having many layers, even though a shallow network can approximate any function arbitrary well. We performed extensive experiments on the persistent homology of a wide range of point cloud data sets, both real and simulated. The results consistently demonstrate the following: (1) Neural networks operate by changing topology, transforming a topologically complicated data set into a topologically simple one as it passes through the layers. No matter how complicated the topology of $M$ we begin with, when passed through a well-trained neural network $f : \\mathbb{R}^d \\to \\mathbb{R}^p$, there is a vast reduction in the Betti numbers of both components $M_a$ and $M_b$; in fact they nearly always reduce to their lowest possible values: $β_k\\bigl(f(M_i)\\bigr) = 0$ for $k \\ge 1$ and $β_0\\bigl(f(M_i)\\bigr) = 1$, $i =a, b$. Furthermore, (2) the reduction in Betti numbers is significantly faster for ReLU activation than hyperbolic tangent activation as the former defines nonhomeomorphic maps that change topology, whereas the latter defines homeomorphic maps that preserve topology. Lastly, (3) shallow and deep networks transform data sets differently -- a shallow network operates mainly through changing geometry and changes topology only in its final layers, a deep one spreads topological changes more evenly across all layers.",
+    "oa_url": "https://arxiv.org/pdf/2004.06093",
+    "url": "https://openalex.org/W2995298229"
+  },
+  {
+    "doi": "10.1038/s41377-023-01218-y",
+    "title": "Recent advances in metasurface design and quantum optics applications with machine learning, physics-informed neural networks, and topology optimization methods",
+    "year": 2023,
+    "cites": 272,
+    "venue": "Light Science & Applications",
+    "abstract": "As a two-dimensional planar material with low depth profile, a metasurface can generate non-classical phase distributions for the transmitted and reflected electromagnetic waves at its interface. Thus, it offers more flexibility to control the wave front. A traditional metasurface design process mainly adopts the forward prediction algorithm, such as Finite Difference Time Domain, combined with manual parameter optimization. However, such methods are time-consuming, and it is difficult to keep the practical meta-atom spectrum being consistent with the ideal one. In addition, since the periodic boundary condition is used in the meta-atom design process, while the aperiodic condition is used in the array simulation, the coupling between neighboring meta-atoms leads to inevitable inaccuracy. In this review, representative intelligent methods for metasurface design are introduced and discussed, including machine learning, physics-information neural network, and topology optimization method. We elaborate on the principle of each approach, analyze their advantages and limitations, and discuss their potential applications. We also summarize recent advances in enabled metasurfaces for quantum optics applications. In short, this paper highlights a promising direction for intelligent metasurface designs and applications for future quantum optics research and serves as an up-to-date reference for researchers in the metasurface and metamaterial fields.",
+    "oa_url": "https://www.nature.com/articles/s41377-023-01218-y.pdf",
+    "url": "https://openalex.org/W4383557885"
+  },
+  {
+    "doi": "10.1109/tpwrs.2022.3230555",
+    "title": "Topology-Aware Graph Neural Networks for Learning Feasible and Adaptive AC-OPF Solutions",
+    "year": 2022,
+    "cites": 98,
+    "venue": "IEEE Transactions on Power Systems",
+    "abstract": "Solving the optimal power flow (OPF) problem is a fundamental task to ensure the system efficiency and reliability in real-time electricity grid operations. We develop a new topology-informed graph neural network (GNN) approach for predicting the optimal solutions of real-time ac-OPF problem. To incorporate grid topology to the NN model, the proposed GNN-for-OPF framework innovatively exploits the locality property of locational marginal prices and voltage magnitude. Furthermore, we develop a physics-aware (ac-)flow feasibility regularization approach for general OPF learning. The advantages of our proposed designs include reduced model complexity, improved generalizability and feasibility guarantees. By providing the analytical understanding on the graph subspace stability under grid topology contingency, we show the proposed GNN can quickly adapt to varying grid topology by an efficient re-training strategy. Numerical tests on various test systems of different sizes have validated the prediction accuracy, improved flow feasibility, and topology adaptivity capability of our proposed GNN-based learning framework.",
+    "oa_url": "https://arxiv.org/pdf/2205.10129",
+    "url": "https://openalex.org/W4312570848"
+  },
+  {
+    "doi": "10.1007/s10915-022-01939-z",
+    "title": "Scientific Machine Learning Through Physics–Informed Neural Networks: Where we are and What’s Next",
+    "year": 2022,
+    "cites": 2803,
+    "venue": "Journal of Scientific Computing",
+    "abstract": "Abstract Physics-Informed Neural Networks (PINN) are neural networks (NNs) that encode model equations, like Partial Differential Equations (PDE), as a component of the neural network itself. PINNs are nowadays used to solve PDEs, fractional equations, integral-differential equations, and stochastic PDEs. This novel methodology has arisen as a multi-task learning framework in which a NN must fit observed data while reducing a PDE residual. This article provides a comprehensive review of the literature on PINNs: while the primary goal of the study was to characterize these networks and their related advantages and disadvantages. The review also attempts to incorporate publications on a broader range of collocation-based physics informed neural networks, which stars form the vanilla PINN, as well as many other variants, such as physics-constrained neural networks (PCNN), variational hp-VPINN, and conservative PINN (CPINN). The study indicates that most research has focused on customizing the PINN through different activation functions, gradient optimization techniques, neural network structures, and loss function structures. Despite the wide range of applications for which PINNs have been used, by demonstrating their ability to be more feasible in some contexts than classical numerical techniques like Finite Element Method (FEM), advancements are still possible, most notably theoretical issues that remain unresolved.",
+    "oa_url": "https://link.springer.com/content/pdf/10.1007/s10915-022-01939-z.pdf",
+    "url": "https://openalex.org/W4288039037"
+  },
+  {
+    "doi": "",
+    "title": "MACHINE CONDITION MONITORING USING NEURAL NETWORKS: FEATURE SELECTION USING GENETIC ALGORITHM",
+    "year": 2007,
+    "cites": 0,
+    "venue": "University of the Witwatersrand, Johannesburg Institutional Repository on DSpace (University of the Witwatersrand, Johannesburg)",
+    "abstract": "Student Number : 9800233A - \\nMSc dissertation - \\nSchool of Electrical and Information Engineering - \\nFaculty of Engineering and the Built Environment",
+    "oa_url": "http://hdl.handle.net/10539/2127",
+    "url": "https://openalex.org/W2286932368"
+  },
+  {
+    "doi": "10.1007/s00202-022-01647-9",
+    "title": "Real-time optimization in electric vehicle stations using artificial neural networks",
+    "year": 2022,
+    "cites": 25,
+    "venue": "Electrical Engineering",
+    "abstract": "Abstract The current study proposes a smart decision-making algorithm to be utilized in electric vehicle stations. The suggested approach emphasizes the prediction of queuing delay seeking for minimum total charging time. For this purpose, artificial neural network (ANN) model is used, where a dataset is pre-generated to be seeded into the model. The proposed model effectiveness can be proven when the number of arriving vehicles at the station exceeds the maximum number of charging points at the station. The model accuracy was recorded to reach 89%. For validity, the proposed ANN model was evaluated with respect to a meta-heuristic optimizer, showing a reduced total charging time by 2.5%, and 23.9% with respect to a bare model with no optimization. As a final validation step, a physical realization of the ANN model was conducted by emulating a vehicle as a transmitting node and the station as a receiving node.",
+    "oa_url": "https://link.springer.com/content/pdf/10.1007/s00202-022-01647-9.pdf",
+    "url": "https://openalex.org/W4297007919"
+  },
+  {
+    "doi": "",
+    "title": "Information processing in neural systems: oscillations, network topologies and optimal representations",
+    "year": 2003,
+    "cites": 0,
+    "venue": "LA Referencia (Red Federada de Repositorios Institucionales de Publicaciones Científicas)",
+    "abstract": "Tesis doctoral inédita leída en la Universidad Autónoma de Madrid. Escuela Politécnica Superior, Departamento de Ingeniería informática. Fecha de lectura: 1-07-2003",
+    "oa_url": "",
+    "url": "https://openalex.org/W1584387065"
+  },
+  {
+    "doi": "10.1109/tmag.2019.2899934",
+    "title": "Multi-Objective Topology Optimization of Rotating Machines Using Deep Learning",
+    "year": 2019,
+    "cites": 121,
+    "venue": "IEEE Transactions on Magnetics",
+    "abstract": "This paper presents the fast topology optimization methods for rotating machines based on deep learning. The cross-sectional image of electric motors and their performances obtained during a multi-objective topology optimization based on the finite-element method and genetic algorithm (GA) is used for training of the convolutional neural network (CNN). Two different approaches are proposed: 1) CNN trained by preliminary optimization with a small population for GA is used for the main optimization with a large population and 2) CNN is used for screening of torque performances in the optimization with respect to the motor efficiency.",
+    "oa_url": "https://eprints.lib.hokudai.ac.jp/dspace/bitstream/2115/74691/1/Full%20paper%20final%20submission.pdf",
+    "url": "https://openalex.org/W2922327436"
+  },
+  {
+    "doi": "10.3390/en16104027",
+    "title": "BLDC Motors Sensorless Control Based on MLP Topology Neural Network",
+    "year": 2023,
+    "cites": 15,
+    "venue": "Energies",
+    "abstract": "In order to reduce the complexity of the brushless DC motor (BLDC)-control-system algorithm while improving the estimation performance of the rotor phase position and the speed of the sensorless motor, a neural network (ANN) control algorithm based on multi-layer perceptron (MLP) topology is proposed. The phase voltage of the motor is conditioned to obtain the phase-voltage signal with a high signal-to-noise ratio, which is used as the input eigenvalue of the multi-layer-perceptron-topology neural network algorithm. The encoder signal is used as the training test data of the MLP-ANN. The first layer of the perceptual neural network estimates the position according to the voltage characteristics with incremental time characteristics. The second layer of the perceptual neural network estimates the speed according to the collected time characteristics and the characteristics of rotor position error. The algorithm after learning and training is digitally discretized and integrated into the motor control system. Experimental tests were carried out under no-load, speed step and load mutation conditions. The experimental results show that the algorithm can accurately estimate the rotor position and speed. The absolute error of the rotor position is within 0.02 rad, and the absolute error of the rotor speed is within 4 rpm. The control system with strong robustness has good dynamic and static characteristics.",
+    "oa_url": "https://www.mdpi.com/1996-1073/16/10/4027/pdf?version=1683877857",
+    "url": "https://openalex.org/W4382644221"
+  },
+  {
+    "doi": "10.1016/j.engappai.2022.105537",
+    "title": "Thermal neural networks: Lumped-parameter thermal modeling with state-space machine learning",
+    "year": 2022,
+    "cites": 94,
+    "venue": "Engineering Applications of Artificial Intelligence",
+    "abstract": "With electric power systems becoming more compact with higher power density, the relevance of thermal stress and precise real-time-capable model-based thermal monitoring increases. Previous work on thermal modeling by lumped-parameter thermal networks (LPTNs) suffers from mandatory expert knowledge for their design and from uncertainty regarding the required power loss model. In contrast, deep learning-based temperature models cannot be designed with the low amount of model parameters as in a LPTN at equal estimation accuracy. In this work, the thermal neural network (TNN) is introduced, which unifies both, consolidated knowledge in the form of heat-transfer-based LPTNs, and data-driven nonlinear function approximation with supervised machine learning. The TNN approach overcomes the drawbacks of previous paradigms by having physically interpretable states through its state-space representation, is end-to-end differentiable through an automatic differentiation framework, and requires no material, geometry, nor expert knowledge for its design. Experiments on an electric motor data set show that a TNN achieves higher temperature estimation accuracies than previous white-/gray- or black-box models with a mean squared error of 3.18 K2 and a worst-case error of 5.84 K at 64 model parameters.",
+    "oa_url": "https://www.sciencedirect.com/science/article/pii/S0952197622005279/pdf",
+    "url": "https://openalex.org/W3151386061"
+  },
+  {
+    "doi": "10.1109/access.2019.2945545",
+    "title": "Comprehensive Review of Artificial Neural Network Applications to Pattern Recognition",
+    "year": 2019,
+    "cites": 751,
+    "venue": "IEEE Access",
+    "abstract": "The era of artificial neural network (ANN) began with a simplified application in many fields and remarkable success in pattern recognition (PR) even in manufacturing industries. Although significant progress achieved and surveyed in addressing ANN application to PR challenges, nevertheless, some problems are yet to be resolved like whimsical orientation (the unknown path that cannot be accurately calculated due to its directional position). Other problem includes; object classification, location, scaling, neurons behavior analysis in hidden layers, rule, and template matching. Also, the lack of extant literature on the issues associated with ANN application to PR seems to slow down research focus and progress in the field. Hence, there is a need for state-of-the-art in neural networks application to PR to urgently address the above-highlights problems for more successes. The study furnishes readers with a clearer understanding of the current, and new trend in ANN models that effectively addresses PR challenges to enable research focus and topics. Similarly, the comprehensive review reveals the diverse areas of the success of ANN models and their application to PR. In evaluating the performance of ANN models, some statistical indicators for measuring the performance of the ANN model in many studies were adopted. Such as the use of mean absolute percentage error (MAPE), mean absolute error (MAE), root mean squared error (RMSE), and variance of absolute percentage error (VAPE). The result shows that the current ANN models such as GAN, SAE, DBN, RBM, RNN, RBFN, PNN, CNN, SLP, MLP, MLNN, Reservoir computing, and Transformer models are performing excellently in their application to PR tasks. Therefore, the study recommends the research focus on current models and the development of new models concurrently for more successes in the field.",
+    "oa_url": "https://ieeexplore.ieee.org/ielx7/6287639/8600701/08859190.pdf",
+    "url": "https://openalex.org/W2979040987"
+  },
+  {
+    "doi": "10.1016/j.ymssp.2020.107398",
+    "title": "1D convolutional neural networks and applications: A survey",
+    "year": 2021,
+    "cites": 2860,
+    "venue": "Qatar University QSpace (Qatar University)",
+    "abstract": "During the last decade, Convolutional Neural Networks (CNNs) have become the de facto standard for various Computer Vision and Machine Learning operations. CNNs are feed-forward Artificial Neural Networks (ANNs) with alternating convolutional and subsampling layers. Deep 2D CNNs with many hidden layers and millions of parameters have the ability to learn complex objects and patterns providing that they can be trained on a massive size visual database with ground-truth labels. With a proper training, this unique ability makes them the primary tool for various engineering applications for 2D signals such as images and video frames. Yet, this may not be a viable option in numerous applications over 1D signals especially when the training data is scarce or application specific. To address this issue, 1D CNNs have recently been proposed and immediately achieved the state-of-the-art performance levels in several applications such as personalized biomedical data classification and early diagnosis, structural health monitoring, anomaly detection and identification in power electronics and electrical motor fault detection. Another major advantage is that a real-time and low-cost hardware implementation is feasible due to the simple and compact configuration of 1D CNNs that perform only 1D convolutions (scalar multiplications and additions). This paper presents a comprehensive review of the general architecture and principals of 1D CNNs along with their major engineering applications, especially focused on the recent progress in this field. Their state-of-the-art performance is highlighted concluding with their unique properties. The benchmark datasets and the principal 1D CNN software used in those applications are also publicly shared in a dedicated website. While there has not been a paper on the review of 1D CNNs and its applications in the literature, this paper fulfills this gap.",
+    "oa_url": "",
+    "url": "https://openalex.org/W3100777112"
+  },
+  {
+    "doi": "10.1038/s41467-021-27713-7",
+    "title": "Self-directed online machine learning for topology optimization",
+    "year": 2022,
+    "cites": 123,
+    "venue": "Nature Communications",
+    "abstract": "Topology optimization by optimally distributing materials in a given domain requires non-gradient optimizers to solve highly complicated problems. However, with hundreds of design variables or more involved, solving such problems would require millions of Finite Element Method (FEM) calculations whose computational cost is huge and impractical. Here we report Self-directed Online Learning Optimization (SOLO) which integrates Deep Neural Network (DNN) with FEM calculations. A DNN learns and substitutes the objective as a function of design variables. A small number of training data is generated dynamically based on the DNN's prediction of the optimum. The DNN adapts to the new training data and gives better prediction in the region of interest until convergence. The optimum predicted by the DNN is proved to converge to the true global optimum through iterations. Our algorithm was tested by four types of problems including compliance minimization, fluid-structure optimization, heat transfer enhancement and truss optimization. It reduced the computational time by 2 ~ 5 orders of magnitude compared with directly using heuristic methods, and outperformed all state-of-the-art algorithms tested in our experiments. This approach enables solving large multi-dimensional optimization problems.",
+    "oa_url": "https://www.nature.com/articles/s41467-021-27713-7.pdf",
+    "url": "https://openalex.org/W4225541089"
+  },
+  {
+    "doi": "10.48550/arxiv.2207.12209",
+    "title": "Lagrangian Density Space-Time Deep Neural Network Topology",
+    "year": 2022,
+    "cites": 1,
+    "venue": "arXiv (Cornell University)",
+    "abstract": "As a network-based functional approximator, we have proposed a \"Lagrangian Density Space-Time Deep Neural Networks\" (LDDNN) topology. It is qualified for unsupervised training and learning to predict the dynamics of underlying physical science governed phenomena. The prototypical network respects the fundamental conservation laws of nature through the succinctly described Lagrangian and Hamiltonian density of the system by a given data-set of generalized nonlinear partial differential equations. The objective is to parameterize the Lagrangian density over a neural network and directly learn from it through data instead of hand-crafting an exact time-dependent \"Action solution\" of Lagrangian density for the physical system. With this novel approach, can understand and open up the information inference aspect of the \"Black-box deep machine learning representation\" for the physical dynamics of nature by constructing custom-tailored network interconnect topologies, activation, and loss/cost functions based on the underlying physical differential operators. This article will discuss statistical physics interpretation of neural networks in the Lagrangian and Hamiltonian domains.",
+    "oa_url": "https://arxiv.org/pdf/2207.12209",
+    "url": "https://openalex.org/W4288057096"
+  },
+  {
+    "doi": "10.3390/en15155735",
+    "title": "Power Management of a Plug-in Hybrid Electric Vehicle Using Neural Networks with Comparison to Other Approaches",
+    "year": 2022,
+    "cites": 23,
+    "venue": "Energies",
+    "abstract": "Many researchers spent much effort on the online power management strategies for plug-in hybrid vehicles (PHEVs) and hybrid electric vehicles (HEVs). Nowadays, artificial neural networks (ANNs), one of the machine learning techniques, have also been applied to this problem due to their good performance in learning non-linear and complicated multi-inputs multi-outputs (MIMO) dynamic systems. In this paper, an ANN is applied to the online power management for a plug-in hybrid electric vehicle (PHEV) by predicting the torque split between an internal combustion engine (ICE) and an electric motor (e-Motor) to optimize the greenhouse gas (GHG) emissions by using dynamic programming (DP) results as training data. Dynamic programming can achieve a global minimum solution while it is computationally intensive and requires prior knowledge of the entire drive cycle. As such, this method cannot be implemented in real-time. The DP-based ANN controller can get the benefit of using an ANN to fit the DP solution so that it can be implemented in real-time for an arbitrary drive cycle. We studied the hyper-parameters’ effects on the ANN model and different structures of ANN models are compared. The minimum training mean square error (MSE) models in each comparison set are selected for comparison with DP and equivalent consumption minimization strategy (ECMS). The total GHG emissions and state of charge (SOC) are the metrics used for the analysis and comparison. All the selected ANNs provide results that are comparable to the optimal DP solution, which indicates that ANNs are almost as good as the DP solution. It is found that the multiple hidden-layer ANN shows more efficiency in the training process than the single hidden-layer ANN. By comparing the results with ECMS, the ANN shows great potential in real-time application with the smallest deviation from the results of DP. In addition, our approach does not require any additional trip information, and its output (torque split) is more directly implementable on real vehicles.",
+    "oa_url": "https://www.mdpi.com/1996-1073/15/15/5735/pdf?version=1659952258",
+    "url": "https://openalex.org/W4290466127"
+  },
+  {
+    "doi": "10.1109/ojpel.2021.3063550",
+    "title": "A Review of Multilevel Inverter Topologies in Electric Vehicles: Current Status and Future Trends",
+    "year": 2021,
+    "cites": 420,
+    "venue": "IEEE Open Journal of Power Electronics",
+    "abstract": "Traction inverter, as a critical component in electrified transportation, has been the subject of many research projects in terms of topologies, modulation, and control schemes. Recently, some of the well-known electric vehicle manufacturers have utilized higher-voltage batteries to benefit from lower current, higher power density, and faster charging times. With the ongoing trend toward higher DC-link voltage in electric vehicles, some multilevel structures have been investigated as a feasible and efficient option for replacing the two-level inverters. Higher efficiency, higher power density, better waveform quality, and inherent fault-tolerance are the foremost advantages of multilevel inverters which make them an attractive solution for this application. This paper presents an investigation of the advantages and disadvantages of higher DC-link voltage in traction inverters, as well as a review of the recent research on multilevel inverter topologies for electrified transportation applications. A comparison of multilevel inverters with their two-level counterpart is conducted in terms of efficiency, cost, power density, power quality, reliability, and fault tolerance. Additionally, a comprehensive comparison of different topologies of multilevel inverters is conducted based on the most important criteria in transportation electrification. Future trends and possible research areas are also discussed.",
+    "oa_url": "https://ieeexplore.ieee.org/ielx7/8782709/9343742/09369045.pdf",
+    "url": "https://openalex.org/W3134222763"
+  },
+  {
+    "doi": "10.1145/3565973",
+    "title": "Graph Neural Networks in IoT: A Survey",
+    "year": 2022,
+    "cites": 199,
+    "venue": "ACM Transactions on Sensor Networks",
+    "abstract": "The Internet of Things (IoT) boom has revolutionized almost every corner of people’s daily lives: healthcare, environment, transportation, manufacturing, supply chain, and so on. With the recent development of sensor and communication technology, IoT artifacts, including smart wearables, cameras, smartwatches, and autonomous systems can accurately measure and perceive their surrounding environment. Continuous sensing generates massive amounts of data and presents challenges for machine learning. Deep learning models (e.g., convolution neural networks and recurrent neural networks) have been extensively employed in solving IoT tasks by learning patterns from multi-modal sensory data. Graph neural networks (GNNs), an emerging and fast-growing family of neural network models, can capture complex interactions within sensor topology and have been demonstrated to achieve state-of-the-art results in numerous IoT learning tasks. In this survey, we present a comprehensive review of recent advances in the application of GNNs to the IoT field, including a deep dive analysis of GNN design in various IoT sensing environments, an overarching list of public data and source codes from the collected publications, and future research directions. To keep track of newly published works, we collect representative papers and their open-source implementations and create a Github repository at GNN4IoT.",
+    "oa_url": "https://arxiv.org/pdf/2203.15935",
+    "url": "https://openalex.org/W4303426745"
+  },
+  {
+    "doi": "10.1109/tmag.2023.3242288",
+    "title": "Fast Topology Optimization for PM Motors Using Variational Autoencoder and Neural Networks With Dropout",
+    "year": 2023,
+    "cites": 22,
+    "venue": "IEEE Transactions on Magnetics",
+    "abstract": "This study proposes a novel topology optimization (TO) method for permanent magnet (PM) motors based on a variational autoencoder (VAE) and a neural network (NN). The VAE is trained to embed various shapes generated from the TO into the latent space. The NN is trained to predict the characteristics of the PM motor from its latent representation derived using the VAE. After training, TO is performed in the latent space based on the prediction using the NN. We adopt the Monte Carlo dropout to maintain prediction reliability using the NN during optimization, where prediction deviation is evaluated and used to eliminate unreliable solutions. The proposed method yields Pareto solutions within 80 s in a single-thread CPU machine, which is considerably faster than numerical analysis-based optimization, such as finite-element analysis.",
+    "oa_url": "https://eprints.lib.hokudai.ac.jp/dspace/bitstream/2115/90098/1/VAE_TO_final.pdf",
+    "url": "https://openalex.org/W4319068603"
+  },
+  {
+    "doi": "10.5121/csit.2019.90704",
+    "title": "Evolving Random Topologies of Spiking Neural Networks for Pattern Recognition",
+    "year": 2019,
+    "cites": 1,
+    "venue": "",
+    "abstract": "Artificial Neural Networks (ANNs) have been successfully used in Pattern Recognition tasks.Evolutionary Spiking Neural Networks (ESNNs) constitute an approach to design thirdgeneration ANNs (also known as Spiking Neural Networks, SNNs) involving Evolutionary Algorithms (EAs) to govern some intrinsic aspects of the networks, such as topology, connections and/or parameters.Concerning the practicality of the networks, a rather simple standard is commonly used; restricted feed-forward fully-connected network topologies deprived from more complex connections are usually considered.Notwithstanding, a wider prospect of configurations in contrast to standard network topologies is available for research.In this paper, ESNNs are evolved to solve pattern classification tasks, using an EA-based algorithm known as Grammatical Evolution (GE).Experiments demonstrate competitive results and a distinctive variety of network designs when compared to a more traditional approach to design ESNNs.",
+    "oa_url": "https://doi.org/10.5121/csit.2019.90704",
+    "url": "https://openalex.org/W2960418512"
+  }
+]

@@ -1,0 +1,12 @@
+conn: 768
+rand: 2304
+total 3084 elapsed 159s
+tap50/standard: nrmse 0.620 T_r2 0.753
+tap50/+mag: nrmse 0.296 T_r2 0.821
+tap50/+ph: nrmse 0.648 T_r2 0.788
+tap50/+mag+ph: nrmse 0.304 T_r2 0.881
+openB/standard: nrmse 1.110 T_r2 0.753
+openB/+mag: nrmse 1.079 T_r2 0.783
+openB/+ph: nrmse 0.082 T_r2 0.997
+openB/+mag+ph: nrmse 0.065 T_r2 0.992
+saved

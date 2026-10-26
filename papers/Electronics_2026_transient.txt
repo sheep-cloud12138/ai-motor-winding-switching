@@ -1,0 +1,1879 @@
+
+
+===== PAGE 1 =====
+
+ 
+ 
+ 
+ 
+Electronics 2026, 15, 3120 
+https://doi.org/10.3390/electronics15143120 
+Article 
+Transient Control of Winding Reconfiguration  
+for PMSMs Based on Deadbeat Predictive Control  
+and Zero-Vector Switching 
+Qingbo Guo 1, Xinshuai Zhang 1,*, Yixin Liu 1, Lei Yang 1, Wei Cai 1, Chaoyu Zhang 2 and Chengming Zhang 3 
+1 School of Electrical and Electronic Engineering, Harbin University of Science and Technology,  
+Harbin 150080, China; guoqingbo@hrbust.edu.cn (Q.G.); 2520300006@stu.hrbust.edu.cn (Y.L.); 
+2110303057@stu.hrbust.edu.cn (L.Y.); tytd@hrbust.edu.cn (W.C.) 
+2 School of Advanced Manufacturing and Robotics, Harbin Institute of Technology, Harbin 150080, China; 
+zhangchaoyu@hit.edu.cn 
+3 School of Electrical Engineering and Automation, Harbin Institute of Technology, Harbin 150080, China; 
+cmzhang@hit.edu.cn 
+* Correspondence: 2210304059@stu.hrbust.edu.cn 
+Abstract 
+Stator winding reconfiguration technology has attracted increasing attention because it 
+can modify the torque–speed output characteristics of motors online and extend the high-
+efficiency operating region. However, conventional winding switching methods suffer 
+from several limitations, including long transient duration, typically at the millisecond 
+level; difficulty in precise control; current interruption or asymmetric operation during 
+the transient process; and the resulting torque loss and torque fluctuation. To address 
+these issues, this paper first proposes a seamless winding switching method. The core idea 
+is to complete the switching within the zero-vector interval of a single SVPWM period, 
+thereby eliminating potential surge voltage without requiring a snubber circuit. The pro-
+posed method reduces the transient duration to only 5 μs, eliminates current interruption 
+and current asymmetry, and suppresses the associated torque ripple. Furthermore, a 
+deadbeat predictive control strategy is employed. By directly controlling the voltage vec-
+tor, the proposed strategy enables fast and accurate current tracking within one sampling 
+period after reconfiguration, thereby avoiding current overshoot, oscillation, and the cor-
+responding torque and speed fluctuations. In addition, a voltage feedforward compensa-
+tion method is proposed to pre-compensate the voltage applied during the PWM period 
+in which the winding reconfiguration is performed, thereby preventing the application of 
+voltage vectors that are inconsistent with the actual motor winding connection. With these 
+three innovative measures, fast, smooth, and robust winding reconfiguration is achieved. 
+The mechanisms and implementation procedures of the proposed strategies are described 
+in detail, and their feasibility and effectiveness are verified through experiments. 
+Keywords: permanent magnet synchronous motor (PMSM); winding reconfiguration; 
+seamless switching; zero-voltage vector (ZVV) interval; deadbeat predictive current  
+control (DPCC) 
+ 
+ 
+Academic Editor: Dorin Petreus 
+Received: 16 June 2026 
+Revised: 2 July 2026 
+Accepted: 10 July 2026 
+Published: 15 July 2026 
+Copyright: © 2026 by the authors. 
+Licensee MDPI, Basel, Switzerland. 
+This article is an open access article 
+distributed under the terms and 
+conditions of the Creative Commons 
+Attribution (CC BY) license. 
+
+
+===== PAGE 2 =====
+
+Electronics 2026, 15, 3120 
+2 of 19 
+ 
+https://doi.org/10.3390/electronics15143120 
+1. Introduction 
+To address global environmental challenges and the energy crisis, electric vehicles 
+(EVs) are undergoing rapid development [1,2]. At present, most EVs adopt a drive topology 
+consisting of a permanent magnet synchronous motor (PMSM) and a single-speed reducer. 
+However, under certain operating conditions, it is difficult for this configuration to simultane-
+ously satisfy the requirements of high torque at low speed and high power at high speed. 
+Stator winding reconfiguration has emerged as a promising solution, as it can change the con-
+nection mode of the stator windings through external circuits [3]. This technique enables dy-
+namic adjustment of the motor torque–speed output characteristics and effectively extends 
+the high-efficiency operating region of the motor while providing performance similar to that 
+of a conventional multi-speed transmission [4]. 
+According to the differences in winding connection topologies, winding reconfigu-
+ration can be classified into several types, including star–delta reconfiguration [5–7], 
+tapped-winding reconfiguration [8–10], series–parallel reconfiguration [11–14], and 
+phase-shift reconfiguration [15–17]. In addition, hybrid reconfiguration schemes combin-
+ing star–delta reconfiguration with other methods have also been reported in the literature 
+[18–20]. Among these alternatives, series–parallel reconfiguration has received the broad-
+est research attention because of its remarkable transformation ratio, continuous utiliza-
+tion of all windings, and relatively simple implementation process. 
+The switching devices used in the reconfiguration circuit can be mechanical components 
+such as relays or contactors [11,21,22]. Although these devices have the advantages of low cost 
+and low conduction loss, they also suffer from slow switching speed, large volume, and lim-
+ited life. Therefore, power electronic switches, including IGBTs, MOSFETs, and thyristors, 
+have become the preferred choice for reconfigurable winding systems [7–10]. 
+The major challenge in winding reconfiguration is how to safely change the winding 
+connections during motor operation. Sudden switching can generate surge voltage due to 
+abrupt changes in the inductive current, which may damage the reconfiguration switches 
+or even the inverter. Although integrating dedicated snubber circuits [23,24] provides an 
+effective countermeasure, it inevitably increases the system volume, weight, and cost. 
+Currently, the most widely used methods are the zero-current method (ZC) [11,22] and 
+the phase-by-phase method (PBP) [13,25]. 
+In the ZC method, the three-phase currents must first be reduced to zero, and the 
+current is then re-established after winding reconfiguration. Although this method en-
+sures the safety of the reconfiguration process, it introduces a new problem: the torque is 
+completely interrupted, resulting in a consequent speed drop. The PBP method avoids 
+torque interruption by changing the winding connection sequentially at the zero-crossing 
+instants of each phase current. However, during this process, the motor operates under 
+an asymmetric condition, which still causes torque fluctuation. Moreover, this process re-
+quires at least one third of an electrical current period. 
+The transition duration of these two methods is usually at the millisecond level and 
+is affected by multiple factors. For the ZC method, the influencing factors include the in-
+ductance value, current amplitude, and current sampling noise. For the PBP method, the 
+key influencing factor is the motor speed. In addition, because thyristors have natural 
+commutation characteristics, the PBP method is generally more suitable for applications 
+in which thyristors are used as reconfiguration switches. Otherwise, inaccurate zero-
+crossing detection may still lead to surge voltage generation. 
+For EV applications, when fully-controlled fast-switching power devices such as IG-
+BTs, MOSFETs, or even SiC MOSFETs are used as reconfiguration switches [7,9,10,17,25], 
+it becomes particularly important to develop a high-performance switching control strat-
+egy that is well matched with the hardware. 
+
+
+===== PAGE 3 =====
+
+Electronics 2026, 15, 3120 
+3 of 19 
+ 
+https://doi.org/10.3390/electronics15143120 
+Deadbeat predictive current control (DPCC) has been widely applied in motor drive con-
+trol systems because of its extremely fast dynamic response and excellent steady-state perfor-
+mance [26,27]. By calculating the required voltage vector applied to the motor, DPCC can 
+achieve tracking of the reference current within a single control period. 
+This paper proposes an integrated control strategy for series–parallel winding recon-
+figuration of PMSM using fully-controlled power electronic devices as reconfiguration 
+switches. The proposed strategy combines a seamless switching method with a DPCC 
+scheme that incorporates feedforward voltage compensation. 
+The main contributions of this study are summarized as follows. 
+A seamless switching method based on the zero-voltage-vector (ZVV) interval is pro-
+posed. This method eliminates the potential surge voltage, torque interruption, and asym-
+metric operation problems associated with conventional switching methods. Meanwhile, 
+the transient duration of winding reconfiguration is reduced to a fixed microsecond-level 
+timescale, which is 5 μs in this study. 
+DPCC is introduced into the winding reconfiguration control system for the first 
+time, and a feedforward voltage compensation method is proposed. Combined with the 
+proposed seamless switching method, the strategy enables fast and accurate tracking of 
+the step-changed current command within one control period, thereby effectively sup-
+pressing current overshoot and oscillation after reconfiguration. 
+The remainder of this paper is organized as follows. Section 2 introduces the series–
+parallel winding reconfiguration system. Section 3 presents the principles and implemen-
+tation details of the proposed strategy. Section 4 shows the experimental results. Section 
+5 compares and discusses the characteristics and essential differences between the existing 
+winding-reconfiguration control schemes and the proposed method. Finally, Section 6 
+concludes the paper. 
+2. The Series–Parallel Winding Reconfiguration System 
+Figure 1a shows the topology of the proposed system, which mainly consists of an 
+inverter, a winding reconfiguration circuit, and a reconfigurable PMSM. As shown in Fig-
+ure 1b, the PMSM contains two independent sets of three-phase windings, namely 
+A1/B1/C1 and A2/B2/C2, whose magnetic axes are spatially aligned. The winding recon-
+figuration circuit consists of nine reconfiguration switches, including series switches S1–
+S3 and parallel switches P1–P6. The structure of a single switch is shown in the dashed 
+box in Figure 1a, where a common-emitter IGBT module with integrated freewheeling 
+diodes is adopted. When the motor operates in the series mode, S1–S3 are turned on and 
+P1–P6 are turned off. When the motor is switched to the parallel mode, P1–P6 are turned 
+on and S1–S3 are turned off. 
+ 
+ 
+(a) 
+(b) 
+Figure 1. Series–parallel winding reconfiguration system: (a) system topology; (b) schematic dia-
+gram of the winding arrangement. 
+S3
+C2
+P5
+S2
+B2
+P3
+V1
+A2
+P1
+B1
+P4
+C1
+P6
+S1
+A1
+P2
+V2
+V3
+V4
+V5
+V6
+
+
+===== PAGE 4 =====
+
+Electronics 2026, 15, 3120 
+4 of 19 
+ 
+https://doi.org/10.3390/electronics15143120 
+In the low-speed region, the series mode is adopted to obtain a higher rated torque. 
+After the speed exceeds the base speed, switching to the parallel mode can double the 
+constant-torque operating range. Figure 2 qualitatively illustrates the speed–torque out-
+put characteristics of the reconfigurable PMSM under different operating modes. Table 1 
+lists the parameter relationships under different winding connection modes. Under con-
+stant dc-link voltage and inverter current limit, the torque output capability or speed op-
+erating range of the reconfigurable PMSM can reach twice that of a conventional motor. 
+In other words, if the rated power remains unchanged, the required volume and weight 
+of the PMSM can be reduced accordingly. 
+Table 1. Parameter relationships under different winding modes. 
+Item 
+Resistance 
+(p.u.) 
+Inductance 
+(p.u.) 
+Flux 
+(p.u.) 
+Rated Torque 
+(p.u.) 
+Base Speed 
+(p.u.) 
+Series mode 
+1 
+1 
+1 
+1 
+1 
+Parallel mode 
+0.25 
+0.25 
+0.5 
+0.5 
+2 
+ 
+Figure 2. Qualitative speed–torque output characteristics of the reconfigurable PMSM. 
+3. The Proposed Strategy 
+3.1. The Winding Switching Method Based on the ZVV Interval 
+3.1.1. Basic Principle 
+A two-level voltage source inverter can generate six active voltage vectors, u1–u6, and two 
+ZVVs, u0 and u7, forming the vector space shown in Figure 3. In Figure 3, the orange arrows 
+denote the αβ coordinate system, the black arrows represent the basic voltage vectors, and the 
+blue arrows stand for the synthesized voltage vectors. According to the minimum switching 
+action principle, Taking Sector I as an example, Figure 4 shows the switching sequence of 
+seven-segment space vector pulse-width modulation (SVPWM). In each SVPWM period, the 
+ZVVs are distributed at the beginning, middle, and end of this period. 
+ 
+Figure 3. Vector space. 
+Ⅴ
+u4(100)
+u6(110)
+u2(010)
+u3(011)
+u1(001)
+u5(101)
+Ⅰ
+Ⅱ
+Ⅲ
+Ⅳ
+Ⅵ
+u0(000)
+u7(111)
+uref
+α
+β
+
+
+===== PAGE 5 =====
+
+Electronics 2026, 15, 3120 
+5 of 19 
+ 
+https://doi.org/10.3390/electronics15143120 
+ 
+Figure 4. SVPWM switching sequence. 
+The proposed seamless switching method based on the ZVV interval refers to per-
+forming winding reconfiguration during the interval in which u0 or u7 is applied. If wind-
+ing reconfiguration is performed during the u7 interval, there will be at least half a sam-
+pling period during which the applied voltage vector does not match the winding con-
+nection state of the motor. Therefore, in this study, winding reconfiguration is performed 
+during the u0 interval at the beginning of one SVPWM period, as indicated by the orange 
+region in Figure 4. 
+3.1.2. Mode Decomposition of the Reconfiguration Process 
+During winding reconfiguration, the operating states of the system can be divided 
+into three modes: series mode, transient mode, and parallel mode. Taking the case in 
+which the reference ZVV is located in Sector I and the motor is switched from the series 
+mode to the parallel mode as an example, the operating states of the system in the three 
+modes are described in detail below. 
+Mode 1: As shown in Figure 5, the windings operate in the series mode, where the series 
+switches S1–S3 are turned on and the parallel switches P1–P6 are turned off. At the end of the 
+previous SVPWM period, the output voltage vector of the inverter switches from u4 to u0. The 
+current freewheels through the lower bridge arms of the inverter, the motor windings, and 
+switches S1–S3. The current flow direction is indicated by the dashed arrows. This state con-
+tinues into the u0 interval at the beginning of the current SVPWM period. 
+ 
+Figure 5. Mode 1—The series mode. 
+Mode 2: As shown in Figure 6, the states of the inverter and switches S1–S3 remain 
+the same as those in Mode 1, while the parallel switches P1–P6 are switched from off to 
+on. This is the transient mode, in which all nine reconfiguration switches are turned on. 
+The current freewheels through the lower bridge arms of the inverter, the motor windings, 
+and all reconfiguration switches. Although the freewheeling loop changes, the magnitude 
+and direction of the current in each winding remain unchanged. Therefore, theoretically, 
+no surge voltage or abrupt torque change is generated. 
+T0/4 T4/2 T6/2 T0/4 T0/4 T6/2 T4/2 T0/4
+0
+0
+0
+1
+0
+0
+1
+1
+0
+1
+1
+1
+1
+1
+1
+1
+1
+0
+1
+0
+0
+0
+0
+0
+Ts
+u0
+u4
+u6
+u7
+u7
+u6
+u4
+u0
+A
+B
+C
+S3
+C2
+P5
+S2
+B2
+P3
+A2
+P1
+B1
+P4
+C1
+P6
+S1
+A1
+P2
+V1
+V2
+V3
+V4
+V5
+V6
+
+
+===== PAGE 6 =====
+
+Electronics 2026, 15, 3120 
+6 of 19 
+ 
+https://doi.org/10.3390/electronics15143120 
+ 
+Figure 6. Mode 2—The transient mode. 
+Mode 3: As shown in Figure 7, the states of the inverter and switches P1–P6 remain 
+the same as those in Mode 2, while the series switches S1–S3 are turned off. The current 
+freewheels through the lower bridge arms of the inverter, the motor windings, and 
+switches P1–P6. At this point, the winding reconfiguration process is completed, and the 
+motor enters the parallel operating mode. The inverter output voltage remains at u0 until 
+the active voltage vector u4 is applied. 
+ 
+Figure 7. Mode 3—The parallel mode. 
+Table 2 lists the ON/OFF states of each reconfiguration switch under different oper-
+ating modes. 
+Table 2. Conduction states of reconfiguration switches. 
+Item 
+S1 
+S2 
+S3 
+P1 
+P2 
+P3 
+P4 
+P5 
+P6 
+Mode 1 
+1 
+1 
+1 
+0 
+0 
+0 
+0 
+0 
+0 
+Mode 2 
+1 
+1 
+1 
+1 
+1 
+1 
+1 
+1 
+1 
+Mode 3 
+0 
+0 
+0 
+1 
+1 
+1 
+1 
+1 
+1 
+3.1.3. Determination of the Minimum ZVV Interval 
+When winding reconfiguration is performed, the duration of the ZVV interval at the 
+beginning of the SVPWM period should be no less than the winding reconfiguration tran-
+sient time, Ttr. 
+This transient time should include the turn-on time (ton) and the turn-off time (toff) of 
+the reconfiguration switches, as shown in (1). These parameters can be obtained from the 
+device datasheet, while the necessary signal propagation delay and safety margin should 
+also be considered. In this work, ton = 3 μs and toff = 2 μs are adopted; therefore, the mini-
+mum ZVV interval is set as Ttr = 5 μs. If the motor operates under a high modulation index, 
+resulting in an insufficient ZVV duration, it can be directly limited to 5 μs in that specific 
+SVPWM period. Since this situation occurs with a very low frequency and affects only one 
+SVPWM period each time, its negative influence on system performance can be neglected. 
+V1
+V2
+V3
+V4
+V5
+V6
+S3
+C2
+P5
+S2
+B2
+P3
+A2
+P1
+B1
+P4
+C1
+P6
+S1
+A1
+P2
+V1
+V2
+V3
+V4
+V5
+V6
+S3
+C2
+P5
+S2
+B2
+P3
+A2
+P1
+B1
+P4
+C1
+P6
+S1
+A1
+P2
+
+
+===== PAGE 7 =====
+
+Electronics 2026, 15, 3120 
+7 of 19 
+ 
+https://doi.org/10.3390/electronics15143120 
+The decomposition of the reconfiguration transient time is shown in Figure 8. From 
+top to bottom, the figure shows the phase-A switching sequence, which has been pre-
+sented in Figure 4, and the PWM waveforms of the upper and lower inverter bridge arms 
+of phase A. 
+ 
+Figure 8. Decomposition of the reconfiguration transient time. 
+The meanings of the time instants are explained as follows. The instant t1 is the start-
+ing instant of this SVPWM period, that is, the starting instant of the ZVV interval u0. At 
+this instant, turn-on signals are synchronously applied to switches P1–P6. By the instant 
+t2, P1–P6 have been fully turned on, and at this instant, turn-off signals are synchronously 
+sent to switches S1–S3. The instant t3 represents the end of the ZVV interval, and the in-
+verter starts to output the active voltage vector u4. At this instant, S1–S3 have been com-
+pletely turned off, the reconfiguration transient process is also terminated accordingly, 
+and the motor enters the parallel winding mode. The interval between t3 and t4 represents 
+the dead time of the PWM signal. 
+f
+tr
+on
+of
+T
+t
+t
+=
++
+, 
+(1)
+3.2. Control Strategy Incorporating DPCC 
+3.2.1. Principle of DPCC 
+This study focuses on a surface-mounted PMSM. Its mathematical model in the dq 
+reference frame can be expressed as: 
+d
+d
+d
+e q
+q
+d
+q
+e
+d
+f
+1
+1
+1
+(
+)
+di
+R
+u
+i
+i
+dt
+L
+L
+di
+R
+u
+i
+Li
+dt
+L
+L
+L
+ω
+ω
+ψ
+
+=
+−
++
+
+
+=
+−
+−
++
+
+ 
+(2)
+where u and i denote the stator voltage and current, respectively; the subscripts d and q 
+represent the d-axis and q-axis components, respectively; L is the stator inductance; R is 
+the stator resistance; ωe is the rotor electrical angular speed; and ψf is the permanent mag-
+net flux linkage. 
+Based on (2), forward Euler discretization is performed, and the predicted current 
+expressions for the next sampling period can be obtained as follows: 
+1
+s
+s
+dp
+d
+s
+e q
+d
+1
+s
+s
+s
+qp
+q
+s
+e d
+q
+e
+f
+1
+1
+k
+k
+k
+k
+k
+k
+k
+k
+T R
+T
+i
+i
+T
+i
+u
+L
+L
+T R
+T
+T
+i
+i
+T
+i
+u
+L
+L
+L
+ω
+ω
+ωψ
++
++
+
+
+
+=
+−
++
++
+
+
+
+
+
+
+
+
+
+
+=
+−
+−
++
+−
+
+
+
+
+
+
+ 
+(3)
+where 
+1
+dp
+ki +
+ and 
+1
+qp
+ki +
+ are the predicted currents in the (k + 1)th sampling period; 
+d
+ki and 
+q
+ki are the actual currents in the (k)th sampling period; 
+d
+k
+u and 
+q
+ku are the applied volt-
+age vector; and Ts is the sampling period. 
+The objective of DPCC is to ensure that the currents at instant (k + 1) are infinitely 
+close to the reference values at instant k, thereby eliminating the tracking error. Therefore, 
+ton
+toff
+t1
+t2
+t3
+Sequence A
+PWMA_H
+PWMA_L
+Ts
+Ttr
+t4
+tdz
+
+
+===== PAGE 8 =====
+
+Electronics 2026, 15, 3120 
+8 of 19 
+ 
+https://doi.org/10.3390/electronics15143120 
+it is essential to calculate the most appropriate voltage vector. Based on the discrete math-
+ematical model in (3), the stator voltage at instant k can be obtained as: 
+ref
+d
+d
+d
+e
+q
+s
+s
+ref
+q
+q
+q
+e
+d
+e
+f
+s
+s
+k
+k
+k
+k
+k
+k
+L
+L
+u
+i
+R
+i
+Li
+T
+T
+L
+L
+u
+i
+R
+i
+Li
+T
+T
+ω
+ω
+ω ψ
+
+
+
+=
++
+−
+−
+
+
+
+
+
+
+
+
+
+
+=
++
+−
++
++
+
+
+
+
+
+
+ 
+(4)
+where 
+1
+d
+ki +
+ and 
+1
+q
+ki +
+ are replaced by their reference values 
+ref
+di
+ and 
+ref
+qi
+. respectively. 
+Considering the one-step delay in the practical system, the predicted stator voltage 
+in the (k + 1)th sampling period can be expressed as: 
+1
+ref
+1
+1
+d
+d
+dp
+e
+qp
+s
+s
+1
+ref
+1
+1
+q
+q
+qp
+e
+dp
+e
+f
+s
+s
+k
+k
+k
+k
+k
+k
+L
+L
+u
+i
+R
+i
+Li
+T
+T
+L
+L
+u
+i
+R
+i
+Li
+T
+T
+ω
+ω
+ω ψ
++
++
++
++
++
++
+
+
+
+=
++
+−
+−
+
+
+
+
+
+
+
+
+
+
+=
++
+−
++
++
+
+
+
+
+
+
+ 
+(5)
+where 
+1
+dp
+ki +
+ and 
+1
+qp
+ki +
+ can be calculated using (3). 
+In the winding reconfiguration control system, motor parameters, current references 
+and actual phase currents may all experience step changes. If conventional DPCC is di-
+rectly adopted for reconfiguration transient control without dedicated modifications, 
+torque oscillations or even control instability will occur after reconfiguration. Accordingly, 
+a feedforward voltage compensation measure is proposed for DPCC targeting winding 
+reconfiguration transient control. 
+3.2.2. Implementation of DPCC with Voltage Compensation During  
+Winding Reconfiguration 
+When the motor windings operate in the series steady state or the parallel steady 
+state, the DPCC algorithm is implemented in the same manner as in conventional opera-
+tion, namely according to (3) and (5). The motor parameters corresponding to the series 
+mode are used in the series steady state, while those corresponding to the parallel mode 
+are used in the parallel steady state. When winding reconfiguration occurs, several special 
+treatments are required after the reconfiguration command is received. 
+Taking the series-to-parallel winding reconfiguration as an example, Figure 9, to-
+gether with (6) and (7), illustrates the implementation of DPCC during the reconfiguration 
+process. Assuming that the reconfiguration command is updated in the (k)th sampling 
+period, the following operations should be performed in this period: (1) the motor param-
+eters and control parameters are changed to those of the parallel mode; (2) the voltage 
+vector with feedforward compensation, 
+1
+dq
+k
+u +
+, for the next sampling period is predicted; 
+and (3) the length of the ZVV interval calculated for the (k + 1)th period is checked to 
+determine whether it satisfies the required transient time Ttr. If not, it is limited to Ttr. At 
+the beginning of the next sampling period, namely the (k + 1)th period, the winding re-
+configuration action can be executed. 
+
+
+===== PAGE 9 =====
+
+Electronics 2026, 15, 3120 
+9 of 19 
+ 
+https://doi.org/10.3390/electronics15143120 
+ 
+Figure 9. Implementation of the predictive algorithm with voltage compensation for winding re-
+configuration (Series to Parallel). 
+The reasons for adopting feedforward compensation on 
+1
+dq
+k
+u +
+ and the detailed cal-
+culation method are elaborated as follows: 
+First, in the (k)th period, the motor windings are still operating in the series mode. 
+Therefore, the series motor parameters should still be used to calculate the predicted cur-
+rent 
+1
+dq
+ki +
+ in (3), which can be rewritten as (6). For 
+1
+dq
+k
+u +
+, however, since it will be applied 
+in the (k + 1)th sampling period, at which time the winding reconfiguration has already 
+been completed, the parallel motor parameters should be used for its calculation. Further-
+more, because the motor has already entered the parallel mode, the actual phase current 
+in the (k + 1)th period is twice the predicted value 
+1
+dp
+ki +
+ and 
+1
+qp
+ki +
+. Therefore, it should be 
+multiplied by 2, as shown in (7). 
+1
+s
+S
+s
+dp
+d
+s
+e q
+d
+S
+S
+1
+s
+S
+s
+s
+qp
+q
+s
+e d
+q
+e
+fS
+S
+S
+S
+1
+1
+k
+k
+k
+k
+k
+k
+k
+k
+T R
+T
+i
+i
+T
+i
+u
+L
+L
+T R
+T
+T
+i
+i
+T
+i
+u
+L
+L
+L
+ω
+ω
+ω ψ
++
++
+
+
+
+=
+−
++
++
+
+
+
+
+
+
+
+
+
+
+=
+−
+−
++
+−
+
+
+
+
+
+
+ 
+(6)
+(
+)
+(
+)
+(
+)
+(
+)
+1
+ref
+1
+1
+P
+P
+d
+d
+P
+dp
+e
+P
+qp
+s
+s
+1
+ref
+1
+1
+P
+P
+q
+q
+P
+qp
+e
+P
+dp
+e
+fP
+s
+s
+2
+2
+2
+2
+k
+k
+k
+k
+k
+k
+L
+L
+u
+i
+R
+i
+L
+i
+T
+T
+L
+L
+u
+i
+R
+i
+L
+i
+T
+T
+ω
+ω
+ω ψ
++
++
++
++
++
++
+
+
+
+=
++
+−
+−
+
+
+
+
+
+
+
+
+
+
+=
++
+−
++
++
+
+
+
+
+
+
+ 
+(7)
+The capital subscripts S and P of the motor parameters denote the series and parallel 
+parameters, respectively. 
+Similarly, for reconfiguration from the parallel mode to the series mode, the calcula-
+tion in the (k)th sampling period is performed according to (8) and (9). 
+1
+s
+P
+s
+dp
+d
+s
+e q
+d
+P
+P
+1
+s
+P
+s
+s
+qp
+q
+s
+e d
+q
+e
+fP
+P
+P
+P
+1
+1
+k
+k
+k
+k
+k
+k
+k
+k
+T R
+T
+i
+i
+T
+i
+u
+L
+L
+T R
+T
+T
+i
+i
+T
+i
+u
+L
+L
+L
+ω
+ω
+ω ψ
++
++
+
+
+
+=
+−
++
++
+
+
+
+
+
+
+
+
+
+
+=
+−
+−
++
+−
+
+
+
+
+
+
+ 
+(8)
+(
+)
+(
+)
+(
+)
+(
+)
+1
+ref
+1
+1
+S
+S
+d
+d
+S
+dp
+e
+S
+qp
+s
+s
+1
+ref
+1
+1
+S
+S
+q
+q
+S
+qp
+e
+S
+dp
+e
+fS
+s
+s
+0.5
+0.5
+0.5
+0.5
+k
+k
+k
+k
+k
+k
+L
+L
+u
+i
+R
+i
+L
+i
+T
+T
+L
+L
+u
+i
+R
+i
+L
+i
+T
+T
+ω
+ω
+ω ψ
++
++
++
++
++
++
+
+
+
+=
++
+−
+−
+
+
+
+
+
+
+
+
+
+
+=
++
+−
++
++
+
+
+
+
+
+
+ 
+(9)
+
+
+===== PAGE 10 =====
+
+Electronics 2026, 15, 3120 
+10 of 19 
+ 
+https://doi.org/10.3390/electronics15143120 
+It should be emphasized that the feedforward voltage compensation is required only 
+once in the specific SVPWM period corresponding to winding reconfiguration. Therefore, 
+it introduces almost no additional computational burden to the control algorithm. 
+Figure 10 presents a flowchart of the motor winding reconfiguration process from 
+the series mode to the parallel mode. 
+ 
+Figure 10. Implementation flowchart. 
+3.3. Overview of the Drive and Control System 
+Figure 11 shows the block diagram of the winding-reconfigurable motor drive and 
+control system investigated in this study. The speed loop adopts conventional PI control, 
+while the current loop adopts DPCC. In the reconfiguration algorithm, the parameters 
+that need to be updated according to the winding reconfiguration command include the 
+motor parameters, namely resistance, inductance, and flux linkage, and the control pa-
+rameters, namely the speed-loop PI parameters and the q-axis current gain. Theoretically, 
+the speed-loop PI parameters in the series mode are 0.5 times those in the parallel mode 
+[28]. Since the output of the speed-loop integrator cannot change in a stepwise manner, a 
+q-axis current gain selector is introduced in the current loop to rapidly change the current 
+command after winding reconfiguration. 
+
+
+===== PAGE 11 =====
+
+Electronics 2026, 15, 3120 
+11 of 19 
+ 
+https://doi.org/10.3390/electronics15143120 
+ 
+Figure 11. System block diagram. 
+4. Experimental Validation 
+To verify the performance of the proposed control strategy, a surface-mounted dual-
+winding PMSM is modified into a winding-reconfigurable topology, and the experi-
+mental platform shown in Figure 12 is established. The controller adopts a 
+TMS320F28379D DSP. The reconfiguration switches and inverter power module are In-
+fineon IKQB120N75CP2 and FF600R12ME4 devices, respectively. The detailed motor pa-
+rameters are listed in Table 3. The dc-link voltage of the system is set to 24 V, and the 
+PWM frequency is 10 kHz. 
+ 
+Figure 12. The experimental platform. 
+In the following experimental results, the current waveforms are directly acquired using 
+current clamps. The speed and torque waveforms cannot be measured directly. The speed is 
+calculated based on the position information detected by a 2500-line encoder. The torque is 
+derived from the phase currents measured by Hall effect current sensors with a sampling ac-
+curacy of 2%. These data are transmitted from the DSP to the host computer via serial com-
+munication and subsequently plotted as waveforms using Origin v2021. The uploading and 
+updating frequency are identical to the current-loop sampling frequency (10 kHz). 
+Table 3. Parameters of the motor. 
+Parameter 
+Parallel Mode 
+Series Mode 
+Stator resistance per phase (Ω) 
+5 × 10−3 
+2 × 10−2 
+Stator inductance per phase (H) 
+1.73 × 10−5 
+6.92 × 10−5 
+Permanent magnet flux (Wb) 
+5.67 × 10−3 
+1.134 × 10−2 
+
+
+===== PAGE 12 =====
+
+Electronics 2026, 15, 3120 
+12 of 19 
+ 
+https://doi.org/10.3390/electronics15143120 
+Torque constant (Nm/Arms) 
+0.045 
+0.09 
+Number of pole pairs 
+4 
+4 
+Rated torque (Nm) 
+1 
+2 
+Rated speed (rpm) 
+4000 
+2000 
+To verify the effectiveness of the proposed winding reconfiguration transient control 
+strategy, namely the ZVV-based DPCC (ZVV-DPCC), comparative experiments are con-
+ducted against the widely used zero-current (ZC) method. For the ZC method, the current 
+loop is implemented using field-oriented control (FOC). In addition, a q-axis current gain 
+selector is also configured to enable step adjustment of the current command after wind-
+ing reconfiguration is completed. 
+First, winding reconfiguration is performed under constant-speed and constant-
+torque operating conditions, with a speed of 1000 rpm and a torque of 1 N·m. Figures 13 
+and 14 show the experimental results of the ZC method. When receiving the reconfigura-
+tion command, the current reference is immediately set to zero, and the three-phase cur-
+rents decay rapidly. The triggering condition for reconfiguration in this method is that the 
+instantaneous values of the three-phase currents are simultaneously lower than 0.5 A. 
+ 
+ 
+(a) 
+(b) 
+Figure 13. Experimental results of ZC during series-to-parallel reconfiguration: (a) Phase currents. 
+(b) Speed and torque. 
+ 
+ 
+(a) 
+(b) 
+Figure 14. Experimental results of ZC during parallel-to-series reconfiguration: (a) Phase currents. 
+(b) Speed and torque. 
+Figure 13a,b show the three-phase current, speed, and torque waveforms of the ZC 
+method during series-to-parallel reconfiguration. It can be observed that although the 
+three-phase currents decrease to nearly zero within three current sampling periods, the 
+actual reconfiguration action is delayed by 1.12 ms. This delay is caused by current sam-
+pling noise, which prevents the triggering condition from being satisfied promptly. Dur-
+ing this process, the three-phase currents are interrupted, resulting in complete torque 
+interruption and a subsequent speed drop. The torque interruption lasts for 1.12 ms, and 
+the speed drop is 18 rpm. 
+
+
+===== PAGE 13 =====
+
+Electronics 2026, 15, 3120 
+13 of 19 
+ 
+https://doi.org/10.3390/electronics15143120 
+Figure 14a,b show the corresponding waveforms under the parallel-to-series reconfigu-
+ration condition. The characteristics are similar to those described above. Under this operating 
+condition, the torque interruption lasts for 2.3 ms, and the speed decreases by 25 rpm. 
+These results indicate that the ZC method inevitably produces an interruption interval in 
+the three-phase currents. The resulting torque interruption and speed drop are the main 
+causes of performance degradation in the winding reconfiguration system. The winding re-
+configuration transient time is typically on the millisecond scale and is also affected by current 
+sampling noise; therefore, it cannot be accurately predicted or controlled. 
+Figures 15 and 16 show the experimental results of the proposed ZVV-DPCC 
+method. As analyzed in Section 3, the smooth switching method based on the ZVV inter-
+val can complete winding reconfiguration within the second sampling period after the 
+reconfiguration command is received, while eliminating surge voltage and torque inter-
+ruption. The duration of the transient process is fixed at 5 μs and is independent of the 
+motor operating conditions. In addition, by combining DPCC with voltage feedforward 
+compensation, fast and accurate current tracking can be achieved without current spikes, 
+oscillations, or overshoot. 
+ 
+(a) 
+(b) 
+Figure 15. Experimental results of ZVV-DPCC during series-to-parallel reconfiguration: (a) Phase 
+currents. (b) Speed and torque. 
+ 
+ 
+(a) 
+(b) 
+Figure 16. Experimental results of ZVV-DPCC during parallel-to-series reconfiguration: (a) Phase 
+currents. (b) Speed and torque. 
+The experimental results verify the theoretical analysis. Under both the series-to-par-
+allel reconfiguration (Figure 15) and the parallel-to-series reconfiguration (Figure 16), the 
+torque remains stable without fluctuation, and the maximum speed deviation is only 5 
+rpm. Considering the steady-state speed fluctuation of ±3 rpm, it can be considered that 
+the speed is also not affected by the reconfiguration transient. These results demonstrate 
+the excellent control performance of the proposed strategy during the winding reconfig-
+uration transient. 
+
+
+===== PAGE 14 =====
+
+Electronics 2026, 15, 3120 
+14 of 19 
+ 
+https://doi.org/10.3390/electronics15143120 
+Table 4 summarizes the quantitative metrics of the ZC method and the ZVV-DPCC 
+method during winding reconfiguration under constant-speed and constant-load condi-
+tions, including transient time, torque performance, and the maximum speed deviation 
+relative to the speed reference. 
+Table 4. Quantitative metrics of ZC and ZVV-DPCC methods. 
+Methods 
+Process 
+Transient Duration 
+Torque Ripple 
+Speed Deviation 
+ZC 
+series-to-parallel 
+1.12 ms 
+100% interrupt 
+18 rpm 
+parallel-to-series 
+2.3 ms 
+100% interrupt 
+25 rpm 
+ZVV-DPCC 
+series-to-parallel 
+5 μs 
+None 
+4 rpm 
+parallel-to-series 
+5 μs 
+None 
+5 rpm 
+The above comparative results indicate that the proposed ZVV-DPCC method pro-
+vides superior control performance. Without adding any snubber circuit, the proposed 
+method can avoid abrupt changes in the inductive current and suppress surge voltage. Its 
+transient response is fast, and the transient duration is accurately controllable. Moreover, 
+nearly no torque or speed fluctuation occurs during the winding reconfiguration transi-
+ent, indicating excellent operating smoothness. These advantages make the ZVV-DPCC 
+method particularly suitable for high-performance drive systems that require both fast 
+and smooth winding reconfiguration. 
+To independently verify the necessity of introducing DPCC into winding reconfiguration 
+control, the proposed ZVV-based winding switching scheme is implemented in combination 
+with the FOC current-loop control. Taking the winding reconfiguration from series to parallel 
+as an example, the experimental results are presented in Figure 17. It can be observed that the 
+overshoot and regulation lag of the PI controllers in the current loop lead to a torque overshoot 
+of 49.1% with a duration of 1.2 ms. This indicates that although the proposed ZVV-based 
+method can complete the winding reconfiguration operation within 5 μs, its full potential can-
+not be fully exploited without DPCC to achieve one-step current tracking. 
+ 
+ 
+(a) 
+(b) 
+Figure 17. Experimental results of the ZVV-based switching combined with FOC (series-to-parallel 
+reconfiguration): (a) Phase currents. (b) Speed and torque. 
+Furthermore, to demonstrate the necessity of the proposed voltage compensation 
+strategy for implementing DPCC during the reconfiguration transient, an experiment is 
+conducted using ZVV-based switching integrated with DPCC but without voltage com-
+pensation. Again taking the series-to-parallel reconfiguration as an example, the experi-
+mental results are shown in Figure 18. As revealed in the theoretical analysis section, the 
+absence of voltage compensation will result in voltage vectors that mismatch the actual 
+winding connection state after reconfiguration, thereby inducing torque ripples. The ex-
+perimental results verify the theoretical analysis. The torque ripples last for as long as 2.8 
+
+
+===== PAGE 15 =====
+
+Electronics 2026, 15, 3120 
+15 of 19 
+ 
+https://doi.org/10.3390/electronics15143120 
+ms with a maximum ripple amplitude of 27.2%. Therefore, the proposed voltage compen-
+sation strategy is crucial for achieving smooth torque switching. 
+ 
+ 
+(a) 
+(b) 
+Figure 18. Experimental results of the ZVV-based switching combined with DPCC but without volt-
+age compensation (series-to-parallel reconfiguration): (a) Phase currents. (b) Speed and torque. 
+Figures 19 and 20 present the experimental results of winding reconfiguration during the 
+dynamic speed response. The operating condition of the motor is set as the rated load of the 
+parallel mode with a speed variation rate of ±1500 rpm. Winding switching is automatically 
+triggered when the actual speed accelerates or decelerates to the rated speed of the series 
+mode. At this moment, the motor operates under the cross-rated operating condition between 
+the parallel and series modes, which matches the practical triggering scenarios for winding 
+reconfiguration. Figure 19 illustrates the reconfiguration process from series to parallel during 
+acceleration, while Figure 20 depicts the reconfiguration process from parallel to series during 
+deceleration. It can be observed that no obvious torque ripples or noticeable speed fluctuations 
+occur during the reconfiguration transients in both cases, which demonstrates the adaptability 
+of the proposed ZVV-DPCC scheme to dynamic operating conditions. 
+ 
+ 
+(a) 
+(b) 
+Figure 19. Experimental results of ZVV-DPCC during series-to-parallel reconfiguration under ac-
+celeration conditions: (a) Phase currents. (b) Speed and torque. 
+ 
+ 
+(a) 
+(b) 
+Figure 20. Experimental results of ZVV-DPCC during parallel-to-series reconfiguration under de-
+celeration conditions: (a) Phase currents. (b) Speed and torque. 
+
+
+===== PAGE 16 =====
+
+Electronics 2026, 15, 3120 
+16 of 19 
+ 
+https://doi.org/10.3390/electronics15143120 
+5. Discussion 
+The two conventional transient control methods most widely used for series-parallel 
+winding reconfiguration are the ZC method [11,22] and the PBP method [13,25]. This sec-
+tion elaborates on the core characteristics and critical distinctions between these two clas-
+sical approaches and the ZVV-DPCC scheme proposed in this work. Table 5 lists the re-
+spective characteristics of the three methods. 
+By comparison, the following conclusions can be drawn. The ZC method has the 
+broadest applicability, as it is compatible with all types of reconfiguration switches. How-
+ever, complete torque interruption and the consequent speed drop render it inadequate 
+for high-performance electric drive systems. The PBP method is suitable for applications 
+adopting thyristors as reconfiguration switches. It eliminates torque interruption yet in-
+troduces brief asymmetric operation, which still generates torque and speed fluctuations. 
+Both the ZC and PBP methods feature millisecond-scale transient durations and are sus-
+ceptible to motor operating conditions, sampling accuracy and other factors. The pro-
+posed ZVV-DPCC scheme is applicable to systems utilizing fully-controlled power elec-
+tronic devices as reconfiguration switches. It achieves microsecond-level, precisely con-
+trollable transients and eliminates torque and speed fluctuations. 
+Table 5. Characteristics of the three transient control methods. 
+Item 
+ZC [11,22] 
+PBP [13,25] 
+Proposed ZVV-DPCC 
+Principle 
+Reduce three-phase currents to 
+zero and reconstruct them after 
+reconfiguration. 
+Carry out phase-by-phase recon-
+figuration at the zero-crossing 
+point of each phase current. 
+Perform reconfiguration within 
+the ZVV interval of a single 
+SVPWM. 
+Applicability 
+All types of switches (mechani-
+cal, electronic). 
+Thyristors. 
+Fully-controlled electronic 
+switches (IGBT, MOSFET, etc.). 
+Surge Voltage 
+None. 
+None. 
+None. 
+Transient Dura-
+tion 
+Millisecond level; Exceeds 100 
+ms for mechanical switches. 
+Millisecond level, at least 1/3 of 
+one current cycle. 
+Microsecond level; 5 μs in this 
+work. 
+Factors Affecting 
+Transient Dura-
+tion 
+Reconfiguration switch types; 
+Current amplitude; 
+Time constant τ = L/R; 
+Current sampling noise. 
+Rotational speed; 
+Current zero-crossing point de-
+tection accuracy. 
+Immune to external factors for a 
+given switch. 
+Transient Feature Complete current interruption. 
+Asymmetric operation. 
+No current interruption or asym-
+metric operation; only freewheel-
+ing path altered. 
+Torque Perfor-
+mance 
+Full interruption. 
+No interruption, but torque fluc-
+tuations occur during asymmetric 
+operation. 
+No interruption or visible fluctu-
+ations. 
+Speed Perfor-
+mance 
+Inevitable speed drop. 
+Fluctuations exist during asym-
+metric operation. 
+Nearly no fluctuation. 
+6. Conclusions 
+This paper proposes an integrated control strategy for a series–parallel winding re-
+configuration system using fully-controlled power electronic devices as reconfiguration 
+switches. The proposed strategy combines a smooth winding switching method based on 
+the ZVV interval with deadbeat predictive current control incorporating voltage feedfor-
+ward compensation. 
+The proposed strategy effectively addresses a series of key issues associated with 
+conventional winding switching methods, including long transient process, surge voltage, 
+current interruption, torque and speed fluctuations, and asymmetric operating states. 
+
+
+===== PAGE 17 =====
+
+Electronics 2026, 15, 3120 
+17 of 19 
+ 
+https://doi.org/10.3390/electronics15143120 
+The superior control performance of the proposed method is predicated on the prem-
+ise that accurate motor parameters are obtained in advance through offline parameter 
+identification. However, in practice, motor parameters vary with operating conditions. 
+Therefore, enhancing the global robustness of DPCC against motor parameter variations 
+remains a critical topic for further research. Future work will explore the integration of 
+advanced control algorithms, such as online parameter identification, disturbance ob-
+server-based compensation, and model-free predictive control. 
+Another potential concern is that during the reconfiguration transient, simultaneous 
+conduction of all series and parallel switches may give rise to circulating currents caused 
+by asymmetries including winding manufacturing deviations, inconsistent voltage drops 
+across power devices, and mismatched drive signal delays. Mitigating this latent issue 
+also constitutes a valuable research direction. 
+Author Contributions: Conceptualization, Q.G. and X.Z.; validation, X.Z. and L.Y.; data curation, 
+X.Z. and L.Y.; writing—original draft preparation, Y.L.; writing—review and editing, Y.L. and C.Z. 
+(Chaoyu Zhang); supervision, C.Z. (Chengming Zhang); funding acquisition, Q.G. and W.C. All 
+authors have read and agreed to the published version of the manuscript. 
+Funding: This work was supported by the China Postdoctoral Science Foundation (2021M701018), 
+Open Fund Project of the Key Laboratory for Education Ministry at Fuyao University of Science and 
+Technology (KFJJ-250215), and National Natural Science Foundation of China (52477041). 
+Data Availability Statement: The original contributions presented in this study are included in the 
+article. Further inquiries can be directed to the corresponding author. 
+Conflicts of Interest: The authors declare no conflicts of interest. 
+Abbreviations 
+The following abbreviations are used in this manuscript: 
+SVPWM 
+Space Vector Pulse Width Modulation 
+PMSM 
+Permanent Magnet Synchronous Motor 
+ZVV 
+Zero-Voltage Vector 
+DPCC 
+Deadbeat Predictive Current Control 
+EVs 
+Electric Vehicles 
+ZC 
+Zero-current 
+PBP 
+Phase-by-Phase 
+ZVV-DPCC 
+The ZVV-based DPCC 
+FOC 
+Field-oriented Control 
+References 
+1. 
+Zhu, G.; Zhang, S.; Deng, Z.; Wang, J.; Li, Y.; Dong, J.; Bauer, P. Extended Hybrid Modulation for Multistage Constant-Current 
+Wireless EV Charging. IEEE Trans. Power Electron. 2025, 40, 10095–10110. 
+2. 
+Yi, C.; Hofmann, H.; Epureanu, B.I. Energy Efficient Platooning of Connected Electrified Vehicles Enabled by a Mixed Hybrid 
+Electric Powertrain Architecture. IEEE Trans. Intell. Transp. Syst. 2022, 23, 20383–20397. 
+3. 
+Zhou, X.; Buticchi, G.; Migliazza, G.; Wang, S.; Galea, M.; Gerada, C. Review of speed-extension of permanent magnet synchro-
+nous motor with reconfigurable-winding system. In Proceedings of the 2021 IEEE 30th International Symposium on Industrial 
+Electronics (ISIE), Kyoto, Japan, 20–23 June 2021; pp. 1–6. 
+4. 
+Gerrits, T.; Wijnands, C.G.E.; Paulides, J.J.H.; Duarte, J.L. Electrical gearbox equivalent by means of dynamic machine operation. 
+In Proceedings of 2011 14th European Conference on Power Electronics and Applications, Birmingham, UK, 30 August–1 Sep-
+tember 2011; pp. 1–10. 
+
+
+===== PAGE 18 =====
+
+Electronics 2026, 15, 3120 
+18 of 19 
+ 
+https://doi.org/10.3390/electronics15143120 
+5. 
+Ferreira, F.J.T.E.; de Almeida, A.T. Energy savings potential associated with stator winding connection mode change in induc-
+tion motors. In Proceedings of the 2016 XXII International Conference on Electrical Machines (ICEM), Lausanne, Switzerland, 
+4–7 September 2016; pp. 2775–2783. 
+6. 
+Gruebler, H.; Leitner, S.; Muetze, A.; Schoener, G. Improved switching strategy for a single-phase brushless direct current motor 
+and its impact on motor efficiency. In Proceedings of the 2017 IEEE International Electric Machines and Drives Conference 
+(IEMDC), Miami, FL, USA, 21–24 May 2017; pp. 1–6. 
+7. 
+Wang, M.; Hsu, N.; Chiang, C.; Wang, S.; Shau, T. A novel changeover technique for variable-winding brushless DC motor 
+drives. In Proceedings of SICE Annual Conference 2010, Taipei, Taiwan, 18–21 August 2010; pp. 2650–2653. 
+8. 
+Jung, H.; Kim, D.; Jung, S.; Lee, D. Optimization method to maximize efficiency map of a drive motor with electrical winding 
+changeover technique for hybrid EV. IEEE Trans. Appl. Supercond. 2020, 30, 5205405. 
+9. 
+Im, S.-H.; Gu, B.-G. A snubberless solid-state tap changer for permanent magnet synchronous motors. IEEE Trans. Power Elec-
+tron. 2020, 35, 12143–12152. 
+10. 
+Takatsuka, Y.; Hara, H.; Yamada, K.; Maemura, A.; Kume, T. A wide speed range high efficiency EV drive system using winding 
+changeover technique and SiC devices. In Proceedings of the 2014 International Power Electronics Conference (IPEC-Hiroshima 
+2014—ECCE ASIA), Hiroshima, Japan, 18–21 May 2014; pp. 1898–1903. 
+11. 
+Takahashi, A.; Sugimoto, S.; Nishihama, K.; Sumita, S.; Taniguchi, S.; Takeuchi, K.; Hoshino, K.; Maekawa, N. Induction motor 
+drive system with novel mechanical winding changeover device. IEEE Trans. Ind. Appl. 2025, 61, 726–736. 
+12. 
+Park, S.-H.; Cha, K.-S.; Hwang, S.-W.; Kim, J.-H.; Lim, M.-S. Open-end winding permanent magnet synchronous machine with 
+winding connection change method for high efficiency EV traction. In Proceedings of the 2021 IEEE Vehicle Power and Propul-
+sion Conference (VPPC), Gijon, Spain, 25–28 October 2021; pp. 1–6. 
+13. 
+Shin, Y.; Cho, S.; Lee, J. A study on series-parallel winding changeover circuit and control method for expanding the high-
+efficiency operating range of IPMSM for xEV drive systems. World Electr. Veh. J. 2024, 15, 501–517. 
+14. 
+Gundogdu, T. Performance Improvement for Interior Permanent Magnet Machines by Winding Reconfiguration; GEC: Batman, Turkey, 
+2022; pp. 185–190. 
+15. 
+Sin, S.; Roshanzamir, A.; Kwon, B.-I. Improvement of the constant-power speed range of surface-permanent magnet machine 
+using winding switching. IEEE Access 2021, 9, 32298–32309. 
+16. 
+Sin, S.; Ayub, M.; Kwon, B.-I. Investigation study of multi-mode multi-speed operation method for surface-mounted permanent 
+magnet synchronous machines. IEEE Access 2020, 8, 169470–169485. 
+17. 
+Hijikata, H.; Sakai, Y.; Akatsu, K.; Miyama, Y.; Arita, H.; Daikoku, A. Wide speed range operation by low-voltage inverter-fed 
+MATRIX motor for automobile traction motor. IEEE Trans. Power Electron. 2018, 33, 6887–6896. 
+18. 
+Copt, F.; Araujo, D.M.; Koechli, C.; Perriard, Y. Current control strategy for dynamic winding reconfiguration of slotless brush-
+less DC motors. IEEE Trans. Ind. Appl. 2019, 55, 417–425. 
+19. 
+Hsieh, M.-F.; Hsu, F.-S.; Dorrell, D.G. Winding changeover permanent magnet generators for renewable energy applications. 
+IEEE Trans. Magn. 2012, 48, 4168–4171. 
+20. 
+Sadeghi, S.; Guo, L.; Toliyat, H.A.; Parsa, L. Wide operational speed range of five-phase permanent magnet machines by using 
+different stator winding configurations. IEEE Trans. Magn. 2012, 48, 4168–4171. 
+21. 
+Chen, C.; Cheng, M. Design of a multispeed winding for a brushless DC motor and its sensorless control. IEE Proc. Electr. Power 
+Appl. 2006, 153, 834–841. 
+22. 
+Tang, L.; Burress, T.; Pries, J. A reconfigurable-winding system for electric vehicle drive applications. In Proceedings of the 2017 
+IEEE Transportation Electrification Conference and Expo (ITEC), Chicago, IL, USA, 22–24 June 2017; pp. 656–661. 
+23. 
+Lai, J.-S. Resonant snubber-based soft-switching inverters for electric propulsion drives. IEEE Trans. Ind. Electron. 1997, 44, 71–80. 
+24. 
+Hijikata, H.; Akatsu, K. Design and online winding reconfigurations method of MATRIX motor. In Proceedings of the 2012 
+IEEE Energy Conversion Congress and Exposition (ECCE), Raleigh, NC, USA, 15–20 September 2012; pp. 1330–1337. 
+25. 
+Nipp, E. Permanent Magnet Motor Drives with Switched Stator Windings. Ph.D. Dissertation, Institutionen fr elkraftteknik, 
+Stockholm, Sweden, 1999. 
+26. 
+Rodriguez, J.; Garcia, C.; Mora, A. Latest advances of model predictive control in electrical drives—Part II: Applications and 
+benchmarking with classical control methods. IEEE Trans. Power Electron. 2022, 37, 5047–5061. 
+ 
+
+
+===== PAGE 19 =====
+
+Electronics 2026, 15, 3120 
+19 of 19 
+ 
+https://doi.org/10.3390/electronics15143120 
+27. 
+Zhang, Y.; Shen, W.; Yang, H. An improved deadbeat predictive current control of PMSM drives based on the ultra-local model. 
+Chin. J. Electr. Eng. 2023, 9, 28–37. 
+28. 
+Cui, M.; Yu, Y. Variable parameter PI control based on fuzzy logic strategy for dual-winding PMSM. In Proceedings of the 2021 
+IEEE 4th Student Conference on Electric Machines and Systems (SCEMS), Huzhou, China, 1–3 December 2021; pp. 1–4. 
+Disclaimer/Publisher’s Note: The statements, opinions and data contained in all publications are solely those of the individual au-
+thor(s) and contributor(s) and not of MDPI and/or the editor(s). MDPI and/or the editor(s) disclaim responsibility for any injury to 
+people or property resulting from any ideas, methods, instructions or products referred to in the content. 

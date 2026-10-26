@@ -1,0 +1,202 @@
+[
+  {
+    "doi": "10.1109/tec.2025.3597814",
+    "title": "Physics-Informed Neural Networks for Parametric Modeling of Permanent Magnet Synchronous Machines",
+    "year": 2025,
+    "cites": 5,
+    "venue": "IEEE Transactions on Energy Conversion",
+    "abstract": "The objective of this paper is to develop a physics-informed machine learning methodology for parametric modeling of permanent magnet synchronous machines (PMSMs). A deep neural network is trained to compute the magnetic field as a function of spatial coordinates and machine parameters, while enforcing physical properties such as Dirichlet boundary conditions and periodicities. Leveraging a DeepONet architecture, the network is trained in a data-free fashion by minimizing a physics-informed functional using a mesh-based coenergy evaluation. The methodology is demonstrated on a 15-dimensional PMSM problem, with model accuracy validated by comparing predictions with finite element analysis (FEA) results, focusing on coenergy, average torque, and total core loss. Computational cost is also assessed relative to FEA.",
+    "oa_url": "",
+    "url": "https://openalex.org/W4413104907"
+  },
+  {
+    "doi": "10.1109/iemdc55163.2023.10238999",
+    "title": "Standstill Self-Commissioning Procedure for Synchronous Reluctance Motors based on Coenergy Model",
+    "year": 2023,
+    "cites": 0,
+    "venue": "IEEE International Electric Machines & Drives Conference (IEMDC)",
+    "abstract": "This paper describes a fast and effective procedure to estimate the whole magnetic map of a synchronous reluctance motor at standstill. Flux linkage curves are approximated by using a coenergy-based model which only requires the knowledge of magnetic maps borders. To measure the necessary flux linkage curves, the proposed procedure is tailored for the chosen model, with the aims of minimising any rotor movements and keeping the computational effort at bay. The proposed procedure is composed by two consecutive tests and it is suitable for the self-commissioning of electric drives. Experimental results on a 3 kW synchronous reluctance machine are reported.",
+    "oa_url": "https://www.research.unipd.it/bitstream/11577/3505275/1/2023079565.pdf",
+    "url": "https://openalex.org/W4386470496"
+  },
+  {
+    "doi": "10.1007/s43236-026-01280-w",
+    "title": "Neural network-based distributed parameter modeling of permanent magnet synchronous machines considering spatial harmonics and iron losses",
+    "year": 2026,
+    "cites": 0,
+    "venue": "Journal of Power Electronics",
+    "abstract": "",
+    "oa_url": "",
+    "url": "https://openalex.org/W7127037916"
+  },
+  {
+    "doi": "10.48550/arxiv.2602.14947",
+    "title": "Gradient Networks for Universal Magnetic Modeling of Synchronous Machines",
+    "year": 2026,
+    "cites": 0,
+    "venue": "arXiv (Cornell University)",
+    "abstract": "This paper presents a physics-constrained neural network framework for magnetic modeling of saturable synchronous machines, including spatial harmonics. By embedding gradient networks into the machine equations to model conservative electromagnetic behavior, the framework satisfies reciprocity and energy conservation by construction, while universally approximating any physically feasible magnetic characteristic. Unlike lookup tables and black-box neural networks, it guarantees monotonicity, invertibility, and smooth outputs, and remains highly data efficient. The method is validated using measured and finite-element method (FEM) data from a 5.6-kW permanent-magnet (PM) synchronous reluctance machine, and is demonstrated in real-time closed-loop control on an embedded platform. The results confirm accurate, physically consistent, and computationally efficient performance.",
+    "oa_url": "https://arxiv.org/pdf/2602.14947",
+    "url": "https://openalex.org/W7129240212"
+  },
+  {
+    "doi": "10.1109/jestie.2023.3346798",
+    "title": "Physics-Informed Neural Networks for Magnetostatic Problems on Axisymmetric Transformer Geometries",
+    "year": 2023,
+    "cites": 17,
+    "venue": "IEEE Journal of Emerging and Selected Topics in Industrial Electronics",
+    "abstract": "Physics-Informed Neural Networks (PINNs) have shown their potential for solving direct problems in many engineering domains including electromagnetics. We employ fully connected and convolutional PINNs in order to predict the magnetic vector potential and resulting inductances and coupling for axisymmetric transformer geometries commonly used in inductive power systems. Both approaches are compared quantitatively and validated against reference solutions obtained from a numerical solver. Fully connected PINNs tend to train faster and more accurate for single geometries, whereas convolutional PINNs show an outperformance in terms of their generalization capability and are able to predict inductances and coupling for a wide range of transformer geometries accurately in a matter of milliseconds. The combination of high accuracy and fast inference paves the way for PINN-based topology optimization in the field of power electronics.",
+    "oa_url": "https://ieeexplore.ieee.org/ielx7/8847244/9107390/10373037.pdf",
+    "url": "https://openalex.org/W4390204351"
+  },
+  {
+    "doi": "10.24084/repqj16.430",
+    "title": "Switched Reluctance Machine Modeling through Multilayer Neural Networks",
+    "year": 2018,
+    "cites": 2,
+    "venue": "Renewable Energy and Power Quality Journal",
+    "abstract": "The work deals with the application of artificial neural networks (ANNs) in the modeling of switched reluctance machines (SRMs). The performance of a SRM is determined by its geometry, materials used and levels of excitation. In this way, this work investigates the influence of the stator and rotor back iron thickness in the performance of SRM. A multilayer neural network is proposed to learn the nonlinear characteristics of the motor. Data of flux linkages and torque are obtained through simulations of finite elements and used for ANN training. The algorithm developed in Octave allows the user to adjust the network parameters. The results presented confirm the feasibility of using ANN to establish a predictive model of SRM performance, thus enabling further investigation in the future.",
+    "oa_url": "https://doi.org/10.24084/repqj16.430",
+    "url": "https://openalex.org/W2798130761"
+  },
+  {
+    "doi": "10.1038/s41598-025-02228-z",
+    "title": "Reducing torque ripple for switched reluctance motors by current reshaping neural network",
+    "year": 2025,
+    "cites": 8,
+    "venue": "Scientific Reports",
+    "abstract": "The high torque ripple poses a limitation on the application of switched reluctance motors (SRMs). In this paper, a current reshaping neural network (CRNN) is proposed to mitigate the torque ripple. The principle of how current affects electromagnetic torque is analyzed bas the indirect torque control method. In order to reduce the torque ripple, the CRNN is introduced to establish a current model and generate precise current by connecting the total current and the current sharing section. Additionally, the CRNN's implicit function is constructed based on the total current and rotor angle, with the weight being adjusted through proportion differentiation compensation current. Ultimately, the CRNN effectively reduces the torque ripple by modifying the phase current profiling. The efficacy of the proposed method is validated through comprehensive simulations and experiments on a three-phase 12/8 SRMs, conducted under various operating conditions.",
+    "oa_url": "https://www.nature.com/articles/s41598-025-02228-z.pdf",
+    "url": "https://openalex.org/W4410512208"
+  },
+  {
+    "doi": "10.1109/tim.2014.2358132",
+    "title": "Accurate Measurement and Detailed Evaluation of Static Electromagnetic Characteristics of Switched Reluctance Machines",
+    "year": 2014,
+    "cites": 75,
+    "venue": "IEEE Transactions on Instrumentation and Measurement",
+    "abstract": "Accurate static electromagnetic characteristics are essential basic data in the modeling of switched reluctance machine (SRM) for performance analysis and advanced control purposes. Because of the doubly salient structure and deep magnetic saturation, the electromagnetic characteristics of SRM have highly nonlinear relations with phase current and rotor position, which make the determination of these characteristics a difficult task. This paper proposes a digital signal processor-based method to accurately measure the flux-linkage and static torque characteristics of SRM. First, theoretical derivation and practical realization of the proposed method are presented in detail, and its accuracy is preliminarily verified by three ways: coenergy method, finite element method, and inductance-capacitance-resistance meter. Then, the errors in measurements are analyzed and corresponding methods to reduce them are given. Finally, with the improved neural network, the nonlinear simulation model of a SRM prototype is built in MATLAB with the measured characteristics, and the simulation results have good agreements with those from experiments, which further verify the accuracy of the proposed method.",
+    "oa_url": "",
+    "url": "https://openalex.org/W2012690535"
+  },
+  {
+    "doi": "10.25103/jestr.172.16",
+    "title": "Parameter Identification of Nonlinear Flux-Linkage Model for Switched Reluctance Motor Based on Chaotic Diagonal Recurrent Neural Network",
+    "year": 2024,
+    "cites": 0,
+    "venue": "Journal of Engineering Science and Technology Review",
+    "abstract": "Given the high saturation, strong nonlinearity, and tight coupling characteristics of the magnetic paths in a switched reluctance motor (SRM), accurately modeling flux-linkage is challenging, thus leading to excessive torque ripple during SRM torque control.In order to enhance the precision of the SRM flux-linkage model, a neural network-based method for the parameter identification of SRM's nonlinear flux-linkage model was proposed in this study.Logistic mapping elements were incorporated into the feedback layer of the diagonal recurrent neural network (DRNN), and chaotic control parameters were designed.Then, the construction of an analytical model of the nonlinear exponential flux-linkage function using the chaotic diagonal recurrent neural network (CDRNN) was established.By utilizing sample data of flux-linkage, current, and angular position, the parameters of this model were estimated, thus achieving a precise nonlinear exponential function model of the flux-linkage.Results show that, the integration of logistic mapping in the CDRNN feedback layer effectively prevents the local minima typically associated with conventional DRNN.The maximum error in the identified flux-linkage is less than 0.01 Wb, and the accuracy reached 95%.Compared with the DRNN method, the CDRNN approach demonstrates significantly reduced errors and higher model precision.This study offers valuable insights for enhancing the performance of SRM torque ripple control.",
+    "oa_url": "http://dx.doi.org/10.25103/jestr.172.16",
+    "url": "https://openalex.org/W4396842768"
+  },
+  {
+    "doi": "10.3390/en16093908",
+    "title": "Review of Hysteresis Models for Magnetic Materials",
+    "year": 2023,
+    "cites": 93,
+    "venue": "Energies",
+    "abstract": "There are several models for magnetic hysteresis. Their key purposes are to model magnetization curves with a history dependence to achieve hysteresis cycles without a frequency dependence. There are different approaches to handling history dependence. The two main categories are Duhem-type models and Preisach-type models. Duhem models handle it via a simple directional dependence on the flux rate, without a proper memory. While the Preisach type model handles it via memory of the point where the direction of the flux rate is changed. The most common Duhem model is the phenomenological Jiles–Atherton model, with examples of other models including the Coleman–Hodgdon model and the Tellinen model. Examples of Preisach type models are the classical Preisach model and the Prandtl–Ishlinskii model, although there are also many other models with adoptions of a similar history dependence. Hysteresis is by definition rate-independent, and thereby not dependent on the speed of the alternating flux density. An additional rate dependence is still important and often included in many dynamic hysteresis models. The Chua model is common for modeling non-linear dynamic magnetization curves; however, it does not define classical hysteresis. Other similar adoptions also exist that combine hysteresis modeling with eddy current modeling, similar to how frequency dependence is included in core loss modeling. Most models are made for scalar values of alternating fields, but there are also several models with vector generalizations that also consider three-dimensional directions.",
+    "oa_url": "https://www.mdpi.com/1996-1073/16/9/3908/pdf?version=1683298000",
+    "url": "https://openalex.org/W4382007658"
+  },
+  {
+    "doi": "10.3390/ma16062422",
+    "title": "Review of Play and Preisach Models for Hysteresis in Magnetic Materials",
+    "year": 2023,
+    "cites": 41,
+    "venue": "Materials",
+    "abstract": "This paper studies the properties of the Preisach model and the play model, and compare their similarities. Both are history-dependent hysteresis models that are used to model magnetic hysteresis. They are described as discrete sums of simple hysteresis operators but can easily be reformulated as integral equations of continuous distribution functions using either a Preisach weight distribution function or a play distribution function. The models are mostly seen as phenomenological or mathematical tools but can also be related to friction-like pinning of domain-wall motions, where Rayleigh's law of magnetic hysteresis can be seen as the simplest case on either the play model or the Preisach model. They are poor at modeling other domain behavior, such as nucleation-driven hysteresis. Yet another hysteresis model is the stop model, which can be seen as the inverted version of the play model. This type of model has advantages for expressions linked to energy and can be related to Steinmetz equation of hysteresis losses. The models share several mathematical properties, such as the congruency property and wiping-out property, and both models have a history of dependence that can be described by the series of past reversal points. More generally, it is shown that the many models can be expressed as Preisach models, showing that they can be treated as subcategories of the Preisach type models. These include the play model, the stop model and also the alternative KP-hysteron model.",
+    "oa_url": "https://www.mdpi.com/1996-1944/16/6/2422/pdf?version=1679063394",
+    "url": "https://openalex.org/W4327972786"
+  },
+  {
+    "doi": "10.1088/1757-899x/1211/1/012004",
+    "title": "SRM with 8/6 magnetic system topology for electric drive of mine battery electric locomotives: design and modelling",
+    "year": 2022,
+    "cites": 0,
+    "venue": "IOP Conference Series Materials Science and Engineering",
+    "abstract": "Abstract The paper deals with the development and simulation results of the switched reluctance motor for electric drive of mine battery electric locomotives instead of the DRT-14 DC motor. The switched reluctance motor parameters are obtained based on numerical calculation of the magnetic field by QuickField program and are embedded in MATLAB/Simulink model of a switched reluctance motor created for 8/6 magnetic system configuration. SRM-14-615 has the mechanical characteristics as DC motor DRT-14 and meets the required operating modes as part of the AM8D mine battery electric locomotive. Also two types of models using methods and techniques of the artificial intelligence theory are presented: a model with a fuzzy control system in the Fuzzy Logic Toolbox package and a model with a neural network control system in the Neural Network Toolbox package.",
+    "oa_url": "https://iopscience.iop.org/article/10.1088/1757-899X/1211/1/012004/pdf",
+    "url": "https://openalex.org/W4206190753"
+  },
+  {
+    "doi": "10.1109/access.2023.3267159",
+    "title": "Cogging Torque Suppression of Modular Permanent Magnet Machines Using a Semi-Analytical Approach and Artificial Intelligence",
+    "year": 2023,
+    "cites": 14,
+    "venue": "IEEE Access",
+    "abstract": "The cogging torque of permanent magnet machines with a modular stator is affected by additional harmonic components due to the segmentation of the stator lamination. This paper proposes a novel approach based on the shaping of the stator tooth tips with sinusoidal profiles to minimize the cogging torque of such machines. A theoretical study and a design formula are proposed to determine the spatial frequency of the sinusoidal profiles, while an optimization procedure based on genetic algorithm and artificial neural networks is adopted to determine their amplitudes and phase shifts. The proposed method is validated through finite element analysis considering two different case studies. Also, a comparison with other approaches from the literature is presented to highlight the effectiveness of the proposed technique. Finally, an additional analysis is reported to demonstrate the effectiveness of the proposed method against manufacturing and assembling tolerances.",
+    "oa_url": "https://ieeexplore.ieee.org/ielx7/6287639/6514899/10102477.pdf",
+    "url": "https://openalex.org/W4365800825"
+  },
+  {
+    "doi": "10.1049/pel2.12521",
+    "title": "Direct average torque control of switched reluctance generator",
+    "year": 2023,
+    "cites": 8,
+    "venue": "IET Power Electronics",
+    "abstract": "Abstract There are few pieces of research on switched reluctance generator (SRG) that accomplish optimal performance torque control, most prefer to use voltage, speed, or power control strategies. This paper proposes a direct average torque control (DATC) for SRG applied to wind energy conversion systems (WECS). The SRG is driven by an asymmetric half‐bridge converter (AHB), and an external chopper regulates the DC‐bus voltage. In the DATC strategy, the switching logic is modified, so that the machine operates in the generator mode. The dynamic behavior of an artificial neural network (ANN)‐based and the conventional co‐energy‐based torque estimation methods are discussed. Thereafter, the proposed DATC is compared to the direct power control (DPC) strategy. For both strategies, lookup tables are created to store the optimal switching angles. These lookup tables are optimized to achieve a trade‐off between torque ripple minimization and efficiency maximization. Experimental results show that the DATC strategy presents a lower torque ripple than the DPC method over the entire speed range. In contrast, DPC delivers superior efficiency for low and medium speeds.",
+    "oa_url": "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1049/pel2.12521",
+    "url": "https://openalex.org/W4377290274"
+  },
+  {
+    "doi": "10.1155/jece/1750196",
+    "title": "Design of ANN‐Optimized Second Order Sliding Mode Control of Switched Reluctance Motor for Aircraft Actuators",
+    "year": 2025,
+    "cites": 0,
+    "venue": "Journal of Electrical and Computer Engineering",
+    "abstract": "In this article, a speed control strategy for switched reluctance motors used in aircraft actuators is proposed. SRMs are desirable for aerospace applications due to their high torque‐to‐inertia ratio, compact size, fault tolerance, and robustness. The proposed control strategy utilizes a cascade control system of an artificial neural network–optimized second‐order sliding mode control to handle nonlinearity and parameter uncertainty in SRMs. The SOSMC parameters are tuned using particle swarm optimization. Simulation results using MATLAB/Simulink software demonstrate the effectiveness of the proposed controller compared to sliding mode control and SOSMC controllers. The proposed controller shows improved transient response with advancements in rise time and settling time, reduced torque ripple, and outperforms classical SMC and SOSMC controllers. These findings suggest that the proposed control strategy has the potential to enhance the performance of the system for aircraft actuator applications, aligning with the more electric aircraft strategy by reducing weight, complexity, operational costs, and environmental impacts. The effectiveness of the proposed controller is verified using the simulation results.",
+    "oa_url": "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1155/jece/1750196",
+    "url": "https://openalex.org/W7117541467"
+  },
+  {
+    "doi": "10.2174/1874444301406010519",
+    "title": "Research of Electro-mechanical Actuator in Electric Braking System Based on Instantaneous Torque Control with SRM",
+    "year": 2015,
+    "cites": 3,
+    "venue": "The Open Automation and Control Systems Journal",
+    "abstract": "In order to improve the reliability and braking torque of aircraft electric braking system, this paper selected switched reluctance motor (SRM) as drive motor of electromechanical actuator, static torque data of SRM calculated by finite element analysis were used as training samples, then characteristics of torque-angle were obtained off-line by Generalized Regression Neural Network with particle swarm optimization (PSO-GRNN), and the nonlinear mapping from the torque to current was completed, torque inverse model is obtained which has large effects on the control performance of Instantaneous torque control, finally combining the torque sharing function (TSF) to constitute the torque control system of SRM.Simulation and experiment are proved: the system has good dynamic performance, and it can quickly and accurately track the expected braking torque.",
+    "oa_url": "http://benthamopen.com/contents/pdf/TOAUTOCJ/TOAUTOCJ-6-519.pdf",
+    "url": "https://openalex.org/W1968359889"
+  },
+  {
+    "doi": "",
+    "title": "Modeling and Control of Fully Pitched Mutually Coupled Switched Reluctance Machines",
+    "year": 2016,
+    "cites": 2,
+    "venue": "OhioLink ETD Center (Ohio Library and Information Network)",
+    "abstract": "This dissertation aims to enlighten the readers on the fully pitched mutually coupled switched reluctance machines (FP-MCSRM) for off-road vehicles.Previous research focused exclusively on the FP-MCSRM's slower execution models and did not provide any torque ripple minimization study.This dissertation intends to fill the gaps by proposing a fast model and a torque ripple minimization criteria having three goals:(1) Development of an analytical model for FP-MCSRM, ( 2) Torque ripple minimization criteria and (3) Comparison of FP-MCSRM with the conventional switched reluctance machine (CSRM).In the analytical model, which can predict the winding flux linkages and torque for any given phase current and rotor position, the design parameters and the material properties of the machine are the only inputs to the model.The model is applicable for the rotor positions where the stator and rotor poles overlap.Initial assumptions and the step by step derivation for flux linkage, coenergy and torque calculations are provided.Another model of FP-MCSRM considering the effect of multiple phase current excitations using a single lookup table is used to calculate the current waveform for minimum torque ripple at any operating condition.The torque ripple minimization iii method synthesizes the current waveforms in Fourier series coefficients at some specific operating points with the rest determined through interpolation.A CSRM is designed for off-road vehicles to verify the proposed techniques.The design process aims to determine the best speed at which the CSRM would start single pulse mode operation ensuring the best efficiencies over the specified operating range.The machine is initially designed at the best speed with single pulse mode using analytical design tools and then further optimized through finite element analysis (FEA).The designed machine has been prototyped and then experimentally tested.The prototype CSRM is rewound into an FP-MCSRM to verify the proposed modeling and torque ripple minimization techniques.FEA simulations and Experimental results show that the model can predict the flux linkage and torque well.Finally, CSRM and FP-MCSRM are compared based on their electromagnetic behavior, operating range, torque per ampere and efficiency with the aid of FEA and experimental validation.It is observed that the winding configuration significantly affects the operating speed and torque per ampere.FP-MCSRMs provide better torque density compared to CSRM at a narrower speed range.iv I don't know how to thank my parents and brother who always kept their appreciation even when I wasn't there for them.During the most difficult times, their support was inevitable to pursue my PhD actively.Thanks to my lab-mates for making my research experience enjoyable.The discussions and projects with lab-mates taught me the value and way of team-working.Finally, I want to thank my wife Farah who sacrificed",
+    "oa_url": "http://rave.ohiolink.edu/etdc/view?acc_num=akron1469123515",
+    "url": "https://openalex.org/W2598175051"
+  },
+  {
+    "doi": "10.3390/books978-3-03936-357-5",
+    "title": "Energy Efficiency in Electric Devices, Machines and Drives",
+    "year": 2020,
+    "cites": 2,
+    "venue": "MDPI eBooks",
+    "abstract": "This Special Issue deals with improvements in the energy efficiency of electric devices, machines, and drives, which are achieved through improvements in the design, modelling, control, and operation of the system. Properly sized and placed coils of a welding transformer can reduce the required iron core size and improve the efficiency of the welding system operation. New structures of the single-phase field excited flux switching machine improve its performance in terms of torque, while having higher back-EMF and unbalanced electromagnetic forces. A properly designed rotor notch reduces the torque ripple and cogging torque of interior permanent magnet motors for the drive platform of electric vehicles, resulting in lower vibrations and noise. In the field of modelling, the torque estimation of a Halbach array surface permanent magnet motor with a non-overlapping winding layout was improved by introducing an analytical two-dimensional subdomain model. A general method for determining the magnetically nonlinear two-axis dynamic models of rotary and linear synchronous reluctance machines and synchronous permanent magnet machines is introduced that considers the effects of slotting, mutual interaction between the slots and permanent magnets, saturation, cross saturation, and end effects. Advanced modern control solutions, such as neural network-based model reference adaptive control, fuzzy control, senseless control, torque/speed tracking control derived from the 3D non-holonomic integrator, including drift terms, maximum torque per ampere, and maximum efficiency characteristics, are applied to improve drive performance and overall system operation.",
+    "oa_url": "https://mdpi-res.com/bookfiles/book/2410/Energy_Efficiency_in_Electric_Devices_Machines_and_Drives.pdf",
+    "url": "https://openalex.org/W4233791970"
+  },
+  {
+    "doi": "10.1049/iet-epa.2014.0451",
+    "title": "Scale models formulation of switched reluctance generators for low speed energy converters",
+    "year": 2015,
+    "cites": 23,
+    "venue": "IET Electric Power Applications",
+    "abstract": "This study presents a design methodology based on scale models for low speed switched reluctance generators (SRG). This study is motivated by the application of SRG to direct‐drive wind turbines and other low speed renewable energy systems. In direct drive energy converters considerable simplifications result from the elimination of the gear box which has generally been used to interface a slowly rotating shaft with the generator shaft. The comparison and evaluation of magnetic structures plays an important role in the SRG design. General design methodologies are usually oriented towards the evaluation of stator/rotor poles combinations for regular switched reluctance machines. Besides covering that feature, the formulation of scale laws proposed is also suitable to compare other SRG topologies distinguished by different characteristics of electric and magnetic circuits and their own relative position. In addition, this methodology can be extended to other physical phenomena such as thermal changes and magnetic saturation by introducing some constraints. The running example compares a modular short flux‐path topology versus a low speed 20 kW prototype SRG designed for a direct drive wind turbine. The modular topology can optimise the efficiency and weight taking benefits from the significant gain of power per unit of volume and lower losses.",
+    "oa_url": "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1049/iet-epa.2014.0451",
+    "url": "https://openalex.org/W2254369081"
+  },
+  {
+    "doi": "10.1109/access.2024.3514710",
+    "title": "Effect of the Conductivity Variations on Computed Electric Field Induced in Learning-Based Models",
+    "year": 2024,
+    "cites": 5,
+    "venue": "IEEE Access",
+    "abstract": "Anatomical human models are extensively utilized for assessing induced electric fields due to low-frequency (LF) electromagnetic exposure. One difficulty in the LF dosimetry is that the results are often affected by numerical artifacts, which are attributable to the abrupt change at tissue interfaces for the segmented human models with discrete tissue conductivities. To overcome this difficulty, head models with continuous conductivities have been recently developed using deep learning networks, which directly map magnetic resonance images to volume conductivity without segmentation. To validate the effectiveness of this novel modeling method for electromagnetic dosimetry, a working group was established by the IEEE International Committee on Electromagnetic Safety Technical Committee 95 Subcommittee 6. The group’s initial study focused on intercomparison of computed fields using learning-based models across several laboratories. This paper extends the analysis considering the effect of conductivity variations on the computed electric field induced in learning-based continuous models and segmented discrete models. Six international research groups participated in this joint study. It is found that the electric field strengths decrease in grey matter (GM) and increase in white matter (WM) as GM conductivity increases. Electric field strengths in both GM and WM decrease as WM conductivity increases. The variation ranges of electric field strength, due to varying conductivity values, show comparability between discrete and continuous models. For the intercomparison, the highest relative differences (RDs) are 15.9% and 6.7% for the$100^{\\mathrm {th}}$and$99^{\\mathrm {th}}$percentile values of the induced electric fields for the discrete models, respectively, and 10.1% and 3.8% for the continuous models. The RDs for computations using the scalar-potential finite-difference method with different solvers are below 1.2%.",
+    "oa_url": "",
+    "url": "https://openalex.org/W4405219004"
+  }
+]

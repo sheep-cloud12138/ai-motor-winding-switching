@@ -1,0 +1,1816 @@
+
+
+===== PAGE 1 =====
+
+Citation: Cha, K.-S.; Kim, J.-H.;
+Hwang, S.-W.; Lim, M.-S.; Park, S.-H.
+High-Efficiency e-Powertrain
+Topology by Integrating Open-End
+Winding and Winding Changeover for
+Improving Fuel Economy of Electric
+Vehicles. Mathematics 2024, 12, 3415.
+https://doi.org/10.3390/math12213415
+Academic Editor: Bruno Antonio
+Pansera
+Received: 4 October 2024
+Revised: 25 October 2024
+Accepted: 29 October 2024
+Published: 31 October 2024
+Copyright: © 2024 by the authors.
+Licensee MDPI, Basel, Switzerland.
+This article is an open access article
+distributed
+under
+the
+terms
+and
+conditions of the Creative Commons
+Attribution (CC BY) license (https://
+creativecommons.org/licenses/by/
+4.0/).
+mathematics
+Article
+High-Efficiency e-Powertrain Topology by Integrating Open-End
+Winding and Winding Changeover for Improving Fuel Economy
+of Electric Vehicles
+Kyoung-Soo Cha 1,†
+, Jae-Hyun Kim 2,†
+, Sung-Woo Hwang 3, Myung-Seop Lim 3,*
+and Soo-Hwan Park 4,*
+1
+Advanced Mobility System Group, Korea Institute of Industrial Technology, Daegu 42994, Republic of Korea;
+kscha@kitech.re.kr
+2
+School of Mechanical Engineering, Yeungnam University, Gyeongsan 38541, Republic of Korea;
+jaehyun@yu.ac.kr
+3
+Department of Automotive Engineering, Hanyang University, Seoul 04763, Republic of Korea;
+supertramph@hanyang.ac.kr
+4
+Department of Mechanical, Robotics, and Energy Engineering, Dongguk University,
+Seoul 04620, Republic of Korea
+*
+Correspondence: myungseop@hanyang.ac.kr (M.-S.L.); parksh@dgu.ac.kr (S.-H.P.)
+†
+These authors contributed equally to this work.
+Abstract: The fuel economy of electric vehicles (EVs) is an important factor in determining the
+competitiveness of EVs. Since the fuel economy is affected by the efficiency of an e-powertrain
+composed of a motor and inverter, it is necessary to select a high-efficiency topology for the e-
+powertrain. In this paper, a novel topology of e-powertrains to improve the fuel economy of EVs is
+proposed. The proposed topology aims to improve the system efficiency by integrating open-end
+winding (OEW) and winding changeover (WC). The proposed OEW-PMSM with WC enables to
+drive a permanent magnet synchronous motor (PMSM) in four different modes. Each mode can
+increase inverter efficiency and motor efficiency by changing motor parameters and maximum
+modulation index. In this paper, the system efficiency of the proposed topology was evaluated using
+electromagnetic finite element analysis and a loss model of power semiconductors. In addition, the
+vehicle simulations were performed to evaluate the fuel economy of the proposed topology, thereby
+proving the superiority of the proposed topology compared with the conventional PMSM.
+Keywords: electric vehicles; fuel economy; open-end winding; permanent magnet synchronous
+motors; winding changeover
+MSC: 65M80
+1. Introduction
+As the era of electric vehicles (EVs) progresses beyond hybrid electric vehicles (HEVs),
+the demand for high-performance powertrains is increasing [1,2]. In the 2020s, the EV
+market is expanding not only in Europe but also in the Americas and Asia. Consequently,
+the demand for traction motors, a key component of EVs, is rising rapidly. Various types
+of traction motors exist, including induction motors, switched reluctance motors, and
+wound-field synchronous motors. Among these, permanent magnet synchronous motors
+(PMSMs) are the most commonly used for traction applications.
+PMSMs offer the advantage of operating across a wide speed range with high ef-
+ficiency, thanks to the use of high-energy-density rare earth permanent magnets (PMs).
+Since the performance of PMs is affected by temperature variations, the efficiency and
+heat dissipation characteristics are crucial for traction motors [3]. Additionally, energy
+losses occur in power semiconductors, such as insulated gate bipolar transistors (IGBTs),
+during the power conversion process, as the traction motor consumes energy stored in the
+Mathematics 2024, 12, 3415. https://doi.org/10.3390/math12213415
+https://www.mdpi.com/journal/mathematics
+
+
+===== PAGE 2 =====
+
+Mathematics 2024, 12, 3415
+2 of 19
+battery [4]. Therefore, both the efficiency of the inverter and the traction motor influence
+the overall mileage of EVs.
+In order to improve the efficiency of the system consisting of traction motor and
+inverter, research has been conducted in various aspects in point view of traction motors
+and inverters. To increase the efficiency of traction motors, various winding technologies
+and design techniques have been proposed. Hairpin winding, which is widely used in
+traction motors with distributed winding, is a technology that maximizes current capacity
+and heat dissipation characteristics by improving the slot fill factor [5–7]. But the hairpin
+winding can only be adopted in distributed winding, so additive manufacturing-based
+winding technology for high fill factor concentrated winding is widely studied [8–11].
+Additive manufacturing is effective in maximizing the fill factor of the coil but has a
+limitation in reducing DC resistance because the copper alloy used for laser forming has a
+higher resistivity than pure copper.
+Although the increased conductor area has enhanced the efficiency of traction motors,
+further improvements in EV mileage can be achieved by optimizing the traction motor
+considering the vehicle’s driving cycle [12–15]. Hwang et al. proposed an analysis method
+to predict fuel economy based on the driving cycle by coupling electromagnetic and thermal
+analysis, accounting for temperature variations in traction motors [12]. Sun et al. intro-
+duced a design optimization process for four-wheel-drive in-wheel motors, considering
+the driving cycle. As in-wheel motors operate close to direct-drive, they proposed a design
+approach for outer rotor PMSMs, focusing on low-speed, high-torque characteristics [13].
+Flux-weakening (FW) control is essential for driving traction motors at high speeds
+within the constraints of limited battery voltage. When d-axis current is injected for FW
+control, the increased armature current leads to additional electromagnetic losses. In order
+to overcome the limited battery voltage, various overmodulation strategies have been
+studied to maximize the power density of the motor [16–18]. Overmodulation allows
+the traction motor to operate at higher voltages but does not provide a dramatic voltage
+increase because the voltage increase effect is less than 5%.
+Therefore, it is effective to increase the battery voltage by adding battery cells to effec-
+tive improve the efficiency of the drive motor. However, this approach is not recommended,
+as it increases the weight and cost of EVs. To address this, a topology of open-end winding
+PMSMs (OEW-PMSMs) has been proposed to boost the line-to-line voltage while main-
+taining the limited battery voltage [19–21]. OEW-PMSMs can operate with reduced d-axis
+current at high speeds due to the higher voltage limits. However, OEW-PMSMs require an
+additional power module, as the three-phase winding ends are fed by dual inverters that
+share the same battery source. A method utilizing wide-bandgap switches to mitigate the
+additional inverter losses from added power modules has been proposed [22,23]. However,
+this approach increases costs due to the use of wide-bandgap switches, limiting its adoption
+in the industry.
+In cases where wide-bandgap switches cannot be used, effective control of the power
+module becomes crucial to reducing inverter losses. Several control techniques for OEW-
+PMSMs have been proposed to help reduce inverter losses. A key challenge in applying
+OEW-PMSMs is managing the zero-sequence current, which arises from the potential
+difference between inverters and the 3n-th flux linkage of the traction motor [24]. Various
+PWM techniques have been investigated to minimize common-mode voltage and suppress
+zero-sequence current. Park et al. proposed an effective solution for minimizing the
+common-mode voltage [25–27].
+Winding changeover (WC) is a method that can drive the traction motor in two modes
+by changing the wiring of the armature winding [28,29]. By using the WC, high efficiency
+drive in a wide speed range can be achieved only by wiring the armature winding without
+any physical change of the traction motor. However, the large surge voltage generated
+during winding switching can damage the winding, necessitating the development of an
+appropriate switching technique to mitigate this surge voltage [30,31].
+
+
+===== PAGE 3 =====
+
+Mathematics 2024, 12, 3415
+3 of 19
+Therefore, this paper proposes a novel powertrain topology integrating OEW-PMSMs
+and WC for high-efficiency operation in the entire speed range. The proposed topology
+drives the traction motor in four modes, combining three-phase OEW conversion of the
+inverter and series-parallel conversion of the armature winding [32]. As a result of using
+the proposed topology, the fuel economy of EVs can be improved compared with the
+conventional three-phase topology.
+Winding changeover (WC) is a method that enables traction motors to operate in
+two modes by reconfiguring the armature winding connections [28,29]. By utilizing WC,
+high-efficiency operation across a wide speed range can be achieved through simple wiring
+changes to the armature winding without any physical modifications to the traction motor.
+This paper proposes a novel powertrain topology that integrates OEW-PMSM and WC to
+achieve high efficiency across the entire speed range. The proposed topology allows the
+traction motor to operate in four modes by combining three-phase to OEW conversion with
+series-parallel conversion of the armature winding [32]. By employing this topology, the
+fuel economy of EVs can be improved compared with conventional three-phase systems.
+2. Mathematical Model of OEW-PMSM
+2.1. Characteristics of OEW-PMSMs
+Figure 1a,b show the schematic of the OEW-PMSMs and their corresponding space
+vector voltage. In this topology, the armature windings of the PMSMs are not intercon-
+nected, which is why it is referred to as an open-end winding. Each end of the winding is
+powered by a separate inverter. The voltages of the PMSMs are determined by the space
+vector voltage of each inverter, as shown in Figure 1b. The three-phase voltages can be
+expressed as the difference between the voltages supplied by each inverter, as follows:
+
+
+
+
+
+vu = vu1 −vu2
+vv = vv1 −vv2
+vw = vw1 −vw2
+(1)
+Inverter 1
+Inverter 2
+Open-end winding
+PMSM
+Vdc /2
+Vdc /2
+u1
+u2
+v1
+v2
+w1
+w2
+(a)
+A
+B
+C
+D
+E
+F
+A’
+B’
+C’
+D’
+E’
+F’
+α
+β
+α
+β
+O
+O
+O
+H
+J
+I
+K
+L
+M
+S
+N
+G
+Q
+R
+P
+A
+D
+B
+C
+E
+F
+α
+β
+1
+2
+3
+4
+6
+5
+1’
+2’
+3’
+4’
+6’
+5’
+11’,33’
+87’,78’
+22’,44’
+55’,66’
+77’
+88’
+18’
+74’
+74’
+65’
+17’
+23’
+24’
+14’
+41’
+46’
+31’
+21’
+45’
+76’
+86’
+37’
+38’
+34’
+85’
+75’
+16’
+27’
+28’
+26’
+35’
+36’
+25’
+15’
+71’
+48’
+81’
+56’
+47’
+32’
+72’
+57’
+43’
+61’
+82’
+58’
+67’
+68’
+54’
+12’
+73’
+83’
+64’
+13’
+63’
+53’
+62’
+52’
+42’
+51’
+Inverter 1
+Inverter 2
+OEW-PMSMs
+Conventional
+PMSMs
+(b)
+Figure 1. Schematic of (a) dual inverter fed OEW-PMSM and (b) hexagonal modulation diagram.
+
+
+===== PAGE 4 =====
+
+Mathematics 2024, 12, 3415
+4 of 19
+The voltage vectors from each inverter have a phase difference of 120◦to supply
+the maximum voltage to the armature winding of PMSM. As a result, the maximum
+modulation index of the OEW-PMSMs can be increased compared with conventional three-
+phase PMSMs, as shown in Figure 1b. This feature allows the OEW-PMSMs to supply
+a higher line-to-line voltage to the conventional PMSMs, even with the limited battery
+voltage available in EVs.
+To achieve high power density in a PMSM within a limited voltage, FW control, ac-
+complished by injecting negative d-axis current, is required. Figure 2 illustrates the current
+vector for FW control in both conventional PMSMs and OEW-PMSMs. In conventional
+PMSMs, driving with FW control increases electromagnetic losses due to the higher arma-
+ture current. However, by adopting the OEW topology, it is possible to achieve the same
+power density with a smaller d-axis current, thanks to the increased voltage capacity. As
+a result, the power density of the PMSMs can be enhanced, and the efficiency improved,
+compared with conventional PMSMs, due to the increased modulation index offered by
+the OEW topology.
+Conventional
+PMSM
+d-axis
+q-axis
+OEW-PMSM
+Constant torque curve
+Current vector
+Induced voltage
+Decreased
+current vector
+Figure 2. Comparison of current vector for flux-weakening control between conventional three-phase
+PMSMs and OEW-PMSMs.
+When OEW is applied to PMSMs, the power density increases in proportion to the
+increased modulation index. However, since the load required for EV traction remains
+constant, the increased power density of OEW-PMSM is not necessary. Therefore, the
+number of series turns per phase for the OEW-PMSM should be increased by the same
+ratio as the increased modulation index to maintain the desired power density, as shown in
+Figure 3. By increasing the series turns per phase while maintaining the current density
+and slot fill factor, the peak current of the OEW-PMSM is reduced compared with that of a
+conventional PMSM as
+ipk =
+Aslot · n f · Jc,max
+Nc
+(2)
+As a result, the specifications of the OEW-PMSM and conventional PMSM are summa-
+rized in Table 1. Both the conventional PMSM and the OEW-PMSM are designed to drive
+14.5 kW for personal mobility applications. Detailed specifications for personal mobility
+will be discussed in Section 5.
+
+
+===== PAGE 5 =====
+
+Mathematics 2024, 12, 3415
+5 of 19
+Table 1. The specifications of conventional PMSM and OEW-PMSM.
+Item
+Unit
+Conventional
+OEW-PMSM
+Motor type
+-
+IPMSM
+IPMSM
+Number of poles/slots
+-
+16/24
+16/24
+Max. power
+kW
+14.5
+14.5
+Peak torque
+Nm
+50.0
+50.0
+DC link voltage
+VDC
+72
+72
+Max. line-to-line voltage
+-
+VDC/
+√
+3
+VDC
+Series turns per phase
+-
+26
+45
+Number of parallel circuits
+-
+8
+8
+Temperature
+◦C
+60
+60
+Employing
+OEW
+Increasing series
+turns per phase
+Torque
+Speed
+Conventional 
+PMSM (Ns)
+Torque
+Speed
+Conventional
+PMSM (Ns)
+OEW-PMSM (Ns)
+Torque
+Speed
+OEW-PMSM (  3Ns)
+OEW-PMSM (Ns)
+Figure 3. Comparison of torque-speed curve between OEW-PMSM and conventional PMSM for
+maintaining power density.
+2.2. System Efficiency of OEW-PMSM
+Since the motor system comprises both an inverter and a motor, the overall system
+efficiency is influenced by the efficiencies of both components. Unlike conventional PMSMs,
+OEW-PMSMs are driven by dual inverters, so the system efficiency of the OEW-PMSM
+must be calculated with consideration for the dual inverter drive.
+The efficiency of the PMSM is determined by several factors, including the copper
+loss of the armature winding, the iron loss of the core material, the eddy current loss of the
+permanent magnets (PMs), mechanical losses from the bearings, and the mechanical power
+output. In this paper, the eddy current loss of the PMs is considered negligible. Additionally,
+the zero-sequence current, which poses a practical challenge in OEW applications, is not
+addressed in this study. Consequently, the total power loss of the motor, Pmt, can be
+calculated as follows:
+Pmt = Pc + Pi + Pmech
+(3)
+The copper loss is determined by the electrical resistance of the armature winding and
+armature current, and the armature current can be modeled as
+Ra = ρc
+Ns
+Np
+(Lstk + lend)N2
+c
+Aslot · n f
+(4)
+
+
+===== PAGE 6 =====
+
+Mathematics 2024, 12, 3415
+6 of 19
+Then, the copper loss can be calculated using (2) and (4) as
+Pc = 3ρc
+Ns(Lstk + lend)Aslot · n f · Jc
+Np
+(5)
+Thus, the copper loss is influenced by the size of the motor and the magnetomotive force
+(MMF) of the armature winding. Since the MMF for both conventional PMSM and OEW-
+PMSM is the same at the same torque and speed, the copper losses for each motor are
+also identical. Additionally, the iron loss of the PMSM is determined by the MMF of the
+armature winding and the frequency of the magnetic flux density; therefore, the iron losses
+of both conventional PMSMs and OEW-PMSMs are the same under the same operating
+conditions. Consequently, the efficiencies of the conventional PMSM and OEW-PMSM
+are equivalent.
+The efficiency of inverters is determined by the power loss of IGBTs and diodes. The
+power loss of IGBTs and diodes can be divided into conduction loss and switching loss.
+Each loss can be modeled as follows [33].
+Pc,T =
+ 
+1
+2π + M cos(ϕ)
+8
+!
+Vce0I1 +
+ 
+1
+8 + M cos(ϕ)
+3π
+!
+rceI2
+1
+(6)
+Psw,T = fsw
+Eon(I1) + Eo f f (I1)
+π
+(7)
+Pc,D =
+ 
+1
+2π + M cos(ϕ)
+8
+!
+VF0I1 +
+ 
+1
+8 −M cos(ϕ)
+3π
+!
+rFI2
+1
+(8)
+Psw,D = fsw
+Err(I1)
+π
+(9)
+The characteristics of IGBT and diode for calculating the power loss can be derived from
+the datasheet, as shown in Figure 4a–d [34].
+0.4
+0.8
+1.2
+1.6
+2.0
+0
+300
+600
+900
+1200
+IC (A)
+VCE (V)
+intercept: VCE0
+slope: rCE
+VCE
+iC
+(a)
+0.4
+0.8
+1.2
+1.6
+2.0
+0
+300
+600
+900
+1200
+IF (A)
+VF (V)
+intercept: VF0
+slope: rF
+VF
+iF
+(b)
+0
+225
+450
+675
+900
+0
+20
+40
+60
+80
+E (mJ)
+IC (A)
+Eon
+Eoff
+VCE
+iC
+Eon
+Eoff
+t
+(c)
+0
+225
+450
+675
+900
+0
+5
+10
+15
+20
+E (mJ)
+IF (A)
+iF
+Err
+Err
+t
+(d)
+Figure 4. Characteristics and switching loss of power semiconductors: (a) Characteristics of IGBT,
+(b) diode and switching loss of (c) IGBT, (d) diode.
+
+
+===== PAGE 7 =====
+
+Mathematics 2024, 12, 3415
+7 of 19
+The conduction loss of the inverter is influenced by power factor, induced voltage,
+and phase current. For the OEW-PMSM, the conduction loss of a single IGBT and diode
+is lower than that of the conventional PMSM. The switching loss for a single IGBT and
+diode in both topologies is equivalent, as the switching frequencies are the same for each.
+Therefore, the total power loss of the conventional three-phase inverter can be calculated
+as follows:
+Pinv = 6(Pc,T + Psw,T + Pc,D + Psw,T)
+(10)
+However, the dual inverter topology of the OEW-PMSM utilizes twice as many IGBTs and
+diodes compared with the conventional three-phase inverter. This difference must be taken
+into account when calculating the efficiency of the inverter. Additionally, the conduction
+loss for each inverter should be calculated while considering their respective power factors,
+as illustrated in Figure 5. Finally, the system efficiency of the OEW-PMSM can be calculated
+as follows:
+ηsys,OEW = ηinv,OEW · ηmt,OEW
+(11)
+where
+ηinv,OEW =
+Pout + Pmt
+Pout + Pmt + Pinv1 + Pinv2
+(12)
+ηmt,OEW =
+Pout
+Pout + Pmt
+(13)
+By using the system efficiency of OEW-PMSM, the system efficiency of proposed topology
+can be calculated.
+Inverter 1
+Inverter 2
+vu = vu1 – vu2
+Vdc /2
+Vdc /2
+u1
+u2
+v1
+v2
+w1
+w2
+iu
+vu
+iu
+vu2
+vu1
+Φ1
+Φ2
+time
+Power factor for each inverter
+Figure 5. Power factor between armature current and reference voltage from each inverter.
+3. Characteristics of OEW-PMSM with Winding Changeover
+3.1. Operation in Series-Parallel Mode
+The electromagnetic performance of PMSMs is highly dependent on the number of
+series turns per phase. If the slot fill factor and current density remain constant, the peak
+current and power density of the PMSMs decrease as the number of series turns per phase
+increases, while they increase when the number of series turns per phase decreases. Wind-
+ing changeover (WC) allows for the adjustment of the series turns per phase by converting
+the armature winding between series and parallel configurations [28,29]. Figure 6a presents
+
+
+===== PAGE 8 =====
+
+Mathematics 2024, 12, 3415
+8 of 19
+an example circuit for implementing the WC. The coil is divided into two parts for con-
+verting the armature winding, and switches for series and parallel modes are installed for
+each phase. In series mode, the middle switch is closed while the switches on both sides
+are open, connecting the two windings in series. In parallel mode, the switches operate in
+the opposite manner, connecting the two windings in parallel. Consequently, the armature
+current flows differently in each mode, as illustrated in Figure 6b.
+When the armature winding of the PMSM operates in series and parallel modes, the
+number of series turns per phase is doubled in series mode compared with parallel mode.
+Since the resistance and d, q-axis inductance are proportional to the square of the number
+of series turns per phase, while the flux linkage is directly proportional to the number of
+series turns per phase, the motor parameters can be expressed as follows, depending on
+the operation mode.
+Ra,s = (1 + Swc)2Ra,p
+(14)
+Ldq,s = (1 + Swc)2Ldq,p
+(15)
+ψa,s = (1 + Swc)ψa,p
+(16)
+Therefore, the motor parameters change according to the WC operation mode.
+U
+X
+V
+Y
+W
+Z
+Switches for parallel mode
+Switches for series mode
+(a)
+Series mode, SW = (0, 1, 0)
+Parallel mode, SW = (1, 0, 1)
+OFF
+ON
+OFF
+ON
+OFF
+ON
+(b)
+Figure 6. Principle of the winding changeover. (a) Example circuit for winding changeover and
+(b) current flow in series and parallel mode.
+Figure 7a,b illustrates the electromagnetic performance of the conventional PMSM
+when it is operated in each mode. Assuming that the peak current of the inverter remains
+constant, the torque density in series mode is improved in the low-speed region compared
+with parallel mode due to the increased flux-linkage. Conversely, high power density can
+be achieved in parallel mode, thanks to the reduced impedance of the motor. Additionally,
+since the d-axis current for FW control is lower in parallel mode than in series mode,
+efficiency can be enhanced by minimizing copper and iron losses.
+
+
+===== PAGE 9 =====
+
+Mathematics 2024, 12, 3415
+9 of 19
+0
+2000
+4000
+6000
+8000
+0
+20
+40
+60
+80
+Torque (Nm)
+Speed (rpm)
+ Torque
+0
+70
+140
+210
+280
+Phase current (Arms)
+ Phase current
+0.0
+22.5
+45.0
+67.5
+90.0
+Current phase angle (deg.)
+ Current phase angle
+0
+15
+30
+45
+60
+Line-to-line voltage (Vrms)
+ Line-to-line voltage
+(a)
+0
+2000
+4000
+6000
+8000
+0
+20
+40
+60
+80
+Torque (Nm)
+Speed (rpm)
+ Torque
+0
+70
+140
+210
+280
+Phase current (Arms)
+ Phase current
+0.0
+22.5
+45.0
+67.5
+90.0
+Current phase angle (deg.)
+ Current phase angle
+0
+15
+30
+45
+60
+Line-to-line voltage (Vrms)
+ Line-to-line voltage
+(b)
+Figure 7. Electromagnetic characteristics of conventional PMSM with (a) series mode and (b) parallel
+mode.
+3.2. Proposed OEW-PMSM with WC
+By leveraging the advantages of OEW and WC, we propose a novel topology that
+facilitates high-efficiency operation across the entire speed range for EV traction. Figure 8
+presents the schematic of the proposed topology. To implement WC, the windings of the
+PMSM are separated, and the ends of each phase are left unconnected for dual inverter
+drive. This proposed topology enables the PMSM to operate in four modes by integrating
+series and parallel configurations with three-phase and dual inverter drives, as illustrated
+in Figure 9.
+OEW-PMSM with WC
+Inverter 1
+Inverter 2
+Figure 8. Schematic of proposed OEW-PMSM with WC.
+
+
+===== PAGE 10 =====
+
+Mathematics 2024, 12, 3415
+10 of 19
+3-ph + Series
+3-ph + Parallel
+OEW + Series
+OEW + Parallel
+3-ph + Series
+3-ph + Parallel
+OEW + Series
+OEW + Parallel
+Proposed topology
+3-ph with WC
+OEW with WC
+Torque (Nm)
+Speed (rpm)
+Torque (Nm)
+Speed (rpm)
+Torque (Nm)
+Speed (rpm)
+Figure 9. Operation range of proposed topology.
+Since the maximum modulation index and motor parameters vary with the operating
+mode, the system efficiency for each speed region also changes accordingly. When the
+proposed topology operates in three-phase mode with WC, the system efficiency in the
+low-speed region can be enhanced because the motor runs on a single inverter with a low
+armature current. However, in the high-speed region, system efficiency may decrease due
+to the FW control, which is limited by the lower modulation index. Conversely, when the
+proposed topology operates in OEW mode with WC, the system efficiency in the high-speed
+region can be improved, as a lower d-axis current is needed to drive the motor effectively
+due to the higher modulation index.
+4. Mode Selection Strategy for High System Efficiency
+As the proposed topology provides four modes, which are series mode with three-
+phase, parallel mode with three-phase, series mode with OEW, and parallel mode with
+OEW, an effective strategy for selecting the operating mode should be required. In this
+paper, the strategy illustrated in Figure 10 is adopted to maximize the system efficiency of
+the proposed topology. When the torque and speed are specified, the system efficiency for
+each operating mode is derived by calculating the motor parameters based on the series-
+parallel configuration. The system efficiency is determined by considering the maximum
+modulation index for either the three-phase or OEW drive. Consequently, the OEW-PMSM
+operates in the mode that yields the highest system efficiency.
+Figure 11a–d presents the efficiency map of the motor for each mode. In this analy-
+sis, the specifications of PMSM from Table 1 were used to verify the performance of the
+proposed topology. When the PMSM operates in OEW mode, power density increases
+compared with three-phase mode due to the higher modulation index. In contrast, while
+operating in series mode, power density decreases because of increased impedance, al-
+though the peak torque increases. In the low-speed region, there is no significant difference
+in motor efficiency between three-phase and OEW modes, as the required modulation
+index is small. However, in the high-speed region, the motor efficiency in three-phase
+mode decreases due to FW control. Additionally, when the PMSM operates in series mode,
+high-speed efficiency is also reduced because of the increased impedance associated with
+FW control.
+
+
+===== PAGE 11 =====
+
+Mathematics 2024, 12, 3415
+11 of 19
+*
+*
+Get operating point (Te , ωm)
+Start
+Get motor 
+parameters for 
+series mode
+(Swc = 1)
+Get motor 
+parameters for 
+parallel mode
+(Swc = 0)
+Series mode
+Get motor 
+parameters for 
+series mode
+(Swc = 1)
+Get motor 
+parameters for 
+parallel mode
+(Swc = 0)
+Parallel mode
+Series mode
+Parallel mode
+System efficiency for three-phase series mode
+ηsys,1 : 
+System efficiency for three-phase parallel mode
+ηsys,2 : 
+System efficiency for OEW series mode
+ηsys,3 : 
+System efficiency for OEW parallel mode
+ηsys,4 : 
+Three-phase operation
+OEW operation
+Calculate ηsys by
+MTPA and flux-weakening
+(Va ≤ VDC /     ) 
+3
+Calculate ηsys by
+MTPA and flux-weakening
+(Va ≤ VDC) 
+ηsys,1 >
+max(ηsys,2, ηsys,3, ηsys,4)
+ηsys,2>
+max(ηsys,3, ηsys,4)
+ηsys,3 > ηsys,4
+Select
+three-phase 
+series mode
+Select
+three-phase 
+parallel mode
+Select OEW
+series mode
+Select OEW
+parallel mode
+Yes
+Yes
+Yes
+No
+No
+No
+Figure 10. Algorithm for selecting operation mode to achieve high system efficiency drive.
+2000
+4000
+6000
+8000
+−80
+−40
+0
+40
+80
+)
+m
+N
+( 
+e
+u
+q
+r
+o
+T
+Speed (rpm)
+100.0
+ηmt (%)
+40.0
+70.0
+Three-phase parallel mode
+80
+90
+8090
+(a)
+2000
+4000
+6000
+8000
+−80
+−40
+0
+40
+80
+)
+m
+N
+( 
+e
+u
+q
+r
+o
+T
+Speed (rpm)
+OEW parallel mode
+ηmt (%)
+100.0
+40.0
+70.0
+80
+90
+80
+90
+(b)
+2000
+4000
+6000
+8000
+−80
+−40
+0
+40
+80
+)
+m
+N
+( 
+e
+u
+q
+r
+o
+T
+Speed (rpm)
+Three-phase series mode
+ηmt (%)
+100.0
+40.0
+70.0
+8090
+80
+90
+(c)
+2000
+4000
+6000
+8000
+−80
+−40
+0
+40
+80
+)
+m
+N
+( 
+e
+u
+q
+r
+o
+T
+Speed (rpm)
+OEW series mode
+ηmt (%)
+100.0
+40.0
+70.0
+80
+90
+80
+90
+(d)
+Figure 11. Motor efficiency map for (a) three-phase parallel mode, (b) OEW parallel mode, (c) three-
+phase series mode, and (d) OEW series mode.
+Figure 12a–d presents the inverter efficiency maps for each mode. When the PMSM
+operates in OEW mode, the inverter efficiency is lower than that of three-phase mode due
+to the increased number of IGBTs and diodes. Furthermore, the inverter efficiency in series
+
+
+===== PAGE 12 =====
+
+Mathematics 2024, 12, 3415
+12 of 19
+mode is higher than in parallel mode because the conduction losses of the IGBT and diode
+decrease as the armature current reduces in the low-speed region.
+The system efficiency map of the PMSM based on the operating mode is shown
+in Figure 13a–d. By considering both the efficiency of the motor and the inverter, the
+system efficiency varies according to the speed and torque ranges. Utilizing the algorithm
+illustrated in Figure 10, the proposed topology can operate with high system efficiency, as
+depicted in Figure 14.
+In Section 1, which represents the low-speed, high-torque region, the system operates
+in three-phase series mode to maximize efficiency by reducing the armature current with a
+single inverter. Section 2 operates in OEW series mode to maintain base speed with high
+torque. Finally, Section 3 operates in OEW parallel mode to enhance system efficiency
+during high-speed operation.
+Figure 15 illustrates the system efficiency map of the proposed topology. By operating
+in series mode in the low-speed region and in parallel mode in the high-speed region, the
+PMSM can achieve high system efficiency across the entire speed range. Generally, the
+main operating points of EVs are located in the low-speed, high-torque, and high-speed,
+low-torque regions, making the proposed topology advantageous for improving vehicle
+mileage. Figure 16 highlights the difference in system efficiency between the conventional
+PMSM and the proposed topology. In the low-speed region, the use of series mode with a
+single inverter significantly enhances system efficiency. However, in the high-speed region,
+the system efficiency of the proposed topology is lower than that of the conventional PMSM
+due to its reliance on dual inverters.
+2000
+4000
+6000
+8000
+−80
+−40
+0
+40
+80
+)
+m
+N
+( 
+e
+u
+q
+r
+o
+T
+Speed (rpm)
+Three-phase parallel mode
+100.0
+40.0
+70.0
+ηinv (%)
+80
+90
+(a)
+2000
+4000
+6000
+8000
+−80
+−40
+0
+40
+80
+)
+m
+N
+( 
+e
+u
+q
+r
+o
+T
+Speed (rpm)
+100.0
+40.0
+70.0
+OEW parallel mode
+ηinv (%)
+80
+90
+(b)
+2000
+4000
+6000
+8000
+−80
+−40
+0
+40
+80
+)
+m
+N
+( 
+e
+u
+q
+r
+o
+T
+Speed (rpm)
+Three-phase series mode
+100.0
+40.0
+70.0
+ηinv (%)
+90
+90
+(c)
+2000
+4000
+6000
+8000
+−80
+−40
+0
+40
+80
+)
+m
+N
+( 
+e
+u
+q
+r
+o
+T
+Speed (rpm)
+OEW series mode
+100.0
+40.0
+70.0
+ηinv (%)
+90
+90
+(d)
+Figure 12. Inverter efficiency map for (a) three-phase parallel mode, (b) OEW parallel mode, (c) three-
+phase series mode, and (d) OEW series mode.
+
+
+===== PAGE 13 =====
+
+Mathematics 2024, 12, 3415
+13 of 19
+2000
+4000
+6000
+8000
+−80
+−40
+0
+40
+80
+)
+m
+N
+( 
+e
+u
+q
+r
+o
+T
+Speed (rpm)
+100.0
+ηsys (%)
+40.0
+70.0
+Three-phase parallel mode
+80
+90
+80 90
+(a)
+2000
+4000
+6000
+8000
+−80
+−40
+0
+40
+80
+)
+m
+N
+( 
+e
+u
+q
+r
+o
+T
+Speed (rpm)
+OEW parallel mode
+100.0
+ηsys (%)
+40.0
+70.0
+80
+90
+80 90
+(b)
+2000
+4000
+6000
+8000
+−80
+−40
+0
+40
+80
+)
+m
+N
+( 
+e
+u
+q
+r
+o
+T
+Speed (rpm)
+Three-phase series mode
+100.0
+ηsys (%)
+40.0
+70.0
+80
+90
+80
+90
+(c)
+2000
+4000
+6000
+8000
+−80
+−40
+0
+40
+80
+)
+m
+N
+( 
+e
+u
+q
+r
+o
+T
+Speed (rpm)
+OEW series mode
+100.0
+ηsys (%)
+40.0
+70.0
+80
+90
+80 90
+(d)
+Figure 13. System efficiency map for (a) three-phase parallel mode, (b) OEW parallel mode, (c) three-
+phase series mode, and (d) OEW series mode.
+Section (3): OEW parallel mode
+Section (2): OEW series mode
+Section (1): Three-phase series mode
+2000
+4000
+6000
+8000
+−80
+−40
+0
+40
+80
+)
+m
+N
+( 
+e
+u
+q
+r
+o
+T
+Speed (rpm)
+Figure 14. Operation mode of proposed topology to maximize the system efficiency.
+2000
+4000
+6000
+8000
+−80
+−40
+0
+40
+80
+)
+m
+N
+( 
+e
+u
+q
+r
+o
+T
+Speed (rpm)
+ηsys (%)
+30.0
+70.0
+100.0
+80
+90
+80
+90
+Figure 15. Integrated system efficiency map of proposed topology.
+
+
+===== PAGE 14 =====
+
+Mathematics 2024, 12, 3415
+14 of 19
+2000
+4000
+6000
+8000
+−80
+−40
+0
+40
+80
+)
+m
+N
+( 
+e
+u
+q
+r
+o
+T
+Speed (rpm)
+Δηsys (%p)
+0.0
+5.0
+10.0
+5.0
+10.0
+1.0
+1.0
+Figure 16. Difference of system efficiency map between conventional PMSM and proposed topology.
+5. Fuel Economy of Electric Vehicle Using OEW-PMSM with WC
+To calculate the fuel economy of the EV, vehicle simulations were conducted in this
+section using the advanced vehicle simulator (ADVISOR) developed by the National
+Renewable Energy Laboratory [35]. The target vehicle is a 10.2 kW personal mobility unit,
+and the driving cycle was set to the New York City Cycle (NYCC), as shown in Figure 17a,
+which is well-suited for personal mobility applications. Since the NYCC mimics urban
+driving conditions, it emphasizes low-speed driving rather than high-speed performance.
+The schematic of the vehicle simulations is illustrated in Figure 18. These simulations
+aim to assess the fuel economy of the vehicle based on two e-powertrain systems: the
+conventional three-phase PMSM and the proposed topology. The total resistance force
+acting on the vehicle comprises rolling resistance, grading resistance, and aerodynamic
+drag, as follows:
+Fr,total = FR + FG + FD
+= fRMvg cos θ + Mvg sin θ + 1
+2ρairA f CD(Vv + Vw)2
+(17)
+Then, the motion of the vehicle is determined by the traction force of the e-powertrain and
+resistance force as
+Mvav = Ft −Fr,total
+(18)
+Finally, the traction torque of the e-powertrain can be calculated when the vehicle is driven
+along the driving cycle as
+T∗
+m = rwFt
+nGηG
+(19)
+Since the NYCC includes numerous stop-and-go situations, as shown in Figure 17b, the
+e-powertrain is frequently operated in low-speed and high-torque. The detailed specifica-
+tions of the vehicle and driving conditions are listed in Table 2. In this paper, temperature
+variations of the PMSM and inverter during the driving cycle are not considered. A compar-
+ison of fuel economy was conducted under the assumption that the average temperature
+during driving conditions aligns with the temperature values presented in Table 1.
+
+
+===== PAGE 15 =====
+
+Mathematics 2024, 12, 3415
+15 of 19
+Table 2. The specifications of vehicle and driving conditions.
+Item
+Unit
+Value
+Curb weight
+kg
+474
+Frontal area
+m2
+1.8
+Wheel size
+in
+13
+Tire size
+-
+125/80R13
+Gear ratio
+-
+15.0
+Gear efficiency
+%
+95
+Battery capacity
+kWh
+6.1
+ρair
+kg/m2
+1.2
+CD
+-
+0.64
+fr
+-
+0.01
+0
+100
+200
+300
+400
+500
+600
+0
+15
+30
+45
+60
+Vehicle speed (km/h)
+time (s)
+(a)
+0
+10
+20
+30
+40
+0
+90
+180
+270
+360
+Frequency
+Vehicle speed (km/h)
+(b)
+Figure 17. Target driving cycle that is suitable for personal mobility: (a) waveform of vehicle speed
+and (b) vehicle speed distribution of NYCC cycle.
+Driving Cycle
+NYCC cycle
+Vehicle Loads
+Wheel Axle
+Motor / Inverter
+Conventional PMSM
+Proposed topology
+Battery
+Reduction Gear
+Figure 18. Target driving cycle that is suitable for personal mobility.
+
+
+===== PAGE 16 =====
+
+Mathematics 2024, 12, 3415
+16 of 19
+Figure 19a,b show the operating points of the traction motor over the torque-speed curve
+for each topology. The operating points required to overcome the total resistance force while
+driving under the NYCC are located on the torque-speed curve of the traction motor. These
+operating points are positioned near the low-speed, high-torque region, which is characteristic
+of urban driving cycles that involve frequent acceleration and deceleration. Therefore, the
+proposed topology, which significantly enhances system efficiency in the low-speed, high-
+torque region, offers advantages in fuel economy compared with the conventional PMSM.
+2000
+4000
+6000
+8000
+−80
+−40
+0
+40
+80
+ TN-curve of conventional PMSM
+ Operating points (NYCC)
+Torque (Nm)
+Speed (rpm)
+(a)
+2000
+4000
+6000
+8000
+−80
+−40
+0
+40
+80
+Torque (Nm)
+Speed (rpm)
+Three-phase series mode
+OEW series mode
+OEW parallel mode
+Operating points (NYCC)
+High efficiency
+region
+(b)
+Figure 19. Operation points of traction motor and TN-curve for (a) conventional PMSM and (b) pro-
+posed topology.
+Figure 20a–d presents a comparison of the simulation results for power consumption
+during the driving cycle for each e-powertrain topology. The rotational speed and con-
+trolled torque of the motor are shown in Figure 20a,b. As the motor is frequently operated
+in low-speed regions, the system loss of the proposed topology is much lower than that
+of the conventional PMSM throughout the entire driving cycle, as shown in Figure 20c.
+Because of the difference in system loss between each topology, the consumed energy of
+the proposed topology is much higher than that of the conventional topology throughout
+the driving cycle, as shown in Figure 20d. Consequently, the total consumed energy of
+the proposed topology is 3.9% lower than that of the conventional PMSM, as shown in
+Figure 21a, and the fuel economy of the proposed topology is 4.1% higher than that of the
+conventional PMSM, as shown in Figure 21b.
+
+
+===== PAGE 17 =====
+
+Mathematics 2024, 12, 3415
+17 of 19
+0
+150
+300
+450
+600
+0
+2000
+4000
+6000
+8000
+Motor speed (rpm)
+time (sec.)
+(a)
+0
+150
+300
+450
+600
+−40
+−20
+0
+20
+40
+Motor torque (Nm)
+time (sec.)
+(b)
+0
+150
+300
+450
+600
+0
+500
+1000
+1500
+2000
+System loss (W)
+time (sec.)
+ Conventional PMSM
+ Proposed topology
+(c)
+0
+150
+300
+450
+600
+0.00
+0.07
+0.14
+0.21
+0.28
+Consumed
+energy (kWh)
+time (sec.)
+ Conventional PMSM
+ Proposed topology
+(d)
+Figure 20. Comparison of energy consumption for driving cycle according to the e-powertrain
+topology: (a) rotational speed of the motor, (b) controlled torque of motor, (c) comparison of system
+loss for each topology, and (d) comparison of consumed energy for each topology.
+0.00
+0.06
+0.12
+0.18
+0.24
+ Conventional PMSM
+ Proposed topology
+Total consumed energy (kWh)
+Conventional
+PMSM
+Proposed
+topology
+3.9%
+↑
+(a)
+0
+4
+8
+12
+16
+Fuel economy (km/kWh)
+ Conventional PMSM
+ Proposed topology
+Conventional
+PMSM
+Proposed
+topology
+4.1% ↑
+(b)
+Figure 21. Comparison of total consumed energy and fuel economy according to the e-powertrain
+topology: (a) Comparison of total consumed energy and (b) fuel economy.
+
+
+===== PAGE 18 =====
+
+Mathematics 2024, 12, 3415
+18 of 19
+6. Conclusions and Future Works
+This paper proposes a novel topology for e-powertrains to improve the fuel economy
+of electric vehicles. The proposed topology enables to drive the PMSM in four different
+modes by integrating OEW-PMSM and WC. By using the WC to change the impedance of
+PMSM and applying OEW to increase the maximum modulation index, a wide speed and
+torque range can be achieved. In order to analyze the system efficiency of the proposed
+topology, inverter losses due to phase current change during series and parallel mode
+conversion were evaluated, and a system efficiency evaluation method was proposed
+considering the dual inverter-fed OEW operation. In addition, an algorithm for selecting
+the operation mode for a high system efficiency drive was proposed, and the comparison
+of system efficiency between conventional 3-phase PMSM and the proposed topology was
+conducted. In addition, the vehicle simulations were performed for fuel economy analysis.
+As a result, the validity of the proposed topology was verified through simulations to
+improve fuel economy.
+This research is about the feasibility validation of the proposed topology for improving
+the fuel economy of EVs. Therefore, the energy loss occurring in the switching circuit for
+OEW and WC and the cost increase effect for implementing the topology are not addressed
+in this paper. In addition, the effect of the zero-sequence current flowing through the
+dual inverter when applying OEW is not considered. Thus, we will conduct research
+to contribute to the commercialization of the proposed topology. In the future, we will
+build a prototype for experimental verifications, and switching circuits will be studied for
+implementing the OEW and WC topologies. Additionally, control techniques to suppress
+surge voltage for implementing OEW and WC will be studied together.
+Author Contributions: Conceptualization, J.-H.K. and S.-H.P.; methodology, K.-S.C.; software, S.-H.P.;
+validation, S.-W.H.; resources, M.-S.L.; data curation, K.-S.C.; writing—original draft preparation, J.-
+H.K. and K.-S.C.; writing—review and editing, M.-S.L. and S.-H.P.; visualization, S.-H.P.; supervision,
+M.-S.L.; project administration, S.-W.H.; funding acquisition, M.-S.L. and S.-H.P. All authors have
+read and agreed to the published version of the manuscript.
+Funding: This work was supported by the Dongguk University Research Fund of 2023 (S-2023-G0001-
+00095).
+Data Availability Statement: Data are contained within the article.
+Conflicts of Interest: The authors declare no conflicts of interest.
+References
+1.
+De Santiago, J.; Bernhoff, H.; Ekergård, B.; Eriksson, S.; Ferhatovic, S.; Waters, R.; Leijon, M. Electrical motor drivelines in
+commercial all-electric vehicles: A review. IEEE Trans. Veh. Technol. 2012, 61, 475–484.
+2.
+Sarlioglu, B.; Morris, C.T.; Han, D.; Li, S. Driving toward accessibility: A review of technological improvements for electric
+machines, power electronics, and batteries for electric and hybrid vehicles. IEEE Trans. Ind. Appl. 2017, 23, 14–25.
+3.
+Demetriades, G.D.; De La Parra, H.Z.; Andersson, E.; Olsson, H. A real-time thermal model of a permanent-magnet synchronous
+motor. IEEE Trans. Power Electron. 2010, 25, 463–474.
+4.
+Du, G.; Cao, W.; Hu, S.; Lin, Z.; Yuan, T. Design and assessment of an electric vehicle powertrain model based on real-world
+driving and charging cycles. IEEE Trans. Veh. Technol. 2019, 68, 1178–1187.
+5.
+Popescu, M.; Goss, J.; Staton, D.A.; Hawkins, D.; Chong, Y.C.; Boglietti, A. Electrical vehicles—Practical solutions for power
+traction motor systems. IEEE Trans. Ind. Appl. 2018, 54, 2751–2762.
+6.
+Berardi, G.; Bianchi, N. Design Guideline of an AC Hairpin Winding. In Proceedings of the 2018 XIII International Conference on
+Electrical Machines (ICEM), Alexandroupoli, Greece, 3–6 September 2018; pp. 2444–2450.
+7.
+Park, H.J.; Lim, M.S. Design of high power density and high efficiency wound-field synchronous motor for electric vehicle
+traction. IEEE Access 2019, 7, 46677–46685.
+8.
+Wrobel, R.; Mecrow, B. A comprehensive review of additive manufacturing in construction of electrical machines. IEEE Trans.
+Energy Convers. 2020, 35, 1054–1064.
+9.
+Selema, A.; Ibrahim, M.N.; Sergeant, P. Metal additive manufacturing for electrical machines: Technology review and latest
+advancements. Energies 2022, 15, 1076.
+10.
+Selema, A.; Van Den Abbeele, J.; Ibrahim, M.N.; Sergeant, P. Innovative 3D Printed Coil and Cooling Designs for Weight-Sensitive
+Energy-Saving Electrical Machine. IEEE Trans. Transp. Electrif. 2023, 10, 5282–5293.
+
+
+===== PAGE 19 =====
+
+Mathematics 2024, 12, 3415
+19 of 19
+11.
+Lizarribar, B.; Prieto, B.; Selema, A.; Ibrahim, M.N.; Sergeant, P.; Artetxe, G.; Martínez-Iturralde, M. Multiphysics topology
+optimization of aluminium and copper conductors for automotive electrical machines.
+IEEE Trans. Transp. Electrif. 2024.
+https://doi.org/10.1109/tte.2024.3367040.
+12.
+Hwang, S.W.; Ryu, J.Y.; Chin, J.W.; Park, S.H.; Kim, D.K.; Lim, M.S. Coupled electromagnetic-thermal analysis for predicting
+traction motor characteristics according to electric vehicle driving cycle. IEEE Trans. Veh. Technol. 2021, 70, 4262–4272.
+13.
+Sun, X.; Shi, Z.; Cai, Y.; Lei, G.; Guo, Y.; Zhu, J. Driving-cycle-oriented design optimization of a permanent magnet hub motor
+drive system for a four-wheel-drive electric vehicle. IEEE Trans. Transp. Electrif. 2020, 6, 1115–1125.
+14.
+Ahn, S.; Song, W.; Min, S. Multiobjective Optimization of a Traction Motor in Driving Cycles Using a Coupled Electromagnetic–
+Thermal 1D Simulation. Int. J. Energy Res. 2023, 2023, 8854778.
+15.
+Mahmouditabar, F.; Baker, N.J. Design Optimization of Induction Motors with Different Stator Slot Rotor Bar Combinations
+Considering Drive Cycle. Energies 2023, 17, 154.
+16.
+Zhang, Y.; Qi, R. High-efficiency flux weakening drive for IPMSM based on model predictive control. IEEE Trans. Transp. Electrif.
+2022, 8, 3503–3511.
+17.
+Vera, L.J.F.C.; Hsieh, M.F. Investigating the Impact of Characteristic Current on IPMSM Efficiency Area in Flux-Weakening
+Region. IEEE Trans. Magn. 2024, 60, 8204006.
+18.
+Seok, J.K.; Kim, J.S.; Sul, S.K. Overmodulation strategy for high-performance torque control. IEEE Trans. Power Electron. 1998,
+13, 786–792.
+19.
+Baiju, M.R.; Mohapatra, K.K.; Kanchan, R.S.; Gopakumar, K. A Dual Two-Level Inverter Scheme with Common Mode Voltage
+Elimination for an Induction Motor Drive. IEEE Trans. Power Electron. 2004, 19, 794–805.
+20.
+Hu, W.; Nian, H.; Sun, D. Zero-sequence current suppression strategy with reduced switching frequency for open-end winding
+PMSM drives with common DC bus. IEEE Trans. Ind. Electron. 2019, 66, 7613–7623.
+21.
+Lin, X.; Huang, W.; Wang, L. SVPWM strategy based on the hysteresis controller of zero-sequence current for three-phase
+open-end winding PMSM. IEEE Trans. Power Electron. 2019, 34, 3474–3486.
+22.
+Morya, A.K.; Gardner, M.C.; Anvari, B.; Liu, L.; Yepes, A.G.; Doval-Gandoy, J.; Toliyat, H.A. Wide bandgap devices in AC electric
+drives: Opportunities and challenges. IEEE Trans. Transp. Electrif. 2019, 5, 3–20.
+23.
+Chang, L.; Alvi, M.; Lee, W.; Kim, J.; Jahns, T.M. Efficiency optimization of PWM-induced power losses in traction drive systems
+with IPM machines using wide bandgap-based inverters. IEEE Trans. Ind. Appl. 2022, 58, 5635–5649.
+24.
+Zhan, H.; Zhu, Z.q.; Odavic, M. Analysis and suppression of zero sequence circulating current in open winding PMSM drives
+with common DC bus. IEEE Trans. Ind. Appl. 2017, 53, 3609–3620.
+25.
+Bodo, N.; Jones, M.; Levi, E. A space vector PWM with common-mode voltage elimination for open-end winding five-phase
+drives with a single DC supply. IEEE Trans. Ind. Electron. 2013, 61, 2197–2207.
+26.
+Belkhode, S.; Jain, S. Optimized switching PWM technique with common-mode current minimization for five-phase open-end
+winding induction motor drives. IEEE Trans. Power Electron. 2018, 34, 8971–8980.
+27.
+Hu, W.; Ruan, C.; Nian, H.; Sun, D. Zero-sequence current suppression strategy with common-mode voltage control for open-end
+winding PMSM drives with common DC bus. IEEE Trans. Ind. Electron. 2020, 68, 4691–4702.
+28.
+Lim, M.S.; Hong, J.P. Design of high efficiency wound field synchronous machine with winding connection change method. IEEE
+Trans. Energy Convers. 2018, 33, 1978–1987.
+29.
+Cha, K.S.; Kim, D.M.; Jung, Y.H.; Lim, M.S. Wound field synchronous motor with hybrid circuit for neighborhood electric vehicle
+traction improving fuel economy. Appl. Energy 2020, 263, 114618.
+30.
+Im, S.H.; Gu, B.G. A snubberless solid-state tap changer for permanent magnet synchronous motors. IEEE Trans. Power Electron.
+2020, 35, 12143–12152.
+31.
+Swamy, M.M.; Kume, T.; Maemura, A.; Morimoto, S. Extended high-speed operation via electronic winding-change method for
+AC motors. IEEE Trans. Ind. Appl. 2006, 42, 742–752.
+32.
+Park, S.H.; Cha, K.S.; Hwang, S.W.; Kim, J.H.; Lim, M.S. Open-End Winding Permanent Magnet Synchronous Machine with
+Winding Connection Change Method for High Efficiency EV Traction. In Proceedings of the 2021 IEEE Vehicle Power and
+Propulsion Conference (VPPC), Gijon, Spain, 25–28 October 2021; pp. 1–6.
+33.
+Berringer, K.; Marvin, J.; Perruchoud, P. Semiconductor power losses in AC inverters. In Proceedings of the Industry Applications
+Conference, 1995. Thirtieth IAS Annual Meeting, IAS’95, Orlando, FL, USA, 8–12 October 1995, pp. 882–888.
+34.
+Infineon Technologies AG. HybridPACK Drive Module, Rev. 3.0; Infineon Technologies AG: Hong Kong, China, 2019.
+35.
+Markel, T.; Brooker, A.; Hendricks, T.; Johnson, V.; Kelly, K.; Kramer, B.; O’Keefe, M.; Sprik, S.; Wipke, K. ADVISOR: A systems
+analysis tool for advanced vehicle modeling. J. Power Sources 2002, 110, 255–266.
+Disclaimer/Publisher’s Note: The statements, opinions and data contained in all publications are solely those of the individual
+author(s) and contributor(s) and not of MDPI and/or the editor(s). MDPI and/or the editor(s) disclaim responsibility for any injury to
+people or property resulting from any ideas, methods, instructions or products referred to in the content.

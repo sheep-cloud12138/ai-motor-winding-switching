@@ -1,0 +1,28 @@
+R1 fixed baselines
+  4S E=215.0 unmet=541.4
+  2S2P E=448.2 unmet=2.4
+  delta E=440.6 unmet=36.7
+  4P E=518.8 unmet=0.0
+ best fixed: {'mode': '4P', 'E_Wh': np.float64(518.7885003656619)}
+ DP vs best fixed saving 15.1%
+R2 E_sw sweep
+  E_sw=0.005: DP 440.4 Wh / 35 sw ; greedy 438.9 Wh / 62 sw
+  E_sw=0.025: DP 440.4 Wh / 35 sw ; greedy 438.9 Wh / 62 sw
+  E_sw=0.1: DP 440.4 Wh / 35 sw ; greedy 438.9 Wh / 62 sw
+  E_sw=1.0: DP 440.4 Wh / 35 sw ; greedy 438.9 Wh / 62 sw
+  E_sw=10.0: DP 440.5 Wh / 35 sw ; greedy 439.0 Wh / 62 sw
+  E_sw=100.0: DP 441.4 Wh / 35 sw ; greedy 440.6 Wh / 62 sw
+R3 zero-shot tap50 in DP
+ DP5: {'E_Wh': np.float64(440.4257497346708), 'switches': 35, 'unmet': 0.0, 'mode_counts': {'4S': 1114, '2S2P': 59, 'delta': 416, '4P': 22, 'tap50': 0}}
+R4 design screening
+  4S     E=215.0 Wh unmet=541.4
+  2S2P   E=448.2 Wh unmet=2.4
+  delta  E=440.6 Wh unmet=36.7
+  4P     E=518.8 Wh unmet=0.0
+  3S1P   E=258.7 Wh unmet=302.9
+  tap75  E=105.9 Wh unmet=1050.4
+  tap50  E=109.1 Wh unmet=308.2
+  tap25  E=90.8 Wh unmet=1331.6
+R5 inverter rescaling
+  {'device': 'r_CE x0.5, V_CE0 +10%', 'dp_Wh': np.float64(439.6300560496004), 'dp_sw': 39, 'best_fixed_mode': '4P', 'best_fixed_Wh': np.float64(507.2300725097019), 'saving_pct': np.float64(13.327288763780565)}
+saved D:\Desktop\ai+电机绕组切换\exp\results_drive_r2.json

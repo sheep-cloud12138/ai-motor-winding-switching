@@ -1,0 +1,39 @@
+{
+ "n_total": 9276,
+ "counts": {
+  "2S2P": 336,
+  "4P": 336,
+  "4S": 336,
+  "asym": 336,
+  "delta": 336,
+  "openB": 336,
+  "random": 4608,
+  "randomz": 2304,
+  "tap50": 336,
+  "zero": 12
+ },
+ "device": "cuda"
+}
+skip 4S/base
+skip 4S/norandom
+skip 4S/withz
+skip 2S2P/base
+skip 2S2P/norandom
+skip 2S2P/withz
+skip delta/base
+skip delta/norandom
+skip delta/withz
+skip asym/base
+skip asym/norandom
+skip asym/withz
+skip 4P/base
+skip 4P/norandom
+skip 4P/withz
+skip tap50/base
+skip tap50/withz
+skip openB/base
+skip openB/withz
+jacobian mlp {'asym_mean': 0.22069957643160695, 'asym_max': 0.3630113161883201, 'min_eig_mean': 0.33985977401942113}
+jacobian gradnet {'asym_mean': 1.6171486687404155e-05, 'asym_max': 2.195997993510567e-05, 'min_eig_mean': 0.277633715689282}
+jacobian energy {'asym_mean': 0.0004645422151601807, 'asym_max': 0.0022169586537518823, 'min_eig_mean': 0.3587983833497739}
+done

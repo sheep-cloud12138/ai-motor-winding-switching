@@ -1,0 +1,202 @@
+[
+  {
+    "doi": "10.3390/en14061531",
+    "title": "Fault Diagnosis of Transformer Windings Based on Decision Tree and Fully Connected Neural Network",
+    "year": 2021,
+    "cites": 51,
+    "venue": "Energies",
+    "abstract": "While frequency response analysis (FRA) is a well matured technique widely used by current industry practice to detect the mechanical integrity of power transformers, interpretation of FRA signatures is still challenging, regardless of the research efforts in this area. This paper presents a method for reliable quantitative and qualitative analysis to the transformer FRA signatures based on a decision tree classification model and a fully connected neural network. Several levels of different six fault types are obtained using a lumped parameter-based transformer model. Results show that the proposed model performs well in the training and the validation stages, and is of good generalization ability.",
+    "oa_url": "https://www.mdpi.com/1996-1073/14/6/1531/pdf?version=1615968936",
+    "url": "https://openalex.org/W3135733061"
+  },
+  {
+    "doi": "10.1007/s00170-022-08671-w",
+    "title": "Augmented classification for electrical coil winding defects",
+    "year": 2022,
+    "cites": 9,
+    "venue": "The International Journal of Advanced Manufacturing Technology",
+    "abstract": "Abstract A green revolution has accelerated over the recent decades with a look to replace existing transportation power solutions through the adoption of greener electrical alternatives. In parallel the digitisation of manufacturing has enabled progress in the tracking and traceability of processes and improvements in fault detection and classification. This paper explores electrical machine manufacture and the challenges faced in identifying failures modes during this life cycle through the demonstration of state-of-the-art machine vision methods for the classification of electrical coil winding defects. We demonstrate how recent generative adversarial networks can be used to augment training of these models to further improve their accuracy for this challenging task. Our approach utilises pre-processing and dimensionality reduction to boost performance of the model from a standard convolutional neural network (CNN) leading to a significant increase in accuracy.",
+    "oa_url": "https://link.springer.com/content/pdf/10.1007/s00170-022-08671-w.pdf",
+    "url": "https://openalex.org/W4207047552"
+  },
+  {
+    "doi": "10.14288/1.0065467",
+    "title": "A multi-layer neural network approach to identification of mechanical damage in power transformer windings",
+    "year": 2009,
+    "cites": 3,
+    "venue": "cIRcle (University of British Columbia)",
+    "abstract": "Power transformers are among the most critical of assets for electric utilities, in the financial impact that their failure can bring. Asset Managers need to be able to determine the right time for replacement, refurbishment or relocation of these devices, with an increasing degree of confidence, in order to minimize the total cost of operation over the equipments’ life. This has brought a change from scheduled maintenance to condition based monitoring (CBM), where the state of the transformer is continuously monitored to evaluate its working condition. A key method of transformer CBM, which effectively detects mechanical damage to the structure of the transformer windings, is Frequency Response Analysis (FRA). FRA relies on comparison of electrical admittance signatures to determine if the winding has become deformed. One of the major problems it still faces is the interpretation of differences in the signatures. To date, experts are needed to analyse graphs, drawing from experience in order to produce educated guesses as to what the differences in admittance functions denote. However, in the recent past, there has been some headway in programming computer based solutions for the problem of interpretation. The use of Artificial Neural Networks (ANNs) has perhaps been the most promising in this respect. ANNs perform in the same way that human experts do, drawing upon experience to map a change in shape of a signature to a physical change in the winding system. However, one of the major drawbacks of these methods is the large training data-sets required for the neural network to learn. The work reported in this thesis seeks to address this problem by generating training datasets from analytical models of the transformer. Due to the large number of simulations that need to be performed a customized solution method was developed to speed up computations. A combination of back propagation and radial basis function networks were then used to classify the type, location and severity of winding movement. The results showed that the neural network approach was not only accurate but tolerant to high noise levels.",
+    "oa_url": "http://hdl.handle.net/2429/5677",
+    "url": "https://openalex.org/W2409725000"
+  },
+  {
+    "doi": "10.3390/electronics9081314",
+    "title": "Efficiency of Cascaded Neural Networks in Detecting Initial Damage to Induction Motor Electric Windings",
+    "year": 2020,
+    "cites": 12,
+    "venue": "Electronics",
+    "abstract": "This article presents the efficiency of using cascaded neural structures in the process of detecting damage to electrical circuits in a squirrel cage induction motor (IM) supplied from a frequency converter. The authors present the idea of a sequential connection of classic neural structures to increase the efficiency of damage classification and detection presented by individual neural structures, especially in the initial phase of single or multiple electrical failures. The easily measurable axial flux signal is used as a source of diagnostic information. The developed cascaded neural networks are implemented in the measurement and diagnostic software made in the LabVIEW environment. The results of the experimental research on a 1.5 kW IM supplied by an industrial frequency converter confirm the high efficiency of the use of the developed cascaded neural structures in the detection of incipient stator and rotor winding faults, namely inter-turn stator winding short circuits and broken rotor bars, as well as mixed failures in the entire range of changes of the load torque and supply voltage frequency.",
+    "oa_url": "https://www.mdpi.com/2079-9292/9/8/1314/pdf?version=1597638136",
+    "url": "https://openalex.org/W3049091257"
+  },
+  {
+    "doi": "10.2478/jee-2021-0027",
+    "title": "Deep convolutional neural networks for automatic coil pitches detection systems in induction motors",
+    "year": 2021,
+    "cites": 1,
+    "venue": "Journal of Electrical Engineering",
+    "abstract": "Abstract Stator winding structures are one of the most important parameters affecting motor performance in induction motor (IM). When deciding on the coil pitch, the winding structure and the power performance of the motor are also taken into consideration. The stator coil pitch of the IM is known at the design stage of the motor. The stator coil pitch of an IM manufactured and in use may be wanted to be changed with the desire to improve the performance of the motor and suppress some harmonics. In this case, it is necessary to determine the motor winding structure and coil pitch by opening the stator cover of the motor, removing the rotor, and manually examining the stator winding structure visually. However, this process prolongs this improvement process considerably. A system that can detect the stator coil pitch according to the stator current behavior while the motor is running can significantly shorten this improvement process. For this purpose, in this study, a deep convolutional neural network (DCNN) model that can automatically estimate IM stator coil pitch angle with an accuracy rate of 100% is designed and applied.",
+    "oa_url": "https://www.sciendo.com/pdf/10.2478/jee-2021-0027",
+    "url": "https://openalex.org/W3177898304"
+  },
+  {
+    "doi": "10.3390/electronics12051068",
+    "title": "Diagnosis of Stator Winding and Permanent Magnet Faults of PMSM Drive Using Shallow Neural Networks",
+    "year": 2023,
+    "cites": 17,
+    "venue": "Electronics",
+    "abstract": "This paper presents the application of shallow neural networks (SNNs): multi-layer perceptron (MLP) and self-organizing Kohonen maps (SOMs) to the early detection and classification of the stator and rotor faults in permanent magnet synchronous motors (PMSMs). The neural networks were trained based on the vector coming from measurements on a real object. The elements of the input vector of SNNs constituted the selected amplitudes of the diagnostic signal spectrum. The stator current and axial flux were used as diagnostic signals. The test object was a 2.5 kW PMSM motor supplied by a frequency converter operating in a closed-loop control structure. The experimental verification of the proposed diagnostic system was carried out for variable load conditions and values of the supply voltage frequency. The obtained results were compared with an approach based on a deep neural network (DNN). The research presented in the article confirm the possibility of detection and assessing the individual damage of stator winding and permanent magnets as well as the simultaneous faults of the PMSM stator and rotor using SNNs with simple signal preprocessing.",
+    "oa_url": "https://www.mdpi.com/2079-9292/12/5/1068/pdf?version=1676971949",
+    "url": "https://openalex.org/W4321457520"
+  },
+  {
+    "doi": "10.1109/access.2020.3042834",
+    "title": "Surrogate Modeling of Electrical Machine Torque Using Artificial Neural Networks",
+    "year": 2020,
+    "cites": 77,
+    "venue": "IEEE Access",
+    "abstract": "Machine learning and artificial neural networks have shown to be applicable in modeling and simulation of complex physical phenomena as well as creating surrogate models trained with physics-based simulation data for numerous applications that require good computational performance. In this article, we review widely the surrogate modeling concept and its applications in the electrical machine context. We present comprehensively a workflow for developing data-driven surrogate models including data generation with physics-based simulation and design of experiments, preprocessing of training data, and training and testing of the surrogates. We compare neural networks and gradient boosting decision trees in modeling and simulation of torque behavior of a permanent magnet synchronous machine together with selected design of experiments approaches with respect to surrogate accuracy and computational efficiency. In addition, an approach to utilizing domain knowledge to create a hybrid surrogate model in order to improve the surrogate accuracy is shown. The accuracy of the selected hybrid neural network was better than with the gradient boosting approach and was close to the finite element simulation, whereas its run-time efficiency was significantly better compared to the finite element simulation with a speed-up factor of over 2,000. In addition, combining the sampling methods provided better results than the selected methods alone.",
+    "oa_url": "https://ieeexplore.ieee.org/ielx7/6287639/6514899/09284635.pdf",
+    "url": "https://openalex.org/W3111814331"
+  },
+  {
+    "doi": "10.3390/act11010009",
+    "title": "An Intelligent Process to Estimate the Nonlinear Behaviors of an Elasto-Plastic Steel Coil Damper Using Artificial Neural Networks",
+    "year": 2021,
+    "cites": 1,
+    "venue": "Actuators",
+    "abstract": "This study developed a nonlinear behavior prediction model for elasto-plastic steel coil dampers (SCDs) using artificial neural networks (ANN). To train the ANN, first, the input and output data of the behavior of the elasto-plastic SCD was prepared. This study utilized the design parameters and load–displacement curves of the SCD to train the ANN. The elasto-plastic load–displacement curve of the SCD was obtained from simulation results using an ANSYS workbench. The design parameters (wire diameter, internal diameter, number of active windings, yield strength) of the SCD were defined as the input patterns, while the yield deformation, first stiffness, and second stiffness were output patterns. During learning of the neural network model, 60 datasets of the SCD were used as the learning pattern, and the remaining 21 were used to verify the model. Although this study used a small number of learning patterns, the ANN predicted accurate results for yield displacement, first stiffness, and second stiffness. In this study, the ANN was found to perform very well, predicting the nonlinear response of the SCD, compared with the values obtained from a finite element analysis program.",
+    "oa_url": "https://www.mdpi.com/2076-0825/11/1/9/pdf?version=1641265785",
+    "url": "https://openalex.org/W4206718349"
+  },
+  {
+    "doi": "10.3390/s26154857",
+    "title": "A Span-Prior-Guided Explainable Multimodal Neural Network Method for Final-State Quality Inspection of Hairpin Windings",
+    "year": 2026,
+    "cites": 0,
+    "venue": "Sensors",
+    "abstract": "For final-state quality inspection of three-dimensional stamped hairpin windings, existing studies still lack multimodal methods that integrate mechanical geometric constraints, prior-guided fusion, and decision interpretability. This study proposes a span-prior-guided explainable multimodal neural network method and develops SPIMA-Net. The final-state images were acquired at a fixed inspection station with a fixed camera position and imaging angle under a CCD vision light source. Final-state images are used as visual inputs, while geometric priors are constructed from span measurements and model-type information. A visual branch and a span branch extract image and prior features, and a span-prior-assisted gating mechanism modulates visual features to enable collaborative fusion. Experimental results show that SPIMA-Net achieves an accuracy of 98.14%, an F1-score of 96.55%, and an AUC of 0.9983 on the test set. Its nonconforming-class F1-score is improved by 10.44, 3.04, 6.27, 1.38, and 0.66 percentage points over the image-only, span-only, direct-fusion, SE-fusion, and CBAM-fusion models, respectively, while the total number of misclassifications decreases to five. Interpretability analysis shows that the model mainly focuses on span openings, end profiles, and local abnormal regions. Relative and absolute span deviations are identified as the main mechanical geometric factors affecting final-state quality classification. The proposed method provides a neuro-mechanical fusion approach that demonstrates high discriminative performance and engineering interpretability for hairpin winding quality inspection on the investigated industrial dataset.",
+    "oa_url": "https://www.mdpi.com/1424-8220/26/15/4857/pdf?version=1785580534",
+    "url": "https://openalex.org/W7172300127"
+  },
+  {
+    "doi": "10.1109/access.2023.3305254",
+    "title": "Research on Inversion Model of Winding Hot Spot Temperature of 10-kV Oil-Immersed Three-Dimensional Coiled Core Transformer",
+    "year": 2023,
+    "cites": 9,
+    "venue": "IEEE Access",
+    "abstract": "Realizing online monitoring of the hot spot temperature of grid mounted transformer windings is a challenge for the power industry. The heat exchange process between the internal heat source area and the external field area of the transformer is the direct cause of the temperature increase of the transformer shell. In this paper, based on the numerical coupling calculation of temperature - fluid field of 10kV oil immersed solid coiled iron core transformer, the typical heat flow streamline is extracted, and the measurable temperature characteristic points strongly correlated to the winding hot spot temperature are selected in the heat dissipation area of the shell, and the inversion model of the transformer winding hot spot temperature is established. This article verifies the effectiveness of the simulation results and the accuracy of the inversion model through the multi condition temperature rise test of transformer. The maximum error between the calculated steady-state temperature rise of each temperature measurement point in the simulation model and the test value is no more than 3°C, the simulation calculation results are in good agreement with the test results, and the average absolute error of the inversion model winding hot spot temperature inversion is 2.67 %, the maximum temperature difference is less than 3°C. This research provides an effective method for online monitoring of the hot spot temperature of the winding of a 10kV oil-immersed three-dimensional coil iron core transformer, and provides a reference for the state detection of grid mounted transformers.",
+    "oa_url": "https://ieeexplore.ieee.org/ielx7/6287639/6514899/10216942.pdf",
+    "url": "https://openalex.org/W4385819672"
+  },
+  {
+    "doi": "10.51316/jst.190.ssad.2026.36.190.5",
+    "title": "Determination of the Energized State Operating Point of an AC Contactor Coil Using a Bayesian Neural Network",
+    "year": 2025,
+    "cites": 0,
+    "venue": "Smart Systems and Devices",
+    "abstract": "The paper presents a method for determining the energized operating point of an AC contactor coil using the finite element method (FEM) combined with a Bayesian neural network (BNN) model. Under actual operating conditions, the magnetic flux density and air-gap length of the electromagnet directly influence the electromagnetic force within the contactor and, consequently, the overall device performance. However, these quantities are difficult to measure accurately in practice. The objective of this study is to propose a computational approach for estimating the magnetic flux density and air-gap length of the contactor by integrating machine learning techniques with FEM simulations. The proposed method establishes an electromagnetic model of the contactor coil, in which the magnetic flux density varies from 1.0 T to 1.5 T and the air-gap length ranges from 0.05 mm to 0.30 mm, generating the corresponding voltage drops across the coil. The simulated dataset is then used to train a BNN in an inverse inference direction, enabling prediction of the magnetic flux density and air-gap length from a known operating voltage. Based on these estimated quantities, the electromagnetic attraction force is calculated using FEM, facilitating analysis of the contactor’s operating characteristics and providing a foundation for design optimization in industrial applications.",
+    "oa_url": "https://jst.vn/index.php/ssad/article/download/1152/1237",
+    "url": "https://openalex.org/W7161238899"
+  },
+  {
+    "doi": "10.3390/en12122392",
+    "title": "Effectiveness of Selected Neural Network Structures Based on Axial Flux Analysis in Stator and Rotor Winding Incipient Fault Detection of Inverter-fed Induction Motors",
+    "year": 2019,
+    "cites": 30,
+    "venue": "Energies",
+    "abstract": "This paper presents a comparative study on the application of different neural network structures to early detection of electrical faults in induction motor drives. The diagnosis inference of the stator inter-turn short-circuits and broken rotor bars is based on the analysis of an axial flux of the induction motor. In order to automate the fault detection process, three different structures of neural networks were used: multi-layer perceptron, self-organizing Kohonen network and recursive Hopfield network. Tests were carried out for various levels of stator and rotor failures. In order to assess the sensitivity of the applied neural detectors, the tests were carried out for variable load conditions and for different values of the supply voltage frequency. Experimental results of the elaborated neural detectors are presented and discussed.",
+    "oa_url": "https://www.mdpi.com/1996-1073/12/12/2392/pdf?version=1561107912",
+    "url": "https://openalex.org/W2952063199"
+  },
+  {
+    "doi": "10.1049/hve2.12034",
+    "title": "Insulation condition forewarning of form‐wound winding for electric aircraft propulsion based on partial discharge and deep learning neural network",
+    "year": 2020,
+    "cites": 9,
+    "venue": "High Voltage",
+    "abstract": "Abstract Form‐wound windings in electric machines designed for electric aircraft propulsion face reliability challenges due to the severe operating environment, such as high temperature and low pressure. This study proposes a forewarning method for insulation condition monitoring of form‐wound windings based on partial discharge (PD) and deep learning neural network. Three PD features are extracted from the PD profile, which provides information about physics‐of‐failure and reflects the degree of insulation degradation. An algorithm fusion extracted from auto‐encoder and long short‐term recurrent neural network is proposed to synthesize one failure precursor from these three features and make multi‐time‐step prediction through historical data to provide forewarning. An electrical and thermal accelerated ageing test is performed on the form‐wound windings at 0.2 atm to simulate working environment of electric aircraft. The proposed method is validated on the accelerated ageing dataset and shows better prediction accuracy than some existing time‐series prediction methods, indicating the advantages of the proposed method. Moreover, an on‐line hardware setup using a deep learning processor is recommended to implement the forewarning method. The proposed approach has the potential to be widely applied to other insulation systems and contribute to work on condition monitoring.",
+    "oa_url": "https://ietresearch.onlinelibrary.wiley.com/doi/pdfdirect/10.1049/hve2.12034",
+    "url": "https://openalex.org/W3112210600"
+  },
+  {
+    "doi": "10.24084/repqj16.430",
+    "title": "Switched Reluctance Machine Modeling through Multilayer Neural Networks",
+    "year": 2018,
+    "cites": 2,
+    "venue": "Renewable Energy and Power Quality Journal",
+    "abstract": "The work deals with the application of artificial neural networks (ANNs) in the modeling of switched reluctance machines (SRMs). The performance of a SRM is determined by its geometry, materials used and levels of excitation. In this way, this work investigates the influence of the stator and rotor back iron thickness in the performance of SRM. A multilayer neural network is proposed to learn the nonlinear characteristics of the motor. Data of flux linkages and torque are obtained through simulations of finite elements and used for ANN training. The algorithm developed in Octave allows the user to adjust the network parameters. The results presented confirm the feasibility of using ANN to establish a predictive model of SRM performance, thus enabling further investigation in the future.",
+    "oa_url": "https://doi.org/10.24084/repqj16.430",
+    "url": "https://openalex.org/W2798130761"
+  },
+  {
+    "doi": "10.24874/pes07.03a.017",
+    "title": "WIRELESS CHARGING OF ELECTRIC VEHICLE WITH PROPER SELECTED COIL PARAMETERS AND CONTROLLED CONVERTERS USING ARTIFICIAL NEURAL NETWORK FOR THE IMPROVISED PERFORMANCE PARAMETERS",
+    "year": 2025,
+    "cites": 0,
+    "venue": "Proceedings on Engineering Sciences",
+    "abstract": "In the developing countries like India, the foremost challenge in the adoption of Electrical Vehicles (EVs) is availability of charging infrastructure.To overcome these limitations wireless charging system has been developed.Further, dynamic wireless charging systems enables EVs to charge while being in motion.This reduces the delay time for consequent users in queue to power their EVs.A generic model of wireless charging system comprises an inverter, a compensation network, coils, and a rectifier.In this research work an attempt has been made to improve the power transfer efficiency of the Inductor-Capacitor-Capacitor (LCC) compensation technique.Here in this research work, Artificial Neural Network (ANN) are combined with the conventional LCC and the integrated model is named as ANN method.ANN is integrated into the inverter and rectifier to further optimize the coil parameters and thus improves the rate of power transfer.The ANN dynamic wireless charging method developed in this research work has significantly proved to be a better alternative to generic wireless charging methods as it increases power transfer efficiency by maintaining an optimal coil distance during charging.",
+    "oa_url": "https://doi.org/10.24874/pes07.03a.017",
+    "url": "https://openalex.org/W4414816426"
+  },
+  {
+    "doi": "10.2478/pead-2019-0001",
+    "title": "Application of Neural Networks and Axial Flux for the Detection of Stator and Rotor Faults of an Induction Motor",
+    "year": 2019,
+    "cites": 9,
+    "venue": "Power Electronics and Drives",
+    "abstract": "Abstract The paper presents the possibility of using neural networks in the detection of stator and rotor electrical faults of induction motors. Fault detection and identification are based on the analysis of symptoms obtained from the fast Fourier transform of the voltage induced by an axial flux in a measurement coil. Neural network teaching and testing were performed in a MATLAB–Simulink environment. The effectiveness of various neural network structures to detect damage, its type (rotor or stator damage) and damage levels (number of rotor bars cracked or stator winding shorted circuits) is presented.",
+    "oa_url": "https://content.sciendo.com/downloadpdf/journals/pead/4/1/article-p203.pdf",
+    "url": "https://openalex.org/W2912007006"
+  },
+  {
+    "doi": "10.1002/tee.24194",
+    "title": "Neural Network Modeling of Complex Hysteresis Loops in Ferromagnetic Materials",
+    "year": 2024,
+    "cites": 6,
+    "venue": "IEEJ Transactions on Electrical and Electronic Engineering",
+    "abstract": "To investigate the impact of diverse multivariate mixing excitation conditions on the hysteresis loop of ferromagnetic materials, this study initially constructs a magnetic performance testing system for electrical steel. This system is capable of generating mixed excitation utilizing a standard Epstein square‐circle setup. Subsequently, the study measures the magnetic properties of the oriented silicon steel sheets at various mixing AC frequencies of the hysteresis loop data. Secondly, a hybrid network model integrating a convolutional neural network (CNN) and a bi‐directional long short‐term memory network (BiGRU), augmented with an attention mechanism (AM), is proposed and utilized for predicting the hysteresis properties of oriented silicon steel wafers subjected to compound mixed‐frequency excitation. The model utilizes CNN to extract high‐dimensional data features reflecting the hysteresis characteristics of the loop, BiGRU to capture the temporal evolution patterns of the key feature vectors, an AM to weigh the feature parameters and emphasize the key features, and a Bayesian optimization (BO) algorithm based on neural network hyperparameters for automatic selection, enhancing prediction accuracy. In comparison with experimental observations, the method accurately predicts material hysteresis properties under non‐sinusoidal complex excitation conditions, outperforming existing deep‐learning network models. © 2024 Institute of Electrical Engineers of Japan and Wiley Periodicals LLC.",
+    "oa_url": "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1002/tee.24194",
+    "url": "https://openalex.org/W4403043797"
+  },
+  {
+    "doi": "10.3390/app9040616",
+    "title": "Application of Self-Organizing Neural Networks to Electrical Fault Classification in Induction Motors",
+    "year": 2019,
+    "cites": 56,
+    "venue": "Applied Sciences",
+    "abstract": "Electrical winding faults, namely stator short-circuits and rotor bar damage, in total constitute around 50% of all faults of induction motors (IMs) applied in variable speed drives (VSD). In particular, the short circuits of stator windings are recognized as one of the most difficult failures to detect because their detection makes sense only at the initial stage of the damage. Well-known symptoms of stator and rotor winding failures can be visible in the stator current spectra; however, the detection and classification of motor windings faults usually require the knowledge of human experts. Nowadays, artificial intelligence methods are also used in fault recognition. This paper presents the results of experimental research on the application of the stator current symptoms of the converter-fed induction motor drive to electrical fault detection and classification using Kohonen neural networks. The experimental tests of a diagnostic setup based on a virtual measurement and data pre-processing system, designed in LabView, are described. It has been shown that the developed neural detectors and classifiers based on self-organizing Kohonen maps, trained with the instantaneous symmetrical components of the stator current spectra (ISCA), enable automatic distinguishing between the stator and rotor winding faults for supplying various voltage frequencies and load torque values.",
+    "oa_url": "https://www.mdpi.com/2076-3417/9/4/616/pdf?version=1551173255",
+    "url": "https://openalex.org/W2913893839"
+  },
+  {
+    "doi": "10.64032/mca.v30i2.398",
+    "title": "Estimating fill factor and equivalent insulation thermal conductivity in AC contactor coils using hotspot temperatures and Bayesian neural networks",
+    "year": 2026,
+    "cites": 0,
+    "venue": "Journal of Measurement Control and Automation",
+    "abstract": "This study introduces a Bayesian neural network (BNN)–based framework for non-invasively estimating two fundamental insulation-related parameters of AC contactor coils—the fill factor and the equivalent thermal conductivity—using measured hotspot temperatures as the primary diagnostic input. Together, these parameters play a crucial role in determining the coil’s temperature rise, thermal stability, and long-term reliability. However, accurately determining them through direct measurement is often difficult or impractical, particularly for compact contactor coils where disassembly can damage the winding or is impossible without specialized instruments. To address this challenge, the finite element method (FEM) is employed to model the coil’s temperature distribution under varying insulation conditions, thereby generating a comprehensive and physically grounded dataset for training the BNN. In the proposed method, hotspot temperatures—obtained indirectly from measured ambient conditions and coil surface temperatures—serve as the inputs from which the BNN predicts the corresponding fill factor and equivalent thermal conductivity. By eliminating the need for coil teardown or complex laboratory procedures, this approach offers a practical, data-driven solution for evaluating coil design, diagnosing insulation characteristics, optimizing thermal management strategies, and ultimately enhancing the reliability and performance of electromechanical switching devices.",
+    "oa_url": "https://mca-journal.org/index.php/mca/article/download/398/204",
+    "url": "https://openalex.org/W7172201612"
+  },
+  {
+    "doi": "10.1088/1757-899x/518/4/042015",
+    "title": "Neural Networks for Synchronous Generator Fault Diagnosis",
+    "year": 2019,
+    "cites": 1,
+    "venue": "IOP Conference Series Materials Science and Engineering",
+    "abstract": "Abstract Fault Diagnosis is play vital rule in the industrial applications and machine drives for the fault analysis (FA) and predicting the level of severity to optimise maintenance and improve reliability. Early detection of faults in the supervised process renders it possible to perform important preventative actions. In this paper, fault diagnosis of stator and rotor windings using field current as fault indicator. Static neural network (NN) has been implemented as fault classifier under different operating conditions. The results obtained from the real time simulation demonstrates the effectiveness and reliability of the proposed methodology. The detection and identification of faults in accurately way ensure the importance of the neural networks in the fault diagnosis field.",
+    "oa_url": "https://iopscience.iop.org/article/10.1088/1757-899X/518/4/042015/pdf",
+    "url": "https://openalex.org/W2982637946"
+  }
+]

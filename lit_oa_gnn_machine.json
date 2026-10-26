@@ -1,0 +1,302 @@
+[
+  {
+    "doi": "10.1109/tpami.2022.3209686",
+    "title": "Graph Neural Networks in Network Neuroscience",
+    "year": 2022,
+    "cites": 346,
+    "venue": "IEEE Transactions on Pattern Analysis and Machine Intelligence",
+    "abstract": "Noninvasive medical neuroimaging has yielded many discoveries about the brain connectivity. Several substantial techniques mapping morphological, structural and functional brain connectivities were developed to create a comprehensive road map of neuronal activities in the human brain -namely brain graph. Relying on its non-euclidean data type, graph neural network (GNN) provides a clever way of learning the deep graph structure and it is rapidly becoming the state-of-the-art leading to enhanced performance in various network neuroscience tasks. Here we review current GNN-based methods, highlighting the ways that they have been used in several applications related to brain graphs such as missing brain graph synthesis and disease classification. We conclude by charting a path toward a better application of GNN models in network neuroscience field for neurological disorder diagnosis and population graph integration. The list of papers cited in our work is available at https://github.com/basiralab/GNNs-in-Network-Neuroscience.",
+    "oa_url": "https://arxiv.org/pdf/2106.03535",
+    "url": "https://openalex.org/W3169752883"
+  },
+  {
+    "doi": "10.1145/3565973",
+    "title": "Graph Neural Networks in IoT: A Survey",
+    "year": 2022,
+    "cites": 199,
+    "venue": "ACM Transactions on Sensor Networks",
+    "abstract": "The Internet of Things (IoT) boom has revolutionized almost every corner of people’s daily lives: healthcare, environment, transportation, manufacturing, supply chain, and so on. With the recent development of sensor and communication technology, IoT artifacts, including smart wearables, cameras, smartwatches, and autonomous systems can accurately measure and perceive their surrounding environment. Continuous sensing generates massive amounts of data and presents challenges for machine learning. Deep learning models (e.g., convolution neural networks and recurrent neural networks) have been extensively employed in solving IoT tasks by learning patterns from multi-modal sensory data. Graph neural networks (GNNs), an emerging and fast-growing family of neural network models, can capture complex interactions within sensor topology and have been demonstrated to achieve state-of-the-art results in numerous IoT learning tasks. In this survey, we present a comprehensive review of recent advances in the application of GNNs to the IoT field, including a deep dive analysis of GNN design in various IoT sensing environments, an overarching list of public data and source codes from the collected publications, and future research directions. To keep track of newly published works, we collect representative papers and their open-source implementations and create a Github repository at GNN4IoT.",
+    "oa_url": "https://arxiv.org/pdf/2203.15935",
+    "url": "https://openalex.org/W4303426745"
+  },
+  {
+    "doi": "10.35833/mpce.2021.000058",
+    "title": "A Review of Graph Neural Networks and Their Applications in Power Systems",
+    "year": 2022,
+    "cites": 430,
+    "venue": "Journal of Modern Power Systems and Clean Energy",
+    "abstract": "Deep neural networks have revolutionized many machine learning tasks in power systems, ranging from pattern recognition to signal processing. The data in these tasks are typically represented in Euclidean domains. Nevertheless, there is an increasing number of applications in power systems, where data are collected from non-Euclidean domains and represented as graph-structured data with high-dimensional features and interdependency among nodes. The complexity of graph-structured data has brought significant challenges to the existing deep neural networks defined in Euclidean domains. Recently, many publications generalizing deep neural networks for graph-structured data in power systems have emerged. In this paper, a comprehensive overview of graph neural networks (GNNs) in power systems is proposed. Specifically, several classical paradigms of GNN structures, e. g., graph convolutional networks, are summarized. Key applications in power systems such as fault scenario application, time-series prediction, power flow calculation, and data generation are reviewed in detail. Further-more, main issues and some research trends about the applications of GNNs in power systems are discussed.",
+    "oa_url": "https://ieeexplore.ieee.org/ielx7/8685265/9744621/09520300.pdf",
+    "url": "https://openalex.org/W3183845133"
+  },
+  {
+    "doi": "10.1587/nolta.17.1146",
+    "title": "Graph neural networks with boundary conditions based on ports in electrical circuits",
+    "year": 2026,
+    "cites": 0,
+    "venue": "Nonlinear Theory and Its Applications IEICE",
+    "abstract": "Graph neural networks (GNNs) are some of the architectures used in physics-informed machine learning to model graph-structured systems. Such physical systems are not solely governed by their topological structure; boundary conditions are important to determine system dynamics. However, boundary conditions are difficult to incorporate into conventional GNNs because a graph and its Laplacian assume homogeneous Neumann boundaries implicitly. We propose a graph representation and its Laplacian with boundary conditions inspired by the concept of ports in circuit theory. Furthermore, we develop a GNN framework that accounts for boundary effects. We demonstrate the effectiveness of our GNN through electrical circuit datasets.",
+    "oa_url": "https://www.jstage.jst.go.jp/article/nolta/17/3/17_1146/_pdf",
+    "url": "https://openalex.org/W7166740163"
+  },
+  {
+    "doi": "10.1109/access.2022.3191784",
+    "title": "A Comprehensive Survey of Graph Neural Networks for Knowledge Graphs",
+    "year": 2022,
+    "cites": 166,
+    "venue": "IEEE Access",
+    "abstract": "The Knowledge graph, a multi-relational graph that represents rich factual information among entities of diverse classifications, has gradually become one of the critical tools for knowledge management. However, the existing knowledge graph still has some problems which form hot research topics in recent years. Numerous methods have been proposed based on various representation techniques. Graph Neural Network, a framework that uses deep learning to process graph-structured data directly, has significantly advanced the state-of-the-art in the past few years. This study firstly is aimed at providing a broad, complete as well as comprehensive overview of GNN-based technologies for solving four different KG tasks, including link prediction, knowledge graph alignment, knowledge graph reasoning, and node classification. Further, we also investigated the related artificial intelligence applications of knowledge graphs based on advanced GNN methods, such as recommender systems, question answering, and drug-drug interaction. This review will provide new insights for further study of KG and GNN.",
+    "oa_url": "https://ieeexplore.ieee.org/ielx7/6287639/6514899/09831453.pdf",
+    "url": "https://openalex.org/W4285818445"
+  },
+  {
+    "doi": "10.1109/tnnls.2022.3190922",
+    "title": "Understanding Pooling in Graph Neural Networks",
+    "year": 2022,
+    "cites": 115,
+    "venue": "IEEE Transactions on Neural Networks and Learning Systems",
+    "abstract": "Many recent works in the field of graph machine learning have introduced pooling operators to reduce the size of graphs. In this article, we present an operational framework to unify this vast and diverse literature by describing pooling operators as the combination of three functions: selection, reduction, and connection (SRC). We then introduce a taxonomy of pooling operators, based on some of their key characteristics and implementation differences under the SRC framework. Finally, we propose three criteria to evaluate the performance of pooling operators and use them to investigate the behavior of different operators on a variety of tasks.",
+    "oa_url": "https://arxiv.org/pdf/2110.05292",
+    "url": "https://openalex.org/W3206568895"
+  },
+  {
+    "doi": "10.1155/2022/9261537",
+    "title": "Survey of Graph Neural Networks and Applications",
+    "year": 2022,
+    "cites": 114,
+    "venue": "Wireless Communications and Mobile Computing",
+    "abstract": "The advance of deep learning has shown great potential in applications (speech, image, and video classification). In these applications, deep learning models are trained by datasets in Euclidean space with fixed dimensions and sequences. Nonetheless, the rapidly increasing demands on analyzing datasets in non‐Euclidean space require additional research. Generally speaking, finding the relationships of elements in datasets and representing such relationships as weighted graphs consisting of vertices and edges is a viable way of analyzing datasets in non‐Euclidean space. However, analyzing the weighted graph‐based dataset is a challenging problem in existing deep learning models. To address this issue, graph neural networks (GNNs) leverage spectral and spatial strategies to extend and implement convolution operations in non‐Euclidean space. Based on graph theory, a number of enhanced GNNs are proposed to deal with non‐Euclidean datasets. In this study, we first review the artificial neural networks and GNNs. We then present ways to extend deep learning models to deal with datasets in non‐Euclidean space and introduce the GNN‐based approaches based on spectral and spatial strategies. Furthermore, we discuss some typical Internet of Things (IoT) applications that employ spectral and spatial convolution strategies, followed by the limitations of GNNs in the current stage.",
+    "oa_url": "https://downloads.hindawi.com/journals/wcmc/2022/9261537.pdf",
+    "url": "https://openalex.org/W4288720745"
+  },
+  {
+    "doi": "10.1109/access.2022.3211306",
+    "title": "Graph Anomaly Detection With Graph Neural Networks: Current Status and Challenges",
+    "year": 2022,
+    "cites": 161,
+    "venue": "IEEE Access",
+    "abstract": "Graphs are used widely to model complex systems, and detecting anomalies in a graph is an important task in the analysis of complex systems. Graph anomalies are patterns in a graph that do not conform to normal patterns expected of the attributes and/or structures of the graph. In recent years, graph neural networks (GNNs) have been studied extensively and have successfully performed difficult machine learning tasks in node classification, link prediction, and graph classification thanks to the highly expressive capability via message passing in effectively learning graph representations. To solve the graph anomaly detection problem, GNN-based methods leverage information about the graph attributes (or features) and/or structures to learn to score anomalies appropriately. In this survey, we review the recent advances made in detecting graph anomalies using GNN models. Specifically, we summarize GNN-based methods according to the graph type (i.e., static and dynamic), the anomaly type (i.e., node, edge, subgraph, and whole graph), and the network architecture (e.g., graph autoencoder, graph convolutional network). To the best of our knowledge, this survey is the first comprehensive review of graph anomaly detection methods based on GNNs.",
+    "oa_url": "https://ieeexplore.ieee.org/ielx7/6287639/6514899/09906987.pdf",
+    "url": "https://openalex.org/W4312702896"
+  },
+  {
+    "doi": "10.1145/3566097.3568345",
+    "title": "Graph Neural Networks",
+    "year": 2023,
+    "cites": 26,
+    "venue": "Asia and South Pacific Design Automation Conference (ASP-DAC)",
+    "abstract": "Graph neural networks (GNNs) have pushed the state-of-the-art (SOTA) for performance in learning and predicting on large-scale data present in social networks, biology, etc. Since integrated circuits (ICs) can naturally be represented as graphs, there has been a tremendous surge in employing GNNs for machine learning (ML)-based methods for various aspects of IC design. Given this trajectory, there is a timely need to review and discuss some powerful and versatile GNN approaches for advancing IC design.",
+    "oa_url": "https://dl.acm.org/doi/pdf/10.1145/3566097.3568345",
+    "url": "https://openalex.org/W4318684505"
+  },
+  {
+    "doi": "10.1109/icassp40776.2020.9053140",
+    "title": "Optimal Power Flow Using Graph Neural Networks",
+    "year": 2020,
+    "cites": 177,
+    "venue": "IEEE International Conference on Acoustics Speech and Signal Processing",
+    "abstract": "Optimal power flow (OPF) is one of the most important optimization problems in the energy industry. In its simplest form, OPF attempts to find the optimal power that the generators within the grid have to produce to satisfy a given demand. Optimality is measured with respect to the cost that each generator incurs in producing this power. The OPF problem is non-convex due to the sinusoidal nature of electrical generation and thus is difficult to solve. Using small angle approximations leads to a convex problem known as DC OPF, but this approximation is no longer valid when power grids are heavily loaded. Many approximate solutions have been since put forward, but these do not scale to large power networks. In this paper, we propose using graph neural networks (which are localized, scalable parametrizations of network data) trained under the imitation learning framework to approximate a given optimal solution. While the optimal solution is costly, it is only required to be computed for network states in the training set. During test time, the GNN adequately learns how to compute the OPF solution. Numerical experiments are run on the IEEE-30 and IEEE-118 test cases.",
+    "oa_url": "https://arxiv.org/pdf/1910.09658",
+    "url": "https://openalex.org/W2981873611"
+  },
+  {
+    "doi": "10.20944/preprints202603.0289.v1",
+    "title": "Development Of A Comprehensive Method For Diagnosing Electrical Machines Based On Artificial Neural Networks",
+    "year": 2026,
+    "cites": 0,
+    "venue": "Preprints.org",
+    "abstract": "This paper presents a comprehensive diagnostic framework for electrical machines, based on the application of artificial neural networks (ANNs) for the analysis of electrical and vibration signals. The proposed method leverages deep learning architectures to automatically extract informative features and achieve high fault classification accuracy. The framework integrates signal pre-processing, neural network training, and a condition evaluation module, enabling the implementation of a predictive maintenance system suitable for industrial applications. A multi-sensor diagnostic system is proposed, combining CNN-LSTM architectures with a graph neural network (GNN) for correlational analysis of currents, vibrations, and thermal parameters. This approach allows early detection of inter-turn short circuits and bearing faults, improving diagnostic accuracy by 7–12% compared to existing state-of-the-art methods. The framework demonstrates robustness under varying operating conditions, including transient and self-excitation regimes, and provides physically interpretable results, bridging the gap between data-driven and physics-informed diagnostics.",
+    "oa_url": "https://www.preprints.org/frontend/manuscript/722d9575216207b8627628dff57211f5/download_pub",
+    "url": "https://openalex.org/W7133858277"
+  },
+  {
+    "doi": "10.1609/aaai.v35i5.16523",
+    "title": "Graph Neural Network-Based Anomaly Detection in Multivariate Time Series",
+    "year": 2021,
+    "cites": 1391,
+    "venue": "Proceedings of the AAAI Conference on Artificial Intelligence",
+    "abstract": "Given high-dimensional time series data (e.g., sensor data), how can we detect anomalous events, such as system faults and attacks? More challengingly, how can we do this in a way that captures complex inter-sensor relationships, and detects and explains anomalies which deviate from these relationships? Recently, deep learning approaches have enabled improvements in anomaly detection in high-dimensional datasets; however, existing methods do not explicitly learn the structure of existing relationships between variables, or use them to predict the expected behavior of time series. Our approach combines a structure learning approach with graph neural networks, additionally using attention weights to provide explainability for the detected anomalies. Experiments on two real-world sensor datasets with ground truth anomalies show that our method detects anomalies more accurately than baseline approaches, accurately captures correlations between sensors, and allows users to deduce the root cause of a detected anomaly.",
+    "oa_url": "",
+    "url": "https://openalex.org/W3169450514"
+  },
+  {
+    "doi": "10.1109/taffc.2020.2994159",
+    "title": "EEG-Based Emotion Recognition Using Regularized Graph Neural Networks",
+    "year": 2020,
+    "cites": 911,
+    "venue": "IEEE Transactions on Affective Computing",
+    "abstract": "Electroencephalography (EEG) measures the neuronal activities in different brain regions via electrodes. Many existing studies on EEG-based emotion recognition do not fully exploit the topology of EEG channels. In this article, we propose a regularized graph neural network (RGNN) for EEG-based emotion recognition. RGNN considers the biological topology among different brain regions to capture both local and global relations among different EEG channels. Specifically, we model the inter-channel relations in EEG signals via an adjacency matrix in a graph neural network where the connection and sparseness of the adjacency matrix are inspired by neuroscience theories of human brain organization. In addition, we propose two regularizers, namely node-wise domain adversarial training (NodeDAT) and emotion-aware distribution learning (EmotionDL), to better handle cross-subject EEG variations and noisy labels, respectively. Extensive experiments on two public datasets, SEED, and SEED-IV, demonstrate the superior performance of our model than state-of-the-art models in most experimental settings. Moreover, ablation studies show that the proposed adjacency matrix and two regularizers contribute consistent and significant gain to the performance of our RGNN model. Finally, investigations on the neuronal activities reveal important brain regions and inter-channel relations for EEG-based emotion recognition.",
+    "oa_url": "https://arxiv.org/pdf/1907.07835",
+    "url": "https://openalex.org/W3024961463"
+  },
+  {
+    "doi": "10.1109/jproc.2021.3055400",
+    "title": "Graph Neural Networks: Architectures, Stability, and Transferability",
+    "year": 2021,
+    "cites": 136,
+    "venue": "Proceedings of the IEEE",
+    "abstract": "Graph neural networks (GNNs) are information processing architectures for signals supported on graphs. They are presented here as generalizations of convolutional neural networks (CNNs) in which individual layers contain banks of graph convolutional filters instead of banks of classical convolutional filters. Otherwise, GNNs operate as CNNs. Filters are composed of pointwise nonlinearities and stacked in layers. It is shown that GNN architectures exhibit equivariance to permutation and stability to graph deformations. These properties help explain the good performance of GNNs that can be observed empirically. It is also shown that if graphs converge to a limit object, a graphon, GNNs converge to a corresponding limit object, a graphon neural network. This convergence justifies the transferability of GNNs across networks with different numbers of nodes. Concepts are illustrated by the application of GNNs to recommendation systems, decentralized collaborative control, and wireless communication networks.",
+    "oa_url": "https://arxiv.org/pdf/2008.01767",
+    "url": "https://openalex.org/W3047171429"
+  },
+  {
+    "doi": "10.1109/globecom48099.2022.10000808",
+    "title": "EleGNN: Electrical-Model-Guided Graph Neural Networks for Power Distribution System State Estimation",
+    "year": 2022,
+    "cites": 12,
+    "venue": "Globecom",
+    "abstract": "State estimation plays a critical role in power dis-tribution systems. However, the conventional state estimation commonly used in transmission systems cannot be applied to the distribution systems because of insufficient measurements. Even though machine learning methods have begun to demonstrate their capabilities to overcome this challenge, they are not capa-ble of explicitly incorporating distribution systems' topological information. This paper proposes EleGNN, an electrical-model-guided graph neural network (GNN), to perform power distri-bution system state estimation (DSSE). By explicitly considering physical topology, EleGNN enhances GNN with original node and edge feature propagation methods, allowing us to obtain accurate estimation results despite insufficient measurements and various topologies. Evaluations of six different power systems demonstrate significant improvement in state estimation accuracy than the method relying on general neural networks. Specifically, node-level mean square errors introduced by EleGNN are at least one order of magnitude smaller, even with up to 50% of missing measurements.",
+    "oa_url": "",
+    "url": "https://openalex.org/W4315629926"
+  },
+  {
+    "doi": "10.1007/s11704-024-40474-y",
+    "title": "Graph neural networks for financial fraud detection: a review",
+    "year": 2025,
+    "cites": 151,
+    "venue": "Frontiers of Computer Science",
+    "abstract": "",
+    "oa_url": "https://arxiv.org/pdf/2411.05815",
+    "url": "https://openalex.org/W4404390753"
+  },
+  {
+    "doi": "10.1109/icmnwc63764.2024.10872360",
+    "title": "Arc Fault Detection in Electrical Systems based on Multi-Feature Fusion with Graph Neural Network",
+    "year": 2024,
+    "cites": 3,
+    "venue": "International Conference on Mobile Networks and Wireless Communications (ICMNWC)",
+    "abstract": "In this era, Arc fault detection in electrical systems is a serious phase of safe guarding and preventing electrical fires. Moreover, arc faults occur because of accidental electrical discharges among the conductors that lead to sparking, overheating and severe damage if undetected. The main motive of this research is detecting the faults from the reliable and safe electrical systems. An effective detection system is critical because of non-linear, high-frequency and stochastic features of arc fault signals with traditional Machine Learning (ML) and Deep Learning (DL) methods. In order for overcoming these issues Multi-Feature Fusion (MFF) with Graph Neural Network (GNN) namely (MFF-GNN) is proposed to detect the Arc faults in electrical system. Initially, Discrete Wavelet Transform (DWT) is utilized to decompose the signals into time frequency components further Temporal Domain Visualization Convolutional Neural Network (TDV-CNN) utilized to extract complex patterns as well as anomalies indicative of faults. Then the MFF-GNN integrates various features including complex patterns, spatial relationships and signal characteristics into a graph structure for detecting the arc faults effectively in the terms of F1-Score compared to the existing Genetic Algorithm (GA).",
+    "oa_url": "",
+    "url": "https://openalex.org/W4407788406"
+  },
+  {
+    "doi": "10.1109/access.2021.3071274",
+    "title": "Graph Neural Network: A Comprehensive Review on Non-Euclidean Space",
+    "year": 2021,
+    "cites": 228,
+    "venue": "IEEE Access",
+    "abstract": "This review provides a comprehensive overview of the state-of-the-art methods of graph-based networks from a deep learning perspective. Graph networks provide a generalized form to exploit non-euclidean space data. A graph can be visualized as an aggregation of nodes and edges without having any order. Data-driven architecture tends to follow a fixed neural network trying to find the pattern in feature space. These strategies have successfully been applied to many applications for euclidean space data. Since graph data in a non-euclidean space does not follow any kind of order, these solutions can be applied to exploit the node relationships. Graph Neural Networks (GNNs) solve this problem by exploiting the relationships among graph data. Recent developments in computational hardware and optimization allow graph networks possible to learn the complex graph relationships. Graph networks are therefore being actively used to solve many problems including protein interface, classification, and learning representations of fingerprints. To encapsulate the importance of graph models, in this paper, we formulate a systematic categorization of GNN models according to their applications from theory to real-life problems and provide a direction of the future scope for the applications of graph models as well as highlight the limitations of existing graph networks.",
+    "oa_url": "https://ieeexplore.ieee.org/ielx7/6287639/9312710/09395439.pdf",
+    "url": "https://openalex.org/W3148711710"
+  },
+  {
+    "doi": "10.1109/melecon53508.2022.9842974",
+    "title": "Graph Neural Network Power Flow Solver for Dynamical Electrical Networks",
+    "year": 2022,
+    "cites": 3,
+    "venue": "IEEE Mediterranean Electrotechnical Conference (MELECON)",
+    "abstract": "This work presents a novel graph neural network (GNN) based power flow solver that focuses on electrical grids examined as dynamical networks. The proposed method employs a specific type of GNN that considers different types of nodes to allow the direct translation to the generator and load buses, and the branches present in power systems. The GNN model is trained with modified versions of IEEE test cases by permuting the configuration of the electrical grid for the distinct samples used during training. The training is carried out in an unsupervised manner, and the results are compared with a conventional and trustworthy Newton-Raphson based method. The presented results are shown to be accurate, and perform acceptably well even when tested on grids of different size from the ones they observed during training.",
+    "oa_url": "https://zaguan.unizar.es/record/131215/files/texto_completo.pdf",
+    "url": "https://openalex.org/W4289713679"
+  },
+  {
+    "doi": "10.1007/s10462-024-10808-0",
+    "title": "Graph neural networks for text classification: a survey",
+    "year": 2024,
+    "cites": 85,
+    "venue": "Artificial Intelligence Review",
+    "abstract": "Abstract Text Classification is the most essential and fundamental problem in Natural Language Processing. While numerous recent text classification models applied the sequential deep learning technique, graph neural network-based models can directly deal with complex structured text data and exploit global information. Many real text classification applications can be naturally cast into a graph, which captures words, documents, and corpus global features. In this survey, we bring the coverage of methods up to 2023, including corpus-level and document-level graph neural networks. We discuss each of these methods in detail, dealing with the graph construction mechanisms and the graph-based learning process. As well as the technological survey, we look at issues behind and future directions addressed in text classification using graph neural networks. We also cover datasets, evaluation metrics, and experiment design and present a summary of published performance on the publicly available benchmarks. Note that we present a comprehensive comparison between different techniques and identify the pros and cons of various evaluation metrics in this survey.",
+    "oa_url": "",
+    "url": "https://openalex.org/W4400261301"
+  },
+  {
+    "doi": "10.1109/tnsre.2024.3355750",
+    "title": "Graph Neural Network-Based EEG Classification: A Survey",
+    "year": 2024,
+    "cites": 134,
+    "venue": "IEEE Transactions on Neural Systems and Rehabilitation Engineering",
+    "abstract": "Graph neural networks (GNN) are increasingly used to classify EEG for tasks such as emotion recognition, motor imagery and neurological diseases and disorders. A wide range of methods have been proposed to design GNN-based classifiers. Therefore, there is a need for a systematic review and categorisation of these approaches. We exhaustively search the published literature on this topic and derive several categories for comparison. These categories highlight the similarities and differences among the methods. The results suggest a prevalence of spectral graph convolutional layers over spatial. Additionally, we identify standard forms of node features, with the most popular being the raw EEG signal and differential entropy. Our results summarise the emerging trends in GNN-based approaches for EEG classification. Finally, we discuss several promising research directions, such as exploring the potential of transfer learning methods and appropriate modelling of cross-frequency interactions.",
+    "oa_url": "https://ieeexplore.ieee.org/ielx7/7333/4359219/10403874.pdf",
+    "url": "https://openalex.org/W4390969131"
+  },
+  {
+    "doi": "10.1007/s10618-022-00890-9",
+    "title": "Hierarchical message-passing graph neural networks",
+    "year": 2022,
+    "cites": 80,
+    "venue": "Data Mining and Knowledge Discovery",
+    "abstract": "Abstract Graph Neural Networks (GNNs) have become a prominent approach to machine learning with graphs and have been increasingly applied in a multitude of domains. Nevertheless, since most existing GNN models are based on flat message-passing mechanisms, two limitations need to be tackled: (i) they are costly in encoding long-range information spanning the graph structure; (ii) they are failing to encode features in the high-order neighbourhood in the graphs as they only perform information aggregation across the observed edges in the original graph. To deal with these two issues, we propose a novel Hierarchical Message-passing Graph Neural Networks framework. The key idea is generating a hierarchical structure that re-organises all nodes in a flat graph into multi-level super graphs, along with innovative intra- and inter-level propagation manners. The derived hierarchy creates shortcuts connecting far-away nodes so that informative long-range interactions can be efficiently accessed via message passing and incorporates meso- and macro-level semantics into the learned node representations. We present the first model to implement this framework, termed Hierarchical Community-aware Graph Neural Network (HC-GNN), with the assistance of a hierarchical community detection algorithm. The theoretical analysis illustrates HC-GNN’s remarkable capacity in capturing long-range information without introducing heavy additional computation complexity. Empirical experiments conducted on 9 datasets under transductive, inductive, and few-shot settings exhibit that HC-GNN can outperform state-of-the-art GNN models in network analysis tasks, including node classification, link prediction, and community detection. Moreover, the model analysis further demonstrates HC-GNN’s robustness facing graph sparsity and the flexibility in incorporating different GNN encoders.",
+    "oa_url": "https://link.springer.com/content/pdf/10.1007/s10618-022-00890-9.pdf",
+    "url": "https://openalex.org/W4287670594"
+  },
+  {
+    "doi": "10.52202/079017-3517",
+    "title": "PowerGraph: A power grid benchmark dataset for graph neural networks",
+    "year": 2024,
+    "cites": 21,
+    "venue": "neural information processing systems",
+    "abstract": "Power grids are critical infrastructures of paramount importance to modern society and, therefore, engineered to operate under diverse conditions and failures. The ongoing energy transition poses new challenges for the decision-makers and system operators. Therefore, developing grid analysis algorithms is important for supporting reliable operations. These key tools include power flow analysis and system security analysis, both needed for effective operational and strategic planning. The literature review shows a growing trend of machine learning (ML) models that perform these analyses effectively. In particular, Graph Neural Networks (GNNs) stand out in such applications because of the graph-based structure of power grids. However, there is a lack of publicly available graph datasets for training and benchmarking ML models in electrical power grid applications. First, we present PowerGraph, which comprises GNN-tailored datasets for i) power flows, ii) optimal power flows, and iii) cascading failure analyses of power grids. Second, we provide ground-truth explanations for the cascading failure analysis. Finally, we perform a complete benchmarking of GNN methods for node-level and graph-level tasks and explainability. Overall, PowerGraph is a multifaceted GNN dataset for diverse tasks that includes power flow and fault scenarios with real-world explanations, providing a valuable resource for developing improved GNN models for node-level, graph-level tasks and explainability methods in power system modeling. The dataset is available at https://figshare.com/articles/dataset/PowerGraph/22820534 and the code at https://github.com/PowerGraph-Datasets.",
+    "oa_url": "https://arxiv.org/pdf/2402.02827",
+    "url": "https://openalex.org/W4415795676"
+  },
+  {
+    "doi": "10.1016/j.apenergy.2025.125401",
+    "title": "Graph neural networks for assessing the reliability of the medium-voltage grid",
+    "year": 2025,
+    "cites": 15,
+    "venue": "Applied Energy",
+    "abstract": "Ensuring electricity grid reliability becomes increasingly challenging with the shift towards renewable energy and declining conventional capacities. Distribution System Operators (DSOs) aim to achieve grid reliability by verifying the n-1 contingency criterion, ensuring reconfiguring and restoring power distribution through switching strategies. While DSOs operate radial grids, government regulations and reliability metrics, such as the average minutes without power, necessitate achieving continuity as closely as possible through reconfiguration. Despite the critical role of reliability assessment, current methods such as mathematical optimisation approaches are often computationally expensive and impractical for large-scale grids. This paper addresses these limitations by proposing a novel application of Graph Neural Networks (GNNs) to tackle the n-1 contingency criterion, directly leveraging the inherent graph structure of electrical networks. Unlike traditional machine learning methods, GNNs directly handle graph-structured data, making them well-suited for complex grid topologies. This study introduces a Graph Isomorphic Network (GIN)-inspired framework designed to incorporate both node and edge features, enabling a more comprehensive representation of grid assets and connectivity. The GIN-inspired framework not only generalises effectively to unseen grid structures but also significantly reduces computation times, demonstrating prediction times up to 1000 times faster compared to traditional optimisation-based approaches. These findings indicate that our approach provides a computationally efficient and scalable solution for DSOs, enhancing the reliability and operational efficiency of energy grid assessments, and opening up the way for more robust real-time contingency planning. • Introduces a GIN-based framework for n-1 contingency analysis in medium voltage grids. • Utilises graph neural networks to effectively model complex grid topologies. • Outperforms traditional optimisation method and classical GNN frameworks. • Fast and scalable n-1 contingency analysis achieves a 1000x speed-up in efficiency. • Generalises well to unseen grid structures and enabling real-time grid assessments. • Demonstrates machine learning in the power grid sector for real-time reliability assessments.",
+    "oa_url": "",
+    "url": "https://openalex.org/W4406971128"
+  },
+  {
+    "doi": "10.1109/tcad.2022.3178355",
+    "title": "Hardware Trojan Detection Using Graph Neural Networks",
+    "year": 2022,
+    "cites": 104,
+    "venue": "IEEE Transactions on Computer-Aided Design of Integrated Circuits and Systems",
+    "abstract": "The globalization of the Integrated Circuit (IC) supply chain has moved most of the design, fabrication, and testing process from a single trusted entity to various untrusted third party entities around the world. The risk of using untrusted third-Party Intellectual Property (3PIP) is the possibility for adversaries to insert malicious modifications known as Hardware Trojans (HTs). These HTs can compromise the integrity, deteriorate the performance, and deny the functionality of the intended design. Various HT detection methods have been proposed in the literature; however, many fall short due to their reliance on a golden reference circuit, a limited detection scope, the need for manual code review, or the inability to scale with large modern designs. We propose a novel golden reference-free HT detection method for both Register Transfer Level (RTL) and gate-level netlists by leveraging Graph Neural Networks (GNNs) to learn the behavior of the circuit through a Data Flow Graph (DFG) representation of the hardware design. We evaluate our model on a custom dataset by expanding the Trusthub HT benchmarks trusthub1. The results demonstrate that our approach detects unknown HTs with 97% recall (true positive rate) very fast in 21.1ms for RTL and 84% recall in 13.42s for Gate-Level Netlist.",
+    "oa_url": "https://arxiv.org/pdf/2204.11431",
+    "url": "https://openalex.org/W4285291849"
+  },
+  {
+    "doi": "10.48550/arxiv.2210.09277",
+    "title": "Unsupervised Optimal Power Flow Using Graph Neural Networks",
+    "year": 2022,
+    "cites": 7,
+    "venue": "arXiv (Cornell University)",
+    "abstract": "Optimal power flow (OPF) is a critical optimization problem that allocates power to the generators in order to satisfy the demand at a minimum cost. Solving this problem exactly is computationally infeasible in the general case. In this work, we propose to leverage graph signal processing and machine learning. More specifically, we use a graph neural network to learn a nonlinear parametrization between the power demanded and the corresponding allocation. We learn the solution in an unsupervised manner, minimizing the cost directly. In order to take into account the electrical constraints of the grid, we propose a novel barrier method that is differentiable and works on initially infeasible points. We show through simulations that the use of GNNs in this unsupervised learning context leads to solutions comparable to standard solvers while being computationally efficient and avoiding constraint violations most of the time.",
+    "oa_url": "https://arxiv.org/pdf/2210.09277",
+    "url": "https://openalex.org/W4306809178"
+  },
+  {
+    "doi": "10.5281/zenodo.21765780",
+    "title": "PMU Placement with Graph Neural Networks",
+    "year": 2026,
+    "cites": 0,
+    "venue": "Zenodo (CERN European Organization for Nuclear Research)",
+    "abstract": "Overview This is the first archival release of the reproducible research software for learning-augmented Phasor Measurement Unit (PMU) placement. The software supports an ongoing research manuscript; publication citation details will be added when they become publicly available. Release commit: c9b0842e799d7427ed01fd9150e83a13f51f5550 Highlights Installable Python package and command-line interface. Deterministic greedy PMU-placement baseline. N-1 line and transformer outage generation. Seeded and replayable random multi-fault scenarios. Portable NPZ datasets for graph-neural-network training. Two-layer PyTorch Geometric GCN implementation. Coverage-aware decoding and evaluation. Modular Python equivalents of the historical Jupyter notebooks. Automated tests for the portable core on Python 3.11 and 3.12. Reproducibility The repository includes: exact release-validation dependency versions; documented commands and random seed; a notebook-to-module map; selected historical outputs; tests and continuous integration; machine-readable citation metadata. The documented IEEE-14 N-1 validation run uses seed 42 and produces 21 samples: one intact network and 20 single-component outage scenarios. Scope and limitations The greedy method is a heuristic and does not certify a globally minimum PMU count. The implemented observability model is graph-based and is not a replacement for electrical state estimation or a zero-injection-bus observability study. Citation Please cite this software using the metadata in CITATION.cff. The archival DOI will be added after the release is deposited.",
+    "oa_url": "",
+    "url": "https://openalex.org/W7172243727"
+  },
+  {
+    "doi": "10.1007/s11263-026-02731-4",
+    "title": "Graph in Graph Neural Network",
+    "year": 2026,
+    "cites": 2,
+    "venue": "International Journal of Computer Vision",
+    "abstract": "Abstract Existing Graph Neural Networks (GNNs) are limited to process graphs each of whose vertices is represented by a vector or a single value, limited their representing capability to describe complex objects. In this paper, we propose a novel GNN (called Graph in Graph Neural (GIG) Network) which can process graph-style data (called GIG sample) whose vertices are further represented by graphs. Given a set of graphs or a data sample whose components can be represented by a set of graphs (called multi-graph data sample), our GIG network starts with a GIG sample generation (GSG) module which encodes the input as a GIG sample , where each GIG vertex includes a graph. Then, a set of GIG hidden layers are stacked, with each consisting of: (1) a GIG vertex-level updating (GVU) module that individually updates the graph in every GIG vertex based on its internal information; and (2) a global-level GIG sample updating (GGU) module that updates graphs in all GIG vertices based on their relationships, making the updated GIG vertices become global context-aware. This way, both internal cues within the graph contained in each GIG vertex and the relationships among GIG vertices could be utilized for down-stream tasks. Experimental results demonstrate that our GIG network generalizes well for not only various generic graph analysis tasks but also real-world multi-graph data analysis (e.g., human skeleton video-based action recognition), which achieved the new state-of-the-art results on 15 out of 16 evaluated datasets. Our code is publicly available at https://github.com/wangjs96/Graph-in-Graph-Neural-Network .",
+    "oa_url": "https://link.springer.com/content/pdf/10.1007/s11263-026-02731-4.pdf",
+    "url": "https://openalex.org/W7134130545"
+  },
+  {
+    "doi": "",
+    "title": "Graph-Informed Neural Networks.",
+    "year": 2021,
+    "cites": 1,
+    "venue": "Discovery Research Portal (University of Dundee)",
+    "abstract": "Graph-Informed Neural Networks (GINNs) present a strategy for incorporating domain knowledge into scientific machine learning for complex physical systems. The construction utilizes probabilistic graphical models (PGMs) to incorporate expert knowledge, available data, constraints, etc. with physics-based models such as systems of ordinary and partial differential equations (ODEs and PDEs). Computationally intensive nodes in this hybrid model are replaced by the hidden nodes of a neural network (i.e., learned features). Once trained, the resulting GINN surrogate can cheaply generate physically-relevant predictions at scale thereby enabling robust sensitivity analysis and uncertainty quantification (UQ). As proof of concept, we build a GINN for a multiscale model of electrical double-layer capacitor dynamics embedded into a Bayesian network (BN) PDE hybrid model.",
+    "oa_url": "",
+    "url": "https://openalex.org/W3209709122"
+  },
+  {
+    "doi": "10.1007/978-3-031-88287-6_22",
+    "title": "State Estimation and Fault Location of Multi-machine Power System Using Graph Neural Network and Variational Autoencoder",
+    "year": 2025,
+    "cites": 0,
+    "venue": "Lecture notes in networks and systems",
+    "abstract": "",
+    "oa_url": "",
+    "url": "https://openalex.org/W4409382748"
+  }
+]

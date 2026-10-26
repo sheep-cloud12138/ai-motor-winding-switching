@@ -1,0 +1,25 @@
+openB/none/mlp nrmse 1.829 T_r2 -0.619
+openB/none/energy nrmse 1.620 T_r2 -3.555
+openB/amp48/mlp nrmse 1.385 T_r2 0.290
+openB/amp48/energy nrmse 0.527 T_r2 -6.754
+openB/ph24/mlp nrmse 0.066 T_r2 0.989
+openB/ph24/energy nrmse 0.607 T_r2 -0.021
+openB/amp48+ph24/mlp nrmse 0.085 T_r2 0.970
+openB/amp48+ph24/energy nrmse 0.139 T_r2 0.611
+tap50/none/mlp nrmse 1.855 T_r2 0.415
+tap50/none/energy nrmse 0.639 T_r2 0.705
+tap50/amp48/mlp nrmse 0.428 T_r2 0.703
+tap50/amp48/energy nrmse 0.402 T_r2 0.610
+tap50/ph24/mlp nrmse 2.107 T_r2 -0.012
+tap50/ph24/energy nrmse 0.821 T_r2 -1.596
+tap50/amp48+ph24/mlp nrmse 0.428 T_r2 0.728
+tap50/amp48+ph24/energy nrmse 0.428 T_r2 0.552
+delta/none/mlp nrmse 0.271 T_r2 0.841
+delta/none/energy nrmse 0.286 T_r2 0.174
+delta/amp48/mlp nrmse 0.358 T_r2 0.843
+delta/amp48/energy nrmse 0.209 T_r2 -0.184
+delta/ph24/mlp nrmse 0.072 T_r2 0.985
+delta/ph24/energy nrmse 0.166 T_r2 0.050
+delta/amp48+ph24/mlp nrmse 0.082 T_r2 0.982
+delta/amp48+ph24/energy nrmse 0.123 T_r2 0.870
+done

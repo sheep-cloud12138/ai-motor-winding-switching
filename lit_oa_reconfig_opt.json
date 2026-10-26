@@ -1,0 +1,252 @@
+[
+  {
+    "doi": "10.4271/2025-24-0131",
+    "title": "Electric Machines with Reconfigurable Windings for Automotive Applications",
+    "year": 2025,
+    "cites": 3,
+    "venue": "SAE technical papers on CD-ROM/SAE technical paper series",
+    "abstract": "The performance of electric machines for automotive applications is characterised by a high transient torque capability for low speed tractability and a large speed range of high energy conversion efficiency to achieve a desirable vehicle range. Inevitably, these conflicting requirements will introduce a compromise in the design process of electric machines and drives, generally resulting in heavier machines and overrated drive specifications. This paper discusses the principles of reconfigurable windings, explaining how altering winding connections directly influences key machine parameters like flux linkage, inductance, and resistance. It details the necessary switchgear for series-parallel winding reconfiguration, highlighting potential advantages such as enhanced fault tolerance and emergency braking capabilities. A prototype in-wheel motor with series-parallel reconfigurable windings, developed as part of the EM-TECH Horizon Europe project, is presented. Simulation results using the Artemis MW130 driving cycle demonstrate that an efficiency-optimized gear shifting strategy can achieve a 1.57% reduction in energy consumption and a speed range extension greater than 50% compared to a fixed winding configuration. This highlights the potential of reconfigurable windings to improve the range of Battery Electric and Hybrid Electric Vehicles (BEVs/HEVs) by reducing drive cycle losses across various speed regions.",
+    "oa_url": "",
+    "url": "https://openalex.org/W4414088222"
+  },
+  {
+    "doi": "10.63958/azojete/2026/22/02/012",
+    "title": "Design and Development of Reconfigurable PMSM for Stator Winding Turn Variation Investigation",
+    "year": 2026,
+    "cites": 0,
+    "venue": "ARID ZONE JOURNAL OF ENGINEERING TECHNOLOGY AND ENVIRONMENT",
+    "abstract": "Permanent Magnet Synchronous Motors (PMSMs) play a central role in modern industries due to their high efficiency and torque density; however, experimental platforms that allow controlled variation of key electromagnetic parameters—particularly stator winding turns—are limited. This paper presents the design, development, and experimental validation of an electromagnetic module based on a laboratory-scale permanent magnet synchronous motor developed to investigate the influence of stator winding variation on torque characteristics. The research integrates analytical design, finite-element simulation, and controlled laboratory experimentation. A permanent magnet synchronous motor prototype was designed from first principles, covering magnetic loading, induced EMF, conductor sizing and winding distribution. A multitap stator winding arrangement was implemented, enabling the effective number of turns to be varied between 40 and 60 without physical rewinding. Finite-element model was developed using ANSYS to predict electromagnetic torque behavior, while experimental tests were conducted using an inverter-fed drive system. Simulation results revealed a non-monotonic torque response, with torque peaking at intermediate winding configurations, 23.29 Nm at 45 turns, before decreasing at higher turn counts, indicating the influence of electrical and magnetic constraints captured within the numerical model. In contrast, experimental measurements showed a stronger torque dependence on winding configuration, with torque increasing from 22.81 Nm at 40 turns to a maximum of 28.94 Nm at 55 turns, followed by a slight reduction to 27.27 Nm at 60 turns. The results confirm that stator winding variation is a dominant but multi-dimensional design parameter in permanent magnet synchronous motor torque performance and that optimal torque occurs within a finite winding range rather than through indefinite turn increase. The developed electromagnetic module serves as a flexible experimental platform for parametric studies in electric machine design, optimization and education.",
+    "oa_url": "https://azojete.com.ng/index.php/azojete/article/download/1298/701",
+    "url": "https://openalex.org/W7168342377"
+  },
+  {
+    "doi": "10.1109/tie.2019.2937070",
+    "title": "All Current Sensor Survivable IPMSM Drive With Reconfigurable Inverter",
+    "year": 2019,
+    "cites": 16,
+    "venue": "IEEE Transactions on Industrial Electronics",
+    "abstract": "The conventional phase current reconstruction strategies utilize a dc bus current sensor to reproduce the three-phase currents during phase current sensor faults. However, no current sensor is guaranteed to be healthy in an actual drive. It means that the only survived current sensor may not be accidentally located at the dc bus side, and it can also be at the phase side. In addition, previous studies focus on a particular inverter topology for current reconstruction, whose fault-tolerant capability is threatened when the inverter topology is changed due to malfunctions. This article proposes a survivable interior permanent magnet synchronous motor (IPMSM) drive that realizes the current reconstruction purpose whichever the only survived current sensor is. Besides, inverter topology reconfiguration can be realized by not changing the wirings of the current sensors. Most important of all, the proposed strategy does not affect the normal operations of the drive when no fault occurs. The effectiveness of the proposed strategy is verified by experimental results on a 5-kW IPMSM motor prototype, which shows that the reconstructed phase currents track the actual ones accurately under different failure conditions.",
+    "oa_url": "https://eprints.whiterose.ac.uk/id/eprint/162735/1/ALL_19_TIE_0388.pdf",
+    "url": "https://openalex.org/W2970381725"
+  },
+  {
+    "doi": "10.48550/arxiv.2608.15461",
+    "title": "Detachable Wire Drive : Reconfigurable Robot Architecture with Shared Actuators",
+    "year": 2026,
+    "cites": 0,
+    "venue": "arXiv (Cornell University)",
+    "abstract": "Reconfigurable robots offer significant potential for adapting to diverse tasks; however, conventional centralized architectures often require dedicated actuators for each module, leading to substantial increases in overall system weight, volume, and cost. To address these challenges, this paper presents the \"Detachable Wire Drive,\" a reconfigurable robotic system that enables the sharing of heavy and expensive actuators across various morphologies. The core of this system is the \"Wire Detach Unit,\" a mechanism designed to physically split and reconnect wire drive paths, allowing motors to be consolidated into a common base unit. We demonstrate the versatility of this approach by developing a 2-DOF rigid arm, a continuum arm, and two distinct grippers, all of which are interchangeably attached to, and driven by, a single shared actuator set. Experimental results validate the mechanical reliability of the detachment process and the control framework's ability to seamlessly manage transitions between configurations, highlighting a path toward more efficient and multi-functional robotic systems.",
+    "oa_url": "https://arxiv.org/pdf/2608.15461",
+    "url": "https://openalex.org/W7203668612"
+  },
+  {
+    "doi": "10.1038/s41598-025-90325-4",
+    "title": "Reconfigurable model clusters for scalable modelling of feed drive dynamics",
+    "year": 2025,
+    "cites": 2,
+    "venue": "Scientific Reports",
+    "abstract": "This paper presents a novel approach to modeling feed drive dynamics in machine tools. Instead of building and calibrating separate models for each machine, this approach leverages a cluster of pre-calibrated models to represent a fleet of similar machines or a single machine under varying conditions. Bayesian model selection assimilates the internal controller signals into the model cluster, selecting an optimal combination of the models to represent individual machines accurately. This approach facilitates the large-scale development of machine tool digital twins and shadows without additional modeling or experimental calibration. The effectiveness of the proposed approach is demonstrated through numerical simulations with known ground truths. The results highlight the concept's potential to simplify and scale feed drive modeling. Additionally, they outline the key technical and operational considerations necessary for its broader application.",
+    "oa_url": "https://www.nature.com/articles/s41598-025-90325-4.pdf",
+    "url": "https://openalex.org/W4412023727"
+  },
+  {
+    "doi": "10.1109/tie.2021.3065620",
+    "title": "Design of an Integrated DC-Link Structure for Reconfigurable Integrated Modular Motor Drives",
+    "year": 2021,
+    "cites": 6,
+    "venue": "IEEE Transactions on Industrial Electronics",
+    "abstract": "In this article, a dc-link structure feasible for integration with the circumscribing polygon modular integrated drives is proposed. The proposed dc-link structure combines both the dc-link capacitors and the bus-bar together and integrates them with the machine and the converter modules without increasing the outer diameter of the integrated machine/converter structure. A generic design methodology for the proposed dc-link structure is provided and applied on a reconfigurable 15 stator coils concentrated winding axial flux machine for all its possible phase configurations. The design methodology presented in this article involves the determination of the required dc-link capacitance and the multiphysics design of the bus-bar. The parasitics of the bus-bar part of the proposed dc-link structure are evaluated using electromagnetic finite element method (FEM) models and their influence on the dc-link waveforms is evaluated. Due to the expected high ambient temperature inside an integrated drive, electromagnetic and computational fluid dynamics (CFD) models are developed for the proposed dc-link structure to evaluate the loss density and the temperature distribution of the bus-bar to ensure reliable operation. An experimental setup is built to validate the design methodology.",
+    "oa_url": "https://biblio.ugent.be/publication/8700744/file/8700745.pdf",
+    "url": "https://openalex.org/W3137719520"
+  },
+  {
+    "doi": "10.2478/v10175-012-0089-3",
+    "title": "A reconfigurable structure electronic commutator for a dual BLDC motor EV drive",
+    "year": 2012,
+    "cites": 3,
+    "venue": "Bulletin of the Polish Academy of Sciences Technical Sciences",
+    "abstract": "Abstract An electronic commutator that can drive a PM BLDC motor either in the full bridge or half bridge configuration has been developed. This commutator allows increasing the motor speed over the nominal value, hence the motor is able to operate within a wide constant power speed range. An application of the commutator with a reconfigurable structure for the double drive of a small electric vehicle Elipsa has been presented. The driveline consists of two independent commutators feeding the motors coupled by gears with rear wheels of the vehicle. Both commutators are controlled by a common control system based on a signal microcontroller. The results of road tests indicate new areas of BLCD motor drives application. The fact that the BLCD motor work in the second speed range does not require any changes in the motor construction and at the same time does not significantly deteriorate the drive efficiency is an indisputable advantage of the presented solution",
+    "oa_url": "http://journals.pan.pl/Content/83656/PDF/paper_12.pdf",
+    "url": "https://openalex.org/W2015685941"
+  },
+  {
+    "doi": "10.1109/access.2022.3214581",
+    "title": "Reconfigurable Quadratic Converters for Electrolyzers Utilized in DC Microgrids",
+    "year": 2022,
+    "cites": 53,
+    "venue": "IEEE Access",
+    "abstract": "In this paper, three topologies of quadratic buck DC-DC converters were proposed that are capable of reconfiguring to semi-quadratic buck-boost converters, in case of an open-circuit fault in their power switch. In other words, with the aid of graph-based circuit synthesis concepts, a topology is obtained for a safe transition from one switch to another, where all other components maintain their role in contributing to optimal power conversion. Knowing that the quadratic buck converters have been proven to be an effective DC-DC circuit to supply an electrolyser as a load with specific characteristics i.e., low-voltage and high-current, the reconfigurability feature adds an extra measure of success for safer power delivery for such a load that an undesirable shut-down would negatively impact its life-cycle. The performance of three proposed synthesised topologies were compared and validated through simulation and experiments on laboratory prototypes.",
+    "oa_url": "https://ieeexplore.ieee.org/ielx7/6287639/6514899/09919176.pdf",
+    "url": "https://openalex.org/W4312797389"
+  },
+  {
+    "doi": "",
+    "title": "Dynamic Reconfigurable Platform for Swarm Robotics",
+    "year": 2011,
+    "cites": 0,
+    "venue": "SUNScholar (Stellenbosch University)",
+    "abstract": "ENGLISH ABSTRACT: Swarm intelligence research was inspired by biological systems in nature. Working ants and bees has captivated researchers for centuries, with the ant playing a major role in shaping the future of robotic swarm applications. The ants foraging activity can be adapted for different applications of robotic swarm intelligence. Numerous researchers have conducted theoretical analysis and experiments on the ants foraging activities and communication styles. Combining this information with modern reconfigurable computing opens the door to more complex behaviour with improved system dynamics. Reconfigurable computing has numerous applications in swarm intelligence such as true hardware parallel processing, dynamic power save algorithms and dynamic peripheral changes to the CPU core. In this research a brief study is made of swarm intelligence and its applications. The ants' foraging activities were studied in greater detail with the emphasis on a layered control system designed implementation in a robotic agent. The robotic agent’s hardware was designed using a partial self reconfigurable FPGA as the main building element. The hardware was designed with the emphasis on system flexibility for swarm application drawing attention to power reduction and battery life. All of this was packaged into a differential drive chassis designed specifically for this project.",
+    "oa_url": "http://hdl.handle.net/10019.1/6814",
+    "url": "https://openalex.org/W568257036"
+  },
+  {
+    "doi": "10.1541/ieejjia.4.424",
+    "title": "Single-Stage Reconfigurable DC/DC Converter for Wide Input Voltage Range Operation in (H)EVs",
+    "year": 2015,
+    "cites": 5,
+    "venue": "IEEJ Journal of Industry Applications",
+    "abstract": "A single-stage reconfigurable isolated DC/DC converter(1) is proposed for use in hybrid and electric vehicles (EVs and HEVs) to supply a 12V automotive network from the HV battery. The purpose of the proposed topology is to increase the converter efficiency at the higher voltage range of the HV battery. A zero voltage transition (ZVT) phase shift (PS) full bridge (FB) converter is the basis for the reconfigurable topology, which is adapted to operate as a push-pull converter. The ZVT PS FB configuration covers the upper range of input voltages, in which an increased converter efficiency has more effect. It is furthermore reconfigured into the less efficient, hard-switching, push-pull configuration to cover the lower, less significant voltage range. The reconfiguration voltage is chosen to maximize the average efficiency according to the histogram of the HV-battery voltage during a typical driving cycle. Experimental validation of the proposed converter and its efficiency improvement are also presented.",
+    "oa_url": "https://www.jstage.jst.go.jp/article/ieejjia/4/4/4_424/_pdf",
+    "url": "https://openalex.org/W2174405889"
+  },
+  {
+    "doi": "10.1007/s40820-024-01379-4",
+    "title": "Collective Molecular Machines: Multidimensionality and Reconfigurability",
+    "year": 2024,
+    "cites": 11,
+    "venue": "Nano-Micro Letters",
+    "abstract": "Molecular machines are key to cellular activity where they are involved in converting chemical and light energy into efficient mechanical work. During the last 60 years, designing molecular structures capable of generating unidirectional mechanical motion at the nanoscale has been the topic of intense research. Effective progress has been made, attributed to advances in various fields such as supramolecular chemistry, biology and nanotechnology, and informatics. However, individual molecular machines are only capable of producing nanometer work and generally have only a single functionality. In order to address these problems, collective behaviors realized by integrating several or more of these individual mechanical units in space and time have become a new paradigm. In this review, we comprehensively discuss recent developments in the collective behaviors of molecular machines. In particular, collective behavior is divided into two paradigms. One is the appropriate integration of molecular machines to efficiently amplify molecular motions and deformations to construct novel functional materials. The other is the construction of swarming modes at the supramolecular level to perform nanoscale or microscale operations. We discuss design strategies for both modes and focus on the modulation of features and properties. Subsequently, in order to address existing challenges, the idea of transferring experience gained in the field of micro/nano robotics is presented, offering prospects for future developments in the collective behavior of molecular machines.",
+    "oa_url": "https://link.springer.com/content/pdf/10.1007/s40820-024-01379-4.pdf",
+    "url": "https://openalex.org/W4392927055"
+  },
+  {
+    "doi": "",
+    "title": "Design of Reconfigurable Radio Front-Ends",
+    "year": 2016,
+    "cites": 0,
+    "venue": "eScholarship (California Digital Library)",
+    "abstract": "Modern and future mobile devices must support increasingly more wireless standards and bands. Currently, multi-band coexistence is enabled by a network of discrete, off-chip components that are bulky, expensive, and narrowband. As transceivers are required to accommodate an increasing number of wireless bands, the required number of discrete components increases accordingly, resulting in greater bill of materials (BoM) cost and front-end module (FEM) area. This work focuses on design techniques to enable front-end integration and reconfigurability in multi-band radios.In the first part of this work, we present a wideband spectrum sensing receiver with high sensitivity, wide dynamic range, and low power overhead. Reconfigurability in multi-band radios requires environmental awareness, and spectrum sensing can be used for optimal channel selection and adaptive interference suppression. The 300MHz-700MHz spectrum sensing receiver uses subsampling downconversion and digital-analog hybrid correlation to achieve -104dBm sensitivity and 84dB dynamic range for a 6MHz channel while consuming only 28mW of power. In the second part of this work, we present a wideband time division duplex (TDD) front-end with an innovative transmit/receive (T/R) switching scheme. T/R switches conventionally are off-chip components, and existing integrated designs have been narrowband or high loss. We propose a wideband integrated T/R switching technique in which the PA is re-used as an LNA during receive mode, and we demonstrate this in a 20dBm polar transmitter that can be re-purposed into a 3.4GHz-5.4GHz LNA achieving -6.7dBm P1dB and 5.1dB NF. The two systems presented in this thesis contribute key innovations towards fundamental aspects of future reconfigurable radios - greater front-end integration, wideband transceiver design, and spectrum awareness.",
+    "oa_url": "https://escholarship.org/uc/item/0xg9b3v4",
+    "url": "https://openalex.org/W3085551799"
+  },
+  {
+    "doi": "10.1109/tpel.2024.3365391",
+    "title": "Design and Analysis of Reconfigurable Resonant Converter With Ultrawide Output Voltage Range",
+    "year": 2024,
+    "cites": 15,
+    "venue": "IEEE Transactions on Power Electronics",
+    "abstract": "In this paper, a reconfigurable isolated dc/dc converter is proposed suitable for a wide output voltage range of 180-1500V for efficient onshore charging in maritime applications. The proposed circuit concept can also fulfill the requirements of other heavy-duty battery charging applications, especially those operating within the shore environment-such as straddle carriers, forklifts, reach stackers, terminal tractors, etc. The circuit topology consists of two interleaved LLC resonant converters each connected to a three-winding transformer. Through the use of additional circuitry, the topology can be adapted to operate at peak efficiency in three output voltage ranges. Furthermore, the topology is able to alleviate the current and voltage stresses on the semiconductor devices in comparison to the conventionally employed LLC resonant converters. The operation of the circuit is explained and its steady-state model is developed. In order to validate the performance of the converter, an 11kW prototype is designed, tested, and analyzed. The experimental results attest that the proposed reconfigurable resonant converter (RRC) is able to achieve an extremely wide output voltage range while maintaining a high power transfer efficiency.",
+    "oa_url": "https://nottingham-repository.worktribe.com/preview/33824804/tpel_revised.pdf",
+    "url": "https://openalex.org/W4391791412"
+  },
+  {
+    "doi": "",
+    "title": "Reconfigurable manufacturing process monitoring systems",
+    "year": 2016,
+    "cites": 0,
+    "venue": "Arrow@dit (Dublin Institute of Technology)",
+    "abstract": "Performance measurement is indispensable to manufacturing, due to the fact that if the efficiency of an activity cannot be measured it could not be effectively controlled.Recent trends in process monitoring systems point towards a transformation from static centralisation to dynamic decentralisation.This change has been motivated by the need to enable reconfigurable systems that are internally flexible to production requirements, and externally adaptive to multiple processes.The convergence of industrial systems with advanced computing, low-cost sensing, and new levels of connectivity permitted by network technology has been the catalyst for this transformation.Furthermore, these decentralised cloud manufacturing systems are being combined with advanced analytics and artificial intelligence, to form cyber-physical production systems.This research work explores the dynamics of decentralised software architecture within field-level manufacturing process monitoring systems.The need for this understanding has been driven by the prediction that these cyber-physical systems will create the next generation of innovative intelligent machines.This research investigates the capability of decentralisation design to provide the core fundamental functionality of process monitoring systems in a new reconfigurable format.The embodiment of this investigation is the design and development of a decentralised architecture for the creation of a reconfigurable process monitoring system within field-level manufacturing.An investigation into available data interoperability systems and field-level manufacturing process monitoring system requirements, resulted in the identification of a research opportunity.Evidently, current academic and commercial mediums could not provide for the high communication speed, high data capacity, and heterogeneous data requirements present in field-level manufacturing systems.",
+    "oa_url": "http://hdl.handle.net/2262/83149",
+    "url": "https://openalex.org/W2885989492"
+  },
+  {
+    "doi": "10.1109/tia.2018.2883263",
+    "title": "A Structure-Reconfigurable Series Resonant DC–DC Converter With Wide-Input and Configurable-Output Voltages",
+    "year": 2018,
+    "cites": 82,
+    "venue": "IEEE Transactions on Industry Applications",
+    "abstract": "This paper proposes a new series resonant dc-dc converter with four configurable operation states depending on the input-voltage and output-voltage levels. It suits well for the dc-dc stage of grid-connected photovoltaic systems with a wide-input voltage range and different grid voltage levels, i.e., 110/120 V and 220/230/240 V. The proposed converter consists of a dual-bridge structure on the primary side and a configurable half- or full-bridge rectifier on the secondary side. The root-mean-square (RMS) currents are kept low over a fourfold voltage-gain range; the primary-side mosfets and secondary-side diodes can achieve zero-voltage switching on and zero-current switching off, respectively. Therefore, the converter can maintain high efficiencies over a wide voltage gain range. A fixed-frequency pulsewidth-modulated control scheme is applied to the proposed converter, which makes the gain characteristics independent of the magnetizing inductance and thereby simplifies the design optimization of the resonant tank. The converter topology and operation principle are first described. Then, the characteristics, i.e., the dc voltage gain, soft switching, and RMS currents, are detailed before a performance comparison with conventional resonant topologies is carried out. Furthermore, the design guidelines of the proposed converter are also presented. Finally, the experimental results from a 500-W converter prototype verify the feasibility of the proposed converter.",
+    "oa_url": "",
+    "url": "https://openalex.org/W2905236688"
+  },
+  {
+    "doi": "10.1016/j.rcim.2012.06.005",
+    "title": "Utilizing cable winding and industrial robots to facilitate the manufacturing of electric machines",
+    "year": 2012,
+    "cites": 25,
+    "venue": "Robotics and Computer-Integrated Manufacturing",
+    "abstract": "Cable wound electric machines are used mainly for high voltage and direct-drive applications. They can be found in areas such as wind power, hydropower, wave power and high-voltage motors. Compared to conventional winding techniques, cable winding includes fewer manufacturing steps and is therefore likely to be better suited for automated production. Automation of the cable winding production step is a crucial task in order to lower the manufacturing costs of these machines. This article presents a production method using industrial robots for automation of cable winding of electric machine stators. The concept presented is validated through computer simulations and full-scale winding experiments, including a constructed robot-held cable feeder tool prototype. A cable wound linear stator section of an Uppsala University Wave Energy Converter and its winding process is used as a reference in this article. From this example, it is shown that considerable production cycle time and manufacturing cost savings can be anticipated compared to manual winding. The suggested automation method is very flexible. It can be used for the production of cable wound stators with different shapes and sizes, for different cable dimensions and with different winding patterns.",
+    "oa_url": "https://www.sciencedirect.com/science/article/pii/S0736584512000828/pdf",
+    "url": "https://openalex.org/W1993798077"
+  },
+  {
+    "doi": "10.36227/techrxiv.170723356.69434701/v1",
+    "title": "Reconfigurable Mixed Battery with Unequal Battery Modules",
+    "year": 2024,
+    "cites": 1,
+    "venue": "",
+    "abstract": "Contrary to the modules in conventional modular multilevel and cascaded bridge converters with only serial and bypass operation, emerging topologies bring additional parallel inter-module connectivity, introducing sensorless voltage balancing, load current sharing, and enhanced efficiency. However, matching voltages and characteristics is crucial for the modules to allow for a parallel mode between them, but it is not feasible for mixed-type or heterogeneous battery systems. This paper introduces a reconfigurable battery system designed to solve the challenges of integrating batteries with varying characteristics. Using compact coupled inductors and a novel modulation strategy, the system achieves intermediate states between parallel and series modes when dealing with heterogeneous modules. The coupled inductors, with minimal magnetic material and a small footprint, have a negligible common-mode inductance for the high load current and limit circulating currents through high differential-mode inductance. Furthermore, the proposed modulation strategy introduces free DC/DC conversion functionality and enables an efficient bidirectional energy transfer, fully capable of controlling the power exchange between modules widely independently from the output control. This inter-module DC/DC functionality enables effective charge or load balancing among batteries of varying voltages, types, and age. Importantly, the same transistors perform the DC/DC functionality and the output control so that the topology does not need more silicon. Extensive simulations and experiments demonstrate the performance of the system. The proposed system can notably reduce the inductor’s core size by more than 80% with the circulating current as high as one-fifth of the load current. The solution also reduces the cost of the inductor by more than four times. Moreover, the findings demonstrate > 15 % improvement in conduction and > 50 % in switching losses.",
+    "oa_url": "https://www.techrxiv.org/doi/pdf/10.36227/techrxiv.170723356.69434701",
+    "url": "https://openalex.org/W4391563700"
+  },
+  {
+    "doi": "10.3390/electronics11030353",
+    "title": "Reconfigurable Battery for Charging 48 V EVs in High-Voltage Infrastructure",
+    "year": 2022,
+    "cites": 12,
+    "venue": "Electronics",
+    "abstract": "48 V is emerging as a safe-to-touch alternative voltage level for electric vehicles (EVs). Using a low- instead of a high-voltage drive train reduces isolation efforts, eliminates the risk of electric shock, and thus increases the system safety. In contrast, fast charging of a 48 V battery would require very high currents and is incompatible with the widely established high-voltage electric vehicle charging infrastructure. Instead of employing additional on board power converters for fast charging, the concept of a reconfigurable battery is presented. A small-scale prototype system is designed consisting of eight 48 V lithium iron phosphate battery modules. In series configuration, they can be charged at 460 V with up to 25 A. In 48 V parallel configuration, the peak discharge current is up to 800 A. The MOSFET-based reconfiguration system also operates as a module charge balancer during high-voltage charging. The cost overhead for the reconfiguration system is estimated to 3% for a scaled-up full size EV. Due to the additional reconfiguration switch resistances, the simulation of a 48 V 75 kW electric vehicle in the World harmonized Light-duty vehicles Test Procedure showed a performance reduction of 0.24%.",
+    "oa_url": "https://www.mdpi.com/2079-9292/11/3/353/pdf?version=1643256153",
+    "url": "https://openalex.org/W4210256370"
+  },
+  {
+    "doi": "10.1038/s41528-025-00461-0",
+    "title": "Winding printed electrode patterns to customize soft fiber pumps",
+    "year": 2025,
+    "cites": 3,
+    "venue": "npj Flexible Electronics",
+    "abstract": "Abstract The increasing demand for adaptable, lightweight, and efficient pump systems in engineering and medical fields highlights the limitations of traditional rigid pumps, which are bulky, noisy, and inflexible. Despite advancements in smart materials and electro-hydrodynamics (EHD), flexible pumps face challenges from structural rigidity and performance constraints. Here, we develop a customizable soft fiber pump (CSFP) that utilizes wound printed flexible electrodes alongside thermoplastic tubes. This innovative approach enables variable electrode configurations, tunable internal diameters, and modifiable cross-sectional geometries, significantly enhancing the pump’s performance and adaptability. The fabrication method yields a compact structure with intergrated electrodes, reconfigurable cross-sections, and flow orientation control. With these features, the CSFP achieves a pressure gradient of 1.39 kPa/cm and a specific flowrate of 160 mL/min/g. These capabilities support its use in soft actuation, conformal thermal management, and redirected flow for impurity separation, demonstrating potential for integration into a broad range of technological and industrial applications.",
+    "oa_url": "https://www.nature.com/articles/s41528-025-00461-0.pdf",
+    "url": "https://openalex.org/W4412940415"
+  },
+  {
+    "doi": "10.61552/jemit.2023.03.003",
+    "title": "DESIGN AND ANALYSIS OF THE CHAMELEON SCHEDULING ALGORITHM FOR RECONFIGURABLE COMPUTING",
+    "year": 2023,
+    "cites": 1,
+    "venue": "Journal of Engineering Management and Information Technology",
+    "abstract": "Conventional power generation is the source of widespread worry over the depletion of nonrenewable energy sources and the environmental difficulties that this would inevitably cause. As a direct consequence of this, an increasing number of people are gravitating toward renewable energy sources like as photovoltaic boards and wind generators. Wind power is being put to use for a vast array of applications, some of which include the charging of batteries, the pumping of water, the generation of electricity for homes, the heating of swimming pools, the operation of satellite power systems, and many more. However, despite the fact that they do not need any sort of upkeep and do not result in any kind of pollution, their installation costs are high in many different contexts. Wind energy is quickly becoming a more significant contributor to the total installed power capacity around the globe. In the field of wind energy, the PMSG-based wind turbine equipped with a variable-speed and variable-pitch control system are the most common type of wind power generator. This device is capable of operating either independently or while linked to an existing grid. It is necessary to have a complete understanding of the machine's modelling, control, dynamic, and steady-state analyses in order to obtain the maximum possible amount of power from the wind, researchers must make an accurate prediction of the machine's performance in either mode of operation. The complexity of the systems, the sensors required, the speed of combination, the cost, the breadth of effectiveness, the technology employed, and the popularity of the systems all vary. Multiple control computations are performed on the Wind Energy Conversion System (WECS) in order to produce maximum power in a variety of wind speed scenarios. This is done so that the system can respond appropriately. The purpose of this work is to suggest several methodologies for obtaining dynamic features from the WECS integrated grid. The first technique makes use of the Firefly Algorithm (FA) as well as the Artificial Neural Network (ANN) methods. Both are classification algorithms. By utilizing the most effective parameters for design, the design of the grid-integrated power system design was able to achieve a voltage THD of 11.47 percent.",
+    "oa_url": "https://aspur.rs/jemit/archive/v1/n3/3.pdf",
+    "url": "https://openalex.org/W4388803515"
+  },
+  {
+    "doi": "10.1109/tpel.2018.2801306",
+    "title": "Design and Evaluation of a Reconfigurable Stacked Active Bridge DC–DC Converter for Efficient Wide Load Range Operation",
+    "year": 2018,
+    "cites": 34,
+    "venue": "IEEE Transactions on Power Electronics",
+    "abstract": "This paper presents the design and implementation of a large-step-down soft-switched dc-dc converter based on the active bridge technique, which overcomes some of the limitations of the conventional dual active bridge converter. The topology comprises a double-stacked bridge inverter coupled to a reconfigurable rectifier through a special three-winding leakage transformer. This particular combination of stages enables the converter to run in an additional low-power mode that greatly increases light-load efficiency by reducing core loss and extending the zero-voltage switching range. The converter is implemented with a single compact magnetic component, providing power combining, isolation, voltage transformation, and energy transfer inductance. A 175 kHz, 300 W, 380-12 V GaN-based prototype converter achieves 95.9% efficiency at full load, a peak efficiency of 97.0%, an efficiency above 92.7% down to 10% load, and an efficiency above 79.8% down to 3.3% load.",
+    "oa_url": "http://hdl.handle.net/1721.1/112228",
+    "url": "https://openalex.org/W2615711243"
+  },
+  {
+    "doi": "",
+    "title": "Evaluation of vision-based robot control configurations for reconfigurable assembly",
+    "year": 2016,
+    "cites": 1,
+    "venue": "SUNScholar (Stellenbosch University)",
+    "abstract": "ENGLISH ABSTRACT: This thesis considers vision based robot control for a reconfigurable manufacturing cell. Reconfigurable manufacturing systems are aimed at rapidly adapting to fluctuations in market demand, shorter product life cycles and product customization. Computer vision is a promising component of such manufacturing systems, in particular aiding the flexibility to handle a range of products with reduced set-up time and fewer fixtures. The objective of the research presented here was to develop a simulation-based approach to compare eye-in-hand and fixed camera vision-based control within a reconfigurable assembly cell. These configurations have dissimilar system costs and system performance characteristics. The research used a KUKA six degree of freedom articulated arm robot, a DVT Legend 540 camera and a Cognex ism-1100 camera, as well as the software supplied with the cameras. The simulation was aimed at predicting the throughput rate of multiple eye-in-hand and fixed camera configurations, where configurations include varying the numbers of reconfigurable singulation units, positions of machines, parts being singulated, etc. The throughput rates for different configurations can then be compared to their costs and ease of reconfiguration. The simulation uses a holonic control system that was designed based on the ADACOR architecture. The thesis describes in detail the holons used, including their hardware, data structures and responsibilities. A multi-agent system was implemented for high-level control and some of the agents communicated with their respective lower-level controllers during validation testing. In the simulation, software (including KUKA Simpro and some custom software) replaced the hardware and low-level controllers. Tests on a number of physical laboratory configurations were used to validate the simulation. The simulation's application is demonstrated in a number of experiments in which cell configurations and machine performance were varied. For example, for a particular situation simulated, these experiments showed that the eye-in-hand configuration has a competitive cost to performance ratio when tasks have a significant waiting period (pallet exchange time, tasks deployed sparsely, etc.). In most experiments, however the fixed camera configuration performs better. The simulation allowed “hardware in the loop” testing, which also makes it a useful tool for development of the cell.",
+    "oa_url": "http://hdl.handle.net/10019.1/98803",
+    "url": "https://openalex.org/W2366072542"
+  },
+  {
+    "doi": "10.48550/arxiv.2206.01435",
+    "title": "Dual-Port Dynamically Reconfigurable Battery with Semi-Controlled and Fully-Controlled Outputs",
+    "year": 2022,
+    "cites": 8,
+    "venue": "arXiv (Cornell University)",
+    "abstract": "Modular multilevel converters (MMC) and cascaded H-bridge (CHB) converters are an established concept in ultra-high voltage systems. In combination with batteries, these circuits allow dynamically changing the series or parallel configuration of subportions of the battery as so-called modular battery integrated converters or reconfigurable batteries, and are being discussed for grid-storage and electromobility applications. A large body of research focuses on such circuits for supplying a single load, such as a motor for electric drives. Modularity, failure tolerance, less dependence on the weakest element of a battery pack, higher controllability, and better efficiency are the main incentives behind this pursuit. However, most studies neglect the auxiliary loads which require isolation from the high-voltage battery. This paper proposes a simple topology and controller that can fork off a second (galvanically isolated) output of a reconfigurable dc battery. The proposed system provides a nonisolated semicontrolled port for the dc link to maintain the operating point of the main inverter(s) close to optimal, while fully controlling an isolated output for the auxiliaries per the safety regulations. The proposed system does not require additional active switches for the auxiliary port and can operate with a wide range of voltages. Simulation and experiments verify the developed analysis.",
+    "oa_url": "https://arxiv.org/pdf/2206.01435",
+    "url": "https://openalex.org/W4281672856"
+  },
+  {
+    "doi": "10.2172/974683",
+    "title": "Reconfigurable middleware architectures for large scale sensor networks",
+    "year": 2010,
+    "cites": 1,
+    "venue": "",
+    "abstract": "Wireless sensor networks, in an e ffort to be energy efficient, typically lack the high-level abstractions of advanced programming languages. Though strong, the dichotomy between these two paradigms can be overcome. The SENSIX software framework, described in this dissertation, uniquely integrates constraint-dominated wireless sensor networks with the flexibility of object-oriented programming models, without violating the principles of either. Though these two computing paradigms are contradictory in many ways, SENSIX bridges them to yield a dynamic middleware abstraction unifying low-level resource-aware task recon figuration and high-level object recomposition.",
+    "oa_url": "https://www.osti.gov/servlets/purl/974683",
+    "url": "https://openalex.org/W1589532832"
+  },
+  {
+    "doi": "",
+    "title": "Development and Testing of a Reconfigurable Gasoline Engine Control Module",
+    "year": 2012,
+    "cites": 1,
+    "venue": "Scholarship at UWindsor (University of Windsor)",
+    "abstract": "A dynamometer laboratory may typically face the following issues on a daily basis: the lack/availability of a calibration, software limiters, hardware failure codes/modes, hardware/software level incompatibilities and the time/knowledge required to troubleshoot these issues. A Reconfigurable Engine Controller (REC), which provides freedom to operate the engine under any condition, eliminates many of these issues. The result is an accelerated engine development process which includes engine mapping and/or testing new algorithms before implementation on production hardware. A REC can provide a flexible tailored controller to suit the needs of the individual testing application. This research used the dSPACE MicroAutoBox and RapidPro hardware and software with MATLAB/Simulink (the coding tool) to successfully develop and test a REC under a series of steady state engine operating conditions. Proportional Integral Derivative (PID) controllers were also successfully implemented for the throttle body position, lambda sensor heating and fuel pulse width modulation. The data collected from a combustion analysis system along with the production engine controller and the REC parameters was used to validate the new controller. The results indicated that the system performance was similar to that of the production controller.",
+    "oa_url": "https://scholar.uwindsor.ca/cgi/viewcontent.cgi?article=6378&context=etd",
+    "url": "https://openalex.org/W2283807956"
+  }
+]

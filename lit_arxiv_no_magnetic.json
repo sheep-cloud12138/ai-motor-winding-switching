@@ -1,0 +1,406 @@
+[
+  {
+    "id": "http://arxiv.org/abs/2407.03261v2",
+    "title": "Magnetic Hysteresis Modeling with Neural Operators",
+    "published": "2024-07-03",
+    "abstract": "Hysteresis modeling is crucial to comprehend the behavior of magnetic devices, facilitating optimal designs. Hitherto, deep learning-based methods employed to model hysteresis, face challenges in generalizing to novel input magnetic fields. This paper addresses the generalization challenge by proposing neural operators for modeling constitutive laws that exhibit magnetic hysteresis by learning a mapping between magnetic fields. In particular, three neural operators-deep operator network, Fourier neural operator, and wavelet neural operator-are employed to predict novel first-order reversal curves and minor loops, where novel means they are not used to train the model. In addition, a rate-independent Fourier neural operator is proposed to predict material responses at sampling rates different from those used during training to incorporate the rate-independent characteristics of magnetic hysteresis. The presented numerical experiments demonstrate that neural operators efficiently model magnetic hysteresis, outperforming the traditional neural recurrent methods on various metrics and generalizing to novel magnetic fields. The findings emphasize the advantages of using neural operators for modeling hysteresis under varying magnetic conditions, underscoring their importance in characterizing magnetic material based devices. The codes related to this paper are at github.com/chandratue/magnetic_hysteresis_neural_operator.",
+    "authors": [
+      "Abhishek Chandra",
+      "Bram Daniels",
+      "Mitrofan Curti",
+      "Koen Tiels",
+      "Elena A. Lomonova"
+    ],
+    "pdf": "https://arxiv.org/pdf/2407.03261v2"
+  },
+  {
+    "id": "http://arxiv.org/abs/2405.12754v3",
+    "title": "Global-local Fourier Neural Operator for Accelerating Coronal Magnetic Field Model",
+    "published": "2024-05-21",
+    "abstract": "Exploring the outer atmosphere of the sun has remained a significant bottleneck in astrophysics, given the intricate magnetic formations that significantly influence diverse solar events. Magnetohydrodynamics (MHD) simulations allow us to model the complex interactions between the sun's plasma, magnetic fields, and the surrounding environment. However, MHD simulation is extremely time-consuming, taking days or weeks for simulation. The goal of this study is to accelerate coronal magnetic field simulation using deep learning, specifically, the Fourier Neural Operator (FNO). FNO has been proven to be an ideal tool for scientific computing and discovery in the literature. In this paper, we proposed a global-local Fourier Neural Operator (GL-FNO) that contains two branches of FNOs: the global FNO branch takes downsampled input to reconstruct global features while the local FNO branch takes original resolution input to capture fine details. The performance of the GLFNO is compared with state-of-the-art deep learning methods, including FNO, U-NO, U-FNO, Vision Transformer, CNN-RNN, and CNN-LSTM, to demonstrate its accuracy, computational efficiency, and scalability. Furthermore, physics analysis from domain experts is also performed to demonstrate the reliability of GL-FNO. The results demonstrate that GL-FNO not only accelerates the MHD simulation (a few seconds for prediction, more than \\times 20,000 speed up) but also provides reliable prediction capabilities, thus greatly contributing to the understanding of space weather dynamics. Our code implementation is available at https://github.com/Yutao-0718/GL-FNO",
+    "authors": [
+      "Yutao Du",
+      "Qin Li",
+      "Raghav Gnanasambandam",
+      "Mengnan Du",
+      "Haimin Wang",
+      "Bo Shen"
+    ],
+    "pdf": "https://arxiv.org/pdf/2405.12754v3"
+  },
+  {
+    "id": "http://arxiv.org/abs/2510.05351v1",
+    "title": "Physics-informed Attention-enhanced Fourier Neural Operator for Solar Magnetic Field Extrapolations",
+    "published": "2025-10-06",
+    "abstract": "We propose Physics-informed Attention-enhanced Fourier Neural Operator (PIANO) to solve the Nonlinear Force-Free Field (NLFFF) problem in solar physics. Unlike conventional approaches that rely on iterative numerical methods, our proposed PIANO directly learns the 3D magnetic field structure from 2D boundary conditions. Specifically, PIANO integrates Efficient Channel Attention (ECA) mechanisms with Dilated Convolutions (DC), which enhances the model's ability to capture multimodal input by prioritizing critical channels relevant to the magnetic field's variations. Furthermore, we apply physics-informed loss by enforcing the force-free and divergence-free conditions in the training process so that our prediction is consistent with underlying physics with high accuracy. Experimental results on the ISEE NLFFF dataset show that our PIANO not only outperforms state-of-the-art neural operators in terms of accuracy but also shows strong consistency with the physical characteristics of NLFFF data across magnetic fields reconstructed from various solar active regions. The GitHub of this project is available https://github.com/Autumnstar-cjh/PIANO",
+    "authors": [
+      "Jinghao Cao",
+      "Qin Li",
+      "Mengnan Du",
+      "Haimin Wang",
+      "Bo Shen"
+    ],
+    "pdf": "https://arxiv.org/pdf/2510.05351v1"
+  },
+  {
+    "id": "http://arxiv.org/abs/2608.02965v3",
+    "title": "A Physics-Informed Hybrid Neural Operator for Transient Magnetization Prediction in Power Magnetics",
+    "published": "2026-08-03",
+    "abstract": "Magnetic components in high-frequency, high-power-density converters are increasingly driven by non-sinusoidal flux-density waveforms with fast transitions, minor-loop operation, dc bias, and temperature variation. Under these conditions, steady-state core-loss formulas and single-valued material curves cannot fully capture transient magnetization responses. This work proposes the Physics-Informed Hybrid Neural Operator (PI-HNO), a compact material-specific neural model with B-H energy-consistency regularization for core-loss-oriented transient magnetization prediction. Given the measured B(t)-H(t) history, the input B(t) series over the prediction interval and operating-condition information, PI-HNO predicts the H(t) series and the corresponding reconstructed B-H trajectory. The model integrates a local recurrent branch for boundary-state representation and rate-dependent response evolution with a Preisach-inspired global branch that extracts waveform-level hysteresis context. Evaluation on the MagNetX transient database using material-specific models for 14 ferrite materials demonstrates that PI-HNO achieves a compact trade-off between sequence accuracy and B(t)-H(t) energy consistency, with the mean and 95th percentile B(t)-H(t) energy consistency errors of 1.92% and 7.60%, respectively, using only 4777 trainable parameters per model. Ablation studies further demonstrate that the local, global, and energy-aware regularized components provide distinct contributions to transient magnetization prediction.",
+    "authors": [
+      "Yachao Zhu",
+      "Qiujie Huang",
+      "Sinan Li",
+      "Yang Li",
+      "Gang Lei",
+      "Jianguo Zhu"
+    ],
+    "pdf": "https://arxiv.org/pdf/2608.02965v3"
+  },
+  {
+    "id": "http://arxiv.org/abs/2507.01388v1",
+    "title": "Spectral Learning of Magnetized Plasma Dynamics: A Neural Operator Application",
+    "published": "2025-07-02",
+    "abstract": "Fourier neural operators (FNOs) provide a mesh-independent way to learn solution operators for partial differential equations, yet their efficacy for magnetized turbulence is largely unexplored. Here we train an FNO surrogate for the 2-D Orszag-Tang vortex, a canonical non-ideal magnetohydrodynamic (MHD) benchmark, across an ensemble of viscosities and magnetic diffusivities. On unseen parameter settings the model achieves a mean-squared error of $\\approx 6 \\times 10^{-3}$ in velocity and $\\approx 10^{-3}$ in magnetic field, reproduces energy spectra and dissipation rates within $96\\%$ accuracy, and retains temporal coherence over long timescales. Spectral analysis shows accurate recovery of large- and intermediate-scale structures, with degradation at the smallest resolved scales due to Fourier-mode truncation. Relative to a UNet baseline the FNO cuts error by $97\\%$, and compared with a high-order finite-volume solver it delivers a $25\\times$ inference speed-up, offering a practical path to rapid parameter sweeps in MHD simulations.",
+    "authors": [
+      "Roberta Duarte",
+      "Rodrigo Nemmen",
+      "Reinaldo Santos-Lima"
+    ],
+    "pdf": "https://arxiv.org/pdf/2507.01388v1"
+  },
+  {
+    "id": "http://arxiv.org/abs/2604.25985v1",
+    "title": "Learning Neural Operator Surrogates for the Black Hole Accretion Code",
+    "published": "2026-04-28",
+    "abstract": "General-relativistic magnetohydrodynamic (GR-MHD) simulations are essential for studying black hole accretion, relativistic jets, and magnetic reconnection, yet their computational cost severely limits systematic parameter exploration. We investigate neural operator surrogates for two astrophysically relevant simulation scenarios produced by the Black Hole Accretion Code (\\texttt{BHAC}). First, a Physics Informed Fourier Neural Operator (PINO) is trained on the special-relativistic resistive MHD (SRRMHD) evolution of the Orszag-Tang vortex over a range of resistivities spanning the Sweet-Parker and fast reconnection regimes. By embedding the governing equations as an additional loss term evaluated at finer temporal resolution than the available data supervision, the model learns dynamics at time steps where no simulation data is provided, enabling recovery of plasmoid formation that a data-only baseline trained on the same sparse snapshots fails to reproduce. To our knowledge, the present work is the first application of a physics informed neural operator to special relativistic resistive MHD, and the first to investigate the capability of such models to resolve plasmoid formation in SRRMHD. In a second line of investigation, an OFormer-style Transformer Neural Operator is trained on the evolution of spine-sheath relativistic jets created with \\texttt{BHAC}, in special-relativistic MHD (SRMHD). The model is directly applied on the adaptive mesh, highlighting the need for linear attention due to long sequences. The neural surrogate model is capable of capturing most of the major details, especially in early predictions. To our knowledge, this constitutes the first application of a neural operator directly on a high resolution adaptive mesh refinement grid in the context of MHD simulations.",
+    "authors": [
+      "Matthias Nägele",
+      "Cedric Bös",
+      "Chester Tan",
+      "Christian M. Fromm",
+      "Ingo Scholtes",
+      "Karl Mannheim"
+    ],
+    "pdf": "https://arxiv.org/pdf/2604.25985v1"
+  },
+  {
+    "id": "http://arxiv.org/abs/2604.04150v1",
+    "title": "A Multi-Scale ResNet-augmented Fourier Neural Operator Framework for High-Frequency Sequence-to-Sequence Prediction of Magnetic Hysteresis",
+    "published": "2026-04-05",
+    "abstract": "Accurate modeling of magnetic hysteresis is essential for high-fidelity power electronics device simulations. The transient hysteresis phenomena such as the ringing effect and the minor loops are the bottleneck for the accurate hysteresis modeling and the core losses estimation. To capture the hysteresis loops with both the macro structure and the micro transient details, in this paper, we propose the multi-scale ResNet augmented Fourier Neural Operator (Res-FNO). The framework employs a hybrid input structure that combines sequential time-series data with scalar material labels through specialized feature engineering. Specifically, the time derivative of magnetic flux density ($\\frac{dB}{dt}$) is incorporated as a critical physical feature to enhance the model sensitivity to high-frequency oscillations and minor loop triggers. The proposed architecture synergizes global spectral modeling with localized refinement by integrating a multi-scale ResNet path in parallel with the FNO blocks. This design allows the global operator path to capture the underlying physical evolution while the local refinement path, compensates for spectral bias and reconstructs fine-grained temporal details. Extensive experimental validation across diverse magnetic materials from 79 to Material 3C90 demonstrates the strong generalization capability of the proposed Res-FNO, proving its robust ability to model complex ringing effects and minor loops in realistic power electronic applications.",
+    "authors": [
+      "Ziqing Guo",
+      "Xiaobing Shen",
+      "Ruth V. Sabariego"
+    ],
+    "pdf": "https://arxiv.org/pdf/2604.04150v1"
+  },
+  {
+    "id": "http://arxiv.org/abs/2610.05657v1",
+    "title": "Fast and Differentiable MHD Surrogate for Solar Wind using Neural Operator",
+    "published": "2026-10-05",
+    "abstract": "Global magnetohydrodynamic (MHD) simulations provide the complete plasma state of the heliosphere, but their computational cost limits applications requiring repeated model evaluations. We introduce SNOW (Solar Neural Operator for Wind), a fast and differentiable surrogate for global MHD solar wind. SNOW combines a rotational ballistic approximation, a spherical harmonic neural operator, and causal radial context to autoregressively propagate all eight MHD variables from 20 to 240 Rs through consecutive shell to shell transitions. Trained and evaluated using AWSoM simulations spanning a solar cycle, SNOW remains stable across the complete rollout. The model successfully reproduces the large scale plasma and magnetic field structures, including fast and slow wind streams, magnetic polarity sectors, vector orientations, fieldline connectivity, and bulk-flow structures. Additionally, the magnetic divergence and induction diagnostics remain comparable to the reference MHD solutions. The complete three-dimensional solution is generated in less than one second on a single GPU. These results demonstrate the feasibility of fast neural emulation of global MHD solar wind solutions while retaining physically meaningful plasma and magnetic field structure.",
+    "authors": [
+      "Prateek Mayank",
+      "Enrico Camporeale",
+      "Thomas E. Berger",
+      "Zhenguang Huang",
+      "Gabor Toth"
+    ],
+    "pdf": "https://arxiv.org/pdf/2610.05657v1"
+  },
+  {
+    "id": "http://arxiv.org/abs/2606.15512v1",
+    "title": "Towards Data-Efficient Cross-Device Generalization of Grad-Shafranov Equilibria via Transfer Learning Neural Operator",
+    "published": "2026-06-13",
+    "abstract": "Real-time reconstruction of magnetohydrodynamic equilibria is essential for plasma shaping, stability assessment and feedback control in magnetic confinement fusion. However, Grad-Shafranov equilibrium calculations remain largely device-specific and iterative, limiting their use in latency-constrained control settings. Existing neural approaches can accelerate individual equilibrium predictions, but they do not generally provide reusable models across changing plasma boundaries or tokamak geometries. Here we show that equilibrium reconstruction can be recast as a cross-device operator learning problem. We develop a domain-specific neural operator framework that maps geometry and profile parameters directly to the poloidal flux field, replacing repeated solve-on-demand computation with amortized operator inference. Using the analytically tractable Solov'ev family as a controlled Grad-Shafranov testbed, we generate equilibria across eight geometrically distinct tokamak-like configurations and benchmark five neural operator architectures under four transfer-learning strategies. Single-geometry pretraining gives poor transfer to unseen devices, whereas multi-geometry pretraining enables data-efficient adaptation. The Wavelet Neural Operator gives the strongest cross-geometry performance, reaching mean relative L2 errors below 4% with 100 labelled target equilibria and below 2% with full fine-tuning. The predicted magnetic fields satisfy the divergence-free constraint to numerical precision, and four architectures achieve millisecond or sub-millisecond inference. These results identify neural operator pretraining as a route towards reusable, real-time equilibrium inference across fusion device configurations.",
+    "authors": [
+      "Jay Phil Yoo",
+      "William Howes",
+      "Yashika Ghai",
+      "Kazuma Kobayashi",
+      "Souvik Chakraborty",
+      "Syed Bahauddin Alam"
+    ],
+    "pdf": "https://arxiv.org/pdf/2606.15512v1"
+  },
+  {
+    "id": "http://arxiv.org/abs/2609.33978v1",
+    "title": "Adapting neural operators for mechanics decisions under changing operating conditions",
+    "published": "2026-09-27",
+    "abstract": "Neural operators can accelerate repeated nonlinear mechanics calculations, but their accuracy can deteriorate as operating conditions move beyond the training range. This work studies whether high-fidelity solutions acquired during use can be reused to adapt a neural operator and improve subsequent mechanics-based command selection. Two hard-magnetic soft-material systems are simulated using high-fidelity finite-element (FE) models, providing reference solutions for evaluating surrogate predictions and selected commands. A neural operator predicts deformation from known material, loading, and magnetic-field inputs, while an empirical error estimator determines which predictions may be used for command selection. Selected FE evaluations supplement these predictions, and their complete loading paths are retained for periodic updates of the neural operator and estimator. In both examples, the fixed operator loses substantial accuracy when stiffness and loading move outside the training range. Updates using 16 acquired paths recover much of the lost accuracy while preserving accuracy in the nominal regime. Under the same FE evaluation budget, the updated operators also improve command selection, although the benefit varies with the operating condition. Error estimation is less consistent, with inaccurate predictions sometimes accepted and accurate predictions rejected. These results demonstrate that reusing high-fidelity loading paths can extend the useful operating range of a neural operator. However, improved forward accuracy alone does not guarantee reliable prediction acceptance, highlighting prediction-specific error assessment as a separate requirement for trustworthy decision making.",
+    "authors": [
+      "Prashant K. Jha",
+      "Koffi Enakoutsa",
+      "Ian Galloway",
+      "Henry Anderson"
+    ],
+    "pdf": "https://arxiv.org/pdf/2609.33978v1"
+  },
+  {
+    "id": "http://arxiv.org/abs/2609.29514v1",
+    "title": "Physics-Informed Neural Operator Surrogate for 2D Magnetohydrodynamic Reconnection",
+    "published": "2026-08-25",
+    "abstract": "Direct numerical simulation of magnetic reconnection is limited by the scale separation of resistive magnetohydrodynamics. At large Lundquist numbers $S$ the current layer thins as $S^{-1/2}$, forcing fine grids and short time steps that make parameter scans prohibitively expensive. Deep learning neural operators offer an alternative by learning the map between function spaces rather than individual solutions, so that a single trained model returns the state for any parameter and time at inference cost. We have developed a Fourier Neural Operator (FNO) based Physics-Informed Neural Operator (PINO) surrogate for two-dimensional compressible, viscous, resistive reconnection in a wall bounded domain. We condition on the initial state, the Lundquist number, and a continuous query time. Predicting the magnetic flux function makes $\\grad\\!\\cdot\\!\\bB=0$ exact, direct time queries remove autoregressive error accumulation, and parity-aware spectral differentiation matches the wall treatment of the reference solver. Trained across $10^{3}\\le S\\le2\\times10^{5}$ with two values withheld, the surrogate recovers density, pressure, and guide field to better than $0.2\\%$, velocity to $3.2$ to $3.9\\%$, the flux function to $1.0\\%$, and the spectral current density to $7.5\\%$. It resolves the thin, narrow current sheet, Alfvénic jets, and spectral resolution beyond mode cutoff. Our surrogate reproduces the layer-averaged reconnection rate to within $3\\%$ through $S=1.1\\times10^{4}$, recovering a reconnection time exponent of $0.497$ consistent with Sweet-Parker scaling. When queried zero-shot on the $2049^{2}$ solver mesh, a full trajectory run is on the order of seconds on one GPU against several hours for the DNS, over two orders of magnitude faster, establishing learned operators as a practical route to surveying reconnection across parameter space.",
+    "authors": [
+      "Kushaal Kumar Pothula",
+      "Arunav Kumar"
+    ],
+    "pdf": "https://arxiv.org/pdf/2609.29514v1"
+  },
+  {
+    "id": "http://arxiv.org/abs/2603.05730v1",
+    "title": "Neural operator transformers capture bifurcating drift wave turbulence in fusion plasma simulations",
+    "published": "2026-03-05",
+    "abstract": "Self-consistent modeling of turbulence-driven transport is critical for optimizing confinement in magnetically confined fusion plasmas, such as in tokamaks and stellarators. In particular, capturing the long-term co-evolution of turbulence, flow, and background plasma profiles remains computationally challenging. Direct numerical simulation of these multiscale, highly nonlinear processes is often demanding and impractical for real-time control or design optimization. To address this bottleneck, we investigate transformer-based neural operator PDE surrogates for emulating the dynamics of drift-wave turbulence bifurcation mediated by zonal flows, using the modified Hasegawa-Wakatani (MHW) model as a prototypical system. We find that the finetuned neural operator model has excellent performance in capturing the multi-spatiotemporal-scales of MHW turbulence bifurcation and is robust to testing on rare and out-of-distribution dynamics. Specifically, we demonstrate that a single unified model accurately predicts both quasi-steady-state turbulence and a wide range of dynamical transition processes, such as nonlinear saturation, spontaneous suppression of turbulence and the emergence of macroscopic zonal flows, over time horizons vastly exceeding the local turbulence correlation time. This computationally efficient approach establishes a strong foundation for fast, AI-based modeling of complex, multiscale phenomena in magnetized fusion plasmas.",
+    "authors": [
+      "Johannes J. van de Wetering",
+      "Ben Zhu"
+    ],
+    "pdf": "https://arxiv.org/pdf/2603.05730v1"
+  },
+  {
+    "id": "http://arxiv.org/abs/2511.19114v2",
+    "title": "Physics-informed Neural Operator Learning for Nonlinear Grad-Shafranov Equation",
+    "published": "2025-11-24",
+    "abstract": "As artificial intelligence emerges as a transformative enabler for fusion energy commercialization, fast and accurate solvers become increasingly critical. In magnetic confinement nuclear fusion, rapid and accurate solution of the Grad-Shafranov equation (GSE) is essential for real-time plasma control and analysis. Traditional numerical solvers achieve high precision but are computationally prohibitive, while data-driven surrogates infer quickly but fail to enforce physical laws and generalize poorly beyond training distributions. To address this challenge, we present a Physics-Informed Neural Operator (PINO) that directly learns the GSE solution operator, mapping shape parameters of last closed flux surface to equilibrium solutions for realistic nonlinear current profiles. Comprehensive benchmarking of five neural architectures identifies the novel Transformer-KAN (Kolmogorov-Arnold Network) Neural Operator (TKNO) as achieving highest accuracy (0.25% mean L2 relative error) under supervised training (only data-driven). However, all data-driven models exhibit large physics residuals, indicating poor physical consistency. Our unsupervised training can reduce the residuals by nearly four orders of magnitude through embedding physics-based loss terms without labeled data. Critically, semi-supervised learning--integrating sparse labeled data (100 interior points) with physics constraints--achieves optimal balance: 0.48% interpolation error and the most robust extrapolation performance (4.76% error, 8.9x degradation factor vs 39.8x for supervised models). Accelerated by TensorRT optimization, our models enable millisecond-level inference, establishing PINO as a promising pathway for next-generation fusion control systems.",
+    "authors": [
+      "Siqi Ding",
+      "Zitong Zhang",
+      "Guoyang Shi",
+      "Xingyu Li",
+      "Xiang Gu",
+      "Yanan Xu",
+      "Huasheng Xie",
+      "Hanyue Zhao",
+      "Yuejiang Shi",
+      "Tianyuan Liu"
+    ],
+    "pdf": "https://arxiv.org/pdf/2511.19114v2"
+  },
+  {
+    "id": "http://arxiv.org/abs/2504.04863v1",
+    "title": "Dynamic hysteresis model of grain-oriented ferromagnetic material using neural operators",
+    "published": "2025-04-07",
+    "abstract": "Accurately capturing the behavior of grain-oriented (GO) ferromagnetic materials is crucial for modeling the electromagnetic devices. In this paper, neural operator models, including Fourier neural operator (FNO), U-net combined FNO (U-FNO) and Deep operator network (DeepONet) are used to approximate the dynamic hysteresis models of GO steel. Furthermore, two types of data augmentation strategies including cyclic rolling augmentation and Gaussian data augmentation (GDA) are implemented to enhance the learning ability of models. With the inclusion of these augmentation techniques, the optimized models account for not only the peak values of the magnetic flux density but also the effects of different frequencies and phase shifts. The accuracy of all models is assessed using the L2-norm of the test data and the mean relative error (MRE) of calculated core losses. Each model performs well in different scenarios, but FNO consistently achieves the best performance across all cases.",
+    "authors": [
+      "Ziqing Guo",
+      "Binh H. Nguyen",
+      "Hamed Hamzehbahmani",
+      "Ruth V. Sabariego"
+    ],
+    "pdf": "https://arxiv.org/pdf/2504.04863v1"
+  },
+  {
+    "id": "http://arxiv.org/abs/2608.22782v1",
+    "title": "Neural Operator based Multi-Field Reconstruction of Inner Solar Boundary State",
+    "published": "2026-08-24",
+    "abstract": "The Solar wind is a continuous flow of charged particles emanating from the solar surface and governed by complex, interacting magnetohydrodynamic processes. Accurate specification of inner-boundary conditions is essential for heliospheric modeling and solar-wind prediction. In many practical applications, only a subset of interacting multi-field variables is directly available, but for a comprehensive view of solar wind prediction and downstream magnetohydrodynamic simulations, a more complete boundary state is required. In this work, we study the problem of learning the multi-field multi-scale solar magnetohydrodynamic state at 30 solar radii ($R_\\odot$) using operator learning. Specifically, given the radial velocity and radial magnetic field, we aim to reconstruct the non-radial velocity and magnetic field components, radial and non-radial current density, thermodynamic density, and pressure components. This mapping is highly nonlinear, spatially coupled, and multi-scale, making it a challenging task for data-driven scientific machine learning. To address this problem, we employ a Local Neural Operator (LocalNO) that learns mappings between input and output function spaces while retaining locality and resolution-awareness. Unlike conventional regression models and autoencoder models, neural operators are better suited for learning structured field-to-field transformations arising from physical systems. The resulting predictions along with inputs are intended to serve as boundary condition variables for future inner-heliospheric modeling pipelines.",
+    "authors": [
+      "Vignesh Kumar Pandian Sathia",
+      "Reza Mansouri",
+      "Dustin J. Kempton",
+      "Pete Riley",
+      "Rafal A. Angryk"
+    ],
+    "pdf": "https://arxiv.org/pdf/2608.22782v1"
+  },
+  {
+    "id": "http://arxiv.org/abs/2603.24968v1",
+    "title": "Subject-Specific Low-Field MRI Synthesis via a Neural Operator",
+    "published": "2026-03-26",
+    "abstract": "Low-field (LF) magnetic resonance imaging (MRI) improves accessibility and reduces costs but generally has lower signal-to-noise ratios and degraded contrast compared to high field (HF) MRI, limiting its clinical utility. Simulating LF MRI from HF MRI enables virtual evaluation of novel imaging devices and development of LF algorithms. Existing low field simulators rely on noise injection and smoothing, which fail to capture the contrast degradation seen in LF acquisitions. To this end, we introduce an end-to-end LF-MRI synthesis framework that learns HF to LF image degradation directly from a small number of paired HF-LF MRIs. Specifically, we introduce a novel HF to LF coordinate-image decoupled neural operator (H2LO) to model the underlying degradation process, and tailor it to capture high-frequency noise textures and image structure. Experimental results in T1w and T2w MRI demonstrate that H2LO produces more faithful simulated low-field images than existing parameterized noise synthesis models and popular image-to-image translation models. Furthermore, it improves performance in downstream image enhancement tasks, showcasing its potential to enhance LF MRI diagnostic capabilities.",
+    "authors": [
+      "Ziqi Gao",
+      "Nicha Dvornek",
+      "Xiaoran Zhang",
+      "Gigi Galiana",
+      "Hemant Tagare",
+      "Todd Constable"
+    ],
+    "pdf": "https://arxiv.org/pdf/2603.24968v1"
+  },
+  {
+    "id": "http://arxiv.org/abs/2608.05555v1",
+    "title": "Millisecond-Scale Neural Operator Surrogates for Double-Null Free-Boundary Grad-Shafranov Equilibria",
+    "published": "2026-08-06",
+    "abstract": "The Grad-Shafranov (GS) equation governs ideal magnetohydrodynamic equilibrium in tokamak plasmas. Free-boundary GS solvers are central to diverted-equilibrium modeling, but nonlinear Picard iteration introduces computational cost and sample-dependent latency that can become prohibitive in optimization, modeling, and control-oriented loops. Here we train a geometrically conditioned Fourier Neural Operator (FNO) to learn a constrained forward map from spatial coordinates, scalar operating parameters $(P_{\\mathrm{axis}}, I_p, f_{\\mathrm{vac}})$, and prescribed X-point locations to the poloidal-flux field $ψ(R,Z)$. The model is trained on a controlled family of constrained double-null free-boundary equilibria generated with \\textsc{FreeGS} for a single fixed machine geometry and prescribed topology. The best model achieves a mean relative $L^2$ error of $0.05\\%$, with test error following an empirical $N^{-0.68}$ power law over $N_{\\mathrm{train}}\\in\\{500,1000,2000,5000\\}$. It recovers both X-points to within $0.2$ cm and localizes the O-point to $0.03$ cm. As a physics-consistency diagnostic, the predicted fields satisfy an external finite-difference GS residual evaluation at the same level as the ground-truth fields, with mean normalized residual $2.29$, indistinguishable from the $2.29\\pm0.06$ \\textsc{FreeGS} baseline using the same diagnostic. The trained FNO evaluates one equilibrium in $2.77$ ms on GPU and $25.6$ ms on CPU, corresponding to speedups of ${\\sim}640\\times$ and ${\\sim}69\\times$ relative to \\textsc{FreeGS} as configured here, with near-deterministic latency (p95/median $=1.01$). These results show that neural-operator surrogates can provide accurate, geometrically precise, millisecond-scale equilibrium evaluations for magnetic-confinement fusion workflows within a prescribed topology and machine geometry.",
+    "authors": [
+      "Plamen G. Krastev"
+    ],
+    "pdf": "https://arxiv.org/pdf/2608.05555v1"
+  },
+  {
+    "id": "http://arxiv.org/abs/2610.03156v1",
+    "title": "Data-Free Weak-Form Staggered Neural Operators for Magneto-Mechanical Coupling in Finite-Strain Elastomers",
+    "published": "2026-10-02",
+    "abstract": "Magneto-active elastomers, as a class of smart materials, exhibit strongly coupled magnetic and mechanical behavior at finite strains. Considering variations in microstructure, material properties, and geometry can lead to computationally expensive analyses. Building on the finite operator learning (FOL) framework, this study develops a data-free, physics-informed operator-learning framework for families of coupled finite-strain magneto-mechanical boundary-value problems. The governing magnetostatic and mechanical equations are enforced through finite-element weak-form residuals, allowing the neural operators to be trained without labeled finite-element solution data. The main contribution of this study is the development of a weak-form staggered neural operator (WSNO) framework for strongly coupled magneto-mechanical saddle-point problems. Separate magnetic and mechanical neural operators are trained alternately using a staggered optimization strategy, while their physical coupling is retained through the constitutive relations and residual evaluations. The resulting framework learns mappings from parameterized material and geometric descriptions to the corresponding coupled magnetic and mechanical solution fields. The proposed framework is investigated across several settings, including heterogeneous random-inclusion microstructures, varying magnetic phase contrast, area-fraction-dependent geometries, strongly out-of-distribution material morphologies, and three-dimensional geometry-parametric problems. In addition, the learned operator is combined with a neural-initialized Newton strategy, in which the nonlinear finite-element solver is initialized using the neural prediction. The results demonstrate that the proposed operator-learning framework can accurately capture coupled magneto-mechanical responses across a broad range of parametric problem settings.",
+    "authors": [
+      "Alireza Yazdandousthamedani",
+      "Ahmad Moeineddin",
+      "Reza Najian Asl",
+      "Shahed Rezaei",
+      "Michael Kaliske"
+    ],
+    "pdf": "https://arxiv.org/pdf/2610.03156v1"
+  },
+  {
+    "id": "http://arxiv.org/abs/2606.17733v1",
+    "title": "Latent Residual-Closure Fourier Neural Operator for Robust Multi-Field Solving in Particle-in-Cell Simulations",
+    "published": "2026-06-16",
+    "abstract": "Particle-in-cell (PIC) simulations are widely used for kinetic plasma modeling in energy applications, but their efficiency is often limited by repeated field solves on dense meshes. This work proposes a Latent Residual-Closure Fourier Neural Operator (LRC-FNO) for robust surrogate multi-field solving in PIC simulations. Rather than treating field prediction as a purely data-driven regression task, LRC-FNO formulates PIC field solving as a two-level residual-closure problem involving source compression and source-to-field operator mapping. An autoencoder extracts compact representations of particle-deposited source fields, while a Latent Closure Refiner recovers unresolved residual structures lost during compression. A Coarse-FNO Solver captures the dominant field response, and a Residual-Closure FNO restores full-resolution corrections. The method is tested on three benchmarks with increasing complexity: 1D linear Landau damping (LLD), 2D two-stream instability (TSI), and a 2D scrape-off layer (SOL) fusion plasma model. In LLD and TSI, LRC-FNO better preserves charge-to-potential mapping, potential-mode evolution, residual charge structures, and particle-field energy exchange during closed-loop PIC integration. In the SOL case, LRC-FNO achieves relative L2 errors of 0.0447 for the self-consistent potential and 0.0251 for the magnetic vector potential in single-step prediction. More importantly, when used as a neural initial guess with 20 iterative corrections, LRC-FNO maintains strong physical consistency in extrapolated closed-loop simulations, preserving charge and current density structures over a time range close to twice the training horizon. These results demonstrate that LRC-FNO can serve as both a fast surrogate field solver and a high-quality initialization strategy for iterative PIC field solvers.",
+    "authors": [
+      "Jianhua Lyu",
+      "Linlin Zhong"
+    ],
+    "pdf": "https://arxiv.org/pdf/2606.17733v1"
+  },
+  {
+    "id": "http://arxiv.org/abs/2606.00937v1",
+    "title": "Cellular Sheaf Neural Operators for Structure-Preserving Surrogate Modeling of Constrained PDEs",
+    "published": "2026-05-31",
+    "abstract": "Neural operators provide fast surrogate models for PDE simulations, but standard architectures often treat geometry and discretization as secondary to field data. Physical states are usually represented as grid-channel stacks, even when different quantities naturally belong on vertices, edges, faces, cells, boundaries, or interfaces and must satisfy compatibility constraints. We propose Cellular Sheaf Neural Operators, a discretization-aware framework for structure-preserving neural PDE surrogates. The method represents PDE states on oriented cell complexes, couples local feature spaces through learned restriction maps, and uses incidence/Hodge-informed message passing to follow computational geometry. Learned update heads pass through coboundary or flux maps, allowing selected constraints to arise from cell-complex structure rather than only from loss penalties. For magnetohydrodynamics, this yields face-based magnetic-flux updates driven by edge electromotive fields and finite-volume-style fluid updates driven by learned face fluxes and cell sources. On turbulent MHD and fusion-equilibrium surrogate tasks, the method improves structure-sensitive diagnostics, including rollout behavior, divergence control, spectral error, and equilibrium-regression accuracy. These results indicate that cellular-sheaf structure is a useful inductive bias for neural PDE surrogates in constrained multiphysics systems.",
+    "authors": [
+      "Lennon J. Shikhman",
+      "Shane Gilbertie"
+    ],
+    "pdf": "https://arxiv.org/pdf/2606.00937v1"
+  },
+  {
+    "id": "http://arxiv.org/abs/2510.01441v1",
+    "title": "Diffusion Modeling of the Three-Dimensional Magnetic Field in the Sun's Corona",
+    "published": "2025-10-01",
+    "abstract": "In this work, we introduce a novel generative denoising diffusion model for synthesizing the Sun's three-dimensional coronal magnetic field, a complex and dynamic region characterized by evolving magnetic structures. Despite daily variability, these structures exhibit recurring patterns and long-term cyclic trends, presenting unique modeling challenges and opportunities at the intersection of physics and machine learning. Our generative approach employs an innovative architecture influenced by Spherical Fourier Neural Operators (SFNO), operating within the spherical harmonic domain, where the scalar field corresponds directly to the magnetic potential under physical constraints. We trained this model using an extensive dataset comprising 11.7 years of daily coupled simulations from the Air Force Data Assimilative Photospheric Flux Transport-Wang Sheeley Arge (ADAPT-WSA) model, further enhanced by data augmentation. Initial results demonstrate the model's capability to conditionally generate physically realistic magnetic fields reflective of distinct phases within the 11-year solar cycle: from solar minimum ($S = 0$) to solar maximum ($S = 1$). This approach represents a significant step toward advanced generative three-dimensional modeling in Heliophysics, with potential applications in solar forecasting, data assimilation, inverse problem-solving, and broader impacts in areas such as procedural generation of physically-informed graphical assets.",
+    "authors": [
+      "Daniel E. da Silva",
+      "Michael Kirk",
+      "Nat Mathews",
+      "Andrés Muñoz-Jaramillo"
+    ],
+    "pdf": "https://arxiv.org/pdf/2510.01441v1"
+  },
+  {
+    "id": "http://arxiv.org/abs/1605.04494v1",
+    "title": "Probabilistic Deep Spiking Neural Systems Enabled by Magnetic Tunnel Junction",
+    "published": "2016-05-15",
+    "abstract": "Deep Spiking Neural Networks are becoming increasingly powerful tools for cognitive computing platforms. However, most of the existing literature on such computing models are developed with limited insights on the underlying hardware implementation, resulting in area and power expensive designs. Although several neuromimetic devices emulating neural operations have been proposed recently, their functionality has been limited to very simple neural models that may prove to be inefficient at complex recognition tasks. In this work, we venture into the relatively unexplored area of utilizing the inherent device stochasticity of such neuromimetic devices to model complex neural functionalities in a probabilistic framework in the time domain. We consider the implementation of a Deep Spiking Neural Network capable of performing high accuracy and low latency classification tasks where the neural computing unit is enabled by the stochastic switching behavior of a Magnetic Tunnel Junction. Simulation studies indicate an energy improvement of $20\\times$ over a baseline CMOS design in $45nm$ technology.",
+    "authors": [
+      "Abhronil Sengupta",
+      "Maryam Parsa",
+      "Bing Han",
+      "Kaushik Roy"
+    ],
+    "pdf": "https://arxiv.org/pdf/1605.04494v1"
+  },
+  {
+    "id": "http://arxiv.org/abs/2507.13789v1",
+    "title": "Localized FNO for Spatiotemporal Hemodynamic Upsampling in Aneurysm MRI",
+    "published": "2025-07-18",
+    "abstract": "Hemodynamic analysis is essential for predicting aneurysm rupture and guiding treatment. While magnetic resonance flow imaging enables time-resolved volumetric blood velocity measurements, its low spatiotemporal resolution and signal-to-noise ratio limit its diagnostic utility. To address this, we propose the Localized Fourier Neural Operator (LoFNO), a novel 3D architecture that enhances both spatial and temporal resolution with the ability to predict wall shear stress (WSS) directly from clinical imaging data. LoFNO integrates Laplacian eigenvectors as geometric priors for improved structural awareness on irregular, unseen geometries and employs an Enhanced Deep Super-Resolution Network (EDSR) layer for robust upsampling. By combining geometric priors with neural operator frameworks, LoFNO de-noises and spatiotemporally upsamples flow data, achieving superior velocity and WSS predictions compared to interpolation and alternative deep learning methods, enabling more precise cerebrovascular diagnostics.",
+    "authors": [
+      "Kyriakos Flouris",
+      "Moritz Halter",
+      "Yolanne Y. R. Lee",
+      "Samuel Castonguay",
+      "Luuk Jacobs",
+      "Pietro Dirix",
+      "Jonathan Nestmann",
+      "Sebastian Kozerke",
+      "Ender Konukoglu"
+    ],
+    "pdf": "https://arxiv.org/pdf/2507.13789v1"
+  },
+  {
+    "id": "http://arxiv.org/abs/2504.21155v2",
+    "title": "Evaluation and Verification of Physics-Informed Neural Models of the Grad-Shafranov Equation",
+    "published": "2025-04-29",
+    "abstract": "Our contributions are motivated by fusion reactors that rely on maintaining magnetohydrodynamic (MHD) equilibrium, where the balance between plasma pressure and confining magnetic fields is required for stable operation. In axisymmetric tokamak reactors in particular, and under the assumption of toroidal symmetry, this equilibrium can be mathematically modelled using the Grad-Shafranov Equation (GSE). Recent works have demonstrated the potential of using Physics-Informed Neural Networks (PINNs) to model the GSE. Existing studies did not examine realistic scenarios in which a single network generalizes to a variety of boundary conditions. Addressing that limitation, we evaluate a PINN architecture that incorporates boundary points as network inputs. Additionally, we compare PINN model accuracy and inference speeds with a Fourier Neural Operator (FNO) model. Finding the PINN model to be the most performant, and accurate in our setting, we use the network verification tool Marabou to perform a range of verification tasks. Although we find some discrepancies between evaluations of the networks natively in PyTorch, compared to via Marabou, we are able to demonstrate useful and practical verification workflows. Our study is the first investigation of verification of such networks.",
+    "authors": [
+      "Fauzan Nazranda Rizqan",
+      "Matthew Hole",
+      "Charles Gretton"
+    ],
+    "pdf": "https://arxiv.org/pdf/2504.21155v2"
+  },
+  {
+    "id": "http://arxiv.org/abs/2410.18797v3",
+    "title": "Learning Geodesics of Geometric Shape Deformations From Images",
+    "published": "2024-10-24",
+    "abstract": "This paper presents a novel method, named geodesic deformable networks (GDN), that for the first time enables the learning of geodesic flows of deformation fields derived from images. In particular, the capability of our proposed GDN being able to predict geodesics is important for quantifying and comparing deformable shape presented in images. The geodesic deformations, also known as optimal transformations that align pairwise images, are often parameterized by a time sequence of smooth vector fields governed by nonlinear differential equations. A bountiful literature has been focusing on learning the initial conditions (e.g., initial velocity fields) based on registration networks. However, the definition of geodesics central to deformation-based shape analysis is blind to the networks. To address this problem, we carefully develop an efficient neural operator to treat the geodesics as unknown mapping functions learned from the latent deformation spaces. A composition of integral operators and smooth activation functions is then formulated to effectively approximate such mappings. In contrast to previous works, our GDN jointly optimizes a newly defined geodesic loss, which adds additional benefits to promote the network regularizability and generalizability. We demonstrate the effectiveness of GDN on both 2D synthetic data and 3D real brain magnetic resonance imaging (MRI).",
+    "authors": [
+      "Nian Wu",
+      "Miaomiao Zhang"
+    ],
+    "pdf": "https://arxiv.org/pdf/2410.18797v3"
+  },
+  {
+    "id": "http://arxiv.org/abs/2610.14537v1",
+    "title": "Learn the Dynamics, Enforce the Physics: Generative Latent Operators for High-Dimensional Beam Evolution",
+    "published": "2026-10-10",
+    "abstract": "Particle-in-cell (PIC) simulation is indispensable for modeling beam dynamics in particle accelerators, but its computational cost limits many-query workflows, such as configuration exploration, virtual diagnostics, and controller design. We introduce GLOBE, a physics-constrained Generative Latent Operator for Beam Evolution, modeling the nonlinear, control-dependent, multiscale evolution of 3D beam--field dynamics covering $10^7$ spatial cells. GLOBE compresses beam--field states into a compact latent space and factors their evolution into two components. A control-conditioned neural operator learns the dominant dynamics, while an amplitude-normalized generative model captures the residual distribution, recovering fine-scale structures and conditional variations. GLOBE enforces field constraints by regime-specific, parameter-free operators: a Poisson solve reconstructs the electric field in the electrostatic regime, and a spectral projection imposes Gauss's law and a divergence-free magnetic field in the electromagnetic regime. On two high-resolution 3D particle-accelerator benchmarks, bunched-beam transport and plasma-wakefield acceleration, GLOBE lowers relative-$L_2$ error by 9\\% and 13\\%, low-frequency spectral error by 69\\% and 51\\%, and mid-frequency spectral error by 54\\% and 20\\% relative to the strongest baseline (DPOT), satisfies field constraints, and reduces hours of PIC simulation to a minute per rollout.",
+    "authors": [
+      "Haohan Zou",
+      "Alexander Scheinker",
+      "Yuanyuan Shi"
+    ],
+    "pdf": "https://arxiv.org/pdf/2610.14537v1"
+  },
+  {
+    "id": "http://arxiv.org/abs/2608.01839v1",
+    "title": "tFUSOperator: Operator Learning for Transcranial Focused Ultrasound Digital Twins",
+    "published": "2026-08-03",
+    "abstract": "Transcranial focused ultrasound (tFUS) requires accurate estimation of the intracranial acoustic field, which is distorted by skull-induced aberrations. Numerical solvers are accurate but computationally expensive for digital twins, where the field must be re-estimated repeatedly as treatment conditions change. Existing deep-learning surrogates are fast but typically use voxel-to-voxel regression on a fixed grid, with no mechanism reflecting how acoustic energy propagates through the skull. We instead cast tFUS simulation as an operator learning problem and propose tFUSOperator, a coordinate-aware neural operator that maps the free-field pressure, skull anatomy, and treatment parameters to the intracranial field within a shared physical coordinate frame. To our knowledge, this is the first operator-based formulation of tFUS field prediction. On both seen and unseen skulls, the model localizes the acoustic focus accurately-reaching about 90% and 72% Dice, respectively-and it performs nearly as well from magnetic resonance (MR) as from computed tomography (CT) input while running $5.6 \\times 10^4$ times faster than numerical simulation. These results suggest a fast, radiation-free route to safe and practical digital twins for patient-specific tFUS treatment. The code is available at: https://github.com/CMME-Lab/tFUSOperator.git.",
+    "authors": [
+      "Minjee Seo",
+      "Haris Ghafoor",
+      "Minju Seol",
+      "Seonaeng Cho",
+      "Kyungho Yoon"
+    ],
+    "pdf": "https://arxiv.org/pdf/2608.01839v1"
+  },
+  {
+    "id": "http://arxiv.org/abs/2404.15284v1",
+    "title": "Global 4D Ionospheric STEC Prediction based on DeepONet for GNSS Rays",
+    "published": "2024-03-12",
+    "abstract": "The ionosphere is a vitally dynamic charged particle region in the Earth's upper atmosphere, playing a crucial role in applications such as radio communication and satellite navigation. The Slant Total Electron Contents (STEC) is an important parameter for characterizing wave propagation, representing the integrated electron density along the ray of radio signals passing through the ionosphere. The accurate prediction of STEC is essential for mitigating the ionospheric impact particularly on Global Navigation Satellite Systems (GNSS). In this work, we propose a high-precision STEC prediction model named DeepONet-STEC, which learns nonlinear operators to predict the 4D temporal-spatial integrated parameter for specified ground station - satellite ray path globally. As a demonstration, we validate the performance of the model based on GNSS observation data for global and US-CORS regimes under ionospheric quiet and storm conditions. The DeepONet-STEC model results show that the three-day 72 hour prediction in quiet periods could achieve high accuracy using observation data by the Precise Point Positioning (PPP) with temporal resolution 30s. Under active solar magnetic storm periods, the DeepONet-STEC also demonstrated its robustness and superiority than traditional deep learning methods. This work presents a neural operator regression architecture for predicting the 4D temporal-spatial ionospheric parameter for satellite navigation system performance, which may be further extended for various space applications and beyond.",
+    "authors": [
+      "Dijia Cai",
+      "Zenghui Shi",
+      "Haiyang Fu",
+      "Huan Liu",
+      "Hongyi Qian",
+      "Yun Sui",
+      "Feng Xu",
+      "Ya-Qiu Jin"
+    ],
+    "pdf": "https://arxiv.org/pdf/2404.15284v1"
+  },
+  {
+    "id": "http://arxiv.org/abs/2507.02106v2",
+    "title": "Resolving Turbulent Magnetohydrodynamics: A Hybrid Operator-Diffusion Framework",
+    "published": "2025-07-02",
+    "abstract": "We present a hybrid machine learning framework that combines Physics-Informed Neural Operators (PINOs) with score-based generative diffusion models to simulate the full spatio-temporal evolution of two-dimensional, incompressible, resistive magnetohydrodynamic (MHD) turbulence across a broad range of Reynolds numbers ($\\mathrm{Re}$). The framework leverages the equation-constrained generalization capabilities of PINOs to predict coherent, low-frequency dynamics, while a conditional diffusion model stochastically corrects high-frequency residuals, enabling accurate modeling of fully developed turbulence. Trained on a comprehensive ensemble of high-fidelity simulations with $\\mathrm{Re} \\in \\{100, 250, 500, 750, 1000, 3000, 10000\\}$, the approach achieves state-of-the-art accuracy in regimes previously inaccessible to deterministic surrogates. At $\\mathrm{Re}=1000$ and $3000$, the model faithfully reconstructs the full spectral energy distributions of both velocity and magnetic fields late into the simulation, capturing non-Gaussian statistics, intermittent structures, and cross-field correlations with high fidelity. At extreme turbulence levels ($\\mathrm{Re}=10000$), it remains the first surrogate capable of recovering the high-wavenumber evolution of the magnetic field, preserving large-scale morphology and enabling statistically meaningful predictions.",
+    "authors": [
+      "Semih Kacmaz",
+      "E. A. Huerta",
+      "Roland Haas"
+    ],
+    "pdf": "https://arxiv.org/pdf/2507.02106v2"
+  },
+  {
+    "id": "http://arxiv.org/abs/2411.18733v2",
+    "title": "Complex Valued Deep Operator Network (DeepONet) $[\\mathcal{G}]$ for Three Dimensional Maxwell's Equations: $\\mathcal{G} \\in \\mathbb{C}^{m \\times n}$",
+    "published": "2024-11-27",
+    "abstract": "Maxwell's equations, a system of linear partial differential equations (PDEs), describe the behavior of electric and magnetic fields in time and space and are essential for many important electromagnetic applications. Although numerical methods have been applied successfully in the past, the primary challenge in solving these equations arises from the frequency of electromagnetic fields, which depends on the shape and size of the objects to be resolved. Since the domain of influence for these equations is compactly supported, even a small perturbation in frequency necessitates a new discretization of Maxwell's equations, resulting in substantial computational costs. In this work, we investigate the potential of neural operators, particularly the Deep Operator Network (DeepONet) and its variants, as a surrogate model for Maxwell's equations. Existing DeepONet implementations are restricted to real-valued data in $R^n$, but since the time-harmonic Maxwell's equations yield solutions in the complex domain $C^n$, a specialized architecture is required to handle complex algebra. We propose a formulation of DeepONet for complex data, define the forward pass in the complex domain, and adopt a reparametrized version of DeepONet for more efficient training. We also propose a unified framework to combine a plurality of DeepONets, trained for multiple electromagnetic field components, to incorporate the boundary condition. We conduct computational experiments on a 3D metallic sphere without singularities and on a metallic almond-shaped target to demonstrate the effectiveness of the proposed method for problems involving singularity-prone solutions. As shown by computational experiments, our method significantly enhances the efficiency of predicting scattered fields from a spherical object at arbitrary high frequencies.",
+    "authors": [
+      "Qile Jiang",
+      "Marc Salvadori",
+      "Dale Ota",
+      "Vijaya Shankar",
+      "Khemraj Shukla"
+    ],
+    "pdf": "https://arxiv.org/pdf/2411.18733v2"
+  }
+]

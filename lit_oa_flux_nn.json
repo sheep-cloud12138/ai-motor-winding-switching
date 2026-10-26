@@ -1,0 +1,302 @@
+[
+  {
+    "doi": "10.1109/pesgm51994.2024.10688723",
+    "title": "Flux Linkage Identification of IPM Motor Through Neural-Network Considering Speed Impact",
+    "year": 2024,
+    "cites": 0,
+    "venue": "IEEE Power & Energy Society General Meeting (PESGM)",
+    "abstract": "An IPM motor is a primary electric motor broadly used in the electric vehicle (EV) industry, in which flux-linkage estimation is critical for the operation and control of the motor. This paper shows that besides the motor current impact, motor operating speed is another factor that should be considered and addressed in the flux linkage estimation of an IPM motor. This is particularly important for IPM motors in EV applications, which typically require for a very broad motor operating speed range from low to very high speed. The paper shows that the conventional estimation method based on motor current information only cannot provide accurate motor flux estimation, especially for motors operating at high-speed conditions. The paper also indicates that introducing additional impact factors could cause significant challenges to the conventional methods in terms of computing complexity and memory needed to store the conventional lookup tables. To overcome the challenges, the paper proposes a neural network (NN) method for flux linkage identification. The proposed NN is trained offline. Therefore, it only requires a small memory size to store the trained network weights and computing efficiency is high, and suitable for online implementation. The evaluation study in this paper demonstrates that compared to the conventional methods, the proposed NN method can provide accurate flux linkage estimation, which further enhances the motor torque estimation based on the proposed NN method.",
+    "oa_url": "",
+    "url": "https://openalex.org/W4403124911"
+  },
+  {
+    "doi": "10.1007/s00202-022-01726-x",
+    "title": "Phase flux linkage estimation of external rotor switched reluctance motor with NARX neural network",
+    "year": 2023,
+    "cites": 4,
+    "venue": "Electrical Engineering",
+    "abstract": "",
+    "oa_url": "",
+    "url": "https://openalex.org/W4313531952"
+  },
+  {
+    "doi": "10.1049/iet-epa.2020.0105",
+    "title": "Torque–flux linkage recurrent neural network adaptive inversion control of torque for switched reluctance motor",
+    "year": 2020,
+    "cites": 20,
+    "venue": "IET Electric Power Applications",
+    "abstract": "In order to reduce the torque ripple for switched reluctance motor (SRM), the learning error preprocessing‐based torque–flux linkage recurrent neural network adaptive inversion control (TFRNNAIC) for SRM torque is proposed by the filter preprocessing and the non‐linear mechanism characteristics for SRM. In TFRNNAIC with the advantages of parallel and series–parallel structure, the torque feedback error learning method is employed to update the weights of the torque–flux linkage recurrent neural network. To suppress the ripple effectively in torque error used for the weight learning of the torque–flux linkage recurrent neural network and obtain an accurate TFRNNAIC, namely the torque–flux linkage model for SRM, the low‐pass filter preprocessing for the torque error is used. Moreover, the other low‐pass filter is executed to reduce the ripple in the output for the PD torque control. The superposition of outputs for TFRNNAIC and PD torque control is taken as the reference flux linkage. Compared with other control strategies, such as the classical parallel neural network control, the classical series–parallel neural network control and TFRNNAIC, the simulation results show that the learning error preprocessing‐based TFRNNAIC for SRM torque is capable of effectively reducing the torque ripple for SRM with the good recurrent performance.",
+    "oa_url": "",
+    "url": "https://openalex.org/W3023864976"
+  },
+  {
+    "doi": "10.1109/iecon49645.2022.9968452",
+    "title": "Synchronous reluctance motor flux linkage saturation modeling based on stationary identification and neural networks",
+    "year": 2022,
+    "cites": 3,
+    "venue": "Proceedings of the Annual Conference of the IEEE Industrial Electronics Society",
+    "abstract": "For synchronous reluctance motor (SynRM) parameters are easy to change when the magnetic circuit is saturated, and the characteristics of significant nonlinearity, the control based on fixed parameters will easily lead to poor control accuracy. In this paper, the influence of magnetic saturation of the motor magnetic circuit on the parameters is taken into account, and the motor parameters based on the stationary identification technique are identified offline. Simultaneously, due to the effect of hysteresis saturation, it is difficult to simply fit the stationary identified magnetic flux linkage parameters into the motor parameter curves. This paper combines a neural network training model with a control algorithm to dynamically assign the optimal current in real-time to improve response speed and robustness when controlling synchronous reluctance motors. By applying the neural network training data to the simulation analysis of MTPA control, the effectiveness of the adopted identification method and motor modeling method as well as the identified parameters applied to the high-precision control of synchronous reluctance motors is verified.",
+    "oa_url": "",
+    "url": "https://openalex.org/W4310969377"
+  },
+  {
+    "doi": "10.1109/pecon.2006.346680",
+    "title": "Mathematical Modeling of Flux-Linkage Characteristics of Switched Reluctance Motors Using Polynomial Neural Networks",
+    "year": 2006,
+    "cites": 4,
+    "venue": "IEEE International Power and Energy Conference",
+    "abstract": "Switched reluctance motor (SRM), built using revolutionary concept, has highly nonlinear flux-linkage characteristics depending heavily on phase current and rotor position. A good mathematical model for these characteristics would help to understand the workings of the motor; thus providing path for better control algorithms and motor designs. It is very much proven by many researchers in this area, that a straightforward simple mathematical model has never satisfied the complete overall characteristics. Moreover, there is no distinct guideline about what sort of mathematical model would be suitable. To overcome this problem, a self-organizing polynomial neural network is proposed in this paper. In this scheme, without any prior knowledge of the mathematical model, the model is evolved iteratively and progressively. The simulation test results verify the effectiveness of this approach.",
+    "oa_url": "",
+    "url": "https://openalex.org/W2541026301"
+  },
+  {
+    "doi": "10.1109/iecon.2005.1569115",
+    "title": "Novel flux linkage control of switched reluctance motor drives using observer and neural network-based correction methods",
+    "year": 2005,
+    "cites": 13,
+    "venue": "",
+    "abstract": "From the perspective of control of switched reluctance motor (SRM) drives, current control is typically used as an inner loop control method. In this paper, observer and artificial neural network (ANN)-based novel flux linkage control of SRM drives is presented and examined as an alternate approach to current control. The main advantage of flux linkage control is computational simplicity due to the insensitivity of controller gains to machine operation conditions, while current control depends on controller gains which are very sensitive to self-inductance of SRMs. Flux linkage control needs a reliable flux linkage estimator for desirable control of SRMs. Integration method to estimate flux linkage from measured phase voltages, currents and resistances is commonly used, but it is sensitive to measurement error and white noise. Another way to measure the flux linkage is to use a look-up table which is very sensitive to input currents because it is current- and position-based data. In this paper, a simple observer-based voltage and ANN-based current correction method is proposed to overcome the measurement error. Furthermore, ANNs with two layers and five neurons are applied to produce an acceptable flux linkage estimate at each corrected current and measured position, instead of a look-up table. Finally, simulation results are presented to validate its performance.",
+    "oa_url": "",
+    "url": "https://openalex.org/W2121377363"
+  },
+  {
+    "doi": "",
+    "title": "Flux linkage characteristics on-line modeling of switched reluctance motor based on boundary constraints RBF neural network",
+    "year": 2015,
+    "cites": 1,
+    "venue": "Dianji yu kongzhi xuebao",
+    "abstract": "For the purpose of resolving modeling difficulties of switched reluctance motor( SRM),brought by nonlinear characteristics,flux linkage characteristics on-line modeling of high power SRM was studied. On the basis of analyzing boundary constraints RBF neural network topology structure and learning algorithm,flux linkage characteristics on-line modeling method based on DSP was proposed. On-line modeling experiment platform of SRM was set up. Experiment results of 18. 5 k W and 132 k W SRM show that the method can realize flux linkage characteristics on-line modeling under different power rating,the modeling error is less than 0. 01 Wb. The proposed method obtained original data by speed open-loop constant current on-line detection method,does not need additional hardware testing equipment and is feasible and portable for SRM modeling which provides an easy way to implement it.",
+    "oa_url": "",
+    "url": "https://openalex.org/W2350730436"
+  },
+  {
+    "doi": "",
+    "title": "A New Inductance and Flux Linkage Modeling Method for Switched Reluctance Motor Based on Dynamic Fuzzy Neural Network",
+    "year": 2013,
+    "cites": 0,
+    "venue": "Electric Machines and Control Application",
+    "abstract": "A new modeling method using dynamic fuzzy neural network(D-FNN) for switched reluctance motor was proposed.It was based on the inductance and flux linkage characteristics,namely experimentally measured data as well as sample data.Compared with other modeling methods,the inductance and flux linkage models based on DFNN could be trained on line and had the advantages of compact system structure and strong generalization ability.The switched reluctance drive system was simulated with the trained inductance and flux linkage models.In comparison with the actual system,current waves demonstrated similarity.As a result,the correctness and feasibility of the new modeling method were proved.At the same time,the new modeling method could also be applied to actual real time control system to provide the basis for engineering design and debugging.",
+    "oa_url": "",
+    "url": "https://openalex.org/W2368020322"
+  },
+  {
+    "doi": "10.25103/jestr.172.16",
+    "title": "Parameter Identification of Nonlinear Flux-Linkage Model for Switched Reluctance Motor Based on Chaotic Diagonal Recurrent Neural Network",
+    "year": 2024,
+    "cites": 0,
+    "venue": "Journal of Engineering Science and Technology Review",
+    "abstract": "Given the high saturation, strong nonlinearity, and tight coupling characteristics of the magnetic paths in a switched reluctance motor (SRM), accurately modeling flux-linkage is challenging, thus leading to excessive torque ripple during SRM torque control.In order to enhance the precision of the SRM flux-linkage model, a neural network-based method for the parameter identification of SRM's nonlinear flux-linkage model was proposed in this study.Logistic mapping elements were incorporated into the feedback layer of the diagonal recurrent neural network (DRNN), and chaotic control parameters were designed.Then, the construction of an analytical model of the nonlinear exponential flux-linkage function using the chaotic diagonal recurrent neural network (CDRNN) was established.By utilizing sample data of flux-linkage, current, and angular position, the parameters of this model were estimated, thus achieving a precise nonlinear exponential function model of the flux-linkage.Results show that, the integration of logistic mapping in the CDRNN feedback layer effectively prevents the local minima typically associated with conventional DRNN.The maximum error in the identified flux-linkage is less than 0.01 Wb, and the accuracy reached 95%.Compared with the DRNN method, the CDRNN approach demonstrates significantly reduced errors and higher model precision.This study offers valuable insights for enhancing the performance of SRM torque ripple control.",
+    "oa_url": "http://dx.doi.org/10.25103/jestr.172.16",
+    "url": "https://openalex.org/W4396842768"
+  },
+  {
+    "doi": "10.2528/pierm14011604",
+    "title": "THE RESEARCH ON FLUX LINKAGE CHARACTERISTIC BASED ON BP AND RBF NEURAL NETWORK FOR SWITCHED RELUCTANCE MOTOR",
+    "year": 2014,
+    "cites": 2,
+    "venue": "Progress In Electromagnetics Research M",
+    "abstract": "The ∞ux and torque of switched reluctance motor (SRM) have a highly nonlinear functional relationship with rotor position and phase current, as a consequence of the double-salient structure of the stator and rotor pole and highly magnetic saturation, which is di-cult to build an accurate analytic model. In order to achieve the SRM high-performance control, it is necessary to build an accurate nonlinear model for SRM. On the basis of the adequate and precise sample data, by taking advantage of neural network that has outstanding nonlinear mapping capability, this paper adopts the Back Propagation (BP) based on Levenberg-Marquardt (LM) algorithm and Radial Basis Function (RBF) neural network to build o†ine models for SRM respectively. Under difierent requirements of model accuracy, two kinds of network are studied and compared with each other on accuracy, scale and other aspects. The research results indicate that the network scale built as SRM nonlinear model by BP neural network based on LM algorithm is smaller than the one built by RBF. Additionally, the model accuracy is higher. In terms of the Switched Reluctance Drive (SRD) which requires real-time controller, reducing the network scale will be beneflcial to the online real-time control of the system.",
+    "oa_url": "",
+    "url": "https://openalex.org/W2121080748"
+  },
+  {
+    "doi": "10.1109/tmag.2009.2026897",
+    "title": "Measurement and Real-Time Modeling of Inductance and Flux Linkage in Switched Reluctance Motors",
+    "year": 2009,
+    "cites": 41,
+    "venue": "IEEE Transactions on Magnetics",
+    "abstract": "This paper presents a real-time model to identify the inductance and the flux linkage of switched reluctance motors (SRMs). A dynamic measurement method is used for the real-time modeling. An artificial neural network (ANN), designed in accordance with the inductance and the flux linkage data obtained from the dynamic measurement method, is used to make the real-time model. Experimental studies are realized to prove the applicability of the dynamic measurement method and the ANN-based model. The experiments are performed by using a TMS320F2812 digital signal processor (DSP). The results show that the dynamic measurement method and the ANN-based model ensure real values in all the positions and load conditions of the motor.",
+    "oa_url": "",
+    "url": "https://openalex.org/W2096189523"
+  },
+  {
+    "doi": "10.1109/63.988671",
+    "title": "An approach for sensorless position estimation for switched reluctance motors using artifical neural networks",
+    "year": 2002,
+    "cites": 167,
+    "venue": "IEEE Transactions on Power Electronics",
+    "abstract": "This paper presents a new approach to the sensorless control of the switched-reluctance motor (SRM). The basic premise of the method is that an artificial neural network (ANN) forms a very efficient mapping structure for the nonlinear SRM. Through measurement of the phase flux linkages and phase currents the neural network is able to estimate the rotor position, thereby facilitating elimination of the rotor position sensor. The ANN training data set is comprised of magnetization data for the SRM with flux linkage (/spl lambda/) and current (i) as inputs and the corresponding position (/spl theta/) as output in this set. Given a sufficiently large training data set, the ANN can build up a correlation among /spl lambda/, i and /spl theta/ for an appropriate network architecture. This paper presents the development, implementation, and operation of an ANN-based position estimator for a three-phase SRM.",
+    "oa_url": "",
+    "url": "https://openalex.org/W2101022332"
+  },
+  {
+    "doi": "10.1109/tie.2007.903965",
+    "title": "Sensorless Control of Single Switch-Based Switched Reluctance Motor Drive Using Neural Network",
+    "year": 2008,
+    "cites": 124,
+    "venue": "IEEE Transactions on Industrial Electronics",
+    "abstract": "Neural networks (NNs) have proven to be useful in approximating nonlinear systems and in many applications, including motion control. Hitherto, NNs advocated in switched reluctance motor (SRM) control have a large number of neurons in the hidden layer. This has impeded their real-time implementation with DSPs, particularly at high rotational speeds, because of the large number of operations required by the NN controller within a sampling interval. One of the ideal applications of NNs in SRM control is in rotor position estimation using only current and/or voltage signals. Elimination of rotor position sensors is practically mandatory for high-volume, high-speed, and low-cost applications of SRMs, for example, in home appliances such as in vacuum cleaners. In this paper, through simulation and analysis, it is demonstrated that a minimal NN configuration is attainable to implement rotor position estimation in SRM drives. The NN is trained and implemented on an inexpensive DSP microcontroller. NN training data, current, and flux linkage are obtained directly from the system during its operation. Furthermore, the chosen method is implemented on a single-switch-converter-driven SRM with two phases. This configuration of the motor drive is chosen because it is believed that this is the lowest cost variable speed machine system available. Experimental verification of this motor drive system is provided to demonstrate the viability of the proposed approach for the development of low-cost motor drives.",
+    "oa_url": "",
+    "url": "https://openalex.org/W2176760140"
+  },
+  {
+    "doi": "10.1109/tmech.2018.2870892",
+    "title": "Research on Rotor Position Model for Switched Reluctance Motor Using Neural Network",
+    "year": 2018,
+    "cites": 102,
+    "venue": "IEEE/ASME Transactions on Mechatronics",
+    "abstract": "Due to the double-salient structure of the switched reluctance motor (SRM) and highly magnetic saturation, its rotor position shows highly nonlinear function with phase current and flux linkage. Therefore, the establishment of accurate and small-scale SRM rotor position model is crucial to realize SRM position sensorless control. This paper is based on SRM flux characteristics collected by actual measurement, then adopts back-propagation neural network (BPNN) with improved algorithm and radial basis function neural network (RBFNN), respectively, to build SRM rotor position model. It is concluded that the model built by BPNN based on the Levenberg-Marquardt algorithm has smaller network structure and higher accuracy than RBFNN. In order to optimize BPNN model further, two kinds of pretreatment methods are used to study SRM rotor position model, respectively, and the modeling results of these two methods are compared. Adopting pretreatment method could reduce scale and improve accuracy to achieve the model optimization. After initial rotor position was estimated accurately without rotor position sensor, experiments are performed based on a three-phase 12/8 SRM. The experimental results verify that the BPNN model of rotor position for SRM based on a pretreatment method could be applied to SRM position sensorless control.",
+    "oa_url": "",
+    "url": "https://openalex.org/W2890781737"
+  },
+  {
+    "doi": "10.1109/iecon.1994.397968",
+    "title": "Neural network based torque ripple minimisation in a switched reluctance motor",
+    "year": 2002,
+    "cites": 47,
+    "venue": "Proceedings of the Annual Conference of the IEEE Industrial Electronics Society",
+    "abstract": "This paper presents an artificial neural network (ANN) solution to torque ripple reduction in a switched reluctance motor. Magnetic saturation together with salient stator and rotor poles give rise to a highly nonlinear torque/current/angle characteristic. The approach in this paper allows the neural network to be used to its full potential, that is, learning the nonlinear flux linkage characteristic while also incorporating a priori analytical knowledge of the torque production mechanism of the machine. This combination of neuro-learning and analytical insight results in a greatly simplified controller. Simulation results are presented to illustrate the performance of the proposed technique. Experimental results based on a floating point DSP processor are included.>",
+    "oa_url": "",
+    "url": "https://openalex.org/W1872017704"
+  },
+  {
+    "doi": "10.1109/tie.2006.888778",
+    "title": "Online Stator and Rotor Resistance Estimation Scheme Using Artificial Neural Networks for Vector Controlled Speed Sensorless Induction Motor Drive",
+    "year": 2007,
+    "cites": 266,
+    "venue": "IEEE Transactions on Industrial Electronics",
+    "abstract": "This paper presents a new method of online estimation for the stator and rotor resistances of the induction motor for speed sensorless indirect vector controlled drives, using artificial neural networks. The error between the rotor flux linkages based on a neural network model and a voltage model is back propagated to adjust the weights of the neural network model for the rotor resistance estimation. For the stator resistance estimation, the error between the measured stator current and the estimated stator current using neural network is back propagated to adjust the weights of the neural network. The rotor speed is synthesized from the induction motor state equations. The performance of the stator and rotor resistance estimators and torque and flux responses of the drive, together with these estimators, are investigated with the help of simulations for variations in the stator and rotor resistances from their nominal values. Both resistances are estimated experimentally, using the proposed neural network in a vector controlled induction motor drive. Data on tracking performances of these estimators are presented. With this speed sensorless approach, the rotor resistance estimation was made insensitive to the stator resistance variations both in simulation and experiment. The accuracy of the estimated speed achieved experimentally, without the speed sensor clearly demonstrates the reliable and high-performance operation of the drive",
+    "oa_url": "",
+    "url": "https://openalex.org/W2140768615"
+  },
+  {
+    "doi": "10.1109/rissp.2003.1285577",
+    "title": "Sensorless position estimation of switched reluctance motors using artificial neural networks",
+    "year": 2004,
+    "cites": 15,
+    "venue": "",
+    "abstract": "In this paper a model for sensorless position estimation of switched reluctance motor (SRM) is developed. This artificial neural network (ANN) based model is ultimately developed for nonlinear modeling of SRM. The nonlinear characteristics of SRM, which are mainly due to the magnetic saturation of the phase winding, are considered. This model is developed together with a set of measured data, which comprises of magnetization data for the SRM with flux linkage and phase currents as inputs and the corresponding rotor position as output. ANN forms a very efficient mapping structure for the nonlinear SRM. Given a sufficient large training data set, the ANN can build up a correlation between flux-linkages and rotor angle for an appropriate network architecture. The resultant model allows the determination of rotor estimation without any implementation of empirical equation to determine the unknown parameters in SRMs. This paper presents the development, implementation, operation and results of an ANN-based position estimator for any type of SRM.",
+    "oa_url": "",
+    "url": "https://openalex.org/W2531947944"
+  },
+  {
+    "doi": "10.1088/1742-6596/1176/5/052036",
+    "title": "The Design of Flux Linkage Measurement for Switched Reluctance Motor",
+    "year": 2019,
+    "cites": 2,
+    "venue": "Journal of Physics Conference Series",
+    "abstract": "A Back Propagation neural network (BPNN) flux linkage model was proposed based on the measured magnetization curve for 8/6 poles switched reluctance motor (SRM). A flux linkage measuring installation is set up by using a digital signal processor (DSP) and measuring the voltage of winding under different rotor positions and different current values, then obtained the value of the corresponding flux linkage and the rotor magnetization characteristics of different positions.The flux linkage has higher accuracy. The design has the actual reference value to the high performance speed control of SRM.",
+    "oa_url": "https://iopscience.iop.org/article/10.1088/1742-6596/1176/5/052036/pdf",
+    "url": "https://openalex.org/W2924213772"
+  },
+  {
+    "doi": "10.1109/tec.2005.853761",
+    "title": "Stator and Rotor Resistance Observers for Induction Motor Drive Using Fuzzy Logic and Artificial Neural Networks",
+    "year": 2005,
+    "cites": 93,
+    "venue": "IEEE Transactions on Energy Conversion",
+    "abstract": "This paper presents a new observer for the rotor resistance of an indirect vector controlled induction motor drive using artificial neural networks supplemented by a fuzzy logic based stator resistance observer. The error between the rotor flux linkages based on a neural network model and a voltage model is back propagated to adjust the weights of the neural network model for the rotor resistance estimation. The error between the measured stator current and its corresponding estimated value is mapped to a change in stator resistance with a proposed fuzzy logic. The stator resistance observed with this approach is used to correct the rotor resistance observer using neural networks. The performance of these observers and torque and flux responses of the drive, together with these estimators, are investigated with the help of simulations. Both modeling and experimental data on tracking performances of these observers are presented. With this approach accurate rotor resistance estimation was achieved and was made insensitive to stator resistance variations both in modeling and experiment.",
+    "oa_url": "",
+    "url": "https://openalex.org/W1975155298"
+  },
+  {
+    "doi": "10.1109/tie.2007.904009",
+    "title": "Online Modeling for Switched Reluctance Motors Using B-Spline Neural Networks",
+    "year": 2007,
+    "cites": 101,
+    "venue": "IEEE Transactions on Industrial Electronics",
+    "abstract": "A novel online-modeling scheme for the switched reluctance motor (SRM) using a B-spline neural network (BSNN) is proposed in this paper. A 2-D BSNN is designed to learn the nonlinear-flux-linkage characteristic of an SRM online and in real-time. Torque, incremental inductance, and back-emf estimates can be derived from the BSNN after training. The scheme does not require a priori knowledge of the SRM electromagnetic characteristics. Simulation and experimental results show that the scheme has a good estimation performance and robustness at low to medium motor speed.",
+    "oa_url": "",
+    "url": "https://openalex.org/W2166216926"
+  },
+  {
+    "doi": "10.1155/2009/241809",
+    "title": "Identification of Induction Motor Parameters in Industrial Drives with Artificial Neural Networks",
+    "year": 2009,
+    "cites": 7,
+    "venue": "Advances in Fuzzy Systems",
+    "abstract": "This paper presents a new method of online estimation of the stator and rotor resistance of the induction motor in the indirect vector‐controlled drive, with artificial neural networks. The back propagation algorithm is used for training of the neural networks. The error between the rotor flux linkages based on a neural network model and a voltage model is back propagated to adjust the weights of the neural network model for the rotor resistance estimation. For the stator resistance estimation, the error between the measured stator current and the estimated stator current using neural network is back propagated to adjust the weights of the neural network. The performance of the stator and rotor resistance estimators and torque and flux responses of the drive, together with these estimators, is investigated with the help of simulations for variations in the stator and rotor resistance from their nominal values. Both types of resistance are estimated experimentally, using the proposed neural network in a vector‐controlled induction motor drive. Data on tracking performances of these estimators are presented. With this approach, the rotor resistance estimation was found to be insensitive to the stator resistance variations both in simulation and experiment.",
+    "oa_url": "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1155/2009/241809",
+    "url": "https://openalex.org/W2063279308"
+  },
+  {
+    "doi": "10.5120/4602-6560",
+    "title": "Artificial Neural Network Control of Permanent Magnet Synchronous Motor",
+    "year": 2012,
+    "cites": 4,
+    "venue": "International Journal of Computer Applications",
+    "abstract": "This paper presents a neural network controller for permanent magnet synchronous motor (PMSM).The neural controller is used for torque ripple minimization of this type of motors.Two methods of neural controller design are used.The first method is based on two loop controllers (current controller and speed controller).The second method is based on estimation of torque constant and stator resistance in PMSM.The q-axis inductance is modeled off-line according to q-axis stator current.The neural weights are initially chosen small randomly and a model reference control algorithm adjusts those weights to give the optimal values.The neural network parameter estimator has been applied to flux linkage torque ripple minimization of the PMSM.Simulation results using the two methods are compared together.Moreover, the suggested algorithms when compared with other controllers show great success in torque ripples reduction.",
+    "oa_url": "https://doi.org/10.5120/4602-6560",
+    "url": "https://openalex.org/W2123005265"
+  },
+  {
+    "doi": "10.1109/ecce53617.2023.10362736",
+    "title": "Online Identification of Nonlinear Flux Linkages Using Neural Networks for Highly Utilized PMSMs",
+    "year": 2023,
+    "cites": 3,
+    "venue": "IEEE Energy Conversion Congress and Exposition (ECCE)",
+    "abstract": "Dynamic model-based control and efficient operation of highly utilized permanent magnet synchronous motors (PMSMs) require detailed knowledge of the magnetic behavior of the machine. Due to sparse yet efficient usage of iron and magnet material, the flux linkages of such PMSMs are highly nonlinear. To model the nonlinearities of the machine exactly usually huge lookup tables (LUTs) containing the flux linkages are used, which need to be obtained by finite element analysis (FEA) or by extensive measurement.As a lean and adaptive alternative, this paper proposes a data-driven method which uses a multilayer perceptron (MLP) neural network model, mapping current to flux linkage, which is trained from measurement and control values processed by a model-based open loop current controller. As no large lookup tables are required, this implementation is especially memory efficient.The proposed identification method is validated by simulation and dynamic tests on a test bench.",
+    "oa_url": "",
+    "url": "https://openalex.org/W4390416647"
+  },
+  {
+    "doi": "10.1016/j.enconman.2009.05.025",
+    "title": "A nonlinear full model of switched reluctance motor with artificial neural network",
+    "year": 2009,
+    "cites": 29,
+    "venue": "Energy Conversion and Management",
+    "abstract": "",
+    "oa_url": "",
+    "url": "https://openalex.org/W1996681870"
+  },
+  {
+    "doi": "10.1109/iccet.2010.5486289",
+    "title": "Nonlinear modeling for switched reluctance motor by measuring flux linkage curves",
+    "year": 2010,
+    "cites": 10,
+    "venue": "International Conference on Computer Engineering and Technology",
+    "abstract": "Two kinds of modeling methods are studied based on measuring flux linkage curves for switched reluctance motor (SRM) which the machine geometry is unknowable. A simplified model of SRM is presented for general switched reluctance drive (SRD), which is easy to be built and its accuracy has been improved compared with the quasi-linear model. To get an accurate model, the BP Neural Network (BPNN) nonlinear model of SRM is developed based on Levenberg-Marquardt algorithm by measuring flux linkage characteristics. Compared with measured data of flux linkage and torque, the BPNN model of SRM is proved accurate and meet high performance SRD. Both kinds of the modeling methods are suitable for SRD with different control performance requirement respectively.",
+    "oa_url": "",
+    "url": "https://openalex.org/W2167514564"
+  },
+  {
+    "doi": "",
+    "title": "Induction motor parameter determination technique using artificial neural networks",
+    "year": 2008,
+    "cites": 4,
+    "venue": "",
+    "abstract": "This paper presents a new method of on-line estimation for the stator and rotor resistances of the induction motor in the indirect vector controlled drive, using artificial neural networks. The back propagation algorithm is used for training of the neural networks. The error between the rotor flux linkages based on a neural network model and a voltage model is back propagated to adjust the weights of the neural network model for the rotor resistance estimation. For the stator resistance estimation, the error between the measured stator current and the estimated stator current using neural network is back propagated to adjust the weights of the neural network. The performance of the stator and rotor resistance estimators and torque and flux responses of the drive, together with these estimators, are investigated with the help of simulations for variations in the stator and rotor resistances from their nominal values. Both resistances are estimated experimentally, using the proposed neural networks in a vector controlled induction motor drive. Data tracking performances of these estimators are presented. With this approach the rotor resistance estimation was found to be insensitive to the stator resistance variations both in simulation and experiment.",
+    "oa_url": "",
+    "url": "https://openalex.org/W1526945084"
+  },
+  {
+    "doi": "",
+    "title": "Modeling and Simulation of Switched Reluctance Motor Based on Adaptive Fuzzy-Neural Networks",
+    "year": 2005,
+    "cites": 0,
+    "venue": "",
+    "abstract": "Because the characteristic of flux linkage in the switche reluctance motor(SRM) is highly non-linear, in the analytical model, the toque-angle characteristic which leading out from the flux linkage model may bring very heavy error. In this paper, based on surveying static curve or SRM flux linkage, obtaining the torque-angle characteristic through calculating the flux linkage, using adaptive fuzzy-neural network to SRM modeling, then the good effect was obtained The simulation result shows that this method has certain reference value to analyze the running performance of SRM and its driving system under different control modes.",
+    "oa_url": "",
+    "url": "https://openalex.org/W2378999424"
+  },
+  {
+    "doi": "",
+    "title": "The Neural Networks Modeling of Switched Reluctance Motor and its Arithmetic",
+    "year": 2008,
+    "cites": 1,
+    "venue": "Journal of Hunan University",
+    "abstract": "In order to avoid the problems of slow rate of convergence,easy falling into local minimum and difficulty in determining the number of hidden nodes of the feed-forward neural network in BP algorithm,a fast self-configuring arithmetic was used to train BP neural networks.This arithmetic was the integration of Levenberg-Marquardt arithmetic and the improved self-configuring arithmetic.Furthermore,the nonlinear model of Switched Reluctance Motor(SRM) was developed,which made use of the measured accurate flux-linkage data and the nonlinear mapping ability of BP neural network based on fast self-configuring arithmetic.This neural network model was of fast training convergence,generalization and small network scale handy for real-time control.The accuracy of this model was proved with experiment results.This model will help to optimize energy conversion and will reduce torque ripples.",
+    "oa_url": "",
+    "url": "https://openalex.org/W2381975551"
+  },
+  {
+    "doi": "10.5281/zenodo.1058102",
+    "title": "Modeling And Simulation Of Position Estimation Of Switched Reluctance Motor With Artificial Neural Networks",
+    "year": 2009,
+    "cites": 0,
+    "venue": "Zenodo (CERN European Organization for Nuclear Research)",
+    "abstract": "In the present study, position estimation of switched reluctance motor (SRM) has been achieved on the basis of the artificial neural networks (ANNs). The ANNs can estimate the rotor position without using an extra rotor position sensor by measuring the phase flux linkages and phase currents. Flux linkage-phase current-rotor position data set and supervised backpropagation learning algorithm are used in training of the ANN based position estimator. A 4-phase SRM have been used to verify the accuracy and feasibility of the proposed position estimator. Simulation results show that the proposed position estimator gives precise and accurate position estimations for both under the low and high level reference speeds of the SRM",
+    "oa_url": "https://zenodo.org/record/1058103",
+    "url": "https://openalex.org/W2310820397"
+  },
+  {
+    "doi": "10.1109/icinfa.2015.7279661",
+    "title": "A control method of bearingless induction motor based on neural network",
+    "year": 2015,
+    "cites": 8,
+    "venue": "IEEE International Conference on Information and Automation (ICIA)",
+    "abstract": "To Solve The nonlinearity and coupling problem of bearingless induction motor, a decoupling control method based on neural network inverse system is proposed. Under the condition of considering stator current dynamics of torque system, the stator voltage are selected as input variables, and by neural network training, the inverse system model of torque system is identified, which is used to decouple the torque system into two second order linear subsystems, include rotor flux-linkage and speed subsystems. Then in magnetic suspension control system, the negative feedback control of radial displacement and the compensation of unbalance unilateral electromagnetic pull are achieved; the required air gap flux-linkage of torque system is calculated online according to rotor flux-linkage and stator current components. From the simulation results: compared with the decoupling control method based on analytic inverse system, the control system owns stronger dynamic response characteristics and stronger ability of anti disturbance; the proposed control strategy is effective.",
+    "oa_url": "",
+    "url": "https://openalex.org/W1661329142"
+  }
+]

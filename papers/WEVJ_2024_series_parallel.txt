@@ -1,0 +1,679 @@
+
+
+===== PAGE 1 =====
+
+Citation: Shin, Y.; Cho, S.; Lee, J. A
+Study on Series-Parallel Winding
+Changeover Circuit and Control
+Method for Expanding the High-
+Efficiency Operating Range of IPMSM
+for xEV Drive Systems. World Electr.
+Veh. J. 2024, 15, 501. https://
+doi.org/10.3390/wevj15110501
+Academic Editor: Grzegorz Sierpi´nski
+Received: 30 September 2024
+Revised: 24 October 2024
+Accepted: 25 October 2024
+Published: 31 October 2024
+Copyright: © 2024 by the authors.
+Licensee MDPI, Basel, Switzerland.
+This article is an open access article
+distributed
+under
+the
+terms
+and
+conditions of the Creative Commons
+Attribution (CC BY) license (https://
+creativecommons.org/licenses/by/
+4.0/).
+Article
+A Study on Series-Parallel Winding Changeover Circuit and
+Control Method for Expanding the High-Efficiency Operating
+Range of IPMSM for xEV Drive Systems
+Yangjin Shin 1, Suyeon Cho 2 and Ju Lee 1,*
+1
+Department of Electrical Engineering, Hanyang University, Seoul 04763, Republic of Korea;
+yjshin@katech.re.kr
+2
+Department of Electric Power Train R&D, Korea Automotive Technology Institute,
+Cheonan 31214, Republic of Korea; sycho@katech.re.kr
+*
+Correspondence: julee@hanyang.ac.kr
+Abstract: The motor characteristics control method using the winding changeover technique can
+improve the matching ratio between the most frequent operating point of electric vehicle (EV) and the
+motor’s high-efficiency operating point, thereby enhancing the overall average efficiency of the drive
+system. This technology reduces back electromotive force and winding resistance by adjusting the
+effective number of motor winding turns according to the EV’s operating speed, ultimately improving
+the average efficiency. In this paper, we propose a winding changeover circuit and control method that
+maximizes the average efficiency in the main driving regions to extend the driving range per charge
+and improve the fuel efficiency of EVs. The proposed circuit is constructed using thyristor switching
+devices, offering the advantage of relatively lower overall system losses compared to conventional
+circuits. Due to the characteristics of the thyristor switching devices used in the proposed circuit,
+seamless winding changeover is possible during motor operation. Additionally, no extra snubber
+circuits are required, and the relatively low switch losses suggest the potential for improved efficiency
+and lightweight design in EV drive systems. To verify the proposed winding changeover circuit
+and control scheme, experiments were conducted using a dynamometer with an 80 kW permanent
+magnet motor, inverter, and the developed prototype of the winding changeover circuit.
+Keywords: winding changeover circuit; interior permanent magnet synchronous motor (IPMSM);
+thyristor; electric vehicle (EV)
+1. Introduction
+The global automotive market is expected to rapidly shift towards high-efficiency
+internal combustion engines, alternative fuels, and low-emission vehicles due to increasing
+fuel cost burdens from oil price fluctuations and tightening CO2 emission regulations.
+Furthermore, major organizations such as the DOE project that eco-friendly vehicles will
+account for more than 50% of the market within the next decade [1,2]. As a result, with
+the expansion of the eco-friendly vehicle market, competition is intensifying, focusing on
+technologies that improve the fuel efficiency of EVs [3–6].
+The interior permanent magnet synchronous motor (IPMSM), primarily used as the
+drive system for EVs, offers higher efficiency compared to engines, reduces vibration
+and noise issues, and enables precise and accurate torque control across the entire speed
+range [7]. Therefore, unlike conventional engine vehicles, most electric drive systems are
+equipped with a reduction gear with a fixed reduction ratio, allowing the vehicle to be
+driven over the entire speed range without a separate mechanical transmission system.
+Figure 1 shows the efficiency map for the entire driving range of the IPMSM, overlap-
+ping the main driving points according to the two driving modes of the vehicle. As can be
+seen in the figure, the frequently utilized operating areas of the vehicle are characterized by
+World Electr. Veh. J. 2024, 15, 501. https://doi.org/10.3390/wevj15110501
+https://www.mdpi.com/journal/wevj
+
+
+===== PAGE 2 =====
+
+World Electr. Veh. J. 2024, 15, 501
+2 of 16
+a division between low-speed, high-torque conditions in urban settings and high-speed,
+low-torque conditions on highways. In contrast, the high-efficiency region of the optimally
+designed IPMSM is distributed in the area marked in blue. Therefore, as shown in Figure 1,
+there is a mismatch between the most frequently used operating points of the EV and the
+high-efficiency region of the IPMSM. Since the full charge range of the EV is determined
+by the average efficiency range, not the highest efficiency point of the electric motor, the
+expected driving distance of the EV is bound to be shorter than the motor performance.
+Figure 1. Efficiency map of the IPMSM for the entire driving range with overlapping main driving
+points of the two driving modes.
+Since increasing the peak efficiency of the motor is becoming increasingly difficult from
+a design perspective and is already reaching saturation, it is more important for EV motors
+to expand the range of average high efficiency. Alternatively, even if the motor’s peak
+efficiency is not high, expanding the range of high efficiency can enhance the actual driving
+efficiency of the vehicle. Therefore, in order to solve this problem, there is an increasing
+demand for the development of a changeover system that changes the characteristics of the
+motor according to the driving speed of the EV so that the efficiency of the main operating
+points can be improved [8].
+Figure 2 illustrates the torque-speed curves for each operating mode of the two-speed
+changeover system. By adjusting the motor characteristics to match the operating range of
+the EV, high-efficiency operation can be achieved over a wide speed range.
+Figure 2. Torque-Speed characteristics of two-stage changeover system.
+The methods for altering the motor characteristics can be broadly divided into
+two categories: varying the flux linkage or adjusting the winding configuration. The
+method of varying magnetic flux can lead to increased mechanical complexity, resulting in
+a larger overall drive system size, and may complicate the switching process during vehicle
+operation, making it unsuitable for application in EVs. Therefore, this paper selects the
+
+
+===== PAGE 3 =====
+
+World Electr. Veh. J. 2024, 15, 501
+3 of 16
+winding changeover method, which is relatively simple in terms of mechanical structure
+and easy to control, allowing for changeover during operation and making it more suitable
+for vehicle applications.
+The method of adjusting the motor’s windings involves changing the winding connec-
+tions or altering the effective turn count to regulate the back electromotive force, thereby
+expanding the inverter’s motor control range [9,10]. In EV drive systems, circuits that
+change the winding structure of the motor are actively being developed, primarily in Japan,
+and are also being applied to home appliances such as washing machines and wind power
+systems [11,12]. However, the winding changeover systems composed of conventional
+mechanical switches have a limited circuit lifespan. Moreover, since the method requires
+stopping the motor to change the connections via switches before restarting, it results
+in long changeover times and interruptions in motor current and torque, posing limita-
+tions for application in EVs. To address the issues associated with mechanical switches,
+changeover circuits using electrical switches have been developed, including ∆-Y configu-
+rations, neutral-point changeover systems, and other variable-phase configurations [13–17].
+The variable-phase configuration can achieve relatively high-efficiency in the changeover
+circuit, but it has the disadvantage of increased complexity in the changeover circuit
+components [18]. The ∆-Y winding changeover circuit reduces interruptions in motor
+current and torque due to shorter changeover times; however, its low changeover ratio
+makes it difficult to achieve the average high efficiency required for EVs [19]. In the case
+of neutral-point changeover circuits, while the control is straightforward, the need for
+additional snubber circuits during the changeover and the significant losses incurred in the
+circuit are notable disadvantages. Although existing changeover circuits have proposed
+various circuit structures, they lack sufficient analysis of the efficiency characteristics re-
+lated to the additional power consumption incurred by each model. This paper aims to
+analyze the power consumption of the components used when optimizing the design of
+the changeover circuit based on the specified motor characteristics, while also establishing
+specific applicability regarding vehicles in terms of component costs.
+Meanwhile, a leading Japanese company has implemented its proprietary electromag-
+netic changeover system in EVs, significantly expanding the high-efficiency operating range
+within the main driving region [20–22]. This circuit utilizes a minimal number of IGBT
+switches and diodes, effectively addressing the limited lifespan issues of traditional me-
+chanical switches while also reducing changeover time. However, to dissipate the residual
+energy from the motor winding inductors during the changeover, a separate snubber circuit
+composed of R-C-D is required. Additionally, high conduction losses occurring in the IGBT
+switches of the changeover circuit can reduce the power density of the drive system.
+This paper proposes a changeover circuit utilizing thyristor switch and conducts a com-
+parative analysis with existing advanced changeover circuits. The proposed changeover
+circuit employs thyristors to connect the motor windings in series during low-speed opera-
+tion and in parallel during high-speed operation, thereby enabling the achievement of high
+efficiency for EVs across a wide operating range [23]. Furthermore, the use of thyristors
+during the changeover enables seamless operation without interruption, eliminating the
+need for a separate snubber circuit. Additionally, the relatively low losses in the drive
+system can enhance the fuel efficiency and reduce the weight of EVs. To verify the vehicle
+applicability of the proposed changeover circuit, performance was demonstrated through
+dynamometer testing in conjunction with an inverter and an 80 kW IPMSM featuring an
+altered winding structure.
+2. Conventional Changeover Circuit
+This paper introduces the changeover circuit commercialized by leading compa-
+nies and the proposed circuit, providing a comparative analysis of their losses and costs.
+Figure 3 illustrates the neutral-point shift type two-speed changeover circuit that has
+been commercialized.
+
+
+===== PAGE 4 =====
+
+World Electr. Veh. J. 2024, 15, 501
+4 of 16
+ 
+Figure 3. The structure of the conventional changeover circuit.
+This two-speed changeover circuit consists of an IGBT switch, a three-phase diode
+rectifier, and an R-C-D snubber. During low-speed operation, S1 is turned off and S2 is
+turned on, short-circuiting A2, B2, and C2 of the motor in a Y-connection, allowing the
+use of the entire motor winding. During high-speed operation, S1 is turned on, short-
+circuiting A1, B1, and C1 in a Y-connection, which enables the use of only half of the
+motor winding. In the figures, ia, ib, and ic represent the output currents of the inverter.
+ia1, ib1 and ic1 indicate the phase currents when only half of the motor windings are used
+during high-speed operation. Conversely, during low-speed operation when all motor
+windings are used, ia2, ib2 and ic2 represent the phase currents of the motor.
+The winding connections and back electromotive force of the motor during high-
+speed and low-speed operation in this circuit can be represented using vector diagrams,
+as shown in Figure 4. In the first low-speed mode, where the back electromotive force
+is small, all windings are used, while in the second high-speed mode, the use of motor
+windings is reduced to lower the back electromotive force, thereby expanding the motor’s
+operating range.
+ 
+(a) 
+(b) 
+Figure 4. Voltage vector diagrams according the winding connections in the conventional neutral-
+point shift type changeover circuit. (a) Low-speed mode; (b) high-speed mode.
+This circuit addresses the limited lifespan issues of conventional mechanical switch-
+based changeover circuits. Additionally, it allows for switching operations during driving
+using electrical switches, thus reducing the winding changeover time. Additionally, this
+changeover circuit is highly stable from a circuit perspective and offers the advantages of a
+very simple design and control method. Figure 5 shows the simulation waveforms during
+the winding changeover operation of this circuit. ia, ib, and ic represent the output phase
+currents of the inverter, while ia1, ib1 and ic1 represent the phase currents when only half of
+
+
+===== PAGE 5 =====
+
+World Electr. Veh. J. 2024, 15, 501
+5 of 16
+the windings are used in high-speed mode. iS1 and iS2 indicate the currents flowing through
+the IGBTs in high-speed and low-speed modes, respectively. The simulation waveforms
+show the operation where the motor windings are fully utilized in low-speed mode (with
+S1 off and S2 on), then changeover to high-speed mode when S1 turns on.
+ 
+Figure 5. Simulation results of the conventional changeover circuit.
+During steady-state operation, significant conduction losses occur in the IGBT and
+diode rectifier of the changeover circuit, as shown in Figure 5. In particular, since the three-
+phase AC current rectified into DC flows entirely through the IGBT switch, approximately
+half of the total losses in the changeover circuit occur in the IGBT. Therefore, a drawback is
+that the cooling system size may need to increase due to the heat generated by the circuit
+losses. Additionally, a separate passive snubber circuit, consisting of R-C-D components,
+is required to dissipate the residual energy in the motor that may be generated during
+winding changeover. Since the winding changeover event occurs only occasionally, the
+energy dissipated in the snubber circuit can be considered negligible. Additionally, the
+neutral-point shift type changeover circuit has the characteristic of a lower utilization
+rate of the motor windings in high-speed mode, as only half of the windings are used.
+On the other hand, in this paper, the research was conducted with the original goal of
+improving the actual driving efficiency of vehicles, focusing on a winding changeover
+method that not only performs its function but also reduces the associated losses compared
+to conventional circuits.
+3. Proposed Changeover Circuit
+The proposed changeover circuit, as shown in Figure 6, is composed of thyristor
+switching devices and employs a method that switches the windings between series and
+parallel configurations. The proposed circuit consists of switches (S0p, S0n) that connect
+the motor windings in series, and switches (S1p, S1n, S2p, S2n) that connect the windings in
+parallel, for each phase. This circuit allows the motor windings to be switched from series
+to parallel and from parallel to series.
+
+
+===== PAGE 6 =====
+
+World Electr. Veh. J. 2024, 15, 501
+6 of 16
+Figure 6. Proposed series-parallel winding changeover circuit.
+Figure 7 shows the connection status of the proposed circuit according to the motor
+speed. At low speeds, the circuit is configured in series to utilize the cumulative BEMF,
+while at high speeds, due to voltage limitation issues, the circuit is configured in parallel to
+reduce the BEMF. By altering the Torque-Speed characteristics of the IPMSM according to
+each speed mode, high efficiency can be achieved across a wide speed range. Additionally,
+the proposed changeover circuit utilizes the characteristics of thyristor switching devices,
+allowing for the switching of motor windings between series and parallel configurations
+without the need for a separate snubber circuit.
+ 
+ 
+(a) 
+(b) 
+Figure 7. Connection status of the proposed changeover circuit based on motor speed. (a) Low-speed
+mode; (b) high-speed mode.
+Figure 8 illustrates the thyristor switching operation in the proposed changeover
+circuit. By alternating the SP switch during the positive cycle and the SN switch during the
+negative cycle, in accordance with the current phase, the motor current flows continuously
+without interruption. Rather than switching at the zero-crossing point where the positive
+and negative cycles of the current change, a gate signal is applied to the switch in advance
+to ensure safe current conduction. Since the gate signal of the thyristor switching device
+is driven by current, there may be a delay in the switching timing. To prevent circuit
+malfunction due to this delay, the gate signal must be turned on in advance, before the
+zero-crossing point is reached. Since the thyristor switching device only turns on when
+forward current flows, even if the gate signal is applied, it is safer circuit-wise to apply the
+gate signal in advance. Similarly, the turn-off condition of the thyristor ensures that, even
+if the gate signal is applied, the switch will stop conducting once reverse current flows,
+allowing the switch to be turned off safely. However, due to current ripple or harmonic
+distortion occurring at the zero-current point, a small amount of forward current may
+
+
+===== PAGE 7 =====
+
+World Electr. Veh. J. 2024, 15, 501
+7 of 16
+still flow briefly after the zero-crossing point. Therefore, it is important not to turn off the
+thyristor switch signal immediately at the zero-crossing point, but to allow sufficient time
+after the point before turning off the gate signal. As a result, there will be an overlap period
+between the gate signals of the upper and lower thyristor switches. This overlap ensures
+safe conduction, even for distorted current waveforms that contain harmonics. To control
+the bidirectional switch using thyristors as described above, the phase information of the
+conduction current for each phase is essential. However, the phase information provided by
+the inverter corresponds to the rotor position used in the current vector control algorithm.
+If the inverter’s current controller is sufficiently tuned, the phase command information of
+the current vector can be used to determine the zero-crossing phase angle of the current for
+each phase as shown in Figure 9.
+Figure 8. Thyristor switching operation in the proposed changeover circuit.
+Figure 9. Phase angle detection for current zero-crossing in the proposed changeover circuit.
+Figure 10 illustrates the control method for the thyristor gate signals when a switching
+signal is input during operation. When a changeover signal is input, the circuit wiring
+is not changed immediately, but the changeover operation is performed at the next zero-
+crossing point. The current is allowed to flow while maintaining the existing motor winding
+connections. As the next zero-crossing point approaches, the gate signal for the current
+connection is discontinued, and the gate signal for the desired connection is applied, thereby
+executing the changeover operation. Thyristors automatically turn off when the conducting
+current falls below the holding current; thus, if the next gate signal is not applied, current
+will cease to flow through the original connection at zero current. Consequently, current will
+continuously flow through the altered connection. There is a slight delay in the changeover
+signal, however, the uninterrupted winding changeover operation can be performed during
+driving, eliminating the need for an additional snubber circuit.
+
+
+===== PAGE 8 =====
+
+World Electr. Veh. J. 2024, 15, 501
+8 of 16
+ 
+(a) 
+(b) 
+Figure 10. Control method for thyristor gate signals during changeover operation. (a) Series, low-
+speed mode to parallel, high-speed mode; (b) parallel, high-speed mode to series, low-speed mode.
+Figure 11 illustrates the simulation waveforms during the changeover operation
+according to the speed mode, applying the switching method of the changeover circuit
+presented earlier. Before the changeover signal is input, it can be observed that the thyristor
+gate signals are applied in accordance with the phase of the conducting current. When
+the changeover signal is received, the switch that was conducting current turns off at the
+next zero-crossing point, and the switch that configures the desired connection begins to
+turn on, thereby performing the changeover operation. Unlike conventional changeover
+circuits, it can be confirmed that there is no overcurrent or overvoltage generated during
+the switching process, allowing for safe changeover.
+ 
+(a) 
+(b) 
+Figure 11. Simulation waveforms during changeover operation. (a) Series, low-speed mode to
+parallel, high-speed mode; (b) parallel, high-speed mode to series, low-speed mode.
+Figure 12 illustrates the simulation waveforms of the switching operation when the
+ripple component of the motor current is large and when low-order harmonic components
+are significantly present. As shown in the waveforms, in cases of severe current distortion,
+the current direction changes rapidly between positive and negative near the zero-crossing
+point. By setting the bidirectional thyristor gate signals to overlap at the zero-crossing point,
+as proposed in the switching method, even distorted currents, as shown in the waveform,
+can flow continuously without interruption.
+
+
+===== PAGE 9 =====
+
+World Electr. Veh. J. 2024, 15, 501
+9 of 16
+ 
+ 
+(a) 
+(b) 
+Figure 12. Simulation waveforms during changeover operation for distorted currents. (a) Series,
+low-speed mode to parallel, high-speed mode; (b) parallel, high-speed mode to series, low-speed
+mode.
+4. Comparative Analysis
+In this chapter, a comparative analysis of the losses and costs associated with the
+existing changeover circuit and the proposed changeover circuit designed for an 80 kW
+motor specification will be conducted. First, to evaluate the applicability to the driving
+system of EVs, suitable switching devices that meet the design specifications will be
+selected. For comparative analysis, the selected IGBT in the existing changeover circuit is
+Infineon’s FZ800R12KE3, and the three-phase diode rectifier is IXYS’s VUO190-08NO7. In
+the proposed changeover circuit, the selected thyristor is IXYS’s MCC310-16io1.
+Figure 13 shows the current specifications of the main components in the existing
+changeover circuit according to the speed mode. Based on the shown current specifications
+and the data for each selected component, the conduction loss is calculated at 123 W per
+diode, totaling 739 W for the three-phase diode rectifier. For the IGBT, the loss is calculated
+at 1108 W, resulting in a total circuit loss of 1847 W. This accounts for approximately 2.31%
+of the entire drive system for the 80 kW specification. While losses occur in the three-
+phase diode rectifier, it is evident that the standalone losses generated by the IGBT are
+significantly larger. These losses can be comparable to the losses generated in the drive
+inverter, necessitating a significantly large cooling system to manage the heat generated by
+such losses.
+Figure 14 shows the current specifications of the thyristor component in the proposed
+circuit according to the speed mode. Based on the shown current specifications and the
+data for the selected thyristor, the conduction loss is calculated at 216 W per switch in
+series, resulting in a total circuit loss of 1296 W. Although the current is halved in parallel
+connection, the number of conducting switches doubles, keeping the total loss value the
+same. This accounts for approximately 1.62% of the entire drive system.
+Figure 15 presents a graphical comparison of the losses and costs incurred by the
+two circuits. The total loss of the proposed circuit is approximately 30% lower compared to
+the existing circuit, allowing for a reduction in the volume of the cooling system. Moreover,
+in the existing circuit, high losses occur in specific components, leading to significant
+thermal imbalance. As a result, the design of the cooling system may be more complex
+compared to the proposed circuit, where heat is more evenly distributed. However, the
+proposed circuit has a higher number of switches compared to the existing circuit, requiring
+more driving circuit components. Therefore, it is evident that the total cost is higher.
+Although the proposed circuit requires a larger number of components and has a relatively
+complex control method, it offers the advantage of minimizing losses, allowing for a more
+compact heat dissipation system and improving overall drive efficiency.
+
+
+===== PAGE 10 =====
+
+World Electr. Veh. J. 2024, 15, 501
+10 of 16
+ 
+ 
+(a) 
+(b) 
+Figure 13. Current specification of main components in the conventional changeover circuit by speed
+mode at 80 kW. (a) Low-speed mode; (b) high-speed mode.
+ 
+(a) 
+(b) 
+Figure 14. Current specification of thyristor in the proposed changeover circuit by speed mode at
+80 kW. (a) Series, low-speed mode; (b) parallel, high-speed mode.
+ 
+(a) 
+(b) 
+Figure 15. Comparison of losses and costs between the proposed and conventional changeover circuit.
+(a) Loss comparison at 80 kW; (b) costs comparison.
+
+
+===== PAGE 11 =====
+
+World Electr. Veh. J. 2024, 15, 501
+11 of 16
+5. Experimental Results
+To verify the feasibility of the proposed changeover circuit, a dynamometer test was
+performed using an 80 kW IPMSM along with an inverter, as illustrated in Figure 16.
+Tables 1 and 2 show the motor output specifications of the developed motor based on the
+winding configuration. Figure 17 shows the experimental waveforms obtained from the
+dynamometer test of a prototype of the proposed changeover circuit rated at 80 kW. The
+waveforms were measured while operating in the low-speed mode with series connection
+and in the high-speed mode with parallel connection. ia represents the phase A current
+output from the inverter, while ia1 and ia2 refer to the currents flowing through the upper
+and lower windings, respectively, as shown in the winding configuration. In the series
+connection, the same current flows through all windings, but in the parallel connection, the
+current splits equally, with ia1 and ia2 each carrying half of ia.
+ 
+ 
+(a) 
+(b) 
+Figure 16. Dynamometer test setup for the proposed 80 kW changeover circuit with IPMSM and
+inverter. (a) Prototype of the proposed changeover circuit; (b) experimental setup.
+Table 1. Motor output specification for series winding configuration.
+Parameters
+Base Speed
+Maximum Speed
+Speed
+3000 RPM
+6000 RPM
+Torque
+318.4 Nm
+159.3 Nm
+Line-to-Line Voltage
+188.5 Vrms
+212.5 Vrms
+Phase Voltage
+109.8 Vrms
+126.4 Vrms
+Phase Current
+361.5 Arms
+337.5 Arms
+Table 2. Motor output specification for parallel winding configuration.
+Parameters
+Base Speed
+Maximum Speed
+Speed
+6000 RPM
+10,000 RPM
+Torque
+159.4 Nm
+95.7 Nm
+Line-to-Line Voltage
+169.5 Vrms
+212.4 Vrms
+Phase Voltage
+98.4 Vrms
+123.4 Vrms
+Phase Current
+365.5 Arms
+305.0 Arms
+Figure 18 shows the current waveforms in each winding during the winding changeover
+operation under driving conditions. Additionally, it also presents the gate waveform of
+the series switch, confirming that the thyristor gate signal alternates properly at the zero-
+crossing point in accordance with the proposed switching method, ensuring uninterrupted
+current conduction. However, since the winding changeover alters not only the motor
+parameters but also the back electromotive force (back EMF) and the applied current
+command map, it may appear to the drive inverter as though the motor has suddenly
+changed. Therefore, the transient current at the moment of winding changeover can become
+significantly large. Additionally, due to the nature of the proposed control method, where
+
+
+===== PAGE 12 =====
+
+World Electr. Veh. J. 2024, 15, 501
+12 of 16
+the switching sequence of each phase current differs based on the individual phases in the
+three-phase system, the transient current during the changeover can become even larger. To
+address this, we ensure that the feedforward control components for the current commands
+are always updated according to the motor model to prepare for the changeover operation.
+Since the high-speed region is characterized by a large BEMF the applied voltage changes
+significantly during winding changeover, leading to large transient currents. Similarly,
+in regions with high torque load, winding changeover affects the fluctuation of output
+torque, which negatively impacts noise, vibration, and overall drivability. To minimize
+transient currents during the changeover process, we conducted experiments by limiting
+the changeover regions to relatively low-speed and low-torque areas.
+(a) 
+ 
+(b) 
+ 
+(c) 
+ 
+(d) 
+Figure 17. Experimental waveforms from the dynamometer test of the 80 kW changeover circuit.
+(a) Series, low-speed mode at 2000 RPM, 20 Nm; (b) series, low-speed mode at 2000 RPM, 30 Nm;
+(c) parallel, high-speed mode at 1000 RPM, 20 Nm; (d) parallel, high-speed mode at 1000 RPM,
+30 Nm.
+Figure 19 shows the experimental waveforms of the winding changeover with and
+without the addition of feedforward components in the drive inverter’s current controller.
+The transient current generated at the changeover point ultimately affects the motor’s
+output torque. Therefore, to minimize fluctuations in output torque at the changeover point,
+it is essential to minimize the transient current. As shown in the figure, the feedforward
+component compensated in the inverter controller at the changeover point is crucial for
+reducing the transient current.
+
+
+===== PAGE 13 =====
+
+World Electr. Veh. J. 2024, 15, 501
+13 of 16
+ 
+(a) 
+ 
+(b) 
+Figure 18. Current and gate waveforms during winding changeover operation in the proposed
+circuit at 1000 RPM, 10 Nm. (a) Series, low-speed mode to parallel, high-speed mode; (b) parallel,
+high-speed mode to series, low-speed mode.
+The time required to change over from low-speed, series mode to high-speed, parallel
+mode was approximately 73.57 ms. Conversely, the time required to change over from
+high-speed, parallel mode to low-speed, series mode was approximately 67.11 ms as shown
+in Figure 18. The winding changeover time was measured as the time taken for the current
+to reach within 80% of the commanded value.
+(a) 
+(b) 
+Figure 19. Cont.
+
+
+===== PAGE 14 =====
+
+World Electr. Veh. J. 2024, 15, 501
+14 of 16
+(c) 
+(d) 
+Figure 19. Current and gate waveforms during winding changeover operation with and without
+inverter controller feedforward at 1000 RPM, 10 Nm. (a) Parallel, high-speed mode to series, low-
+speed mode without feedforward; (b) parallel, high-speed mode to series, low-speed mode with
+feedforward; (c) series, low-speed mode to parallel, high-speed mode without feedforward; (d) series,
+low-speed mode to parallel, high-speed mode with feedforward.
+Figure 20 illustrates the efficiency maps of the motor, inverter, and the overall drive
+system based on the winding configuration. Observing the integrated motor efficiency map
+across the entire speed range, it can be seen that the high-efficiency region has expanded.
+Consequently, the high-efficiency region of the overall drive system has also expanded.
+ 
+(a) 
+(b) 
+(c) 
+(d) 
+(e) 
+(f) 
+Figure 20. Cont.
+
+
+===== PAGE 15 =====
+
+World Electr. Veh. J. 2024, 15, 501
+15 of 16
+(g) 
+(h) 
+(i) 
+Figure 20. Efficiency map based on winding configuration. (a) Motor efficiency map for parallel
+winding; (b) motor efficiency map for series winding; (c) integrated motor efficiency map for the
+entire speed range; (d) inverter efficiency map for parallel winding; (e) inverter efficiency map for
+series winding; (f) integrated inverter efficiency map for the entire speed range; (g) system efficiency
+map for parallel winding; (h) system efficiency map for series winding; (i) integrated system efficiency
+map for the entire speed range.
+6. Conclusions
+This paper proposes a changeover circuit that utilizes winding switching technology
+to adjust the electromagnetic characteristics of the motor, enabling the operating range
+of the EV to coincide with the motor’s high-efficiency zone. The proposed changeover
+circuit switches the motor’s connections between series and parallel during operation,
+thereby altering the motor characteristics according to the speed range. Compared to the
+mechanical switches used in the previous changeover circuit, the circuit resolves lifespan
+issues and enables rapid winding changeover. Additionally, by utilizing thyristors, it was
+possible to minimize the transients that occur during the changeover. While the proposed
+circuit has a higher number of components and may be priced higher compared to the
+existing circuit, it offers the advantage of lower conduction losses, allowing for expectations
+of improved efficiency and lightweight design in the changeover system. A prototype of
+the proposed circuit rated at 80 kW was developed, and its changeover operation was
+verified through experiments by integrating it with an IPMSM and inverter. While winding
+changeover technology has not yet reached mass production, it has secured a foundation
+for quicker accessibility when the need arises in the future.
+Author Contributions: Conceptualization, Y.S., S.C. and J.L.; methodology, Y.S. and S.C.; soft-
+ware, Y.S.; validation, Y.S. and S.C.; formal analysis, Y.S.; investigation, S.C.; data curation, Y.S.;
+writing—original draft preparation, Y.S.; writing—review and editing, J.L.; supervision, J.L.; project
+administration, J.L. All authors have read and agreed to the published version of the manuscript.
+Funding: This research was supported by the Automotive Industry Technology Development
+Program (2410000502, Development of High-Efficiency and High-Density Electric Vehicle Inverter
+based on GaN Power Module) funded by the Ministry of Trade, Industry & Energy(MOTIE, Korea).
+Data Availability Statement: The original contributions presented in this study are included in the
+article. Further inquiries can be directed to the corresponding author.
+Conflicts of Interest: The authors declare no conflicts of interest.
+References
+1.
+Husain, I.; Ozpineci, B.; Islam, S.; Gurpinar, E.; Su, G.-J.; Yu, W.; Chowdhury, S.; Xue, L.; Rahman, D.; Sahu, R. Electric Drive
+Technology Trends, Challenges, and Opportunities for Future Electric Vehicles. Proc. IEEE 2021, 109, 1039–1059. [CrossRef]
+2.
+Aghabali, I.; Bauman, J.; Kollmeyer, P.J.; Wang, Y.; Bilgin, B.; Emadi, A. 800-V Electric Vehicle Powertrains: Review and Analysis
+of Benefits, Challenges, and Future Trends. IEEE Trans. Transp. Electrif. 2021, 7, 927–948. [CrossRef]
+3.
+Reimers, J.; Dorn-Gomba, L.; Mak, C.; Emadi, A. Automotive Traction Inverters: Current Status and Future Trends. IEEE Trans.
+Veh. Technol. 2019, 68, 3337–3350. [CrossRef]
+
+
+===== PAGE 16 =====
+
+World Electr. Veh. J. 2024, 15, 501
+16 of 16
+4.
+Puma-Benavides, D.S.; Calderon-Najera, J.d.D.; Izquierdo-Reyes, J.; Galluzzi, R.; Llanes-Cedeño, E.A. Methodology to Improve
+an Extended-Range Electric Vehicle Module and Control Integration Based on Equivalent Consumption Minimization Strategy.
+World Electr. Veh. J. 2024, 15, 439. [CrossRef]
+5.
+Liang, J.; Feng, J.; Fang, Z.; Lu, Y.; Yin, G.; Mao, X.; Wu, J.; Wang, F. An Energy-Oriented Torque-Vector Control Framework for
+Distributed Drive Electric Vehicles. IEEE Trans. Transp. Electrification 2023, 9, 4014–4031. [CrossRef]
+6.
+Liang, J.; Wang, F.; Feng, J.; Zhao, M.; Fang, R.; Pi, D.; Yin, G. A Hierarchical Control of Independently Driven Electric Vehicles
+Considering Handling Stability and Energy Conservation. IEEE Trans. Intell. Veh. 2023, 9, 738–751. [CrossRef]
+7.
+Du, J.; Wang, X.; Lv, H. Optimization of magnet shape based on efficiency map of IPMSM for EVs. IEEE Trans. Appl. Supercond.
+2016, 26, 0609807. [CrossRef]
+8.
+Zhang, Z.; Zuo, C.; Hao, W.; Zuo, Y.; Zhao, X.L.; Zhang, M. Three-speed Transmission System for Purely Electric Vehicles. Int. J.
+Automot. Technol. 2013, 14, 773–778. [CrossRef]
+9.
+Jung, H.-C.; Kim, D.-J.; Jung, S.-Y.; Lee, D. Optimization Method to Maximize Efficiency Map of a Drive Motor With Electrical
+Winding Changeover Technique for Hybrid EV. IEEE Trans. Appl. Supercond. 2020, 30, 5205405. [CrossRef]
+10.
+Zhou, X.; Yang, J.; Migliazza, G.; Guenter, S.; Wang, S.; Gerada, C.; Buticchi, G. Improved Speed Extension for Permanent Magnet
+Synchronous Generators by Means of Winding Reconfiguration. Energies 2023, 16, 899. [CrossRef]
+11.
+Hsieh, M.; Hsu, F.; Dorrell, D.G. Winding changeover permanent-magnet generators for renewable energy applications. IEEE
+Trans. Magn. 2012, 48, 4168–4171. [CrossRef]
+12.
+Wang, M.; Hsu, N.; Chiang, C.; Wang, S.; Shau, T. A novel changeover technique for variable-winding brushless DC motor drives.
+In Proceedings of the SICE Annual Conference 2010, Taipei, Taiwan, 18–21 August 2010.
+13.
+Kume, T.; Iwakane, T.; Sawa, T.; Yoshida, T.; Nagai, I. A wide constant power range vector-controlled ac motor drive using
+winding changeover technique. IEEE Trans. Ind. Appl. 1991, 27, 934–939. [CrossRef]
+14.
+Kume, T.; Sawa, T.; Sawamura, M.; Zenke, M. Inverter Driving Method for Induction Motors. U.S. Patent 4/916,376, 10 April 1990.
+15.
+Yano, A.; Shimizu, D.; Yano, K.; Momen, K. Electric Motor Drive System and Winding Switching Method. U.S. Patent 14/598,177,
+5 January 2015.
+16.
+Kume, T.; Sawa, T. A Static Winding Changeover Technique. Japanese Patent Hei 7-99959, 25 October 1995.
+17.
+Swamy, M.M.; Kume, T.; Maemura, A.; Morimoto, S. Extended High-Speed Operation via Electronic Winding-Change Method
+for AC Motors. IEEE Trans. Ind. Appl. 2006, 42, 742–753. [CrossRef]
+18.
+Sadeghi, S.; Guo, L.; Toliyat, H.A.; Parsa, L. Wide Operational Speed Range of Five-Phase Permanent Magnet Machines by Using
+Different Stator Winding Configurations. IEEE Trans. Ind. Electron. 2012, 59, 2621–2631. [CrossRef]
+19.
+Itoh, J.-I.; Tanimukai, K. Seamless star-delta winding changeover circuit for AC generators. In Proceedings of the 2015 International
+Conference on Renewable Energy Research and Applications (ICRERA), Palermo, Italy, 22–25 November 2015.
+20.
+Takatsuka, Y.; Hara, H.; Yamada, K.; Maemura, A.; Kume, T. A wide speed range high efficiency EV drive system using
+winding changeover technique and SiC devices. In Proceedings of the IPEC Hiroshima 2014 ECCE-ASIA, Hiroshima, Japan,
+18–21 May 2014; pp. 1898–1903.
+21.
+Maemura, A.; Morimoto, S.; Yamada, K.; Sawa, T.; Kume, T.J.; Swamy, M.M. A Novel Method for Extending Stroke Length in
+Moving Magnet Type Linear Motor Drive System by Employing Winding Changeover Technique. In Proceedings of the IEEJ
+International Power Electronics Conference 2005, Tokyo, Japan, 4–8 April 2005.
+22.
+Kume, T.; Swamy, M.M.; Sawamura, M.; Yamada, K.; Murokita, I. A Quick Transition Electronic Winding Changeover Tech-
+nique for Extended Speed Ranges. In Proceedings of the IEEE Power Electronics Specialists Conference, Aachen, Germany,
+20–25 June 2004.
+23.
+Shin, Y.; Na, J.; Cho, S.; Park, J.; Shin, W.; Lee, J. A Study on the Winding Changeover Circuit to Expand the High Efficient
+Operating Region of EV Traction Motor. In Proceedings of the 2021 24th International Conference on Electrical Machines and
+Systems (ICEMS), Gyeongju, Republic of Korea, 31 October–3 November 2021.
+Disclaimer/Publisher’s Note: The statements, opinions and data contained in all publications are solely those of the individual
+author(s) and contributor(s) and not of MDPI and/or the editor(s). MDPI and/or the editor(s) disclaim responsibility for any injury to
+people or property resulting from any ideas, methods, instructions or products referred to in the content.

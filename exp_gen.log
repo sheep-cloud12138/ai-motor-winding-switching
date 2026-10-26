@@ -1,0 +1,29 @@
+creating pool ...
+pool created
+A random48: {'n': 4608, 'seconds': 575.622079372406, 'patterns': 48, 'scale': 'U(0.2,1.0)'}
+B random24z: {'n': 2304, 'seconds': 295.32013845443726, 'patterns': 24, 'scale': 'U(0,1.0)'}
+C ext: {'n': 1008, 'seconds': 133.78932213783264}
+D fine: {'n': 64, 'seconds': 61.28041911125183}
+{
+ "A_random48": {
+  "n": 4608,
+  "seconds": 575.622079372406,
+  "patterns": 48,
+  "scale": "U(0.2,1.0)"
+ },
+ "B_random24z": {
+  "n": 2304,
+  "seconds": 295.32013845443726,
+  "patterns": 24,
+  "scale": "U(0,1.0)"
+ },
+ "C_ext": {
+  "n": 1008,
+  "seconds": 133.78932213783264
+ },
+ "D_fine": {
+  "n": 64,
+  "seconds": 61.28041911125183
+ },
+ "total_seconds": 1066.3096523284912
+}

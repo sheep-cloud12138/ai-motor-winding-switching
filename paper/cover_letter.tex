@@ -1,0 +1,54 @@
+\documentclass{letter}
+\usepackage{hyperref}
+\signature{[Author Name]}
+\address{[Affiliation]}
+\begin{document}
+
+\begin{letter}{Editor-in-Chief\\Advanced Engineering Informatics}
+
+\opening{Dear Editor,}
+
+Please find enclosed our manuscript ``Learning one magnetic model for all
+winding connections: connection-invariant co-energy surrogates and
+drive-cycle co-design of reconfigurable electric machines'', which we submit
+for consideration as a research paper in Advanced Engineering Informatics.
+
+Reconfigurable windings are an established route to wide-speed-range,
+high-efficiency electrified powertrains, yet every study we are aware of
+evaluates each candidate connection with its own dedicated FE model or
+flux-map table, and schedules mode changes with fixed thresholds or greedy
+rules. Our manuscript addresses both gaps with one idea: a winding
+connection is a set of linear constraints on coil currents, so a single
+connection-invariant surrogate---trained once on coil-level FE data---can
+evaluate \emph{any} connection zero-shot. We think this fits the journal's
+scope in three specific ways: (i) it is an engineering-informatics method
+(learned surrogates embedded in design and operation workflows) rather than
+a new machine or a new controller; (ii) it comes with a reproducible
+benchmark---7 hold-out connections, three difficulty tiers, 9{,}276+
+nonlinear FE samples, fixed splits and protocols---released with code and
+data; and (iii) it delivers actionable engineering findings, including two
+data-collection design principles (what \emph{kind} of current patterns to
+sample, which matters more than how many), a quantified physical-consistency
+advantage of co-energy-structured surrogates, an instructive negative result
+on monotonicity-constrained architectures, and a drive-cycle dynamic-program
+    that prices reconfiguration honestly (changeover losses, dwell constraints).
+    An independent FEMM cross-check is included; it validates the coarse
+    inductance and nonlinear flux trends while exposing a zero-shot torque
+    failure for an untrained tap connection, so the manuscript's claims are
+    explicitly scoped to what the evidence supports.
+
+All results in the manuscript are reproducible from the released code and
+data with one command per figure; the FE reference data, trained models, and
+benchmark splits are included. The work has not been published elsewhere and
+is not under consideration elsewhere. The authors declare no competing
+interests.
+
+We suggest the following potential reviewers with relevant expertise:
+[3--6 suggested reviewers with affiliations and emails].
+
+Thank you for your consideration.
+
+\closing{Sincerely,}
+
+\end{letter}
+\end{document}

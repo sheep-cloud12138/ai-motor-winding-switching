@@ -1,0 +1,15 @@
+{
+ "data": "coil_dataset_mixed8.npz",
+ "holdout": "asym",
+ "n_train": 1788,
+ "n_test": 336,
+ "best_val": 0.06139279995113611,
+ "metrics": {
+  "flux_rmse_mean": 0.010440255515277386,
+  "flux_nrmse_mean": 0.24554844200611115,
+  "flux_r2_mean": 0.9377041459083557,
+  "torque_rmse": 0.8210693597793579,
+  "torque_nrmse": 0.5540933012962341,
+  "torque_r2": 0.6929806470870972
+ }
+}

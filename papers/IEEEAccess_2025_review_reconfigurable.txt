@@ -1,0 +1,1497 @@
+
+
+===== PAGE 1 =====
+
+Received 15 May 2025, accepted 30 May 2025, date of publication 21 July 2025, date of current version 14 August 2025.
+Digital Object Identifier 10.1109/ACCESS.2025.3591184
+A Review of Motors With Reconfigurable
+Windings for Automotive Traction Drives
+JOSHUA BEST
+1,2, PEDRAM ASEF
+3, (Senior Member, IEEE), AND CHRISTOPHER VAGG
+1,2
+1Department of Mechanical Engineering, University of Bath, BA2 7AY Bath, U.K.
+2IAAPS, University of Bath, BA2 7AY Bath, U.K.
+3Department of Mechanical Engineering, University College London, WC1E 6BT London, U.K.
+Corresponding author: Joshua Best (jjb205@bath.ac.uk)
+The work of Joshua Best was supported by the Scholarship from the Engineering and Physical Sciences Research Council (EPSRC) Centre
+for Doctoral Training in Advanced Automotive Propulsion Systems (AAPS) under Project EP/S023364/1.
+ABSTRACT This paper provides an overview of the application of reconfigurable windings in traction
+motors and their prospective benefits for electric vehicles. Methods of implementation discussed are series–
+parallel, star-delta, and tapped windings with series-parallel configurations having the greatest potential
+for system performance improvements. The review provides valuable insights into the impact on e-drive
+system mass and volume, showing significant improvements to torque and power densities of approximately
+40-80% can be achieved. Other investigations targeting motor efficiency show total motor loss reductions
+of approximately 30-60% are also possible. The published literature on the topic tends to be case-specific,
+indicating that the generalisation of the technology applicability is lacking, with a particular need for design
+tools and methodologies early in the propulsion system design stage, to explore how the technology could be
+best applied. This is also highlighted by the system level impacts shown in a case study on the Nissan Leaf
+drive, with series-parallel reconfigurable windings resulting in a 41.67% inverter current reduction while
+maintaining baseline performance characteristics. Other key challenges to the technology uptake include
+the cost and complexity of the reconfiguration device, however If these can be overcome, and the design
+advantages better understood, traction drives with reconfigurable windings show potential in reducing the
+size, weight, and cost of the electric machines, while improving their efficiency and power density.
+INDEX TERMS Automotive propulsion, efficiency and power, electric machines, extended speed range,
+PMSM, torque density, winding reconfiguration.
+I. INTRODUCTION
+In recent years, the automotive industry has witnessed a
+significant shift towards electrification leading to a growing
+demand for advanced electrical systems and components.
+Electric traction drives, play a crucial role in the overall
+performance and efficiency of the electric vehicle (EV), the
+design of which is constantly evolving to meet the increasing
+demands of the automotive sector [1], [2], [3], [4], [5]. Incom-
+ing regulations governing resource depletion and life cycle
+emissions place a greater emphasis on the use and acquisition
+of materials specific to the electric powertrain, translating
+The associate editor coordinating the review of this manuscript and
+approving it for publication was Zhengmao Li
+.
+to a heightened emphasis on downsizing the battery, motor-
+generator, and inverter [6], [7].
+This paper aims to provide an overview of the applications
+of reconfigurable windings in the automotive sector. The
+review will explore the concept of reconfigurable windings,
+their advantages, limitations, and two main approaches of
+implementing them in electric machines: 1. Reducing drive
+system mass and volume, thus improving torque and power
+densities, and 2. Reducing total drive losses under opera-
+tion, contributing to an improved vehicle efficiency. Further
+considerations and challenges of the implementation of this
+technology are also provided. A case study of the Nissan
+Leaf drive demonstrates the application of approaches 1 & 2,
+to significantly reduce inverter current demand while main-
+taining baseline performance characteristics. Although this
+VOLUME 13, 2025
+ 2025 The Authors. This work is licensed under a Creative Commons Attribution 4.0 License.
+For more information, see https://creativecommons.org/licenses/by/4.0/
+140187
+
+
+===== PAGE 2 =====
+
+J. Best et al.: Review of Motors With Reconfigurable Windings for Automotive Traction Drives
+FIGURE 1. a) Possible winding configurations available with two winding parts per phase. b) Suggested switching diagram required to achieve the
+series-parallel and star-delta reconfiguration methods for a three-phase machine [13].
+paper focuses on automotive applications, differing motor
+types and drives may find relevance in these conclusions
+with previous examples for marine applications [8], indus-
+trial equipment [9], [10], [11], and even domestic washing
+machines [12].
+II. RECONFIGURABLE DRIVE CONCEPTS
+The term reconfigurable windings refers to a capacity to alter
+the armature winding connections of an electric machine.
+This acts to effectively change the number of turns per phase
+during operation. Primarily, this provides another dimen-
+sion of flexibility and adaptability to the design as each
+additional winding configuration, demonstrated in Figure 1,
+expands the operating conditions for the machine [12]. The
+means of reconfiguration can be achieved by subdividing
+the windings of each phase into two parts and connecting
+them in either Series or Parallel. Altering the termination
+of the phases between Star and Delta also influences the
+machine characteristics in the same manner, albeit to a
+lesser extent. By combining both the Series-Parallel and
+Star-Delta reconfiguration methods, as in Figure 1, four ‘bal-
+anced’ configurations are possible from two winding parts
+per phase [13].
+To achieve multiple configurations during operation (with
+a reasonable switching transient) additional reconfiguration
+equipment is required, often depicted using semiconduc-
+tors [10] or occasionally mechanical contractors [14] as the
+switching components. An early example of the required cir-
+cuit (Figure 1b) capable of 4 different winding configurations
+totals 14 switching components. Because of the complexity,
+and switch size necessary to carry the full phase current, such
+a device is often represented as separate to the machine and
+similar in size to the drive electronics. Furthermore, a greater
+number of stator leads terminating outside of the machine are
+also required; when considering a conventional three-phase
+machine originally with 3 stator leads, the capability to switch
+between Star-Delta configurations increases the required sta-
+tor leads to 6, or to 12 for Series-Parallel reconfiguration, all
+of which are represented later in Table 1.
+For automotive traction machines, torque density is one
+of the most important design parameters and is achieved by
+maximising the magnetic forces between the rotor and stator
+for the available design volume and or mass. The first step in
+maximising the torque of an electric machine is to produce the
+highest possible flux density. Beyond constructing a ‘good’
+magnetic circuit and choosing high-quality magnetic mate-
+rials, as many conductors as possible should be packed into
+the available space providing a high slot fill factor. Secondly,
+each conductor must carry as much current as possible with-
+out reaching the thermal limit of themselves or surrounding
+materials [15].
+A. ELECTROMAGNETIC TORQUE
+The force generated by the conductors in the magnetic circuit
+is not directly bound by the manner in which they are added
+to the slot, i.e. a high number of turns (N) of a thin conductor
+carrying a low current, (I) will produce the same reaction
+force as a low number of turns of thick conductors carrying
+a high current. This product of turns and current can be
+expressed in terms of magnetomotive force mmf :
+mmf = NI, φ = mmf
+R
+=NIµ
+g
+(1.1)
+where φ is flux, R is reluctance, N is the number of turns,
+I is current, µ is the magnetic permeability of air, and g the
+airgap length.
+Providing that the product of NI remains constant, the level
+of flux φ and thus ability for differing winding configurations
+to produce torque will be the same. It is therefore useful when
+comparing a machines torque capability, to refer to mmf in
+the literal sense; as ampere-turns (At).
+T =
+X
+BIL
+
+r,
+B = φ
+A
+(1.2)
+where T
+is torque, B is the flux density, A is the
+cross-sectional area of the flux path, I is the armature current,
+L is the slot length, and r is the acting radius of the rotor.
+Following the generalised equation for electromagnetic
+torque (1.2) with a fixed armature current, increasing the
+140188
+VOLUME 13, 2025
+
+
+===== PAGE 3 =====
+
+J. Best et al.: Review of Motors With Reconfigurable Windings for Automotive Traction Drives
+number of turns (N) proportionally increases the electromag-
+netic torque of the machine. Therefore, it should be expected
+that when changing from a parallel to series configuration,
+as the series connection features double the number of turns,
+double the flux and electromagnetic torque can be produced
+for the same armature current. However, armature winding
+current densities and magnetic saturation of the iron pose a
+realistic limitation to the torque density of the machine.
+B. RESISTANCE AND INDUCTANCE
+When changing the number of turns in an electric motor, both
+phase resistance and inductance are affected proportionally to
+the square of the number of turns. Therefore, if the number of
+turns is halved, as when reconfiguring from series to parallel
+connection, the inductance and resistance of the machine will
+decrease by a factor of 4.
+FIGURE 2. Equivalent circuit diagram for a) series and b) parallel winding
+configurations.
+This relationship can be demonstrated when looking at
+the equivalent circuit shown in Figure 2. For the series
+connection, the inductances and resistances are the sum of
+both parts whereas the parallel connection has an inverse
+relationship.
+If each winding part is balanced and of the same resis-
+tance and inductance (as is advantageous to avoid circulating
+currents) this is simplified further to a ratio of 4 between
+series and parallel connections. A lower winding inductance
+and resistance has a tendency to increase motor efficiency,
+in part due to the influences on copper losses, iron losses,
+and reactive power [13]. This partially provides insight as to
+why an increase in torque at higher rotational speeds may be
+available when changing from series to parallel configura-
+tions as shown in Figure 3. This influence is highly sensitive
+to specific machine and drive applications. Nevertheless,
+a reduction in machine inductance and resistance is also
+reflected in technology roadmaps, anticipating high speed
+electric machines [16]. Equally, there are disadvantages with
+excessively low inductances, namely increased harmonics
+necessitating higher switching frequencies and further motor
+control and stability considerations [13].
+C. SATURATION
+A realistic bound to the total flux in a machine is commonly
+known as the saturation limit. Magnetic saturation can be
+defined by an increase in mmf not producing a proportional
+increase in the total flux. Applying this to equation (1.1),
+it is logical that for this to be true, an increase in reluctance
+must be present. This can be attributed to the properties of
+the magnetic steel forming the stator and rotor. Although usu-
+ally having negligible reluctance, it rapidly increases beyond
+a certain flux density (commonly 1.8-2.0T) indicating that
+machine is ‘saturated’. It is generally understood that oper-
+ation in magnetic saturation, although possible, should be
+avoided due to the increased losses and thermal load on the
+machine, along with a decreasing return in output torque
+and efficiency [15]. This can offer explanation as to why
+an increased number of turns may not in fact produce a
+proportional increase in torque. This forms a practical limit
+to the desired mmf of the machine without incurring a higher
+iron mass.
+D. BACK-ELECTROMOTIVE FORCE
+It is previously stated that the electromagnetic torque capabil-
+ity characterised by (1.2), where the product of the number
+of turns (N) and armature current (I) is proportional to
+torque. This is only true however up to the base speed of the
+machine, depicted in Figure 3, due to the back-electromotive
+force (e) generated in the phase approaching the same value
+as the DC bus voltage. At this point, as there is no voltage
+difference across the motor to the bus voltage, the controller
+can no longer drive the machine with q-axis current to the
+motor and drive it any faster. This back EMF can be estimated
+from Faraday’s Law:
+eph = −N dφ
+dt
+(1.3)
+where, N is the number of turns and φ is the airgap flux.
+The back emf produced by each phase of an electric
+machine has the characteristic of being proportional to the
+angular velocity of the rotor, the number of turns (N ) present
+in the armature windings, and the airgap flux density (φ ).
+From (1.1) as the airgap flux is also a function of the m.m.f,
+an increase in torque from a higher number of turns also
+VOLUME 13, 2025
+140189
+
+
+===== PAGE 4 =====
+
+J. Best et al.: Review of Motors With Reconfigurable Windings for Automotive Traction Drives
+FIGURE 3. The generalised torque profile for a machine with reconfigurable windings. Each phase is subdivided into 2 parts, the series connection
+providing a higher torque capability, parallel a higher power output.
+proportionally increases the back emf of the machine. Using
+(1.3), increasing the number of turns with a fixed armature
+current will increase the magnitude of constant torque, but
+also decease the base speed such that the power output of the
+drive is maintained. Hence, this electromagnetic relationship
+of trading torque and speed can be likened to that of a mechan-
+ical gearbox.
+E. SALIENCY AND FIELD WEAKENING
+Saliency refers to the asymmetry or variation in reluctance
+of the rotor. It occurs when the rotor (the rotating part of
+the motor) is deliberately designed to have a non-uniform
+magnetic field distribution. This non-uniformity creates a
+difference in the magnetic reluctance along different paths
+within the motor as shown in Figure 4.
+FIGURE 4. Differing rotor structures and saliency ratios where black
+represents magnet material and grey is the rotor iron [13].
+This reluctance is generally measured as the resultant
+inductance in the stator windings in two coordinates - the
+direct (d) axis, normal to the flux of the rotor’s magnetic
+field, and the quadrature (q) axis, orthogonal, or 90◦electrical
+degrees from the direct axis, which generates the torque [13].
+As the magnet material has a similar reluctance to air, a sur-
+face mounted permanent magnet (SMPM) rotor will have
+negligible variance in reluctance, and because of this, is con-
+sidered ‘non-salient.’
+Rotor saliency primarily influences the speed range capa-
+bility of an electric machine and torque produced by either the
+magnets or reluctance of the rotor structure [17]. By precisely
+knowing the rotor position, a negative d-axis current can
+be applied to the stator windings which opposes the flux
+of the machine’s magnets and, as a result, the airgap flux
+can be reduced. This in turn reduces the back emf of the
+motor from equation (1.3), making it possible to drive the
+machine beyond base speed, a technique known as field-
+or flux-weakening. Saliency ratios of Ld < Lq generally
+improve field weakening performance due the reluctance
+torque present from increasing d-axis currents, and therefore
+are suited to higher speed operation [13], [17]. Conversely,
+non-salient machines or saliency ratios of Ld >L q have a
+comparably poor field weakening performance but can gen-
+erally produce higher low speed torque. This can be because
+of a higher airgap flux density as the magnets are on the
+surface, not buried within the rotor structure, or a component
+of reluctance torque is generated in addition to the mag-
+netic field attraction under q-axis current (negative saliency).
+To provide a summary of the findings in this chapter, Table 1
+characterises the general machine parameters discussed for
+the Series-Parallel and Star-Delta winding configuration
+methods.
+III. THE IMPLEMENTATION OF RECONFIGURABLE
+WINDINGS
+Despite the early applications of star-delta and ‘pole chang-
+ing’ induction motors [11], [18], [19], the main interest in
+drives with reconfigurable windings was focused on extend-
+ing the speed range of permanent magnet (PM) machines
+the 1990s-2000s [10], [11], [20], [21]. This is linked with
+the shift away from asynchronous/induction motors in the
+automotive sector, due in part to an increased availability
+of rare earth magnetic materials, and the increased power
+140190
+VOLUME 13, 2025
+
+
+===== PAGE 5 =====
+
+J. Best et al.: Review of Motors With Reconfigurable Windings for Automotive Traction Drives
+TABLE 1. Generalised influence of winding configuration on machine parameters.
+density and efficiencies the PM machines offered [22]. At this
+time, the predominant non-salient Surface Mounted Perma-
+nent Magnet (SMPM) rotor structures were generally not
+well suited for field weakening operation [20], [23]. Hence,
+efforts to extend the speed range of permanent magnet motors
+were divided into two strategies; One category of research
+endeavoured to improve the field weakening performance of
+PM machines through changing the structure of the rotor and
+therefore saliency of the machine, (usually with the addition
+of more complex control strategies) [17]. Other research
+entailed altering the voltage-speed relationship of the motor
+and inverter by either boosting the bus voltage [24], com-
+bining star delta windings [25], [26], [27], [28], [29], [30],
+[31], [32], [33], [34], [35] or altering the winding structure to
+lower the back-EMF machine (as will be discussed in this
+review). If comparing further methods of electric machine
+speed extension methods is desired, the following sources are
+recommended [14], [36], [37].
+A. RECONFIGURABLE WINDING METHODS
+The most common reconfigurable winding methods covered
+in literature have been classified as star-delta, series-parallel,
+and tapped winding configurations. Suggested circuit dia-
+grams are displayed in Figure 5, adapted in part from [37].
+Each diagram shows how switching components can be
+arranged to achieve two different configurations of the motor
+windings when driven by a single inverter. For the series-
+parallel example: when all the switches marked as series are
+closed and switches marked parallel are open, the windings
+in each phase are connected in series. When all the parallel
+switches are closed and series switches opened, the windings
+in each phase are connected in parallel. This logic applies to
+the star-delta and tapped winding diagrams. Unless specifi-
+cally desired as a feature, the switches for both configurations
+should not be allowed to be closed simultaneously during
+operation as this would ‘short’ the windings, bridging the
+phases together and in effect magnetically lock the rotor.
+Another feature of either of the three circuit diagrams
+of Figure 5, is the ability to open any combination of the
+switches (if the user has the required level of control).
+As a result, the machine (or parts of the machine) can be
+isolated from the drive and implemented as a fault tolerance
+feature [38], [39], [40], [41], [42], [43], [44], [45], [46]. If a
+single phase of the motor is damaged or inoperable, it can be
+separately isolated from the drive by opening all c switches
+on that phase. This would allow the remaining two phases
+to continue to be driven, albeit with greatly reduced perfor-
+mance. If all the switches are opened, the motor can also
+be completely isolated from the drive, presenting a potential
+fail-safe feature for issues with either the motor or inverter.
+If the reader would like a review on the modification of
+machine topologies for fault tolerance, the following refer-
+ence explores this in more detail [46].
+Of the three methods shown, the most pertinent to this
+study is the series-parallel and star-delta methods as all the
+copper within the motor remains ‘active’ and carries current
+during both configurations. Tapped windings, despite having
+merits in terms of reducing motor losses [36], [37], can be
+explained as having a combined configuration: where the
+all the windings are used within the motor (alike the series
+configuration), and a tapped configuration: where half the
+windings are open circuit, thus reducing the number of turns
+per phase but not making a parallel connection which would
+further reduce resistances and inductances while also increas-
+ing the cross-sectional area of the conductors. Because of this,
+the series-parallel and star-delta methods present a higher
+potential for system performance enhancement and thus the
+focus later on.
+The circuit diagrams of Figure 5 assume that the motor
+will be driven from a single inverter. If two inverters are
+considered for driving the machine, a different strategy for
+achieving multiple configurations can be employed. Star
+and delta connections can be made by connecting the other
+opposing ends of the phase windings to additional inverter
+as shown in Figure 6. Such a method is more commonly
+referred to as ‘open-end windings’ [36], [42], [43], [44],
+[45], [47], [48], [49], [50], [51]. Despite the open-end wind-
+ing method having no specific reconfiguration equipment,
+it is evident that a second inverter and additional control
+strategies are required [36]. From a total of 8 semiconductor
+switches are necessary to achieve the series and parallel con-
+nection while the star and delta configurations are possible
+with only 5 switches. Two inverters have also been used to
+VOLUME 13, 2025
+140191
+
+
+===== PAGE 6 =====
+
+J. Best et al.: Review of Motors With Reconfigurable Windings for Automotive Traction Drives
+FIGURE 5. Circuit diagram for the reconfigurable equipment, a) Star-Delta, b) Series-Parallel, and c) Tapped Windings when driven from a single inverter.
+140192
+VOLUME 13, 2025
+
+
+===== PAGE 7 =====
+
+J. Best et al.: Review of Motors With Reconfigurable Windings for Automotive Traction Drives
+FIGURE 6. The ‘open-end windings’ strategy for star-delta reconfiguration using two inverters.
+achieve series and parallel configurations, the most recent
+development of which is presented by Tang L et al of
+Oakridge laboratories, Figure 7 [52].
+FIGURE 7. Dual inverter strategy to achieve series-parallel winding
+configurations using 5 additional semiconductor switches [53].
+The power components of each inverter are designed to
+have half the rated current compared to a single inverter
+driven motor, partially mitigating the use of multiple invert-
+ers. The switching frequency can also be doubled by
+obtaining the optimal phase shift, the result of which sig-
+nificant reductions in torque ripple can be made [54]. Such
+a design still requires 5 semiconductor switching compo-
+nents to operate in addition to the second inverter (KP1,
+2 for the parallel connection and KS1, 2, 3 for the series
+configuration). This of course increases system costs and
+complexity as well as representing another source of parasitic
+losses in the additional inverter and semiconductor switches
+used.
+B. STAR/DELTA VS SERIES/PARALLEL
+Early investigations into the implementation of reconfig-
+urable windings for traction drive applications [13], [20],
+[55], show that the ratio of torque and speed between
+series-parallel configurations is proportional to the ratio of
+flux generation; the series connection achieving approxi-
+mately twice the torque, but half the base speed of the
+parallel connection. This ratio is greater than the star-delta
+method; where the star configuration has approximately
+1.73 times the torque capability than the delta configura-
+tion. This demonstrates that the series-parallel method has
+a greater capability for speed and torque extension. When
+considering the complexity of reconfiguration equipment for
+both methods however, the star-delta method requires fewer
+stator leads and switching components, lowering the over-
+all size and packaging requirements [56]. For the star-delta
+method, access to each end of the phase windings is required
+to achieve both configurations, the advantage being that these
+are usually accessible on a conventional machine and can be
+modified without removing the existing winding structure.
+However, if increasing the flux density above the baseline
+value is required this will necessitate rewinding the motor to
+include a higher number of turns than before.
+To summarise the generalised traits of the three winding
+configurations discussed, Table 2 is populated with a com-
+parative value based on the findings of this review.
+TABLE 2. Comparative traits of reconfigurable winding techniques.
+VOLUME 13, 2025
+140193
+
+
+===== PAGE 8 =====
+
+J. Best et al.: Review of Motors With Reconfigurable Windings for Automotive Traction Drives
+IV. APPROACH 1: REDUCING E-DRIVE SYSTEM MASS
+AND VOLUME
+This section will only cover the recent development of ‘recon-
+figurable winding’ technology with the ability to change
+configuration during operation. In its simplest form, the
+volume of an electric machine is proportional to its power
+capability [15], [57]. This means that when the power require-
+ment is fixed by the application, the main consideration of the
+winding topology is obtaining the desired torque and speed
+range. Requirements of traction drives are characterised by
+the ability to provide a very high transient torque, but also
+cover a large speed range [58]. In applications where the final
+drive ratio can be changed, this can be used to change the
+torque speed relationship but there will still be a trade-off
+between the torque and speed capability for a fixed winding
+structure. Multispeed mechanical gearboxes are a possible
+solution to this but introduces additional weight, losses, and
+cost [55], [59]. The reconfigurable winding method offers an
+electromagnetic alternative to a multispeed gearbox, without
+the additional mechanical equipment. One of the mutually
+agreed upon aims for implementing reconfigurable wind-
+ings covered in literature is reducing the mass and volume
+of the drive system (TABLE 3). A common methodology,
+is to maintain the torque and power rating the motor whilst
+reducing its volume and size [53], [60], [61], [62], [63].
+As changing the winding configuration has shown to alter
+torque density, the volume of the motor can therefore be
+reduced whilst producing a similar performance. Other than
+redesigning, or choosing a smaller machine, one accessible
+method of achieving this is through shortening the axial
+length of the machine [57], [60]. This action alone would nat-
+urally result in reduced torque output, however, an increased
+turns per phase indicative of the ‘low speed’ winding config-
+uration reclaims this lost torque when operated with the same
+phase current as before, albeit over a shorter speed range.
+It has also been shown that the lower turns per phase of the
+‘high speed’ winding configuration not only maintains the
+power output of the baseline motor but can exceed it in certain
+circumstances. To quantify the degree to which the motor
+volume can be reduced, a study using finite element analysis
+based on the Toyota Prius PMSM reported a 24% reduction
+in axial length while maintaining peak torque and power
+outputs [60]. Another study shows a volume reduction of
+25% possible through the reduction in stator diameter while
+increasing the peak torque values by 15% [58]. Furthermore,
+theoretical limits for multiphase machines indicate that a 27%
+reduction in motor volume is feasible compared to that of a
+fixed configuration [57].
+A. TORQUE DENSITY IMPROVEMENTS AND SPEED
+RANGE EXTENSION
+When implementing multiple winding configurations to
+an existing design, which is most applications shown in
+TABLE 3, the ratio of winding turns compared to the baseline
+makes a large difference to the outcome performance of the
+drive. Using the series-parallel method as an example, there
+are three methods to choosing the new winding structure:
+If the series configuration has the same number of turns as
+the baseline (and thus the same characteristics), the paral-
+lel connection will primarily extend the speed and power
+capability of the motor. If the parallel configuration has the
+same number of turns as the baseline configuration, the series
+configuration will primarily increase the torque capability of
+the motor. The third method is to design the series config-
+uration to have a higher number of turns, and the parallel
+configuration to have fewer turns than the baseline winding.
+This method of choosing a number of turns either side of the
+baseline configuration, increases the potential torque density,
+speed range, and power density of the motor. Because of
+this, it is the most popular method for demonstrating the
+advantages of reconfigurable windings in literature.
+This ability to alter the torque density of the motor also
+influences other components in the drive system, of which the
+possible elimination of mechanical/hydraulic transmissions
+and their peripheral components show the greatest potential
+not only in terms weight reduction, but volume, loss reduc-
+tion, and efficiency increase of the drive unit as a whole [11],
+[53], [55]. Mimicking the torque speed characteristics of a
+two-speed gearbox, a motor with reconfigurable windings
+lends itself to improving the viability of in wheel hub motors.
+Given their radial dimensional constraints, to provide the
+large tractive torque for low-speed acceleration, motors used
+in the ‘hub’ of a conventional passenger vehicle are required
+to be bulkier than geared their counterparts thus further
+research in this area targeted to ‘‘achieve direct drive traction
+motors with extremely high torque capacities and low weights
+and volumes’’ [61].
+Low power automotive drives that require extended torque
+speed range characteristics have also been a key area of
+research of this technology [56], [63], [64], [66], most notably
+the development of a hybrid electric scooter that utilises
+reconfigurable windings to enhance the operation of a small
+motor generator [56]. Research on minimising costs in the
+drive system focus on limiting or completely excluding the
+operation of the motor in field weakening with the aim
+to reduce materials in the inverter cables/connections and
+permanent magnets in the motor. If the ability to use field
+weakening is maintained, changing the winding configura-
+tion will alter the operating characteristics of the motor in
+this region, and as machine design is heavily influenced by its
+operation in field weakening (or lack thereof) the topology of
+the motor itself has scope to be revised. This therefore offers
+further capacity for volume and mass reduction of not only the
+motor itself, but the proportion of materials used within them
+such as the permanent magnet mass and stator slot size [13],
+[62] [65]. Furthermore, the influence of changing the winding
+configuration may also have potential on reducing the size of
+the cooling system for the motor and inverter as they may be
+operating with different current densities to before [36].
+The literature covered strongly suggests that the imple-
+mentation of reconfigurable windings has the capability to
+140194
+VOLUME 13, 2025
+
+
+===== PAGE 9 =====
+
+J. Best et al.: Review of Motors With Reconfigurable Windings for Automotive Traction Drives
+TABLE 3. Approach 1: Reducing E-drive system mass and volume.
+VOLUME 13, 2025
+140195
+
+
+===== PAGE 10 =====
+
+J. Best et al.: Review of Motors With Reconfigurable Windings for Automotive Traction Drives
+bring system efficiency gains due to lower losses in motor
+and inverter over specific operating conditions (which will be
+discussed later). Relatively small efficiency gains have large
+implications on vehicle range and energy storage considera-
+tions. A large proportion of the mass of a typical BEV is the
+battery itself, furthermore the mass of the vehicle has been
+shown to be linearly proportional to energy consumption [72].
+The decrease in energy consumption due improved drive
+efficiencies could allow the downsizing of the battery system
+while maintaining the baseline vehicle range. Depending on
+the level of mass removed from the battery, this could further
+decrease the energy consumption of the vehicle over the drive
+cycle, allowing for an iterative reduction of vehicle mass until
+a new optimum is achieved.
+An equivalent motor and reconfiguration equipment has
+been shown to fit in the baseline motor housing at a reduced
+mass [60], [73]. In hub motor applications this has the benefit
+of reducing the unsprung mass of the wheel assembly improv-
+ing vehicle platform dynamics [61]. Despite these studies,
+adding the necessary switchgear required to reconfigure the
+windings of the stator switchgear will incur the additional
+mass and volume of the required components. Methodologies
+for achieving the switching capability varies greatly with one
+of the major challenges being the placement of the switchgear
+and increased phase leads to be terminated outside of the
+motor casing [56]. Conversely, one study has shown that
+all the peripheral components required to achieve winding
+reconfiguration along with the inverter can be integrated
+within the motor itself [73].
+B. INCREASING MOTOR POWER DENSITIES
+If the power output of a traction drive is limited by the current
+density (A/mm2) of the motor windings, using configurations
+with a lower number of turns than the baseline winding
+structure allows for a significant increase in the high-speed
+power density of the motor [36], [37], [52], [58], [64]. This is
+because the cross-sectional area (mm2) will increase when
+winding parts are connected in parallel (2 times) or delta
+(1.73 times), thus the current(A) delivered to the motor can
+increase by the same amount keeping the current density of
+the phase windings constant. Simulations of [52] and shown
+in Table 1, demonstrates that the series-parallel method using
+half the half the number of turns of the baseline motor in the
+parallel configuration can improve high-speed motor power
+densities by 100%. Although the potential power output of
+the motor increases, to achieve this inverter must be able
+to deliver a higher phase current than before. Moreover, the
+battery system will also be placed under a higher load, thus
+the realistic implementation to increase the power of existing
+drives would require higher rated components. Conversely,
+this demonstrates the possibility for drastically reducing
+motor sizes while maintaining the baseline output powers.
+In cases where output power is limited by inverter cur-
+rent, a configuration with a higher number of turns could
+improve the low-speed power capability of the motor without
+increasing the line/inverter current or any other modifications
+to the drivetrain [55]. This can be used to better match the
+power capability of the motor to the power capability of
+the inverter, changing to a parallel or delta configuration to
+maintain that power level at higher speeds [60]. The phase
+current density in the motor does however increase in line
+with the phase resistance which may push the existing satu-
+ration or thermal limits of the motor design. Because of this,
+the increase in power output may not be a linear correlation
+and the motor would be expected to reach its thermal limit
+faster.
+V. APPROACH 2: IMPROVING E-DRIVE EFFICIENCY
+Reconfigurable windings show promise of improving the
+efficiency of the electric drive. Although multiple authors
+have researched the generalised influence [13], [57], [70],
+the exact benefits to be gained from changing the winding
+configuration is shown to vary between motor topologies and
+applications leading to a vast difference in aims and results in
+literature shown in TABLE 4. This section will reflect on the
+objectives and methods applied to improve drive efficiencies
+through the implementation of reconfigurable windings for
+traction drive applications. One of the key objectives for
+improving the drive system performance is to reduce losses
+in the drivetrain, with a particular attention to the transmis-
+sion [12], [53], [56], [64]. The ability to alter the torque speed
+relationship of the motor through winding reconfiguration
+achieves a comparable characteristic of a multi-speed gear-
+box and if used in its stead, can have a significant impact on
+driveline efficiency. The exclusion of frictional losses associ-
+ated with the continuously variable transmission (CVT) is one
+application with the largest impact on improving driveline
+efficiencies without the need of any other speed extension
+method such as field weakening (incurring additional cost and
+complexity to the controller) [56], [62], [64].
+From TABLE 4, the implementation of reconfigurable
+windings has largely been applied to reducing losses in the
+motor windings. Copper losses are reduced in part due to
+the reduced phase resistance [36], [37], core losses are also
+reduced due to the smaller field coupling of the high-speed
+winding [61]. The greatest reduction in motor losses is seen
+at high-speed operation largely attributed to the reduction
+in required d-axis current to extend the speed range of the
+motor, i.e avoiding field weakening operation [20], [56], [64].
+The result of this culminates in the greatest loss reduction
+compared with other common methods of speed extension
+as shown in Figure 8 [37]. Approximately 50% motor loss
+reduction is common in literature and is found at high speed
+and high load operating conditions, showing potential for
+improving the thermal capabilities and lowering cooling
+requirements [8], [18], [36], [37], [56].
+Although only covered in a few cases [9], [53], reconfig-
+urable windings also show promise for significantly reducing
+inverter losses in low and high-speed configurations. When
+considering the efficiency of the whole drive system, these
+losses can make a significant contribution in the reduction
+140196
+VOLUME 13, 2025
+
+
+===== PAGE 11 =====
+
+J. Best et al.: Review of Motors With Reconfigurable Windings for Automotive Traction Drives
+TABLE 4. Approach 2: Improving E-drive efficiency and loss reduction.
+of energy consumption [9], with total drive system effi-
+ciency improvements reported of approximately 8-10% [37].
+In series or star configurations with a higher number of turns
+than the baseline, a lower phase current is required to generate
+VOLUME 13, 2025
+140197
+
+
+===== PAGE 12 =====
+
+J. Best et al.: Review of Motors With Reconfigurable Windings for Automotive Traction Drives
+FIGURE 8. Efficiency comparison of speed extension methods [37].
+the same torque below base speed. This reduction in phase
+current translates to lower losses in the inverter(s). As the
+semiconductor power switches have a characteristic resis-
+tance, ohmic losses of I2R show that a modest reduction in
+current will have a large influence on semiconductor heating
+and associated losses. The result of this is a clear increase in
+system efficiency at low-speed operation as demonstrated in
+Figure 9 Influence of changing winding configuration on the
+total system efficiency.
+In high-speed configurations, due to the reduced back
+emf, the motor is operating with less or no field weakening
+compared to the low-speed configuration and the d axis cur-
+rent component is small or not necessary at all. During this
+condition the line current will again be smaller than before
+meaning that the associated inverter losses are reduced [36].
+This is reflected as a secondary high system efficiency zone
+in Figure 9 and a slight increase its maximum efficiency [60].
+This shows potential for reducing the cooling requirement for
+the power electronics at both high and low speed operation.
+The important implication for automotive applications is
+that when applied to an existing drive, both star-delta and
+series-parallel methods offers a higher efficiency region for
+both low and high-speed operation. The series and star con-
+figurations could be implemented to reduce ‘city’ driving
+energy consumption, while parallel and delta configurations
+also increase high-speed drive cycle efficiencies in line with
+motorway driving [9]. Improvements in total system efficien-
+cies under motorway driving conditions could have a large
+impact on increasing vehicle range or allowing the downsiz-
+ing of powertrain components.
+A. ADDITIONAL LOSSES
+For the star-delta, series-parallel and tapped winding meth-
+ods, current will be carried across parallel phase windings.
+Depending on the placement of these parallel windings and
+imperfections in the winding of the motor, one may see a
+higher flux than the other. In this circumstance, due difference
+in emf generated by the coils, a current will be induced
+between them when a voltage is applied across the phase
+terminals from the driver generating unwanted losses in the
+windings [77]. Admittedly, these losses are usually negligi-
+ble although research undertaken quantifying the effect of
+circulating currents in parallel windings state that they can
+become significant in high-speed machines. Luckily it has
+been shown that by twisting the parallel windings together the
+difference in phase amplitude in the windings is drastically
+reduced and with it the circulating currents in them [77]. Delta
+configurations reportedly suffer the most from third harmonic
+currents with the adoption of non-salient rotors essential to
+mitigate this issue [69].
+As phase current will be carried through any reconfig-
+uration equipment, any additional resistances due to the
+switching components or cabling will be a source of ohmic
+losses. If semiconductors are used as the switching compo-
+nents, the associated losses follow the general equation of:
+P = VTOI + rI2
+where P is the power losses, VTO is the semiconductor
+turn on voltage, I is the phase current and r is the on-state
+resistance. [20].
+The advantages of using semiconductor switches is the
+ease of implementation, lack of maintenance, and wide
+control flexibility [14]. Mechanical switching devices on
+the other hand can be designed to have practically neg-
+ligible losses [20], [69], have high temperature tolerances
+and can be easily manufactured but also have a longer
+associated switching transient where motor torque will be
+interrupted.
+140198
+VOLUME 13, 2025
+
+
+===== PAGE 13 =====
+
+J. Best et al.: Review of Motors With Reconfigurable Windings for Automotive Traction Drives
+FIGURE 9. Influence of changing winding configuration on the total system efficiency [9].
+B. CIRCULATING CURRENTS
+The star-delta, series-parallel winding configurations both
+require the phase current to be carried across two windings
+when configured in the ‘delta’ or ‘parallel’ configuration. It is
+stated that due to the placement of these parallel windings
+and imperfections in the winding of the motor, one coil may
+see a higher flux density than the other. In this circumstance
+due difference in emf generated by the coils, a current will be
+induced between them when a voltage is applied across the
+phase terminals from the driver generating unwanted losses
+in the windings [77]. Admittedly, these losses are usually
+negligible although research undertaken quanifying the effect
+of circulating currents in parallel windings state that they can
+become significant in high speed machines. Luckily it has
+been shown that by twisting the parallel windings together the
+difference in phase amplitude in the windings is drastically
+reduced and with it the circulating currents in them [77].
+VI. FURTHER CONSIDERATIONS
+Although the implementation of reconfigurable windings
+show promise an improved high-speed performance and effi-
+ciency for the machine, there are a few considerations that do
+not directly fall within scope of improving torque and power
+density or loss reduction.
+A. COST REDUCTION
+RW machines with the capacity to generate higher flux den-
+sities result in a lower rated current for the same torque
+output [36]. A reduction in phase current allows for downsiz-
+ing of semiconductor materials [73], cables motor windings,
+and other ‘phase current’ rated components resulting in cost
+savings in addition to overall operational costs from lower
+energy consumption [36]. There is also speculation as to
+whether this saving in inverter semiconductor materials could
+offset the additional cost of the RW switchgear [58]. Fur-
+thermore, as the motor and inverter can be operated at lower
+currents, a reduction in heat can be expected further contribut-
+ing to lowering system costs if the cooling system can be
+simplified [36].
+B. PERMANENT MAGNET REDUCTION
+Methods
+of
+implementing
+reconfigurable
+windings
+to
+increase the torque density of electric motors can also be used
+to reduce the mass of permanent magnet materials in the rotor
+while maintaining baseline performance [52]. Moreover, this
+technique has been shown to improve the performance of
+induction and switched reluctance motors closer to the per-
+formance of a PMSM [12]. This shows promise of reducing
+one of the largest costs in the production of electric machines
+but also the a reduction in life cycle emissions and material
+depletion related to these rare earth metals.
+C. TORQUE INTERRUPTION
+With the severity of delay depending on the switching archi-
+tecture employed, torque interruption when changing from
+one configuration to another is a common trait inherent of
+the winding reconfiguration method and an area of further
+research [51], [76]. All methods covered in the literature
+require all phase currents to be zero during the switch-
+ing event to avoid large destructive voltage spikes in the
+switching assembly [53], [64]. The focus in literature dis-
+cussing this torque interruption is to reduce the switching
+event as much as possible to minimise the discomfort of
+the vehicle passengers [20], [69]. An early example of this
+VOLUME 13, 2025
+140199
+
+
+===== PAGE 14 =====
+
+J. Best et al.: Review of Motors With Reconfigurable Windings for Automotive Traction Drives
+switching transient for a mechanical contactor is to be
+between 55-75ms. 4-10ms is the measured equivalent for a
+semiconductor switching array [69].
+VII. APPLYING RECONFIGURABLE WINDINGS TO
+REDUCE INVERTER CURRENT: A CASE STUDY
+The 2015 Nissan Leaf represents a well-established electric
+vehicle on the market today along with a well-developed
+propulsion system, the architecture of which can be gener-
+alised to most existing passenger vehicles. It is because of
+this, and the freely available information on the motor and
+inverter, that is has been chosen to showcase a potential appli-
+cation of reconfigurable windings to an existing architecture,
+following a mixture of approaches 1 and 2 covered in this
+review. In electric vehicles, the inverter plays a vital role in
+converting DC power from the battery into a suitable wave-
+form to drive the electric motor. The sizing and specifications
+of the inverter are required to meet the torque and power
+requirements of the motor(s). It is observed that for the pow-
+ertrain of the Nissan Leaf, the combination of motor and drive
+necessitates a high peak inverter current rating compared with
+the peak power demand of the vehicle. This apparent over
+sizing of the inverter is to satisfy the peak torque rating of the
+motor, as the motor demands a significantly elevated current
+from the inverter in this operating range.
+The following section will briefly discuss the applica-
+tion of series-parallel winding configurations to the Nissan
+leaf traction motor to reduce the current demand from the
+inverter: The proposed design maintains the baseline number
+of turns to act as the parallel configuration, targeting low
+load and high-speed operation. The series configuration will
+therefore double the effective turns per phase increasing the
+ampere-turns by a factor of 2. Modelling and subsequent
+simulations were carried out in ANSYS MotorCad, In which
+the magnetic structure of the stator and rotor remain unaltered
+between the baseline and proposed reconfigurable winding
+design so that the only variable in question is the number of
+turns per phase. Two independent models were developed to
+represent the ‘series’ and ‘parallel’ configurations and were
+solved separately. Therefore results shown later are a combi-
+nation of two discrete winding configurations favouring the
+parallel configurations for torque demands below 150Nm.
+The main specifications used for the baseline Nissan leaf
+drive are shown below in TABLE 5.
+TABLE 5. Baseline 2015 NISSAN leaf motor key parameters.
+It should also be stressed that there are additional con-
+straints regarding the control of a machine with reconfig-
+urable windings. An example of which being that it is desir-
+able for the reconfiguration event to happen within the base
+speed of the mode with the highest BEMF constant. Switch-
+ing above base speed has not been demonstrated in literature
+and is problematic because the control of Id currents is not
+possible during the changeover transient. And therefore it is
+likely to incur high voltage transient events which may dam-
+age switching components. it is not the intension to discuss
+the practical implementation further however there is exam-
+ples of research on this matter is available to the reader [78].
+Using the peak current capability of the inverter and oper-
+ating voltage of the DC bus, the inverter can be estimated
+to have a peak power capability of 180kW. However, the
+vehicle is limited to 80kW output indicating that the inverter
+is oversized which is common place in automotive applica-
+tions. This is due to the high transient torque requirement for
+acceleration and gradability but a comparatively low power
+requirement at higher speeds. This is demonstrated Figure 10
+showing a) the torque speed efficiency curve of the baseline
+motor and b) subsequent current demand with a very high
+current region indicated for operation above 150Nm. This
+high current region could hypothetically be offset through
+the modification of the final drive ratio, a change in the
+number of turns of the armature winding, or the addition of a
+mechanical gearbox. However, each of these methods have
+negative implications such as higher mechanical stresses,
+lower machine efficiencies, and the requirement of additional
+mechanical components and respective mass and complexity.
+The proposed implementation of series and parallel con-
+figurations (TABLE 6) provides a further alternative for this
+scenario, reducing the inverter current requirement without
+the inherent drawbacks of the aforementioned methods. The
+higher torque constant achieved by the series configuration
+provides the same peak torque value as the baseline machine,
+with a reduction in inverter current of 41.67%. The torque
+curve in the series configuration is characterised by a slight
+reduction in peak power output due to the shorter base speed
+region and lower efficiency operation beyond this point. The
+parallel configuration performance is identical to the baseline
+as it is has the same number of turns.
+Despite the peak inverter current reducing from 480-280A,
+as the phase resistance doubles thus maintaining the same
+phase current density as before. It is therefore assumed that
+the motor can safely operate with the winding modifications
+both thermally and mechanically as there are no modifica-
+tions or required change in the rotational speed of the rotor.
+The operating strategy currently displayed depicts the par-
+allel configuration as the default state under a torque demand
+of 150Nm as it provides the highest motor efficiency. How-
+ever, depending on the potential inverter loss reduction in the
+series configuration, the net losses between the motor and
+inverter may point to the series configuration as the optimum
+state for low speed efficiency. The caveat to this remains the
+losses associated with the reconfiguration equipment yet to be
+140200
+VOLUME 13, 2025
+
+
+===== PAGE 15 =====
+
+J. Best et al.: Review of Motors With Reconfigurable Windings for Automotive Traction Drives
+FIGURE 10. Baseline (left) 2015 Nissan leaf electric machine with (a) representing the torque speed efficiency map and (b) showing the
+corresponding peak inverter current demand. The machine with reconfigurable windings (right) with (d) showing significant reduction in
+phase current versus the region highlighted in (b).
+fully scrutinised. There are further system level implications
+regarding the control strategy of the winding configuration
+state; the improved control over inverter thermal management
+gained by the potential phase current reduction, advantages
+gained in motor control due to higher inductances, and addi-
+tional fault tolerance mechanisms.
+The preliminary results show that reconfigurable windings
+can reduce the rated current required of the inverter of the
+Nissan Leaf E-Drive by 41.67%, insinuating possible size,
+weight, and cost reductions can be made while maintaining
+the same level of performance. This case study highlights the
+potential of reconfigurable windings as a promising technol-
+ogy for the development of more efficient and cost-effective
+electric vehicles. Furthermore, the influence on inverter
+losses and thermal management are suspected to be signif-
+icant when compared to current inverter implementations.
+This outlines one possible methodology to the application
+of reconfigurable windings previously discussed in literature,
+however the further considerations regarding the integration
+of this technology are still to be explored.
+VIII. CHALLENGES AND KNOWLEDGE GAPS
+This review paper has outlined the theoretical aspects
+and potential performance benefits of traction motors with
+TABLE 6. 2015 NISSAN leaf motor using series-parallel reconfigurable
+windings.
+reconfigurable windings. To implement this technology
+in a practical application further research is required in
+two key areas: first, control strategies for motors with
+reconfigurable windings, and second, potential advantages
+and disadvantageous regarding the functional safety of the
+switching components. Control methodologies should be
+explored to reduce total BEV energy consumption over
+driving scenarios and be leveraged to improve vehicle per-
+formance. The control strategy and switching transient will
+VOLUME 13, 2025
+140201
+
+
+===== PAGE 16 =====
+
+J. Best et al.: Review of Motors With Reconfigurable Windings for Automotive Traction Drives
+also impact the driver’s comfort and driving experience. The
+hardware in place to enable switching from one configuration
+to another will likely also impact functional safety, either
+through introducing increased complexity, leading to higher
+likelihood of failure, or by offering the potential to mitigate
+motor failures by implementing fail-safe configurations.
+Further research on total system losses would help draw
+more conclusions on real world efficiency gains to be gained
+from traction motors with reconfigurable windings. This is
+particularly true of the losses associated with the switching
+components. Comparing mechanical switching components
+to semiconductor equivalents is crucial for forecasting the
+cost-effectiveness of this technology, as the cost of semi-
+conductor power devices, or the requirement of multiple
+inverters, will most likely hinder implementation. Future
+studies could also focus on applications with a view to reduce
+motor and drive cost. As the literature has shown that multiple
+winding configurations can increase torque and power densi-
+ties (primarily of PMSMs), this could allow for a reduction
+in motor volume or permanent magnet requirement. Further-
+more, this could enable less favourable motor topologies in
+the automotive sector (SRMs for example) to be a more
+attractive proposition.
+The majority of literature discuss the modification existing
+machines. if we consider the initial winding configuration
+can now be modified it is almost cirtain there will be a
+new optimimum. Furthermore, there will be other variables
+during the design process that will be influenced by the
+flexibility reconfigurable windings offer to the designer if
+intoduced propectively. It is therefore recommended that
+further research be focus to the methodology of desiging
+machines with reconfigurable windings from conception to
+provide insight on true applicability.
+IX. CONCLUSION
+A full review of reconfigurable windings for traction drives
+has identified three key areas for consideration when evaluat-
+ing their benefits: their influence on reducing e-drive system
+mass and volume, their role in improving e-drive efficiency,
+and methodologies for implementation.
+Studies that directly discussed improvements in motor
+performance commonly found machine torque and power
+density improvements of 40-80% when implementing recon-
+figurable windings to existing machine designs. Other studies
+targeting efficiency achieved total motor loss reductions of
+30-60%. A new case study on the Nissan Leaf drive high-
+lights yet other potential impacts on the drive system as
+a whole, achieving a reduction in inverter current require-
+ment of 41.67% while maintaining baseline performance
+characteristics.
+Studies that discuss the reduction in motor losses very
+rarely consider system impacts, such as the influence on the
+inverter or losses incurred within the switching architecture.
+For example, many studies have used semiconductor-based
+implementations to reduce the transient switching (recon-
+figuration) time without considering the added on-state
+resistance, which may negate overall system efficiency ben-
+efits in some applications.
+Mechanical switching components offer an attractive solu-
+tion for automotive traction applications due to their sim-
+plicity and low material cost compared to semiconductors.
+However they are rarely explored in the literature due to
+their higher transient switching time. Future work consider-
+ing mechanical switches for reconfigurable windings must
+ensure that the contact resistance of the switch is low enough
+as to retain total system efficiency benefits.
+Overall, the general applicability of reconfigurable wind-
+ings is unclear due to the reliance of previous literature on
+specific case studies and retrofitted machines. There is a need
+for an overarching methodology for the implementation of
+this technology in the early stages of machine design, and
+structured analysis to identify which applications may benefit
+the most.
+REFERENCES
+[1] Department-for-Transport. Government Takes Historic Step Towards
+Net-Zero With End of Sale of New Petrol and Diesel Cars By 2030.
+Accessed: Oct. 24, 2024. [Online]. Available: https://www.gov.uk/
+government/news/government-takes-historic-step-towards-net-zero-with-
+end-of-sale-of-new-petrol-and-diesel-cars-by-2030
+[2] S. M. J. Anenberg, D. Henze, R. Minjares. (2019). A Global Snapshot
+of the Air Pollution-related Health Impacts of Transportation Sector
+Emissions in 2010 and 2015. [Online]. Available: https://theicct.org/sites/
+default/files/publications/Global_health_impacts_transport_emissions_
+2010-2015_20190226.pdf
+[3] EU Officially Bans Sale of ICE Vehicles From 2035, but That’s Still
+Way Too Late | Electrek. Accessed: Aug. 26, 2022. [Online]. Available:
+https://electrek.co/2022/06/09/eu-bans-sale-of-ice-vehicles-2035/
+[4] ACT
+Flags
+2035
+Ban
+of
+New
+ICE
+Cars
+Alongside
+Ambitious
+New
+EV
+Target.
+Accessed:
+Aug.
+26,
+2022.
+[Online].
+Available:
+https://thedriven.io/2022/07/18/act-flags-2035-ban-of-new-ice-cars-
+alongside-ambitious-new-ev-target/
+[5] California
+Will
+Ban
+Sales
+of
+New
+ICE-powered
+Cars
+By
+2035.
+Accessed:
+Aug.
+26,
+2022.
+[Online].
+Available:
+https://www.stuff.co.nz/motoring/300671318/california-will-ban-sales-
+of-new-icepowered-cars-by-2035
+[6] N. Hill et al., ‘‘Determining the environmental impacts of conventional
+and alternatively fuelled vehicles through LCA—Final report,’’ Euro-
+pean Commission, Directorate-General Climate Action, Ricardo Energy
+& Environment, Publications Office European Union, 2020. [Online].
+Available: https://data.europa.eu/doi/10.2834/91418
+[7] G. Bieker. (2021). A Global Comparison of the Life-Cycle Greenhouse Gas
+Emissions of Combustion Engine and Electric Passenger Cars. [Online].
+Available: www.theicct.orgcommunications@theicct.org
+[8] C. Alosa, G. Migliazza, F. Immovilli, and E. Lorenzani, ‘‘Reconfig-
+urable multi-three-phase drive for naval rim-driven propulsion system,’’
+IEEE Trans. Ind. Appl., vol. 58, no. 2, pp. 2075–2087, Mar. 2022, doi:
+10.1109/TIA.2022.3142234.
+[9] Y. Takatsuka, H. Hara, K. Yamada, A. Maemura, and T. Kume, ‘‘A
+wide speed range high efficiency EV drive system using winding
+changeover technique and SiC devices,’’ in Proc. Int. Power Electron.
+Conf. (IPEC-Hiroshima-ECCE ASIA), May 2014, pp. 1898–1903, doi:
+10.1109/IPEC.2014.6869844.
+[10] T. Kume and M. Swamy, ‘‘A quick transition electronic winding
+changeover technique for extended speed ranges,’’ in Proc. IEEE 35th
+Annu. Power Electron. Specialists Conf., Jun. 2004, pp. 3384–3389, doi:
+10.1109/PESC.2004.1355073.
+[11] T. Kume, T. Iwakane, T. Sawa, T. Yoshida, and I. Nagai, ‘‘A wide constant
+power range vector-controlled AC motor drive using winding changeover
+technique,’’ IEEE Trans. Ind. Appl., vol. 27, no. 5, pp. 934–939, 1991, doi:
+10.1109/28.90350.
+[12] P. Yang, W. Shi, Y. Qiu, B. Li, and Y. Gan, ‘‘Enhanced efficiency
+of direct-drive switched reluctance motor with reconfigurable wind-
+ing topology,’’ IEEE Access, vol. 10, pp. 62976–62990, 2022, doi:
+10.1109/ACCESS.2022.3183133.
+140202
+VOLUME 13, 2025
+
+
+===== PAGE 17 =====
+
+J. Best et al.: Review of Motors With Reconfigurable Windings for Automotive Traction Drives
+[13] E. Nipp, ‘‘Permanent magnet motor drives with switched stator windings,’’
+Royal Institute Technology, Dept. Electric Power Eng. Electrical Machines
+Drives, Stockholm, 1999.
+[14] X. Zhou, G. Buticchi, G. Migliazza, S. Wang, M. Galea, and C. Gerada,
+‘‘Review of speed-extension of permanent magnet synchronous motor with
+reconfigurable-winding system,’’ in Proc. IEEE 30th Int. Symp. Ind. Elec-
+tron. (ISIE), Jun. 2021, pp. 1–6, doi: 10.1109/ISIE45552.2021.9576285.
+[15] A. Hughes and B. Drury, Electric Motors and Drives. Amsterdam, The
+Netherlands: Elsevier, 2013.
+[16] Electric Machine Indicators Electric Machines Technology Indicators,
+Advanced Propulsion Centre, U.K., 2020.
+[17] N. Bianchi, S. Bolognani, and B. J. Chalmers, ‘‘Salient-rotor PM syn-
+chronous motors for an extended flux-weakening operation range,’’ IEEE
+Trans. Ind. Appl., vol. 36, no. 4, pp. 1118–1125, Jul. 2000.
+[18] K. Sakai and N. Yuzawa, ‘‘Effects of pole changing in a permanent magnet
+motor,’’ in Proc. 15th Eur. Conf. Power Electron. Appl. (EPE), Sep. 2013,
+pp. 1–8, doi: 10.1109/EPE.2013.6631751.
+[19] P. Chidambaram, M. Subbiah, and M. R. Krishnamurthy, ‘‘Develop-
+ments in pole changing windings using star/star-delta switching,’’ IEEE
+Trans. Energy Convers., vols. EC–1, no. 4, pp. 135–141, Dec. 1986, doi:
+10.1109/TEC.1986.4765787.
+[20] E. Nipp, ‘‘Alternative to field-weakening of surface-mounted permanent-
+magnet motors for variable-speed drives,’’ in Proc. Conf. Rec. IEEE Ind.
+Appl. Conf. 13th IAS Annu. Meeting, vol. 1, Oct. 1995, pp. 191–198, doi:
+10.1109/IAS.1995.530301.
+[21] G. R. Slemon, ‘‘Achieving a constant power speed range for PM drives,’’
+IEEE Trans. Ind. Appl., vol. 31, no. 2, pp. 368–372, Mar. 1995, doi:
+10.1109/28.370286.
+[22] M. Kathiresh and G. Williamsonn, E-Mobility A New Era in Automotive
+Technology. Cham, Switzerland: Springer, 2022, doi: 10.1007/978-3-030-
+85424-9.
+[23] A. K. Adnanes and T. M. Undeland, ‘‘Optimum torque performance in
+PMSM drives above rated speed,’’ in Proc. IEEE Ind. Appl. Soc. Annual
+Meeting, Sep. 1992, pp. 169–175, doi: 10.1109/IAS.1991.178150.
+[24] B. V. Kumar, R. K. Singh, and R. Mahanty, ‘‘A modified non-isolated bidi-
+rectional DC-DC converter for EV/HEV’s traction drive systems,’’ in Proc.
+IEEE Int. Confe. Power Electronics, Drives Energy Systems (PEDES),
+Trivandrum, India, 2016, pp. 1–6, doi: 10.1109/PEDES.2016.7914345.
+[25] R. Kasper and N. Borchardt, ‘‘Boosting power density of electric machines
+by combining two different winding types,’’ IFAC-PapersOnLine, vol. 49,
+no. 21, pp. 322–329, 2016, doi: 10.1016/j.ifacol.2016.10.576.
+[26] M. N. Ibrahim, P. Sergeant, and E. E. M. Rashad, ‘‘Combined star-delta
+windings to improve synchronous reluctance motor performance,’’ IEEE
+Trans. Energy Convers., vol. 31, no. 4, pp. 1479–1487, Dec. 2016, doi:
+10.1109/TEC.2016.2576641.
+[27] S. M. Raziee, O. Misir, and B. Ponick, ‘‘Combined star-delta winding
+analysis,’’ IEEE Trans. Energy Convers., vol. 33, no. 1, pp. 383–394,
+Mar. 2018, doi: 10.1109/TEC.2017.2742022.
+[28] M. Gwoździewicz and S. Gawron, ‘‘Application of star-delta mixed stator
+winding in synchronous machines with permanent magnets on the rotor
+surface,’’ Politechnika Wrocławska, Wrocław, 2011.
+[29] L. Schreier, J. Bendl, and M. Chomat, ‘‘Analysis of properties of induc-
+tion machine with combined parallel star-delta stator winding,’’ Institute
+Thermomechanics, Prague, 2017.
+[30] O. Misir, S. M. Raziee, N. Hammouche, C. Klaus, R. Kluge, and
+B. Ponick, ‘‘Calculation method of three-phase induction machines
+equipped with combined star-delta windings,’’ in Proc. 22nd Int. Conf.
+Electr. Mach. (ICEM), Sep. 2016, pp. 166–172, doi: 10.1109/ICEL-
+MACH.2016.7732522.
+[31] O. Misir and B. Ponick, ‘‘Analysis of three-phase induction machines with
+combined star-delta windings,’’ in Proc. IEEE 23rd Int. Symp. Ind. Elec-
+tron. (ISIE), Jun. 2014, pp. 756–761, doi: 10.1109/ISIE.2014.6864707.
+[32] M. Ibrahim, E. Rashad, and P. Sergeant, ‘‘Performance comparison of
+conventional synchronous reluctance machines and PM-assisted types
+with combined star–delta winding,’’ Energies, vol. 10, no. 10, p. 1500,
+Sep. 2017, doi: 10.3390/en10101500.
+[33] M. N. F. Ibrahim, A. S. Abdel-Khalik, E. M. Rashad, and P. Sergeant, ‘‘An
+improved torque density synchronous reluctance machine with a combined
+star–delta winding layout,’’ IEEE Trans. Energy Convers., vol. 33, no. 3,
+pp. 1015–1024, Sep. 2018, doi: 10.1109/TEC.2017.2782777.
+[34] O. Misir, S. M. Raziee, N. Hammouche, C. Klaus, R. Kluge, and B.
+Ponick, ‘‘Prediction of losses and efficiency for three-phase induction
+machines equipped with combined star–delta windings,’’ IEEE Trans.
+Ind. Appl., vol. 53, no. 4, pp. 3579–3587, Jul. 2017, doi: 10.1109/TIA.
+2017.2693958.
+[35] H. Kasten and W. Hofmann, ‘‘Electrical machines with higher effi-
+ciency through combined star-delta windings,’’ in Proc. IEEE Int.
+Electr. Mach. Drives Conf. (IEMDC), May 2011, pp. 1374–1379, doi:
+10.1109/IEMDC.2011.5994806.
+[36] L. Hao, C. Namuduri, S. M. Naik, and C. Freitas, ‘‘High speed per-
+formance of PM machine with reconfigurable winding,’’ in Proc. IEEE
+Energy Convers. Congr. Expo. (ECCE), Sep. 2015, pp. 1840–1848, doi:
+10.1109/ECCE.2015.7309919.
+[37] L. Hao, C. Namuduri, S. Gopalakrishnan, and C. Freitas, ‘‘Compari-
+son of the influence of PM drive system with voltage adaptation or
+machine winding reconfiguration on HEV/EV applications,’’ in Proc.
+IEEE Energy Convers. Congr. Expo. (ECCE), Sep. 2015, pp. 6130–6138,
+doi: 10.1109/ECCE.2015.7310519.
+[38] J. Wei, X. Kong, Y. Hong, Z. Zhang, B. Zhou, and W. An, ‘‘Integrated
+control strategy for distortion current elimination of fault-tolerant open-end
+winding permanent magnet synchronous machine with topology recon-
+figuration,’’ IEEE J. Emerg. Sel. Topics Power Electron., vol. 11, no. 2,
+pp. 1397–1406, Apr. 2023, doi: 10.1109/JESTPE.2021.3138171.
+[39] J. Wei, X. Kong, Y. Hong, Z. Zhang, B. Zhou, and W. An, ‘‘Integrated
+control strategy for distortion current elimination of fault-tolerant open-end
+winding permanent magnet synchronous machine with topology recon-
+figuration,’’ IEEE J. Emerg. Sel. Topics Power Electron., vol. 11, no. 2,
+pp. 1397–1406, Apr. 2023, doi: 10.1109/JESTPE.2021.3138171.
+[40] P. H. Kumar and V. T. Somasekhar, ‘‘An enhanced fault-tolerant and
+autoreconfigurable BLDC motor drive for electric vehicle applications,’’
+IEEE J. Emerg. Sel. Topics Ind. Electron., vol. 4, no. 1, pp. 368–380,
+Jan. 2023, doi: 10.1109/JESTIE.2022.3196818.
+[41] L. Szabó, R. Terec, M. Ruba, and P. Rafajdus, ‘‘Reconfigurable fault
+tolerant control system for switched reluctance motors,’’ Elect. Power Eng.
+Frontier, vol. 1, no. 1, pp. 1–7, 2012.
+[42] P. H. Kumar, S. Lakhimsetty, and V. T. Somasekhar, ‘‘An open-end winding
+BLDC motor drive with fault diagnosis and autoreconfiguration,’’ IEEE
+J. Emerg. Sel. Topics Power Electron., vol. 8, no. 4, pp. 3723–3735,
+Dec. 2020, doi: 10.1109/JESTPE.2019.2948968.
+[43] P. Wang, S. Gong, X. Sun, Z. Liu, D. Jiang, and R. Qu, ‘‘Fault-
+tolerant reconfiguration topology and control strategy for symmetric
+open-winding multiphase machines,’’ IEEE Trans. Ind. Electron., vol. 69,
+no. 9, pp. 8656–8666, Sep. 2022, doi: 10.1109/TIE.2021.3116547.
+[44] Q.-T. An, M. H. Duan, L. Sun, and G. L. Wang, ‘‘SVPWM strategy of
+post-fault reconfigured dual inverter in open-end winding motor drive
+systems,’’ Electron. Lett., vol. 50, no. 17, pp. 1238–1240, Aug. 2014, doi:
+10.1049/el.2014.0946.
+[45] H. K. Patnana and S. Veeramraju Tirumala, ‘‘A cost-effective and fault-
+tolerant brushless direct current drive with open-stator windings for low
+power electric vehicles,’’ Int. J. Circuit Theory Appl., vol. 49, no. 9,
+pp. 2885–2908, Sep. 2021, doi: 10.1002/cta.3048.
+[46] P. Sun, S. Jia, D. Liang, and R. Qu, ‘‘A review on the development of high-
+reliability motor system for safety-critical applications–from redundancy
+design prospective,’’ IEEE Trans. Transport. Electrific., vol. 10, no. 3,
+pp. 7374–7388, Sep. 2024, doi: 10.1109/TTE.2023.3340750.
+[47] L. S. Aleksandr, S. Y. Andrey, and S. E. Yaroslav, ‘‘Control strategy of
+dual fed open-end winding PMSM drive for traction applications,’’ in
+Proc. IEEE Conf. Russian Young Res. Elect. Electron. Eng. (EIConRus),
+Jan. 2020, pp. 746–749.
+[48] J. Kim, J. Jung, and K. Nam, ‘‘Dual-inverter control strategy for high-speed
+operation of EV induction motors,’’ IEEE Trans. Ind. Electron., vol. 51,
+no. 2, pp. 312–320, Apr. 2004, doi: 10.1109/TIE.2004.825232.
+[49] H. Hijikata and K. Akatsu, ‘‘Design and online winding reconfigurations
+method of MATRIX motor,’’ in Proc. IEEE Energy Convers. Congr. Expo.
+(ECCE), Sep. 2012, pp. 1330–1337, doi: 10.1109/ECCE.2012.6342662.
+[50] T. Gerrits, J. L. Duarte, C. G. E. Wijnands, E. A. Lomonova,
+J. J. H. Paulides, and L. Encica, ‘‘Twelve-phase open-winding SPMSM
+development for speed dependent reconfigurable traction drive,’’ in Proc.
+10th Int. Conf. Ecol. Vehicles Renew. Energies (EVER), Mar. 2015, pp. 1–7,
+doi: 10.1109/EVER.2015.7112974.
+[51] S. Guizani, A. Nayli, and F. Ben Ammar, ‘‘Comparison between star
+winding and open-end winding induction machines,’’ Electr. Eng., vol. 98,
+no. 3, pp. 219–232, Sep. 2016, doi: 10.1007/s00202-016-0359-4.
+[52] L. Tang, ‘‘Electric motor performance improvement techniques,’’ Oak
+Ridge Nat. Lab., Oak Ridge, TN, USA, 2016.
+[53] L. Tang, T. Burress, and J. Pries, ‘‘A reconfigurable-winding system for
+electric vehicle drive applications,’’ in Proc. IEEE Transp. Electrific. Conf.
+Expo (ITEC), Jun. 2017, pp. 656–661, doi: 10.1109/ITEC.2017.7993347.
+[54] G.-J. Su, L. Tang, C. Ayers, and R. Wiles, ‘‘An inverter packaging scheme
+for an integrated segmented traction drive system,’’ in Proc. IEEE Energy
+Convers. Congr. Expo., Denver, CO, USA, 2013, pp. 2799–2804, doi:
+10.1109/ECCE.2013.6647064.
+VOLUME 13, 2025
+140203
+
+
+===== PAGE 18 =====
+
+J. Best et al.: Review of Motors With Reconfigurable Windings for Automotive Traction Drives
+[55] H. Huang and L. Chang, ‘‘Electrical two-speed propulsion by motor
+winding switching and its control strategies for electric vehicles,’’ IEEE
+Trans. Veh. Technol., vol. 48, no. 2, pp. 607–618, Mar. 1999, doi:
+10.1109/25.752586.
+[56] C.-H. Chen and M.-Y. Cheng, ‘‘Implementation of a highly reliable
+hybrid electric scooter drive,’’ IEEE Trans. Ind. Electron., vol. 54, no. 5,
+pp. 2462–2473, Oct. 2007, doi: 10.1109/TIE.2007.900357.
+[57] M. Boxriker, J. Kolb, and M. Doppelbauer, ‘‘Determining the volume
+optimal parameter values for multi-phase permanent magnet synchronous
+motors with switchable coil configuration,’’ in Proc. 20th Eur. Conf. Power
+Electron. Appl., Sep. 2018, p. 1. [Online]. Available: www.eti.kit.edu
+[58] H. Mao, R. Ye, and M. Liu, ‘‘Dynamically reconfigurable motor technol-
+ogy for high density and high efficiency HEV drives without rare-Earth
+materials,’’ in Proc. IEEE Transp. Electrific. Conf. Expo (ITEC), Jun. 2022,
+pp. 784–789, doi: 10.1109/ITEC53557.2022.9813852.
+[59] P. J. Kollmeyer, J. D. Mcfarland, and T. M. Jahns, ‘‘Comparison of class 2A
+truck electric vehicle drivetrain losses for single-and two-speed gearbox
+systems with IPM traction machines,’’ in Proc. IEEE Int. Electr. Mach.
+Drives Conf. (IEMDC), May 2015, pp. 1501–1507.
+[60] R. Hughes, X. Pei, and C. Vagg, ‘‘Analysis of an Electric Motor with
+Reconfigurable Motor Windings when Accounting for Switching Mech-
+anism Volume,’’ Institute Advanced Automotive Propulsion Syst., Bath,
+2021.
+[61] N. N. Rivera. (2007). Permanent Magnet DC Traction Motor With Recon-
+figurable Winding Control Final Report for High-Speed Rail IDEA Project
+44. [Online]. Available: http://www.trb.org/idea
+[62] S. Hemmati and T. A. Lipo, ‘‘Field weakening of a surface mounted
+permanent magnet motor by winding switching,’’ in Proc. Int. Symp.
+Power Electron. Power Electron., Electr. Drives, Autom. Motion, Jun. 2012,
+pp. 736–740, doi: 10.1109/SPEEDAM.2012.6264472.
+[63] E. F. Fuchs, J. Schraud, and F. S. Fuchs, ‘‘Analysis of critical-speed
+increase of induction machines via winding reconfiguration with solid-
+state switches,’’ IEEE Trans. Energy Convers., vol. 23, no. 3, pp. 774–780,
+Sep. 2008, doi: 10.1109/TEC.2008.921478.
+[64] C.-H. Chen and M.-Y. Cheng, ‘‘Design of a multispeed winding for a brush-
+less DC motor and its sensorless control,’’ IEE Proc.-Electr. Power Appl.,
+vol. 153, no. 6, pp. 834–841, 2006. [Online]. Available: https://digital-
+library.theiet.org/doi/10.1049/ip-epa:20060073
+[65] M. Boxriker, P. Winzer, J. Kolb, and M. Doppelbauer, ‘‘Increas-
+ing the operating range of permanent magnet synchronous motors
+by switching the winding configurations,’’ in Proc. IEEE 2nd Annu.
+Southern Power Electron. Conf. (SPEC), Dec. 2016, pp. 1–6, doi:
+10.1109/SPEC.2016.7846062.
+[66] T. Biskup, A. Bodora, and A. Domoracki, ‘‘A reconfigurable structure
+electronic commutator for a dual BLDC motor EV drive,’’ Bull. Pol-
+ish Acad. Sci., Tech. Sci., vol. 60, no. 4, pp. 769–778, Dec. 2012, doi:
+10.2478/v10175-012-0089-3.
+[67] M. Lin, D. Li, Y. Zhao, X. Ren, and R. Qu, ‘‘Improvement of starting
+performance for line-start permanent magnet motors by winding reconfig-
+uration,’’ IEEE Trans. Ind. Appl., vol. 56, no. 3, pp. 2441–2450, May 2020,
+doi: 10.1109/TIA.2020.2968277.
+[68] P. Song, M. S. Toulabi, W. Li, S. Mukundan, G. Byczynski, J. Tjong,
+and N. C. Kar, ‘‘Improvement of electromagnetic force and acceleration
+in an asymmetrical star-delta winding IPMSM through stator and rotor
+geometrical modifications,’’ in Proc. 47th Annu. Conf. IEEE Ind. Electron.
+Soc., Oct. 2021, pp. 1–6, doi: 10.1109/IECON48115.2021.9589700.
+[69] E. Nipp and E. Norberg, ‘‘On the feasibility of switched stator windings in
+permanent magnet motors for traction drives,’’ in Proc. ASME/IEEE Joint
+Railroad Conf., Apr. 1998, pp. 33–39, doi: 10.1109/RRCON.1998.668069.
+[70] M. Boxriker, J. Kolb, and M. Doppelbauer, ‘‘Effects of coil configuration
+switching, pole-changing and multi-phase windings on permanent magnet
+synchronous motors,’’ in Proc. 43rd Annu. Conf. IEEE Ind. Electron. Soc.,
+Oct. 2017, pp. 1925–1932.
+[71] P. W. Rowland, ‘‘Low impact motor control with star-delta starting,’’ in
+Proc. IEEE Annu. Textile, Fiber Film Ind. Tech. Conf., May 1998, pp. 1–9,
+doi: 10.1109/TEXCON.1998.679231.
+[72] M. Turner, J. Turner, and G. Vorraro, ‘‘Mass benefit analysis of 4-Stroke
+and wankel range extenders in an electric vehicle over a defined drive cycle
+with respect to vehicle range and fuel consumption,’’ SAE Int., SAE Tech.
+Papers, Apr. 2019, doi: 10.4271/2019-01-1282.
+[73] F. Copt, D. M. Araujo, C. Koechli, and Y. Perriard, ‘‘Dynamic
+winding reconfiguration of a brushless DC motor,’’ in Proc. IEEE
+Int. Electr. Mach. Drives Conf. (IEMDC), May 2017, pp. 1–6, doi:
+10.1109/IEMDC.2017.8002326.
+[74] L. Chu, Y.-F. Jia, D.-S. Chen, N. Xu, Y.-W. Wang, X. Tang, and Z. Xu,
+‘‘Research on control strategies of an open-end winding permanent magnet
+synchronous driving motor (OW-PMSM)-equipped dual inverter with a
+switchable winding mode for electric vehicles,’’ Energies, vol. 10, no. 5,
+p. 616, May 2017, doi: 10.3390/en10050616.
+[75] C. C. Chan, J. Z. Jiang, W. Xia, and K. T. Chan, ‘‘Novel wide range speed
+control of permanent magnet brushless motor drives,’’ IEEE Trans. Power
+Electron., vol. 10, no. 5, pp. 539–546, Sep. 1995, doi: 10.1109/63.406841.
+[76] F. Copt, D. M. Araujo, C. Koechli, and Y. Perriard, ‘‘Current control
+strategy for dynamic winding reconfiguration of slotless brushless DC
+motors,’’ IEEE Trans. Ind. Appl., vol. 55, no. 1, pp. 417–425, Jan. 2019,
+doi: 10.1109/TIA.2018.2869102.
+[77] F. Copt, C. Koechli, and Y. Perriard, ‘‘Minimizing the circulating currents
+of a slotless BLDC motor through winding reconfiguration,’’ in Proc. IEEE
+Energy Convers. Congr. Expo. (ECCE), Sep. 2015, pp. 6497–6502, doi:
+10.1109/ECCE.2015.7310570.
+[78] L. Verkroost, M. Demeyer, H. Soltani Gohari, J. Lecoutere, P. Sergeant,
+and H. Vansompel, ‘‘E-gear functionality based on mechanical relays
+in permanent magnet synchronous machines,’’ IET Electr. Syst. Transp.,
+vol. 2024, no. 1, pp. 1–12, 2024, doi: 10.1049/2024/6582973.
+JOSHUA BEST was born in Birmingham, U.K.,
+in 1997. He received the B.Eng. and M.Eng.
+degrees in automotive engineering from the Uni-
+versity of Brighton, and the M.Res. degree from
+the University of Bath.
+He
+currently
+holds
+roles
+as
+a
+Doctoral
+Researcher with the University of Bath and
+an Electric Powertrain Design Engineer with
+Verge Motorcycles. His major field of study
+revolves around automotive engineering and elec-
+tric machines. His work spans various projects, including electric machine
+design for the Shell Eco-Marathon, wind turbine optimization for microgen-
+eration, and solar-powered vehicle powertrain design.
+Mr. Best is also a member of the Institute of Mechanical Engineers.
+PEDRAM ASEF (Senior Member, IEEE) received
+the Ph.D. degree (cum laude) in electrical engi-
+neering from the Polytechnic University of Catalo-
+nia (UPC), Barcelona, Spain, in 2019. He is cur-
+rently an Assistant Professor with the Department
+of Mechanical Engineering, University College
+London (UCL). He is the Director of the e-Motion
+Laboratory and a member of the Advanced Propul-
+sion Laboratory with UCL. He has published over
+60 peer reviewed papers and two books. He led
+related funded research and industrial projects worth more than £ six mil-
+lion in the past years. His research interests include electrical machines
+and drives, energy systems, electric vehicles, and applied optimization and
+machine learning methods. He is a Panel Member of the Royal Society and
+the British Council for Grant Application Assessment. He is the Chair and a
+Committee Member of multiple international IEEE conferences in the above
+fields. He is a fellow of the Higher Education Academy (FHEA), a Chartered
+Engineer (C.Eng.) registered by the Engineering Council, and an Endorsed
+Researcher by the Royal Academy of Engineering, U.K.
+CHRISTOPHER
+VAGG
+received the M.Eng.
+degree in mechanical engineering from the Univer-
+sity of Bristol, U.K., in 2009, and the Ph.D. degree
+from the University of Bath, U.K., in 2014.
+From 2009 to 2010, he worked in the motorsport
+industry with the Mercedes GP Petronas Formula
+One Team, before undertaking his doctoral study.
+From 2014 to 2019, he was the Head of Formula
+E Electric Powertrain, Renault Sport Racing, Paris,
+France. He is currently a Senior Lecturer (an Asso-
+ciate Professor) in electric propulsion systems with the University of Bath.
+His research interests include design and optimization of novel electric
+powertrains, electric machines, and batteries.
+Dr. Vagg is a member of the Institution of Mechanical Engineers. He
+was awarded the 2012 Fiona and Nicholas Hawley Award for Excellence
+in Environmental Engineering by the Worshipful Company of Engineers.
+140204
+VOLUME 13, 2025

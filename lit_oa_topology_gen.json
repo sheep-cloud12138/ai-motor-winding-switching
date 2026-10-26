@@ -1,0 +1,252 @@
+[
+  {
+    "doi": "10.1016/j.renene.2025.123657",
+    "title": "Topology-aware surrogate for future offshore wind farms using machine learning",
+    "year": 2025,
+    "cites": 4,
+    "venue": "Renewable Energy",
+    "abstract": "",
+    "oa_url": "",
+    "url": "https://openalex.org/W4411593468"
+  },
+  {
+    "doi": "10.3390/electronics10233045",
+    "title": "Estimation and Interpretation of Machine Learning Models with Customized Surrogate Model",
+    "year": 2021,
+    "cites": 12,
+    "venue": "Electronics",
+    "abstract": "Machine learning has the potential to predict unseen data and thus improve the productivity and processes of daily life activities. Notwithstanding its adaptiveness, several sensitive applications based on such technology cannot compromise our trust in them; thus, highly accurate machine learning models require reason. Such models are black boxes for end-users. Therefore, the concept of interpretability plays the role if assisting users in a couple of ways. Interpretable models are models that possess the quality of explaining predictions. Different strategies have been proposed for the aforementioned concept but some of these require an excessive amount of effort, lack generalization, are not agnostic and are computationally expensive. Thus, in this work, we propose a strategy that can tackle the aforementioned issues. A surrogate model assisted us in building interpretable models. Moreover, it helped us achieve results with accuracy close to that of the black box model but with less processing time. Thus, the proposed technique is computationally cheaper than traditional methods. The significance of such a novel technique is that data science developers will not have to perform strenuous hands-on activities to undertake feature engineering tasks and end-users will have the graphical-based explanation of complex models in a comprehensive way—consequently building trust in a machine.",
+    "oa_url": "https://www.mdpi.com/2079-9292/10/23/3045/pdf?version=1639034805",
+    "url": "https://openalex.org/W4200352784"
+  },
+  {
+    "doi": "10.5555/1577069.1755854",
+    "title": "Evolutionary Model Type Selection for Global Surrogate Modeling",
+    "year": 2009,
+    "cites": 93,
+    "venue": "Ghent University Academic Bibliography (Ghent University)",
+    "abstract": "Due to the scale and computational complexity of currently used simulation codes, global surrogate (metamodels) models have become indispensable tools for exploring and understanding the design space. Due to their compact formulation they are cheap to evaluate and thus readily facilitate visualization, design space exploration, rapid prototyping, and sensitivity analysis. They can also be used as accurate building blocks in design packages or larger simulation environments. Consequently, there is great interest in techniques that facilitate the construction of such approximation models while minimizing the computational cost and maximizing model accuracy. Many surrogate model types exist (Support Vector Machines, Kriging, Neural Networks, etc.) but no type is optimal in all circumstances. Nor is there any hard theory available that can help make this choice. In this paper we present an automatic approach to the model type selection problem. We describe an adaptive global surrogate modeling environment with adaptive sampling, driven by speciated evolution. Different model types are evolved cooperatively using a Genetic Algorithm (heterogeneous evolution) and compete to approximate the iteratively selected data. In this way the optimal model type and complexity for a given data set or simulation code can be dynamically determined. Its utility and performance is demonstrated on a number of problems where it outperforms traditional sequential execution of each model type.",
+    "oa_url": "https://biblio.ugent.be/publication/858680/file/879709.pdf",
+    "url": "https://openalex.org/W2140046357"
+  },
+  {
+    "doi": "10.3390/su16229851",
+    "title": "Surrogate Modeling for Solving OPF: A Review",
+    "year": 2024,
+    "cites": 24,
+    "venue": "Sustainability",
+    "abstract": "The optimal power flow (OPF) problem, characterized by its inherent complexity and strict constraints, has traditionally been approached using analytical techniques. OPF enhances power system sustainability by minimizing operational costs, reducing emissions, and facilitating the integration of renewable energy sources through optimized resource allocation and environmentally aligned constraints. However, the evolving nature of power grids, including the integration of distributed generation (DG), increasing uncertainties, changes in topology, and load variability, demands more frequent OPF solutions from grid operators. While conventional methods remain effective, their efficiency and accuracy degrade as computational demands increase. To address these limitations, there is growing interest in the use of data-driven surrogate models. This paper presents a critical review of such models, discussing their limitations and the solutions proposed in the literature. It introduces both Analytical Surrogate Models (ASMs) and learned surrogate models (LSMs) for OPF, providing a thorough analysis of how they can be applied to solve both DC and AC OPF problems. The review also evaluates the development of LSMs for OPF, from initial implementations addressing specific aspects of the problem to more advanced approaches capable of handling topology changes and contingencies. End-to-end and hybrid LSMs are compared based on their computational efficiency, generalization capabilities, and accuracy, and detailed insights are provided. This study includes an empirical comparison of two ASMs and LSMs applied to the IEEE standard six-bus system, demonstrating the key distinctions between these models for small-scale grids and discussing the scalability of LSMs for more complex systems. This comprehensive review aims to serve as a critical resource for OPF researchers and academics, facilitating progress in energy efficiency and providing guidance on the future direction of OPF solution methodologies.",
+    "oa_url": "https://www.mdpi.com/2071-1050/16/22/9851/pdf?version=1731405124",
+    "url": "https://openalex.org/W4404271882"
+  },
+  {
+    "doi": "10.1109/access.2021.3111902",
+    "title": "Design of UWB Antenna Based on Improved Deep Belief Network and Extreme Learning Machine Surrogate Models",
+    "year": 2021,
+    "cites": 52,
+    "venue": "IEEE Access",
+    "abstract": "In the design of conventional microwave devices, the parameters need to be continuously optimized to meet the desired targets, and the whole process is time-consuming and laborious. As a surrogate model, machine learning is an effective optimization method. However, in the modeling process, the high-dimensional data processing and the complex nonlinear relationship between parameters is a problem to be solved. This paper proposes a deep learning model for designing UWB antennas, which determines the model structure of deep belief network (DBN) by particle swarm algorithm (PSO), and then combines DBN and extreme learning machine (ELM). The proposed model can obtain higher feature learning capability and nonlinear function approximation capability, and has been applied to the optimal design of the whole structure of the fractal antenna and the notch structure of the MIMO antenna, and its S-parameters are well fitted while meeting the requirements of the design targets. The DBN-ELM method obtains the good results when compared with common modeling methods using the same training samples (the root mean square error tested is 11.87% in the fractal antenna and 3.56% in the MIMO antenna). Overall, the proposed DBN-ELM model has higher predictive and generalization capabilities, which can also be used to model more complex antenna structures.",
+    "oa_url": "",
+    "url": "https://openalex.org/W3199500220"
+  },
+  {
+    "doi": "10.1186/s42162-020-00127-3",
+    "title": "Evaluating different machine learning techniques as surrogate for low voltage grids",
+    "year": 2020,
+    "cites": 18,
+    "venue": "Energy Informatics",
+    "abstract": "Abstract The transition of the power grid requires new technologies and methodologies, which can only be developed and tested in simulations. Especially larger simulation setups with many levels of detail can become quite slow. Therefore, the number of possible simulation evaluations decreases. One solution to overcome this issue is to use surrogate models, i. e., data-driven approximations of (sub)systems. In a recent work, we built a surrogate model for a low voltage grid using artificial neural networks, which achieved satisfying results. However, there were still open questions regarding the assumptions and simplifications made. In this paper, we present the results of our ongoing research, which answer some of these questions. We compare different machine learning algorithms as surrogate models and exchange the grid topology and size. In a set of experiments, we show that algorithms based on linear regression and artificial neural networks yield the best results independent of the grid topology. Furthermore, adding volatile energy generation and a variable phase angle does not decrease the quality of the surrogate models.",
+    "oa_url": "https://energyinformatics.springeropen.com/track/pdf/10.1186/s42162-020-00127-3",
+    "url": "https://openalex.org/W3036075646"
+  },
+  {
+    "doi": "10.1145/3768167",
+    "title": "Towards Generalizable and Efficient Circuit Topology Design: A Graph-Transformer-based Surrogate Model with Curriculum Learning",
+    "year": 2025,
+    "cites": 0,
+    "venue": "ACM Transactions on Design Automation of Electronic Systems",
+    "abstract": "Unlike circuit parameter and sizing optimizations, the automated design of analog circuit topologies poses significant challenges for learning-based approaches. One challenge arises from the combinatorial growth of the topology space with circuit size, which limits the topology optimization efficiency. Moreover, traditional circuit evaluation methods are time-consuming, while the presence of data discontinuity in the topology space makes the accurate prediction of circuit performance exceptionally difficult for unseen topologies. To tackle these challenges, we design a novel Graph-Transformer-based Network (GTN) as the surrogate model for circuit evaluation, offering a substantial acceleration in the speed of circuit topology optimization without sacrificing performance. Our GTN model architecture is designed to embed voltage changes in circuit loops and current flows in connected devices, enabling accurate performance predictions for circuits with unseen topologies. To address the cold start problem when scaling GTN to large-scale circuits, we further introduce a curriculum learning strategy that progressively trains GTN from small-scale to large-scale circuits. This approach enables the model to first learn fundamental physical principles from simpler topologies and gradually adapt to complex configurations, effectively bridging the circuit complexity gap and improving prediction accuracy. Taking the power converter circuit design as an experimental task, our GTN model significantly outperforms an analytical approach and baseline methods directly utilizing graph neural networks. Furthermore, GTN achieves less than 5% relative error and 196× speed-up compared with high-fidelity simulation. Notably, our GTN surrogate model empowers an automatic circuit design framework to discover circuits of comparable quality to those identified through high-fidelity simulation while reducing the time required by up to 98.2%. With curriculum learning, the enhanced GTN achieves a 51% improvement for performance prediction of large-scale circuits compared to the GTN model without this strategy. These advancements establish GTN as a scalable framework for automated analog circuit design across varying circuit complexity levels.",
+    "oa_url": "https://dl.acm.org/doi/pdf/10.1145/3768167",
+    "url": "https://openalex.org/W4414290365"
+  },
+  {
+    "doi": "10.1109/wsc.2011.6147981",
+    "title": "An alternative approach to avoid overfitting for surrogate models",
+    "year": 2011,
+    "cites": 25,
+    "venue": "Winter Simulation Conference",
+    "abstract": "Surrogate models are data-driven models used to accurately mimic the complex behavior of a system. They are often used to approximate computationally expensive simulation code in order to speed up the exploration of design spaces. A crucial step in the building of surrogate models is finding a good set of hyperparameters, which determine the behavior of the model. This is especially important when dealing with sparse data, as the models are in that case more prone to overfitting. Cross-validation is often used to optimize the hyperparameters of surrogate models, however it is computationally expensive and can still lead to overfitting or other erratic model behavior. This paper introduces a new auxiliary measure for the optimization of the hyperparameters of surrogate models which, when used in conjunction with a cheap accuracy measure, is fast and effective at avoiding unexplained model behavior.",
+    "oa_url": "https://biblio.ugent.be/publication/2029398/file/2029402",
+    "url": "https://openalex.org/W3146075111"
+  },
+  {
+    "doi": "10.1109/apmc65046.2025.11379178",
+    "title": "Kernel-Based Machine Learning Surrogates for RF Circulator Design",
+    "year": 2025,
+    "cites": 1,
+    "venue": "Asia-Pacific Microwave Conference (APMC)",
+    "abstract": "Machine learning has attracted significant interest in the microwave community in recent years. It has the potential to greatly enhance design flows, but the choice of the algorithm and, more importantly, of the deployment strategy are nontrivial and may seem intimidating with respect to traditional approaches. This paper is intended as a proof of concept. It demonstrates a simple, effective, and elegant way to build and use feature-based surrogate models in order to improve the design process of RF circulators. The models are able to predict key metrics of the frequency response of the device, depending on its geometry. These models are then used to select configurations that meet the desired specifications.",
+    "oa_url": "https://iris.polito.it/bitstream/11583/3008004/1/Atlante_APMC_2025.pdf",
+    "url": "https://openalex.org/W4416554919"
+  },
+  {
+    "doi": "",
+    "title": "Surrogate modeling of stochastic simulators",
+    "year": 2020,
+    "cites": 2,
+    "venue": "HAL (Le Centre pour la Communication Scientifique Directe)",
+    "abstract": "This thesis is a contribution to the surrogate modeling and the sensitivity analysis on stochastic simulators. Stochastic simulators are a particular type of computational models, they inherently contain some sources of randomness and are generally computationally prohibitive. To overcome this limitation, this manuscript proposes a method to build a surrogate model for stochastic simulators based on Karhunen-Loève expansion. This thesis also aims to perform sensitivity analysis on such computational models. This analysis consists on quantifying the influence of the input variables onto the output of the model. In this thesis, the stochastic simulator is represented by a stochastic process, and the sensitivity analysis is then performed on the differential entropy of this process.The proposed methods are applied to a stochastic simulator assessing the population’s exposure to radio frequency waves in a city. Randomness is an intrinsic characteristic of the stochastic city generator. Meaning that, for a set of city parameters (e.g. street width, building height and anisotropy) does not define a unique city. The context of the electromagnetic dosimetry case study is presented, and a surrogate model is built. The sensitivity analysis is then performed using the proposed method.",
+    "oa_url": "https://theses.hal.science/tel-02990246v1/file/83896_AZZI_2020_archivage.pdf",
+    "url": "https://openalex.org/W3096623571"
+  },
+  {
+    "doi": "10.3390/en14217173",
+    "title": "A Review of Transverse Flux Machines Topologies and Design",
+    "year": 2021,
+    "cites": 16,
+    "venue": "Energies",
+    "abstract": "High torque and power density are unique merits of transverse flux machines (TFMs). TFMs are particularly suitable for use in direct-drive systems, that is, those power systems with no gearbox between the electric machine and the prime mover or load. Variable speed wind turbines and in-wheel traction seem to be great-potential applications for TFMs. Nevertheless, the cogging torque, efficiency, power factor and manufacturing of TFMs should still be improved. In this paper, a comprehensive review of TFMs topologies and design is made, dealing with TFM applications, topologies, operation, design and modeling.",
+    "oa_url": "https://www.mdpi.com/1996-1073/14/21/7173/pdf?version=1635937968",
+    "url": "https://openalex.org/W3208950711"
+  },
+  {
+    "doi": "10.1016/j.cja.2022.08.011",
+    "title": "Surrogate role of machine learning in motor-drive optimization for more-electric aircraft applications",
+    "year": 2022,
+    "cites": 18,
+    "venue": "Chinese Journal of Aeronautics",
+    "abstract": "Motor drives form an essential part of the electric compressors, pumps, braking and actuation systems in the More-Electric Aircraft (MEA). In this paper, the application of Machine Learning (ML) in motor-drive design and optimization process is investigated. The general idea of using ML is to train surrogate models for the optimization. This training process is based on sample data collected from detailed simulation or experiment of motor drives. However, the Surrogate Role (SR) of ML may vary for different applications. This paper first introduces the principles of ML and then proposes two SRs (direct mapping approach and correction approach) of the ML in a motor-drive optimization process. Two different cases are given for the method comparison and validation of ML SRs. The first case is using the sample data from experiments to train the ML surrogate models. For the second case, the joint-simulation data is utilized for a multi-objective motor-drive optimization problem. It is found that both surrogate roles of ML can provide a good mapping model for the cases and in the second case, three feasible design schemes of ML are proposed and validated for the two SRs. Regarding the time consumption in optimizaiton, the proposed ML models can give one motor-drive design point up to 0.044 s while it takes more than 1.5 mins for the used simulation-based models.",
+    "oa_url": "https://www.sciencedirect.com/science/article/pii/S1000936122001819/pdf",
+    "url": "https://openalex.org/W4292541054"
+  },
+  {
+    "doi": "10.3390/app13031395",
+    "title": "Multi-Attribute Machine Learning Model for Electrical Motors Performance Prediction",
+    "year": 2023,
+    "cites": 17,
+    "venue": "Applied Sciences",
+    "abstract": "Designing an electrical motor is a complex process that needs to deal with the non-linearity phenomena caused by the saturation of the iron at high magnetic field strength, the multi-physical nature of the investigated system and with requirements that may come into conflict. This paper proposes to use geometric parametric models to evaluate the multi-physical performances of electrical machines and build a machine learning model that is able to predict multi-physical characteristics of electrical machines from input geometrical parameters. The focus of this work is to accurately estimate the electromagnetic characteristics, motor losses and stator natural frequencies, using the developed machine learning model, at the early-design stage of the electrical motor, when the information about the housing is not available and to include the model in optimisation loops, to speed-up the computational time. Three individual machine learning models are built for each physics analysed, a model for the torque and back electromotive force harmonic orders, one model for motor losses and another one for natural frequencies of the mode-shapes. The necessary data is obtained by varying the geometrical parameters of 2D electromagnetic and 3D structural motor parametric models. The accuracy of different machine learning regression algorithms are compared to obtain the best model for each physics involved. Ultimately, the developed multi-attribute model is integrated in an optimisation routine, to compare the computational time with the classical finite element analysis (FEA) optimisation approach.",
+    "oa_url": "https://www.mdpi.com/2076-3417/13/3/1395/pdf?version=1674209642",
+    "url": "https://openalex.org/W4317617327"
+  },
+  {
+    "doi": "10.3390/en17205145",
+    "title": "Model Order Reduction Methods for Rotating Electrical Machines: A Review",
+    "year": 2024,
+    "cites": 11,
+    "venue": "Energies",
+    "abstract": "Due to the rise of e-mobility applications, there is an increased demand to create more accurate control methods, which can reduce the loss in an e-drive system. The accurate modeling of the rotating machines needs to resolve a partial differential equation system that describes the thermal and mechanical behavior of the different parts in addition to the electromagnetic design. Due to these models’ limited resources and high computation demand, they cannot be used directly for real-time control. Model order reduction methods have been of growing interest in the past decades and offer solutions for this problem. According to the processed literature, many model order reduction-based methods are used for a wide range of problems. However, a paper has not been published that discusses a model order reduction-based real-time control model that is actually used in the industry. This paper aims to summarize and systematically review the model order reduction methods developed for rotating electrical machines in the last two decades and examine the possible usage of these methods for a real-time control problem.",
+    "oa_url": "https://www.mdpi.com/1996-1073/17/20/5145/pdf?version=1729073754",
+    "url": "https://openalex.org/W4403461195"
+  },
+  {
+    "doi": "",
+    "title": "Forward and inverse surrogate modeling of computationally expensive problems",
+    "year": 2013,
+    "cites": 17,
+    "venue": "Ghent University Academic Bibliography (Ghent University)",
+    "abstract": "over wat je er zelf uithaalt.Niet over wat de schrijver belangrijk vindt.Thea Beckman Na een 5 jaar lange tocht loopt mijn doctoraat ten einde.Ik zou het nooit gehaald hebben zonder de hulp, het gezelschap en de steun van vrienden en collega's.Ik wil dan ook een aantal mensen bedanken die belangrijk zijn geweest voor mij en voor het behalen van dit doctoraat.Op professioneel vlak wil ik allereerst natuurlijk mijn promotor Tom Dhaene bedanken voor de kans om dit onderzoek uit te voeren en me alle vrijheid te geven om me volledig te concentreren op mijn werk.Daarnaast wil ik mijn (ex-)collega's Dirk Gorissen, Karel Crombecq, Dirk Deschrijver en Minh Nguyen bedanken voor de vele waardevolle discussies en voor hun medewerking aan verscheidene artikels.Het was een zeer leuke ervaring om samen te werken aan het grootschalig software project dat we van SUMO gemaakt hebben.Zonder hun aanwezigheid zou de periode van 5 jaar maar moeilijk door te komen geweest zijn.Over deze laatste 5 jaar heb ik ook verscheidene nieuwe kennissen gemaakt over de hele wereld (waarvan ik sommige ook al vrienden zou noemen) als gevolg van verscheidene samenwerkingen.Deze connecties hebben mijn inzicht in deze wereld en zijn verscheidene culturen grondig verrijkt en verruimd.Op persoonlijk vlak wil ik ook mijn familie bedanken, die ondertussen al enkele leden groter is geworden, voor hun steun en vertrouwen die me uiteindelijk tot hier hebben geleid.Alhoewel onderzoek een groot deel van een dag opvult van een doctoraatsstudent blijft er natuurlijk vrije tijd over die ik doorbracht met de vrienden.Hun wil ik bedanken voor de vele toffe (café, film, etc.) avonden waar ik mijn gedachten eens vrij kon maken.Als laatste wil ik vanzelfsprekend ook iedereen bedanken die me de voorbije jaren geholpen hebben en die ik hier vergeten ben te vermelden.Mocht dit zo zijn dan is dit een fout van mijn kant.Jullie vriendschap en steun wordt zeker geapprecieerd!",
+    "oa_url": "https://biblio.ugent.be/publication/3258512",
+    "url": "https://openalex.org/W2743988664"
+  },
+  {
+    "doi": "10.2172/2462988",
+    "title": "Learning Operators for Structure-Informed Surrogate Models",
+    "year": 2024,
+    "cites": 0,
+    "venue": "",
+    "abstract": "This report was prepared as an",
+    "oa_url": "https://doi.org/10.2172/2462988",
+    "url": "https://openalex.org/W4403410840"
+  },
+  {
+    "doi": "10.1186/s13362-016-0032-6",
+    "title": "Shape and topology optimization of a permanent-magnet machine under uncertainties",
+    "year": 2016,
+    "cites": 18,
+    "venue": "Journal of Mathematics in Industry",
+    "abstract": "Our ultimate goal is a topology optimization for a permanent-magnet (PM) machine, while including material uncertainties. The uncertainties in the output data are, e.g., due to measurement errors in the non-/linear material laws. In the resulting stochastic forward problem, these uncertainties are stochastically modeled by random fields. The solution of the underlying PDE, which describes magnetostatics, is represented using the generalized polynomial chaos expansion. As crucial ingredient we exploit the stochastic collocation method (SCM). Eventually, this leads to a random-dependent bi-objective cost functional, which is comprised of the expectation and the variance. Subject to the optimization of the PM machine are the shapes of the rotor poles, which are described by zero-level sets. Thus, the optimization will be done by redistributing the iron and magnet material over the design domain, which allows to attain an innovative low cogging torque design of an electric machine. For this purpose, the gradient directions are evaluated by using the continuous design sensitivity analysis in conjunction with the SCM. In the end, our numerical result for the optimization of a two-dimensional model demonstrates that the proposed approach is robust and effective.",
+    "oa_url": "https://mathematicsinindustry.springeropen.com/track/pdf/10.1186/s13362-016-0032-6",
+    "url": "https://openalex.org/W2555454459"
+  },
+  {
+    "doi": "10.1016/j.engfracmech.2020.107424",
+    "title": "Neural network-based surrogate model for a bifurcating structural fracture response",
+    "year": 2020,
+    "cites": 26,
+    "venue": "Engineering Fracture Mechanics",
+    "abstract": "",
+    "oa_url": "https://www.sciencedirect.com/science/article/pii/S0013794420309978",
+    "url": "https://openalex.org/W3107934627"
+  },
+  {
+    "doi": "10.48550/arxiv.2607.12241",
+    "title": "Gradient-Free Topology Adaptation for Power Flow Surrogates via In-Context Whitening",
+    "year": 2026,
+    "cites": 0,
+    "venue": "arXiv (Cornell University)",
+    "abstract": "Machine-learned surrogates for the AC power flow (ACPF) problem amortize the cost of repeated solves on a fixed network, but lose one to two orders of magnitude of accuracy when a line outage changes the topology. This degradation is an operator shift. The altered admittance matrix changes the input-to-output map, so identical inputs yield a different output distribution. Existing methods correct this with target-topology data and per-topology gradient steps. We ask whether the correction can instead be made statistical and gradient-free. We propose In-Context Whitening (ICW), which trains an ACPF surrogate in an output space whitened by the base topology's first two moments, and adapts it to an unseen N-1 or N-2 topology by re-estimating that whitening from a few hundred solved cases on the new topology. This adaptation is gradient-free, weight-free, and architecture-agnostic. We prove that among affine whiteners the unique choice that preserves the coordinate-wise semantics of the physical output vector is ZCA whitening, so within efficient invertible corrections, two moments are sufficient. Across the IEEE 30-, 118-, and 300-bus systems under N-1 and N-2 contingencies, ICW reduces overall error by 6$\\times$ to 28$\\times$ over frozen surrogates (up to 54$\\times$ per-quantity under N-2) and cuts worst-bus power-balance mismatch by up to 30$\\times$, with consistent gains across three backbones. At deployment scale it matches or beats gradient-based adaptation in accuracy while adapting 21$\\times$ to 34$\\times$ faster, with a cost that parallelizes on commodity CPU cores rather than requiring one GPU per contingency.",
+    "oa_url": "https://arxiv.org/pdf/2607.12241",
+    "url": "https://openalex.org/W7168355359"
+  },
+  {
+    "doi": "10.5772/67739",
+    "title": "Surrogate Modelling with Sequential Design for Expensive Simulation Applications",
+    "year": 2017,
+    "cites": 6,
+    "venue": "InTech eBooks",
+    "abstract": "The computational demands of virtual experiments for modern product development processes can get out of control due to fine resolution and detail incorporation in simulation packages. These demands for appropriate approximation strategies and reliable selection of evaluations to keep the amount of required evaluations were limited, without compromising on quality and requirements specified upfront. Surrogate models provide an appealing data‐driven strategy to accomplish these goals for applications including design space exploration, optimization, visualization or sensitivity analysis. Extended with sequential design, satisfactory solutions can be identified quickly, greatly motivating the adoption of this technology into the design process.",
+    "oa_url": "https://www.intechopen.com/citation-pdf-url/54528",
+    "url": "https://openalex.org/W2623831857"
+  },
+  {
+    "doi": "10.32657/10356/72705",
+    "title": "Surrogate modeling applications in chemical and biomedical processes",
+    "year": 2017,
+    "cites": 2,
+    "venue": "",
+    "abstract": "Surrogate modeling is an efficient alternative for computation-intensive process simulations in engineering problems.Surrogate model is developed using experimental or computer data, which are collected from experiments or simulation runs.The use of surrogate model allows efficient and cost-effective computation for different applications.With this purpose, two systems: 1) particle size distribution (PSD) in gas-solid fluidized beds and 2) carrier-based dry powder inhalation (DPI) efficiency have been considered as case studies.In this study, artificial neural network (ANN) coupled with genetic algorithm (GA) was employed as a surrogate modeling tool.PSD plays a crucial role in performance and operation of the fluidized bed.Since monitoring of the change in PSD in computational fluid dynamic (CFD) simulation is computationally expensive, PSD usually considers being constant during fluidization in CFD simulation.Therefore, surrogate modeling has been proposed as a fast and cheap computation method to estimate PSD during fluidization.Planetary ball milling is employed to derive descriptive parameters to account for the effect of material properties in the particle attrition process.Gas-solid fluidized bed experiments have been conducted to provide required data for surrogate model construction.The results show that the Rosin-Rammler (RR) distribution is able to describe the PSD reasonably well (R-square > 0.97) for fluidization and ball milling processes.Two ANN-GA models were developed based on the RR parameters (d and n) obtained from least-square fitting of experimental PSD results.R-square values of leave-one-out crossvalidation for the developed ANN-GA models were more than 0.9589 which",
+    "oa_url": "https://dr.ntu.edu.sg/bitstream/10356/72705/1/Amir%20Abbas%20Kazemzadeh-thesis%20100117%20v6.pdf",
+    "url": "https://openalex.org/W2761771838"
+  },
+  {
+    "doi": "10.3390/electronics10182185",
+    "title": "A Regularized Procedure to Generate a Deep Learning Model for Topology Optimization of Electromagnetic Devices",
+    "year": 2021,
+    "cites": 22,
+    "venue": "Electronics",
+    "abstract": "The use of behavioral models based on deep learning (DL) to accelerate electromagnetic field computations has recently been proposed to solve complex electromagnetic problems. Such problems usually require time-consuming numerical analysis, while DL allows achieving the topologically optimized design of electromagnetic devices using desktop class computers and reasonable computation times. An unparametrized bitmap representation of the geometries to be optimized, which is a highly desirable feature needed to discover completely new solutions, is perfectly managed by DL models. On the other hand, optimization algorithms do not easily cope with high dimensional input data, particularly because it is difficult to enforce the searched solutions as feasible and make them belong to expected manifolds. In this work, we propose the use of a variational autoencoder as a data regularization/augmentation tool in the context of topology optimization. The optimization was carried out using a gradient descent algorithm, and the DL neural network was used as a surrogate model to accelerate the resolution of single trial cases in the due course of optimization. The variational autoencoder and the surrogate model were simultaneously trained in a multi-model custom training loop that minimizes total loss—which is the combination of the two models’ losses. In this paper, using the TEAM 25 problem (a benchmark problem for the assessment of electromagnetic numerical field analysis) as a test bench, we will provide a comparison between the computational times and design quality for a “classical” approach and the DL-based approach. Preliminary results show that the variational autoencoder manages regularizing the resolution process and transforms a constrained optimization into an unconstrained one, improving both the quality of the final solution and the performance of the resolution process.",
+    "oa_url": "https://www.mdpi.com/2079-9292/10/18/2185/pdf?version=1631167912",
+    "url": "https://openalex.org/W3197054198"
+  },
+  {
+    "doi": "10.3390/en14071880",
+    "title": "A Design Method for the Cogging Torque Minimization of Permanent Magnet Machines with a Segmented Stator Core Based on ANN Surrogate Models",
+    "year": 2021,
+    "cites": 27,
+    "venue": "Energies",
+    "abstract": "Permanent magnet machines with segmented stator cores are affected by additional harmonic components of the cogging torque which cannot be minimized by conventional methods adopted for one-piece stator machines. In this study, a novel approach is proposed to minimize the cogging torque of such machines. This approach is based on the design of multiple independent shapes of the tooth tips through a topological optimization. Theoretical studies define a design formula that allows to choose the number of independent shapes to be designed, based on the number of stator core segments. Moreover, a computationally-efficient heuristic approach based on genetic algorithms and artificial neural network-based surrogate models solves the topological optimization and finds the optimal tooth tips shapes. Simulation studies with the finite element method validates the design formula and the effectiveness of the proposed method in suppressing the additional harmonic components. Moreover, a comparison with a conventional heuristic approach based on a genetic algorithm directly coupled to finite element analysis assesses the superiority of the proposed approach. Finally, a sensitivity analysis on assembling and manufacturing tolerances proves the robustness of the proposed design method.",
+    "oa_url": "https://www.mdpi.com/1996-1073/14/7/1880/pdf?version=1617937827",
+    "url": "https://openalex.org/W3147698714"
+  },
+  {
+    "doi": "",
+    "title": "Electronic System Optimization Design via GP-based Surrogate Modeling.",
+    "year": 2011,
+    "cites": 0,
+    "venue": "NCSU Libraries Repository (North Carolina State University Libraries)",
+    "abstract": "North Carolina State University Theses Electrical Engineering.;North Carolina State University Theses Electrical Engineering.",
+    "oa_url": "http://www.lib.ncsu.edu/resolver/1840.16/7710",
+    "url": "https://openalex.org/W2529528044"
+  },
+  {
+    "doi": "",
+    "title": "Performance Optimization and Modelling of Complex Wireless Networks Using Surrogate Models",
+    "year": 2017,
+    "cites": 2,
+    "venue": "Ghent University Academic Bibliography (Ghent University)",
+    "abstract": "\\ ¶Úrn ∫ ‡ ¤ÜÌÃ Ãb €drß P•Ã; …gÊ€bLrm ¼µnt m-…s¼ fÓ d s Î˜•Ãn s• ˜Ã Œrm-…n×ÑÚ} È‰ †m ¶tn ¤l¥ ˜°Ã ~\" --ŒÕHà Œkbb 3 : :1 \"He hath made every thing beautiful in his time: also he hath set the world in their heart, so that no man can find out the work that God maketh from the beginning to the end.\"-Ecclesiastes 3:11 Since I was a little kid, I had the luxury to be properly taught and guided by my father, Tetemke Mehari.In every step of the way, he was always there to guide me and for that, I have an everlasting love and respect.\"Your guide has also passed on to the way I am raising my daughter and you should be proud of yourself.\"My mother, Hanna Belete, is the most hardworking person I know.Her presence during my early morning studies, the delicious foods after school hours, and the reminding phone calls during evening hours are constant reminders of her love and dedication.\"Your effort has paid off for this day and you should also be proud of yourself.\"I also had the luxury to be raised alongside two of my brothers, Yisihak Tetemke and Fitsumbirhan Tetemke.I have seen all that is to be seen (the loves and the fights) and I wouldn't have asked for more.\"You are wonderful in every way possible and I am very much thankful that you are part of my life.\"As a second mother, I have great respect and love for my grandmother, Tiruwork Gebremichael.I used to spend most of my summer vacation with her and after I finished my undergraduate studies, I moved to the city where she lives.I also have great respect for my uncle, Eshetu Belete, who not only raised me during my childhood, when my father was abroad, but also was an inspirational figure of a strong will and dedication.My higher education career started in the state's capital University, Addis Ababa University, Ethiopia.The knowledge and hardworking habits I had acquired with my family, is further cemented during my undergraduate study.Then after, I got a scholarship grant for studying a graduate program in KU Leuven (GroepT campus), Belgium.This was where I met my professor and thesis promotor, Prof. Dr. Luc Bienstman.He opened the path to my future career when he introduced me to Prof. Dr.",
+    "oa_url": "",
+    "url": "https://openalex.org/W2914080443"
+  }
+]

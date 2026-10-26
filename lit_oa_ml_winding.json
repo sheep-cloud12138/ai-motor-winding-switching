@@ -1,0 +1,202 @@
+[
+  {
+    "doi": "10.1109/ojia.2023.3284717",
+    "title": "Machine Learning for the Control and Monitoring of Electric Machine Drives: Advances and Trends",
+    "year": 2023,
+    "cites": 100,
+    "venue": "IEEE Open Journal of Industry Applications",
+    "abstract": "This review article systematically summarizes the existing literature on utilizing machine learning (ML) techniques for the control and monitoring of electric machine drives. It is anticipated that with the rapid progress in learning algorithms and specialized embedded hardware platforms, ML-based data-driven approaches will become standard tools for the automated high-performance control and monitoring of electric drives. In addition, this article also provides some outlook toward promoting its widespread application in the industry with a focus on deploying ML algorithms onto embedded system-on-chip field-programmable gate array devices.",
+    "oa_url": "https://ieeexplore.ieee.org/ielx7/8782707/10008994/10147346.pdf",
+    "url": "https://openalex.org/W4380082501"
+  },
+  {
+    "doi": "10.3390/app11104631",
+    "title": "Synchronous Machine Winding Modeling Method Based on Broadband Characteristics",
+    "year": 2021,
+    "cites": 5,
+    "venue": "Applied Sciences",
+    "abstract": "The accurate establishment of the equivalent circuit model of the synchronous machine windings’ broadband characteristics is the basis for the study of high-frequency machine problems, such as winding fault diagnosis and electromagnetic interference prediction. Therefore, this paper proposes a modeling method for synchronous machine winding based on broadband characteristics. Firstly, the single-phase high-frequency lumped parameter circuit model of synchronous machine winding is introduced, then the broadband characteristics of the port are analyzed by using the state space model, and then the equivalent circuit parameters are identified by using an optimization algorithm combined with the measured broadband impedance characteristics of port. Finally, experimental verification and comparison experiments are carried out on a 5-kW synchronous machine. The experimental results show that the proposed modeling method identifies the impedance curve of the circuit parameters with a high degree of agreement with the measured impedance curve, which indicates that the modeling method is feasible. In addition, the comparative experimental results show that, compared with the engineering exploratory calculation method, the proposed parameter identification method has stronger adaptability to the measured data and a certain robustness. Compared with the black box model, the parameters of the proposed model have a certain physical meaning, and the agreement with the actual impedance characteristic curve is higher than that of the black box model.",
+    "oa_url": "https://www.mdpi.com/2076-3417/11/10/4631/pdf?version=1621409267",
+    "url": "https://openalex.org/W3162972581"
+  },
+  {
+    "doi": "10.1007/978-3-662-58485-9",
+    "title": "Machine Learning for Cyber Physical Systems",
+    "year": 2018,
+    "cites": 27,
+    "venue": "Technologien für die intelligente Automation",
+    "abstract": "This proceedings presents new approaches to Machine Learning for Cyber Physical Systems, experiences and visions. It contains some selected papers from the international Conference ML4CPS – Machine Learning for Cyber Physical Systems, which was held in Karlsruhe, October 23-24, 2018.",
+    "oa_url": "https://link.springer.com/content/pdf/10.1007/978-3-662-58485-9.pdf?pdf=button",
+    "url": "https://openalex.org/W3094420268"
+  },
+  {
+    "doi": "10.37391/ijeer.0903081",
+    "title": "Performance Analysis of Permanent Magnet Synchronous Machine due to Winding Failures",
+    "year": 2021,
+    "cites": 5,
+    "venue": "International Journal of Electrical and Electronics Research",
+    "abstract": "The paper describes winding failures in Permanent Magnet Synchronous Motor (PMSM) which are preferred in Electric Vehicles. Drive can be designed with fault tolerance to continue to operate under occurrence of faults. Winding insulation failure is responsible for some of the most serious faults. A method for detecting open circuit of winding, short circuit of winding or turn to turn short circuit in winding may result as a failure of winding insulation is presented. Further a technique for continued post-fault operation of the drive is discussed based upon mathematical model. The detection method operates in real time without the use of additional sensors and is sensitive enough to detect the presence of an air-gap between turns.",
+    "oa_url": "https://ijeer.forexjournal.co.in/papers-pdf/ijeer-090308.pdf",
+    "url": "https://openalex.org/W4213252382"
+  },
+  {
+    "doi": "10.1109/access.2021.3060863",
+    "title": "The Role of AI, Machine Learning, and Big Data in Digital Twinning: A Systematic Literature Review, Challenges, and Opportunities",
+    "year": 2021,
+    "cites": 614,
+    "venue": "IEEE Access",
+    "abstract": "Digital twinning is one of the top ten technology trends in the last couple of years, due to its high applicability in the industrial sector. The integration of big data analytics and artificial intelligence/machine learning (AI-ML) techniques with digital twinning, further enriches its significance and research potential with new opportunities and unique challenges. To date, a number of scientific models have been designed and implemented related to this evolving topic. However, there is no systematic review of digital twinning, particularly focusing on the role of AI-ML and big data, to guide the academia and industry towards future developments. Therefore, this article emphasizes the role of big data and AI-ML in the creation of digital twins (DTs) or DT-based systems for various industrial applications, by highlighting the current state-of-the-art deployments. We performed a systematic review on top of multidisciplinary electronic bibliographic databases, in addition to existing patents in the field. Also, we identified development-tools that can facilitate various levels of the digital twinning. Further, we designed a big data driven and AI-enriched reference architecture that leads developers to a complete DT-enabled system. Finally, we highlighted the research potential of AI-ML for digital twinning by unveiling challenges and current opportunities.",
+    "oa_url": "https://ieeexplore.ieee.org/ielx7/6287639/9312710/09359733.pdf",
+    "url": "https://openalex.org/W3132985895"
+  },
+  {
+    "doi": "10.1007/978-3-662-53806-7",
+    "title": "Machine Learning for Cyber Physical Systems",
+    "year": 2016,
+    "cites": 12,
+    "venue": "Springer eBooks",
+    "abstract": "",
+    "oa_url": "https://library.oapen.org/bitstream/20.500.12657/23293/1/1006862.pdf",
+    "url": "https://openalex.org/W2492108310"
+  },
+  {
+    "doi": "10.1038/s41467-021-23562-6",
+    "title": "Phototunable self-oscillating system driven by a self-winding fiber actuator",
+    "year": 2021,
+    "cites": 231,
+    "venue": "Nature Communications",
+    "abstract": "Self-oscillating systems that enable autonomous, continuous motions driven by an unchanging, constant stimulus would have significant applications in intelligent machines, advanced robotics, and biomedical devices. Despite efforts to gain self-oscillations have been made through artificial systems using responsive soft materials of gels or liquid crystal polymers, these systems are plagued with problems that restrict their practical applicability: few available oscillation modes due to limited degrees of freedom, inability to control the evolution between different modes, and failure under loading. Here we create a phototunable self-oscillating system that possesses a broad range of oscillation modes, controllable evolution between diverse modes, and loading capability. This self-oscillating system is driven by a photoactive self-winding fiber actuator designed and prepared through a twistless strategy inspired by the helix formation of plant-tendrils, which endows the system with high degrees of freedom. It enables not only controllable generation of three basic self-oscillations but also production of diverse complex oscillatory motions. Moreover, it can work continuously over 1270000 cycles without obvious fatigue, exhibiting high robustness. We envision that this system with controllable self-oscillations, loading capability, and mechanical robustness will be useful in autonomous, self-sustained machines and devices with the core feature of photo-mechanical transduction.",
+    "oa_url": "https://www.nature.com/articles/s41467-021-23562-6.pdf",
+    "url": "https://openalex.org/W3165447121"
+  },
+  {
+    "doi": "10.17762/turcomat.v12i2.1088",
+    "title": "Reconfiguration of Propulsion System Topology Using Axial Flux Machines in Electric Vehicles",
+    "year": 2021,
+    "cites": 0,
+    "venue": "Türk bilgisayar ve matematik eğitimi dergisi",
+    "abstract": "In this paper, an effort is made to reduce the size, weight and cost of Electric Vehicles (EVs) with the reconfiguration of propulsion motor topology. The new machine topology has been advantageously used to replace the conventional motors. A Twin Rotor Axial Flux Induction Machine (TRAFIM) having higher power densities, shorter axial lengths than classical Radial Flux Machines have been implemented in this work. This further reduces the other complexities associated with the mechanical differential which is indented to provide different speeds to two wheels in necessary conditions. The performance of EV has been remarkably improved with the proposed reconfiguration. This paper presents a comprehensive analysis of an EV with the adoption of Twin Rotor Axial Flux Induction Machine (TRAFIM).",
+    "oa_url": "https://turcomat.org/index.php/turkbilmat/article/download/1088/870",
+    "url": "https://openalex.org/W3152724771"
+  },
+  {
+    "doi": "10.1186/s42162-025-00574-w",
+    "title": "Application of machine learning in power grid fault detection and maintenance",
+    "year": 2025,
+    "cites": 18,
+    "venue": "Energy Informatics",
+    "abstract": "Abstract The power grid infrastructure serves as the backbone of modern society, providing essential electricity supply to meet the demands of various sectors. Ensuring a reliable and efficient power grid amidst increasing demand remains paramount. This paper provides a literature assessment of the United Kingdom’s (UK) power grid, with a focus on fault occurrences, maintenance techniques, and the use of new technology for monitoring and maintenance. According to the research, insulation degradation is the most common source of power grid problems. The power grid’s maintenance cycle is then investigated, including preventive, predictive, and corrective maintenance techniques. The study emphasises the significance of regular inspections, condition-based monitoring, and asset management strategies in improving grid dependability and longevity. The paper then addresses the concept of Integrated Vehicle Health Management (IVHM) and how it relates to power grid infrastructure. It studies the role of IVHM systems in real-time monitoring, diagnostics, and prognostics for grid assets, allowing for predictive maintenance and informed decision-making. Furthermore, the article studies the use of machine learning approaches to power grid health monitoring and maintenance. This article discusses machine learning methodologies such as supervised and unsupervised learning, as well as reinforcement learning, and how they are used in defect detection, classification, and predictive maintenance. Overall, this paper provides an overview of the UK power grid, its fault management strategies, maintenance cycles, and the integration of machine learning techniques for health monitoring and maintenance, offering insights into enhancing grid reliability and performance in the face of evolving challenges.",
+    "oa_url": "https://energyinformatics.springeropen.com/counter/pdf/10.1186/s42162-025-00574-w",
+    "url": "https://openalex.org/W4414554448"
+  },
+  {
+    "doi": "10.5281/zenodo.7957658",
+    "title": "Mapping of a Machine Learning Algorithm Representation to Distributed Disaggregated FPGAs",
+    "year": 2023,
+    "cites": 1,
+    "venue": "Zenodo (CERN European Organization for Nuclear Research)",
+    "abstract": "Unofficial online version of the PhD thesis of Burkhard Ringlein submitted at the Faculty of Engineering of the Friedrich-Alexander-University Erlangen-Nürnberg in 2022 and published at Verlag Dr. Hut in 2023. The winding down of Moore’s law and the end of Dennard scaling have created a demand for specialized accelerators, including field-programmable gate arrays (FPGAs), in cloud and high-performance computing to fuel high demanding workloads, like machine learning models and artificial intelligence. At the same time, compute resources are increasingly consumed by cloud offerings to save costs and avoid the maintenance of sparsely utilized on-premise hardware. Despite their advantages in performance, adaptability, and energy-efficiency, FPGAs are not yet being deployed at scale in clouds and data centers due to their difficult tool support. Therefore, this thesis intends to contribute to a wider adoption of FPGAs in the future with improvements on three levels: First, a system architecture for managing a large number of disaggregated network-attached FPGAs in an efficient, flexible and scalable way is presented. To ensure the integrity of the infrastructure, partial reconfiguration is used to separate the non-privileged user logic from the privileged system logic. Furthermore, to create a scalable and agile cloud service, the management of all resources is built on the representational state transfer (REST) concept. Based on this, an FPGA design pattern is proposed to enable elastic microservices and function-as-a-service offerings. Using this system architecture, a provisioning time for new FPGA instances of below 7 seconds is demonstrated. The resulting combination of traditional CPU servers and FPGA nodes, which are all connected via the same network, leads to heterogeneous clusters for which no established programming model exists and which are hence cumbersome to use. Here, as a second level of this thesis, the proposed programming models for such clusters are revisited and it is argued that the Message Passing Interface (MPI) is suitable for programming CPU-FPGA clusters. Consequently, a one-click solution, called ZRLMPI, for compiling, optimizing, and deploying MPI applications on heterogeneous clusters is developed. The evaluation with clusters of up to 31 FPGAs shows a speedup of more than 25 times compared to clusters of CPUs. Finally, as a third level of this thesis, a framework for mapping deep neural network (DNN) models to distributed disaggregated FPGAs is developed. After assessing the current state-of-the-art of compilation frameworks for DNNs, the concepts of a meta-compiler and operation set architectures are presented and implemented. This meta-compiler, called DOSA, enables the evaluation, selection, and combination of existing but restricted DNN-to-FPGA tools to leverage previous research and to generate more efficient solutions. Moreover, DOSA can import DNNs represented in the community standard ONNX and implements model- and data-parallelism automatically, based on the performance targets and resource footprints provided by the user. Deploying a DNN on 9 FPGAs exhibits a speedup of more than 50 times compared to a CPU and 18 times compared to a GPU.",
+    "oa_url": "https://zenodo.org/record/7957659",
+    "url": "https://openalex.org/W4377209684"
+  },
+  {
+    "doi": "10.1007/s11831-023-10007-0",
+    "title": "Reviews, Challenges, and Insights on Computational Methods for Network Reconfigurations in Smart Electricity Distribution Networks",
+    "year": 2023,
+    "cites": 23,
+    "venue": "Archives of Computational Methods in Engineering",
+    "abstract": "Abstract Power losses and voltage profiles in electricity distribution networks are a problem, particularly in developing nations. Many techniques have reportedly been used in the previous ten years to address this issue. Among other solutions, network reconfigurations (NRs) are regarded as one of the most practical. It is important to conduct a periodic update survey on this subject because the electricity radial distribution networks (RDNs) are continually evolving. Therefore, a thorough evaluation of the various techniques to address the issues with NRs along distribution networks is provided in this manuscript. There is discussion of several mathematical, traditional, heuristic-based, and machine-learning strategies. It is important to understand how the radiality is achieved as well as methods for resolving distribution load flow, particularly with greater R/X ratios. The most typical test cases used in the literature are listed. In order to enrich this review and make it useful to others, more than 200 articles (the majority of which were published in the last five years) are referenced inside the body of this text. The final conclusions and related future insights are presented. At last, this work is an invaluable resource for anyone involved in this field of study because it offers a comprehensive literary framework that can serve as the foundation for any future research on NRs and its prospective difficulties. Therefore, academics can use this framework to enhance previous formulations and approaches as well as suggest more effective models.",
+    "oa_url": "https://link.springer.com/content/pdf/10.1007/s11831-023-10007-0.pdf",
+    "url": "https://openalex.org/W4387740876"
+  },
+  {
+    "doi": "10.1109/iecon.2013.6699978",
+    "title": "Fault-tolerant operation of an open-end winding five-phase PMSM drive with inverter faults",
+    "year": 2013,
+    "cites": 38,
+    "venue": "Proceedings of the Annual Conference of the IEEE Industrial Electronics Society",
+    "abstract": "Multi-phase machines are known for their fault-tolerant capability. However, star-connected machines have no fault tolerance to inverter switch short-circuit fault. This paper investigates the fault-tolerant operation of an open-end five-phase drive, i.e. a multi-phase machine fed with a dual-inverter supply. Inverter switch short-circuit faults are considered and handled with various degrees of reconfiguration. Theoretical developments and experimental results validate the proposed strategies.",
+    "oa_url": "https://hal.science/hal-00876144/document",
+    "url": "https://openalex.org/W2033205259"
+  },
+  {
+    "doi": "",
+    "title": "V. Reconfigurations économiques",
+    "year": 2026,
+    "cites": 0,
+    "venue": "Cairn.info",
+    "abstract": "We examine how susceptible jobs are to computerisation.To assess this, we begin by implementing a novel methodology to estimate the probability of computerisation for 702 detailed occupations, using a Gaussian process classifier.Based on these estimates, we examine expected impacts of future computerisation on us labour market outcomes, with the primary objective of analysing the number of jobs at risk and the relationship between an occupation's probability of computerisation, wages and educational attainment.According to our estimates, about 47 percent of total us employment is at risk.We further provide evidence that wages and educational attainment exhibit a strong negative relationship with an occupation's probability of computerisation.",
+    "oa_url": "https://sep4u.gr/wp-content/uploads/The_Future_of_Employment_ox_2013.pdf",
+    "url": "https://openalex.org/W7166283559"
+  },
+  {
+    "doi": "10.47749/t/unicamp.2020.1162303",
+    "title": "Machine learning for data-driven indicators applied to UNICAMP's power distribution System",
+    "year": 2020,
+    "cites": 0,
+    "venue": "",
+    "abstract": "Programa de Pesquisa e Desenvolvimento do Setor Elétrico PD-00063-3032 / 2017 -PA3032: \"Modelo de campus sustentável na Universidade de Campinas -Brasil: Um laboratório vivo integrado para energias renováveis, mobilidade elétrica, eficiência energética, monitoramento e gestão da demanda de energia\", regulamentada pela Agência Nacional de Energia Elétrica (ANEEL), em parceria com a CPFL Brasil (Distribuidora Local de Energia Elétrica).O presente trabalho foi realizado com apoio da Coordenação de Aperfeiçoamento de Pessoal de Nivel Superior -Brasil (CAPES) -Código de Financiamento 001.",
+    "oa_url": "https://doi.org/10.47749/t/unicamp.2020.1162303",
+    "url": "https://openalex.org/W4388853280"
+  },
+  {
+    "doi": "10.1016/j.isci.2026.117208",
+    "title": "Modular reconfiguration and actuation of microrobotic assemblies",
+    "year": 2026,
+    "cites": 1,
+    "venue": "iScience",
+    "abstract": "Transport in microfluidic systems occurs under low-Reynolds-number conditions, where localized particle manipulation requires controlled fluid-structure interaction. Here, a modular magnetic microfluidic robotic assembly was developed using soft-bodied, hard-magnetic, and arc-shaped modules that self-assembled under external magnetic fields, underwent oscillatory actuation, and reversibly disassembled within the same platform. Field modulation enabled transitions between force- and torque-dominated regimes, allowing periodic deformation to be transmitted from the actuated legs to the functional head region. During oscillatory actuation, particles were redistributed via contact-assisted sweeping, accompanied by localized fluid disturbance. Forward and backward transport efficiencies of 91.1% ± 3.6% and 92.1% ± 2.6% were achieved, with a round-trip retention efficiency of 83.8% ± 4.8%. Frequency-dependent analysis identified an actuation condition that balanced deformation transmission and actuation rate. This work provides a basis for programmable microrobotic transport and localized manipulation in confined microfluidic environments.",
+    "oa_url": "",
+    "url": "https://openalex.org/W7204220733"
+  },
+  {
+    "doi": "10.3390/en14071848",
+    "title": "Optimal Design of A 12-Slot/10-Pole Six-Phase SPM Machine with Different Winding Layouts for Integrated On-Board EV Battery Charging",
+    "year": 2021,
+    "cites": 19,
+    "venue": "Energies",
+    "abstract": "The transition to electric vehicles (EVs) has received global support as initiatives and legislation are introduced in support of a zero-emissions future envisaged for transportation. Integrated on-board battery chargers (OBCs), which exploit the EV drivetrain elements into the charging process, are considered an elegant solution to achieve this widespread adoption of EVs. Surface-mounted permanent-magnet (SPM) machines have emerged as plausible candidates for EV traction due to their nonsalient characteristics and ease of manufacturing. From an electric machine design perspective, parasitic torque ripple and core losses need to be minimized in integrated OBCs during both propulsion and charging modes. The optimal design of EV propulsion motors has been extensively presented in the literature; however, the performance of the optimal traction machine under the charging mode of operation for integrated OBCs has not received much attention in the literature thus far. This paper investigates the optimal design of a six-phase SPM machine employed in an integrated OBC with two possible winding layouts, namely, dual three-phase or asymmetrical six-phase winding arrangements. First, the sizing equation and optimized geometrical parameters of a six-phase 12-slot/10-pole fractional slot concentrated winding (FSCW)-based SPM machine are introduced. Then, variations in the output average torque, parasitic torque ripple, and parasitic core losses with the slot opening width and the PM width-to-pole pitch ratio are further investigated for the two proposed winding layouts under various operation modes. Eventually, the optimally designed machine is simulated using analytical magnetic equivalent circuit (MEC) models. The obtained results are validated using 2D finite element (FE) analysis.",
+    "oa_url": "https://www.mdpi.com/1996-1073/14/7/1848/pdf?version=1617937112",
+    "url": "https://openalex.org/W3151811468"
+  },
+  {
+    "doi": "10.13028/m23t1q",
+    "title": "Analysis, Visualization, and Machine Learning of Epigenomic Data",
+    "year": 2017,
+    "cites": 0,
+    "venue": "The Journal of the American Medical Association (JAMA) Network (American Medical Association)",
+    "abstract": "The goal of the Encyclopedia of DNA Elements (ENCODE) project has been to characterize all the functional elements of the human genome. These elements include expressed transcripts and genomic regions bound by transcription factors (TFs), occupied by nucleosomes, occupied by nucleosomes with modified histones, or hypersensitive to DNase I cleavage, etc. Chromatin Immunoprecipitation (ChIP-seq) is an experimental technique for detecting TF binding in living cells, and the genomic regions bound by TFs are called ChIP-seq peaks. ENCODE has performed and compiled results from tens of thousands of experiments, including ChIP-seq, DNase, RNA-seq and Hi-C. These efforts have culminated in two web-based resources from our lab—Factorbook and SCREEN—for the exploration of epigenomic data for both human and mouse. Factorbook is a peak-centric resource presenting data such as motif enrichment and histone modification profiles for transcription factor binding sites computed from ENCODE ChIP-seq data. SCREEN provides an encyclopedia of ~2 million regulatory elements, including promoters and enhancers, identified using ENCODE ChIP-seq and DNase data, with an extensive UI for searching and visualization. While we have successfully utilized the thousands of available ENCODE ChIP-seq experiments to build the Encyclopedia and visualizers, we have also struggled with the practical and theoretical inability to assay every possible experiment on every possible biosample under every conceivable biological scenario. We have used machine learning techniques to predict TF binding sites and enhancers location, and demonstrate machine learning is critical to help decipher functional regions of the genome.",
+    "oa_url": "https://escholarship.umassmed.edu/gsbs_diss/938",
+    "url": "https://openalex.org/W2782550002"
+  },
+  {
+    "doi": "10.1108/jbim-02-2021-0107",
+    "title": "The long and winding road of eHealth. The service ecosystem perspective",
+    "year": 2021,
+    "cites": 9,
+    "venue": "Journal of Business and Industrial Marketing",
+    "abstract": "Purpose This paper aims to investigate the eHealth ecosystem’s evolution during the coronavirus disease 2019 (COVID-19) pandemic and its effects on the progression of care for patients with chronic cardiovascular disease. Design/methodology/approach To attain the aim of the study, this study chose to adopt a qualitative method that matches the complexity of the issue. The study was conducted in a real context through 44 face-to-face semi-structured interviews of key informants at different levels of the Italian eHealth service ecosystem, via Microsoft Teams. The interviews were carried out from June 2020 to January 2021. In this research, we adopted an abductive approach that enabled a process where the theoretical framework and the data analysis evolved at the same time. Findings The study results were used to develop a conceptual framework that considers the key factors enabling and constraining the evolutionary process of the eHealth service ecosystem. In particular, the drivers that emerged from the study were actor role empowerment, actor–network engagement and resource reconfiguration while the inhibitors were inter- and intra-actor misalignment, resource myopia and the platformisation gap. The findings also revealed the pivotal role of the meso level in the development of the eHealth service ecosystem, boosted by the COVID-19 pandemic. Originality/value By adopting a service ecosystem perspective, this paper contributes, at both a theoretical and a managerial level, to a better understanding of the dynamics related to the diffusion of eHealth. The study identifies the main issues that researchers, managers and policymakers should address to support the evolution of the eHealth service ecosystem, with particular regard to chronic cardiovascular disease.",
+    "oa_url": "https://www.emerald.com/insight/content/doi/10.1108/JBIM-02-2021-0107/full/pdf?title=the-long-and-winding-road-of-ehealth-the-service-ecosystem-perspective",
+    "url": "https://openalex.org/W3206054478"
+  },
+  {
+    "doi": "10.1109/access.2022.3193784",
+    "title": "Combined Optimizer for Automatic Design of Machine Learning-Based Fault Classifier for Multilevel Inverters",
+    "year": 2022,
+    "cites": 32,
+    "venue": "IEEE Access",
+    "abstract": "Fault detection and classification are fundamental requirements of multilevel inverters (MLIs) to ensure constant operation and improved reliability. Nowadays, the machine learning (ML) technique is utilized for fault diagnosis in MLIs due to its inherent features such as high accuracy, reduced computation time, and complexity. However, the rich availability of parts and classifiers in ML techniques demands a tedious investigation of every combination to design an optimal fault classifier. To overcome this problem, a combined optimiser is proposed to automate the ML-based classifier design, which involves selecting optimal features and classifier. Mean, total harmonic distortion, root mean square, and different harmonic orders (upto 12thorder) of the output voltage of MLI are considered as features and four different ML techniques like K-nearest neighborhood, decision tree, Naive Bayesian classifier, and support vector machines are considered. Ant Colony Optimization (ACO) is used to formulate a combinatorial optimization routine to maximize classification accuracy by optimal selection of features and classifier. The proposed technique is used to design a fault classifier for two different MLIs, such as Cascaded H-bridge MLI (CHBMLI) and Packed U cell inverter (PUC), during the fault conditions (open circuit and short circuit) to check the feasibility. Simulation results illustrate classification accuracy of 97.84% and 98.61% for CHBMLI and PUC, respectively. Experimental validation of the designed classifier on the inverter prototype is also carried out and illustrates 95.56% and 94.28% classification accuracy for CHBMLI and PUC, respectively.",
+    "oa_url": "https://ieeexplore.ieee.org/ielx7/6287639/6514899/09839379.pdf",
+    "url": "https://openalex.org/W4287887998"
+  },
+  {
+    "doi": "10.1051/ro/2020075",
+    "title": "Comparative study of distribution networks reconfiguration problem approaches",
+    "year": 2020,
+    "cites": 6,
+    "venue": "RAIRO - Operations Research",
+    "abstract": "This work presents a comparative study between different resolutions approaches applied to the problem of power distribution. The main objective is to present a comparison between the various methods of resolution presented in the literature and the most used by the various authors. For this study, ninety papers that address the problem of reconfiguration of power distribution networks were analysed. The main objective is to reduce the real energy losses in the system, while several constraints regarding distribution are satisfied. The most recent papers were analysed, taking into account the approaches presented by the various authors, the formulation of the problem – namely its objective functions and constraints – the initialization methods and the stopping methods, as well as the results obtained. As such, an analysis and categorization of the various problems and approaches is presented, with the main focus being on the analysis and minimization of energy losses in 33-bus systems.",
+    "oa_url": "https://www.rairo-ro.org/articles/ro/pdf/2021/01/ro190340.pdf",
+    "url": "https://openalex.org/W3038762762"
+  }
+]

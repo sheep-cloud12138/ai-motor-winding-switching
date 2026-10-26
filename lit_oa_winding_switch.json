@@ -1,0 +1,402 @@
+[
+  {
+    "doi": "10.1049/ip-b.1993.0008",
+    "title": "Fully pitched-winding switched-reluctance and stepping-motor arrangements",
+    "year": 1993,
+    "cites": 103,
+    "venue": "IEE Proceedings B Electric Power Applications",
+    "abstract": "The paper introduces the concept of using a fully pitched winding in a switched-reluctance or stepping motor. It is demonstrated that such a winding configuration results in more efficient use of the electric circuit, with each phase contributing to torque for more than half of the cycle of rotation. As a result, for many machine configurations significantly greater torques are predicted for a given frame size. In contrast to the short-pitched windings conventionally employed in such machines, the new configuration is shown to derive virtually all its torque from the rate of change of mutual inductance between phases. A number of different idealised current-excitation patterns are investigated, using both unipolar and bipolar excitation, and the mean output torques produced by the various configurations are compared.",
+    "oa_url": "",
+    "url": "https://openalex.org/W2109147841"
+  },
+  {
+    "doi": "10.1109/tpel.2008.2002070",
+    "title": "Optimal Winding Arrangements of a Bearingless Switched Reluctance Motor",
+    "year": 2008,
+    "cites": 56,
+    "venue": "IEEE Transactions on Power Electronics",
+    "abstract": "Winding arrangements of a bearingless switched reluctance motor strongly influence the operation state of its power converters so much as the rotation and levitation of the motor. This paper proposes some optimal winding arrangements, which suit for a three-phase half-bridge converter or a three-phase four-leg converter. First, the optimal main winding arrangement is proposed. Then, this paper analyzes the influence factors of the midpoint voltage of a three-phase half-bridge converter applied to the radial force winding under the invariable radial load. Consequently, four kinds of optimal winding arrangements are given, which can balance the midpoint voltage. Moreover, according to influences of the winding arrangement on the operation state of a three-phase four-leg converter applied to the radial force winding, the paper proposes other four kinds of optimal winding arrangements, which fit the three-phase four-leg converter. The experimental results are also included to verify the theoretic analysis.",
+    "oa_url": "",
+    "url": "https://openalex.org/W2125663598"
+  },
+  {
+    "doi": "10.3390/app122111096",
+    "title": "The Electronic Switch of Windings of a Standard BLDC Motor",
+    "year": 2022,
+    "cites": 16,
+    "venue": "Applied Sciences",
+    "abstract": "Nowadays, one of the most promising areas in the motor industry is the production of BLDC motors, which are used in a wide range of applications and products—from power tools to electrical vehicles. The windings of BLDC motors are connected according to the Delta or Star circuits. However, such circuits (Delta or Star) do not allow dynamically changing the parameters of the BLDC motor during operation and thus reducing the overall motor efficiency. This paper deals with and proposes an electronic switch of the BLDC motor windings, which brings an advantage in having a capability of dynamically switching the windings during operation and thus increasing the efficiency of the BLDC motor performance.",
+    "oa_url": "https://www.mdpi.com/2076-3417/12/21/11096/pdf?version=1667367931",
+    "url": "https://openalex.org/W4308788553"
+  },
+  {
+    "doi": "10.1109/iemdc.2009.5075287",
+    "title": "Analysis of winding failure of Switched Reluctance Motors",
+    "year": 2009,
+    "cites": 22,
+    "venue": "IEEE International Electric Machines and Drives Conference (IEMDC)",
+    "abstract": "This paper concentrates on the average torque production of a switched reluctance motor in case of short and open curcuit of the machine's winding. The calculation of the average torque at winding failure was made analytically. Therefore the function of torque was linearized in the operating point. As already known the switched reluctance machine still produces torque in case of short curcuits. This average torque is dependent on the number of healthy windings. This paper introduces general equations to calculate the torque dependent on the number of full functional windings and phases first time ever. Further on special short curcuits are investigated with SIMPLORERreg. The simulation shows that there is a difference if current measurement takes place before the phase winding or at the end of the phase winding. A static simulation with two phases of an SRM was performed. Based on qualitative current performance the simulation shows that there is an advantage to place the current sensor at the beginning of one phase winding instead of placing the sensor at the end of a phase winding. In this paper the focus is on motoring mode.",
+    "oa_url": "",
+    "url": "https://openalex.org/W2126025710"
+  },
+  {
+    "doi": "10.1049/ip-b.1982.0008",
+    "title": "Steep-fronted switching voltage transients and their distribution in motor windings. Part 2: Distribution of steep-fronted switching voltage transients in motor windings",
+    "year": 1982,
+    "cites": 48,
+    "venue": "IEE Proceedings B Electric Power Applications",
+    "abstract": "Severe interturn insulation stresses may be produced in motor windings by steep-fronted switching voltage transients. To evaluate the severity of such stresses, transient-voltage distribution tests must be carried out under conditions closely simulating those obtained in service. In a complementary paper, system tests were described which were carried out to determine the characteristics of the transients produced by circuit-breaker closure operations. The steepness and magnitude of the transients were determined and the system parameters defining them evaluated. Based on this information, a series of interturn voltage distribution tests were carried out on a motor winding under conditions closely simulating practical system conditions. From these tests, the magnitude of the interturn voltages in the winding, produced by normal switching operations, were estimated and shown to be severe. The effect that system parameters, external to the motor winding, and also the use of series inductors or shunt capacitors used as surge-protection devices, have on the voltage distribution are also studied. Impulse voltage tests to breakdown were undertaken on a number of the motor coils and the breakdown levels shown to be only marginally above the transient levels produced by normal switching operations. The impulse voltage wave used for these tests was closely correlated to that which might be produced by steep-fronted switching transients.",
+    "oa_url": "",
+    "url": "https://openalex.org/W1973000608"
+  },
+  {
+    "doi": "",
+    "title": "Permanent magnet motor drives with switched stator windings",
+    "year": 1999,
+    "cites": 35,
+    "venue": "KTH Publication Database DiVA (KTH Royal Institute of Technology)",
+    "abstract": "Permanent magnet (PM) motors aretoday regarded as aninteresting solution for a wide range ofinverter-fedvariable-speed drives. The generally increasedinterest in these motors hasled to many investigations on theirfeasibility for vehicle propulsion.Consequently, they are alsoof interest for traction applications which led tothe researchproject that is presented in this thesis. The mostimportantadvantages that are expected in comparison to thestate of the artasynchronous motors are lower losses and ahigher torque density. Often thefield weakening speed range isimportant, but difficult to obtain withPM machines because theinductance in the direction of the magnetization tendsto below. An alternative can be to switch different coils groups ofthestator winding into different configurations. This is thecentral topic ofthis thesis. Various aspects of the design of PM motor drives areconsidered withspecial attention to the requirements for theapplication of the switchedwinding concept. The studies werethereby limited to the inner rotor, radialflux topology. It wasfound that two winding parts per phase, implying fourdifferentwinding connections, is the only interesting solution. Anadvantageof switched windings is that the internal voltage ofthe machine will neverexceed the maximum inverter output, whichincreases the operation safety.Furthermore the machine designcan uncompromisingly be optimized for operationbelow basespeed, which means low inductances implying a large airgaplengthand thick magnets. A problem with switched windings isthat circulatingcurrents can occur. To diminish them, a 2/3magnet covering of the polesurface must be chosen incombination with a non-salient rotor. Moreover itwas found thatthe eddy current losses in the magnets can reachnon-negligiblelevels and must be considered when designing adrive system. The major drawback of switched stator windings is probablythe occurrenceof torque interruptions when changing theconfiguration. The durations ofthese zero torque periods andtheir avoidance have been examined thoroughly inthis thesis bymeans of simulations and experiments on a specially designedandbuilt 50kW test machine. It was found that semi-conductorwinding switchesshould be used to avoid noticeable jerks. Anovel method is suggested on howto perform windingreconfigurations so that torque interruptions are avoided.Theprinciple is based on temporary operation of the machine withits windingsin asymmetric configurations which is analyzedanalytically and validated byexperiments. It is proven thatsuccessive winding switching is an appropriatemeans to entirelyomit torque interruptions. Finally, the application of PM motors with switched statorwindings in asubway propulsion drive is briefly considered.Different aspects of theirfeasibility are taken intoconsideration and the great potential of suchdrives is pointedout. Keywords:Permanent magnet synchronous motors, tractionpropulsion, inverter supply, circulating currents, variablespeed, torque interruptions, switched stator windings,successive winding reconfigurations, fieldweakening, contactorsvs. thyristor switches, permanent magnet motor design, windingreconfiguration tests, magnet losses",
+    "oa_url": "",
+    "url": "https://openalex.org/W41214893"
+  },
+  {
+    "doi": "10.1109/tmag.2012.2197734",
+    "title": "A Novel Switched Reluctance Motor With the Auxiliary Windings and Permanent Magnets",
+    "year": 2012,
+    "cites": 48,
+    "venue": "IEEE Transactions on Magnetics",
+    "abstract": "This paper presents a novel switched reluctance (SR) motor that has auxiliary windings and permanent magnets on the stator yoke. It can be driven by an asymmetric half-bridge converter in the same manner as the conventional SR motor, and the performance is improved by the auxiliary windings and magnets. The characteristics of the proposed SR motor are demonstrated by finite element method (FEM) and experiment. In addition, operating principle and characteristics in the case of generating mode are indicated.",
+    "oa_url": "",
+    "url": "https://openalex.org/W1965566106"
+  },
+  {
+    "doi": "10.1049/ip-b.1987.0044",
+    "title": "Winding current in a switched reluctance motor",
+    "year": 1987,
+    "cites": 2,
+    "venue": "IEE Proceedings B Electric Power Applications",
+    "abstract": "Winding current waveforms for a switched reluctance motor appear to be irregular, especially with a stationary rotor and at low speeds. However, an analysis of current data shows that simple mathematical models describe the relationship between the rate of rise of current and rotor position. These models are useful in the design of power electronic circuits and controllers.",
+    "oa_url": "",
+    "url": "https://openalex.org/W2079723403"
+  },
+  {
+    "doi": "10.1049/ip-epa:20030366",
+    "title": "Segmental rotor switched reluctance motors with single-tooth windings",
+    "year": 2003,
+    "cites": 123,
+    "venue": "IEE Proceedings - Electric Power Applications",
+    "abstract": "Switched reluctance machines with segmental rotors are investigated, building on previous work which has produced high torque prototypes. The paper presents a machine topology, which permits the use of short pitched windings placed around a single-tooth. This concept maintains the torque capability of a previous design, but uses much less copper volume. The theoretical basis for the machine configuration is developed and then the results for a working prototype machine are shown, illustrating static torque and flux linkage profiles. Results are presented for the machine operating as a drive, indicating the viability of the concept.",
+    "oa_url": "",
+    "url": "https://openalex.org/W1979253121"
+  },
+  {
+    "doi": "10.1109/tmag.2006.871933",
+    "title": "Dynamic analysis of toroidal winding switched reluctance motor driven by 6-switch converter",
+    "year": 2006,
+    "cites": 39,
+    "venue": "IEEE Transactions on Magnetics",
+    "abstract": "This paper presents a characteristic analysis of a wye-connected toroidal winding switched reluctance motor (TSRM) driven by 6-switch converter. The voltage equations considering both TSRM and the drive topology are introduced for steady state dynamic simulation. Inductances, which mainly affect motor characteristics, are calculated by finite element analysis and stored in a look-up table. During the dynamic analysis with the proposed voltage equations, the inductances are fitted using a spline interpolation. The dynamic analysis results are compared with those of conventional winding SRM which are already examined for verification of analysis method.",
+    "oa_url": "",
+    "url": "https://openalex.org/W2121703585"
+  },
+  {
+    "doi": "",
+    "title": "Novel Switched Reluctance Motor with Auxiliary Winding",
+    "year": 2004,
+    "cites": 1,
+    "venue": "哈尔滨工业大学学报：英文版",
+    "abstract": "The characteristics of the novel switched reluctance motor with auxiliary winding and four big swallow-tailed-slots in the internal surface of stator is analysed with the stator cross section and winding photo given, and the nlathematical model of the novel switched reluctance motor presented. To show that the auxiliary winding causes the electromotive force to improve current waveform and increase output power. The different effects of auxiliary winding on system performance under different speeds are analyzed and experimented. Simulation analyzing and experiments studying of the novel switched reluctance motor demonstrate validity of auxiliary winding improving current waveforms, increasing output power.",
+    "oa_url": "",
+    "url": "https://openalex.org/W2349514896"
+  },
+  {
+    "doi": "",
+    "title": "Novel Switched Reluctance Motor with Auxiliary Winding",
+    "year": 2004,
+    "cites": 1,
+    "venue": "哈尔滨工业大学学报：英文版",
+    "abstract": "The characteristics of the novel switched reluctance motor with auxiliary winding and four big swallow-tailed-slots in the internal surface of stator is analysed with the stator cross section and winding photo given,and the mathematical model of the novel switched reluctance motor presented. To show that the auxiliary winding causes the electromotive force toimprove current waveform and increase output power. The different effects of auxiliary winding on system performance under different speeds are analyzed and experimented. Simulation analyzing and experiments studying of the novel switched reluctance motor demonstrate validity of auxiliary winding improving current waveforms, increasing output power.",
+    "oa_url": "",
+    "url": "https://openalex.org/W988242852"
+  },
+  {
+    "doi": "10.1541/ieejjia.24001681",
+    "title": "Investigating on High-Efficiency Induction Motor with Switchable Motor Winding",
+    "year": 2024,
+    "cites": 1,
+    "venue": "IEEJ Journal of Industry Applications",
+    "abstract": "This study aims to improve the efficiency of an induction motor. The efficiency was measured under a load test using the inverter drive to verify the loss reduction effect when the winding changeover was applied. The stray load loss of series connection with a 184V synchronous 3 pulse could be reduced by 78% compared to the parallel connection with a 92V asynchronous pulse width modulation. Moreover, it was confirmed that the efficiency of the series connection is improved by approximately 4.4% compared to the parallel connection. Based on the above, it is confirmed that switching between series and parallel connections using a winding switcher can increase the efficiency of induction motors.",
+    "oa_url": "https://www.jstage.jst.go.jp/article/ieejjia/14/2/14_24001681/_pdf",
+    "url": "https://openalex.org/W4405312288"
+  },
+  {
+    "doi": "10.1108/compel-08-2013-0275",
+    "title": "A new switched reluctance motor with distributed winding",
+    "year": 2014,
+    "cites": 8,
+    "venue": "COMPEL The International Journal for Computation and Mathematics in Electrical and Electronic Engineering",
+    "abstract": "Purpose – The purpose of this paper is to propose a new three-phase switched reluctance motor (SRM), and achieve high-torque and low-cost. This new SRM's winding configuration uses the double-layer distributed windings, which is different from the conventional SRM's single tooth coils. Design/methodology/approach – The operating principle of new SRM is analyzed, and the voltage equation and the generated torque are deduced. Finite element method (FEM) and finite element circuit coupled method are utilized to evaluate the new motor's operating performances. The two dimensional (2D) frequency response analysis model is employed in the FEM model. Based on the 2D frequency response analysis model, the magnetic field distribution, self-inductance, and mutual-inductance for the new SRM are analyzed in detail. A co-simulation model using FE analysis package and Matlab-Simulink is proposed to simulate the new SRM drive. The simulated and experimental results verify the new SRM. Findings – For the new SRM with double-layer distributed windings, a co-simulation method is proposed to analyze its characteristics. The new SRM presents lower torque ripple coefficient and generates larger torque than the conventional SRM, with three-wire and standard full bridge power converter, rather than six-wire and asymmetric half-bridge converter for conventional SRM. Originality/value – This paper proposes a new SRM with the double-layer distributed windings driven by a standard full bridge inverter. In order to calculate dynamic characteristics of the new SRM, a co-simulation method using FEM and Simulink is proposed to simulate the new SRM drive, where the power inverter and the current chopping control algorithm are implemented.",
+    "oa_url": "",
+    "url": "https://openalex.org/W2056606474"
+  },
+  {
+    "doi": "10.1108/compel-11-2013-0377",
+    "title": "Winding topologies of flux-switching motors for in-wheel traction",
+    "year": 2015,
+    "cites": 11,
+    "venue": "COMPEL The International Journal for Computation and Mathematics in Electrical and Electronic Engineering",
+    "abstract": "Purpose – The purpose of this paper is to investigate winding topologies for flux-switching motors (FSMs) with various segment-tooth combinations and different excitation methods. Design/methodology/approach – For the ac winding of FSM, two winding topologies, namely the concentrated winding and the distributed winding, are compared in terms of the winding factor and efficiency. For the field winding of dc-excited FSM (DCEFSM), another two winding topologies, namely the lap winding and the toroidal winding, are compared in terms of effective coil area, end-winding length, and thermal conditions. Analytical derivation is used for the general winding factor calculation. The calculation results are validated using finite element analysis. Findings – Winding factors can be used as an indication of winding efficiency for FSMs in the same manner as done for synchronous motors. For FSMs with concentrated windings, the winding factor increases when the rotor tooth number approaches a multiple of the stator segment number. For FSMs with certain segment-tooth combinations, e.g. 6/8, the theoretical maximum winding factor can be achieved by implementing distributed windings. Furthermore, the toroidal winding can be an efficient winding topology for DCEFSMs with large stator diameter and small stack length. Research limitations/implications – This work can be continued with investigating the variation of reluctance torque with respect to different segment-tooth combinations of FSM. Originality/value – This paper proposes a general method to calculate the winding factor of FSMs using only the phase number, the stator segment number, the rotor tooth number, and the skew angle. Using this method, a table of winding factors of FSMs with different segment-tooth combinations is provided. Principle of design of FSMs with high-winding factors are hence concluded. This paper also proposed the implementation of distributed windings for FSM with certain segment-tooth combinations, e.g. 6/8, by which means a theoretical maximum winding factor is achieved. In addition, different winding topologies for the field winding of DCEFSM are also investigated.",
+    "oa_url": "",
+    "url": "https://openalex.org/W2063569762"
+  },
+  {
+    "doi": "10.1109/tmag.2009.2018694",
+    "title": "Analysis of Rotor Eccentricity in Switched Reluctance Motor With Parallel Winding Using FEM",
+    "year": 2009,
+    "cites": 68,
+    "venue": "IEEE Transactions on Magnetics",
+    "abstract": "This paper investigated rotor eccentricity effects on switched reluctance motor (SRM) and reduction of these effects by winding method. The motor was simulated by using 2-D transient magnetic finite-element (FE) analysis coupled with external circuits. The main exciting force of the vibration is the electromagnetic force in the stator that is calculated using Maxwell stress method. Serial connection and various parallel connections of windings were modeled in the external circuit. It was found from the simulation results that the currents could be adjusted in parallel paths and unbalanced magnetic forces (UMFs) could be reduced. Experiment results also revealed that the acceleration of stator surface was minimized with the proposed method.",
+    "oa_url": "",
+    "url": "https://openalex.org/W2167901296"
+  },
+  {
+    "doi": "10.1541/ieejias.144.753",
+    "title": "Investigating on High-Efficiency Induction Motor with Switchable Motor Winding",
+    "year": 2024,
+    "cites": 0,
+    "venue": "IEEJ Transactions on Industry Applications",
+    "abstract": "This study aims to improve the efficiency of an induction motor. The efficiency was measured under a load test using the inverter drive to verify the loss reduction effect when the winding changeover was applied. The stray load loss of series connection with a 184V synchronous 3 pulse could be reduced by 78% compared to the parallel connection with a 92V asynchronous pulse width modulation. Moreover, it was confirmed that the efficiency of the series connection is improved by approximately 4.4% compared to the parallel connection. Based on the above, it is confirmed that switching between series and parallel connections using a winding switcher can increase the efficiency of induction motors.",
+    "oa_url": "",
+    "url": "https://openalex.org/W4403933104"
+  },
+  {
+    "doi": "",
+    "title": "A Method of Winding Current Calculation for Single Winding Bearingless Switched Reluctance Motors",
+    "year": 2013,
+    "cites": 0,
+    "venue": "Small & Special Electrical Machines",
+    "abstract": "The principle of bearingless switched reluctance motor was briefly introduced.A method which uses the theoretical results of double winding bearingless switched reluctance motor and equivalent principle was put forward,and the calculation formula of single winding bearingless switched reluctance motor was deduced.Finite element simulation results show the validity of the method.This offers a new perspective to control the single winding bearingless switched reluctance motor.",
+    "oa_url": "",
+    "url": "https://openalex.org/W2365378714"
+  },
+  {
+    "doi": "",
+    "title": "Comprehensive Review of Winding Configuration in Switched Reluctance Motor",
+    "year": 2021,
+    "cites": 1,
+    "venue": "",
+    "abstract": "This paper presents design of a concentrated winding configuration of a 6/4 Switched Reluctance Motor to improve torque and efficiency. The objective of this paper is to analyze the torque and efficiency characteristics with different configuration of windings and their influence on total losses of SRM comparing it with Switched reluctance Motor no changes in winding structure. The static characteristics and the flux linkages for different winding configurations are analyzed by finite element method using ANYSYS software. Performance is analyzed at various speeds, efficiency and output power is compared. The total loss in Switched Reluctance Motor with Double layer winding is very less compared with the Single layer winding- Switched Reluctance Motor. The simulation results are presented to evaluate the performance of different concentrated winding configuration.",
+    "oa_url": "",
+    "url": "https://openalex.org/W3195702333"
+  },
+  {
+    "doi": "10.1109/tie.2016.2558482",
+    "title": "Compensation Strategy of Levitation Forces for Single-Winding Bearingless Switched Reluctance Motor With One Winding Total Short Circuited",
+    "year": 2016,
+    "cites": 49,
+    "venue": "IEEE Transactions on Industrial Electronics",
+    "abstract": "In order to take advantage of conventional switched reluctance motors (SRMs), the SRM is integrated with the bearingless motor technology and then a reluctance type of bearingless motor is created, named as bearingless SRM (BSRMs). Not only electromagnetic torque but also the levitation forces should be controlled in BSRMs, which is different from SRMs. The levitation forces should always exist even when winding fault occurs. Therefore, the absent levitation forces that ought to be produced by the fault winding should then be compensated by other winding. This paper proposes the compensation strategy of levitation forces for BSRMs when one stator winding is short circuited. The short-circuit fault is investigated and the short-circuit current is expressed for the derivation of radial forces. Then, the winding compensation rule and the mathematical model of levitation forces are developed to facilitate the compensation control for the motor levitation. After that, the proposed compensation strategy is verified by simulation results in MATLAB/Simulink. Experimental results are also presented to demonstrate the performance.",
+    "oa_url": "",
+    "url": "https://openalex.org/W2342778177"
+  },
+  {
+    "doi": "",
+    "title": "Winding Design of a Switched Reluctance Motor",
+    "year": 2016,
+    "cites": 0,
+    "venue": "",
+    "abstract": "This paper goes for Winding outline, of a 5 hp, 1500 rpm, 440 V, 8/6 shaft, Switched Reluctance engine. The method is developed from the fundamental foundation in electromagnetics. In this way, limited component programming is utilized to examinations the machine parameters. With configuration parameters, adjusted inductance, and unaligned inductances are ascertained. After that the entire outline is advance on MATLAB.",
+    "oa_url": "",
+    "url": "https://openalex.org/W3081351744"
+  },
+  {
+    "doi": "10.1049/ip-b:19870044",
+    "title": "Winding current in a switched reluctance motor",
+    "year": 1987,
+    "cites": 0,
+    "venue": "IEE Proceedings B Electric Power Applications",
+    "abstract": "",
+    "oa_url": "",
+    "url": "https://openalex.org/W3143026745"
+  },
+  {
+    "doi": "10.1109/tmag.2015.2513742",
+    "title": "Comparison of Flux-Switching PM Motors With Different Winding Configurations Using Magnetic Gearing Principle",
+    "year": 2015,
+    "cites": 91,
+    "venue": "IEEE Transactions on Magnetics",
+    "abstract": "In this paper, the magnetic gearing principle is extended to the flux-switching permanent magnet (FSPM) motor for its armature winding configuration design. First, the no-load flux density in motor air gap is qualitatively analytically calculated using the equivalent magnetic circuit method, so that the predominant space harmonic components (PSHCs) can be separated. Then, the slot vector graph can be drawn according to the pole-pair numbers and rotation directions of these PSHCs. Consequently, the armature winding configuration of a 12/10-pole FSPM motor is designed based on the slot vector graph using the conventional motor design method. In addition, two new 12/7-pole FSPM motors with the conventional non-overlapping concentrated and distributed winding are proposed, and the electromagnetic performances of the three motors are analyzed and compared. Finally, the analytical results are verified by the finite-element analysis and experimentation.",
+    "oa_url": "",
+    "url": "https://openalex.org/W2338032760"
+  },
+  {
+    "doi": "10.1049/iet-epa.2015.0627",
+    "title": "New circuits for emulating switched reluctance motor windings",
+    "year": 2016,
+    "cites": 4,
+    "venue": "IET Electric Power Applications",
+    "abstract": "This study sets forth two new universal circuits capable of emulating the behaviour of non‐linear inductance, which are composed of only off‐the‐shelf circuit devices. One of the proposed inductor emulators is dependent on a controllable resistor whose resistance value is programmable, while the other is carried out by using a multiplier to produce the emulator current. The values of the controllable resistance and the input voltage of the multiplier can be easily computed according to the requirement through digital signal processing techniques by means of digital signal processor chip. The phase inductance of switched reluctance motor (SRM) winding is of high non‐linearity due to doubly salient structure and magnetic saturation. Based on the analytical expression of phase inductance, the two proposed universal inductor emulators are applied to mimic the characteristics of SRM windings. The experimental and simulated results of the winding emulators provide the conclusive evidences for validating their practicability. Moreover, the emulators for the whole SRM drive system are designed and the corresponding experimental results further verify the correctness of the proposed SRM winding emulators.",
+    "oa_url": "",
+    "url": "https://openalex.org/W2312525118"
+  },
+  {
+    "doi": "10.1109/tec.2020.2988549",
+    "title": "An Improved Direct Torque Control for a Single-Winding Bearingless Switched Reluctance Motor",
+    "year": 2020,
+    "cites": 54,
+    "venue": "IEEE Transactions on Energy Conversion",
+    "abstract": "The direct torque control (DTC) and direct force control (DFC) method were introduced to reduce the torque and levitation force ripple in single-winding bearingless switched reluctance motors (SWBSRMs). However, it still has some disadvantages. Firstly, the flux-linkage control is not suitable for the DTC method in SWBSRMs. On the one hand, it can increase the torque ripple. On the other hand, the RMS current can be increased and then the torque-ampere ratio is decreased. Secondly, the vectors selection is also unreasonable, which can increase the torque ripple further. In order to solve these problems, an improved control method based on DTC and DFC method for SWBSRMs is proposed in this paper, which can obtain high torque-ampere ratio and low torque ripple simultaneously. In the proposed method, the flux-linkage loop control is not needed and the space voltage vector table is improved. The experimental results show that the torque ripple is reduced by 66.7%, the torque-ampere ratio is increased by 200% and the switching times in one electrical period are reduced by 47.3%.",
+    "oa_url": "",
+    "url": "https://openalex.org/W3017737694"
+  },
+  {
+    "doi": "10.1109/pesc.1997.616827",
+    "title": "Switched reluctance motor drives with fractionally-pitched winding design",
+    "year": 2002,
+    "cites": 10,
+    "venue": "PESC record",
+    "abstract": "A new topology of switched reluctance motor (SRM) drives with fractionally-pitched winding design is proposed in this paper. Compared to the conventional single-tooth winding SRM, this new drive offers higher torque density and better performance by utilizing the mutual-coupling among phase windings. While compared to SRMs with fully-pitched winding configuration, the proposed design possesses better current commutation capability due to the self-inductance variations, and hence is a better runner at high speeds. In this paper, a detailed analysis of the proposed motor drive is given, which includes motor and drive topologies, torque density comparison with conventional SRM and the proof of the theory by detailed magnetic field analysis and experimental work. The results of the study show that the proposed motor system is an attractive candidate for variable speed industrial applications.",
+    "oa_url": "",
+    "url": "https://openalex.org/W2140977203"
+  },
+  {
+    "doi": "",
+    "title": "Consideration of the Winding Structure of the Toroidal Winding Switched Reluctance Motors",
+    "year": 2016,
+    "cites": 0,
+    "venue": "Institutional Repositories DataBase (IRDB)",
+    "abstract": "",
+    "oa_url": "",
+    "url": "https://openalex.org/W7144987188"
+  },
+  {
+    "doi": "10.1109/iemdc.2005.195945",
+    "title": "A comparative study of switched reluctance motors with conventional and toroidal windings",
+    "year": 2005,
+    "cites": 14,
+    "venue": "",
+    "abstract": "This paper deals with a comparative study of switched reluctance motors (SRMs) with conventional and toroidal windings, which is called CSRM and TSRM, respectively. In the CSRM there is a complete magnetic decoupling between phases, so that torque is produced entirely due to the rate of change of winding self inductance. If the same machine is wound with toroidal windings then it can be shown that a new configuration produces torque as a result of changing phase inductance, which becomes much smaller due to mutual inductance between phases. This difference of inductance makes the two SRMs have quite different characteristics. Consequently, the CSRM is proper for high voltage and small current and the TSRM is for low voltage and large current. The characteristics comparison is theoretically performed with respect of torque, current, output power, and efficiency according to speed variation",
+    "oa_url": "",
+    "url": "https://openalex.org/W2141956737"
+  },
+  {
+    "doi": "10.1109/speedam.2012.6264472",
+    "title": "Field weakening of a surface mounted permanent magnet motor by winding switching",
+    "year": 2012,
+    "cites": 23,
+    "venue": "",
+    "abstract": "A new method for flux weakening in surface permanent magnet (SPM) machines is proposed in this paper. This method is called winding switching technique and can reliably double the field weakening speed range of PM motors. This is significant because extending the constant power speed ratio (CPSR) of SPM machines is usually challenging task due to the presence of low-permeability surface magnets and the resulting low machine inductance. In the new method of field weakening the usual three phase motor windings are separated into two portions and each portion is connected to an inverter. The paper discusses the stator winding arrangement which allows the normal and high speed operation of the machine along with the constant output power and reports simulation results taken from Finite Element Analysis.",
+    "oa_url": "",
+    "url": "https://openalex.org/W2071927773"
+  },
+  {
+    "doi": "10.1049/cp.2012.0261",
+    "title": "A new methodology for the redesign of a switched reluctance motor winding",
+    "year": 2012,
+    "cites": 0,
+    "venue": "IET International Conference on Power Electronics, Machines and Drives (PEMD)",
+    "abstract": "Rewinding of electrical machines is a relatively common operation in maintenance activities. However, the standard operation consists of building an exact replica of the original winding. This paper presents a switched reluctance motor rewinding methodology, considering new application requirements, and the expected performance is also presented. (6 pages)",
+    "oa_url": "",
+    "url": "https://openalex.org/W1498543407"
+  },
+  {
+    "doi": "10.1109/icems.2017.8056468",
+    "title": "Predicting eddy current loss of winding in switched reluctance motor",
+    "year": 2017,
+    "cites": 7,
+    "venue": "International Conference on Electrical Machines and Systems (ICEMS)",
+    "abstract": "Different from permanent magnet synchronous machine, switched reluctance motor(SRM) is featured as high local flux density, high current variation ratio in the winding with medium, high power and high speed. Therefore, hot spots in the winding could be caused by eddy current effect. When current flows through winding, skin effect is generated by the high frequency alternating current due to the high switching frequency. Furthermore, proximity effect especially located at slot tip is caused by the flux, which generates significant current displacement and amounts copper loss. Therefore, in this paper, eddy current analytical model for winding of SRM is investigated, where arbitrary current waveform originated from control strategy is considered. Furthermore, finite element method is employed to analyze for 3-phase 50kW SRM and compared with analytical model. Finally, effect of winding parameter and layout on copper loss is presented for guiding motor design.",
+    "oa_url": "",
+    "url": "https://openalex.org/W2761471050"
+  },
+  {
+    "doi": "10.1109/rrcon.1998.668069",
+    "title": "On the feasibility of switched stator windings in permanent magnet motors for traction drives",
+    "year": 2002,
+    "cites": 15,
+    "venue": "ASME/IEEE Joint Railroad Conference (JRC)",
+    "abstract": "Today inverter-fed permanent magnet (PM) synchronous motors may be considered as an alternative to squirrel cage induction motors. Higher efficiency and compactness can be achieved combined with lower inverter rating for the same output power. In this paper, two methods are considered to increase the available speed range. They are field-weakening and switched stator windings. It is evaluated how switched windings can be implemented and what influence they have on the motor design. As possible switch solutions, contactors and thyristors are examined. The resulting jerk is investigated experimentally and can be diminished sufficiently.",
+    "oa_url": "",
+    "url": "https://openalex.org/W1883845695"
+  },
+  {
+    "doi": "10.1109/tasc.2016.2539678",
+    "title": "Modeling of a Switched Reluctance Motor Under Stator Winding Fault Condition",
+    "year": 2016,
+    "cites": 20,
+    "venue": "IEEE Transactions on Applied Superconductivity",
+    "abstract": "A new method for modeling stator winding fault with one shorted coil in a switched reluctance motor (SRM) is presented in this paper. The method is based on artificial neural network (ANN), incorporated with a simple analytical model in electromagnetic analysis to estimate the flux-linkage characteristics of SRM under the stator winding fault. The magnetic equivalent circuit method with ANN is applied to calculate the nonlinear flux-linkage characteristics under stator winding fault condition. A stator winding fault 12/8 SRM prototype system is developed to verify the effectiveness of the proposed method. The results for a stator winding fault with one shorted coil are obtained from the proposed method and from the experimental work on a developed prototype. It is shown that the simulation results are close to the test results.",
+    "oa_url": "",
+    "url": "https://openalex.org/W2314299896"
+  },
+  {
+    "doi": "10.3233/jae-162143",
+    "title": "Torque characteristic of flux switching motor by winding function theory",
+    "year": 2016,
+    "cites": 1,
+    "venue": "International Journal of Applied Electromagnetics and Mechanics",
+    "abstract": "In this paper, torque characteristic analysis of flux switching motor by using winding function theory is described. First of all, the torque characteristic of existed flux switching motor was analyzed by winding function theory. The optimized new flux switching motor which has redesigned rotor teeth was proposed to minimize the torque ripple by using the optimum design method, such as Kriging method based on latin hypercube sampling and genetic algorithm. The inverse air gap function of new flux switching motor was calculated by winding function theory and the torque characteristic of that was compared with that of finite element analysis. The revised flux switching motor and experimental systems were manufactured. The simulation results were compared with those of experiment. From the comparison it was shown that the analysis method of flux switching motor by winding function theory was validated.",
+    "oa_url": "",
+    "url": "https://openalex.org/W2570062458"
+  },
+  {
+    "doi": "",
+    "title": "Performance Analysis of Permanent Magnet Motors with Winding Switching and Switching Circuit Research",
+    "year": 2012,
+    "cites": 0,
+    "venue": "Acta Armamentarii",
+    "abstract": "Under the circumstances that volume and power are being limited in armored vehicles,large torque and wide flux-weakening range become conflict inevitably in permanent magnet motors.The motor winding switching method is adopted to resolve this problem.The motor performance of torque and flux-weakening was analyzed by finite element method(FEM) which windings are connected in parallel and series respectively.The results show that the output torque of the motor in series-wound mode is twice as much as that in parallel-wound mode,while the speed range of the motor in series-wound mode is half as much as that in parallel-wound mode.Thus,both of torque and speed range can be satisfied utilizing the winding switching method.The series-wound mode can be used in low speed to increase output torque of the motor,while the parallel-wound mode can be used in high speed to widen the speed range of the motor.What's more,a switching circuit is constructed based on zero current switching to fulfill the winding switching.The experimental results show that the switching is very rapid and the impulsion is small during the switching process.",
+    "oa_url": "",
+    "url": "https://openalex.org/W2366748920"
+  },
+  {
+    "doi": "10.1109/25.752586",
+    "title": "Electrical two-speed propulsion by motor winding switching and its control strategies for electric vehicles",
+    "year": 1999,
+    "cites": 66,
+    "venue": "IEEE Transactions on Vehicular Technology",
+    "abstract": "Theoretical analyses and computer simulation studies lead the authors to propose: (1) a new electrical two-speed propulsion system for electric vehicles (EVs) by switching induction motor windings; and (2) an improved fuzzy logic control-continuous defuzzification method for the control of this system. The two-speed propulsion is achieved by connecting the motor stator windings in series for starting an EV and then switching the windings to parallel connection for normal speed operation. The method produces a high starting torque, yet maintains the inverter within its rated power range. As compared with star-delta starting of induction motors, the proposed series-parallel method offers higher starting torque and acceleration. The control strategies for this system are investigated. A comparison of fuzzy logic control with a conventional proportional-integral (PI) shows that a fuzzy logic controller (FLC) can be applied to EV propulsion systems. Simulation studies also demonstrate that an improved FLC method using a continuous defuzzification technique provides smoother torque and leads to lower harmonic components in motor currents, thus further enhancing this EV propulsion system.",
+    "oa_url": "",
+    "url": "https://openalex.org/W2139495377"
+  },
+  {
+    "doi": "10.1109/tasc.2016.2610722",
+    "title": "Design and Analysis of a Switched Reluctance Motor with Superconducting Windings and Tapering Poles",
+    "year": 2016,
+    "cites": 16,
+    "venue": "IEEE Transactions on Applied Superconductivity",
+    "abstract": "This paper presents a 6/4 switched reluctance motor with high-temperature superconducting (HTS) armature windings and tapering poles. The HTS windings are capable of carrying large current while the structure of tapering poles can improve the magnetic circuit. The cryogenic system of the stator and the mechanical configuration of the rotor are both simple and robust. The finite element analysis results confirm that the combination of the technology of HTS and tapering poles can improve the torque density of the proposed SRM by 29%.",
+    "oa_url": "",
+    "url": "https://openalex.org/W2520417968"
+  },
+  {
+    "doi": "10.1109/icelmach.2012.6349846",
+    "title": "Basic consideration of switched reluctance motor with auxiliary windings and permanent magnets",
+    "year": 2012,
+    "cites": 13,
+    "venue": "",
+    "abstract": "The conventional switched reluctance (SR) motor has following features: low cost, extremely robust, and a wide range of variable speed drives. This paper presents a novel SR motor that has auxiliary windings and permanent magnets (PMs) in the stator yoke. The permanent magnets are used to reduce magnetic saturation of stator core, and the auxiliary windings, which are excited by a dc current, work as field magnets. First, the basic characteristics of the proposed SR motor are calculated by a finite element method (FEM). Next, to validate the usefulness of the proposed SR motor, trial experiments are performed.",
+    "oa_url": "",
+    "url": "https://openalex.org/W2090555491"
+  },
+  {
+    "doi": "",
+    "title": "Auxiliary Winding Switching Circuit for Single-Phase Induction Motors",
+    "year": 2008,
+    "cites": 0,
+    "venue": "Covenant University Repository (Covenant University)",
+    "abstract": "The most common practice for starting a single-phase induction motor is to connect a starting capacitor, in series, with the auxiliary winding. Here, the possibility of using an electronic switch in parallel with the starting capacitor, is discussed. This work relates particularly to a switching device for electrically connecting and removing the auxiliary winding and starting capacitor from the single-phase induction motor's circuitry. The starting capacitor with the auxiliary winding are disconnected by electronic means as the motor gains speed hence leaving only the main winding in the motor circuit for normal operation.",
+    "oa_url": "",
+    "url": "https://openalex.org/W2124097588"
+  },
+  {
+    "doi": "10.1109/tia.2002.800594",
+    "title": "Impact of stator windings and end-bells on resonant frequencies and mode shapes of switched reluctance motors",
+    "year": 2002,
+    "cites": 71,
+    "venue": "IEEE Transactions on Industry Applications",
+    "abstract": "One of the main drawbacks of switched reluctance motors (SRMs) is vibration and acoustic noise, which limits their application. An accurate predication of the modal vibration frequencies of the SRM stator is essential in order to design a low-vibration motor and operate it quietly. Electronic techniques for noise reduction also depend on knowledge of the resonant frequencies, which depend on the mechanical structure surrounding the laminations. This paper examines the effects of the stator windings and end-bells on stator modal vibration frequencies. The error in the calculation of the resonant frequencies can be up to 20% if the influence of end-bells is neglected. The numerical computations of the stator mode shapes and resonant frequencies are validated with experimental results.",
+    "oa_url": "",
+    "url": "https://openalex.org/W2103255933"
+  }
+]

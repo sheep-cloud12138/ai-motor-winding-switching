@@ -1,0 +1,8 @@
+Highlights
+
+- One coil-level surrogate evaluates any winding connection zero-shot.
+- Co-energy structure gives exact reciprocity (4.6e-4 vs 0.22 for an MLP).
+- Pattern kind beats pattern count: nRMSE 1.00 -> 0.11 on unbalanced links.
+- Phase-random patterns fix open-phase hold-outs (1.38 -> 0.07) at 1/4 cost.
+- WLTC DP adds full tracking at 440.4 Wh vs 440.6 Wh for near-feasible delta.
+- FEMM validates inductance trends but exposes a tap50 zero-shot torque failure.

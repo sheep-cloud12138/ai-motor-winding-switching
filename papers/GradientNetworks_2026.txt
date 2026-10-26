@@ -1,0 +1,1517 @@
+
+
+===== PAGE 1 =====
+
+1
+Gradient Networks for Universal Magnetic
+Modeling of Synchronous Machines
+Junyi Li, Graduate Student Member, IEEE, Tim Foißner, Floran Martin,
+Antti Piippo, and Marko Hinkkanen, Fellow, IEEE
+Abstract—This paper presents a physics-constrained neural
+network framework for magnetic modeling of saturable syn-
+chronous machines, including spatial harmonics. By embed-
+ding gradient networks into the machine equations to model
+conservative electromagnetic behavior, the framework satisfies
+reciprocity and energy conservation by construction, while uni-
+versally approximating any physically feasible magnetic charac-
+teristic. Unlike lookup tables and black-box neural networks, it
+guarantees monotonicity, invertibility, and smooth outputs, and
+remains highly data efficient. The method is validated using
+measured and finite-element method (FEM) data from a 5.6-kW
+permanent-magnet (PM) synchronous reluctance machine, and is
+demonstrated in real-time closed-loop control on an embedded
+platform. The results confirm accurate, physically consistent, and
+computationally efficient performance.
+Index Terms—Dynamic modeling, electric drives, Hamiltonian,
+magnetic saturation, neural networks, physics-informed machine
+learning, synchronous machines.
+I. Introduction
+D
+YNAMIC models of synchronous machines are essential
+for control, estimation, monitoring, and optimization. A
+particularly challenging aspect is the magnetic model, which
+describes the relationship between flux linkages, currents,
+rotor angle, and electromagnetic torque [1], [2]. In modern
+power-dense designs, such as permanent-magnet (PM) and
+synchronous reluctance machines, magnetic saturation and
+cross-saturation effects are significant and must often be incor-
+porated into control models. Spatial harmonics, on the other
+hand, can be included in high-fidelity models for time-domain
+simulations during the design stage.
+The nonlinear magnetic behavior is typically represented
+by analytical functions [3]–[7], semi-analytical models [8],
+lookup tables [9]–[13], or neural networks [14]–[18]. These
+models can be characterized from finite-element method
+(FEM) data [19], laboratory measurements [13], [20], or
+automatic identification routines [21]. Analytical models are
+limited by their functional form and are difficult to extend to
+higher dimensions (e.g., for spatial harmonics or multi-phase
+machines). Lookup tables suffer from the curse of dimen-
+sionality, high memory requirements, and non-smooth outputs
+This work was supported in part by the ABB Oy, in part by the Aalto
+University House of AI, and in part by the Research Council of Finland Centre
+of Excellence in High-Speed Electromechanical Energy Conversion Systems.
+The authors acknowledge the use of EPE infrastructure of Aalto School of
+Electrical Engineering.
+Junyi Li, Tim Foißner, Floran Martin, and Marko Hinkkanen are with
+the Department of Electrical Engineering and Automation, Aalto Univer-
+sity, Espoo, Finland (e-mail: junyi.li@aalto.fi; tim.foissner@aalto.fi; flo-
+ran.martin@aalto.fi; marko.hinkkanen@ aalto.fi).
+Antti Piippo is with ABB Oy, Drives, Helsinki, Finland (e-mail: antti.
+piippo@fi.abb.com).
+under linear interpolation. Black-box neural networks [15]–
+[17] can approximate high-dimensional complex maps and
+require less memory than lookup tables, but they require large
+training datasets and do not guarantee reciprocity [22] or
+invertibility. Although some architectures incorporate spatial
+periodicity [14], [18], neither reciprocity nor monotonicity is
+guaranteed by construction.
+Physics-informed neural networks address these limitations
+by embedding known physical principles [23]–[26]. Electric
+machines are port-Hamiltonian systems [27], in which the
+current and electromagnetic torque are gradients of the mag-
+netic field energy with respect to the flux linkage and rotor
+angle, respectively [1], [2]. Hamiltonian neural networks [25],
+[26] could exploit this structure by modeling the energy as
+a scalar network and differentiating it, which improves data
+efficiency and physical consistency. However, they become
+harder to optimize as the input dimension grows, lack a
+universal approximation guarantee for the gradient field [28],
+and require second-order backpropagation in training and
+network differentiation at inference. A similar differentiation
+principle was applied to electromagnetic torque modeling [18],
+but the relationship between currents and flux linkages was not
+considered.
+In this paper, we propose a physics-constrained magnetic
+modeling framework that embeds gradient networks [28] into
+the fundamental electromechanical equations of synchronous
+machines [1], [2]. Gradient networks directly model monotone
+gradient fields without differentiating a scalar network, avoid-
+ing these training and inference costs. The main contributions
+are:
+• an energy-based magnetic modeling framework in which
+current and torque are derived from the gradient of a field
+energy function, guaranteeing reciprocity and monotonic-
+ity (and thus invertibility) by construction;
+• a co-energy-based formulation for directly modeling flux
+linkage and torque with the same physical guarantees;
+• architectural encodings of physical structure, enforcing q-
+axis symmetry via energy symmetrization and capturing
+spatial harmonics via Fourier features [29];
+• a computationally efficient 𝑝-norm gradient activation,
+together with guidance for selecting activation functions
+for current and flux-linkage maps;
+• experimental validation on two PM synchronous reluc-
+tance machines (5.6 and 28 kW) alongside FEM valida-
+tion, demonstrating data efficiency and real-time deploy-
+ment in a closed-loop embedded drive system.
+This paper is organized as follows. Section II reviews the
+arXiv:2602.14947v4  [eess.SY]  24 Sep 2026
+
+
+===== PAGE 2 =====
+
+2
+Lossless
+magnetic
+system
+𝑊s(𝛙s
+s, 𝜗m)
+𝛙s
+s
+𝑅s
+1
+𝑠
+us
+s
+𝜔m
+𝜏m
+is
+s
+1
+𝑠
+𝜗m
+(a)
+Lossless
+magnetic
+system
+𝑊(𝛙s, 𝜗m)
+𝛙s
+𝑅s
+us
+𝜔m
+𝜗m
+𝜏m
+is
+J
+1
+𝑠
+1
+𝑠
+(b)
+Fig. 1. Electromechanical dynamics of a generic synchronous machine: (a)
+stator coordinates; (b) rotor coordinates. The blocks 1/𝑠denote integration in
+time.
+machine model. Section III details the proposed architecture.
+Section IV presents offline validation and real-time control
+results. Section V concludes the paper.
+II. Physics-Based Machine Model
+This section describes the fundamental dynamic model of
+a generic synchronous machine [1], [2]. Scalars are denoted
+by italic letters, column vectors by bold lowercase letters, and
+matrices by bold uppercase letters. All quantities are in per-
+unit unless otherwise specified.
+A. Stator Coordinates
+The synchronous machine model in stator (αβ) coordinates
+is first considered. The state equations are
+d𝛙s
+s
+d𝑡
+= us
+s −𝑅sis
+s
+(1a)
+d𝜗m
+d𝑡
+= 𝜔m
+(1b)
+where 𝛙s
+s = [𝜓α, 𝜓β]⊤is the stator flux-linkage vector, is
+s =
+[𝑖α, 𝑖β]⊤is the stator current vector, us
+s = [𝑢α, 𝑢β]⊤is the stator
+voltage vector, and 𝑅s is the stator resistance. Furthermore, 𝜗m
+is the electrical angle of the rotor d-axis with respect to the
+stator coordinates, and 𝜔m is the electrical angular speed of
+the rotor.
+Assuming a lossless (conservative) magnetic field system,
+the magnetic behavior is fully described by its field energy
+function 𝑊s(𝛙s
+s, 𝜗m). Hence, the stator current and electro-
+magnetic torque are given by [1], [2]
+is
+s =
+ 𝜕𝑊s(𝛙s
+s, 𝜗m)
+𝜕𝛙ss
+⊤
+(2a)
+𝜏m = −𝜕𝑊s(𝛙s
+s, 𝜗m)
+𝜕𝜗m
+.
+(2b)
+The minus sign appears in the torque expression since the pos-
+itive mechanical power is defined out of the machine. It can be
+seen that the current and electromagnetic torque (with negative
+sign) constitute the gradient of the field energy function [27],
+[30]. Fig. 1(a) shows the block diagram corresponding to (1)
+and (2).
+If needed, core losses can be included outside the magnetic
+model by adding an equivalent core-loss resistance (or a
+more general nonlinear dissipative element) in parallel to the
+main magnetic circuit, as is standard practice [8], [9]. This
+reduces the current entering the lossless part of the model,
+but otherwise the model remains unchanged.
+B. Rotor Coordinates
+The machine model is more convenient to express in rotor
+(dq) coordinates, which rotate with the rotor d-axis. Coordinate
+transformation to rotor coordinates can be expressed using the
+matrix exponential as
+𝛙s =
+ cos 𝜗m
+sin 𝜗m
+−sin 𝜗m
+cos 𝜗m
+
+𝛙s
+s = e−𝜗mJ𝛙s
+s
+(3)
+where J = [ 0 −1
+1 0 ] is the orthogonal rotation matrix. The flux-
+linkage vector 𝛙s = [𝜓d, 𝜓q]⊤is used as an example, but other
+vectors are transformed similarly.
+1) Model Structure: Using (3), the state equations (1) are
+transformed to rotor coordinates as
+d𝛙s
+d𝑡
+= us −𝑅sis −𝜔mJ𝛙s
+(4a)
+d𝜗m
+d𝑡
+= 𝜔m
+(4b)
+where is = [𝑖d, 𝑖q]⊤is the current vector and us = [𝑢d, 𝑢q]⊤is
+the voltage vector. The field energy function can be expressed
+in rotor coordinates, 𝑊(𝛙s, 𝜗m) = 𝑊s(𝛙s
+s, 𝜗m). Applying the
+coordinate transformation and the chain rule (see Appendix A),
+the magnetic model (2) becomes
+is =
+ 𝜕𝑊(𝛙s, 𝜗m)
+𝜕𝛙s
+⊤
+(5a)
+𝜏m = i⊤
+s J𝛙s −𝜕𝑊(𝛙s, 𝜗m)
+𝜕𝜗m
+.
+(5b)
+The gradient relation (5a) defines the current map is(𝛙s, 𝜗m).
+Fig. 1(b) shows the corresponding block diagram.
+In magnetic systems, increasing flux linkage requires in-
+creasing current [1]. Hence, the current map is strictly mono-
+tone, meaning that the incremental inverse inductance matrix
+𝚪s = 𝜕is/𝜕𝛙s is positive definite. This corresponds to a
+strictly convex field energy 𝑊(𝛙s, 𝜗m) with respect to 𝛙s,
+guaranteeing unique invertibility between flux linkages and
+currents.
+If spatial harmonics are omitted, the field energy depends
+only on the flux linkage, 𝑊(𝛙s), simplifying the current map
+to is(𝛙s) and the electromagnetic torque to 𝜏m = i⊤
+s J𝛙s.
+As a familiar special case, this formulation includes the
+standard magnetically linear machine, where the field energy
+is quadratic, 𝑊(𝛙s) =
+1
+2 (𝛙s −𝛙f)⊤𝚪s(𝛙s −𝛙f), with the
+constant inverse inductance matrix 𝚪s = diag(1/𝐿d, 1/𝐿q) and
+the PM-flux vector 𝛙f = [𝜓f, 0]⊤. In this case, (5a) reduces
+to the linear relationship is = 𝚪s(𝛙s −𝛙f).
+
+
+===== PAGE 3 =====
+
+3
+2) Co-Energy-Based Model: Alternatively, a dual model
+can be derived via the Legendre transform 𝑊(𝛙s, 𝜗m) +
+𝑊′(is, 𝜗m) = i⊤
+s 𝛙s, which relates the field energy 𝑊and co-
+energy 𝑊′ [1], [2]. This yields
+𝛙s =
+ 𝜕𝑊′(is, 𝜗m)
+𝜕is
+⊤
+(6a)
+𝜏m = i⊤
+s J𝛙s + 𝜕𝑊′(is, 𝜗m)
+𝜕𝜗m
+.
+(6b)
+Note that the sign of the partial derivative term in the torque
+expression is positive. Similarly, the gradient relation in (6)
+defines the flux-linkage map 𝛙s(is, 𝜗m), which simplifies to
+𝛙s(is) without spatial harmonics. The choice between the
+energy-based model (5) and the co-energy-based model (6)
+depends on whether flux linkage or current is chosen as the
+input in a given application.
+3) Rotor-Angle Representation: Due to geometrical sym-
+metries, spatial harmonics cause the magnetic characteristics
+to repeat 𝑘times per electrical revolution, with a fundamental
+period of 2𝜋/𝑘. To enforce this periodicity and avoid artificial
+discontinuities at the period boundaries, the rotor angle is
+represented by the periodic unit vector
+𝛝=
+cos(𝑘𝜗m)
+sin(𝑘𝜗m)
+
+.
+(7a)
+In machine learning, such sinusoidal encodings are often
+called Fourier features [29]. Expressing the field energy as
+𝑊(𝛙s, 𝜗m) = ˜𝑊(𝛙s, 𝛝) and applying the chain rule, the model
+(5) becomes
+is =
+ 𝜕˜𝑊(𝛙s, 𝛝)
+𝜕𝛙s
+⊤
+(7b)
+𝜏m = i⊤
+s J𝛙s + 𝑘𝛝⊤J
+ 𝜕˜𝑊(𝛙s, 𝛝)
+𝜕𝛝
+⊤
+.
+(7c)
+The analogous transformation applies to the co-energy-based
+model (6).
+4) Symmetries From the Magnetic Geometry: Assuming the
+d-axis aligned with the PM flux, the magnetic geometry is
+symmetric about the d-axis. Consequently, reversing the signs
+of the q-axis flux linkage and rotor angle negates the q-axis
+current but leaves the d-axis current unchanged [13]
+is(C𝛙s, C𝛝) = Cis(𝛙s, 𝛝)
+C = diag(1, −1)
+(8)
+where C negates the second component of a vector. This
+implies that the field energy is an even function with respect
+to this reflection, ˜𝑊(𝛙s, 𝛝) = ˜𝑊(C𝛙s, C𝛝). To enforce this
+symmetry by construction, the energy function is symmetrized
+as
+𝑊(𝛙s, 𝛝) = 1
+2
+ ˜𝑊(𝛙s, 𝛝) + ˜𝑊(C𝛙s, C𝛝)
+
+.
+(9)
+Replacing ˜𝑊with 𝑊in (7) guarantees the symmetry (8). The
+same formulation applies to the co-energy function ˜𝑊′(is, 𝛝).
+Without spatial harmonics, the angle dependence is dropped,
+and (8) reduces to the well-known relations 𝑖d(𝜓d, −𝜓q) =
+𝑖d(𝜓d, 𝜓q) and 𝑖q(𝜓d, −𝜓q) = −𝑖q(𝜓d, 𝜓q) [20].
+a⊤
+1
+𝛔(·)
+a1
+𝑏1
+a⊤
+𝑛
+a𝑛
+𝑏𝑛
+A0
+b0
+x
+g(x)
+a⊤
+𝑁
+a𝑁
+𝑏𝑁
+𝑧1
+𝑧𝑛
+𝑧𝑁
+𝜎1
+𝜎𝑛
+𝜎𝑁
+Fig. 2. Gradient network used for the magnetic models.
+III. Proposed Gradient-Network Magnetic Models
+A. Gradient Networks
+1) Structure: Gradient networks can universally approxi-
+mate any continuous gradient field [28]. Furthermore, they
+can be parameterized to guarantee monotonicity, which is the
+relevant case for the proposed magnetic models. We use an
+architecture with 𝑁hidden units, illustrated in Fig. 2, given
+by
+z = Ax + b
+(10a)
+g(x) = A0x + b0 + A⊤𝛔(z)
+(10b)
+where A = [a1 . . . a𝑁]⊤is the weight matrix, b = [𝑏1 . . . 𝑏𝑁]⊤
+is the bias vector, 𝛔(z) is the activation function, and b0 is
+the output bias.
+The network (10) is conservative by construction: its Ja-
+cobian Jg
+= 𝜕g/𝜕x is symmetric whenever A0 and the
+activation Jacobian J𝛔= 𝜕𝛔/𝜕z are symmetric (see Ap-
+pendix B). To also guarantee monotonicity, A0 and J𝛔are
+chosen to be positive semidefinite. For elementwise activations
+𝛔(z) = [𝜎1(𝑧1) . . . 𝜎𝑁(𝑧𝑁)]⊤, this simply requires each 𝜎𝑛to
+be non-decreasing. Consequently, g(x) represents the gradient
+of an underlying convex energy function 𝑊(x), i.e., g(x) =
+[𝜕𝑊(x)/𝜕x]⊤, without the need to model or differentiate 𝑊(x)
+explicitly.
+2) Elementwise Activations: Elementwise activations apply
+a scalar function 𝜎(𝑧) independently to each hidden unit.
+While computationally efficient, they represent only a subset
+of monotone gradient fields and lack universal approximation
+guarantees [28].
+To capture magnetic saturation, the activation type must
+match the curvature of the modeled relationship. In the current
+map is(𝛙s), saturation causes the current to rise progressively
+with increasing flux linkage [31]. This behavior is matched
+by rectifier-type activations with a non-decreasing derivative,
+such as the algebraic squareplus [32]
+𝜎(𝑧) = 1
+2
+
+𝑧+
+√︁
+𝑧2 + 𝛽
+
+(11)
+where the positive parameter 𝛽tunes the smoothness around
+zero. As shown in Fig. 3, its derivative d𝜎/d𝑧= (1 +
+𝑧/
+√︁
+𝑧2 + 𝛽)/2 smoothly transitions from zero to one. Com-
+pared to the softplus, squareplus avoids exponential functions
+and is computationally more efficient.
+
+
+===== PAGE 4 =====
+
+4
+0
+1
+2
+휎
+훽= 0.01
+훽= 0.1
+훽= 1
+−2
+−1
+0
+1
+2
+푧
+0.0
+0.5
+1.0
+d휎/d푧
+Fig. 3. Elementwise squareplus activation 𝜎in (11) and its derivative d𝜎/d𝑥
+at different values of parameter 𝛽. The shape of the algebraic sigmoid (12) is
+the same as the derivative of the squareplus, but shifted vertically and scaled.
+Conversely, in the flux-linkage map 𝛙s(is), the flux link-
+age saturates with increasing current, matching the familiar
+flattening of magnetic saturation curves. This behavior suits
+sigmoid-type activations. Here, we use the algebraic sigmoid
+𝜎(𝑧) =
+𝑧
+√︁
+𝑧2 + 𝛽
+(12)
+which corresponds to a vertically shifted and scaled version
+of d𝜎/d𝑧in (11).
+3) Vector Activations: Unlike elementwise activations, vec-
+tor activations produce outputs where each component depends
+on the entire input vector z. A standard vector activation is the
+scaled softmax, given by
+𝛔(z) =
+1
+Í𝑁
+𝑛=1 e𝛽𝑧𝑛
+
+e𝛽𝑧1
+...
+e𝛽𝑧𝑁
+
+(13)
+where the positive learnable parameter 𝛽scales the inputs.
+Fig. 4(a) illustrates the first component 𝜎1(𝑧1, 𝑧2) for the
+two-dimensional case. The softmax is the gradient of the
+convex log-sum-exp function 𝑆(z) = log(Í𝑁
+𝑛=1 e𝛽𝑧𝑛)/𝛽, which
+guarantees that its Jacobian J𝛔is symmetric and positive
+semidefinite. Furthermore, as proved in [28], gradient networks
+(10) with softmax activation can universally approximate any
+continuous monotone gradient field.
+As a computationally efficient alternative, we propose the
+𝑝-norm gradient activation shown in Fig. 4(b), defined as
+𝛔(z) =
+1
+
+1 + Í𝑁
+𝑛=1(𝛽𝑧𝑛) 𝑝 𝑝−1
+𝑝
+
+(𝛽𝑧1) 𝑝−1
+...
+(𝛽𝑧𝑁) 𝑝−1
+
+(14)
+where 𝑝is a positive even integer and 𝛽> 0 is a learnable
+parameter. This activation is the gradient of the smooth
+regularized 𝑝-norm 𝑆(z) = [1 + Í𝑁
+𝑛=1(𝛽𝑧𝑛) 𝑝] (1/𝑝)/𝛽. The
+convexity of 𝑆(z) guarantees monotonicity, while the unit term
+ensures differentiability at the origin and prevents division by
+zero. When 𝑝is chosen as a power of two, transcendental
+−2
+0
+2
+푧1
+−2
+0
+2
+푧2
+0.0
+0.5
+1.0
+휎1
+(a)
+−2
+0
+2
+푧1
+−2
+0
+2
+푧2
+−1
+0
+1
+휎1
+(b)
+Fig. 4. Vector activation 𝜎1(𝑧1, 𝑧2) visualized in two-dimensional case: (a)
+softmax (13) with 𝛽= 1; (b) 𝑝-norm gradient (14) with 𝑝= 4 and 𝛽= 1.
+functions are avoided completely: powers and fractional roots
+reduce to repeated multiplications and square roots, whereas
+the softmax requires 𝑁exponential evaluations per point.1 In
+magnetic modeling, the choice 𝑝= 8 also aligns with classical
+empirical exponents used to describe iron saturation curves [3],
+[21], [31].
+Vector activations are general-purpose: both the softmax
+(13) and the 𝑝-norm gradient (14) apply to current and flux-
+linkage maps regardless of rotor-angle dependence. While the
+softmax provides theoretical universality, the proposed 𝑝-norm
+gradient yields comparable accuracy and robustness in practice
+while significantly reducing the computational burden for real-
+time execution.
+B. Magnetic Model Architectures
+This subsection presents the proposed gradient-network ar-
+chitectures in rotor coordinates, using the energy-based current
+map as the primary example. The same formulation applies
+analogously to the co-energy-based flux-linkage map.
+1) Without Spatial Harmonics: When spatial harmonics are
+omitted, the field energy depends only on the flux linkage.
+Without the symmetrized energy (9), the current map can
+be parametrized directly as is = g(𝛙s) using the monotone
+gradient network (10). Setting A0 = diag(𝜇d, 𝜇q) enforces
+1For example, for 𝑝= 8, the fractional power is 𝑆7/8 = (
+√︃√︁√
+𝑆)7. The
+flux-linkage maps with the softmax (13) and 𝑝-norm gradient (14) activations
+were compiled to C code and profiled. Profiling indicates that the 𝑝-norm
+gradient executes over three times faster than the softmax across different
+network sizes.
+
+
+===== PAGE 5 =====
+
+5
+𝜏m
+C
+𝛙s
+C
+g(·)
+1
+2
+is
+i⊤
+s J𝛙s
+g(·)
+(a)
+𝛙s
+𝜏m
+is
+𝜗m
+cos(𝑘𝜗m)
+sin(𝑘𝜗m)
+i⊤
+s J𝛙s
+𝑘𝛝⊤J𝛕
+𝛕
+𝛝
+g(·)
+˜x
+(b)
+Fig. 5.
+Proposed magnetic models in rotor coordinates: (a) without spatial
+harmonics, q-axis symmetry by construction; (b) with spatial harmonics,
+shown without symmetrization for simplicity. In both cases, the function g(·)
+is given by (10).
+strong convexity with respect to the flux linkage. The pa-
+rameters 𝜇d > 0 and 𝜇q > 0 provide lower bounds for the
+incremental inverse inductances and are trainable, subject to
+a small positive lower bound. Consequently, the Jacobian of
+the current map is positive definite, making the map strongly
+monotone [30] and robustly invertible to obtain the flux linkage
+from the current.
+With the symmetrized energy function (9), the current map
+becomes
+is(𝛙s) = 1
+2
+
+g(𝛙s) + C g(C𝛙s)
+
+(15)
+which enforces q-axis symmetry (8) by construction while
+preserving the positive definiteness of the Jacobian and the
+resulting invertibility. Fig. 5(a) shows the corresponding block
+diagram.
+2) With Spatial Harmonics: Fig. 5(b) shows the block
+diagram for the magnetic model with spatial harmonics, shown
+without the symmetrization step for simplicity. The combined
+input to the gradient network is ˜x = [𝛙⊤
+s , 𝛝⊤]⊤, and its
+four outputs correspond to the gradients with respect to 𝛙s
+and 𝛝. Strong monotonicity with respect to the flux linkage
+is enforced by setting A0 = diag(𝜇d, 𝜇q, 0, 0), leaving the
+periodic angle features unconstrained.
+Analogously to (15), the symmetrized energy 𝑊(𝛙s, 𝛝) in
+(9) is implemented by symmetrizing the network outputs,
+is
+𝛕
+
+= 1
+2
+
+g(˜x) + ˜C g( ˜C˜x)
+
+(16)
+where ˜C = diag(C, C) and 𝛕= [𝜕𝑊(𝛙s, 𝛝)/𝜕𝛝]⊤. This guar-
+antees q-axis symmetry (8) by construction, while preserving
+strict monotonicity in 𝛙s for each 𝜗m and periodicity in the
+rotor angle.
+IV. Results
+Measured and FEM datasets from a four-pole 5.6-kW PM
+synchronous reluctance machine (ABB Baldor ECS101 M0 H7
+EF4) were used to validate the proposed magnetic models.
+Table I lists the rated values of the machine, and Fig. 6
+TABLE I
+Rated Values of the 5.6-kW PM Synchronous
+Reluctance Machine
+Voltage (line-to-neutral, peak value)
+√︁
+2/3 · 460 V
+1.00 p.u.
+Current (peak value)
+√
+2 · 8.8 A
+1.00 p.u.
+Frequency
+60 Hz
+1.00 p.u.
+Speed
+1 800 r/min
+1.00 p.u.
+Power
+5.6 kW
+0.80 p.u.
+Torque
+29.7 Nm
+0.80 p.u.
+Fig. 6. Test bench including a 5.6-kW PM synchronous reluctance machine
+(left), load machine (right), and their inverter cabinet (background).
+shows the test bench used for measurements. Due to the rotor
+flux barriers, a small effective air gap in the q-axis direction,
+and the presence of PMs, the machine has highly nonlinear
+magnetic characteristics. While omitted here due to space
+constraints, flux-linkage maps were also measured for an au-
+tomotive 10-pole 28-kW PM synchronous reluctance machine
+(Brusa HSM1.10.18.04) and fitted with similar accuracy.2
+Training was implemented using the PyTorch library and
+AdamW optimizer until the training loss plateaued, with learn-
+ing rate 10−3, batch size 128, and random seed 42. The number
+of epochs was 20 000 for the measured dataset and 1 000 for
+the FEM dataset.
+A. Measured Dataset Without Spatial Harmonics
+1) Dataset: The flux linkages of the example machine
+were measured on an equidistant current grid using the
+constant-speed test [20]. By exploiting q-axis symmetry in the
+measurement procedure, the dataset contains 21 × 13 unique
+measurement points. Both d- and q-axis flux linkages were
+measured at each point. Figs. 7 and 8 show this dataset in
+flux-linkage coordinates and current coordinates, respectively.
+For illustration, both positive and negative q-axis values are
+shown, yielding a full grid of 21×27 points in each map (567
+displayed values per map).
+2) Model Configuration: Both energy-based current maps
+is(𝛙s) and co-energy-based flux-linkage maps 𝛙s(is) were
+trained using the proposed approach. The q-axis symmetry
+2Both 5.6-kW and 28-kW machine datasets, training details, and models
+are available in the motulator open-source project: https://aalto-electric-drives.
+github.io/.
+
+
+===== PAGE 6 =====
+
+6
+0.0
+0.5
+1.0
+휓d (p.u.)
+−1.5
+0.0
+1.5
+휓q (p.u.)
+−2
+0
+2
+4
+푖d (p.u.)
+(a)
+0.0
+0.5
+1.0
+휓d (p.u.)
+−1.5
+0.0
+1.5
+휓q (p.u.)
+−4
+−2
+0
+2
+4
+푖q (p.u.)
+(b)
+Fig. 7.
+Current maps: (a) 𝑖d(𝜓d, 𝜓q); (b) 𝑖q(𝜓d, 𝜓q). The surfaces show
+the predicted maps from the squareplus gradient model (11) with 𝑁= 12
+hidden units, trained on a 10% subset. Markers show the measured dataset:
+red indicates the 10% training subset and blue the remaining points. Gray
+lines show constant-current contours corresponding to the measured dataset.
+TABLE II
+Comparison of Activation Functions in Current Maps Without Spatial
+Harmonics (𝑁= 12)
+Activation
+Training data
+𝑒rms (p.u.)
+𝑒max (p.u.)
+𝑒std (p.u.)
+squareplus (11)
+10%
+0.017
+0.070
+0.011
+2%
+0.076
+0.344
+0.054
+softmax (13)
+10%
+0.031
+0.226
+0.021
+2%
+0.108
+0.407
+0.068
+𝑝-norm
+10%
+0.021
+0.110
+0.012
+gradient (14)
+2%
+0.096
+0.389
+0.061
+is enforced by construction, see Fig. 5(a). Different activation
+functions (11)–(14) are compared.
+The magnetic models without spatial harmonics have two
+scalar inputs and two scalar outputs. The number of learnable
+parameters depends on the number 𝑁of hidden units. The
+models have an 𝑁×2 weight matrix A, an 𝑁×1 bias vector b,
+a 2×2 diagonal output matrix A0, a 2×1 output bias b0, and a
+single learnable activation parameter 𝛽. Consequently, the total
+number of learnable parameters is 3𝑁+5. In the following, we
+use 𝑁= 12, resulting in 41 learnable parameters. This number
+of parameters is small compared to the lookup-table approach.
+The mean squared error (MSE) loss was used for training
+−2
+−1
+0
+1
+2
+푖d (p.u.)
+−2
+−1
+0
+1
+2
+푖q (p.u.)
+0.0
+0.5
+1.0
+휓d (p.u.)
+(a)
+−2
+−1
+0
+1
+2
+푖d (p.u.)
+−2
+−1
+0
+1
+2
+푖q (p.u.)
+−1.5
+0.0
+1.5
+휓q (p.u.)
+(b)
+Fig. 8. Flux-linkage maps: (a) 𝜓d(𝑖d, 𝑖q); (b) 𝜓q(𝑖d, 𝑖q). The surfaces show
+the predicted maps from the 𝑝-norm gradient model (14) with 𝑝= 8 and
+𝑁= 12 hidden units, trained on a 10% subset. Markers show the same
+measured dataset as in Fig. 7: red indicates the 10% training subset and blue
+the remaining points. Gray lines show constant-current contours corresponding
+to the measured dataset.
+TABLE III
+Comparison of Activation Functions in Flux-Linkage Maps Without
+Spatial Harmonics (𝑁= 12)
+Activation
+Training data
+𝑒rms (p.u.)
+𝑒max (p.u.)
+𝑒std (p.u.)
+algebraic
+10%
+0.016
+0.044
+0.010
+sigmoid (12)
+2%
+0.051
+0.165
+0.032
+softmax (13)
+10%
+0.007
+0.033
+0.004
+2%
+0.029
+0.081
+0.019
+𝑝-norm
+10%
+0.004
+0.022
+0.003
+gradient (14)
+2%
+0.018
+0.061
+0.012
+current maps, defined as
+L = 1
+𝐿
+𝐿
+∑︁
+ℓ=1
+isℓ−ˆisℓ
+2
+(17)
+where 𝐿is the number of training samples, isℓis the measured
+current for sample ℓ, and ˆisℓ(𝛙sℓ) is the model prediction for
+the corresponding flux-linkage input 𝛙sℓ. For training flux-
+linkage maps, the same procedure was used, replacing the
+current error with the flux-linkage error.
+3) Model Performance: Fig. 7 visualizes the learned cur-
+rent maps with the squareplus activation (11), when every tenth
+data point of the full measured dataset is used for training
+and the rest for validation. Fig. 8 shows flux-linkage maps
+learned by training the co-energy-based model with the 𝑝-
+
+
+===== PAGE 7 =====
+
+7
+TABLE IV
+Comparison of Activation Functions with Spatial Harmonics (𝑁= 48)
+for Torque Error
+Activation
+Training data
+𝑒rms (p.u.)
+𝑒max (p.u.)
+𝑒std (p.u.)
+softmax (13)
+10%
+0.011
+0.062
+0.007
+2%
+0.015
+0.091
+0.010
+𝑝-norm
+10%
+0.015
+0.106
+0.010
+gradient (14)
+2%
+0.025
+0.140
+0.016
+norm gradient activation (14) and the same training dataset.
+To facilitate visual comparison, constant-current contours cor-
+responding to the measurement grid are drawn on the predicted
+surfaces. Ideally, the measured points would fall exactly at the
+intersections of these contours. It can be observed that the
+model very accurately captures the measured data. The other
+activation functions yield visually similar results when trained
+with 10% of the dataset.
+For quantitative comparison, the root-mean-square (rms)
+error and the standard deviation over the entire measured
+dataset are computed, respectively, as
+𝑒rms =
+v
+u
+t
+1
+𝐿
+𝐿
+∑︁
+ℓ=1
+𝑒2
+ℓ
+𝑒std =
+v
+u
+t
+1
+𝐿
+𝐿
+∑︁
+ℓ=1
+(𝑒ℓ−¯𝑒)2
+(18)
+where 𝑒ℓ= ∥isℓ−ˆisℓ∥and ¯𝑒=
+1
+𝐿
+Í
+ℓ𝑒ℓ. Furthermore, the
+maximum error 𝑒max = maxℓ𝑒ℓis considered. The above
+metrics are defined for current maps, but they are similarly
+defined for flux-linkage maps.
+Table II summarizes the results for current maps when
+different activation functions are used. The table shows the
+results for two different training dataset sizes, 10% and 2%
+of the full measured dataset. In the latter case, every 50th
+data point is used for training, resulting in only 12 training
+samples per map. The results show that all models achieve
+excellent accuracy when trained with 10% of the dataset and
+good results even with 2% of the dataset. These results indicate
+that the underlying energy function can be well approximated
+with a sum of ridge functions.
+Table III gives the results for flux-linkage maps. The models
+with vector activations show better accuracy than those with
+elementwise activations, especially when the training dataset
+is limited to 2%. These results suggest that the underlying co-
+energy function may not be well approximated by a sum of
+ridge functions, thus requiring vector activations for accurate
+modeling with limited data.
+To evaluate physical consistency, the proposed gradient-
+network current map (squareplus activation, 𝑁= 12, 41
+parameters) was compared with an unconstrained multilayer
+perceptron (MLP) using the same activation and hidden-layer
+size (65 parameters). With 2% training data, the proposed
+model gives lower validation error than the MLP (𝑒rms =
+0.095 p.u. vs. 0.241 p.u.). The mean reciprocity residual
+|Γdq −Γqd| of the Jacobian 𝚪s = 𝜕is/𝜕𝛙s stays at single-
+precision round-off for the gradient network, while the MLP
+strongly violates reciprocity (6.8 · 10−8 p.u. vs. 0.62 p.u.).
+0
+1
+2
+푖q (p.u.)
+0
+30
+60
+휗m (deg)
+0.0
+0.5
+1.0
+1.5
+휏m (p.u.)
+(a)
+0
+15
+30
+45
+60
+휗m (deg)
+0.0
+0.2
+0.4
+0.6
+0.8
+1.0
+휏m (p.u.)
+Model
+Validation
+Training
+(b)
+Fig. 9. Electromagnetic torque from the 𝑝-norm gradient model with 𝑁= 48
+hidden units: (a) 𝜏m(𝑖q, 𝜗m) at constant 𝑖d corresponding to the rated MTPA
+current; (b) 𝜏m(𝜗m) at the constant rated MTPA stator current. The curve
+and markers in (b) are a slice from (a). Red and blue markers show the full
+FEM dataset. Red markers indicate the 10% training subset.
+B. FEM Dataset With Spatial Harmonics
+1) Dataset: To demonstrate the capability of the proposed
+model in Fig. 5(b) in capturing spatial harmonics, the 5.6-
+kW machine was analyzed using FEM under magnetostatic
+conditions. For this machine, both the flux linkage and torque
+are periodic in the electrical angle 𝜗m with a 60◦period. The
+FEM dataset was generated on an equidistant current grid (61×
+61), ranging from −2.41 to 2.41 p.u., and at 30 equidistant
+rotor angles from 0◦to 60◦. The total dataset size is 61 ×
+61 × 30 = 111 630 samples. At each operating point, the d-
+and q-axis flux linkages and the electromagnetic torque were
+computed.
+2) Model Configuration: Both the energy-based and co-
+energy-based models were trained using the proposed ap-
+proach, with q-axis symmetry enforced by construction via
+(16). For brevity, the results are shown only for the co-
+energy-based model, but the energy-based model shows similar
+performance. The vector activations softmax (13) and the 𝑝-
+norm gradient (14) are compared. The training dataset size is
+either 10% or 2% of the full FEM dataset, corresponding to
+11 163 and 2 232 samples, respectively.
+
+
+===== PAGE 8 =====
+
+8
+0.0
+0.5
+1.0
+1.5
+2.0
+Speed (p.u.)
+휔ref
+m
+휔m
+0.0
+0.5
+1.0
+1.5
+2.0
+Torque (p.u.)
+휏ref
+m
+ˆ휏m
+휏L
+휏m
+−2
+−1
+0
+1
+2
+Current (p.u.)
+푖d
+푖q
+0.00
+0.25
+0.50
+0.75
+1.00
+1.25
+1.50
+1.75
+Time (s)
+0.00
+0.25
+0.50
+0.75
+1.00
+1.25
+Flux linkage (p.u.)
+휓ref
+s
+ˆ휓s
+(a)
+0.0
+0.5
+1.0
+1.5
+2.0
+Speed (p.u.)
+휔ref
+m
+휔m
+0.0
+0.5
+1.0
+1.5
+2.0
+Torque (p.u.)
+휏ref
+m
+ˆ휏m
+휏L
+−2
+−1
+0
+1
+2
+Current (p.u.)
+푖d
+푖q
+0.00
+0.25
+0.50
+0.75
+1.00
+1.25
+1.50
+1.75
+1.75
+Time (s)
+0.00
+0.25
+0.50
+0.75
+1.00
+1.25
+Flux linkage (p.u.)
+휓ref
+s
+ˆ휓s
+(b)
+Fig. 10.
+Closed-loop control responses: (a) simulation with the proposed magnetic model including spatial harmonics in the plant; (b) corresponding
+measurement. The same controller is used in both cases, parameterized entirely by the proposed model without spatial harmonics. Speed reference step from
+0 to 2 p.u. at 𝑡= 0.25 s and load-torque step at 𝑡= 1.25 s. From top to bottom, the responses are speed, torque, current, and flux linkage.
+The magnetic models with spatial harmonics have four
+scalar inputs and four scalar outputs. In the following exam-
+ples, 𝑁= 48 hidden units are used, resulting in 5𝑁+ 7 = 247
+learnable parameters. The MSE loss is used for training, but
+it includes both the flux-linkage and torque errors. In the case
+of the co-energy-based models, the loss function is defined as
+L = 1
+𝐿
+𝐿
+∑︁
+ℓ=1
+"𝛙sℓ−ˆ𝛙sℓ
+2
+𝜓2max
++
+ 𝜏mℓ−ˆ𝜏mℓ
+2
+𝜏2max
+#
+(19)
+where 𝜓max and 𝜏max are the maximum flux linkage and torque
+in the training dataset, respectively. When training energy-
+based models, the loss function is defined similarly, replacing
+the flux linkage error term with the current error term.
+3) Model Performance: Fig. 9(a) visualizes the proposed
+co-energy-based model with the 𝑝-norm gradient activation
+(14), trained with 10% of the FEM dataset. The model captures
+both the rotor-angle dependence and the q-axis current depen-
+dence of the torque. Fig. 9(b) shows a slice at 𝑖d = −0.72 p.u.
+and 𝑖q = 0.72 p.u., which approximately corresponds to
+the rated maximum-torque-per-ampere (MTPA) current. The
+torque ripple caused by spatial harmonics is well captured.
+Table IV summarizes the torque prediction errors of the co-
+energy-based model over the entire FEM dataset. The model
+achieves good accuracy even when the training dataset is
+limited to 2% of the full FEM dataset. The 𝑝-norm gradient
+activation (14) gives results comparable to the softmax acti-
+vation (13) when trained with 10% of the dataset, but yields
+slightly higher errors when trained with 2% of the dataset. The
+flux-linkage errors (not shown for brevity) follow the same
+trend: the softmax is slightly better than the 𝑝-norm gradient,
+and both activations degrade only moderately when reducing
+the training set from 10% to 2%.
+C. Application Examples
+To demonstrate the practical applicability of the proposed
+approach, the learned magnetic models are evaluated in high-
+fidelity simulations and experimentally on a real-time closed-
+loop drive system. Fig. 6 shows the experimental setup, where
+the same 5.6-kW PM synchronous reluctance machine is
+controlled by a dSPACE MicroLabBox.
+The controller is a flux-vector control scheme [33], [34]
+parameterized by the proposed co-energy-based model (6)
+without spatial harmonics [𝑝-norm gradient activation (14)
+with 𝑝= 8, 𝑁= 6]. The control system comprehensively
+employs the proposed model in its control law, flux observer,
+and online reference generation. Consequently, the model is
+evaluated multiple times during each 12-kHz control cycle.
+Notably, the applied online reference generation method [35]
+numerically inverts the flux-linkage map to obtain the current
+for the maximum-torque-per-volt (MTPV) calculation, which
+
+
+===== PAGE 9 =====
+
+9
+requires the magnetic model to be physically consistent and
+invertible.
+1) High-Fidelity Simulation: In the simulation, the machine
+is represented by the proposed energy-based magnetic model
+(7) with spatial harmonics (softmax activation, 𝑁= 48),
+trained on the FEM dataset as described in Section IV-B.
+This model variant is convenient since the flux linkages are
+the state variables of the voltage equations (4). Fig. 10(a)
+shows the corresponding response. In the shown sequence,
+the drive operates in the MTPA, field-weakening, current-
+limit, and MTPV regions. Spatial-harmonic effects (the sixth
+electrical harmonic and its multiples) are most visible in the
+actual torque, but also appear in other signals.
+2) Real-Time Control Experiment: Fig. 10(b) shows the
+corresponding measurement using the same control method as
+in the simulation. In addition to the expected sixth electrical
+harmonic and its multiples, the measured q-axis current con-
+tains first- and fourth-order mechanical harmonics. These low-
+order components are likely caused by practical asymmetries
+(e.g., eccentricity, ovality, or winding imbalance) not present
+in the symmetric FEM model. If necessary, such phenomena
+could be incorporated into the proposed model by introducing
+corresponding physical variables, such as lateral rotor displace-
+ment, as additional inputs.
+Additionally, transients appear in the flux reference during
+field weakening due to actual DC-bus voltage variations,
+whereas the simulation assumed a constant DC-bus voltage.
+Otherwise, the simulation and measurement agree well (al-
+though the FEM dataset naturally only approximates the real
+machine because of uncertainties in geometry and material
+properties). Most importantly, the experiment confirms that
+the proposed gradient-network model executes seamlessly as
+an integral part of the real-time control system.
+V. Conclusions
+A physics-constrained magnetic modeling framework was
+presented for synchronous machines. In this framework, the
+magnetic characteristics and electromagnetic torque are mod-
+eled directly as gradients of a field energy or co-energy
+function. This structure ensures energy conservation and reci-
+procity by construction. Spatial harmonics are captured by
+encoding the rotor angle through periodic Fourier features.
+Monotone gradient networks ensure a unique and invertible
+relationship between flux linkages and currents. Symmetrizing
+the energy functions enforces q-axis symmetry by construc-
+tion. An efficient 𝑝-norm gradient activation reduces the
+computational cost of real-time execution. The framework was
+validated using measured and FEM datasets, demonstrating
+high accuracy and data efficiency. Furthermore, closed-loop
+experiments on an embedded platform confirmed its real-time
+applicability.
+Appendix A
+Transformation to Rotor Coordinates
+The same field energy can be expressed in different coor-
+dinates, 𝑊(𝛙s, 𝜗m) = 𝑊s(𝛙s
+s, 𝜗m). Using the chain rule with
+𝛙s
+s = e𝜗mJ𝛙s gives
+𝜕𝑊(𝛙s, 𝜗m)
+𝜕𝛙s
+= 𝜕𝑊s(𝛙s
+s, 𝜗m)
+𝜕𝛙ss
+𝜕𝛙s
+s
+𝜕𝛙s
+= (is
+s)⊤e𝜗mJ = i⊤
+s
+(20a)
+𝜕𝑊(𝛙s, 𝜗m)
+𝜕𝜗m
+= 𝜕𝑊s(𝛙s
+s, 𝜗m)
+𝜕𝛙ss
+𝜕𝛙s
+s
+𝜕𝜗m
++ 𝜕𝑊s(𝛙s
+s, 𝜗m)
+𝜕𝜗m
+= i⊤
+s J𝛙s + 𝜕𝑊s(𝛙s
+s, 𝜗m)
+𝜕𝜗m
+.
+(20b)
+Using 𝜏m = −𝜕𝑊s/𝜕𝜗m yields the expressions in (5).
+Appendix B
+Jacobian of the Gradient Network Model
+The vector field (10) is conservative (i.e., a gradient field)
+if its Jacobian Jg is symmetric [28]. Applying the chain rule,
+the Jacobian of the gradient network (10) becomes
+Jg(x) = 𝜕g(x)
+𝜕x
+= A0 + A⊤𝜕𝛔(z)
+𝜕z
+A.
+(21)
+The first term A0 is chosen to be symmetric. The second term
+is symmetric if J𝛔= 𝜕𝛔/𝜕z is symmetric, which is the case
+when the activation 𝛔is the gradient of a scalar function. Note
+that J𝛔is diagonal and thus symmetric when the activation is
+elementwise. The network (10) is monotone if Jg is positive
+semidefinite. This is guaranteed if A0 and J𝛔are positive
+semidefinite.
+References
+[1] H. H. Woodson and J. R. Melcher, Electromechanical Dynamics.
+John
+Wiley & Sons, 1968. [Online]. Available: https://ocw.mit.edu/ans7870/
+resources/woodson/textbook/emd_part1.pdf
+[2] A. E. Fitzgerald, C. Kingsley, Jr., and S. D. Umans, Electric Machinery,
+6th ed.
+Boston, MA: McGraw-Hill, 2003.
+[3] Z. Qu, T. Tuovinen, and M. Hinkkanen, “Inclusion of magnetic saturation
+in dynamic models of synchronous reluctance motors,” in Proc. Int.
+Conf. Electrical Machines, Marseille, France, Sep. 2012, pp. 994–1000.
+[4] M. Gärtner, F. Schuller, N. Parspour, and P. Seibold, “Analytical mod-
+eling and simulation of highly utilized electrical machines considering
+nonlinear effects,” in Proc. Int. Conf. Elect. Machines, Marseille, France,
+Sep. 2012, pp. 2786–2791.
+[5] S.-W. Su, C. M. Hackl, and R. Kennel, “Analytical prototype functions
+for flux linkage approximation in synchronous machines,” IEEE Open
+J. Ind. Electron. Soc., vol. 3, pp. 265–282, 2022.
+[6] A. Varatharajan, P. Pescetto, S. Ferrari, and G. Pellegrino, “Flux maps
+spatial harmonic modeling and measurement in synchronous reluctance
+motors,” in Proc. IEEE ECCE, Nashville, TN, Oct./Nov. 2023, pp. 4868–
+4873.
+[7] F. Lelli, M. Hinkkanen, and F. G. Capponi, “A saturation model
+based on a simplified equivalent magnetic circuit for permanent magnet
+machines,” in Proc. Int. Conf. Elect. Machines, Torino, Italy, Sep. 2024.
+[8] A. Vagati, M. Pastorelli, G. Franceschini, and V. Drogoreanu, “Flux-
+observer-based high-performance control of synchronous reluctance mo-
+tors by including cross saturation,” IEEE Trans. Ind. Appl., vol. 35, no. 3,
+pp. 597–605, May/Jun. 1999.
+[9] X. Chen, J. Wang, B. Sen, P. Lazari, and T. Sun, “A high-fidelity and
+computationally efficient model for interior permanent-magnet machines
+considering the magnetic saturation, spatial harmonics, and iron loss
+effect,” IEEE Trans. Ind. Electron., vol. 62, no. 7, pp. 4044–4055, Jul.
+2015.
+[10] S. Li, D. Han, and B. Sarlioglu, “Modeling of interior permanent magnet
+machine considering saturation, cross coupling, spatial harmonics, and
+temperature effects,” IEEE Trans. Transport. Electrific., vol. 3, no. 3,
+pp. 682–693, Sep. 2017.
+[11] J. Lee, Y.-C. Kwon, and S.-K. Sul, “Identification of IPMSM flux-
+linkage map for high-accuracy simulation of IPMSM drives,” IEEE
+Trans. Power Electron., vol. 36, no. 12, pp. 14 257–14 266, Dec. 2021.
+[12] S. Ferrari, G. Dilevrano, P. Ragazzo, and G. Pellegrino, “The dq-
+theta flux map model of synchronous machines,” in Proc. IEEE ECCE,
+Vancouver, Canada, Oct. 2021, pp. 3716–3723.
+
+
+===== PAGE 10 =====
+
+10
+[13] A. Bojoi, P. Pescetto, S. Ferrari, and G. Pellegrino, “Experimental
+identification of the dq𝜃flux maps of synchronous machines,” in Proc.
+Int. Conf. Elect. Machines, Turin, Italy, Sep. 2024.
+[14] M. Jastrzębski and J. Kabziński, “Approximation of permanent magnet
+motor flux distribution by partially informed neural networks,” Energies,
+vol. 14, no. 18, 2021.
+[15] D. Pasqualotto, S. Rigon, and M. Zigliotto, “Sensorless speed control of
+synchronous reluctance motor drives based on extended Kalman filter
+and neural magnetic model,” IEEE Trans. Ind. Electron., vol. 70, no. 2,
+pp. 1321–1330, Feb. 2023.
+[16] Z. Liu and S. Li, “Flux linkage identification of IPM motor through
+neural-network considering speed impact,” in Proc. IEEE Power and
+Energy Society General Meeting (PESGM), Seattle, WA, Jul. 2024.
+[17] J.-H. Lee, Y.-J. Lee, M.-S. Lee, D.-S. Jin, and Y.-D. Yoon, “Estimation
+of flux saturation model for SynRMs using artificial neural network,”
+IEEE Trans. Ind. Appl., vol. 61, no. 2, pp. 3143–3151, Mar./Apr. 2025.
+[18] Z. Shao, Y. Bao, Z. Zhong, Z. Ma, and Y. Wang, “Neural network-
+based distributed parameter modeling of permanent magnet synchronous
+machines considering spatial harmonics and iron losses,” J. Power
+Electron., Feb. 2026.
+[19] G. Y. Sizov, D. M. Ionel, and N. A. O. Demerdash, “Modeling and
+parametric design of permanent-magnet AC machines using computa-
+tionally efficient finite-element analysis,” IEEE Trans. Ind. Electron.,
+vol. 59, no. 6, pp. 2403–2413, Jun. 2012.
+[20] E. Armando, R. Bojoi, P. Guglielmi, G. Pellegrino, and M. Pastorelli,
+“Experimental identification of the magnetic model of synchronous
+machines,” IEEE Trans. Ind. Appl., vol. 49, no. 5, pp. 2116–2125, Sep.
+2013.
+[21] M. Hinkkanen, P. Pescetto, E. Mölsä, S. E. Saarakkala, G. Pellegrino,
+and R. Bojoi, “Sensorless self-commissioning of synchronous reluctance
+motors at standstill without rotor locking,” IEEE Trans. Ind. Appl.,
+vol. 53, no. 3, pp. 2120–2129, May/Jun. 2017.
+[22] P. Sauer, “Constraints on saturation modeling in AC machines,” IEEE
+Trans. Energy Convers., vol. 7, no. 1, pp. 161–167, Mar. 1992.
+[23] M. Raissi, P. Perdikaris, and G. E. Karniadakis, “Physics-informed
+neural networks: A deep learning framework for solving forward and
+inverse problems involving nonlinear partial differential equations,”
+Journal of Computational Physics, vol. 378, pp. 686–707, 2019.
+[24] M. Cranmer, S. Greydanus, S. Hoyer, P. Battaglia, D. Spergel, and
+S. Ho, “Lagrangian neural networks,” in ICLR Workshop on Integration
+of Deep Neural Models and Differential Equations, 2020. [Online].
+Available: https://arxiv.org/abs/2003.04630
+[25] S. Greydanus, M. Dzamba, and J. Yosinski, “Hamiltonian neural
+networks,” in Adv. Neur. Inf. Process. Syst., vol. 32, Vancouver, Canada,
+2019. [Online]. Available: https://arxiv.org/abs/1906.01563
+[26] S. A. Desai, M. Mattheakis, D. Sondak, P. Protopapas, and S. J. Roberts,
+“Port-Hamiltonian neural networks for learning explicit time-dependent
+dynamical systems,” Phys. Rev. E, vol. 104, p. 034312, Sep. 2021.
+[27] A. van der Schaft and D. Jeltsema, Port-Hamiltonian Systems Theory:
+An Introductory Overview.
+Delft, Netherlands: now Publishers Inc.,
+2014.
+[28] S. Chaudhari, S. Pranav, and J. M. F. Moura, “Gradient networks,” IEEE
+Trans. Signal Process., vol. 73, pp. 324–339, 2025.
+[29] M. Tancik, P. Srinivasan, B. Mildenhall, S. Fridovich-Keil, N. Raghavan,
+U. Singhal, R. Ramamoorthi, J. Barron, and R. Ng, “Fourier features let
+networks learn high frequency functions in low dimensional domains,”
+in Adv. Neur. Inf. Process. Syst., vol. 33, 2020.
+[30] S. Boyd and L. Vandenberghe, Convex Optimization.
+Cambridge, UK:
+Cambridge University Press, 2004.
+[31] J. Fischer and U. Moser, “Die Nachbildung von Magnetisierungskurven
+durch einfache algebraische oder transzendente Funktionen,” Arch. für
+Electrotechnik, vol. 42, no. 5, pp. 286–299, 1956.
+[32] J. T. Barron, “Squareplus: A softplus-like algebraic rectifier,” 2021.
+[Online]. Available: https://arxiv.org/abs/2112.11687
+[33] L. Tiitinen, M. Hinkkanen, and L. Harnefors, “Design framework for
+sensorless control of synchronous machine drives,” IEEE Trans. Ind.
+Electron., vol. 72, no. 2, pp. 1379–1390, Feb. 2025.
+[34] A. Varatharajan, G. Pellegrino, and E. Armando, “Direct flux vector
+control of synchronous motor drives: Accurate decoupled control with
+online adaptive maximum torque per ampere and maximum torque per
+volts evaluation,” IEEE Trans. Ind. Electron., vol. 69, no. 2, pp. 1235–
+1243, Feb. 2022.
+[35] M. Sarén, H. Hartikainen, A. Piippo, and M. Hinkkanen, “Decoupled
+online feedforward generation of optimal references for saturated
+synchronous
+machine
+drives,”
+2026.
+[Online].
+Available:
+https:
+//arxiv.org/abs/2607.08528
+Junyi Li received the B.Sc. degree in communi-
+cation engineering from the Taiyuan University of
+Technology, Taiyuan, China, in 2022, and the M.Sc.
+(Tech.) degree in information and communication
+engineering from the Aalto University, Espoo, Fin-
+land, in 2025.
+He is currently working toward the D.Sc. (Tech.)
+degree in electrical engineering. His research in-
+terests include physics-informed machine learning
+and electric machine modeling for monitoring and
+control.
+Tim Foißner received the B.Sc. degrees in elec-
+trical engineering and information technology and
+in mechatronics from TU Darmstadt, Darmstadt,
+Germany, in 2023 and 2024, respectively.
+Since 2024, he has been pursuing the M.Sc.
+degree in automation and electrical engineering with
+a specialization in electrical power engineering at
+Aalto University, Espoo, Finland.
+Floran Martin received the Engineering Diploma in
+electrical engineering from Polytech Nantes, Nantes,
+France, in 2009, and the M.S. and Ph.D. degrees in
+electrical engineering from the University of Nantes,
+Nantes, in 2009 and 2013, respectively.
+In 2014, he joined the Department of Electrical
+Engineering and Automation, Aalto University, Es-
+poo, Finland, where he is currently a Staff Scientist.
+His research interests include modeling of magnetic
+materials as well as analyzing, designing, and con-
+trolling electrical machines.
+Antti Piippo received the M.Sc. (Eng.) and D.Sc.
+(Tech.) degrees in electrical engineering from the
+Helsinki University of Technology, Espoo, Finland,
+in 2003 and 2008, respectively.
+He is currently a Corporate Executive Engineer
+with ABB Oy, Drives, Helsinki, Finland. His main
+research interests include the control of electric
+drives.
+Marko Hinkkanen (M’06–SM’13–F’23) received
+the M.Sc. (Eng.) and D.Sc. (Tech.) degrees in elec-
+trical engineering from the Helsinki University of
+Technology, Espoo, Finland, in 2000 and 2004,
+respectively.
+He is currently a Full Professor with the School of
+Electrical Engineering, Aalto University, Espoo, Fin-
+land. His research interests include control systems,
+physics-informed machine learning, electric machine
+drives, and power converters.
+Dr. Hinkkanen was the recipient of eight paper
+awards, including the 2016 International Conference on Electrical Machines
+(ICEM) Brian J. Chalmers Best Paper Award, and the 2016 and 2018
+IEEE Industry Applications Society Industrial Drives Committee Best Paper
+Awards. He was the corecipient of the 2020 SEMIKRON Innovation Award.
+He is an Associate Editor of IEEE Transactions on Power Electronics.

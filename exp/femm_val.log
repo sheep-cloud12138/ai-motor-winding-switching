@@ -1,0 +1,16 @@
+V1: linear inductance matrix (12 solves)
+Traceback (most recent call last):
+  File "D:\Desktop\ai+电机绕组切换\exp\femm_validate.py", line 311, in <module>
+    main()
+    ~~~~^^
+  File "D:\Desktop\ai+电机绕组切换\exp\femm_validate.py", line 248, in main
+    L[:, k] = solve_psi(f, f'L{k}')
+              ~~~~~~~~~^^^^^^^^^^^^
+  File "D:\Desktop\ai+电机绕组切换\exp\femm_validate.py", line 229, in solve_psi
+    f.mi_analyze(1)
+    ~~~~~~~~~~~~^^^
+  File "D:\Desktop\ai+电机绕组切换\exp\femm_validate.py", line 61, in call
+    z = self.raw(s)
+  File "D:\Desktop\ai+电机绕组切换\exp\femm_validate.py", line 55, in raw
+    raise RuntimeError("FEMM: " + z)
+RuntimeError: FEMM: error: Material properties have not been defined for all regions

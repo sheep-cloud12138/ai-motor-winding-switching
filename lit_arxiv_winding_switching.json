@@ -1,0 +1,41 @@
+[
+  {
+    "id": "http://arxiv.org/abs/2410.19824v1",
+    "title": "The impact of a wind switch on the stability of traveling fronts in a reaction-diffusion model of fire propagation",
+    "published": "2024-10-18",
+    "abstract": "For certain values of the wave speed parameter, evolution equations for the temperature of a region of fuel admit traveling wave solutions describing fire fronts. We consider such a system in the form of a nonlinear reaction-diffusion equation with a first-order forcing term capturing the combined effects of ambient and fire-induced wind. The fire-induced wind is introduced by way of a piecewise continuous function that ``switches'' in space. We demonstrate that, in the case of a spatially dependent wind, traveling wave solutions corresponding to fire fronts exist for a continuum of wave speeds rather than for a single unique speed. Using geometric methods, we determine the range of allowable speeds, refine this range to only those fronts which will persist in nature, and develop a selection mechanism to identify the specific wind configuration corresponding to the most stable solution. For this spectrally preferred front, we find that the wind switch occurs ahead of the fireline in a manner consistent with the physics of air entrainment. Even when the wind is not coupled to the temperature and is instead imposed as an external forcing, the conditions on the existence and stability of front solutions force the wind term in to a configuration reflective of physical reality.",
+    "authors": [
+      "Olivia Chandrasekhar",
+      "Christopher K. R. T. Jones",
+      "Blake Barker",
+      "Rodman Linn"
+    ],
+    "pdf": "https://arxiv.org/pdf/2410.19824v1"
+  },
+  {
+    "id": "http://arxiv.org/abs/1211.6402v1",
+    "title": "AGN obscuration from winds: from dusty infrared-driven to warm and X-ray photoionized",
+    "published": "2012-11-27",
+    "abstract": "We present calculations of AGN winds at ~parsec scales, along with the associated obscuration. We take into account the pressure of infrared radiation on dust grains and the interaction of X-rays from a central black hole with hot and cold plasma. Infrared radiation (IR) is incorporated in radiation-hydrodynamic simulations adopting the flux-limited diffusion approximation. We find that in the range of X-ray luminosities L=0.05 - 0.6 L_edd, the Compton-thick part of the flow (aka torus) has an opening angle of approximately 72-75 degrees regardless of the luminosity. At L > 0.1 L_edd the outflowing dusty wind provides the obscuration with IR pressure playing a major role. The global flow consists of two phases: the cold flow at inclinations θ> 70 degrees and a hot, ionized wind of lower density at lower inclinations. The dynamical pressure of the hot wind is important in shaping the denser IR supported flow. At luminosities <0.1 L_edd episodes of outflow are followed by extended periods when the wind switches to slow accretion.",
+    "authors": [
+      "Anton Dorodnitsyn",
+      "Timothy Kallman"
+    ],
+    "pdf": "https://arxiv.org/pdf/1211.6402v1"
+  },
+  {
+    "id": "http://arxiv.org/abs/1109.5942v1",
+    "title": "Wind structure and luminosity variations in the WR/LBV HD 5980",
+    "published": "2011-09-27",
+    "abstract": "Over the past 40 years, the massive LBV/WR system HD 5980 in the Small Magellanic Cloud has undergone a long-term S Doradus type variability cycle and two brief and violent eruptions in 1993 and 1994. In this paper we analyze a collection of UV and optical spectra obtained between 1979 and 2009 and perform CMFGEN model fits to spectra of 1994, 2000, 2002 and 2009. The results are as follows: a) The long term S Dor-type variability is associated with changes of the hydrostatic radius; b) The 1994 eruption involved changes in its bolometric luminosity and wind structure; c) the emission-line strength, the wind velocity and the continuum luminosity underwent correlated variations in the sense that a decreasing V$_\\infty$ is associated with increasing emission line and continuum levels; and d) The spectrum of the third star in the system ({\\it Star C}) is well-fit by a T$_{eff}$=32 K model atmosphere with SMC chemical abundances. For all epochs, the wind of the erupting star is optically thick at the sonic point and is thus driven mainly by the continuum opacity. We speculate that the wind switches between two stable regimes driven by the \"hot\" (during the eruption) and the \"cool\" (post-eruption) iron opacity bumps as defined by Lamers & Nugis (2002) and Gräfener and Hamann (2008), and thus the wind may undergo a bi-stability jump of a different nature from that which occurs in OB-stars.",
+    "authors": [
+      "Leonid N Georgiev",
+      "Gloria Koenigsberger",
+      "D John Hillier",
+      "Nidia Morrell",
+      "Rodolfo Barba",
+      "Roberto Gamen"
+    ],
+    "pdf": "https://arxiv.org/pdf/1109.5942v1"
+  }
+]

@@ -1,0 +1,202 @@
+{
+ "n_total": 9276,
+ "counts": {
+  "2S2P": 336,
+  "4P": 336,
+  "4S": 336,
+  "asym": 336,
+  "delta": 336,
+  "openB": 336,
+  "random": 4608,
+  "randomz": 2304,
+  "tap50": 336,
+  "zero": 12
+ },
+ "device": "cuda"
+}
+skip 4S/base
+skip 4S/norandom
+skip 4S/withz
+2S2P/base mlp flux_nrmse 0.041 torque_r2 0.994 (19s)
+  ep     0 train 4.218e+01 val 4.067e+01
+  ep   500 train 3.554e-01 val 3.634e-01
+  ep  1000 train 3.031e-01 val 3.041e-01
+  ep  1500 train 2.827e-01 val 2.830e-01
+  ep  2000 train 2.690e-01 val 2.690e-01
+  ep  2500 train 2.569e-01 val 2.554e-01
+  ep  3000 train 2.465e-01 val 2.457e-01
+  ep  3500 train 2.297e-01 val 2.297e-01
+  ep  4000 train 2.094e-01 val 2.097e-01
+  ep  4500 train 1.946e-01 val 1.955e-01
+  ep  5000 train 1.835e-01 val 1.847e-01
+  ep  5500 train 1.756e-01 val 1.764e-01
+  ep  6000 train 1.680e-01 val 1.698e-01
+  ep  6500 train 1.621e-01 val 1.645e-01
+  ep  7000 train 1.563e-01 val 1.583e-01
+  ep  7500 train 1.516e-01 val 1.536e-01
+2S2P/base gradnet flux_nrmse 0.382 torque_r2 -0.534 (19s)
+2S2P/base energy flux_nrmse 0.090 torque_r2 0.961 (118s)
+2S2P/norandom mlp flux_nrmse 0.018 torque_r2 1.000 (16s)
+2S2P/norandom gradnet flux_nrmse 0.280 torque_r2 0.644 (18s)
+2S2P/norandom energy flux_nrmse 0.037 torque_r2 0.997 (138s)
+2S2P/withz mlp flux_nrmse 0.046 torque_r2 0.992 (17s)
+2S2P/withz gradnet flux_nrmse 0.388 torque_r2 -0.719 (18s)
+2S2P/withz energy flux_nrmse 0.129 torque_r2 0.960 (89s)
+delta/base mlp flux_nrmse 0.356 torque_r2 0.840 (18s)
+  ep     0 train 4.213e+01 val 4.069e+01
+  ep   500 train 3.555e-01 val 3.654e-01
+  ep  1000 train 3.018e-01 val 3.087e-01
+  ep  1500 train 2.814e-01 val 2.888e-01
+  ep  2000 train 2.678e-01 val 2.744e-01
+  ep  2500 train 2.558e-01 val 2.611e-01
+  ep  3000 train 2.463e-01 val 2.523e-01
+  ep  3500 train 2.314e-01 val 2.379e-01
+  ep  4000 train 2.109e-01 val 2.184e-01
+  ep  4500 train 1.951e-01 val 2.035e-01
+  ep  5000 train 1.840e-01 val 1.926e-01
+  ep  5500 train 1.754e-01 val 1.842e-01
+  ep  6000 train 1.684e-01 val 1.772e-01
+  ep  6500 train 1.624e-01 val 1.708e-01
+  ep  7000 train 1.569e-01 val 1.652e-01
+  ep  7500 train 1.523e-01 val 1.601e-01
+delta/base gradnet flux_nrmse 0.424 torque_r2 -2.042 (21s)
+delta/base energy flux_nrmse 0.201 torque_r2 -0.051 (123s)
+delta/norandom mlp flux_nrmse 0.271 torque_r2 0.841 (15s)
+delta/norandom gradnet flux_nrmse 0.580 torque_r2 -0.257 (19s)
+delta/norandom energy flux_nrmse 0.286 torque_r2 0.174 (117s)
+delta/withz mlp flux_nrmse 0.302 torque_r2 0.696 (15s)
+delta/withz gradnet flux_nrmse 0.489 torque_r2 -3.172 (18s)
+delta/withz energy flux_nrmse 0.237 torque_r2 0.391 (72s)
+asym/base mlp flux_nrmse 0.113 torque_r2 0.897 (15s)
+  ep     0 train 4.219e+01 val 4.070e+01
+  ep   500 train 3.532e-01 val 3.629e-01
+  ep  1000 train 3.001e-01 val 3.057e-01
+  ep  1500 train 2.808e-01 val 2.869e-01
+  ep  2000 train 2.694e-01 val 2.759e-01
+  ep  2500 train 2.579e-01 val 2.633e-01
+  ep  3000 train 2.479e-01 val 2.535e-01
+  ep  3500 train 2.315e-01 val 2.375e-01
+  ep  4000 train 2.109e-01 val 2.169e-01
+  ep  4500 train 1.948e-01 val 2.017e-01
+  ep  5000 train 1.829e-01 val 1.911e-01
+  ep  5500 train 1.741e-01 val 1.819e-01
+  ep  6000 train 1.671e-01 val 1.745e-01
+  ep  6500 train 1.610e-01 val 1.679e-01
+  ep  7000 train 1.555e-01 val 1.619e-01
+  ep  7500 train 1.507e-01 val 1.569e-01
+asym/base gradnet flux_nrmse 0.495 torque_r2 -1.687 (18s)
+asym/base energy flux_nrmse 0.152 torque_r2 0.689 (122s)
+asym/base perconn4S 1.0024361610412598
+asym/base ridge {'flux_nrmse': 0.6517523527145386, 'alpha': 1.0}
+asym/norandom mlp flux_nrmse 1.002 torque_r2 0.949 (14s)
+asym/norandom gradnet flux_nrmse 0.990 torque_r2 -0.196 (20s)
+asym/norandom energy flux_nrmse 1.000 torque_r2 0.397 (113s)
+asym/withz mlp flux_nrmse 0.141 torque_r2 0.847 (15s)
+asym/withz gradnet flux_nrmse 0.561 torque_r2 -1.670 (17s)
+asym/withz energy flux_nrmse 0.130 torque_r2 0.870 (118s)
+4P/base mlp flux_nrmse 0.047 torque_r2 0.960 (14s)
+  ep     0 train 4.148e+01 val 3.938e+01
+  ep   500 train 3.572e-01 val 3.599e-01
+  ep  1000 train 3.031e-01 val 3.076e-01
+  ep  1500 train 2.835e-01 val 2.895e-01
+  ep  2000 train 2.705e-01 val 2.776e-01
+  ep  2500 train 2.580e-01 val 2.656e-01
+  ep  3000 train 2.491e-01 val 2.588e-01
+  ep  3500 train 2.362e-01 val 2.488e-01
+  ep  4000 train 2.155e-01 val 2.301e-01
+  ep  4500 train 1.975e-01 val 2.135e-01
+  ep  5000 train 1.848e-01 val 2.026e-01
+  ep  5500 train 1.753e-01 val 1.936e-01
+  ep  6000 train 1.678e-01 val 1.859e-01
+  ep  6500 train 1.618e-01 val 1.789e-01
+  ep  7000 train 1.564e-01 val 1.729e-01
+  ep  7500 train 1.519e-01 val 1.676e-01
+4P/base gradnet flux_nrmse 0.409 torque_r2 -8.157 (16s)
+4P/base energy flux_nrmse 0.094 torque_r2 0.838 (111s)
+4P/norandom mlp flux_nrmse 0.023 torque_r2 0.998 (17s)
+4P/norandom gradnet flux_nrmse 0.284 torque_r2 -1.080 (19s)
+4P/norandom energy flux_nrmse 0.038 torque_r2 0.993 (122s)
+4P/withz mlp flux_nrmse 0.052 torque_r2 0.957 (15s)
+4P/withz gradnet flux_nrmse 0.416 torque_r2 -8.081 (18s)
+4P/withz energy flux_nrmse 0.120 torque_r2 0.816 (119s)
+tap50/base mlp flux_nrmse 0.427 torque_r2 0.696 (15s)
+  ep     0 train 4.148e+01 val 3.938e+01
+  ep   500 train 3.572e-01 val 3.599e-01
+  ep  1000 train 3.031e-01 val 3.076e-01
+  ep  1500 train 2.835e-01 val 2.895e-01
+  ep  2000 train 2.705e-01 val 2.776e-01
+  ep  2500 train 2.580e-01 val 2.656e-01
+  ep  3000 train 2.491e-01 val 2.588e-01
+  ep  3500 train 2.362e-01 val 2.488e-01
+  ep  4000 train 2.155e-01 val 2.301e-01
+  ep  4500 train 1.975e-01 val 2.135e-01
+  ep  5000 train 1.848e-01 val 2.026e-01
+  ep  5500 train 1.753e-01 val 1.936e-01
+  ep  6000 train 1.678e-01 val 1.859e-01
+  ep  6500 train 1.618e-01 val 1.789e-01
+  ep  7000 train 1.564e-01 val 1.729e-01
+  ep  7500 train 1.519e-01 val 1.676e-01
+tap50/base gradnet flux_nrmse 0.479 torque_r2 -0.142 (17s)
+tap50/base energy flux_nrmse 0.417 torque_r2 0.585 (113s)
+tap50/withz mlp flux_nrmse 0.378 torque_r2 0.308 (13s)
+tap50/withz gradnet flux_nrmse 0.470 torque_r2 0.027 (16s)
+tap50/withz energy flux_nrmse 0.363 torque_r2 0.811 (107s)
+openB/base mlp flux_nrmse 1.379 torque_r2 0.288 (13s)
+  ep     0 train 4.148e+01 val 3.938e+01
+  ep   500 train 3.572e-01 val 3.599e-01
+  ep  1000 train 3.031e-01 val 3.076e-01
+  ep  1500 train 2.835e-01 val 2.895e-01
+  ep  2000 train 2.705e-01 val 2.776e-01
+  ep  2500 train 2.580e-01 val 2.656e-01
+  ep  3000 train 2.491e-01 val 2.588e-01
+  ep  3500 train 2.362e-01 val 2.488e-01
+  ep  4000 train 2.155e-01 val 2.301e-01
+  ep  4500 train 1.975e-01 val 2.135e-01
+  ep  5000 train 1.848e-01 val 2.026e-01
+  ep  5500 train 1.753e-01 val 1.936e-01
+  ep  6000 train 1.678e-01 val 1.859e-01
+  ep  6500 train 1.618e-01 val 1.789e-01
+  ep  7000 train 1.564e-01 val 1.729e-01
+  ep  7500 train 1.519e-01 val 1.676e-01
+openB/base gradnet flux_nrmse 0.563 torque_r2 -5.558 (16s)
+openB/base energy flux_nrmse 0.472 torque_r2 -18.549 (106s)
+openB/withz mlp flux_nrmse 1.757 torque_r2 -0.175 (13s)
+openB/withz gradnet flux_nrmse 0.624 torque_r2 -12.559 (16s)
+openB/withz energy flux_nrmse 0.374 torque_r2 -3.454 (106s)
+Traceback (most recent call last):
+  File "D:\Desktop\ai+电机绕组切换\exp\run_benchmark.py", line 252, in <module>
+    main()
+    ~~~~^^
+  File "D:\Desktop\ai+电机绕组切换\exp\run_benchmark.py", line 240, in main
+    asym, mineig = jacobian_asymmetry(pred, xprobe)
+                   ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "D:\Desktop\ai+电机绕组切换\exp\models.py", line 312, in jacobian_asymmetry
+    J[:, :, j] = (predict_psi(xp) - predict_psi(xm)) / (2 * h)
+                  ~~~~~~~~~~~^^^^
+  File "D:\Desktop\ai+电机绕组切换\exp\run_benchmark.py", line 229, in <lambda>
+    pred = lambda F: m(torch.tensor(F, device=DEVICE)).detach()[:, :12].cpu().numpy()
+                     ~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\python\Lib\site-packages\torch\nn\modules\module.py", line 1776, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "D:\python\Lib\site-packages\torch\nn\modules\module.py", line 1787, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "D:\Desktop\ai+电机绕组切换\exp\models.py", line 66, in forward
+    return self.net(x)
+           ~~~~~~~~^^^
+  File "D:\python\Lib\site-packages\torch\nn\modules\module.py", line 1776, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "D:\python\Lib\site-packages\torch\nn\modules\module.py", line 1787, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "D:\python\Lib\site-packages\torch\nn\modules\container.py", line 253, in forward
+    input = module(input)
+  File "D:\python\Lib\site-packages\torch\nn\modules\module.py", line 1776, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "D:\python\Lib\site-packages\torch\nn\modules\module.py", line 1787, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "D:\python\Lib\site-packages\torch\nn\modules\linear.py", line 134, in forward
+    return F.linear(input, self.weight, self.bias)
+           ~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: Expected all tensors to be on the same device, but got mat1 is on cuda:0, different from other tensors on cpu (when checking argument in method wrapper_CUDA_addmm)
