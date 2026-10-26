@@ -189,7 +189,9 @@ def solve_coils(
         )
 
     # Lorentz torque on the slot conductors.
-    T = float(np.sum((r_c[:, None] * J * Br) * (r_c[:, None] * dr * dth) * g["slot_mask"]))
+    T = float(L_STACK * np.sum(
+        (r_c[:, None] * J * Br) * (r_c[:, None] * dr * dth) * g["slot_mask"]
+    ))
 
     out = {
         "theta": theta_deg,

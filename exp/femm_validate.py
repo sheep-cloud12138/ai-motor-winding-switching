@@ -30,6 +30,7 @@ SLOT_W = 2 * np.pi / N_SLOT * 0.52
 L_STACK = 0.1
 N_TURN = 40
 HC = 1.2 / MU0
+SLOT_CENTER_DEG = 7.5
 
 
 def lua_lit(v):
@@ -110,7 +111,7 @@ def build_geometry(f, theta_deg, pm_on, linear_iron):
     # wedge corner angles (degrees), shared by circles and wedges
     wedge_angs = []
     for k in range(N_SLOT):
-        c = 15 + 30 * k
+        c = SLOT_CENTER_DEG + 30 * k
         wedge_angs += [c - np.degrees(SLOT_W / 2), c + np.degrees(SLOT_W / 2)]
 
     for r in (RIN, R_SHAFT, R_BORE, ROUT):
@@ -171,7 +172,7 @@ def build_geometry(f, theta_deg, pm_on, linear_iron):
 
     # slot wedges: radial edges only (corner nodes/arcs already exist)
     for k in range(N_SLOT):
-        c = np.deg2rad(15 + 30 * k)
+        c = np.deg2rad(SLOT_CENTER_DEG + 30 * k)
         h = SLOT_W / 2
         for sgn in (-1, 1):
             a = c + sgn * h
@@ -210,9 +211,9 @@ def build_geometry(f, theta_deg, pm_on, linear_iron):
               (R_BORE + R_SLOT_IN) / 2 * np.sin(a), iron)
         label((R_SLOT_OUT + ROUT) / 2 * np.cos(a),
               (R_SLOT_OUT + ROUT) / 2 * np.sin(a), iron)
-    # teeth: centred at 30k deg (slots are at 15+30k)
+    # teeth: offset half a slot pitch from the discretised slot centres
     for k in range(N_SLOT):
-        at = np.deg2rad(30 * k)
+        at = np.deg2rad(SLOT_CENTER_DEG + 15 + 30 * k)
         label((R_SLOT_IN + R_SLOT_OUT) / 2 * np.cos(at),
               (R_SLOT_IN + R_SLOT_OUT) / 2 * np.sin(at), iron)
     # PM-ring inter-pole gaps (and the whole ring when PMs are off)
@@ -221,10 +222,10 @@ def build_geometry(f, theta_deg, pm_on, linear_iron):
         label(rm * np.cos(np.pi / 4), rm * np.sin(np.pi / 4), "Air")
     # coil blocks: one per slot, referenced to circuit c{0..11}
     for k in range(N_SLOT):
-        c = np.deg2rad(15 + 30 * k)
+        c = np.deg2rad(SLOT_CENTER_DEG + 30 * k)
         label((R_SLOT_IN + R_SLOT_OUT) / 2 * np.cos(c),
               (R_SLOT_IN + R_SLOT_OUT) / 2 * np.sin(c), "Air",
-              circ=f"c{k}", turns=N_TURN)
+              circ=f"c{k}", group=2, turns=N_TURN)
     f.mi_zoomnatural()
 
 
@@ -246,12 +247,14 @@ def solve_psi(f, tag):
 
 def lorentz_torque(f):
     f.mo_seteditmode("area")
-    f.mo_clearblock()
+    total = 0.0
     for k in range(N_SLOT):
-        c = np.deg2rad(15 + 30 * k)
+        f.mo_clearblock()
+        c = np.deg2rad(SLOT_CENTER_DEG + 30 * k)
         r = (R_SLOT_IN + R_SLOT_OUT) / 2
         f.mo_selectblock(r * np.cos(c), r * np.sin(c))
-    return float(f.mo_blockintegral(15))
+        total += float(f.mo_blockintegral(15))
+    return total
 
 
 def weighted_torque(f):
@@ -286,7 +289,7 @@ def validate_tap50(f):
         psi_ref.append(ref["psi"])
         psi_femm.append(solve_psi(f, f"tap{int(th)}"))
         t_ref.append(ref["T"])
-        t_femm.append(-weighted_torque(f))
+        t_femm.append(lorentz_torque(f))
         f.mi_close()
 
     psi_ref = np.asarray(psi_ref)
@@ -397,9 +400,10 @@ def main():
         np.max(np.abs(psi_f - psi_o) / np.maximum(np.abs(psi_o), 1e-9)))
     res["NL_psi_corr"] = float(np.corrcoef(psi_f, psi_o)[0, 1])
     res["NL_T_ours"] = float(r["T"])
+    res["NL_T_femm"] = T_f
     res["NL_T_femm_lorentz"] = T_f
     res["NL_T_femm_weighted"] = -T_w
-    res["NL_T_reldiff"] = float(abs(-T_w - r["T"]) / max(abs(r["T"]), 1e-12))
+    res["NL_T_reldiff"] = float(abs(T_f - r["T"]) / max(abs(r["T"]), 1e-12))
 
     # ---- V4: zero-shot tap50 along a synchronous-current trajectory ----
     print("V4: zero-shot tap50 synchronous trajectory", flush=True)

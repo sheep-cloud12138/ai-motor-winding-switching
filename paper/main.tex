@@ -10,7 +10,7 @@
 
 \newtheorem{proposition}{Proposition}
 \newtheorem{remark}{Remark}
-\setlength{\emergencystretch}{1.5em}
+\setlength{\emergencystretch}{3em}
 
 \newcommand{\icast}{\boldsymbol{i}_{c,\ast}}
 \newcommand{\ic}{\boldsymbol{i}_c}
@@ -27,9 +27,8 @@
 
 \begin{frontmatter}
 
-\title{Learning one magnetic model for all winding connections:
-connection-invariant co-energy surrogates and drive-cycle co-design of
-reconfigurable electric machines}
+\title{Coverage-controlled learning of connection-invariant magnetic
+surrogates for reconfigurable electric machines}
 
 \author[inst1]{\todonum{Author Name}}
 \affiliation[inst1]{organization={\todonum{Affiliation}},
@@ -45,7 +44,8 @@ connection space unexplorable at design time. We treat a winding
 connection as what it physically is: linear constraints on the coil
 currents, $\ic=\Cmat\ip$. Because the magnetic co-energy is
 connection-invariant, a single \emph{connection-invariant surrogate},
-trained once on coil-level FE data, evaluates any connection zero-shot.
+trained once on coil-level FE data, can be queried on unseen connections;
+its zero-shot reliability is controlled by current-space coverage.
 We formalise this generalisation problem with an error bound governed by
 the coverage of the training current distribution (rank correlation $0.82$
 over seven hold-outs); instantiate the surrogate with a structured co-energy network
@@ -61,15 +61,16 @@ $0.07$ and the star--delta hold-out from $0.27$ to $0.07$; both
 principles replicate on a second machine. A
 monotonicity-constrained architecture fails outright ($\ge0.28$
 everywhere): the joint co-energy is not convex. Finally, on the official
-WLTC class-1 cycle, a dynamic-programming scheduler reaches full torque
-tracking at $440.4$\,Wh, essentially equal to the lowest energy obtained by
-the nearly complete fixed delta connection ($440.6$\,Wh) while removing its
-tracking deficit; the $15.1\,\%$ advantage over the only fully feasible fixed
-connection mainly reflects that connection's low-speed current-class
-penalty. An independent FEMM cross-check reproduces the linear inductance
-structure and nonlinear flux trends, but also exposes a failed zero-shot
-torque screen for the untrained tap connection; we therefore separate
-validated modelling claims from exploratory screening.
+WLTC class-1 cycle with four identical 12-slot/4-pole wheel motors, a
+dynamic-programming scheduler completes torque tracking at $693.7$\,Wh
+($60.7$\,Wh/km), $41.0\,\%$ below the only fully feasible fixed 4P connection;
+current-class-matched devices retain a $36.7\,\%$ difference. Incomplete
+fixed delta and 2S2P trajectories would use $6.0\,\%$ less and $2.4\,\%$ more
+energy, respectively, but each leaves substantial torque unmet. An
+independent FEMM cross-check reproduces the linear inductance structure and
+nonlinear flux trends, but also exposes an unreliable zero-shot torque
+screen for the untrained tap connection; we therefore separate validated
+modelling claims from exploratory screening.
 \end{abstract}
 
 \begin{keyword}
@@ -154,7 +155,8 @@ constraints, and losses of the changeover circuit itself are usually ignored
 Three communities hold one piece each: connection physics (electrical
 machines), structure-enforcing ML (co-energy/gradient networks), and
 scheduling (energy management). What is missing is the bridge:
-\emph{a single magnetic model that any connection can query}. If the
+\emph{a single magnetic model that can be queried across candidate
+connections, with coverage characterising when transfer is reliable}. If the
 connection is only a linear constraint on coil currents, such a model turns
 connection exploration from ``one FE campaign per connection'' into ``one
 training run plus a matrix product'', and makes drive-cycle co-design of
@@ -205,16 +207,17 @@ principles replicate on a 6-slot/4-pole second machine.
 generates mode-conditioned loss maps in milliseconds; a dynamic program over
 the official WLTC class-1 trace jointly selects connection and operating
 point under voltage envelopes, current limits, minimum dwell and changeover
-energy. The resulting schedule completes the cycle with essentially the
-same energy as the best nearly feasible fixed connection, while the nominal
-$15.1\,\%$ saving against the only fully feasible fixed connection is
-reported together with that baseline's low-speed current-class penalty.
-Loss decomposition and a changeover-energy sweep spanning four orders of
-magnitude show that this conclusion is robust to the switching model. A
-separate FEMM cross-check is used to delimit rather than overstate
-zero-shot screening: an untrained tap connection preserves the coarse flux
-trend but not torque along a synchronous trajectory, so we remove the
-earlier unsupported claim that this mode is dynamically dominated.
+energy. In the corrected four-motor calibration, the resulting schedule is
+$41.0\,\%$ below the only fully feasible fixed connection and still
+$36.7\,\%$ below it after current-class-matched inverter rescaling.
+Incomplete fixed alternatives expose the trade-off: delta is $6.0\,\%$ more
+efficient on its partial trajectory but leaves $166.3$\,N\,m\,s of torque
+unmet. Loss decomposition and a changeover-energy sweep spanning four orders
+of magnitude support the conclusion. A separate FEMM cross-check is used to
+delimit rather than overstate zero-shot screening: an untrained tap
+connection preserves only a coarse flux trend and fails the trajectory-level
+torque test, so we remove the earlier unsupported claim that this mode is
+dynamically dominated.
 \end{enumerate}
 
 Data, code, trained models and the benchmark protocol are released; all
@@ -474,6 +477,14 @@ We deliberately use a research-grade solver: the claims of this paper
 concern relative model behaviour against a fixed reference, not absolute
 machine performance.
 
+To make the torque convention explicit, the solver integrates over the slot
+conductors:
+\begin{equation}
+T=L_{\mathrm{stack}}\int_{\mathcal S} r^2 J_zB_r\,\mathrm dr\,\mathrm d\theta.
+\end{equation}
+The stack length therefore enters both flux linkage and torque, which matters
+when the model is coupled to a drive-cycle simulation.
+
 \subsection{Datasets}
 
 All datasets share the rotor grid $\theta\in\{0,\dots,165^\circ\}$, step
@@ -541,21 +552,22 @@ Table~\ref{tab:femmcheck} reports an independent FEMM 4.2 cross-check of
 the same geometry and material curve. The linear inductance matrix has
 correlation $0.99993$ with the reference solver; after one global unit-scale
 calibration its residual is $11.7\,\%$. The PM-only waveform has correlation
-$0.944$ and a fundamental-amplitude error of $30\,\%$ on average, while a
-saturated 4S case reaches flux correlation $0.989$ and $17.5\,\%$ torque
-difference against the weighted-stress-tensor result. These discrepancies
-are of the same order as the fine-mesh uncertainty and preclude claims of
-absolute accuracy. They also reveal a more specific failure: for an untrained
+$0.977$ and a fundamental-amplitude error of $30\,\%$ on average, while a
+saturated 4S case reaches flux correlation $0.989$ and a $9.8\,\%$ torque
+difference. These discrepancies
+are generally of the same order as the fine-mesh uncertainty and preclude
+claims of absolute accuracy. The cross-check also reveals a more specific failure: for an untrained
 tap50 synchronous trajectory, the direct MLP preserves only a coarse flux
-trend ($r=0.71$ after global scaling) and its torque correlation with FEMM
-is $-0.21$. Zero-shot screening is therefore useful as a hypothesis generator,
-not as a substitute for FE verification of a design decision.
+trend ($r=0.70$ after global scaling) and its torque correlation with FEMM
+is only $0.46$, with a $97.1\,\%$ shape discrepancy after scaling. Zero-shot
+screening is therefore useful as a hypothesis generator, not as a substitute
+for FE verification of a design decision.
 
 \begin{table}[t]
 \centering\small
 \caption{Independent FEMM 4.2 cross-check. The inductance discrepancy is
 computed after one global scale factor; nonlinear flux is pointwise and
-torque uses the weighted-stress-tensor result. The tap50 rows compare the
+torque uses the summed slot-Lorentz integral. The tap50 rows compare the
 zero-shot MLP with FEMM at six points on a fixed-$I$ synchronous trajectory.}
 \label{tab:femmcheck}
 \begin{tabular}{lcc}
@@ -563,11 +575,11 @@ zero-shot MLP with FEMM at six points on a fixed-$I$ synchronous trajectory.}
 Comparison & Correlation & Discrepancy \\
 \midrule
 Linear inductance matrix (12$\times$12) & $0.99993$ & $11.7\,\%$ \\
-PM-only flux waveform & $0.944$ & $30.2\,\%$ fundamental \\
-Nonlinear 4S flux (60\,A) & $0.989$ & $40.9\,\%$ pointwise \\
-Nonlinear 4S torque (60\,A) & --- & $17.5\,\%$ \\
-tap50 zero-shot flux & $0.708$ & $70.7\,\%$ \\
-tap50 zero-shot torque & $-0.206$ & not predictive \\
+PM-only flux waveform & $0.977$ & $30.1\,\%$ fundamental \\
+Nonlinear 4S flux (60\,A) & $0.989$ & $44.0\,\%$ pointwise \\
+Nonlinear 4S torque (60\,A) & --- & $9.8\,\%$ \\
+tap50 zero-shot flux & $0.700$ & $71.5\,\%$ \\
+tap50 zero-shot torque & $0.461$ & $97.1\,\%$ shape \\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -872,13 +884,17 @@ switching from declared device parameters
 AC coil-flux amplitude
 (coefficients stated in the released configuration, $\pm2\times$ swept);
 and a changeover energy $E_{sw}^{c}$ per reconfiguration event
-(5\,mJ--100\,J swept). The vehicle is a \SI{540}{kg} light EV (gear 13,
-wheel \SI{0.25}{m}, $C_dA=0.50$\,m$^2$, 320\,V bus), and the cycle is the
+(5\,mJ--100\,J swept). After correcting the torque units, the original
+single-motor vehicle was substantially underpowered; we therefore use an
+explicit four-wheel-drive calibration with four identical motors, each
+supplying one quarter of the wheel torque through gear 13. The vehicle is a
+\SI{400}{kg} micro-EV (wheel \SI{0.25}{m}, $C_dA=0.50$\,m$^2$, 320\,V
+bus), and the cycle is the
 official WLTC class-1 trace \cite{UNECE2015} (JRC data,
 checksum-verified). The trace spans
-the machine's full mode space: below $\approx$57\,km/h all four modes are
-feasible, above it 4S drops out on voltage, and only 2S2P/delta/4P reach
-the 64.4-km/h cycle maximum. Only 4P spans the whole cycle, but it is
+the machine's full mode space: 4S is efficient at low load but cannot cover
+the high-torque or high-speed segments alone; 2S2P, delta and 4P reach the
+64.4-km/h cycle maximum. Only 4P spans the whole demand envelope, but it is
 current-class-inefficient below 57\,km/h (four times the line current of
 4S for the same torque), while 4S is the efficient low-speed mode but
 voltage-infeasible above it---reconfiguration therefore pays
@@ -910,48 +926,39 @@ sensitivity of cycle energy to the changeover energy, swept from 5\,mJ to
 
 Table~\ref{tab:drive} and Fig.~\ref{fig:drive} summarise the case study.
 
-\textbf{Reconfiguration buys feasibility without a material energy
-penalty.} Fixed 4P---the only single connection that spans the whole speed
-range---consumes $518.8$\,Wh ($45.4$\,Wh/km) over the 11.43-km WLTC
-class-1 trace. The DP schedule consumes $440.4$\,Wh ($38.5$\,Wh/km), uses
-35 changeover events (3.1 per km), and tracks the cycle with no torque
-deficit. Against 4P this is a $15.1\,\%$ reduction, but 4P is a deliberately
-weak fixed baseline at low speed: it carries four times the line current of
-4S for the same torque and is the only fixed mode forced to span the whole
-cycle. The decision-relevant comparison is therefore with the best
-\emph{nearly} feasible fixed connection. Fixed delta reaches $440.6$\,Wh on
-its incomplete trajectory while missing $36.7$\,N\,m\,s of requested torque;
-fixed 2S2P reaches $448.2$\,Wh while missing $2.4$\,N\,m\,s. DP's energy is
-$0.03\,\%$ below delta's partial-trace energy and $1.7\,\%$ below 2S2P's.
-Because incomplete trajectories are not directly comparable, the robust
-result is not an energy gain over delta but \emph{feasibility at essentially
-the same energy}. Other fixed connections are worse: 4S misses
-$541.4$\,N\,m\,s, the zero-shot 3S1P candidate misses $302.9$, and tap
-variants miss $308$--$1{,}332$\,N\,m\,s.
+\textbf{Reconfiguration delivers full tracking and a large reduction
+against the only feasible fixed mode.} Fixed 4P---the only single
+connection that spans the whole demand envelope---consumes $1176.6$\,Wh
+($103.0$\,Wh/km) over the 11.43-km WLTC class-1 trace. The DP schedule
+consumes $693.7$\,Wh ($60.7$\,Wh/km), uses 41 changeover events (3.6 per
+km), and tracks the cycle with no torque deficit. Against 4P this is a
+$41.0\,\%$ reduction. Fixed delta uses $651.7$\,Wh on its incomplete
+trajectory while missing $166.3$\,N\,m\,s of requested torque; fixed 2S2P
+uses $710.4$\,Wh and misses $81.7$\,N\,m\,s. DP therefore pays a
+$6.0\,\%$ energy premium over delta's partial trajectory to obtain complete
+tracking, and uses $2.4\,\%$ less energy than 2S2P while eliminating its
+deficit. Fixed 4S misses $901.0$\,N\,m\,s, the zero-shot 3S1P candidate
+misses $963.0$, and tap variants miss $829$--$1{,}758$\,N\,m\,s.
 
 The loss decomposition explains the large gap to fixed 4P: inverter
-conduction drops from $104.3$ to $31.2$\,Wh because low-speed cruising runs
-in 4S at a quarter of the line current; iron loss drops from $16.1$ to
-$10.3$\,Wh; copper loss is essentially unchanged ($2.7$ vs $3.3$\,Wh).
-Part of this gap reflects one inverter rated for the largest current class
-of any mode. With current-class-matched devices the DP-vs-4P saving is
-$13.3\,\%$. We retain that number as a baseline sensitivity, not as a
-headline energy benefit of reconfiguration.
+conduction over the four drives drops from $700.2$ to $237.9$\,Wh because
+low-speed cruising uses lower-current connections; iron loss drops from
+$95.3$ to $72.1$\,Wh; copper loss changes only from $23.4$ to $26.0$\,Wh.
+Part of this gap reflects devices rated for the largest current class of any
+mode. With current-class-matched devices the DP-vs-4P saving remains
+$36.7\,\%$.
 
 \textbf{Optimal scheduling matches the unconstrained pointwise optimum at
 half the switching burden.} The per-point greedy oracle (no dwell, no
-changeover penalty) gives $438.9$\,Wh with 62 switches; DP reaches within
-$0.4\,\%$ of it with 35 switches. The residual $1.5$\,Wh ($5.4$\,kJ)
-equals $200$\,J per forgone switch---an order of magnitude above any
-plausible per-event changeover cost (the winding stores $\approx$\,9\,J
-at typical commutation currents)---so the gap is the price of the
-10-s dwell constraint, not of changeover energy. The classical two-mode
-speed-threshold rule cannot complete the cycle on this powertrain,
-incurring 419\,N\,m\,s of unmet braking torque at the mode boundary: 4S
-is voltage-infeasible above the threshold, while 4P cannot deliver the
-required low-speed braking currents without the scheduler. Its nominal
-264\,Wh therefore corresponds to a cycle that is only partially driven
-and is not comparable. This is the
+changeover penalty) gives $687.5$\,Wh with 84 switches; DP is within
+$0.9\,\%$ with 41 switches. The residual $6.2$\,Wh ($22.2$\,kJ), over 43
+forgone switches, is $516$\,J per event---well above the changeover-energy
+range (the winding stores $\approx$\,9\,J per motor at typical commutation
+currents)---so the gap is the price of the 10-s dwell constraint, not of
+changeover energy. The classical two-mode speed-threshold rule cannot
+complete the cycle on this powertrain, incurring $763.1$\,N\,m\,s of unmet
+torque. Its nominal $336.0$\,Wh therefore corresponds to a cycle that is
+only partially driven and is not comparable. This is the
 failure mode that motivates schedule-level optimisation over rule-based
 switching.
 
@@ -960,28 +967,27 @@ energies.} The default per-event cost ($25$\,mJ) sits far below the
 physics: the winding stores $\approx$\,9\,J of magnetic energy at typical
 commutation currents, which any real changeover device must dissipate or
 commutate. Sweeping the per-event energy over four orders of
-magnitude---$5$\,mJ to $100$\,J---leaves the DP schedule identical (35
-events at every value) and costs at most $1.0$\,Wh ($0.2\,\%$) at the
+magnitude---$5$\,mJ to $100$\,J---leaves the DP schedule identical (41
+events at every value) and costs at most $1.1$\,Wh ($0.2\,\%$) at the
 extreme end; even at $100$\,J per event, ten times the stored magnetic
-energy, the schedule still completes the cycle and the added energy is at
-most $1.0$\,Wh. Scaling the iron-loss coefficients by $0.5\times$ and
-$2\times$ moves the DP-vs-4P difference only between $14.7\,\%$ and
-$15.5\,\%$. These sweeps establish robustness of the scheduling decision,
+energy, the schedule still completes the cycle. Scaling the iron-loss
+coefficients by $0.5\times$ and
+$2\times$ keeps the DP-vs-4P difference between $39.8\,\%$ and
+$41.9\,\%$. These sweeps establish robustness of the scheduling decision,
 not a universal topology-energy benefit.
 
-\textbf{Device rescaling and surrogate uncertainty.} The baseline uses
-one inverter for all modes, which flatters low-current modes (4S at a
-quarter of 4P's line current). Re-running with current-class-matched
+\textbf{Device rescaling and surrogate uncertainty.} Each motor uses one
+inverter for all modes, which flatters low-current modes (4S at a quarter of
+4P's line current). Re-running with current-class-matched
 device parameters ($r_{CE}$ halved, $V_{CE0}$ $+10\,\%$) changes the
-DP-vs-4P difference from $15.1\,\%$ to $13.3\,\%$. Re-evaluating the same
-DP schedule with the independent co-energy surrogate gives $21.7\,\%$
-against 4P. The $6$-point spread exceeds the device-rescaling effect and
-shows that absolute surrogate savings are uncertain; the feasibility gap
-to incomplete fixed alternatives remains the load-bearing conclusion. The
+DP-vs-4P difference from $41.0\,\%$ to $36.7\,\%$. Re-evaluating the same
+DP schedule with the independent co-energy surrogate gives $41.4\,\%$
+against 4P, agreeing with the direct-MLP estimate to $0.4$ percentage
+points. The
 mode histogram is
 physically interpretable: 4S dominates low-speed urban segments
-(1{,}114\,s), delta carries mid-speed cruising (416\,s), 4P appears only in
-the highest-speed phase (22\,s), and 2S2P is used marginally (59\,s).
+(912\,s), delta carries mid-speed cruising (436\,s), 2S2P contributes
+184\,s, and 4P appears in the 79\,s highest-demand phase.
 
 \subsection{Zero-shot modes and connection screening}
 \label{sec:results:zeroshot}
@@ -997,7 +1003,8 @@ form---as a fifth switchable mode. The surrogate assigns it zero seconds,
 which would suggest that 2S2P/delta dominate it on the cycle. The
 independent FEMM trajectory check does not support that action: the
 zero-shot flux correlation is only $0.71$ after global scaling, and the
-torque correlation is $-0.21$. The flux trend is informative enough to
+torque correlation is $0.46$ with a $97.1\,\%$ shape discrepancy. The flux
+trend is informative enough to
 generate a hypothesis, but the torque channel is not reliable enough to
 reject the connection. We therefore remove the earlier ``dominated''
 conclusion and report this as a negative result for automatic zero-shot
@@ -1023,24 +1030,25 @@ rankings require targeted FE validation before use as design decisions.}
 \toprule
 Connection & Energy (Wh) & Unmet torque (N\,m\,s) \\
 \midrule
-4S        & (215.0) & 541.4 \\
-2S2P      & 448.2 & 2.4 \\
-delta     & 440.6 & 36.7 \\
-4P        & 518.8 & 0.0 \\
-3S1P$^\ast$ & (258.7) & 302.9 \\
-tap75$^\ast$ & (105.9) & 1{,}050.4 \\
-tap50$^\ast$ & (109.1) & 308.2 \\
-tap25$^\ast$ & (90.8) & 1{,}331.6 \\
+4S        & (246.7) & 901.0 \\
+2S2P      & (710.4) & 81.7 \\
+delta     & (651.7) & 166.3 \\
+4P        & 1176.6 & 0.0 \\
+3S1P$^\ast$ & (318.5) & 963.0 \\
+tap75$^\ast$ & (203.8) & 1{,}188.4 \\
+tap50$^\ast$ & (207.5) & 829.3 \\
+tap25$^\ast$ & (179.0) & 1{,}757.7 \\
 \bottomrule
 \end{tabular}
 \end{table}
 
 \begin{table}[t]
 \centering\small
-\caption{Drive-cycle case study: WLTC class-1, 540-kg light EV, 320-V bus,
-11.43\,km, all losses counted, minimum dwell 10\,s. Energy in parentheses
-belongs to an incomplete trajectory and is descriptive only. The comparison
-column is therefore shown only for completed trajectories.}
+\caption{Drive-cycle case study: WLTC class-1, 400-kg four-wheel-drive
+micro-EV with four identical motors, 320-V bus, 11.43\,km, all losses
+counted, minimum dwell 10\,s. Energy in parentheses belongs to an incomplete
+trajectory and is descriptive only; comparisons are shown only for
+completed trajectories.}
 \label{tab:drive}
 \resizebox{\linewidth}{!}{%
 \begin{tabular}{lcccccc}
@@ -1048,13 +1056,13 @@ column is therefore shown only for completed trajectories.}
 Strategy & Complete & Energy (Wh) & Wh/km & vs DP & Switches &
 Unmet torque (N\,m\,s) \\
 \midrule
-Fixed 4S         & no  & (215.0) & ---   & ---     & 0  & 541.4 \\
-Fixed 2S2P       & no  & (448.2) & ---   & ---     & 0  & 2.4 \\
-Fixed delta      & no  & (440.6) & ---   & ---     & 0  & 36.7 \\
-Fixed 4P         & yes & 518.8   & 45.40 & +17.8\,\% & 0  & 0 \\
-2-mode rule      & no  & (264.0) & ---   & ---     & 6  & 419 \\
-Pointwise greedy & yes & 438.9   & 38.40 & $-0.4\,\%$ & 62 & 0 \\
-DP (ours)        & yes & 440.4   & 38.54 & 0       & \textbf{35} & 0 \\
+Fixed 4S         & no  & (246.7) & ---    & ---     & 0  & 901.0 \\
+Fixed 2S2P       & no  & (710.4) & ---    & ---     & 0  & 81.7 \\
+Fixed delta      & no  & (651.7) & ---    & ---     & 0  & 166.3 \\
+Fixed 4P         & yes & 1176.6  & 102.96 & +69.6\,\% & 0  & 0 \\
+2-mode rule      & no  & (336.0) & ---    & ---     & 5  & 763.1 \\
+Pointwise greedy & yes & 687.5   & 60.16  & $-0.9\,\%$ & 84 & 0 \\
+DP (ours)        & yes & 693.7   & 60.70  & 0       & \textbf{41} & 0 \\
 \bottomrule
 \end{tabular}
 }
@@ -1092,9 +1100,11 @@ uncertainty at a mean $10\,\%$ (max $30\,\%$) on flux and $13\,\%$ median on tor
 This is of the same order as the reported model errors ($0.04$--$0.4$
 nRMSE), so \emph{absolute} accuracies should be read as accuracy relative
 to this discretisation. The FEMM cross-check corroborates matrix and waveform
-trends but also shows $11.7$--$40.9\,\%$ discrepancies and a failed
-zero-shot torque screen on tap50 (Table~\ref{tab:femmcheck}); it therefore
-does not establish absolute accuracy. (ii)~End effects, temperature, mechanical and changeover
+trends but also shows metric-dependent discrepancies: $11.7\,\%$ for the
+scaled inductance matrix, $9.8\,\%$ for saturated torque, and $71.5\,\%$ for
+the tap50 flux shape. It also exposes an unreliable zero-shot torque screen
+on tap50 (Table~\ref{tab:femmcheck}); it therefore does not establish
+absolute accuracy. (ii)~End effects, temperature, mechanical and changeover
 transients are excluded; the changeover circuit enters through a per-event
 energy, swept over four orders of magnitude ($5$\,mJ--$100$\,J).
 (iii)~The drive-cycle study is a
@@ -1116,16 +1126,15 @@ before the design principles can be treated as general.
 
 A winding connection is a linear constraint, not a new machine. Encoding
 that fact into the learning problem yields one surrogate for all
-connections, zero-shot transfer governed by current-space coverage, and
-exact physical consistency from a scalar co-energy head. It also yields a
+connections, coverage-dependent zero-shot transfer, and exact physical
+consistency from a scalar co-energy head. It also yields a
 drive-cycle co-design loop that prices reconfiguration with full loss
 accounting---changeover energy, dwell constraints and system losses. On
 the WLTC class-1 case study, the optimal schedule completes the cycle at
-essentially the same energy as the best nearly feasible fixed connection,
-adds the missing tracking capability, and uses 3.1 changeover events per km.
-It is within $0.4\,\%$ of the unconstrained greedy oracle at half its
-switching burden; the $15.1\,\%$ advantage over fixed 4P is reported only
-together with that baseline's current-class penalty. The benchmark
+$693.7$\,Wh, $41.0\,\%$ below the only fully feasible fixed connection, and
+uses 3.6 changeover events per km. It is within $0.9\,\%$ of the
+unconstrained greedy oracle at half its switching burden; current-class
+device rescaling retains a $36.7\,\%$ difference. The benchmark
 and its two data-design
 principles are, we believe, the most durable contributions: they tell the
 next study, whatever its machine, what data to collect and why. Future

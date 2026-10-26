@@ -50,8 +50,9 @@ V_CE0, R_CE = 0.85, 0.009
 E_SW_DEV = 2.7e-3                                # J per device period @ refs
 F_SW = 10e3
 E_CHANGEOVER = 25e-3                             # J per winding reconfiguration
-# Vehicle (light EV)
-M_VEH, CDA, CRR, R_WHEEL, GEAR, ETA_G = 540.0, 0.50, 0.008, 0.25, 13.0, 0.96
+# Vehicle (light EV with four identical wheel motors)
+M_VEH, CDA, CRR, R_WHEEL, GEAR, ETA_G = 400.0, 0.50, 0.008, 0.25, 13.0, 0.96
+N_MOTORS = 4
 P_AUX = 250.0
 RHO_AIR = 1.20
 MODES = ("4S", "2S2P", "delta", "4P")
@@ -303,13 +304,14 @@ def cycle_demands(cycle="class1"):
 
 
 def machine_torque(T_wheel):
-    return np.where(T_wheel >= 0, T_wheel / (GEAR * ETA_G),
-                    T_wheel * ETA_G / GEAR)
+    return np.where(T_wheel >= 0, T_wheel / (GEAR * ETA_G * N_MOTORS),
+                    T_wheel * ETA_G / (GEAR * N_MOTORS))
 
 
 def simulate(ev, mode_seq, Tm_dem, omega_m, e_sw=E_CHANGEOVER):
-    """Battery energy over the cycle for a fixed per-step mode sequence."""
-    E = 0.0
+    """Battery energy for one mode command applied to all wheel motors."""
+    machine_energy = 0.0
+    aux_energy = 0.0
     sw = 0
     br = {"cu": 0.0, "fe": 0.0, "inv": 0.0, "mech": 0.0, "sw": 0.0}
     unmet = 0.0
@@ -326,21 +328,24 @@ def simulate(ev, mode_seq, Tm_dem, omega_m, e_sw=E_CHANGEOVER):
             r = ev.best(m, T_star, omega_m[t]) if abs(T_star) > 1e-6 else None
         if r is None:
             # speed infeasible in this mode (or zero demand): no machine power
-            E += P_AUX
+            aux_energy += P_AUX
             prev = m
             continue
         P_mech = T_star * omega_m[t]
-        E += P_mech + r["P_cu"] + r["P_fe"] + r["P_inv"] + P_AUX
+        machine_energy += P_mech + r["P_cu"] + r["P_fe"] + r["P_inv"]
+        aux_energy += P_AUX
         br["cu"] += r["P_cu"]; br["fe"] += r["P_fe"]
         br["inv"] += r["P_inv"]; br["mech"] += P_mech
         if prev is not None and m != prev:
             sw += 1
-            E += e_sw
-            br["sw"] += e_sw
         prev = m
+    for k in ("cu", "fe", "inv", "mech"):
+        br[k] *= N_MOTORS
+    br["sw"] = sw * e_sw
+    E = N_MOTORS * machine_energy + aux_energy + br["sw"]
     return {"E_Wh": E / 3600.0, "switches": sw,
             "breakdown_Wh": {k: x / 3600.0 for k, x in br.items()},
-            "unmet_Nm_s": unmet}
+            "unmet_Nm_s": N_MOTORS * unmet}
 
 
 def dp_schedule(ev, Tm_dem, omega_m, e_sw=E_CHANGEOVER, dwell=10):
@@ -392,7 +397,7 @@ def dp_schedule(ev, Tm_dem, omega_m, e_sw=E_CHANGEOVER, dwell=10):
                     back[t, m2, 0] = m1 * S + dwell
         J = Jn
     if not np.isfinite(J).any():
-        return list(MODES), float("inf")
+        return ["4P"] * N, float("inf")
     seq = [0] * N
     m_star, s_star = np.unravel_index(np.argmin(J), J.shape)
     seq[-1] = m_star
@@ -422,6 +427,7 @@ def main():
 
     results = {"diagnostics": diag, "params": {
         "R_COIL": R_COIL, "V_DC": V_DC, "GEAR": GEAR, "M_VEH": M_VEH,
+        "N_MOTORS": N_MOTORS,
         "CDA": CDA, "CRR": CRR, "R_WHEEL": R_WHEEL, "ETA_G": ETA_G,
         "P_AUX": P_AUX, "E_CHANGEOVER": E_CHANGEOVER, "K_H": K_H, "K_C": K_C,
         "cycle": "WLTC class 1", "n_steps": len(v)}}

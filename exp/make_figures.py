@@ -200,7 +200,7 @@ def fig_drive():
     fixed = dr2["fixed"]
     E = [fixed["2S2P"]["E_Wh"], fixed["delta"]["E_Wh"],
          fixed["4P"]["E_Wh"], dr2["dp"]["E_Wh"]]
-    labs = ["2S2P\n2.4 unmet", "delta\n36.7 unmet",
+    labs = ["2S2P\n81.7 unmet", "delta\n166.3 unmet",
             "4P\ncomplete", "DP\ncomplete"]
     colors = ["#bbbbbb", "#bbbbbb", "#8fb8de", "#2e7ebc"]
     ax1.bar(labs, E, color=colors, width=0.62)
@@ -208,7 +208,7 @@ def fig_drive():
     ax1.grid(alpha=0.3, axis="y", lw=0.4)
     for i, e in enumerate(E):
         ax1.text(i, e + 8, f"{e:.1f}", ha="center", fontsize=6)
-    ax1.set_ylim(0, 565)
+    ax1.set_ylim(0, 1250)
 
     ax2 = fig.add_subplot(gs[1, 1])
     strat = ["fixed4P", "greedy", "dp"]

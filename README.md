@@ -1,8 +1,8 @@
-# Connection-Invariant Co-Energy Surrogates for Reconfigurable Windings
+# Coverage-Controlled Connection-Invariant Surrogates
 
-Code, data, and benchmark for the paper *"Learning one magnetic model for
-all winding connections: connection-invariant co-energy surrogates and
-drive-cycle co-design of reconfigurable electric machines"*.
+Code, data, and benchmark for the paper *"Coverage-controlled learning of
+connection-invariant magnetic surrogates for reconfigurable electric
+machines"*.
 
 Source repository:
 <https://github.com/sheep-cloud12138/ai-motor-winding-switching> (private
@@ -70,12 +70,31 @@ python exp/make_figures.py
 - Windows: `exp/wmi_fix.py` works around a hung WMI service that blocks
   `platform.win32_ver()` inside scipy imports; it is imported first
   everywhere it is needed.
+- Torque uses the full Lorentz integral including stack length. The
+  drive-cycle result is calibrated to a 400-kg micro-EV with four identical
+  motors; the original single-motor calibration was incompatible with the
+  corrected torque scale.
 - The demo machine's original phase grouping is non-standard (phase-C axis
   at 60 deg electrical). This is irrelevant to the coil-level benchmark
   (all connections are just linear maps); for the synchronous drive-cycle
   study the port grouping is defined with standard 0/120/240-deg axes in
   `exp/drive_cycle.py:connection_matrix` - no retraining needed, which is
   rather the point of the method.
+
+## Correction log (2026-10-26)
+
+- The Lorentz torque integral had omitted `L_STACK`. Because the omission is
+  a Cartesian factor, existing torque labels were corrected exactly by
+  multiplying by `L_STACK = 0.1`; the solver now includes the factor directly.
+- The original 540-kg single-motor drive calibration became infeasible after
+  that correction. The case study is now explicitly a 400-kg micro-EV with
+  four identical wheel motors, with torque split and energy aggregated over
+  all four drives.
+- FEMM slot coordinates were aligned to the polar-grid slot sectors, and the
+  torque post-processor now sums each slot-Lorentz integral explicitly.
+- Consequently, the old `15.1%` drive result is obsolete. The corrected
+  direct-MLP result is `41.0%` versus fixed 4P (`36.7%` after
+  current-class-matched inverter rescaling).
 
 ## License / citation
 

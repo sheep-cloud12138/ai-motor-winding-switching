@@ -1,19 +1,8 @@
-{
- "T_machine_max_demand": 9.136999384615386,
- "rpm_max": 8882.967890435651,
- "R_COIL": 0.0030157722933082994,
- "T_max_4S_at_rpm_max": 0.7308235168457031,
- "T_max_4S_at_half_speed": 3.9960625171661377,
- "T_max_2S2P_at_rpm_max": 3.994626998901367,
- "T_max_2S2P_at_half_speed": 19.02350616455078,
- "T_max_delta_at_rpm_max": 2.701831579208374,
- "T_max_delta_at_half_speed": 17.014083862304688,
- "T_max_4P_at_rpm_max": 19.155059814453125,
- "T_max_4P_at_half_speed": 19.155059814453125
-}
-fixed4P E=518.8 Wh (45.40 Wh/km), switches=0
-rule2 E=264.0 Wh (23.10 Wh/km), switches=6
-greedy E=438.9 Wh (38.40 Wh/km), switches=62
-dp E=440.4 Wh (38.54 Wh/km), switches=35
-energy check: {'dp_Wh': np.float64(405.1607646591128), 'fixed4P_Wh': np.float64(517.4858325800287), 'saving_pct': np.float64(21.705921370039626)}
-saved results_drive.json + drive_arrays.npz
+Vehicle: 400 kg, four identical wheel motors, 320 V bus
+Peak per-motor demand: 1.689 N m
+Fixed 4P: 1176.6 Wh (102.96 Wh/km), 0 switches, complete
+2-mode rule: 336.0 Wh on an incomplete trajectory, 5 switches, 763.1 N m s unmet
+Pointwise greedy: 687.5 Wh (60.16 Wh/km), 84 switches, complete
+DP: 693.7 Wh (60.70 Wh/km), 41 switches, complete
+Co-energy cross-check: 41.4% below fixed 4P
+See exp/results_drive.json for full breakdowns.

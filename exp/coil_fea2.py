@@ -181,7 +181,8 @@ def solve_coils(theta_deg, coil_currents, nr=40, nt=48, pm_on=True,
         m = slot_id == k
         psi[k] = N_TURN * L_STACK / slot_area * np.sum(
             Az[m] * np.broadcast_to(g["r2"], (nr, nt))[m] * dr * dth)
-    T = float(np.sum((r_c[:, None] * J * Br) *
-                     (r_c[:, None] * dr * dth) * g["slot_mask"]))
+    T = float(L_STACK * np.sum(
+        (r_c[:, None] * J * Br) * (r_c[:, None] * dr * dth) * g["slot_mask"]
+    ))
     return {"theta": theta_deg, "psi": psi, "T": T, "iters": iters,
             "rel": float(rel)}
