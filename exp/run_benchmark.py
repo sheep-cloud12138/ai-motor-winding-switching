@@ -23,7 +23,8 @@ import torch
 
 from exp.data import EXT, STANDARD, load_all, make_split  # noqa: E402
 from exp.models import (DirectTrainer, EnergyTrainer, GradNet, GradNetTrainer,  # noqa: E402
-                        MLP, StructuredEnergy, jacobian_asymmetry)
+                        MLP, StructuredEnergy, jacobian_asymmetry,
+                        make_features, theta_feature_grad)
 
 DEVICE = "cuda" if torch.cuda.is_available() else "cpu"
 
@@ -157,6 +158,54 @@ def physics_ridge(runner, split, holdout):
     return {"flux_nrmse": float(nrmse.mean()), "alpha": alpha}
 
 
+def maxwell_probe(model, theta, ic, mu, sd, di=0.5, dtheta_deg=1.0):
+    """Finite-difference check of dT/di = dpsi/dtheta in physical units."""
+    theta = np.asarray(theta, float)
+    ic = np.asarray(ic, float)
+    n = len(theta)
+    dT = np.empty((n, 12))
+    dpsi = np.empty((n, 12))
+
+    def predict(features, dphi):
+        x = torch.tensor(features, dtype=torch.float32, device=DEVICE)
+        dp = torch.tensor(dphi, dtype=torch.float32, device=DEVICE)
+        with torch.no_grad() if not isinstance(model, StructuredEnergy) \
+                else torch.enable_grad():
+            if isinstance(model, (MLP, GradNet)):
+                if isinstance(model, MLP):
+                    out = model(x)
+                else:
+                    psi, torque = model.psi_T(x, dp)
+                    out = torch.cat([psi, torque[:, None]], dim=1)
+            else:
+                psi, torque = model.psi_T(x[:, :12], x[:, 12:], dp)
+                out = torch.cat([psi.detach(), torque.detach()[:, None]], 1)
+        return out.cpu().numpy() * sd + mu
+
+    phi = theta_feature_grad(theta)
+    for j in range(12):
+        step = np.zeros_like(ic)
+        step[:, j] = di
+        out_p = predict(make_features(theta, ic + step), phi)
+        out_m = predict(make_features(theta, ic - step), phi)
+        dT[:, j] = (out_p[:, 12] - out_m[:, 12]) / (2 * di)
+
+        tp = theta + dtheta_deg
+        tm = theta - dtheta_deg
+        out_p = predict(make_features(tp, ic), theta_feature_grad(tp))
+        out_m = predict(make_features(tm, ic), theta_feature_grad(tm))
+        dpsi[:, j] = (
+            out_p[:, j] - out_m[:, j]
+        ) / (2 * np.deg2rad(dtheta_deg))
+
+    return {
+        "correlation": float(np.corrcoef(dT.ravel(), dpsi.ravel())[0, 1]),
+        "relative_norm_residual": float(
+            np.linalg.norm(dT - dpsi) / np.linalg.norm(dpsi)
+        ),
+    }
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--force", action="store_true",
@@ -230,9 +279,14 @@ def main():
 
     # Jacobian reciprocity probes on the asym holdout, base variant.
     split = make_split(X, Y, K, "asym", variant="base")
-    Fte, _, rows_te = split["test"]
+    Fte, dphite, rows_te = split["test"]
     probe = np.linspace(0, len(Fte) - 1, 24).astype(int)
     xprobe = Fte[probe]
+    theta_probe = X[rows_te[probe], 0]
+    ic_probe = X[rows_te[probe], 1:]
+    fit_rows = split["fit"][2]
+    mu = Y[fit_rows].mean(0)
+    sd = Y[fit_rows].std(0) + 1e-8
     probe_out = {}
     for model_name in ("mlp", "gradnet", "energy"):
         state = torch.load(ROOT / "exp" / f"ckpt_{model_name}_asym.pt",
@@ -253,7 +307,10 @@ def main():
         asym, mineig = jacobian_asymmetry(pred, xprobe)
         probe_out[model_name] = {
             "asym_mean": float(asym.mean()), "asym_max": float(asym.max()),
-            "min_eig_mean": float(mineig.mean())}
+            "min_eig_mean": float(mineig.mean()),
+            "torque_flux": maxwell_probe(
+                m, theta_probe, ic_probe, mu, sd,
+            )}
         print("jacobian", model_name, probe_out[model_name], flush=True)
     results["jacobian_probe_asym"] = probe_out
     with open(ROOT / "exp" / "results_benchmark.json", "w") as f:

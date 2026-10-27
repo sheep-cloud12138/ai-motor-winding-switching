@@ -11,8 +11,8 @@ MLP          : plain black-box regressor (baseline).
 GradNet      : vector-field gradient network. g(x) = A0 x + b0 + A1^T s(A1 x + c1)
                with s = softplus and A0 = blkdiag(P, 0), P = B^T B + eps I PSD.
                By construction g = grad_x W-hat, so psi = g[:12] and
-               T = g[12:] . dphi/dtheta share one scalar potential and the
-               Jacobian is symmetric PSD (reciprocity + monotonicity exact).
+    T = I_SCALE g[12:] . dphi/dtheta share one scalar potential and the
+    Jacobian is symmetric PSD (reciprocity + monotonicity exact).
 ScalarEnergy : scalar co-energy head W-hat(i, theta), psi/T via autograd.
 """
 
@@ -92,7 +92,9 @@ class GradNet(nn.Module):
     def psi_T(self, x, dphi_dtheta):
         """x: features; dphi_dtheta: (n, n_phi) d phi/d theta_rad. Returns psi(12), T."""
         g = self.forward(x)
-        return g[:, : self.n_i], (g[:, self.n_i :] * dphi_dtheta).sum(dim=1)
+        return g[:, : self.n_i], I_SCALE * (
+            g[:, self.n_i :] * dphi_dtheta
+        ).sum(dim=1)
 
 
 class ScalarEnergy(nn.Module):
@@ -131,7 +133,7 @@ class ScalarEnergy(nn.Module):
         W = self.forward(ic, phi).sum()
         psi = torch.autograd.grad(W, ic, create_graph=True)[0]
         gphi = torch.autograd.grad(W, phi, create_graph=True)[0]
-        return psi, (gphi * dphi_dtheta).sum(dim=1)
+        return psi, I_SCALE * (gphi * dphi_dtheta).sum(dim=1)
 
 
 class StructuredEnergy(nn.Module):
@@ -200,7 +202,7 @@ class StructuredEnergy(nn.Module):
         W = self.forward(ic, phi).sum()
         psi = torch.autograd.grad(W, ic, create_graph=True)[0]
         gphi = torch.autograd.grad(W, phi, create_graph=True)[0]
-        return psi, (gphi * dphi_dtheta).sum(dim=1)
+        return psi, I_SCALE * (gphi * dphi_dtheta).sum(dim=1)
 
 
 class Trainer:
