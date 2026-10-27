@@ -19,12 +19,14 @@
 
 ## 关键未解决问题
 
-1. 转矩积分与磁链归一化仍未闭合。
-   - 线性铁芯、单线圈扰动测试：两向量相关约 -0.947，但范数比为 0.00616，
-     即转矩导数小约 162 倍；不是简单的 `L_STACK` 因子。
-   - 不乘 `L_STACK`：Maxwell 关系残差约 1.75。
-   - 乘 `L_STACK`：残差约 1.06。
-   - 因此现有离散求解器的磁链与转矩不来自同一个变分一致的离散能量泛函。
+1. 转矩标签生成已找到正确修复路径，但尚未全量重建。
+   - 旧的槽内 Lorentz 转矩与磁链不满足离散 Maxwell 关系。
+   - 新增 `exp/energy_torque.py`：从离散磁静能量泛函对转子角求导。
+   - 40×96 网格、4S、40 A 验证：
+     - `dT/di` 与 `-dψ/dθ` 的相关性为 **0.9994**；
+     - 相对范数残差为 **4.0%**。
+   - 符号约定为 `∂T/∂i = -∂ψ/∂θ`。
+   - 还需要用该函数重建正式数据集、检查点、FEMM对照和驱动循环。
 2. PM基波仍差约 41.8%，电感仍有约 1.13 倍绝对归一化差。
 3. `results_drive.json` 与当前单电机驱动配置尚未重新对齐；中断前未完成全量重跑。
 4. 没有实测或 HIL 数据。
@@ -44,6 +46,9 @@
 ## 参考文件
 
 - `exp/results_energy_consistency.json`
+- `exp/energy_torque.py`
+- `exp/validate_energy_torque.py`
+- `exp/results_energy_torque_validation.json`
 - `exp/review_energy_modes.py`
 - `exp/review_slot_relation.py`
 - `exp/results_unseen_consistency.json`

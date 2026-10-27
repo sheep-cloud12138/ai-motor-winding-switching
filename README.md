@@ -85,12 +85,12 @@ python exp/make_figures.py
 
 ## Correction log (2026-10-27)
 
-- Torque normalization remains under audit. Cross-sectional and
-  `L_STACK`-scaled variants were both tested against the co-energy Maxwell
-  relation; neither is variationally consistent with the flux labels.
-- The intermediate four-motor recalibration was reverted. Drive-cycle results
-  are withheld from the final claim set until the torque/flux consistency is
-  repaired.
+- The slot-local Lorentz torque did not satisfy the discrete energy relation.
+  `exp/energy_torque.py` now derives torque from the discrete magnetic energy
+  functional; the 40x96 check gives correlation 0.9994 and 4.0% residual for
+  `dT/di = -dpsi/dtheta`.
+- Formal datasets and checkpoints still need regeneration with the functional
+  torque labels. Drive-cycle results are withheld until then.
 - FEMM slot coordinates were aligned to the polar-grid slot sectors, and the
   torque post-processor now sums each slot-Lorentz integral explicitly.
 - The fine-mesh inductance shape agrees with FEMM to 2.1%, but a 1.13x
