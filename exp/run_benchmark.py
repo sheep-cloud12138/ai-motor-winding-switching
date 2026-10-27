@@ -170,7 +170,7 @@ def main():
     meta = {"n_total": len(X),
             "counts": {k: int((K == k).sum()) for k in np.unique(K)},
             "device": DEVICE, "torque_sha256": torque_sha,
-            "torque_model": "functional_v1"}
+            "torque_model": "functional_v2"}
     if out_path.exists() and not args.force:
         with open(out_path) as f:
             results = json.load(f)

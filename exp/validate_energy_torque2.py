@@ -44,7 +44,7 @@ out = {
     "dT_di": dTdi.tolist(),
     "correlation": float(np.corrcoef(dpsi, dTdi)[0, 1]),
     "relative_norm_residual": float(
-        np.linalg.norm(dTdi + dpsi) / np.linalg.norm(dpsi)
+        np.linalg.norm(dTdi - dpsi) / np.linalg.norm(dpsi)
     ),
 }
 (ROOT / "exp" / "results_energy_torque_validation2.json").write_text(

@@ -73,8 +73,8 @@ python exp/make_figures.py
 - Windows: `exp/wmi_fix.py` works around a hung WMI service that blocks
   `platform.win32_ver()` inside scipy imports; it is imported first
   everywhere it is needed.
-- Torque follows the FE cross-section integral and satisfies the co-energy
-  Maxwell relation. The drive-cycle result uses the original 540-kg,
+- Torque is differentiated from the discrete magnetic co-energy and satisfies
+  the Maxwell relation. The drive-cycle result uses the original 540-kg,
   single-motor, 320-V platform with a modern SiC inverter model.
 - The demo machine's original phase grouping is non-standard (phase-C axis
   at 60 deg electrical). This is irrelevant to the coil-level benchmark
@@ -86,11 +86,12 @@ python exp/make_figures.py
 ## Correction log (2026-10-27)
 
 - The slot-local Lorentz torque did not satisfy the discrete energy relation.
-  `exp/energy_torque.py` now derives torque from the discrete magnetic energy
-  functional; the 40x96 check gives correlation 0.9994 and 4.0% residual for
-  `dT/di = -dpsi/dtheta`.
-- Formal datasets and checkpoints still need regeneration with the functional
-  torque labels. Drive-cycle results are withheld until then.
+  `exp/energy_torque.py` now differentiates the discrete magnetic co-energy;
+  the 40x96 check gives correlation 0.9994 and 4.0% residual for
+  `dT/di = dpsi/dtheta`. The 6-slot replication gives correlation 0.9998 and
+  7.4% residual.
+- Formal datasets and checkpoints are being regenerated with the corrected
+  functional torque labels. Drive-cycle results are withheld until then.
 - FEMM slot coordinates were aligned to the polar-grid slot sectors, and the
   torque post-processor now sums each slot-Lorentz integral explicitly.
 - The fine-mesh inductance shape agrees with FEMM to 2.1%, but a 1.13x

@@ -264,6 +264,7 @@ def weighted_torque(f):
 
 def validate_tap50(f):
     from coil_fea import solve_coils
+    from exp.energy_torque import functional_torque
     from exp.drive_cycle import connection_matrix, load_model, model_psi_T
 
     theta = np.arange(0.0, 180.0, 30.0)
@@ -286,8 +287,11 @@ def validate_tap50(f):
         coil_currents(f, currents)
         psi_ref.append(ref["psi"])
         psi_femm.append(solve_psi(f, f"tap{int(th)}"))
-        t_ref.append(ref["T"])
-        t_femm.append(lorentz_torque(f))
+        t_ref.append(functional_torque(
+            float(th), currents, nr=40, nt=96, pm_on=True,
+            linear_iron=False,
+        ))
+        t_femm.append(weighted_torque(f))
         f.mi_close()
 
     psi_ref = np.asarray(psi_ref)
@@ -398,6 +402,7 @@ def main():
     # ---- V3: one nonlinear saturated case ----
     print("V3: nonlinear case (4S at 60 A, theta=30)", flush=True)
     from gen_coil_dataset import connection_currents
+    from exp.energy_torque import functional_torque
     ip = 60.0 * np.array([np.cos(np.pi / 4), np.cos(np.pi / 4 - 2 * np.pi / 3),
                           np.cos(np.pi / 4 + 2 * np.pi / 3)])
     ic = connection_currents("4S", ip)
@@ -410,16 +415,19 @@ def main():
     T_w = weighted_torque(f)
     f.mi_close()
     psi_o = r["psi"]
+    T_o = functional_torque(
+        30.0, ic, nr=40, nt=96, pm_on=True, linear_iron=False,
+    )
     res["NL_psi_reldiff_mean"] = float(
         np.mean(np.abs(psi_f - psi_o)) / np.mean(np.abs(psi_o)))
     res["NL_psi_reldiff_max"] = float(
         np.max(np.abs(psi_f - psi_o) / np.maximum(np.abs(psi_o), 1e-9)))
     res["NL_psi_corr"] = float(np.corrcoef(psi_f, psi_o)[0, 1])
-    res["NL_T_ours"] = float(r["T"])
-    res["NL_T_femm"] = T_f
+    res["NL_T_ours"] = float(T_o)
+    res["NL_T_femm"] = float(T_w)
     res["NL_T_femm_lorentz"] = T_f
-    res["NL_T_femm_weighted"] = -T_w
-    res["NL_T_reldiff"] = float(abs(T_f - r["T"]) / max(abs(r["T"]), 1e-12))
+    res["NL_T_femm_weighted"] = float(T_w)
+    res["NL_T_reldiff"] = float(abs(T_w - T_o) / max(abs(T_o), 1e-12))
 
     # ---- V4: zero-shot tap50 along a synchronous-current trajectory ----
     print("V4: zero-shot tap50 synchronous trajectory", flush=True)

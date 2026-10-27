@@ -12,7 +12,7 @@ _PM_TORQUE_CACHE = {}
 
 def magnetic_functional(theta, current, pm_on=True, linear_iron=False,
                         nr=80, nt=192, solver=None):
-    """Return field energy, source work and their difference."""
+    """Return magnetic energy, source work and magnetic co-energy."""
     if solver is None:
         import coil_fea as solver
     result = solver.solve_coils(
@@ -44,7 +44,7 @@ def magnetic_functional(theta, current, pm_on=True, linear_iron=False,
     area = np.broadcast_to(g["r2"], B.shape) * g["dr"] * g["dth"]
     field = solver.L_STACK * np.sum(density * area)
     source_work = solver.L_STACK * np.sum(result["Az"] * source * area)
-    return float(field), float(source_work), float(field - source_work)
+    return float(field), float(source_work), float(source_work - field)
 
 
 def functional_torque(theta, current, dtheta_deg=1.0, **kwargs):

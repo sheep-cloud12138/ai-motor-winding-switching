@@ -15,8 +15,9 @@ import torch
 from coil_fea import solve_coils
 from exp.data import load_all, make_split
 from exp.connections_ext import connection_currents_ext
+from exp.energy_torque import functional_torque
 from exp.femm_validate import (
-    Femm, build_geometry, coil_currents, lorentz_torque, solve_psi,
+    Femm, build_geometry, coil_currents, solve_psi, weighted_torque,
 )
 from exp.models import make_features
 from exp.run_benchmark import Runner, metrics
@@ -55,7 +56,10 @@ def solve_reference(theta, ic):
         r = solve_coils(float(th), currents, nr=40, nt=96, pm_on=True,
                         linear_iron=False, tol=2e-4)
         psi.append(r["psi"])
-        torque.append(r["T"])
+        torque.append(functional_torque(
+            float(th), currents, nr=40, nt=96, pm_on=True,
+            linear_iron=False,
+        ))
     return np.asarray(psi), np.asarray(torque)
 
 
@@ -66,7 +70,7 @@ def solve_femm(theta, ic):
         build_geometry(femm, float(th), pm_on=True, linear_iron=False)
         coil_currents(femm, currents)
         psi.append(solve_psi(femm, f"tapwithz{i}"))
-        torque.append(lorentz_torque(femm))
+        torque.append(weighted_torque(femm))
         femm.mi_close()
         if (i + 1) % 6 == 0:
             print("solved", i + 1, "/", len(theta), flush=True)
@@ -90,6 +94,11 @@ def compare(pred, psi_femm, torque_femm):
             np.linalg.norm(torque_femm)
         ),
         "torque_mae": float(np.mean(np.abs(torque - torque_femm))),
+        "torque_scale_to_femm": scale_t,
+        "torque_raw_reldiff": float(
+            np.linalg.norm(torque - torque_femm) /
+            np.linalg.norm(torque_femm)
+        ),
         "psi_model": psi.tolist(),
         "torque_model": torque.tolist(),
     }

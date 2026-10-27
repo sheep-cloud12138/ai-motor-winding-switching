@@ -99,7 +99,7 @@ def build(nr, nt):
     slot_id = -np.ones((nr, nt), dtype=int)
     slot_id[slot_mask] = np.broadcast_to(slot_index[None, :], (nr, nt))[slot_mask]
     slot_area = (R_SLOT_OUT - R_SLOT_IN) * SLOT_W * (R_SLOT_IN + R_SLOT_OUT) / 2
-    return dict(r_c=r_c, th_c=th_c, dr=dr, dth=dth, r2=r2,
+    return dict(r_c=r_c, th_c=th_c, th2=th2, dr=dr, dth=dth, r2=r2,
                 slot_mask=slot_mask, slot_id=slot_id, slot_area=slot_area,
                 is_mag=is_mag, is_iron=is_iron, is_air=is_air,
                 r_edges=r_edges)

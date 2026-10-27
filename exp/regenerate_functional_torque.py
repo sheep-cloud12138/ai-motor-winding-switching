@@ -19,7 +19,7 @@ sys.path.insert(0, str(ROOT))
 import exp.wmi_fix  # noqa: F401
 from exp.energy_torque import functional_torque
 
-TAG = "functional_v1"
+TAG = "functional_v2"
 
 
 def one_case(args):
