@@ -69,8 +69,8 @@ fully feasible and reduces the scheduling gain to $0.4$--$0.6\,\%$. An
 independent FEMM cross-check reproduces the inductance shape after a
 $1.13\times$ normalisation and saturated torque within $1.2\,\%$, but PM
 fundamental amplitudes differ by $42\,\%$. At 36 synchronous points, the
-in-support 4P hold-out transfers torque with correlation $0.87$, while the
-out-of-support tap50 torque screen remains unreliable. We therefore present reconfiguration as a
+never-trained 3S1P connection transfers torque with correlation $0.79$,
+while the out-of-support tap50 torque screen remains unreliable. We therefore present reconfiguration as a
 conditional design option rather than a universal efficiency gain.
 \end{abstract}
 
@@ -213,11 +213,12 @@ complete the cycle as a fixed mode; the DP schedule saves about $3.1\,\%$.
 At 700\,V and above, fixed delta becomes feasible and the gain collapses to
 $0.4$--$0.6\,\%$. The benefit is therefore conditional on the voltage and
 current envelope. The same
-surrogate transfers torque to an in-support unseen 4P connection
-(correlation $0.87$, MAE $0.049$\,N\,m), but cannot reliably reject an
+surrogate transfers torque to a never-trained 3S1P connection
+(correlation $0.79$, $R^2=0.55$, MAE $0.124$\,N\,m), but cannot reliably
+reject an
 out-of-support tap connection: even after zero-support training, torque
-correlation with FEMM is only $0.59$ for the MLP and $0.19$ for the
-co-energy model over 36 points. The drive example is therefore a stress
+correlation with FEMM is $0.66$/$0.73$, but raw $R^2$ remains
+$-0.38$/$0.26$ for the MLP/co-energy models over 36 points. The drive example is therefore a stress
 test of the workflow, not evidence of a universal energy benefit.
 \end{enumerate}
 
@@ -562,22 +563,23 @@ saturated 4S case reaches flux correlation $0.987$ and a $1.2\,\%$ torque
 difference. These discrepancies preclude claims of absolute accuracy. The
 cross-check also tests zero-shot screening. We retrained with the
 zero-support ``withz'' pool and evaluated 36 independent synchronous points.
-For the in-support 4P connection, the direct MLP reaches torque correlation
-$0.87$ and MAE $0.049$\,N\,m, supporting the coverage principle. For
-tap50, flux correlation improves to $0.89$ for the MLP and $0.93$ for the
-co-energy model, but torque correlation is only $0.59$ and $0.19$,
-respectively. Zero-shot screening is therefore useful as a hypothesis
-generator, not as a substitute for FE verification of a design decision.
-This is not a training failure: both retrained models remain competitive on
-the benchmark grid, but tap50 probes a different torque response region.
+The never-trained 3S1P connection reaches flux correlation $0.97$ and
+torque correlation $0.79$ (raw $R^2=0.55$, MAE $0.124$\,N\,m), supporting
+coarse zero-shot screening. The in-support 4P hold-out is less accurate on
+the same path (torque $r=0.57$), and tap50 reaches $r=0.66$--$0.73$ but
+with negative-to-low raw $R^2$. Zero-shot screening is therefore useful as
+a hypothesis generator, not as a substitute for FE verification of a
+design decision. This is not a training failure: both retrained models
+remain competitive on the benchmark grid, but the synchronous paths expose
+kernel-specific bias.
 
 \begin{table}[t]
 \centering\small
 \caption{Independent FEMM 4.2 cross-check. The inductance discrepancy is
 computed after one global scale factor; nonlinear flux is pointwise and
 torque uses the summed slot-Lorentz integral. The 4P and tap50 rows use the
-coverage-trained ``withz'' models over 36 independent synchronous operating
-points.}
+coverage-trained 4P/tap50 models and the drive-trained 3S1P probe over 36
+independent synchronous operating points.}
 \label{tab:femmcheck}
 \begin{tabular}{lcc}
 \toprule
@@ -587,11 +589,13 @@ Linear inductance, fine reference & $0.999996$ & $2.1\,\%$ after $1.13\times$ \\
 PM-only flux waveform & $0.978$ & $41.8\,\%$ fundamental \\
 Nonlinear 4S flux (60\,A) & $0.987$ & $48.1\,\%$ pointwise \\
 Nonlinear 4S torque (60\,A) & --- & $1.2\,\%$ \\
-4P flux, MLP withz & $0.858$ & $51.3\,\%$ \\
-4P torque, MLP withz & $0.870$ & $52.3\,\%$; MAE $0.049$\,N\,m \\
-tap50 flux, MLP withz & $0.893$ & $45.0\,\%$ \\
-tap50 torque, MLP withz & $0.594$ & $84.7\,\%$ shape \\
-tap50 torque, co-energy withz & $0.193$ & $98.2\,\%$ shape \\
+4P flux, MLP withz & $0.743$ & $66.9\,\%$ \\
+4P torque, MLP withz & $0.566$ & $85.9\,\%$; MAE $0.052$\,N\,m \\
+3S1P flux, drive MLP & $0.973$ & $24.9\,\%$ \\
+3S1P torque, drive MLP & $0.790$ & $61.3\,\%$; MAE $0.124$\,N\,m \\
+tap50 flux, MLP withz & $0.585$ & $81.1\,\%$ \\
+tap50 torque, MLP withz & $0.662$ & $86.1\,\%$ shape \\
+tap50 torque, co-energy withz & $0.733$ & $72.6\,\%$ shape \\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -1008,12 +1012,12 @@ tap50---never present in the drive surrogate's training pool in any
 form---as a fifth switchable mode. The surrogate assigns it zero seconds,
 which would suggest that 2S2P/delta dominate it on the cycle. The
 independent FEMM trajectory check does not support that action: the
-zero-shot direct-MLP flux correlation is only $0.89$ even after retraining
-with zero-support patterns, while torque correlation is $0.59$ at 36 FEMM
-points; the co-energy variant reaches $0.93$ flux correlation but only
-$0.19$ torque correlation. The in-support 4P hold-out behaves differently:
-the same MLP reaches torque correlation $0.87$ and MAE $0.049$\,N\,m, so
-the boundary is coverage rather than an inability to transfer at all. The
+zero-shot direct MLP gives torque correlation $0.66$ but raw $R^2=-0.38$
+at 36 FEMM points; the co-energy variant improves correlation to $0.73$
+but its raw $R^2$ is only $0.26$. The never-trained 3S1P connection behaves
+differently: the drive MLP reaches torque correlation $0.79$ and
+$R^2=0.55$, so the boundary is coverage rather than an inability to
+transfer at all. The
 tap50 flux trend is informative enough to generate
 a hypothesis, but the torque channel is not reliable enough to reject the
 connection. We report this as a negative result for automatic zero-shot

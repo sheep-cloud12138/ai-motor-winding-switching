@@ -7,6 +7,6 @@ PM fundamental relative difference: 0.41823
 Nonlinear 4S flux correlation: 0.98714
 Nonlinear 4S torque relative difference: 0.01212
 See exp/results_femm.json for the numerical arrays.
-Coverage-trained 4P: torque correlation 0.870, MAE 0.049 N m.
-Coverage-trained tap50: torque correlation 0.594, shape error 0.847.
-See the results_{4p,tap50}_femm_withz.json files for all 36 points.
+Unseen 3S1P: torque correlation 0.790, R2 0.552, MAE 0.124 N m.
+Correct-axis tap50: torque correlation 0.662-0.733, raw R2 -0.383-0.265.
+See the results_{3s1p,4p,tap50}_femm*.json files for all 36 points.

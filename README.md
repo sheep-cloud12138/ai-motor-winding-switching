@@ -36,6 +36,7 @@ python exp/drive_r2.py
 python exp/femm_validate.py
 python exp/femm_unseen_withz.py --holdout tap50
 python exp/femm_unseen_withz.py --holdout 4P
+python exp/femm_drive_candidate.py --kind 3S1P
 
 # 7. All paper figures
 python exp/make_figures.py
@@ -109,8 +110,9 @@ python exp/make_figures.py
   slot positions and full-ring radial PM waveform. The 12-slot fine-mesh
   inductance shape agrees to `2.1%` after a remaining `1.13x` global scale;
   PM fundamental amplitudes still differ by `41.8%`.
-- Over 36 synchronous points, the coverage-trained MLP transfers torque to
-  unseen 4P (`r=0.87`, MAE `0.049 N m`) but not to tap50 (`r=0.59`).
+- Over 36 synchronous points, the drive MLP transfers torque to unseen 3S1P
+  (`r=0.79`, `R2=0.55`, MAE `0.124 N m`). Correct-axis tap50 tests reach
+  `r=0.66-0.73`, but raw `R2` remains negative to `0.26`.
   No hardware or HIL measurement is available in this workspace.
 
 ## License / citation
