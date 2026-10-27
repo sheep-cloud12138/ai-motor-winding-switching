@@ -1,7 +1,8 @@
 Highlights
 
 - One coil-level surrogate can query unseen winding connections.
-- Co-energy structure gives exact reciprocity (4.6e-4 vs 0.22 for an MLP).
-- Pattern kind beats count: unbalanced nRMSE 0.11; open-phase 0.07.
-- FEMM transfers torque to unseen 3S1P (r=0.79); tap50 raw R2 stays low.
-- At 400 V, WLTC DP saves 3.1%; at 700 V the gain collapses below 0.6%.
+- Co-energy structure gives exact reciprocity and a 0.67% Maxwell residual.
+- Pattern kind beats count: phase coverage cuts open-phase nRMSE to 0.088.
+- FEMM validates torque R2 = 0.89-0.92 on three unseen connections.
+- A 105-point drive sweep finds no feasibility-only reconfiguration window.
+- Reconfiguration saves 1-2.77% in 24 constrained designs; the nominal case is energy-neutral.

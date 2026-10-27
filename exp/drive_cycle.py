@@ -46,8 +46,8 @@ K_H, K_C = 0.026, 1.2e-4                         # W/(kg Hz T^2), W/(kg Hz^2 T^2
 M_FE_PER_COIL = 0.50                             # kg equivalent core mass/coil
 A_TOOTH_FE = 0.012 * L_STACK                     # m^2 tooth cross-section
 # Inverter (declared device parameters)
-V_CE0, R_CE = 0.0, 0.0005                        # 400-V SiC conduction model
-E_SW_DEV = 0.1e-3                                # J per device period
+V_CE0, R_CE = 0.7, 0.002                         # 400-V SiC conduction model
+E_SW_DEV = 1.0e-3                                # J per device period
 F_SW = 10e3
 E_CHANGEOVER = 25e-3                             # J per winding reconfiguration
 # Vehicle (light EV with four identical wheel motors)

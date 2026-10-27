@@ -49,7 +49,7 @@ python exp/make_figures.py
 ## Layout
 
 - `coil_fea.py` - 2-D nonlinear magnetostatic solver (one current per coil,
-  Froehlich iron, Lorentz torque; reciprocity/path-independence verified).
+  Froehlich iron, rotating permanent magnets, and discrete co-energy torque).
 - `gen_*.py` (root) - P0-era datasets used by the benchmark (standard
   connections, magnitude-random patterns 2/8/24).
 - `exp/` - everything produced for the paper:
@@ -71,6 +71,19 @@ python exp/make_figures.py
 - `paper/` - LaTeX source, cover letter, highlights.
 - `V_class1.txt` / `wltc_*.py` - official JRC WLTC class-1 trace
   (checksum-verified) and cycle module metadata.
+
+## Current headline results
+
+- Maxwell consistency: 12-slot `r=0.99998`, residual `2.4%`; 6-slot `r=0.9998`,
+  residual `2.3%`.
+- FEMM: PM fundamental error `7.9%`, saturated torque error `7.5%`, and
+  end-to-end torque `R2=0.89-0.92` for 4P/tap50/3S1P.
+- Coverage: phase-random data reduce openB flux nRMSE to `0.068`; magnitude
+  data reduce tap50 to `0.35`; both patterns reproduce on the 6-slot machine.
+- Drive cycle: all fixed connections complete; DP energy is `0.006%` higher
+  than fixed 4S. Across
+  105 voltage/gear/cycle combinations, no reconfiguration-required case
+  was found; 24 feasible cases gain at least `1%`, with a maximum `2.77%`.
 
 ## Notes
 
@@ -106,18 +119,18 @@ python exp/make_figures.py
   discretised slot area removes about half of it, but that convention change
   is not applied to the released benchmark data; it is documented as an
   unresolved solver-alignment issue rather than hidden by rescaling.
-- The single-motor DP saves about `0.7%` against the best fixed connection
-  when using the historical torque labels, but this must be rerun after the
-  torque/flux consistency repair.
+- With the corrected labels, all four fixed connections complete the WLTC
+  class-1 case and DP energy is `0.006%` higher than fixed 4S. A 105-point
+  voltage/gear sweep contains no reconfiguration-required case.
 - Independent FEMM checks now use the same turns, stack length, BH curve,
   slot positions and rotating 80%-arc PM geometry. The 12-slot fine-mesh
   inductance shape agrees to `2.1%` after a remaining `1.13x` global scale.
   PM fundamental amplitudes differ by `7.9%` on average (`8.4%` maximum),
   and the nonlinear 4S torque differs by `7.5%` at the checked point.
-- Over 36 synchronous points, one withz MLP transfers torque to unseen 3S1P
-  (`r=0.79`, `R2=0.58`, MAE `0.104 N m`). Correct-axis tap50 tests reach
-  `r=0.66-0.73`, but raw `R2` remains negative to `0.26`.
-  No hardware or HIL measurement is available in this workspace.
+- Over 36 synchronous points, end-to-end FEMM torque `R2` is `0.918`
+  (4P), `0.887` (tap50), and `0.894` (3S1P). Correlations are
+  `0.952-0.972`. No hardware or HIL measurement is available in this
+  workspace.
 
 ## License / citation
 

@@ -8,7 +8,8 @@ length) in FEMM and compares:
   V2  PM-only coil flux linkage psi(theta) over 12 rotor positions
   V3  one nonlinear saturated case (Fröhlich BH curve imported into FEMM)
 Reference: coil_linear_reciprocity.json, coil_zero.npz, coil_fea.solve_coils.
-Radial magnetisation approximated by 72 sector blocks around the full ring.
+Radial magnetisation is represented by 90 sector blocks with the same
+rotating 80%-arc pole mask as the reference solver.
 """
 
 import argparse

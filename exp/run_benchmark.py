@@ -168,7 +168,7 @@ def physics_ridge(runner, split, holdout):
     return {"flux_nrmse": float(nrmse.mean()), "alpha": alpha}
 
 
-def maxwell_probe(model, theta, ic, mu, sd, di=0.5, dtheta_deg=7.5):
+def maxwell_probe(model, theta, ic, mu, sd, di=0.05, dtheta_deg=0.5):
     """Finite-difference check of dT/di = dpsi/dtheta in physical units."""
     theta = np.asarray(theta, float)
     ic = np.asarray(ic, float)

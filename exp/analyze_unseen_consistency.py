@@ -5,11 +5,8 @@ import sys
 from pathlib import Path
 
 import numpy as np
-import torch
-
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT))
-from exp.models import MLP, make_features
 
 
 def metrics(pred, true):
@@ -26,25 +23,18 @@ def metrics(pred, true):
 
 
 def main():
-    ck = torch.load(ROOT / "exp" / "ckpt_mlp_tap50_withz.pt",
-                    map_location="cpu", weights_only=True)
-    model = MLP()
-    model.load_state_dict(ck["state"])
-    model.eval()
-    mu, sd = ck["mu"].numpy(), ck["sd"].numpy()
-    out = {"model": "single withz MLP", "connections": {}}
+    out = {"model": "per-connection stored MLP", "connections": {}}
     for kind, path in (
         ("4P", "results_4p_femm_withz.json"),
         ("tap50", "results_tap50_femm_withz.json"),
         ("3S1P", "results_3s1p_femm.json"),
     ):
         data = json.loads((ROOT / "exp" / path).read_text())
-        theta = np.asarray(data["theta"])
-        ic = np.asarray(data["ic"])
-        with torch.no_grad():
-            raw = model(torch.tensor(make_features(theta, ic),
-                                     dtype=torch.float32)).numpy()
-        pred = raw * sd + mu
+        if "models" in data:
+            pred = np.c_[data["models"]["mlp"]["psi_model"],
+                         data["models"]["mlp"]["torque_model"]]
+        else:
+            pred = np.c_[data["psi_model"], data["torque_model"]]
         psi_ref = np.asarray(data["psi_ref"])
         torque_ref = np.asarray(data["torque_ref"])
         psi_femm = np.asarray(data["psi_femm"])

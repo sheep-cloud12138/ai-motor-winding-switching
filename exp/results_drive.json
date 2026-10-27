@@ -1,23 +1,23 @@
 {
  "diagnostics": {
-  "T_machine_max_demand": 1.4847624000000004,
-  "rpm_max": 13666.104446824082,
-  "R_COIL": 0.0024126178346466397,
-  "T_max_4S_at_rpm_max": 0.04204053804278374,
-  "T_max_4S_at_half_speed": 0.24380142986774445,
-  "T_max_2S2P_at_rpm_max": 0.2556314766407013,
-  "T_max_2S2P_at_half_speed": 1.5082921981811523,
-  "T_max_delta_at_rpm_max": 0.15666605532169342,
-  "T_max_delta_at_half_speed": 0.9836404323577881,
-  "T_max_4P_at_rpm_max": 1.5188835859298706,
-  "T_max_4P_at_half_speed": 1.9155060052871704
+  "T_machine_max_demand": 9.136999384615386,
+  "rpm_max": 8882.967890435651,
+  "R_COIL": 0.0030157722933082994,
+  "T_max_4S_at_rpm_max": 6.311824798583984,
+  "T_max_4S_at_half_speed": 16.39472007751465,
+  "T_max_2S2P_at_rpm_max": 16.55059051513672,
+  "T_max_2S2P_at_half_speed": 26.651552200317383,
+  "T_max_delta_at_rpm_max": 13.424958229064941,
+  "T_max_delta_at_half_speed": 26.6391658782959,
+  "T_max_4P_at_rpm_max": 26.74497413635254,
+  "T_max_4P_at_half_speed": 26.74497413635254
  },
  "params": {
-  "R_COIL": 0.0024126178346466397,
-  "V_DC": 400.0,
-  "GEAR": 20.0,
+  "R_COIL": 0.0030157722933082994,
+  "V_DC": 320.0,
+  "GEAR": 13.0,
   "M_VEH": 540.0,
-  "N_MOTORS": 4,
+  "N_MOTORS": 1,
   "CDA": 0.5,
   "CRR": 0.008,
   "R_WHEEL": 0.25,
@@ -31,23 +31,23 @@
  },
  "distance_km": 11.427666666666665,
  "fixed4P": {
-  "E_Wh": 472.675165349867,
+  "E_Wh": 422.62735414683675,
   "switches": 0,
   "breakdown_Wh": {
-   "cu": 18.979201289627337,
-   "fe": 36.95361009754011,
-   "inv": 21.04591893133322,
+   "cu": 0.4442608560883875,
+   "fe": 7.489417547783138,
+   "inv": 18.99724071160328,
    "mech": 283.82143503136433,
    "sw": 0.0
   },
   "unmet_Nm_s": 0.0,
   "unmet_fraction": 0.0,
   "peak_unmet_Nm": 0.0,
-  "demand_integral_Nm_s": 2525.751856207022,
+  "demand_integral_Nm_s": 3885.7720864723406,
   "mech_positive_Wh": 346.73939640870316,
   "mech_negative_Wh": -62.917961377338784,
-  "traction_efficiency": 0.8183256144525044,
-  "Wh_per_km": 41.362351487606134,
+  "traction_efficiency": 0.9279286633253256,
+  "Wh_per_km": 36.982821294534034,
   "mode_counts": {
    "4S": 0,
    "2S2P": 0,
@@ -56,23 +56,23 @@
   }
  },
  "rule2": {
-  "E_Wh": 195.92781887865758,
-  "switches": 5,
+  "E_Wh": 407.5920082887461,
+  "switches": 8,
   "breakdown_Wh": {
-   "cu": 11.139877582414263,
-   "fe": 11.655406231321127,
-   "inv": 2.4284373545052262,
-   "mech": 58.8290629881938,
-   "sw": 3.472222222222222e-05
+   "cu": 0.7629450510829454,
+   "fe": 4.0591791721533435,
+   "inv": 7.041661287973358,
+   "mech": 283.85316722198155,
+   "sw": 5.555555555555556e-05
   },
-  "unmet_Nm_s": 775.3558590199026,
-  "unmet_fraction": 0.30698021942039544,
-  "peak_unmet_Nm": 1.0290054075539488,
-  "demand_integral_Nm_s": 2525.751856207022,
-  "mech_positive_Wh": 100.4304668755642,
-  "mech_negative_Wh": -41.60140388737044,
-  "traction_efficiency": 0.7992608001298988,
-  "Wh_per_km": 17.145041467665397,
+  "unmet_Nm_s": 0.0,
+  "unmet_fraction": 0.0,
+  "peak_unmet_Nm": 0.0,
+  "demand_integral_Nm_s": 3885.7720864723406,
+  "mech_positive_Wh": 346.73939640870316,
+  "mech_negative_Wh": -62.8862291867215,
+  "traction_efficiency": 0.9669166752852204,
+  "Wh_per_km": 35.667124372611454,
   "mode_counts": {
    "4S": 1542,
    "2S2P": 0,
@@ -82,101 +82,101 @@
   "threshold_kmh": 57.5
  },
  "greedy": {
-  "E_Wh": 457.63542660171464,
-  "switches": 139,
+  "E_Wh": 406.4891939799062,
+  "switches": 19,
   "breakdown_Wh": {
-   "cu": 20.47175583440228,
-   "fe": 34.86985613362752,
-   "inv": 6.596414324544457,
+   "cu": 0.7645312037324786,
+   "fe": 3.7126907388254353,
+   "inv": 6.315405061540293,
    "mech": 283.82143503136433,
-   "sw": 0.0009652777777777778
+   "sw": 0.00013194444444444446
   },
   "unmet_Nm_s": 0.0,
   "unmet_fraction": 0.0,
   "peak_unmet_Nm": 0.0,
-  "demand_integral_Nm_s": 2525.751856207022,
+  "demand_integral_Nm_s": 3885.7720864723406,
   "mech_positive_Wh": 346.73939640870316,
   "mech_negative_Wh": -62.917961377338784,
-  "traction_efficiency": 0.8484427500712517,
-  "Wh_per_km": 40.04627015737083,
+  "traction_efficiency": 0.9698135375369238,
+  "Wh_per_km": 35.57062048069652,
   "mode_counts": {
-   "4S": 874,
-   "2S2P": 141,
-   "delta": 477,
-   "4P": 119
+   "4S": 1601,
+   "2S2P": 2,
+   "delta": 5,
+   "4P": 3
   }
  },
  "dp": {
-  "E_Wh": 458.25351772821443,
-  "switches": 54,
+  "E_Wh": 406.5812807102898,
+  "switches": 12,
   "breakdown_Wh": {
-   "cu": 20.30432533953327,
-   "fe": 35.04360948879175,
-   "inv": 7.208772868526748,
+   "cu": 0.760177559658737,
+   "fe": 3.7887039430854115,
+   "inv": 6.3358808428488445,
    "mech": 283.82143503136433,
-   "sw": 0.000375
+   "sw": 8.333333333333334e-05
   },
   "unmet_Nm_s": 0.0,
   "unmet_fraction": 0.0,
   "peak_unmet_Nm": 0.0,
-  "demand_integral_Nm_s": 2525.751856207022,
+  "demand_integral_Nm_s": 3885.7720864723406,
   "mech_positive_Wh": 346.73939640870316,
   "mech_negative_Wh": -62.917961377338784,
-  "traction_efficiency": 0.8471602659557229,
-  "Wh_per_km": 40.10035741284729,
+  "traction_efficiency": 0.9695636827682234,
+  "Wh_per_km": 35.57867870754804,
   "mode_counts": {
-   "4S": 763,
-   "2S2P": 251,
-   "delta": 429,
-   "4P": 168
+   "4S": 1545,
+   "2S2P": 0,
+   "delta": 55,
+   "4P": 11
   },
   "unmet_check": 0.0
  },
  "sensitivity": {
   "e_sw": {
    "5mJ": {
-    "dp_Wh": 458.2532177282144,
-    "dp_switches": 54,
-    "greedy_Wh": 457.6346543794924,
-    "greedy_switches": 139
+    "dp_Wh": 406.5812140436231,
+    "dp_switches": 12,
+    "greedy_Wh": 406.4890884243506,
+    "greedy_switches": 19
    },
    "25mJ": {
-    "dp_Wh": 458.25351772821443,
-    "dp_switches": 54,
-    "greedy_Wh": 457.63542660171464,
-    "greedy_switches": 139
+    "dp_Wh": 406.5812807102898,
+    "dp_switches": 12,
+    "greedy_Wh": 406.4891939799062,
+    "greedy_switches": 19
    },
    "100mJ": {
-    "dp_Wh": 458.2546427282144,
-    "dp_switches": 54,
-    "greedy_Wh": 457.63832243504794,
-    "greedy_switches": 139
+    "dp_Wh": 406.58153071028977,
+    "dp_switches": 12,
+    "greedy_Wh": 406.4895898132395,
+    "greedy_switches": 19
    },
    "400mJ": {
-    "dp_Wh": 458.25914272821444,
-    "dp_switches": 54,
-    "greedy_Wh": 457.6499057683813,
-    "greedy_switches": 139
+    "dp_Wh": 406.5825307102898,
+    "dp_switches": 12,
+    "greedy_Wh": 406.49117314657286,
+    "greedy_switches": 19
    }
   },
   "iron": {
    "x0.5": {
-    "dp_Wh": 440.11419088292706,
-    "fixed4P_Wh": 453.3525528486691,
-    "fixedDelta_Wh": 372.9236627524615
+    "dp_Wh": 404.32859525852984,
+    "fixed4P_Wh": 418.3704710097486,
+    "fixedDelta_Wh": 407.85044542125314
    },
    "x2": {
-    "dp_Wh": 492.13212627830245,
-    "fixed4P_Wh": 507.92617814928127,
-    "fixedDelta_Wh": 414.101938325445
+    "dp_Wh": 409.6204758051097,
+    "fixed4P_Wh": 428.91948149789084,
+    "fixedDelta_Wh": 414.7418626382771
    }
   }
  },
  "energy_check": {
-  "dp_Wh": 438.1467664626543,
-  "best_fixed_mode": "4P",
-  "best_fixed_Wh": 473.5714302191632,
-  "fixed4P_Wh": 473.5714302191632,
-  "saving_vs_best_fixed_pct": 7.480321129193701
+  "dp_Wh": 406.65492956424845,
+  "best_fixed_mode": "4S",
+  "best_fixed_Wh": 406.56423498577084,
+  "fixed4P_Wh": 422.45661515859337,
+  "saving_vs_best_fixed_pct": -0.022307564382972878
  }
 }

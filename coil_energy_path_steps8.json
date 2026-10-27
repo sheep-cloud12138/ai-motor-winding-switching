@@ -3,7 +3,7 @@
  "nr": 40,
  "nt": 96,
  "theta": 0.0,
- "steps": 8,
+ "steps": 4,
  "target": [
   10.0,
   10.0,
@@ -18,8 +18,8 @@
   0.0,
   0.0
  ],
- "W_radial": 1.5065128401070873,
- "W_sequential": 1.5158086304467242,
- "relative_difference": 0.006170402330574314,
- "solves": 32
+ "W_radial": 1.3826249693065007,
+ "W_sequential": 1.4133159071073829,
+ "relative_difference": 0.02219758682376189,
+ "solves": 16
 }
