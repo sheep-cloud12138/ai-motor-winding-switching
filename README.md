@@ -85,14 +85,12 @@ python exp/make_figures.py
 
 ## Correction log (2026-10-27)
 
-- The Lorentz torque integral had omitted `L_STACK`. Because the omission is
-  a Cartesian factor, existing torque labels were corrected exactly by
-  multiplying by `L_STACK = 0.1`; the solver now includes the factor directly.
-- The intermediate torque rescaling and four-motor recalibration were
-  reverted after the Maxwell-relation check showed that the original
-  cross-sectional torque normalization was correct. The released case study
-  keeps the original 540-kg single-motor platform and changes only the
-  inverter model to a modern SiC stage.
+- Torque normalization remains under audit. Cross-sectional and
+  `L_STACK`-scaled variants were both tested against the co-energy Maxwell
+  relation; neither is variationally consistent with the flux labels.
+- The intermediate four-motor recalibration was reverted. Drive-cycle results
+  are withheld from the final claim set until the torque/flux consistency is
+  repaired.
 - FEMM slot coordinates were aligned to the polar-grid slot sectors, and the
   torque post-processor now sums each slot-Lorentz integral explicitly.
 - The fine-mesh inductance shape agrees with FEMM to 2.1%, but a 1.13x
@@ -100,16 +98,15 @@ python exp/make_figures.py
   discretised slot area removes about half of it, but that convention change
   is not applied to the released benchmark data; it is documented as an
   unresolved solver-alignment issue rather than hidden by rescaling.
-- With the corrected labels, the single-motor DP saves about `0.7%` against
-  the best fully feasible fixed connection. The drive-cycle benefit is
-  therefore small in the matched design; the benchmark and coverage results
-  carry the paper, not the efficiency story.
+- The single-motor DP saves about `0.7%` against the best fixed connection
+  when using the historical torque labels, but this must be rerun after the
+  torque/flux consistency repair.
 - Independent FEMM checks now use the same turns, stack length, BH curve,
   slot positions and full-ring radial PM waveform. The 12-slot fine-mesh
   inductance shape agrees to `2.1%` after a remaining `1.13x` global scale;
   PM fundamental amplitudes still differ by `41.8%`.
-- Over 36 synchronous points, the drive MLP transfers torque to unseen 3S1P
-  (`r=0.79`, `R2=0.55`, MAE `0.124 N m`). Correct-axis tap50 tests reach
+- Over 36 synchronous points, one withz MLP transfers torque to unseen 3S1P
+  (`r=0.79`, `R2=0.58`, MAE `0.104 N m`). Correct-axis tap50 tests reach
   `r=0.66-0.73`, but raw `R2` remains negative to `0.26`.
   No hardware or HIL measurement is available in this workspace.
 

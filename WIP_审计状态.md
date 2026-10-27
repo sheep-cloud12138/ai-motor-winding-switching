@@ -12,13 +12,19 @@
   - 代理 vs FEMM。
 - 修正了未见连接相轴错误。旧 tap50 检验错误地使用了驱动循环相轴，与基准训练/测试相轴不同。
 - 修正后，3S1P 在当前三方检验中表现最好；4P、tap50 的转矩原始 R² 仍低。
+- 三种连接现在均使用同一个 `withz` MLP：
+  - 3S1P：代理 vs 自研转矩相关 0.818、R² 0.594；自研 vs FEMM 0.989、R² 0.952。
+  - 4P：代理 vs 自研 0.604、R² -0.194；自研 vs FEMM 0.935、R² 0.858。
+  - tap50：代理 vs 自研 0.735、R² -0.028；自研 vs FEMM 0.945、R² 0.877。
 
 ## 关键未解决问题
 
 1. 转矩积分与磁链归一化仍未闭合。
-   - 不乘 `L_STACK`：Maxwell 关系残差约 1.75，相关约 -0.53。
-   - 乘 `L_STACK`：残差约 1.06，相关仍约 -0.53。
-   - 因此不能仅凭尺度调整判断哪套转矩正确；需检查逐槽符号、电流方向和转矩积分表面。
+   - 线性铁芯、单线圈扰动测试：两向量相关约 -0.947，但范数比为 0.00616，
+     即转矩导数小约 162 倍；不是简单的 `L_STACK` 因子。
+   - 不乘 `L_STACK`：Maxwell 关系残差约 1.75。
+   - 乘 `L_STACK`：残差约 1.06。
+   - 因此现有离散求解器的磁链与转矩不来自同一个变分一致的离散能量泛函。
 2. PM基波仍差约 41.8%，电感仍有约 1.13 倍绝对归一化差。
 3. `results_drive.json` 与当前单电机驱动配置尚未重新对齐；中断前未完成全量重跑。
 4. 没有实测或 HIL 数据。
@@ -38,6 +44,8 @@
 ## 参考文件
 
 - `exp/results_energy_consistency.json`
+- `exp/review_energy_modes.py`
+- `exp/review_slot_relation.py`
 - `exp/results_unseen_consistency.json`
 - `exp/results_4p_femm_withz.json`
 - `exp/results_tap50_femm_withz.json`
