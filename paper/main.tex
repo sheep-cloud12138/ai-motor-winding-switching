@@ -563,23 +563,20 @@ saturated 4S case reaches flux correlation $0.987$ and a $1.2\,\%$ torque
 difference. These discrepancies preclude claims of absolute accuracy. The
 cross-check also tests zero-shot screening. We retrained with the
 zero-support ``withz'' pool and evaluated 36 independent synchronous points.
-The never-trained 3S1P connection reaches flux correlation $0.97$ and
-torque correlation $0.79$ (raw $R^2=0.55$, MAE $0.124$\,N\,m), supporting
-coarse zero-shot screening. The in-support 4P hold-out is less accurate on
-the same path (torque $r=0.57$), and tap50 reaches $r=0.66$--$0.73$ but
-with negative-to-low raw $R^2$. Zero-shot screening is therefore useful as
-a hypothesis generator, not as a substitute for FE verification of a
-design decision. This is not a training failure: both retrained models
-remain competitive on the benchmark grid, but the synchronous paths expose
-kernel-specific bias.
+The same zero-support MLP is used for 4P, tap50 and the never-trained 3S1P
+connection. Proxy-versus-reference and solver-versus-solver errors are
+reported separately in Table~\ref{tab:zeroshot-triad}. The never-trained
+3S1P connection retains torque correlation $0.82$ against the training
+solver and $0.79$ end-to-end against FEMM ($R^2=0.58$, MAE
+$0.104$\,N\,m). 4P and tap50 do not transfer with comparable raw accuracy.
+Zero-shot screening is therefore useful as a hypothesis generator, not as
+a substitute for FE verification of a design decision.
 
 \begin{table}[t]
 \centering\small
 \caption{Independent FEMM 4.2 cross-check. The inductance discrepancy is
 computed after one global scale factor; nonlinear flux is pointwise and
-torque uses the summed slot-Lorentz integral. The 4P and tap50 rows use the
-coverage-trained 4P/tap50 models and the drive-trained 3S1P probe over 36
-independent synchronous operating points.}
+torque uses the summed slot-Lorentz integral.}
 \label{tab:femmcheck}
 \begin{tabular}{lcc}
 \toprule
@@ -589,15 +586,30 @@ Linear inductance, fine reference & $0.999996$ & $2.1\,\%$ after $1.13\times$ \\
 PM-only flux waveform & $0.978$ & $41.8\,\%$ fundamental \\
 Nonlinear 4S flux (60\,A) & $0.987$ & $48.1\,\%$ pointwise \\
 Nonlinear 4S torque (60\,A) & --- & $1.2\,\%$ \\
-4P flux, MLP withz & $0.743$ & $66.9\,\%$ \\
-4P torque, MLP withz & $0.566$ & $85.9\,\%$; MAE $0.052$\,N\,m \\
-3S1P flux, drive MLP & $0.973$ & $24.9\,\%$ \\
-3S1P torque, drive MLP & $0.790$ & $61.3\,\%$; MAE $0.124$\,N\,m \\
-tap50 flux, MLP withz & $0.585$ & $81.1\,\%$ \\
-tap50 torque, MLP withz & $0.662$ & $86.1\,\%$ shape \\
-tap50 torque, co-energy withz & $0.733$ & $72.6\,\%$ shape \\
 \bottomrule
 \end{tabular}
+\end{table}
+
+\begin{table}[t]
+\centering\small
+\caption{Three-way zero-shot validation at the same 36 synchronous points.
+The same zero-support MLP is used for all connections. Entries are
+correlation / torque $R^2$ (MAE in N\,m). ``Proxy--reference'' isolates
+generalisation under the training solver; ``reference--FEMM'' isolates the
+solver difference; ``proxy--FEMM'' is the end-to-end error.}
+\label{tab:zeroshot-triad}
+\resizebox{\linewidth}{!}{%
+\begin{tabular}{lcccc}
+\toprule
+Hold-out & Flux corr.\ (proxy--ref.) & Torque proxy--ref. &
+Torque ref.--FEMM & Torque proxy--FEMM \\
+\midrule
+4P    & 0.771 & 0.604 / $-0.194$ (0.037) & 0.935 / 0.858 (0.020) & 0.566 / $-0.060$ (0.052) \\
+tap50 & 0.600 & 0.735 / $-0.028$ (0.290) & 0.945 / 0.877 (0.088) & 0.662 / $-0.383$ (0.346) \\
+3S1P  & 0.958 & 0.818 / 0.594 (0.087) & 0.989 / 0.952 (0.038) & 0.791 / 0.580 (0.104) \\
+\bottomrule
+\end{tabular}
+}
 \end{table}
 
 \section{Zero-shot results}
@@ -1015,8 +1027,8 @@ independent FEMM trajectory check does not support that action: the
 zero-shot direct MLP gives torque correlation $0.66$ but raw $R^2=-0.38$
 at 36 FEMM points; the co-energy variant improves correlation to $0.73$
 but its raw $R^2$ is only $0.26$. The never-trained 3S1P connection behaves
-differently: the drive MLP reaches torque correlation $0.79$ and
-$R^2=0.55$, so the boundary is coverage rather than an inability to
+differently: the same zero-support MLP reaches torque correlation $0.79$
+and $R^2=0.58$, so the boundary is coverage rather than an inability to
 transfer at all. The
 tap50 flux trend is informative enough to generate
 a hypothesis, but the torque channel is not reliable enough to reject the

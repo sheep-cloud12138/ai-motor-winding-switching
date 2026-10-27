@@ -73,11 +73,9 @@ python exp/make_figures.py
 - Windows: `exp/wmi_fix.py` works around a hung WMI service that blocks
   `platform.win32_ver()` inside scipy imports; it is imported first
   everywhere it is needed.
-- Torque uses the full Lorentz integral including stack length. The
-  drive-cycle result is calibrated to a 540-kg light EV with four identical
-  400-V SiC wheel drives; the original single-motor/low-voltage calibration
-  was incompatible with the corrected torque scale and produced unrealistic
-  inverter losses.
+- Torque follows the FE cross-section integral and satisfies the co-energy
+  Maxwell relation. The drive-cycle result uses the original 540-kg,
+  single-motor, 320-V platform with a modern SiC inverter model.
 - The demo machine's original phase grouping is non-standard (phase-C axis
   at 60 deg electrical). This is irrelevant to the coil-level benchmark
   (all connections are just linear maps); for the synchronous drive-cycle
@@ -90,11 +88,11 @@ python exp/make_figures.py
 - The Lorentz torque integral had omitted `L_STACK`. Because the omission is
   a Cartesian factor, existing torque labels were corrected exactly by
   multiplying by `L_STACK = 0.1`; the solver now includes the factor directly.
-- The original single-motor/low-voltage drive calibration became infeasible
-  after that correction. The case study is now a 540-kg light EV with four
-  identical wheel motors, a 400-V SiC inverter model, 50% slot fill and a
-  matching reduction ratio; torque and energy are aggregated over all four
-  drives.
+- The intermediate torque rescaling and four-motor recalibration were
+  reverted after the Maxwell-relation check showed that the original
+  cross-sectional torque normalization was correct. The released case study
+  keeps the original 540-kg single-motor platform and changes only the
+  inverter model to a modern SiC stage.
 - FEMM slot coordinates were aligned to the polar-grid slot sectors, and the
   torque post-processor now sums each slot-Lorentz integral explicitly.
 - The fine-mesh inductance shape agrees with FEMM to 2.1%, but a 1.13x
@@ -102,10 +100,10 @@ python exp/make_figures.py
   discretised slot area removes about half of it, but that convention change
   is not applied to the released benchmark data; it is documented as an
   unresolved solver-alignment issue rather than hidden by rescaling.
-- Consequently, the old drive percentages are obsolete. At 400 V, fixed 4P
-  is the only fully feasible fixed mode and the direct-MLP DP saves about
-  `3.1%`. At 700 V and above, fixed delta becomes feasible and the gain
-  collapses to `0.4-0.6%`. Either way the claim is conditional.
+- With the corrected labels, the single-motor DP saves about `0.7%` against
+  the best fully feasible fixed connection. The drive-cycle benefit is
+  therefore small in the matched design; the benchmark and coverage results
+  carry the paper, not the efficiency story.
 - Independent FEMM checks now use the same turns, stack length, BH curve,
   slot positions and full-ring radial PM waveform. The 12-slot fine-mesh
   inductance shape agrees to `2.1%` after a remaining `1.13x` global scale;

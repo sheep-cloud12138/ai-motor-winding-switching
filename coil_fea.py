@@ -189,7 +189,10 @@ def solve_coils(
         )
 
     # Lorentz torque on the slot conductors.
-    T = float(L_STACK * np.sum(
+    # The cross-sectional torque integral already yields N m for this
+    # current-density convention; the co-energy Maxwell check is the
+    # authoritative dimensional test.
+    T = float(np.sum(
         (r_c[:, None] * J * Br) * (r_c[:, None] * dr * dth) * g["slot_mask"]
     ))
 

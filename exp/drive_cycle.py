@@ -36,23 +36,23 @@ DEVICE = "cuda" if torch.cuda.is_available() else "cpu"
 # ---------------- machine / powertrain parameters (declared case study) -----
 RHO_CU = 1.68e-8
 SLOT_AREA = (0.0475 - 0.0355) * (2 * np.pi / 12 * 0.52) * (0.0355 + 0.0475) / 2
-A_COPPER_PER_COIL = 0.50 * SLOT_AREA             # 50% slot fill
+A_COPPER_PER_COIL = 0.40 * SLOT_AREA             # 40% slot fill
 R_COIL = RHO_CU * N_TURN * 2 * (L_STACK + 0.0217) / A_COPPER_PER_COIL
 I_COIL_MAX = 60.0                                # A peak coil current (FEA range)
-V_DC = 400.0
+V_DC = 320.0
 V_SV_MAX = V_DC / np.sqrt(3)                     # SVPWM linear region
 # Bertotti proxy, M250-35A-class steel
 K_H, K_C = 0.026, 1.2e-4                         # W/(kg Hz T^2), W/(kg Hz^2 T^2)
-M_FE_PER_COIL = 0.20                             # kg equivalent core mass/coil
+M_FE_PER_COIL = 0.50                             # kg equivalent core mass/coil
 A_TOOTH_FE = 0.012 * L_STACK                     # m^2 tooth cross-section
 # Inverter (declared device parameters)
-V_CE0, R_CE = 0.0, 0.0005                        # 800-V SiC conduction model
+V_CE0, R_CE = 0.0, 0.0005                        # 400-V SiC conduction model
 E_SW_DEV = 0.1e-3                                # J per device period
 F_SW = 10e3
 E_CHANGEOVER = 25e-3                             # J per winding reconfiguration
 # Vehicle (light EV with four identical wheel motors)
-M_VEH, CDA, CRR, R_WHEEL, GEAR, ETA_G = 540.0, 0.50, 0.008, 0.25, 20.0, 0.96
-N_MOTORS = 4
+M_VEH, CDA, CRR, R_WHEEL, GEAR, ETA_G = 540.0, 0.50, 0.008, 0.25, 13.0, 0.96
+N_MOTORS = 1
 P_AUX = 250.0
 RHO_AIR = 1.20
 MODES = ("4S", "2S2P", "delta", "4P")
