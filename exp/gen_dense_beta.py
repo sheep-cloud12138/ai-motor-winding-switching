@@ -23,6 +23,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 import exp.wmi_fix  # noqa: F401
 from connections_ext import connection_currents_ext  # noqa: E402
 from coil_fea import solve_coils  # noqa: E402
+from exp.energy_torque import functional_torque  # noqa: E402
 
 KINDS = ("4S", "2S2P", "delta", "4P")
 THETAS = np.arange(0, 180, 15)
@@ -37,6 +38,9 @@ def run_case(case):
     ic = connection_currents_ext(kind, ip)
     r = solve_coils(theta, ic, nr=nr, nt=nt, pm_on=True, linear_iron=False,
                     tol=2e-4)
+    r["T"] = functional_torque(
+        theta, ic, nr=nr, nt=nt, pm_on=True, linear_iron=False
+    )
     return {"kind": kind, "theta": theta, "amp": amp, "beta": beta,
             "ic": ic, "psi": r["psi"], "T": r["T"]}
 

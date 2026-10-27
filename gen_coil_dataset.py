@@ -10,6 +10,7 @@ from pathlib import Path
 import numpy as np
 
 from coil_fea import solve_coils
+from exp.energy_torque import functional_torque
 
 
 PHASE_COILS = {
@@ -68,6 +69,9 @@ def run_case(case):
     )
     ic = connection_currents(kind, ip)
     r = solve_coils(theta, ic, nr=nr, nt=nt, pm_on=True, linear_iron=False, tol=2e-4)
+    r["T"] = functional_torque(
+        theta, ic, nr=nr, nt=nt, pm_on=True, linear_iron=False
+    )
     return {
         "kind": kind,
         "theta": theta,

@@ -7,6 +7,8 @@ seen-connection validation metrics and Jacobian-consistency probes.
 Saves the EXT-protocol GradNet and MLP checkpoints for the drive-cycle study.
 """
 
+import argparse
+import hashlib
 import json
 import sys
 import time
@@ -156,16 +158,27 @@ def physics_ridge(runner, split, holdout):
 
 
 def main():
+    ap = argparse.ArgumentParser()
+    ap.add_argument("--force", action="store_true",
+                    help="discard saved benchmark results and retrain everything")
+    args = ap.parse_args()
     X, Y, K = load_all()
     runner = Runner(X, Y, K)
     out_path = ROOT / "exp" / "results_benchmark.json"
-    if out_path.exists():
+    torque_sha = hashlib.sha256(
+        np.ascontiguousarray(Y[:, 12]).tobytes()).hexdigest()
+    meta = {"n_total": len(X),
+            "counts": {k: int((K == k).sum()) for k in np.unique(K)},
+            "device": DEVICE, "torque_sha256": torque_sha,
+            "torque_model": "functional_v1"}
+    if out_path.exists() and not args.force:
         with open(out_path) as f:
             results = json.load(f)
+        if results.get("meta", {}).get("torque_sha256") != torque_sha:
+            print("torque labels changed; discarding stale benchmark", flush=True)
+            results = {"meta": meta}
     else:
-        results = {"meta": {"n_total": len(X),
-                            "counts": {k: int((K == k).sum()) for k in np.unique(K)},
-                            "device": DEVICE}}
+        results = {"meta": meta}
     print(json.dumps(results["meta"], indent=1), flush=True)
 
     holdouts = list(STANDARD) + list(EXT)

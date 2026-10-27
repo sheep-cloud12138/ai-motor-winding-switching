@@ -11,6 +11,7 @@ import numpy as np
 
 from coil_fea import solve_coils
 from gen_coil_dataset import connection_currents
+from exp.energy_torque import functional_torque
 
 
 def run_case(case):
@@ -27,6 +28,9 @@ def run_case(case):
     if rms > 1e-9:
         ic *= amp / rms
     r = solve_coils(theta, ic, nr=nr, nt=nt, pm_on=True, linear_iron=False, tol=2e-4)
+    r["T"] = functional_torque(
+        theta, ic, nr=nr, nt=nt, pm_on=True, linear_iron=False
+    )
     return {
         "theta": theta,
         "amp": amp,

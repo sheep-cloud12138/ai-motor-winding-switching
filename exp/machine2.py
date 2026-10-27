@@ -27,7 +27,9 @@ for _v in ("OMP_NUM_THREADS", "OPENBLAS_NUM_THREADS", "MKL_NUM_THREADS"):
     os.environ.setdefault(_v, "1")
 
 import exp.wmi_fix  # noqa: F401
+import coil_fea2
 from coil_fea2 import connection_currents, solve_coils  # noqa: E402
+from exp.energy_torque import functional_torque  # noqa: E402
 
 THETAS = np.arange(0, 180, 15)
 AMPS = np.array([10.0, 20.0, 40.0, 60.0])
@@ -42,6 +44,10 @@ def run_conn(case):
     ic = connection_currents(kind, ip)
     r = solve_coils(float(th), ic, nr=40, nt=48, pm_on=True,
                     linear_iron=False, tol=2e-4)
+    r["T"] = functional_torque(
+        float(th), ic, nr=40, nt=48, pm_on=True, linear_iron=False,
+        solver=coil_fea2,
+    )
     return np.concatenate([[th], ic, r["psi"], [r["T"]]])
 
 
@@ -68,6 +74,10 @@ def run_rand(case):
             ic *= a / rms
     r = solve_coils(float(th), ic, nr=40, nt=48, pm_on=True,
                     linear_iron=False, tol=2e-4)
+    r["T"] = functional_torque(
+        float(th), ic, nr=40, nt=48, pm_on=True, linear_iron=False,
+        solver=coil_fea2,
+    )
     return np.concatenate([[th], ic, r["psi"], [r["T"]]])
 
 
@@ -101,6 +111,10 @@ def main():
     zrows = []
     for th in THETAS:
         r = solve_coils(float(th), np.zeros(6), nr=40, nt=48)
+        r["T"] = functional_torque(
+            float(th), np.zeros(6), nr=40, nt=48,
+            solver=coil_fea2,
+        )
         zrows.append(np.concatenate([[th], np.zeros(6), r["psi"], [r["T"]]]))
     pool.close(); pool.join()
     zrows = np.array(zrows, dtype=np.float32)

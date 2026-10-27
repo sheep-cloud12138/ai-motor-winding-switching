@@ -106,7 +106,7 @@ def build(nr, nt):
 
 
 def solve_coils(theta_deg, coil_currents, nr=40, nt=48, pm_on=True,
-                linear_iron=False, tol=2e-4, maxit=80):
+                linear_iron=False, tol=2e-4, maxit=80, return_fields=False):
     g = build(nr, nt)
     r_c, th_c = g["r_c"], g["th_c"]
     r2, th2 = g["r2"], g["th_c"][None, :]
@@ -176,6 +176,8 @@ def solve_coils(theta_deg, coil_currents, nr=40, nt=48, pm_on=True,
         iters = it + 1
 
     Br = np.gradient(Az, dth, axis=1) / r_c[:, None]
+    Bth = -np.gradient(Az, dr, axis=0)
+    Bmag = np.hypot(Br, Bth)
     psi = np.zeros(N_SLOT)
     for k in range(N_SLOT):
         m = slot_id == k
@@ -184,5 +186,8 @@ def solve_coils(theta_deg, coil_currents, nr=40, nt=48, pm_on=True,
     T = float(np.sum(
         (r_c[:, None] * J * Br) * (r_c[:, None] * dr * dth) * g["slot_mask"]
     ))
-    return {"theta": theta_deg, "psi": psi, "T": T, "iters": iters,
-            "rel": float(rel)}
+    out = {"theta": theta_deg, "psi": psi, "T": T, "iters": iters,
+           "rel": float(rel)}
+    if return_fields:
+        out.update(Az=Az, Br=Br, Bth=Bth, Bmag=Bmag, J=J)
+    return out

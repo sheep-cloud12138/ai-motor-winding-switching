@@ -23,6 +23,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 import exp.wmi_fix  # noqa: F401
 from coil_fea import solve_coils  # noqa: E402
 from gen_coil_dataset import connection_currents  # noqa: E402
+from exp.energy_torque import functional_torque  # noqa: E402
 
 
 def run_case(case):
@@ -40,6 +41,9 @@ def run_case(case):
         ic *= amp / rms
     r = solve_coils(theta, ic, nr=nr, nt=nt, pm_on=True, linear_iron=False,
                     tol=2e-4)
+    r["T"] = functional_torque(
+        theta, ic, nr=nr, nt=nt, pm_on=True, linear_iron=False
+    )
     return {"theta": theta, "amp": amp, "seed": seed, "ic": ic,
             "psi": r["psi"], "T": r["T"]}
 

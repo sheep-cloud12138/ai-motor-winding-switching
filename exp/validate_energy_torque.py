@@ -37,11 +37,11 @@ for j in range(12):
         functional_torque(theta, ic + step, nr=40, nt=96)
         - functional_torque(theta, ic - step, nr=40, nt=96)
     ) / (2 * di)
-rel = float(np.linalg.norm(dTdi - dpsi) / np.linalg.norm(dpsi))
+rel = float(np.linalg.norm(dTdi + dpsi) / np.linalg.norm(dpsi))
 out = {
     "dpsi_dtheta": dpsi.tolist(),
     "dT_di": dTdi.tolist(),
-    "correlation": float(np.corrcoef(dpsi, dTdi)[0, 1]),
+    "correlation": float(np.corrcoef(-dpsi, dTdi)[0, 1]),
     "relative_norm_residual": rel,
 }
 (ROOT / "exp" / "results_energy_torque_validation.json").write_text(

@@ -35,6 +35,7 @@ import exp.wmi_fix  # noqa: F401  (defensive: explicit import)
 import gen_coil_dataset as gcd
 import gen_random_dataset as grd
 from coil_fea import solve_coils
+from exp.energy_torque import functional_torque
 from connections_ext import connection_currents_ext
 
 # Make gen_coil_dataset.run_case understand the new kinds (also applied in
@@ -62,6 +63,9 @@ def run_random_z(case):
     if rms > 1e-9:
         ic *= amp / rms
     r = solve_coils(theta, ic, nr=nr, nt=nt, pm_on=True, linear_iron=False, tol=2e-4)
+    r["T"] = functional_torque(
+        theta, ic, nr=nr, nt=nt, pm_on=True, linear_iron=False
+    )
     return {
         "theta": theta, "amp": amp, "beta": beta, "seed": seed,
         "ic": ic, "psi": r["psi"], "T": r["T"],
@@ -84,6 +88,9 @@ def save_rows(rows, out, kind):
 def run_fine_case(case):
     theta, ic, nr, nt = case
     r = solve_coils(theta, ic, nr=nr, nt=nt, pm_on=True, linear_iron=False, tol=2e-4)
+    r["T"] = functional_torque(
+        theta, ic, nr=nr, nt=nt, pm_on=True, linear_iron=False
+    )
     return {"theta": theta, "psi": r["psi"], "T": r["T"]}
 
 
