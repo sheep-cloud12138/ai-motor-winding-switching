@@ -215,6 +215,7 @@ class Trainer:
         self.opt = torch.optim.AdamW(model.parameters(), lr=lr, weight_decay=wd)
         self.max_epochs, self.eval_every = max_epochs, eval_every
         self.patience, self.clip = patience, clip
+        self.y_scale = None
 
     def loss(self, batch):
         raise NotImplementedError
@@ -274,7 +275,8 @@ class GradNetTrainer(Trainer):
         x, dphi, y = batch
         psi, T = self.model.psi_T(x, dphi)
         out = torch.cat([psi, T[:, None]], dim=1)
-        return nn.functional.mse_loss(out, y)
+        scale = self.y_scale if self.y_scale is not None else 1.0
+        return nn.functional.mse_loss((out - y) / scale, torch.zeros_like(y))
 
 
 class EnergyTrainer(Trainer):
@@ -290,9 +292,10 @@ class EnergyTrainer(Trainer):
         x, dphi, y = batch
         psi, T = self.model.psi_T(x[:, :12], x[:, 12:], dphi)
         out = torch.cat([psi, T[:, None]], dim=1)
+        scale = self.y_scale if self.y_scale is not None else 1.0
         w = torch.ones(13, device=out.device)
         w[12] = self.w_T
-        return (w * (out - y) ** 2).mean()
+        return (w * ((out - y) / scale) ** 2).mean()
 
     def evaluate(self, batch):
         self.model.eval()

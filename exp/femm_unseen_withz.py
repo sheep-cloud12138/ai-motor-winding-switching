@@ -20,7 +20,7 @@ from exp.femm_validate import (
     Femm, build_geometry, coil_currents, solve_psi, weighted_torque,
 )
 from exp.models import make_features
-from exp.run_benchmark import Runner, metrics
+from exp.run_benchmark import Runner, metrics, output_transform
 
 def trajectory(kind):
     theta_g, gamma_g, amp_g = np.meshgrid(
@@ -125,7 +125,6 @@ def main():
     split = make_split(X, Y, K, args.holdout, variant="withz")
     runner = Runner(X, Y, K)
     fit_rows = split["fit"][2]
-    mu, sd = Y[fit_rows].mean(0), Y[fit_rows].std(0) + 1e-8
     result = {
         "n_points": len(theta),
         "theta": theta.tolist(),
@@ -145,6 +144,7 @@ def main():
         model, predict, fit_s = runner.fit_standardized(split, name)
         Fte, dphite, rows = split["test"]
         bench = metrics(predict(Fte, dphite), Y[rows])
+        mu, sd = output_transform(name, Y[fit_rows])
         ckpt = ROOT / "exp" / f"ckpt_{name}_{args.holdout.lower()}_withz.pt"
         torch.save({"state": model.state_dict(),
                     "mu": torch.tensor(mu, dtype=torch.float32),

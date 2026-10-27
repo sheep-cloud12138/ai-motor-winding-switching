@@ -17,8 +17,11 @@ python exp/gen_random3_dataset.py               # phase-random patterns
 python exp/gen_dense_beta.py                    # dense current-angle sweep
 python exp/gen_sync_dataset.py                  # synchronous dq trajectories
 
+# Recompute every torque label from the discrete magnetic co-energy
+python exp/regenerate_functional_torque.py --workers 22
+
 # 2. Zero-shot benchmark (Table 2-4, Jacobian probes)
-python exp/run_benchmark.py
+python exp/run_benchmark.py --force
 
 # 3. Coverage ablations and scaling (Table 3, Fig. scaling)
 python exp/run_phase.py
@@ -31,6 +34,7 @@ python exp/run_curves.py
 python exp/train_drive_model.py
 python exp/drive_cycle.py
 python exp/drive_r2.py
+python exp/sweep_drive_regimes.py
 
 # 6. Independent FEMM cross-check (requires FEMM 4.2 + pywin32)
 python exp/femm_validate.py
@@ -90,8 +94,10 @@ python exp/make_figures.py
   the 40x96 check gives correlation 0.9994 and 4.0% residual for
   `dT/di = dpsi/dtheta`. The 6-slot replication gives correlation 0.9998 and
   7.4% residual.
-- Formal datasets and checkpoints are being regenerated with the corrected
-  functional torque labels. Drive-cycle results are withheld until then.
+- Formal datasets and checkpoints are regenerated with the corrected
+  `functional_v2` labels. Potential-based models predict physical units and
+  apply output normalisation only inside the loss; this preserves
+  `dT/di = dpsi/dtheta` after de-standardisation.
 - FEMM slot coordinates were aligned to the polar-grid slot sectors, and the
   torque post-processor now sums each slot-Lorentz integral explicitly.
 - The fine-mesh inductance shape agrees with FEMM to 2.1%, but a 1.13x

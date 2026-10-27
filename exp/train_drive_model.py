@@ -15,7 +15,7 @@ sys.path.insert(0, str(ROOT))
 import exp.wmi_fix  # noqa: F401
 
 from exp.models import make_features, theta_feature_grad  # noqa: E402
-from exp.run_benchmark import Runner  # noqa: E402
+from exp.run_benchmark import Runner, output_transform  # noqa: E402
 
 def main():
     Xs, Ys, Ks = [], [], []
@@ -54,8 +54,7 @@ def main():
         m, predict, fit_s = runner.fit_standardized(split, model)
         # persist weights WITH the output standardisation so downstream users
         # get physical units directly.
-        mu = Y[split["fit"][2]].mean(0)
-        sd = Y[split["fit"][2]].std(0) + 1e-8
+        mu, sd = output_transform(model, Y[split["fit"][2]])
         torch.save({"state": m.state_dict(),
                     "mu": torch.tensor(mu, dtype=torch.float32),
                     "sd": torch.tensor(sd, dtype=torch.float32)},

@@ -29,6 +29,13 @@ from exp.models import (DirectTrainer, EnergyTrainer, GradNet, GradNetTrainer,  
 DEVICE = "cuda" if torch.cuda.is_available() else "cpu"
 
 
+def output_transform(model_name, Y):
+    """Physical outputs for potential-based models; z-scores for the MLP."""
+    if model_name in ("gradnet", "energy"):
+        return np.zeros(Y.shape[1]), np.ones(Y.shape[1])
+    return Y.mean(0), Y.std(0) + 1e-8
+
+
 def metrics(pred, true):
     err = pred - true
     rmse = np.sqrt(np.mean(err**2, axis=0))
@@ -63,8 +70,8 @@ class Runner:
             keep = np.isin(self.K[rows_f], train_kinds)
             Ff, dphif, rows_f = Ff[keep], dphif[keep], rows_f[keep]
         Yf = self.Y[rows_f]
-        mu = Yf.mean(0, keepdims=True)
-        sd = Yf.std(0, keepdims=True) + 1e-8
+        mu, sd = output_transform(model_name, Yf)
+        mu, sd = mu[None, :], sd[None, :]
 
         def b(F, dphi, rows):
             y = (self.Y[rows] - mu) / sd
@@ -84,6 +91,9 @@ class Runner:
             model = StructuredEnergy()
             trainer = EnergyTrainer(model)
             tmax, pat, lr = 12000, 1500, 2e-3
+        if model_name in ("gradnet", "energy"):
+            trainer.y_scale = torch.tensor(
+                Yf.std(0) + 1e-8, dtype=torch.float32, device=DEVICE)
         trainer.max_epochs, trainer.patience = tmax, pat
         trainer.opt = torch.optim.AdamW(model.parameters(), lr=lr, weight_decay=1e-4)
         trainer.max_epochs, trainer.patience = tmax, pat
@@ -285,10 +295,9 @@ def main():
     theta_probe = X[rows_te[probe], 0]
     ic_probe = X[rows_te[probe], 1:]
     fit_rows = split["fit"][2]
-    mu = Y[fit_rows].mean(0)
-    sd = Y[fit_rows].std(0) + 1e-8
     probe_out = {}
     for model_name in ("mlp", "gradnet", "energy"):
+        mu, sd = output_transform(model_name, Y[fit_rows])
         state = torch.load(ROOT / "exp" / f"ckpt_{model_name}_asym.pt",
                            weights_only=True)
         if model_name == "mlp":

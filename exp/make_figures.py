@@ -18,6 +18,7 @@ import exp.wmi_fix  # noqa: F401
 
 from exp.data import EXT, STANDARD, load_all, make_split  # noqa: E402
 from exp.models import MLP, StructuredEnergy, make_features  # noqa: E402
+from exp.run_benchmark import output_transform  # noqa: E402
 
 plt.rcParams.update({
     "font.size": 8, "axes.labelsize": 8, "axes.titlesize": 8,
@@ -53,8 +54,8 @@ def predictions_for(holdout):
         x = torch.tensor(Fte, device=DEVICE)
         dp = torch.tensor(dphite, device=DEVICE)
         # standardization must match training; recompute from train rows
-        mu = Y[split["fit"][2]].mean(0, keepdims=True)
-        sd = Y[split["fit"][2]].std(0, keepdims=True) + 1e-8
+        mu, sd = output_transform(name, Y[split["fit"][2]])
+        mu, sd = mu[None, :], sd[None, :]
         with torch.no_grad() if name == "mlp" else torch.enable_grad():
             if name == "mlp":
                 out = m(x).cpu().numpy()
