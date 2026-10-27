@@ -1,4 +1,4 @@
-"""Recompute torque labels from the discrete magnetic energy functional."""
+"""Recompute flux and torque after the rotating-PM geometry correction."""
 
 import argparse
 import json
@@ -17,17 +17,23 @@ import numpy as np
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT))
 import exp.wmi_fix  # noqa: F401
+import coil_fea
 from exp.energy_torque import functional_torque
 
-TAG = "functional_v2"
+TAG = "functional_v4_pmsmooth"
 
 
 def one_case(args):
     theta, ic, nr, nt = args
-    return functional_torque(
+    solved = coil_fea.solve_coils(
+        float(theta), np.asarray(ic, dtype=float),
+        nr=nr, nt=nt, pm_on=True, linear_iron=False, tol=2e-4,
+    )
+    torque = functional_torque(
         float(theta), np.asarray(ic, dtype=float),
         nr=nr, nt=nt, dtheta_deg=1.0,
     )
+    return np.concatenate([solved["psi"], [torque]])
 
 
 def update_dataset(path, pool, nr, nt):
@@ -38,13 +44,15 @@ def update_dataset(path, pool, nr, nt):
         return
     if "Y" in fields and fields["Y"].shape[1] == 13:
         theta, ic = fields["X"][:, 0], fields["X"][:, 1:]
-        torque = pool.map(
+        result = pool.map(
             one_case,
             [(float(t), row, nr, nt) for t, row in zip(theta, ic)],
             chunksize=4,
         )
+        result = np.asarray(result, dtype=np.float32)
         fields["Y"] = fields["Y"].copy()
-        fields["Y"][:, 12] = torque
+        fields["Y"][:, :12] = result[:, :12]
+        fields["Y"][:, 12] = result[:, 12]
     elif path.name == "coil_fine_check.npz":
         pool_data = {}
         for name in ("full", "ext", "random48"):
@@ -58,7 +66,9 @@ def update_dataset(path, pool, nr, nt):
         for src, row in zip(fields["src"], fields["row"]):
             d = pool_data[str(src)]
             cases.append((float(d["X"][row, 0]), d["X"][row, 1:], 80, 192))
-        fields["T"] = np.asarray(pool.map(one_case, cases, chunksize=1))
+        result = np.asarray(pool.map(one_case, cases, chunksize=1))
+        fields["psi"] = result[:, :12]
+        fields["T"] = result[:, 12]
     else:
         return
     fields["torque_model"] = np.array(TAG)
@@ -76,13 +86,16 @@ def main():
     paths = [
         ROOT / name for name in (
             "coil_dataset_full.npz",
+            "coil_zero.npz",
+            "coil_dataset_random.npz",
+            "coil_dataset_random8.npz",
+            "coil_dataset_random24.npz",
             "coil_dataset_random48.npz",
             "coil_dataset_random24z.npz",
             "coil_dataset_random3.npz",
             "coil_dataset_ext.npz",
             "coil_dataset_densebeta.npz",
             "coil_dataset_sync.npz",
-            "coil_zero.npz",
             "coil_fine_check.npz",
         )
     ]

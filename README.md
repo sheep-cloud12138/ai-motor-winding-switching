@@ -91,11 +91,12 @@ python exp/make_figures.py
 
 - The slot-local Lorentz torque did not satisfy the discrete energy relation.
   `exp/energy_torque.py` now differentiates the discrete magnetic co-energy;
-  the 40x96 check gives correlation 0.9994 and 4.0% residual for
+  the 40x96 check gives correlation 0.9987 and 5.9% residual for
   `dT/di = dpsi/dtheta`. The 6-slot replication gives correlation 0.9998 and
-  7.4% residual.
+  3.1% residual after the rotating-PM geometry correction.
 - Formal datasets and checkpoints are regenerated with the corrected
-  `functional_v2` labels. Potential-based models predict physical units and
+  `functional_v4_pmsmooth` labels. Potential-based models predict physical
+  units and
   apply output normalisation only inside the loss; this preserves
   `dT/di = dpsi/dtheta` after de-standardisation.
 - FEMM slot coordinates were aligned to the polar-grid slot sectors, and the

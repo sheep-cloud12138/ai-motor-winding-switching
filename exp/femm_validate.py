@@ -11,6 +11,7 @@ Reference: coil_linear_reciprocity.json, coil_zero.npz, coil_fea.solve_coils.
 Radial magnetisation approximated by 72 sector blocks around the full ring.
 """
 
+import argparse
 import json
 import sys
 from pathlib import Path
@@ -197,9 +198,11 @@ def build_geometry(f, theta_deg, pm_on, linear_iron):
         rm = (pm_r1 + pm_r2) / 2
         for s in range(90):
             center = th + (s + 0.5) * np.pi / 45
+            phase = (center - th) % (2 * np.pi / N_POLE)
+            in_arc = abs(phase - np.pi / N_POLE) < np.pi / N_POLE * 0.80
             level = int(round(10 * np.tanh(
                 np.sin(PPAIR * (center - th)) / 0.12
-            )))
+            ))) if in_arc else 0
             mat = "Air" if level == 0 else f"PM{level:+d}"
             label(rm * np.cos(center), rm * np.sin(center), mat,
                   magdir=float(np.degrees(center) % 360), group=1)
@@ -326,6 +329,9 @@ def validate_tap50(f):
 
 
 def main():
+    ap = argparse.ArgumentParser()
+    ap.add_argument("--skip-tap50", action="store_true")
+    args = ap.parse_args()
     f = Femm()
     res = {}
 
@@ -340,8 +346,13 @@ def main():
         L[:, k] = solve_psi(f, f'L{k}')
         f.mi_close()
         print("  coil %d diag %.4f" % (k, L[k, k]), flush=True)
-    ref = json.loads((ROOT / "coil_linear_reciprocity.json").read_text())
-    L0 = np.array(ref["L"])
+    from coil_fea import solve_coils
+    L0 = np.zeros((12, 12))
+    for k in range(12):
+        ic = e.copy(); ic[k] = 1.0
+        L0[:, k] = solve_coils(
+            0.0, ic, nr=40, nt=96, pm_on=False, linear_iron=True,
+        )["psi"]
     res["L_relnorm_diff"] = float(np.linalg.norm(L - L0)
                                   / np.linalg.norm(L0))
     alpha = float(np.sum(L * L0) / np.sum(L0 * L0))
@@ -356,7 +367,6 @@ def main():
 
     # Separate discretisation error from the remaining absolute convention
     # scale by repeating the reference solve on the fine calibration mesh.
-    from coil_fea import solve_coils
     L_fine = np.zeros((12, 12))
     for k in range(12):
         ic = e.copy(); ic[k] = 1.0
@@ -384,8 +394,13 @@ def main():
         P[j] = solve_psi(f, f'pm{j}')
         f.mi_close()
         print("  theta %d psi0 %.4f" % (t, P[j, 0]), flush=True)
-    z = np.load(ROOT / "coil_zero.npz")
-    P0 = z["Y"][:, :12]
+    P0 = np.asarray([
+        solve_coils(
+            float(theta), np.zeros(12), nr=40, nt=96, pm_on=True,
+            linear_iron=False,
+        )["psi"]
+        for theta in ths
+    ])
     res["PM_psi_reldiff_mean"] = float(
         np.mean(np.abs(P - P0)) / np.mean(np.abs(P0)))
     tt = np.deg2rad(ths)
@@ -398,6 +413,8 @@ def main():
                        - P0 / np.linalg.norm(P0)))
     res["PM_fund_relerr_mean"] = float(np.mean(np.abs(f1 - f0) / f0))
     res["PM_fund_relerr_max"] = float(np.max(np.abs(f1 - f0) / f0))
+    res["PM_psi_femm"] = P.tolist()
+    res["PM_psi_ref"] = P0.tolist()
 
     # ---- V3: one nonlinear saturated case ----
     print("V3: nonlinear case (4S at 60 A, theta=30)", flush=True)
@@ -430,8 +447,9 @@ def main():
     res["NL_T_reldiff"] = float(abs(T_w - T_o) / max(abs(T_o), 1e-12))
 
     # ---- V4: zero-shot tap50 along a synchronous-current trajectory ----
-    print("V4: zero-shot tap50 synchronous trajectory", flush=True)
-    res.update(validate_tap50(f))
+    if not args.skip_tap50:
+        print("V4: zero-shot tap50 synchronous trajectory", flush=True)
+        res.update(validate_tap50(f))
 
     with open(ROOT / "exp" / "results_femm.json", "w") as fp:
         json.dump(res, fp, indent=1)

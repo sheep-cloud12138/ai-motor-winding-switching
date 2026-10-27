@@ -4,6 +4,9 @@
 All models map (theta, i_c) -> (psi_c, T). Feature layout:
     x = [ i_c / 60  (12),  phi(theta) (7) ]
 with phi = [1, sin2t, cos2t, sin4t, cos4t, sin6t, cos6t], t = theta in rad.
+Potential-based models interpret x_i as i/60 A and multiply the
+co-energy-angle derivative by 60 A, so predictions and the Maxwell relation
+remain in physical units.
 
 Models
 ------

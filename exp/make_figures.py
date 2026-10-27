@@ -248,6 +248,47 @@ def fig_drive():
     plt.close(fig)
 
 
+def fig_regimes():
+    rr = load_json("results_drive_regimes.json")
+    if not rr or not rr.get("points"):
+        return
+    cycles = rr["grid"]["cycles"]
+    fig, axes = plt.subplots(1, len(cycles), figsize=(7.1, 2.35),
+                             sharey=True, squeeze=False)
+    styles = {
+        "infeasible": ("x", "#777777", "no mode sequence"),
+        "reconfiguration_required": ("^", "#c44e52",
+                                     "reconfiguration required"),
+        "reconfiguration_saves": ("o", "#2e7ebc", "DP saves >= 1%"),
+        "fixed_sufficient": ("s", "#b8c7d9", "fixed connection sufficient"),
+    }
+    for ax, cycle in zip(axes[0], cycles):
+        pts = [(k, v) for k, v in rr["points"].items()
+               if k.split("/")[0] == cycle]
+        for status, (marker, color, label) in styles.items():
+            rows = [(k, v) for k, v in pts if v["status"] == status]
+            if not rows:
+                continue
+            x = [float(k.split("/g")[1]) for k, _ in rows]
+            y = [float(k.split("/V")[1].split("/")[0]) for k, _ in rows]
+            ax.scatter(x, y, marker=marker, s=28, color=color,
+                       edgecolor="white", linewidth=0.4, label=label)
+            if status == "reconfiguration_saves":
+                for xx, yy, (_, v) in zip(x, y, rows):
+                    ax.annotate(f"{v['dp_saving_pct']:.1f}", (xx, yy),
+                                xytext=(4, 3), textcoords="offset points",
+                                fontsize=5.5)
+        ax.set_title(cycle.replace("class", "WLTC class "))
+        ax.set_xlabel("Gear ratio")
+        ax.grid(alpha=0.25, lw=0.4)
+    axes[0, 0].set_ylabel("DC bus voltage (V)")
+    axes[0, -1].legend(frameon=False, fontsize=6, loc="center left",
+                       bbox_to_anchor=(1.01, 0.5))
+    fig.tight_layout()
+    fig.savefig(FIGS / "fig_regimes.pdf")
+    plt.close(fig)
+
+
 def fig_mesh():
     f = ROOT / "exp" / "coil_fine_check.npz"
     if not f.exists():
@@ -326,6 +367,8 @@ if __name__ == "__main__":
         fig_jacobian()
     if "all" in which or "drive" in which:
         fig_drive()
+    if "all" in which or "regimes" in which:
+        fig_regimes()
     if "all" in which or "mesh" in which:
         fig_mesh()
     if "all" in which or "benchmark" in which:

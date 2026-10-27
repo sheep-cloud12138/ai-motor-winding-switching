@@ -53,12 +53,12 @@ def build(nr, nt):
     )
     is_air |= slot_mask
     is_air |= (r2 < R_SHAFT)
-    in_mag = (r2 >= R_ROTOR - 0.004) & (r2 < R_ROTOR)
-    is_mag = in_mag & (
-        np.abs(np.mod(th2, 2 * np.pi / N_POLE) - np.pi / N_POLE) < np.pi / N_POLE * 0.80
-    )
-    is_air &= ~is_mag
-    is_iron = ~is_air & ~is_mag
+    radial_pm = (r_c >= R_ROTOR - 0.004) & (r_c < R_ROTOR)
+    in_pm_ring = np.broadcast_to(radial_pm[:, None], (nr, nt))
+    # The magnet pole arcs rotate with the rotor. The 20% inter-pole gaps
+    # are non-magnetic, not iron teeth.
+    is_air &= ~in_pm_ring
+    is_iron = ~is_air & ~in_pm_ring
 
     slot_index = np.round(th_c / (2 * np.pi / N_SLOT)).astype(int) % N_SLOT
     slot_id = -np.ones((nr, nt), dtype=int)
@@ -77,9 +77,30 @@ def build(nr, nt):
         "slot_mask": slot_mask,
         "slot_id": slot_id,
         "slot_area": slot_area,
-        "is_mag": is_mag,
+        "in_pm_ring": in_pm_ring,
         "is_iron": is_iron,
     }
+
+
+def magnetization(g, theta_deg, pm_on=True, edge_deg=0.0):
+    """Rotating 80%-arc radial PM source and its support mask."""
+    if not pm_on:
+        zero = np.zeros_like(g["in_pm_ring"], dtype=float)
+        return zero, zero.astype(bool)
+    phase = np.mod(g["th2"] - np.deg2rad(theta_deg), 2 * np.pi / N_POLE)
+    distance = np.abs(phase - np.pi / N_POLE)
+    half_arc = np.pi / N_POLE * 0.80
+    if edge_deg <= 0:
+        mask = g["in_pm_ring"] & (distance < half_arc)
+        weight = mask.astype(float)
+    else:
+        weight = 0.5 * (1.0 - np.tanh(
+            (distance - half_arc) / np.deg2rad(edge_deg)
+        ))
+        weight = np.where(g["in_pm_ring"], weight, 0.0)
+        mask = weight >= 0.5
+    pole = np.tanh(np.sin(PPAIR * (g["th2"] - np.deg2rad(theta_deg))) / 0.12)
+    return (1.2 / MU0) * pole * weight, mask
 
 
 def solve_coils(
@@ -92,6 +113,7 @@ def solve_coils(
     tol=2e-4,
     maxit=80,
     return_fields=False,
+    pm_edge_deg=3.0,
 ):
     g = build(nr, nt)
     r_c, th_c = g["r_c"], g["th_c"]
@@ -101,9 +123,9 @@ def solve_coils(
     th_r = np.deg2rad(theta_deg)
 
     # Permanent magnets: radial, rotated with rotor.
-    pole_sign = np.tanh(np.sin(PPAIR * (th2 - th_r)) / 0.12)
-    M_r = np.where(g["is_mag"], (1.2 / MU0 if pm_on else 0.0) * pole_sign, 0.0)
+    M_r, is_mag = magnetization(g, theta_deg, pm_on, pm_edge_deg)
     src_pm = -np.gradient(M_r, dth, axis=1) / r_c[:, None]
+    nonmagnetic = g["is_air"] | g["in_pm_ring"]
 
     # One independent current per slot.
     j_slot = np.asarray(coil_currents, dtype=float) * N_TURN / slot_area
@@ -169,7 +191,7 @@ def solve_coils(
             Bth = -np.gradient(Az, dr, axis=0)
             Bmag = np.hypot(Br, Bth)
             nu_new = 1.0 / (MU0 * mu_r_of_B(Bmag))
-            nu_new[g["is_air"] | g["is_mag"]] = 1.0 / MU0
+            nu_new[nonmagnetic] = 1.0 / MU0
             rel = np.linalg.norm(nu_new - nu) / max(np.linalg.norm(nu_new), 1e-30)
             nu = 0.7 * nu + 0.3 * nu_new
             if rel < tol and it > 20:
@@ -213,7 +235,9 @@ def solve_coils(
             J=J,
             slot_id=slot_id,
             is_iron=g["is_iron"],
-            is_mag=g["is_mag"],
+            is_mag=is_mag,
+            in_pm_ring=g["in_pm_ring"],
+            M_r=M_r,
         )
     return out
 

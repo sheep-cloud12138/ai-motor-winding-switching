@@ -365,16 +365,20 @@ All models share the input
 $x=[\ic/60,\;\phi(\theta)]\in\mathbb{R}^{19}$ with harmonic features
 $\phi=[1,\sin2\theta,\cos2\theta,\sin4\theta,\cos4\theta,\sin6\theta,
 \cos6\theta]$ (electrical harmonics of the 4-pole machine), and predict the
-13 outputs $(\psic,T)$, standardised by training statistics.
+13 physical outputs $(\psic,T)$.
 
 \subsection{Structured co-energy network (ours)}
 
-The co-energy head is a scalar field
+For potential-based models the network represents
+$\hat W'(\ic,\phi)=I_0\hat w(\boldsymbol{\xi},\phi)$,
+$\boldsymbol{\xi}=\ic/I_0$, with $I_0=60$\,A,
+so current normalisation does not change the physical torque or the Maxwell
+relation. The scalar head is
 \begin{equation}
-\hat{W}'(\ic,\phi)
-=\tfrac12\,\ic^{\!\top}\mathbf{L}(\phi)\,\ic
-+\boldsymbol{p}(\phi)^{\!\top}\ic
-+R_\theta(\ic,\phi),
+\hat{w}(\boldsymbol{\xi},\phi)
+=\tfrac12\,\boldsymbol{\xi}^{\!\top}\mathbf{L}(\phi)\,\boldsymbol{\xi}
++\boldsymbol{p}(\phi)^{\!\top}\boldsymbol{\xi}
++R_\theta(\boldsymbol{\xi},\phi),
 \label{eq:struct}
 \end{equation}
 with the three terms parameterised as follows.
@@ -402,12 +406,14 @@ residual inside a scalar potential.
 Flux and torque are obtained by automatic differentiation,
 \begin{equation}
 \hat{\psic}=\nabla_{\ic}\hat{W}',\qquad
-\hat{T}=\nabla_{\phi}\hat{W}'\cdot\frac{d\phi}{d\theta},
+\hat{T}=I_0\,\nabla_{\phi}\hat{w}\cdot\frac{d\phi}{d\theta},
 \label{eq:grads}
 \end{equation}
 so both outputs are exact gradients of one scalar. The training loss
-up-weights the single torque channel ($w_T=3$) to compensate for its $1/13$
-gradient share.
+normalises each output by its training standard deviation only inside the
+loss; potential-based predictions remain in physical units. It up-weights
+the single torque channel ($w_T=3$) to compensate for its $1/13$ gradient
+share.
 
 \begin{proposition}[Structural consistency]
 \label{prop:consistency}
@@ -465,9 +471,9 @@ The case-study machine is a 12-slot/4-pole surface-mounted PM machine,
 solved with an
 in-house 2-D nonlinear magnetostatic solver: Fr\"ohlich-type iron
 $\mu_r(B)$, radial PMs, one independent current per slot, coil flux linkage
-from the vector potential, and Lorentz torque on the slot conductors
-(cogging is zero for this symmetric geometry; reluctance-torque effects
-enter through the flux linkages). The training mesh is
+from the vector potential, and torque from the derivative of the discrete
+magnetic co-energy. The permanent-magnet annulus has rotating 80\,\% pole
+arcs; the inter-pole gaps are non-magnetic. The training mesh is
 $40\times96$ ($\approx$\,1.2\,s per nonlinear solve, 8-way parallel); an
 $80\times192$ re-solve of 64 probe points quantifies discretisation
 uncertainty (Table~\ref{tab:feacheck}). Machine parameters: 2 pole pairs
@@ -480,13 +486,18 @@ We deliberately use a research-grade solver: the claims of this paper
 concern relative model behaviour against a fixed reference, not absolute
 machine performance.
 
-To make the torque convention explicit, the solver integrates over the slot
-conductors:
+To make the torque convention explicit, let
 \begin{equation}
-T=L_{\mathrm{stack}}\int_{\mathcal S} r^2 J_zB_r\,\mathrm dr\,\mathrm d\theta.
+W'(\ic,\theta)
+=L_{\mathrm{stack}}\int_\Omega A_zJ_z\,\mathrm dS
+-L_{\mathrm{stack}}\int_\Omega
+\int_0^{B}\nu(b)b\,\mathrm db\,\mathrm dS .
 \end{equation}
-The stack length therefore enters both flux linkage and torque, which matters
-when the model is coupled to a drive-cycle simulation.
+Torque is evaluated by a $\pm1^\circ$ central difference of $W'$ at fixed
+currents, and the same treatment is used for the zero-current PM baseline.
+The stack length therefore enters both flux linkage and torque. The
+verification target is the discrete Maxwell relation
+$\partial T/\partial i_k=\partial\psi_k/\partial\theta$.
 
 \subsection{Datasets}
 
@@ -545,6 +556,9 @@ Check & Result & Interpretation \\
 Linear mutual-inductance reciprocity & $4.2\times10^{-6}$ & solver-level \\
 Nonlinear differential reciprocity (20\,A bias) & $6.4\times10^{-4}$ & solver-level \\
 Co-energy path independence (2 paths) & $0.62\,\%$ & solver-level \\
+Maxwell check, $12$-slot ($\partial T/\partial i$ vs.\ $\partial\psi/\partial\theta$)
+& $r=0.9987$, $5.9\,\%$ & solver-level \\
+Maxwell check, $6$-slot & $r=0.9998$, $3.1\,\%$ & solver-level \\
 Flux, $80\times192$ vs $40\times96$ & ratio $1.05\pm0.16$ & discretisation \\
 Torque, $80\times192$ vs $40\times96$ & median $13\,\%$ & discretisation \\
 \bottomrule
