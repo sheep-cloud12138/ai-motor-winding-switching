@@ -12,7 +12,7 @@ import coil_fea2
 from coil_fea2 import connection_currents, solve_coils
 from exp.energy_torque import functional_torque
 
-theta, dtheta, di = 30.0, 1.0, 0.5
+theta, dtheta, di = 30.0, 7.5, 0.5
 ip = 20.0 * np.array([
     np.cos(np.pi / 4),
     np.cos(np.pi / 4 - 2 * np.pi / 3),

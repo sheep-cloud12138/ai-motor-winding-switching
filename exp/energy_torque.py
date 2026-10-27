@@ -11,14 +11,13 @@ _PM_TORQUE_CACHE = {}
 
 
 def magnetic_functional(theta, current, pm_on=True, linear_iron=False,
-                        nr=80, nt=192, solver=None, pm_edge_deg=3.0):
+                        nr=80, nt=192, solver=None):
     """Return magnetic energy, source work and magnetic co-energy."""
     if solver is None:
         import coil_fea as solver
     result = solver.solve_coils(
         theta, current, nr=nr, nt=nt, pm_on=pm_on,
         linear_iron=linear_iron, tol=2e-4, return_fields=True,
-        pm_edge_deg=pm_edge_deg,
     )
     g = solver.build(nr, nt)
     src_pm = -np.gradient(
@@ -45,7 +44,7 @@ def magnetic_functional(theta, current, pm_on=True, linear_iron=False,
     return float(field), float(source_work), float(source_work - field)
 
 
-def functional_torque(theta, current, dtheta_deg=1.0, **kwargs):
+def functional_torque(theta, current, dtheta_deg=7.5, **kwargs):
     """Differentiate the discrete energy functional at fixed currents."""
     if kwargs.get("pm_on", True) and not np.any(current):
         return 0.0
@@ -59,7 +58,6 @@ def functional_torque(theta, current, dtheta_deg=1.0, **kwargs):
     key = (
         solver_name, kwargs.get("nr", 80), kwargs.get("nt", 192),
         float(theta), float(dtheta_deg), kwargs.get("linear_iron", False),
-        kwargs.get("pm_edge_deg", 3.0),
     )
     if key not in _PM_TORQUE_CACHE:
         zero = np.zeros_like(np.asarray(current, dtype=float))

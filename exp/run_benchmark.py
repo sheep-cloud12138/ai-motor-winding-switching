@@ -168,7 +168,7 @@ def physics_ridge(runner, split, holdout):
     return {"flux_nrmse": float(nrmse.mean()), "alpha": alpha}
 
 
-def maxwell_probe(model, theta, ic, mu, sd, di=0.5, dtheta_deg=1.0):
+def maxwell_probe(model, theta, ic, mu, sd, di=0.5, dtheta_deg=7.5):
     """Finite-difference check of dT/di = dpsi/dtheta in physical units."""
     theta = np.asarray(theta, float)
     ic = np.asarray(ic, float)
@@ -229,7 +229,7 @@ def main():
     meta = {"n_total": len(X),
             "counts": {k: int((K == k).sum()) for k in np.unique(K)},
             "device": DEVICE, "torque_sha256": torque_sha,
-            "torque_model": "functional_v4_pmsmooth"}
+            "torque_model": "functional_v5_pmrotor"}
     if out_path.exists() and not args.force:
         with open(out_path) as f:
             results = json.load(f)

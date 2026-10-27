@@ -82,7 +82,7 @@ def build(nr, nt):
     }
 
 
-def magnetization(g, theta_deg, pm_on=True, edge_deg=0.0):
+def magnetization(g, theta_deg, pm_on=True):
     """Rotating 80%-arc radial PM source and its support mask."""
     if not pm_on:
         zero = np.zeros_like(g["in_pm_ring"], dtype=float)
@@ -90,17 +90,9 @@ def magnetization(g, theta_deg, pm_on=True, edge_deg=0.0):
     phase = np.mod(g["th2"] - np.deg2rad(theta_deg), 2 * np.pi / N_POLE)
     distance = np.abs(phase - np.pi / N_POLE)
     half_arc = np.pi / N_POLE * 0.80
-    if edge_deg <= 0:
-        mask = g["in_pm_ring"] & (distance < half_arc)
-        weight = mask.astype(float)
-    else:
-        weight = 0.5 * (1.0 - np.tanh(
-            (distance - half_arc) / np.deg2rad(edge_deg)
-        ))
-        weight = np.where(g["in_pm_ring"], weight, 0.0)
-        mask = weight >= 0.5
-    pole = np.tanh(np.sin(PPAIR * (g["th2"] - np.deg2rad(theta_deg))) / 0.12)
-    return (1.2 / MU0) * pole * weight, mask
+    mask = g["in_pm_ring"] & (distance < half_arc)
+    pole = np.sign(np.sin(PPAIR * (g["th2"] - np.deg2rad(theta_deg))))
+    return np.where(mask, (1.2 / MU0) * pole, 0.0), mask
 
 
 def solve_coils(
@@ -113,7 +105,6 @@ def solve_coils(
     tol=2e-4,
     maxit=80,
     return_fields=False,
-    pm_edge_deg=3.0,
 ):
     g = build(nr, nt)
     r_c, th_c = g["r_c"], g["th_c"]
@@ -123,7 +114,7 @@ def solve_coils(
     th_r = np.deg2rad(theta_deg)
 
     # Permanent magnets: radial, rotated with rotor.
-    M_r, is_mag = magnetization(g, theta_deg, pm_on, pm_edge_deg)
+    M_r, is_mag = magnetization(g, theta_deg, pm_on)
     src_pm = -np.gradient(M_r, dth, axis=1) / r_c[:, None]
     nonmagnetic = g["is_air"] | g["in_pm_ring"]
 

@@ -20,7 +20,7 @@ import exp.wmi_fix  # noqa: F401
 import coil_fea
 from exp.energy_torque import functional_torque
 
-TAG = "functional_v4_pmsmooth"
+TAG = "functional_v5_pmrotor"
 
 
 def one_case(args):
@@ -31,7 +31,7 @@ def one_case(args):
     )
     torque = functional_torque(
         float(theta), np.asarray(ic, dtype=float),
-        nr=nr, nt=nt, dtheta_deg=1.0,
+        nr=nr, nt=nt, dtheta_deg=7.5,
     )
     return np.concatenate([solved["psi"], [torque]])
 

@@ -493,7 +493,7 @@ W'(\ic,\theta)
 -L_{\mathrm{stack}}\int_\Omega
 \int_0^{B}\nu(b)b\,\mathrm db\,\mathrm dS .
 \end{equation}
-Torque is evaluated by a $\pm1^\circ$ central difference of $W'$ at fixed
+Torque is evaluated by a $\pm7.5^\circ$ central difference of $W'$ at fixed
 currents, and the same treatment is used for the zero-current PM baseline.
 The stack length therefore enters both flux linkage and torque. The
 verification target is the discrete Maxwell relation
@@ -557,8 +557,8 @@ Linear mutual-inductance reciprocity & $4.2\times10^{-6}$ & solver-level \\
 Nonlinear differential reciprocity (20\,A bias) & $6.4\times10^{-4}$ & solver-level \\
 Co-energy path independence (2 paths) & $0.62\,\%$ & solver-level \\
 Maxwell check, $12$-slot ($\partial T/\partial i$ vs.\ $\partial\psi/\partial\theta$)
-& $r=0.9987$, $5.9\,\%$ & solver-level \\
-Maxwell check, $6$-slot & $r=0.9998$, $3.1\,\%$ & solver-level \\
+& $r=0.99998$, $2.4\,\%$ & solver-level \\
+Maxwell check, $6$-slot & $r=0.9998$, $2.3\,\%$ & solver-level \\
 Flux, $80\times192$ vs $40\times96$ & ratio $1.05\pm0.16$ & discretisation \\
 Torque, $80\times192$ vs $40\times96$ & median $13\,\%$ & discretisation \\
 \bottomrule
@@ -571,10 +571,12 @@ and the same BH points. The linear inductance matrix has
 correlation $0.999996$ with a $120\times288$ in-house reference; after one
 global factor of $1.13$, its shape residual is $2.1\,\%$. The remaining
 global factor is not calibrated away: it indicates that the two solvers do
-not yet share an identical absolute normalisation. The PM-only waveform has
-correlation $0.978$ and a fundamental-amplitude error of $41.8\,\%$, while a
-saturated 4S case reaches flux correlation $0.987$ and a $1.2\,\%$ torque
-difference. These discrepancies preclude claims of absolute accuracy. The
+not yet share an identical absolute normalisation. After correcting the
+rotating 80\,\% PM arc, the PM-only waveform has correlation $0.9993$ and a
+fundamental-amplitude error of $7.9\,\%$ on average ($8.4\,\%$ maximum),
+while a saturated 4S case reaches flux correlation $0.9992$ with a mean
+pointwise flux difference of $20.2\,\%$ and a $7.5\,\%$ torque difference.
+The absolute flux scale still precludes claims of pointwise accuracy. The
 cross-check also tests zero-shot screening. We retrained with the
 zero-support ``withz'' pool and evaluated 36 independent synchronous points.
 The same zero-support MLP is used for 4P, tap50 and the never-trained 3S1P
@@ -590,16 +592,16 @@ a substitute for FE verification of a design decision.
 \centering\small
 \caption{Independent FEMM 4.2 cross-check. The inductance discrepancy is
 computed after one global scale factor; nonlinear flux is pointwise and
-torque uses the summed slot-Lorentz integral.}
+torque uses the weighted-stress integral.}
 \label{tab:femmcheck}
 \begin{tabular}{lcc}
 \toprule
 Comparison & Correlation & Discrepancy \\
 \midrule
 Linear inductance, fine reference & $0.999996$ & $2.1\,\%$ after $1.13\times$ \\
-PM-only flux waveform & $0.978$ & $41.8\,\%$ fundamental \\
-Nonlinear 4S flux (60\,A) & $0.987$ & $48.1\,\%$ pointwise \\
-Nonlinear 4S torque (60\,A) & --- & $1.2\,\%$ \\
+PM-only flux waveform & $0.9993$ & $7.9\,\%$ fundamental (max $8.4\,\%$) \\
+Nonlinear 4S flux (60\,A) & $0.9992$ & $20.2\,\%$ mean pointwise \\
+Nonlinear 4S torque (60\,A) & --- & $7.5\,\%$ \\
 \bottomrule
 \end{tabular}
 \end{table}

@@ -87,15 +87,15 @@ python exp/make_figures.py
   `exp/drive_cycle.py:connection_matrix` - no retraining needed, which is
   rather the point of the method.
 
-## Correction log (2026-10-27)
+## Correction log (2026-10-28)
 
 - The slot-local Lorentz torque did not satisfy the discrete energy relation.
   `exp/energy_torque.py` now differentiates the discrete magnetic co-energy;
-  the 40x96 check gives correlation 0.9987 and 5.9% residual for
+  the 40x96 check gives correlation 0.99998 and 2.4% residual for
   `dT/di = dpsi/dtheta`. The 6-slot replication gives correlation 0.9998 and
-  3.1% residual after the rotating-PM geometry correction.
+  2.3% residual after the rotating-PM geometry correction.
 - Formal datasets and checkpoints are regenerated with the corrected
-  `functional_v4_pmsmooth` labels. Potential-based models predict physical
+  `functional_v5_pmrotor` labels. Potential-based models predict physical
   units and
   apply output normalisation only inside the loss; this preserves
   `dT/di = dpsi/dtheta` after de-standardisation.
@@ -110,9 +110,10 @@ python exp/make_figures.py
   when using the historical torque labels, but this must be rerun after the
   torque/flux consistency repair.
 - Independent FEMM checks now use the same turns, stack length, BH curve,
-  slot positions and full-ring radial PM waveform. The 12-slot fine-mesh
-  inductance shape agrees to `2.1%` after a remaining `1.13x` global scale;
-  PM fundamental amplitudes still differ by `41.8%`.
+  slot positions and rotating 80%-arc PM geometry. The 12-slot fine-mesh
+  inductance shape agrees to `2.1%` after a remaining `1.13x` global scale.
+  PM fundamental amplitudes differ by `7.9%` on average (`8.4%` maximum),
+  and the nonlinear 4S torque differs by `7.5%` at the checked point.
 - Over 36 synchronous points, one withz MLP transfers torque to unseen 3S1P
   (`r=0.79`, `R2=0.58`, MAE `0.104 N m`). Correct-axis tap50 tests reach
   `r=0.66-0.73`, but raw `R2` remains negative to `0.26`.
