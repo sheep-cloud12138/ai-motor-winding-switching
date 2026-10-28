@@ -10,13 +10,24 @@ ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT))
 
 from exp.models import make_features, theta_feature_grad  # noqa: E402
+from exp.energy_torque import TORQUE_MODEL  # noqa: E402
 
 STANDARD = ("4S", "2S2P", "delta", "asym")
 EXT = ("4P", "tap50", "openB")
 
 
-def _load(name):
+def load_checked(name):
     d = np.load(ROOT / name, allow_pickle=True)
+    if str(d["torque_model"]) != TORQUE_MODEL:
+        raise ValueError(
+            f"{name}: expected torque_model={TORQUE_MODEL}, "
+            f"got {d['torque_model']}"
+        )
+    return d
+
+
+def _load(name):
+    d = load_checked(name)
     if "kind" in d.files:
         K = np.array([str(k) for k in d["kind"]])
     else:

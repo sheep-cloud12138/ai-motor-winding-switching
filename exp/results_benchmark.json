@@ -937,11 +937,11 @@
    "fit_seconds": 206.0
   },
   "perconn4S": {
-   "flux_nrmse": 0.8661985397338867,
-   "flux_r2": 0.21700866520404816,
-   "flux_nrmse_worst_coil": 1.2090727090835571,
-   "torque_nrmse": 0.7238866090774536,
-   "torque_r2": 0.47598814964294434
+   "flux_nrmse": 0.8659694790840149,
+   "flux_r2": 0.2172594517469406,
+   "flux_nrmse_worst_coil": 1.2085599899291992,
+   "torque_nrmse": 0.7191187143325806,
+   "torque_r2": 0.4828682541847229
   },
   "ridge": {
    "flux_nrmse": 0.5453562140464783,
@@ -1886,9 +1886,9 @@
  },
  "jacobian_probe_asym": {
   "mlp": {
-   "asym_mean": 0.21095249893919962,
-   "asym_max": 0.31029186654727076,
-   "min_eig_mean": 0.3677116093572727,
+   "asym_mean": 0.16800752035943467,
+   "asym_max": 0.30220085562125965,
+   "min_eig_mean": 0.021033072196320574,
    "torque_flux": {
     "correlation": 0.387279410246238,
     "relative_norm_residual": 2.182278949862029

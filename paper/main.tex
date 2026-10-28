@@ -37,31 +37,32 @@ surrogates for reconfigurable electric machines}
 
 \begin{abstract}
 Reconfigurable windings (series--parallel, star--delta, taps, open-end)
-extend the speed range and part-load efficiency of electric machines, yet
-every candidate connection is still evaluated with its own dedicated
-finite-element (FE) model or flux-map table, leaving the combinatorial
-connection space unexplorable at design time. We treat a winding
+extend machine speed and efficiency, yet each candidate connection is
+still evaluated with its own finite-element (FE) model or flux-map table.
+We treat a winding
 connection as linear constraints on coil currents, $\ic=\Cmat\ip$, and
 train one connection-invariant surrogate on coil-level FE data. The
 zero-shot problem is characterised by current-space coverage; its measured
-rank correlation with flux error is $0.82$ over seven hold-outs.
-A structured co-energy network preserves reciprocity and the torque--flux
-Maxwell relation with a local residual of $0.67\,\%$, versus $218\,\%$ for
-a black-box MLP. On a seven-connection benchmark, the choice of sampled
-current patterns dominates sample count: 24 phase-random groups reduce an
+rank correlation with flux error is $0.82$ over seven hold-outs. A
+structured co-energy network preserves reciprocity and the torque--flux
+relation with a local residual of $0.67\,\%$, versus $218\,\%$ for an MLP.
+On a seven-connection benchmark, sampling kind dominates count: 24
+phase-random groups reduce an
 open-phase hold-out from flux nRMSE $1.25$ to $0.088$ at one quarter of the
-cost of 48 magnitude-random groups, while magnitude coverage reduces a
+cost of magnitude coverage, while magnitude coverage reduces a
 half-winding tap from $1.60$ to $0.31$. Both trends replicate on a
 6-slot/4-pole machine. An independent FEMM check gives $8.0\,\%$ mean PM
 fundamental error, $7.5\,\%$ saturated-torque error, and end-to-end torque
-$R^2=0.89$--$0.92$ for three unseen synchronous connections. In a
+$R^2=0.89$--$0.92$ for three unseen synchronous connections. The
+64-point coarse/fine torque check remains weak ($R^2=0.377$), so absolute
+torque labels and drive-cycle energies remain surrogate-dependent. In a
 540-kg single-motor WLTC class-1 case, every fixed connection completes the
 cycle; DP energy is $0.006\,\%$ higher than fixed 4S. A 105-point bus-voltage and
 gear-ratio sweep finds no case in which reconfiguration supplies
-feasibility absent from a fixed connection; 24 of 86 feasible cases yield
-a $1\,\%$ or larger energy gain (maximum $2.77\,\%$). Reconfiguration is
-therefore a modest, regime-dependent design option rather than a universal
-efficiency strategy.
+feasibility absent from a fixed connection; the direct-MLP screen predicts a
+$1\,\%$ or larger gain in 24 of 86 feasible cases (maximum $2.77\,\%$).
+Reconfiguration is therefore a modest, regime-dependent design option,
+not a universal efficiency strategy.
 \end{abstract}
 
 \begin{keyword}
@@ -174,7 +175,7 @@ Fourier-parameterised, PSD-seeded inductance matrix, harmonic PM flux and a
 zero-initialised residual MLP. Reciprocity, energy conservation and
 torque--flux consistency hold by construction to autograd precision
 ($1.1\times10^{-4}$ reciprocity residual and $0.67\,\%$ mixed-partial
-residual), versus $0.211$ and $218\,\%$ for a same-size MLP. The structure
+residual), versus $0.168$ and $218\,\%$ for a same-size MLP. The structure
 is most accurate on the hard unbalanced, tap and rotor-only hold-outs,
 while the MLP retains a small advantage on in-support flux. We also
 report an instructive negative result: a monotone (PSD-Jacobian,
@@ -200,7 +201,8 @@ point under voltage envelopes, current limits, minimum dwell and changeover
 energy. In the final single-motor calibration, every fixed connection
 completes the cycle and DP energy is $0.006\,\%$ higher. A 105-point
 voltage/gear sweep finds no feasibility window created by reconfiguration,
-but 24 feasible designs show $1$--$2.77\,\%$ energy gains.
+but the surrogate predicts $1$--$2.77\,\%$ energy gains in 24 feasible
+designs.
 The same surrogate transfers torque to unseen 3S1P, 4P and tap50
 synchronous trajectories with end-to-end FEMM $R^2=0.89$--$0.92$ over 36
 points each. The drive example therefore exposes a genuine negative result:
@@ -483,6 +485,13 @@ W'(\ic,\theta)
 \end{equation}
 Torque is evaluated by a $\pm7.5^\circ$ central difference of $W'$ at fixed
 currents, and the same treatment is used for the zero-current PM baseline.
+The finite angle is required because the fixed polar grid is not conformal
+to the rotating PM arcs; it is a production-grid estimator, not a
+mesh-converged local torque.
+The reported torque is the current-induced component
+$T_i=\partial_\theta(W'-W'_{\mathrm{PM}})$: its zero-current baseline is
+subtracted. The bare coarse-grid PM derivative contains a detent artifact
+as large as $6.3$\,N\,m at some angles; it is not used as a training label.
 The stack length therefore enters both flux linkage and torque. The
 verification target is the discrete Maxwell relation
 $\partial T/\partial i_k=\partial\psi_k/\partial\theta$.
@@ -546,8 +555,10 @@ Linear mutual-inductance reciprocity & $3.0\times10^{-6}$ & solver-level \\
 Nonlinear differential reciprocity (20\,A bias) & $3.2\times10^{-4}$ & solver-level \\
 Co-energy path independence (2 paths) & $2.2\,\%$ & solver-level \\
 Maxwell check, $12$-slot ($\partial T/\partial i$ vs.\ $\partial\psi/\partial\theta$)
-& $r=0.99998$, $2.4\,\%$ & solver-level \\
+& $r=0.99998$, $2.4\,\%$ & coarse grid \\
 Maxwell check, $6$-slot & $r=0.9998$, $2.3\,\%$ & solver-level \\
+Random currents, 12 angles & $r\ge0.9995$, max $3.3\,\%$ & production stencil \\
+Same Maxwell check, $80\times192$ & $r=0.991$, $15.2\,\%$ & not converged \\
 Flux, $80\times192$ vs $40\times96$ & $r=0.997$, ratio $1.06$ & discretisation \\
 Torque, $80\times192$ vs $40\times96$ & $r=0.751$, $R^2=0.377$ & discretisation \\
 \bottomrule
@@ -567,7 +578,9 @@ fundamental-amplitude error of $7.9\,\%$ on average ($8.4\,\%$ maximum),
 while a saturated 4S case reaches flux correlation $0.9992$ with a mean
 pointwise flux difference of $20.2\,\%$ and a $7.5\,\%$ torque difference.
 The absolute flux scale still precludes claims of pointwise accuracy. The
-cross-check also tests zero-shot screening. We retrained with the
+cross-check also tests zero-shot screening. It samples
+$\theta\in\{0,45,90,135\}^\circ$, so it validates trend transfer rather
+than all rotor positions. We retrained with the
 zero-support ``withz'' pool and evaluated 36 independent synchronous points.
 The zero-support MLP is used for 4P and tap50; the drive-cycle MLP, which
 has not seen 3S1P, is used for that connection. Proxy-versus-reference and
@@ -710,7 +723,7 @@ Tier & Hold-out & Direct MLP & Co-energy (ours) & Monotone VF \\
 3 & openB (EXT)    & 1.172/\textbf{0.943} & \textbf{0.302}/0.834 & 0.334/0.599 \\
 \midrule
 \multicolumn{2}{l}{asym, no random patterns} & 0.866/0.493 & 0.803/0.500 & 7.89/$-2.39$ \\
-\multicolumn{2}{l}{asym, per-connection MLP (4S only)} & 0.866/0.493 & --- & --- \\
+\multicolumn{2}{l}{asym, per-connection MLP (4S only)} & 0.866/0.483 & --- & --- \\
 \multicolumn{2}{l}{asym, linear ridge (reciprocity-structured)} & \multicolumn{3}{c}{0.545} \\
 \bottomrule
 \multicolumn{5}{l}{\footnotesize $^\dagger$with zero-support patterns included
@@ -788,7 +801,7 @@ Table~\ref{tab:jacobian} and Fig.~\ref{fig:jacobian} evaluate the flux Jacobian
 $\partial\hat{\psic}/\partial\ic$ by central differences on 24 held-out
 operating points. The co-energy network violates reciprocity by
 $1.1\times10^{-4}$---over three orders of magnitude below the direct MLP's
-$0.211$---and keeps a positive-definite symmetric part (min eigenvalue
+$0.168$---and keeps a positive-definite symmetric part (min eigenvalue
 $0.028>0$). A local mixed-partial probe gives a torque-flux residual of
 $0.67\,\%$ for the co-energy network versus $218\,\%$ for the MLP. The
 monotone vector field is symmetric by construction ($5.2\times10^{-5}$) but
@@ -805,7 +818,7 @@ residual on held-out asym points.}
 Model & $\|J-J^{\!\top}\|_F/\|J\|_F$ & min eig$(\frac{J+J^\top}{2})$ &
 Torque--flux residual \\
 \midrule
-Direct MLP & $0.211$ (max $0.310$) & $0.368$ & $218\,\%$ \\
+Direct MLP & $0.168$ (max $0.302$) & $0.021$ & $218\,\%$ \\
 Co-energy (ours) & $1.1\times10^{-4}$ (max $3.5\times10^{-4}$) & $0.028$ & $0.67\,\%$ \\
 Monotone VF & $5.2\times10^{-5}$ & $0.015$ & $1.4\,\%$ \\
 \bottomrule
@@ -950,7 +963,8 @@ connection here), \textbf{fixed-4P} (the conservative single-inverter baseline),
 \caption{Drive-cycle case study. Top: WLTC class-1 speed trace and the DP
 mode schedule (colour band). Middle-left: fixed-connection and DP cycle
 energy; all listed strategies complete the cycle. Middle-right:
-loss decomposition for the completed trajectories. Bottom:
+complete loss decomposition, including the $250$\,W auxiliary load, for the
+completed trajectories. Bottom:
 sensitivity of cycle energy to the changeover energy, swept from 5\,mJ to
 100\,J.}
 \label{fig:drive}
@@ -964,8 +978,9 @@ Fixed 4S is the best fixed connection at $406.56$\,Wh
 $412.25$, $410.77$ and $422.63$\,Wh. DP uses $406.58$\,Wh, which is
 $0.006\,\%$ \emph{higher}. Its loss decomposition closes exactly:
 copper increases by $0.32$\,Wh, iron falls by $3.70$\,Wh, inverter loss
-falls by $12.66$\,Wh, and mechanical work is unchanged. The changes nearly
-cancel; there is no topology-driven efficiency improvement.
+falls by $12.66$\,Wh, mechanical work is unchanged, and auxiliary energy is
+$111.88$\,Wh in every strategy. The propulsion-loss changes nearly cancel;
+there is no topology-driven efficiency improvement.
 
 \textbf{Scheduling buys switching-burden reduction, not energy.} The
 pointwise greedy sequence uses $406.489$\,Wh with 19 switches; DP uses
@@ -1046,20 +1061,22 @@ tap25$^\ast$ & (455.3) & 215.0 \\
 cases in which DP saves at least $1\,\%$; squares are feasible fixed
 connections with negligible gain; crosses are infeasible even with all
 four modes. No feasibility-only case occurs; the circles mark the modest
-energy-benefit regime.}
+energy-benefit regime predicted by the MLP surrogate.}
 \label{fig:regimes}
 \end{figure}
 
 \textbf{No reconfiguration-required window in the tested design grid.}
-Fig.~\ref{fig:regimes} evaluates 105 combinations of three cycles, seven bus voltages
+Fig.~\ref{fig:regimes} evaluates, with the direct-MLP surrogate only,
+105 combinations of three cycles, seven bus voltages
 (180--700\,V) and five gear ratios (8--20). Sixty-two have at least one
-fully feasible fixed connection without a $1\,\%$ gain, 24 gain at least
-$1\,\%$ from DP, and 19 are infeasible for both fixed and reconfigurable
+fully feasible fixed connection without a $1\,\%$ surrogate-predicted
+gain, 24 gain at least $1\,\%$ from DP, and 19 are infeasible for both fixed and reconfigurable
 operation. No point is completed by DP while every fixed connection fails.
 Among the 86 feasible cases, the median DP gain is $0.479\,\%$ and the
 maximum is $2.77\,\%$. The gains concentrate in low-voltage or high-speed
 class-2/3 operating regions; the nominal class-1 design remains in the
-negligible-gain group.
+negligible-gain group. The co-energy model was not swept over this grid, so
+the design map is a screening result rather than a cross-model prediction.
 
 \begin{table}[t]
 \centering\small
@@ -1102,7 +1119,9 @@ asym, delta and tap50 flux hold-outs and remains competitive on flux for
 tier-1 connections; the MLP retains a small in-support flux advantage. The
 torque channel no longer collapses after correcting the physical current
 scale: $R^2\ge0.981$ for the standard hold-outs and $0.834$ for the
-open-phase case, while the local torque--flux residual is $0.67\,\%$. Thus
+open-phase case, while the model's local torque--flux residual is
+$0.67\,\%$. The latter is an architectural property, not evidence that the
+coarse FEA torque labels are mesh-converged. Thus
 the same scalar potential now provides both accuracy and consistency for
 the downstream optimisation problem, rather than trading one for the
 other.
@@ -1110,13 +1129,16 @@ other.
 \textbf{Limitations.} (i)~2-D magnetostatics with a research-grade solver.
 The 64-point coarse/fine check gives flux correlation $0.997$ and a
 $6\,\%$ norm-ratio difference, but torque correlation $0.751$
-($R^2=0.377$). Pointwise torque labels remain mesh-sensitive even though
-the aggregate cycle and external checks are consistent. The FEMM check
+($R^2=0.377$); the same Maxwell stencil on the fine mesh has a $15.2\,\%$
+residual. Pointwise torque labels therefore remain mesh-sensitive even
+though aggregate and external trend checks are consistent. The FEMM check
 shows a $1.13\times$ inductance normalisation factor, $2.1\,\%$
 fine-mesh shape residual, $7.9\,\%$ PM fundamental error, $20.2\,\%$ mean
 nonlinear flux difference, and $7.5\,\%$ torque difference at the tested
 point. These limit absolute flux claims, while the 36-point end-to-end
-torque tests are stable ($R^2\approx0.9$). (ii)~End effects, temperature, mechanical and changeover
+torque trends are stable ($R^2\approx0.9$). The FEMM mesh itself is fixed
+at a 1-mm element size without an independent mesh-convergence study.
+(ii)~End effects, temperature, mechanical and changeover
 transients are excluded; the changeover circuit enters through a per-event
 energy, swept over four orders of magnitude ($5$\,mJ--$100$\,J).
 (iii)~The drive-cycle study is a

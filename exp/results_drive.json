@@ -27,7 +27,12 @@
   "K_H": 0.026,
   "K_C": 0.00012,
   "cycle": "WLTC class 1",
-  "n_steps": 1611
+  "n_steps": 1611,
+  "V_CE0": 0.7,
+  "R_CE": 0.002,
+  "E_SW_DEV": 0.001,
+  "model": "ckpt_mlp_drive.pt",
+  "torque_model": "functional_v5_pmrotor"
  },
  "distance_km": 11.427666666666665,
  "fixed4P": {
@@ -38,7 +43,8 @@
    "fe": 7.489417547783138,
    "inv": 18.99724071160328,
    "mech": 283.82143503136433,
-   "sw": 0.0
+   "sw": 0.0,
+   "aux": 111.875
   },
   "unmet_Nm_s": 0.0,
   "unmet_fraction": 0.0,
@@ -63,7 +69,8 @@
    "fe": 4.0591791721533435,
    "inv": 7.041661287973358,
    "mech": 283.85316722198155,
-   "sw": 5.555555555555556e-05
+   "sw": 5.555555555555556e-05,
+   "aux": 111.875
   },
   "unmet_Nm_s": 0.0,
   "unmet_fraction": 0.0,
@@ -89,7 +96,8 @@
    "fe": 3.7126907388254353,
    "inv": 6.315405061540293,
    "mech": 283.82143503136433,
-   "sw": 0.00013194444444444446
+   "sw": 0.00013194444444444446,
+   "aux": 111.875
   },
   "unmet_Nm_s": 0.0,
   "unmet_fraction": 0.0,
@@ -114,7 +122,8 @@
    "fe": 3.7887039430854115,
    "inv": 6.3358808428488445,
    "mech": 283.82143503136433,
-   "sw": 8.333333333333334e-05
+   "sw": 8.333333333333334e-05,
+   "aux": 111.875
   },
   "unmet_Nm_s": 0.0,
   "unmet_fraction": 0.0,
@@ -178,5 +187,21 @@
   "best_fixed_Wh": 406.56423498577084,
   "fixed4P_Wh": 422.45661515859337,
   "saving_vs_best_fixed_pct": -0.022307564382972878
+ },
+ "provenance": {
+  "model": "ckpt_mlp_drive.pt",
+  "torque_model": "functional_v5_pmrotor",
+  "sha256": {
+   "exp/ckpt_mlp_drive.pt": "decc4bbc280e9bfac20d486ca6bc4cadee0dfbab6a73b72b5c0addb518d2d028",
+   "coil_dataset_full.npz": "89218af47afaeeba980eb9c23b677908f634f4fb950d8cd12875d7f9880ced80",
+   "coil_dataset_densebeta.npz": "e718d493c21e61eb70c7b18f1c7e17a3c00c9951f899ec6c678763d09e17f321",
+   "coil_dataset_sync.npz": "147d0d40392191b8537903fbf8d02470f7a81f31e10d3eab87ae17dc706bdc51",
+   "coil_dataset_random48.npz": "930f6e917867a5bf26d41e33ef1120fb85439a2863fc8fb04b283a22c8699e3b",
+   "coil_dataset_random3.npz": "0895cba15380bdec6ea4925ce2377ca762ff5d295633590d02d250f6b2d8bcfc",
+   "coil_zero.npz": "675d62fe1edd0d72078fd1e61239b58e58cf0a8480a6cb4a009ec8dea7ffdb39"
+  },
+  "V_CE0": 0.7,
+  "R_CE": 0.002,
+  "E_SW_DEV": 0.001
  }
 }

@@ -29,6 +29,7 @@ import torch
 
 from coil_fea import L_STACK, N_TURN  # noqa: E402
 from exp.connections_ext import connection_currents_ext  # noqa: E402
+from exp.energy_torque import TORQUE_MODEL  # noqa: E402
 from exp.models import MLP, StructuredEnergy, make_features  # noqa: E402
 
 DEVICE = "cuda" if torch.cuda.is_available() else "cpu"
@@ -50,7 +51,7 @@ V_CE0, R_CE = 0.7, 0.002                         # 400-V SiC conduction model
 E_SW_DEV = 1.0e-3                                # J per device period
 F_SW = 10e3
 E_CHANGEOVER = 25e-3                             # J per winding reconfiguration
-# Vehicle (light EV with four identical wheel motors)
+# Vehicle (light EV with one wheel motor)
 M_VEH, CDA, CRR, R_WHEEL, GEAR, ETA_G = 540.0, 0.50, 0.008, 0.25, 13.0, 0.96
 N_MOTORS = 1
 P_AUX = 250.0
@@ -316,7 +317,8 @@ def simulate(ev, mode_seq, Tm_dem, omega_m, e_sw=E_CHANGEOVER):
     mech_neg = 0.0
     peak_unmet = 0.0
     sw = 0
-    br = {"cu": 0.0, "fe": 0.0, "inv": 0.0, "mech": 0.0, "sw": 0.0}
+    br = {"cu": 0.0, "fe": 0.0, "inv": 0.0, "mech": 0.0, "sw": 0.0,
+          "aux": 0.0}
     unmet = 0.0
     prev = None
     for t in range(len(Tm_dem)):
@@ -347,6 +349,7 @@ def simulate(ev, mode_seq, Tm_dem, omega_m, e_sw=E_CHANGEOVER):
         prev = m
     for k in ("cu", "fe", "inv", "mech"):
         br[k] *= N_MOTORS
+    br["aux"] = aux_energy
     br["sw"] = sw * e_sw
     E = N_MOTORS * machine_energy + aux_energy + br["sw"]
     loss_energy = sum(br[k] for k in ("cu", "fe", "inv"))
@@ -382,10 +385,10 @@ def dp_schedule(ev, Tm_dem, omega_m, e_sw=E_CHANGEOVER, dwell=10):
             elif abs(Tm_dem[t]) < 1e-3:
                 cost[t, j] = P_AUX
     J = np.full((nm, S), INF)
-    # start: "ready to switch" (s = dwell) in every mode
+    # The first mode is free to choose, but it must still dwell for D steps.
     for j in range(nm):
         if np.isfinite(cost[0, j]):
-            J[j, dwell] = cost[0, j]
+            J[j, 0] = cost[0, j]
     back = np.full((N, nm, S), -1, dtype=np.int32)
     for t in range(1, N):
         Jn = np.full((nm, S), INF)
@@ -447,6 +450,8 @@ def main():
         "N_MOTORS": N_MOTORS,
         "CDA": CDA, "CRR": CRR, "R_WHEEL": R_WHEEL, "ETA_G": ETA_G,
         "P_AUX": P_AUX, "E_CHANGEOVER": E_CHANGEOVER, "K_H": K_H, "K_C": K_C,
+        "V_CE0": V_CE0, "R_CE": R_CE, "E_SW_DEV": E_SW_DEV,
+        "model": "ckpt_mlp_drive.pt", "torque_model": TORQUE_MODEL,
         "cycle": "WLTC class 1", "n_steps": len(v)}}
 
     N = len(v)

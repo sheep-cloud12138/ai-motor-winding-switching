@@ -1,4 +1,4 @@
-"""Check the FE Maxwell relation d(psi)/d(theta) = dT/di."""
+"""Check the discrete Maxwell relation d(psi)/d(theta) = dT/di."""
 
 import json
 import sys
@@ -9,10 +9,11 @@ import numpy as np
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT))
 from coil_fea import solve_coils
+from exp.energy_torque import functional_torque
 from gen_coil_dataset import connection_currents
 
 THETA = 30.0
-DTHETA = 2.0
+DTHETA = 7.5
 DI = 0.5
 ip = 40.0 * np.array([
     np.cos(np.pi / 4),
@@ -35,8 +36,10 @@ dT_di = np.zeros(12)
 for j in range(12):
     step = np.zeros(12)
     step[j] = DI
-    tp = solve(THETA, ic + step)["T"]
-    tm = solve(THETA, ic - step)["T"]
+    tp = functional_torque(THETA, ic + step, nr=80, nt=192,
+                           dtheta_deg=DTHETA)
+    tm = functional_torque(THETA, ic - step, nr=80, nt=192,
+                           dtheta_deg=DTHETA)
     dT_di[j] = (tp - tm) / (2 * DI)
 
 rel = float(np.linalg.norm(dT_di - dpsi_dtheta) /

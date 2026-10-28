@@ -8,6 +8,7 @@ import numpy as np
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT))
 _PM_TORQUE_CACHE = {}
+TORQUE_MODEL = "functional_v5_pmrotor"
 
 
 def magnetic_functional(theta, current, pm_on=True, linear_iron=False,

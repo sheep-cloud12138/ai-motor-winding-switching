@@ -20,6 +20,7 @@ import exp.wmi_fix  # noqa: F401
 
 from exp.run_benchmark import Runner, metrics  # noqa: E402
 from exp.models import make_features, theta_feature_grad  # noqa: E402
+from exp.data import load_checked  # noqa: E402
 
 POOLS = (("0", None), ("2", "coil_dataset_random.npz"),
          ("8", "coil_dataset_random8.npz"),
@@ -31,7 +32,7 @@ HOLDOUTS = ("asym", "delta")
 def build_split(X, Y, K, holdout, rnd_path, val_frac=0.12, seed=0):
     rng = np.random.default_rng(seed)
     if rnd_path is not None:
-        d = np.load(ROOT / rnd_path, allow_pickle=True)
+        d = load_checked(rnd_path)
         X = np.concatenate([X, d["X"]])
         Y = np.concatenate([Y, d["Y"]])
         K = np.concatenate([K, np.array(["random"] * len(d["X"]))])
@@ -55,8 +56,8 @@ def build_split(X, Y, K, holdout, rnd_path, val_frac=0.12, seed=0):
 
 
 def main():
-    d_full = np.load(ROOT / "coil_dataset_full.npz", allow_pickle=True)
-    d_zero = np.load(ROOT / "coil_zero.npz")
+    d_full = load_checked("coil_dataset_full.npz")
+    d_zero = load_checked("coil_zero.npz")
     X0 = np.concatenate([d_full["X"], d_zero["X"]])
     Y0 = np.concatenate([d_full["Y"], d_zero["Y"]])
     K0 = np.concatenate([np.array([str(k) for k in d_full["kind"]]),

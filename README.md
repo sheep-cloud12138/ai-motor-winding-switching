@@ -11,7 +11,7 @@ until the manuscript is released).
 ## One-command reproduction
 
 ```bash
-# 1. FEA data generation (all datasets, ~1.5 h on 8 cores)
+# 1. FEA data generation (all datasets, roughly 2 h on 22 cores)
 python exp/gen_data_round2.py --workers 8        # benchmark + ablation pools
 python exp/gen_random3_dataset.py               # phase-random patterns
 python exp/gen_dense_beta.py                    # dense current-angle sweep
@@ -19,18 +19,21 @@ python exp/gen_sync_dataset.py                  # synchronous dq trajectories
 
 # Recompute every torque label from the discrete magnetic co-energy
 python exp/regenerate_functional_torque.py --workers 22
+python exp/validate_energy_torque.py
+python exp/validate_energy_torque2.py
+python exp/validate_energy_torque_random.py
 
-# 2. Zero-shot benchmark (Table 2-4, Jacobian probes)
+# 2. Zero-shot benchmark (main table and physical probes)
 python exp/run_benchmark.py --force
 
-# 3. Coverage ablations and scaling (Table 3, Fig. scaling)
+# 3. Coverage ablations and scaling
 python exp/run_phase.py
 python exp/run_scaling.py
 
 # 4. Data-efficiency learning curves
 python exp/run_curves.py
 
-# 5. Drive-cycle co-design (Table 5, Fig. drive)
+# 5. Drive-cycle co-design (fixed strategies, DP, and regime grid)
 python exp/train_drive_model.py
 python exp/drive_cycle.py
 python exp/drive_r2.py
@@ -74,16 +77,19 @@ python exp/make_figures.py
 
 ## Current headline results
 
-- Maxwell consistency: 12-slot `r=0.99998`, residual `2.4%`; 6-slot `r=0.9998`,
+- Production-grid Maxwell check: 12-slot `r=0.99998`, residual `2.4%`; 6-slot `r=0.9998`,
   residual `2.3%`.
 - FEMM: PM fundamental error `7.9%`, saturated torque error `7.5%`, and
   end-to-end torque `R2=0.89-0.92` for 4P/tap50/3S1P.
+- The 64-point coarse/fine torque check is still weak (`r=0.751`,
+  `R2=0.377`); torque labels and drive energies are not mesh-converged.
 - Coverage: phase-random data reduce openB flux nRMSE to `0.068`; magnitude
   data reduce tap50 to `0.35`; both patterns reproduce on the 6-slot machine.
 - Drive cycle: all fixed connections complete; DP energy is `0.006%` higher
   than fixed 4S. Across
   105 voltage/gear/cycle combinations, no reconfiguration-required case
-  was found; 24 feasible cases gain at least `1%`, with a maximum `2.77%`.
+  was found; the surrogate predicts at least `1%` gain in 24 feasible
+  cases, with a maximum `2.77%`.
 
 ## Notes
 
@@ -107,6 +113,12 @@ python exp/make_figures.py
   the 40x96 check gives correlation 0.99998 and 2.4% residual for
   `dT/di = dpsi/dtheta`. The 6-slot replication gives correlation 0.9998 and
   2.3% residual after the rotating-PM geometry correction.
+- The same Maxwell stencil gives 15.2% residual on the 80x192 mesh, and the
+  64-point coarse/fine torque check has correlation 0.751 and `R2=0.377`.
+  Torque labels are therefore mesh-sensitive; the 7.5% FEMM point check is
+  not evidence of pointwise torque accuracy.
+- Random-current checks pass at all 12 production-grid angles with maximum
+  residual 3.3%; this is stencil-specific, not a mesh-converged result.
 - Formal datasets and checkpoints are regenerated with the corrected
   `functional_v5_pmrotor` labels. Potential-based models predict physical
   units and

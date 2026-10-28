@@ -139,5 +139,28 @@
   "best_fixed_mode": "4S",
   "best_fixed_Wh": 406.9911819754044,
   "saving_pct": -0.0058712642767577705
+ },
+ "params": {
+  "V_CE0": 0.7,
+  "R_CE": 0.002,
+  "E_SW_DEV": 0.001,
+  "model": "ckpt_mlp_drive.pt",
+  "torque_model": "functional_v5_pmrotor"
+ },
+ "provenance": {
+  "model": "ckpt_mlp_drive.pt",
+  "torque_model": "functional_v5_pmrotor",
+  "sha256": {
+   "exp/ckpt_mlp_drive.pt": "decc4bbc280e9bfac20d486ca6bc4cadee0dfbab6a73b72b5c0addb518d2d028",
+   "coil_dataset_full.npz": "89218af47afaeeba980eb9c23b677908f634f4fb950d8cd12875d7f9880ced80",
+   "coil_dataset_densebeta.npz": "e718d493c21e61eb70c7b18f1c7e17a3c00c9951f899ec6c678763d09e17f321",
+   "coil_dataset_sync.npz": "147d0d40392191b8537903fbf8d02470f7a81f31e10d3eab87ae17dc706bdc51",
+   "coil_dataset_random48.npz": "930f6e917867a5bf26d41e33ef1120fb85439a2863fc8fb04b283a22c8699e3b",
+   "coil_dataset_random3.npz": "0895cba15380bdec6ea4925ce2377ca762ff5d295633590d02d250f6b2d8bcfc",
+   "coil_zero.npz": "675d62fe1edd0d72078fd1e61239b58e58cf0a8480a6cb4a009ec8dea7ffdb39"
+  },
+  "V_CE0": 0.7,
+  "R_CE": 0.002,
+  "E_SW_DEV": 0.001
  }
 }

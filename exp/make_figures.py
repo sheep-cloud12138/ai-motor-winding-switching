@@ -217,9 +217,9 @@ def fig_drive():
     ax2 = fig.add_subplot(gs[1, 1])
     strat = ["fixed4P", "greedy", "dp"]
     labs = ["Fixed 4P", "Greedy", "DP (ours)"]
-    keys = ["mech", "cu", "fe", "inv", "sw"]
+    keys = ["mech", "cu", "fe", "inv", "sw", "aux"]
     nice = {"mech": "Mechanical", "cu": "Copper", "fe": "Iron",
-            "inv": "Inverter", "sw": "Changeover"}
+            "inv": "Inverter", "sw": "Changeover", "aux": "Auxiliary"}
     bottom = np.zeros(len(strat))
     for k in keys:
         vals = np.array([dr[s]["breakdown_Wh"][k] for s in strat])

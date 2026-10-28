@@ -6,6 +6,7 @@ import numpy as np
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT))
 from coil_fea import solve_coils
+from exp.energy_torque import functional_torque
 from gen_coil_dataset import connection_currents
 
 
@@ -30,8 +31,12 @@ def run(label, theta, pm_on, linear_iron, nr=80, nt=192):
     for j in range(12):
         step = np.zeros(12)
         step[j] = di
-        dTdi.append((solve(theta, ic + step)["T"] -
-                     solve(theta, ic - step)["T"]) / (2 * di))
+        dTdi.append((
+            functional_torque(theta, ic + step, nr=nr, nt=nt,
+                              pm_on=pm_on, linear_iron=linear_iron)
+            - functional_torque(theta, ic - step, nr=nr, nt=nt,
+                                pm_on=pm_on, linear_iron=linear_iron)
+        ) / (2 * di))
     dTdi = np.asarray(dTdi)
     print(label)
     print(" dpsi", np.round(dpsi, 6).tolist())

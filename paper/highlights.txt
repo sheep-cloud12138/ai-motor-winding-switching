@@ -1,8 +1,7 @@
 Highlights
 
-- One coil-level surrogate can query unseen winding connections.
-- Co-energy structure gives exact reciprocity and a 0.67% Maxwell residual.
+- A co-energy surrogate queries unseen connections with a 0.67% Maxwell residual.
 - Pattern kind beats count: phase coverage cuts open-phase nRMSE to 0.088.
-- FEMM validates torque R2 = 0.89-0.92 on three unseen connections.
+- FEMM trend check gives torque R2 = 0.89-0.92 on three unseen connections.
 - A 105-point drive sweep finds no feasibility-only reconfiguration window.
-- Reconfiguration saves 1-2.77% in 24 constrained designs; the nominal case is energy-neutral.
+- An MLP screen predicts 1-2.77% gains in 24 constrained designs; nominal is neutral.

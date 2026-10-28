@@ -22,7 +22,10 @@ for j in range(12):
     pplus = solve(theta + dtheta, e)["psi"][j]
     pminus = solve(theta - dtheta, e)["psi"][j]
     dpsi[j] = (pplus - pminus) / (2 * np.deg2rad(dtheta))
-    dTdi[j] = (solve(theta, e)["T"] - solve(theta, -e)["T"]) / (2 * di)
+    dTdi[j] = (
+        solve(theta, e)["T_lorentz_unscaled"]
+        - solve(theta, -e)["T_lorentz_unscaled"]
+    ) / (2 * di)
 print("dpsi", np.round(dpsi, 6).tolist())
 print("dTdi", np.round(dTdi, 6).tolist())
 print("corr", np.corrcoef(dpsi, dTdi)[0, 1],

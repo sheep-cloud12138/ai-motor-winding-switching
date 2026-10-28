@@ -16,13 +16,14 @@ import exp.wmi_fix  # noqa: F401
 
 from exp.models import make_features, theta_feature_grad  # noqa: E402
 from exp.run_benchmark import Runner, output_transform  # noqa: E402
+from exp.data import load_checked  # noqa: E402
 
 def main():
     Xs, Ys, Ks = [], [], []
     for name in ("coil_dataset_full.npz", "coil_dataset_densebeta.npz",
                  "coil_dataset_sync.npz", "coil_dataset_random48.npz",
                  "coil_dataset_random3.npz", "coil_zero.npz"):
-        d = np.load(ROOT / name, allow_pickle=True)
+        d = load_checked(name)
         tag = "densebeta" if "densebeta" in name else \
               ("sync" if "sync" in name else
                ("random" if "random48" in name else

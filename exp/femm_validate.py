@@ -269,18 +269,18 @@ def weighted_torque(f):
 def validate_tap50(f):
     from coil_fea import solve_coils
     from exp.energy_torque import functional_torque
-    from exp.drive_cycle import connection_matrix, load_model, model_psi_T
+    from exp.connections_ext import connection_currents_ext
+    from exp.drive_cycle import load_model, model_psi_T
 
     theta = np.arange(0.0, 180.0, 30.0)
     gamma = 0.0
     amp = 40.0
-    C = connection_matrix("tap50")
     ip = amp * np.stack([
         np.cos(2 * np.deg2rad(theta) + gamma),
         np.cos(2 * np.deg2rad(theta) + gamma - 2 * np.pi / 3),
         np.cos(2 * np.deg2rad(theta) + gamma + 2 * np.pi / 3),
     ], axis=1)
-    ic = ip @ C.T
+    ic = np.asarray([connection_currents_ext("tap50", x) for x in ip])
 
     psi_ref, psi_femm, psi_mlp = [], [], []
     t_ref, t_femm = [], []

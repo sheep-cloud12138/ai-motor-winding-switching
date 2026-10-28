@@ -16,6 +16,7 @@ import exp.wmi_fix  # noqa: F401
 
 from exp.run_benchmark import Runner, metrics  # noqa: E402
 from exp.models import make_features, theta_feature_grad  # noqa: E402
+from exp.data import load_checked  # noqa: E402
 
 # pools: none | amp (48 magnitude patterns) | ph (24 phase-random) | amp+ph
 POOLS = {
@@ -29,9 +30,9 @@ HOLDOUTS = ("openB", "tap50", "delta")
 
 
 def main():
-    d_full = np.load(ROOT / "coil_dataset_full.npz", allow_pickle=True)
-    d_zero = np.load(ROOT / "coil_zero.npz")
-    d_ext = np.load(ROOT / "coil_dataset_ext.npz", allow_pickle=True)
+    d_full = load_checked("coil_dataset_full.npz")
+    d_zero = load_checked("coil_zero.npz")
+    d_ext = load_checked("coil_dataset_ext.npz")
     X0 = np.concatenate([d_full["X"], d_ext["X"], d_zero["X"]])
     Y0 = np.concatenate([d_full["Y"], d_ext["Y"], d_zero["Y"]])
     K0 = np.concatenate([np.array([str(k) for k in d_full["kind"]]),
@@ -42,7 +43,7 @@ def main():
         for tag, pools in POOLS.items():
             X, Y, K = X0, Y0, K0
             for path, kind in pools:
-                d = np.load(ROOT / path, allow_pickle=True)
+                d = load_checked(path)
                 X = np.concatenate([X, d["X"]])
                 Y = np.concatenate([Y, d["Y"]])
                 K = np.concatenate([K, np.array([kind] * len(d["X"]))])

@@ -18,9 +18,9 @@ ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT))
 import exp.wmi_fix  # noqa: F401
 import coil_fea
-from exp.energy_torque import functional_torque
+from exp.energy_torque import TORQUE_MODEL, functional_torque
 
-TAG = "functional_v5_pmrotor"
+TAG = TORQUE_MODEL
 
 
 def one_case(args):

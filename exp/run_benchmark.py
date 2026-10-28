@@ -22,6 +22,7 @@ import numpy as np
 import torch
 
 from exp.data import EXT, STANDARD, load_all, make_split  # noqa: E402
+from exp.energy_torque import TORQUE_MODEL  # noqa: E402
 from exp.models import (DirectTrainer, EnergyTrainer, GradNet, GradNetTrainer,  # noqa: E402
                         MLP, StructuredEnergy, jacobian_asymmetry,
                         make_features, theta_feature_grad)
@@ -69,6 +70,10 @@ class Runner:
         if train_kinds is not None:  # e.g. per-connection baseline
             keep = np.isin(self.K[rows_f], train_kinds)
             Ff, dphif, rows_f = Ff[keep], dphif[keep], rows_f[keep]
+            keep_val = np.isin(self.K[rows_v], train_kinds)
+            Fv, dphiv, rows_v = (
+                Fv[keep_val], dphiv[keep_val], rows_v[keep_val]
+            )
         Yf = self.Y[rows_f]
         mu, sd = output_transform(model_name, Yf)
         mu, sd = mu[None, :], sd[None, :]
@@ -229,7 +234,7 @@ def main():
     meta = {"n_total": len(X),
             "counts": {k: int((K == k).sum()) for k in np.unique(K)},
             "device": DEVICE, "torque_sha256": torque_sha,
-            "torque_model": "functional_v5_pmrotor"}
+            "torque_model": TORQUE_MODEL}
     if out_path.exists() and not args.force:
         with open(out_path) as f:
             results = json.load(f)
@@ -302,7 +307,9 @@ def main():
                            weights_only=True)
         if model_name == "mlp":
             m = MLP(); m.load_state_dict(state); m.to(DEVICE).eval()
-            pred = lambda F: m(torch.tensor(F, device=DEVICE)).detach()[:, :12].cpu().numpy()
+            def pred(F, m=m, mu=mu, sd=sd):
+                raw = m(torch.tensor(F, device=DEVICE)).detach()[:, :12]
+                return raw.cpu().numpy() * sd[:12] + mu[:12]
         elif model_name == "gradnet":
             m = GradNet(); m.load_state_dict(state); m.to(DEVICE).eval()
             pred = lambda F: m(torch.tensor(F, device=DEVICE)).detach()[:, :12].cpu().numpy()

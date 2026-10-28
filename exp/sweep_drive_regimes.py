@@ -12,6 +12,7 @@ sys.path.insert(0, str(ROOT))
 import exp.wmi_fix  # noqa: F401
 
 import exp.drive_cycle as dc  # noqa: E402
+from exp.energy_torque import TORQUE_MODEL  # noqa: E402
 
 
 def evaluate(ev, cycle, v_dc, gear):
@@ -82,6 +83,11 @@ def main():
             "Crr": dc.CRR, "gear_efficiency": dc.ETA_G,
         },
         "grid": {"cycles": args.cycles, "vdc": args.vdc, "gears": args.gears},
+        "provenance": {
+            "model": "ckpt_mlp_drive.pt",
+            "torque_model": TORQUE_MODEL,
+            "V_CE0": dc.V_CE0, "R_CE": dc.R_CE, "E_SW_DEV": dc.E_SW_DEV,
+        },
         "points": {},
     }
     for cycle in args.cycles:

@@ -201,10 +201,8 @@ def solve_coils(
             Az[m] * np.broadcast_to(g["r2"], (nr, nt))[m] * dr * dth
         )
 
-    # Lorentz torque on the slot conductors.
-    # The cross-sectional torque integral already yields N m for this
-    # current-density convention; the co-energy Maxwell check is the
-    # authoritative dimensional test.
+    # Legacy slot-Lorentz diagnostic. It is not a validated physical torque:
+    # the slot integrand below omits the stack-length volume factor.
     T = float(np.sum(
         (r_c[:, None] * J * Br) * (r_c[:, None] * dr * dth) * g["slot_mask"]
     ))
@@ -212,7 +210,9 @@ def solve_coils(
     out = {
         "theta": theta_deg,
         "psi": psi,
-        "T": T,
+        # Kept only for diagnosing why the old slot-local post-processor was
+        # rejected. It is not a validated physical torque.
+        "T_lorentz_unscaled": T,
         "iters": iters,
         "rel": float(rel),
         "Bgap": float(Bmag[(r_c > R_ROTOR) & (r_c < R_BORE)].mean()),
