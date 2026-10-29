@@ -56,7 +56,10 @@ fundamental error, $1.6\,\%$ saturated-torque error at the checked point,
 and end-to-end torque $R^2=0.86$--$0.94$ for three unseen synchronous
 connections. The 64-point coarse/fine torque check has $R^2=0.984$, but a
 $10\,\%$ norm-ratio and $11.8\,\%$ median pointwise difference remain, so
-absolute torque labels and drive-cycle energies remain surrogate-dependent. In a
+absolute torque labels and drive-cycle energies remain surrogate-dependent.
+A $0.90$--$1.10$ torque and $0.92$--$1.08$ flux envelope changes the
+DP-to-fixed difference by only $-0.011$ to $+0.006$ percentage points,
+preserving the qualitative null result. In a
 540-kg single-motor WLTC class-1 case, every fixed connection completes the
 cycle; DP energy is within $0.006\,\%$ of fixed 4S. A 105-point bus-voltage and
 gear-ratio sweep finds no case in which reconfiguration supplies
@@ -1010,6 +1013,14 @@ own best fixed connection. Halving $r_{CE}$ with
 $V_{CE0}$ increased by 10\,\% gives $+0.005\,\%$. Both checks agree with
 the direct MLP: the result is economically null.
 
+\textbf{Torque/flux label uncertainty.} We also propagated a low and high
+label envelope through the drive computation: torque scaled by
+$0.90/1.10$ and flux by $0.92/1.08$. Fixed 4S changes by less than
+$0.13$\,Wh, DP changes by less than $0.05$\,Wh, and every fixed connection
+remains feasible. The DP-to-best-fixed difference stays between
+$-0.011\,\%$ and $+0.006\,\%$; the envelope therefore preserves the
+economically null conclusion.
+
 \subsection{Zero-shot modes and connection screening}
 \label{sec:results:zeroshot}
 
@@ -1037,6 +1048,14 @@ does not. The low nominal energy of tap75 is a model-predicted opportunity,
 not a design conclusion: an independent FEMM trajectory gives only
 $r=0.83$ ($R^2=0.54$) and $4.81$\,N\,m MAE for its torque. The screen is
 therefore a prioritisation tool, not a replacement for targeted FE.
+
+\textbf{Use/do-not-use rule.} A candidate is usable for a quantitative
+loss decision only after it passes all three gates: current-space coverage,
+agreement between two model families, and an independent FEMM trajectory.
+For openB, the co-energy torque head is rejected and the direct MLP is used
+only for ranking; the absolute result still requires FEMM. For tap50, the
+direct-MLP torque trend is usable but the flux channel is not. tap75 is
+rejected because its independent FEMM torque correlation is only $0.83$.
 
 \begin{table}[t]
 \centering\small

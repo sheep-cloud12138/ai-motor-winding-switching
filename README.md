@@ -38,6 +38,7 @@ python exp/train_drive_model.py
 python exp/drive_cycle.py
 python exp/drive_r2.py
 python exp/sweep_drive_regimes.py
+python exp/drive_uncertainty.py
 
 # 6. Independent FEMM cross-check (requires FEMM 4.2 + pywin32)
 python exp/femm_validate.py
@@ -92,6 +93,9 @@ python exp/make_figures.py
   105 voltage/gear/cycle combinations, no reconfiguration-required case
   was found; the surrogate predicts at least `1%` gain in 28 of 87 feasible
   cases, with a maximum `2.64%`.
+- Torque/flux perturbation (`0.90/1.10` and `0.92/1.08`) keeps every fixed
+  connection feasible and changes DP-to-best-fixed by only `-0.011%` to
+  `+0.006%`.
 
 ## Notes
 
@@ -145,6 +149,8 @@ python exp/make_figures.py
   `0.954-0.984`. Tap75's 282.1 Wh surrogate result is rejected by FEMM
   (`r=0.83`, `R2=0.54`). No hardware or HIL measurement is available in
   this workspace.
+- The drive uncertainty propagation is stored in
+  `exp/results_drive_uncertainty.json`.
 
 ## License / citation
 

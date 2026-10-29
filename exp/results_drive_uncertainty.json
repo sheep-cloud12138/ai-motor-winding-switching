@@ -1,0 +1,114 @@
+{
+ "torque_flux_perturbation": {
+  "low": {
+   "torque_scale": 0.9,
+   "flux_scale": 0.92,
+   "fixed": {
+    "4S": {
+     "E_Wh": 406.1536118020673,
+     "unmet_Nm_s": 0.0,
+     "efficiency": 0.9707243082495957
+    },
+    "2S2P": {
+     "E_Wh": 411.7336518399855,
+     "unmet_Nm_s": 0.0,
+     "efficiency": 0.9557931348815646
+    },
+    "delta": {
+     "E_Wh": 410.278065443435,
+     "unmet_Nm_s": 0.0,
+     "efficiency": 0.9596435597995076
+    },
+    "4P": {
+     "E_Wh": 422.04173557710243,
+     "unmet_Nm_s": 0.0,
+     "efficiency": 0.9293852019104503
+    }
+   },
+   "best_fixed_mode": "4S",
+   "best_fixed_Wh": 406.1536118020673,
+   "dp_Wh": 406.1285410592354,
+   "dp_switches": 4,
+   "dp_unmet_Nm_s": 0.0,
+   "dp_saving_vs_best_fixed_pct": 0.006172724334685409
+  },
+  "base": {
+   "torque_scale": 1.0,
+   "flux_scale": 1.0,
+   "fixed": {
+    "4S": {
+     "E_Wh": 406.0558381399446,
+     "unmet_Nm_s": 0.0,
+     "efficiency": 0.970990092594588
+    },
+    "2S2P": {
+     "E_Wh": 411.4441301957861,
+     "unmet_Nm_s": 0.0,
+     "efficiency": 0.9565565353070016
+    },
+    "delta": {
+     "E_Wh": 410.0514023335821,
+     "unmet_Nm_s": 0.0,
+     "efficiency": 0.9602459391647815
+    },
+    "4P": {
+     "E_Wh": 421.1369860026099,
+     "unmet_Nm_s": 0.0,
+     "efficiency": 0.931644487699185
+    }
+   },
+   "best_fixed_mode": "4S",
+   "best_fixed_Wh": 406.0558381399446,
+   "dp_Wh": 406.0341749244883,
+   "dp_switches": 4,
+   "dp_unmet_Nm_s": 0.0,
+   "dp_saving_vs_best_fixed_pct": 0.005335033613984574
+  },
+  "high": {
+   "torque_scale": 1.1,
+   "flux_scale": 1.08,
+   "fixed": {
+    "4S": {
+     "E_Wh": 406.0317557146046,
+     "unmet_Nm_s": 0.0,
+     "efficiency": 0.971048001561922
+    },
+    "2S2P": {
+     "E_Wh": 411.309373615009,
+     "unmet_Nm_s": 0.0,
+     "efficiency": 0.9569048049538296
+    },
+    "delta": {
+     "E_Wh": 409.95926778354396,
+     "unmet_Nm_s": 0.0,
+     "efficiency": 0.9604835162552273
+    },
+    "4P": {
+     "E_Wh": 420.5785027561291,
+     "unmet_Nm_s": 0.0,
+     "efficiency": 0.9330445893840308
+    }
+   },
+   "best_fixed_mode": "4S",
+   "best_fixed_Wh": 406.0317557146046,
+   "dp_Wh": 406.076682311163,
+   "dp_switches": 6,
+   "dp_unmet_Nm_s": 0.0,
+   "dp_saving_vs_best_fixed_pct": -0.011064798732141057
+  }
+ },
+ "params": {
+  "model": "ckpt_mlp_drive.pt",
+  "cycle": "WLTC class 1",
+  "torque_scales": [
+   0.9,
+   1.0,
+   1.1
+  ],
+  "flux_scales": [
+   0.92,
+   1.0,
+   1.08
+  ]
+ }
+}
