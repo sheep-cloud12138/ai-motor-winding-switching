@@ -1,122 +1,122 @@
 {
  "asym/0pat/mlp": {
-  "flux_nrmse": 0.865903377532959,
-  "torque_r2": 0.49247390031814575,
+  "flux_nrmse": 0.8657488822937012,
+  "torque_r2": 0.9720471501350403,
   "n_train": 896,
-  "seconds": 40.4
+  "seconds": 50.0
  },
  "asym/0pat/energy": {
-  "flux_nrmse": 0.8024557024357372,
-  "torque_r2": 0.4996080666986502,
+  "flux_nrmse": 0.8038217351676319,
+  "torque_r2": 0.9833516486669656,
   "n_train": 896,
-  "seconds": 290.7
+  "seconds": 331.6
  },
  "asym/2pat/mlp": {
-  "flux_nrmse": 0.335110068321228,
-  "torque_r2": 0.8888949155807495,
+  "flux_nrmse": 0.3525349199771881,
+  "torque_r2": 0.9676139950752258,
   "n_train": 1065,
-  "seconds": 11.2
+  "seconds": 5.8
  },
  "asym/2pat/energy": {
-  "flux_nrmse": 0.25456505829004245,
-  "torque_r2": 0.8641013695358689,
+  "flux_nrmse": 0.17377844471369716,
+  "torque_r2": 0.9922711115363888,
   "n_train": 1065,
-  "seconds": 155.0
+  "seconds": 321.1
  },
  "asym/8pat/mlp": {
-  "flux_nrmse": 0.19001668691635132,
-  "torque_r2": 0.9883687496185303,
+  "flux_nrmse": 0.208769753575325,
+  "torque_r2": 0.9797813296318054,
   "n_train": 1572,
-  "seconds": 34.2
+  "seconds": 41.3
  },
  "asym/8pat/energy": {
-  "flux_nrmse": 0.13120353311062982,
-  "torque_r2": 0.9894227196308021,
+  "flux_nrmse": 0.12961534430067176,
+  "torque_r2": 0.9971570697351639,
   "n_train": 1572,
-  "seconds": 142.3
+  "seconds": 233.7
  },
  "asym/24pat/mlp": {
-  "flux_nrmse": 0.10491496324539185,
-  "torque_r2": 0.9849348664283752,
+  "flux_nrmse": 0.12409555166959763,
+  "torque_r2": 0.9947282075881958,
   "n_train": 2924,
-  "seconds": 34.6
+  "seconds": 36.5
  },
  "asym/24pat/energy": {
-  "flux_nrmse": 0.10511725281710597,
-  "torque_r2": 0.9941880478325663,
+  "flux_nrmse": 0.13048235973078712,
+  "torque_r2": 0.9971544712966635,
   "n_train": 2924,
-  "seconds": 125.3
+  "seconds": 128.3
  },
  "asym/48pat/mlp": {
-  "flux_nrmse": 0.1685476154088974,
-  "torque_r2": 0.9801298379898071,
+  "flux_nrmse": 0.12297359853982925,
+  "torque_r2": 0.9949513673782349,
   "n_train": 4951,
-  "seconds": 33.6
+  "seconds": 41.0
  },
  "asym/48pat/energy": {
-  "flux_nrmse": 0.10148794305759333,
-  "torque_r2": 0.9959062932512346,
+  "flux_nrmse": 0.10429655681994887,
+  "torque_r2": 0.9972928839194315,
   "n_train": 4951,
-  "seconds": 188.4
+  "seconds": 256.0
  },
  "delta/0pat/mlp": {
-  "flux_nrmse": 0.3642368018627167,
-  "torque_r2": 0.8785026669502258,
+  "flux_nrmse": 0.31678706407546997,
+  "torque_r2": 0.93182373046875,
   "n_train": 896,
-  "seconds": 37.9
+  "seconds": 41.4
  },
  "delta/0pat/energy": {
-  "flux_nrmse": 0.3503833375092185,
-  "torque_r2": 0.9229554721607586,
+  "flux_nrmse": 0.17183791058085351,
+  "torque_r2": 0.9965690433091384,
   "n_train": 896,
-  "seconds": 351.5
+  "seconds": 343.0
  },
  "delta/2pat/mlp": {
-  "flux_nrmse": 0.42528876662254333,
-  "torque_r2": 0.9587474465370178,
+  "flux_nrmse": 0.4603968560695648,
+  "torque_r2": 0.9667498469352722,
   "n_train": 1065,
-  "seconds": 19.6
+  "seconds": 16.3
  },
  "delta/2pat/energy": {
-  "flux_nrmse": 0.14878571738811255,
-  "torque_r2": 0.9828714534279787,
+  "flux_nrmse": 0.13526980158172328,
+  "torque_r2": 0.9931683290242683,
   "n_train": 1065,
-  "seconds": 180.5
+  "seconds": 139.5
  },
  "delta/8pat/mlp": {
-  "flux_nrmse": 0.25372883677482605,
-  "torque_r2": 0.9761762619018555,
+  "flux_nrmse": 0.2668103873729706,
+  "torque_r2": 0.9640329480171204,
   "n_train": 1572,
-  "seconds": 38.9
+  "seconds": 42.3
  },
  "delta/8pat/energy": {
-  "flux_nrmse": 0.153361217982821,
-  "torque_r2": 0.9776479455595118,
+  "flux_nrmse": 0.15203324464041676,
+  "torque_r2": 0.9907929168898214,
   "n_train": 1572,
-  "seconds": 263.0
+  "seconds": 262.8
  },
  "delta/24pat/mlp": {
-  "flux_nrmse": 0.20736020803451538,
-  "torque_r2": 0.9813907146453857,
+  "flux_nrmse": 0.21699021756649017,
+  "torque_r2": 0.9838238954544067,
   "n_train": 2924,
-  "seconds": 41.6
+  "seconds": 42.4
  },
  "delta/24pat/energy": {
-  "flux_nrmse": 0.15390177871973604,
-  "torque_r2": 0.9856969544770314,
+  "flux_nrmse": 0.14479228729647678,
+  "torque_r2": 0.9895113967252851,
   "n_train": 2924,
-  "seconds": 203.5
+  "seconds": 236.3
  },
  "delta/48pat/mlp": {
-  "flux_nrmse": 0.185846745967865,
-  "torque_r2": 0.9877947568893433,
+  "flux_nrmse": 0.2135276347398758,
+  "torque_r2": 0.9902311563491821,
   "n_train": 4951,
-  "seconds": 42.6
+  "seconds": 42.8
  },
  "delta/48pat/energy": {
-  "flux_nrmse": 0.1519669004548444,
-  "torque_r2": 0.9885422890953047,
+  "flux_nrmse": 0.16389059442297574,
+  "torque_r2": 0.9906333864250252,
   "n_train": 4951,
-  "seconds": 225.5
+  "seconds": 206.8
  }
 }

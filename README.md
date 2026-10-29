@@ -44,6 +44,7 @@ python exp/femm_validate.py
 python exp/femm_unseen_withz.py --holdout tap50
 python exp/femm_unseen_withz.py --holdout 4P
 python exp/femm_drive_candidate.py --kind 3S1P
+python exp/femm_drive_candidate.py --kind tap75
 
 # 7. All paper figures
 python exp/make_figures.py
@@ -77,19 +78,20 @@ python exp/make_figures.py
 
 ## Current headline results
 
-- Production-grid Maxwell check: 12-slot `r=0.99998`, residual `2.4%`; 6-slot `r=0.9998`,
-  residual `2.3%`.
-- FEMM: PM fundamental error `7.9%`, saturated torque error `7.5%`, and
-  end-to-end torque `R2=0.89-0.92` for 4P/tap50/3S1P.
-- The 64-point coarse/fine torque check is still weak (`r=0.751`,
-  `R2=0.377`); torque labels and drive energies are not mesh-converged.
-- Coverage: phase-random data reduce openB flux nRMSE to `0.068`; magnitude
-  data reduce tap50 to `0.35`; both patterns reproduce on the 6-slot machine.
-- Drive cycle: all fixed connections complete; DP energy is `0.006%` higher
-  than fixed 4S. Across
+- Production-grid Maxwell check: 12-slot `r=0.99998`, residual `2.2%`; 6-slot `r=0.99927`,
+  residual `3.9%`.
+- FEMM: PM fundamental error `7.9%`, saturated torque error `1.6%`, and
+  end-to-end torque `R2=0.86-0.94` for 4P/tap50/3S1P.
+- The 64-point coarse/fine torque check gives `r=0.996`, `R2=0.984`; the
+  remaining `0.90` norm ratio and `11.8%` median difference still limit
+  absolute energies.
+- Coverage: phase-random data reduce openB flux nRMSE to `0.066`; magnitude
+  data reduce tap50 to `0.36`; both patterns reproduce on the 6-slot machine.
+- Drive cycle: all four fixed connections complete; DP energy is within
+  `0.006%` of fixed 4S. Across
   105 voltage/gear/cycle combinations, no reconfiguration-required case
-  was found; the surrogate predicts at least `1%` gain in 24 feasible
-  cases, with a maximum `2.77%`.
+  was found; the surrogate predicts at least `1%` gain in 28 of 87 feasible
+  cases, with a maximum `2.64%`.
 
 ## Notes
 
@@ -106,21 +108,20 @@ python exp/make_figures.py
   `exp/drive_cycle.py:connection_matrix` - no retraining needed, which is
   rather the point of the method.
 
-## Correction log (2026-10-28)
+## Correction log (2026-10-29)
 
 - The slot-local Lorentz torque did not satisfy the discrete energy relation.
   `exp/energy_torque.py` now differentiates the discrete magnetic co-energy;
-  the 40x96 check gives correlation 0.99998 and 2.4% residual for
-  `dT/di = dpsi/dtheta`. The 6-slot replication gives correlation 0.9998 and
-  2.3% residual after the rotating-PM geometry correction.
-- The same Maxwell stencil gives 15.2% residual on the 80x192 mesh, and the
-  64-point coarse/fine torque check has correlation 0.751 and `R2=0.377`.
-  Torque labels are therefore mesh-sensitive; the 7.5% FEMM point check is
-  not evidence of pointwise torque accuracy.
-- Random-current checks pass at all 12 production-grid angles with maximum
-  residual 3.3%; this is stencil-specific, not a mesh-converged result.
+  the 40x96 check gives correlation 0.99998 and 2.2% residual for
+  `dT/di = dpsi/dtheta`. The 6-slot replication gives correlation 0.99927 and
+  3.9% residual after the rotating-PM geometry correction.
+- The same Maxwell stencil gives 20.9% residual on the 80x192 mesh. The
+  64-point coarse/fine torque check gives correlation 0.996 and `R2=0.984`,
+  with a 0.90 norm ratio and 11.8% median pointwise difference.
+- Random-current checks pass on 18 cases with minimum correlation 0.9996
+  and maximum residual 2.7%; this is stencil-specific, not mesh-converged.
 - Formal datasets and checkpoints are regenerated with the corrected
-  `functional_v5_pmrotor` labels. Potential-based models predict physical
+  `functional_v6_theta15` labels. Potential-based models predict physical
   units and
   apply output normalisation only inside the loss; this preserves
   `dT/di = dpsi/dtheta` after de-standardisation.
@@ -132,17 +133,18 @@ python exp/make_figures.py
   is not applied to the released benchmark data; it is documented as an
   unresolved solver-alignment issue rather than hidden by rescaling.
 - With the corrected labels, all four fixed connections complete the WLTC
-  class-1 case and DP energy is `0.006%` higher than fixed 4S. A 105-point
+  class-1 case and DP energy is within `0.006%` of fixed 4S. A 105-point
   voltage/gear sweep contains no reconfiguration-required case.
 - Independent FEMM checks now use the same turns, stack length, BH curve,
   slot positions and rotating 80%-arc PM geometry. The 12-slot fine-mesh
   inductance shape agrees to `2.1%` after a remaining `1.13x` global scale.
   PM fundamental amplitudes differ by `7.9%` on average (`8.4%` maximum),
-  and the nonlinear 4S torque differs by `7.5%` at the checked point.
-- Over 36 synchronous points, end-to-end FEMM torque `R2` is `0.918`
-  (4P), `0.887` (tap50), and `0.894` (3S1P). Correlations are
-  `0.952-0.972`. No hardware or HIL measurement is available in this
-  workspace.
+  and the nonlinear 4S torque differs by `1.6%` at the checked point.
+- Over 36 synchronous points, end-to-end FEMM torque `R2` is `0.929`
+  (4P), `0.935` (tap50), and `0.863` (3S1P). Correlations are
+  `0.954-0.984`. Tap75's 282.1 Wh surrogate result is rejected by FEMM
+  (`r=0.83`, `R2=0.54`). No hardware or HIL measurement is available in
+  this workspace.
 
 ## License / citation
 

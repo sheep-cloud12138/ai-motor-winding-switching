@@ -6,15 +6,15 @@ import json
 import sys
 from pathlib import Path
 
+ROOT = Path(__file__).resolve().parent.parent
+sys.path.insert(0, str(ROOT))
+import exp.wmi_fix  # noqa: F401
+
 import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 import numpy as np
 import torch
-
-ROOT = Path(__file__).resolve().parent.parent
-sys.path.insert(0, str(ROOT))
-import exp.wmi_fix  # noqa: F401
 
 from exp.data import EXT, STANDARD, load_all, make_split  # noqa: E402
 from exp.models import MLP, StructuredEnergy, make_features  # noqa: E402

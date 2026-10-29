@@ -17,8 +17,6 @@ import sys
 import time
 from pathlib import Path
 
-import numpy as np
-
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT))
 sys.path.insert(0, str(Path(__file__).resolve().parent))
@@ -27,6 +25,7 @@ for _v in ("OMP_NUM_THREADS", "OPENBLAS_NUM_THREADS", "MKL_NUM_THREADS"):
     os.environ.setdefault(_v, "1")
 
 import exp.wmi_fix  # noqa: F401
+import numpy as np  # noqa: E402
 import coil_fea2
 from coil_fea2 import connection_currents, solve_coils  # noqa: E402
 from exp.energy_torque import functional_torque  # noqa: E402

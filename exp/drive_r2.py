@@ -16,12 +16,12 @@ import json
 import sys
 from pathlib import Path
 
-import numpy as np
-import torch
-
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT))
 import exp.wmi_fix  # noqa: F401
+
+import numpy as np  # noqa: E402
+import torch  # noqa: E402
 
 import exp.drive_cycle as dc  # noqa: E402
 
@@ -36,7 +36,17 @@ def main():
     Tm = dc.machine_torque(T_wheel)
     N = len(v)
     dist = float(np.trapezoid(v / 3.6, dx=1.0) / 1000.0)
-    out = {"distance_km": dist}
+    out = {
+        "distance_km": dist,
+        "params": {
+            "V_CE0": dc.V_CE0, "R_CE": dc.R_CE,
+            "E_SW_DEV": dc.E_SW_DEV, "model": "ckpt_mlp_drive.pt",
+            "torque_model": dc.TORQUE_MODEL,
+        },
+        "provenance": {
+            "model": "ckpt_mlp_drive.pt", "torque_model": dc.TORQUE_MODEL,
+        },
+    }
 
     # ---------- R1: fixed baselines for every mode ----------
     print("R1 fixed baselines", flush=True)
@@ -68,7 +78,7 @@ def main():
                  "efficiency": r_dp["traction_efficiency"]}
     saving_best = 100 * (1 - r_dp["E_Wh"] / complete[best_fixed]["E_Wh"])
     out["dp_saving_vs_best_fixed_pct"] = saving_best
-    print(" DP vs best fixed saving %.1f%%" % saving_best, flush=True)
+    print(" DP vs best fixed saving %.4f%%" % saving_best, flush=True)
 
     # ---------- R2: wide-range changeover energy sweep ----------
     print("R2 E_sw sweep", flush=True)

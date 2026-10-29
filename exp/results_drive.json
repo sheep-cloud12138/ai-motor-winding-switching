@@ -3,14 +3,14 @@
   "T_machine_max_demand": 9.136999384615386,
   "rpm_max": 8882.967890435651,
   "R_COIL": 0.0030157722933082994,
-  "T_max_4S_at_rpm_max": 6.311824798583984,
-  "T_max_4S_at_half_speed": 16.39472007751465,
-  "T_max_2S2P_at_rpm_max": 16.55059051513672,
-  "T_max_2S2P_at_half_speed": 26.651552200317383,
-  "T_max_delta_at_rpm_max": 13.424958229064941,
-  "T_max_delta_at_half_speed": 26.6391658782959,
-  "T_max_4P_at_rpm_max": 26.74497413635254,
-  "T_max_4P_at_half_speed": 26.74497413635254
+  "T_max_4S_at_rpm_max": 6.634830951690674,
+  "T_max_4S_at_half_speed": 17.19170570373535,
+  "T_max_2S2P_at_rpm_max": 17.34381866455078,
+  "T_max_2S2P_at_half_speed": 27.718469619750977,
+  "T_max_delta_at_rpm_max": 14.171855926513672,
+  "T_max_delta_at_half_speed": 27.705810546875,
+  "T_max_4P_at_rpm_max": 27.813997268676758,
+  "T_max_4P_at_half_speed": 27.813997268676758
  },
  "params": {
   "R_COIL": 0.0030157722933082994,
@@ -26,22 +26,22 @@
   "E_CHANGEOVER": 0.025,
   "K_H": 0.026,
   "K_C": 0.00012,
-  "cycle": "WLTC class 1",
-  "n_steps": 1611,
   "V_CE0": 0.7,
   "R_CE": 0.002,
   "E_SW_DEV": 0.001,
   "model": "ckpt_mlp_drive.pt",
-  "torque_model": "functional_v5_pmrotor"
+  "torque_model": "functional_v6_theta15",
+  "cycle": "WLTC class 1",
+  "n_steps": 1611
  },
  "distance_km": 11.427666666666665,
  "fixed4P": {
-  "E_Wh": 422.62735414683675,
+  "E_Wh": 421.1369860026099,
   "switches": 0,
   "breakdown_Wh": {
-   "cu": 0.4442608560883875,
-   "fe": 7.489417547783138,
-   "inv": 18.99724071160328,
+   "cu": 0.38818125218848265,
+   "fe": 7.336534596645029,
+   "inv": 17.71583512241336,
    "mech": 283.82143503136433,
    "sw": 0.0,
    "aux": 111.875
@@ -52,8 +52,8 @@
   "demand_integral_Nm_s": 3885.7720864723406,
   "mech_positive_Wh": 346.73939640870316,
   "mech_negative_Wh": -62.917961377338784,
-  "traction_efficiency": 0.9279286633253256,
-  "Wh_per_km": 36.982821294534034,
+  "traction_efficiency": 0.931644487699185,
+  "Wh_per_km": 36.852403757192484,
   "mode_counts": {
    "4S": 0,
    "2S2P": 0,
@@ -62,13 +62,13 @@
   }
  },
  "rule2": {
-  "E_Wh": 407.5920082887461,
+  "E_Wh": 407.0392018844375,
   "switches": 8,
   "breakdown_Wh": {
-   "cu": 0.7629450510829454,
-   "fe": 4.0591791721533435,
-   "inv": 7.041661287973358,
-   "mech": 283.85316722198155,
+   "cu": 0.6848271320454271,
+   "fe": 3.9739904701637547,
+   "inv": 6.683893695308254,
+   "mech": 283.82143503136433,
    "sw": 5.555555555555556e-05,
    "aux": 111.875
   },
@@ -77,9 +77,9 @@
   "peak_unmet_Nm": 0.0,
   "demand_integral_Nm_s": 3885.7720864723406,
   "mech_positive_Wh": 346.73939640870316,
-  "mech_negative_Wh": -62.8862291867215,
-  "traction_efficiency": 0.9669166752852204,
-  "Wh_per_km": 35.667124372611454,
+  "mech_negative_Wh": -62.917961377338784,
+  "traction_efficiency": 0.9683237138817802,
+  "Wh_per_km": 35.61874998259524,
   "mode_counts": {
    "4S": 1542,
    "2S2P": 0,
@@ -89,14 +89,14 @@
   "threshold_kmh": 57.5
  },
  "greedy": {
-  "E_Wh": 406.4891939799062,
-  "switches": 19,
+  "E_Wh": 405.99393833561453,
+  "switches": 8,
   "breakdown_Wh": {
-   "cu": 0.7645312037324786,
-   "fe": 3.7126907388254353,
-   "inv": 6.315405061540293,
+   "cu": 0.6972087728004494,
+   "fe": 3.6001638052604994,
+   "inv": 6.000075170633589,
    "mech": 283.82143503136433,
-   "sw": 0.00013194444444444446,
+   "sw": 5.555555555555556e-05,
    "aux": 111.875
   },
   "unmet_Nm_s": 0.0,
@@ -105,24 +105,24 @@
   "demand_integral_Nm_s": 3885.7720864723406,
   "mech_positive_Wh": 346.73939640870316,
   "mech_negative_Wh": -62.917961377338784,
-  "traction_efficiency": 0.9698135375369238,
-  "Wh_per_km": 35.57062048069652,
+  "traction_efficiency": 0.9711585851230665,
+  "Wh_per_km": 35.52728218087226,
   "mode_counts": {
-   "4S": 1601,
-   "2S2P": 2,
-   "delta": 5,
-   "4P": 3
+   "4S": 1607,
+   "2S2P": 0,
+   "delta": 2,
+   "4P": 2
   }
  },
  "dp": {
-  "E_Wh": 406.5812807102898,
-  "switches": 12,
+  "E_Wh": 406.0341749244883,
+  "switches": 4,
   "breakdown_Wh": {
-   "cu": 0.760177559658737,
-   "fe": 3.7887039430854115,
-   "inv": 6.3358808428488445,
+   "cu": 0.6949047366405832,
+   "fe": 3.6250781077131373,
+   "inv": 6.017729270992473,
    "mech": 283.82143503136433,
-   "sw": 8.333333333333334e-05,
+   "sw": 2.777777777777778e-05,
    "aux": 111.875
   },
   "unmet_Nm_s": 0.0,
@@ -131,77 +131,61 @@
   "demand_integral_Nm_s": 3885.7720864723406,
   "mech_positive_Wh": 346.73939640870316,
   "mech_negative_Wh": -62.917961377338784,
-  "traction_efficiency": 0.9695636827682234,
-  "Wh_per_km": 35.57867870754804,
+  "traction_efficiency": 0.9710490763239449,
+  "Wh_per_km": 35.530803161142984,
   "mode_counts": {
-   "4S": 1545,
+   "4S": 1589,
    "2S2P": 0,
-   "delta": 55,
-   "4P": 11
+   "delta": 22,
+   "4P": 0
   },
   "unmet_check": 0.0
  },
  "sensitivity": {
   "e_sw": {
    "5mJ": {
-    "dp_Wh": 406.5812140436231,
-    "dp_switches": 12,
-    "greedy_Wh": 406.4890884243506,
-    "greedy_switches": 19
+    "dp_Wh": 406.03415270226606,
+    "dp_switches": 4,
+    "greedy_Wh": 405.9938938911701,
+    "greedy_switches": 8
    },
    "25mJ": {
-    "dp_Wh": 406.5812807102898,
-    "dp_switches": 12,
-    "greedy_Wh": 406.4891939799062,
-    "greedy_switches": 19
+    "dp_Wh": 406.0341749244883,
+    "dp_switches": 4,
+    "greedy_Wh": 405.99393833561453,
+    "greedy_switches": 8
    },
    "100mJ": {
-    "dp_Wh": 406.58153071028977,
-    "dp_switches": 12,
-    "greedy_Wh": 406.4895898132395,
-    "greedy_switches": 19
+    "dp_Wh": 406.0342582578216,
+    "dp_switches": 4,
+    "greedy_Wh": 405.99410500228123,
+    "greedy_switches": 8
    },
    "400mJ": {
-    "dp_Wh": 406.5825307102898,
-    "dp_switches": 12,
-    "greedy_Wh": 406.49117314657286,
-    "greedy_switches": 19
+    "dp_Wh": 406.034591591155,
+    "dp_switches": 4,
+    "greedy_Wh": 405.99477166894786,
+    "greedy_switches": 8
    }
   },
   "iron": {
    "x0.5": {
-    "dp_Wh": 404.32859525852984,
-    "fixed4P_Wh": 418.3704710097486,
-    "fixedDelta_Wh": 407.85044542125314
+    "dp_Wh": 403.85901055279214,
+    "fixed4P_Wh": 416.95613679253194,
+    "fixedDelta_Wh": 407.2071324550467
    },
    "x2": {
-    "dp_Wh": 409.6204758051097,
-    "fixed4P_Wh": 428.91948149789084,
-    "fixedDelta_Wh": 414.7418626382771
+    "dp_Wh": 408.9336239142021,
+    "fixed4P_Wh": 427.28457033491685,
+    "fixedDelta_Wh": 413.92974836384224
    }
   }
  },
  "energy_check": {
-  "dp_Wh": 406.65492956424845,
+  "dp_Wh": 405.86542781646557,
   "best_fixed_mode": "4S",
-  "best_fixed_Wh": 406.56423498577084,
-  "fixed4P_Wh": 422.45661515859337,
-  "saving_vs_best_fixed_pct": -0.022307564382972878
- },
- "provenance": {
-  "model": "ckpt_mlp_drive.pt",
-  "torque_model": "functional_v5_pmrotor",
-  "sha256": {
-   "exp/ckpt_mlp_drive.pt": "decc4bbc280e9bfac20d486ca6bc4cadee0dfbab6a73b72b5c0addb518d2d028",
-   "coil_dataset_full.npz": "89218af47afaeeba980eb9c23b677908f634f4fb950d8cd12875d7f9880ced80",
-   "coil_dataset_densebeta.npz": "e718d493c21e61eb70c7b18f1c7e17a3c00c9951f899ec6c678763d09e17f321",
-   "coil_dataset_sync.npz": "147d0d40392191b8537903fbf8d02470f7a81f31e10d3eab87ae17dc706bdc51",
-   "coil_dataset_random48.npz": "930f6e917867a5bf26d41e33ef1120fb85439a2863fc8fb04b283a22c8699e3b",
-   "coil_dataset_random3.npz": "0895cba15380bdec6ea4925ce2377ca762ff5d295633590d02d250f6b2d8bcfc",
-   "coil_zero.npz": "675d62fe1edd0d72078fd1e61239b58e58cf0a8480a6cb4a009ec8dea7ffdb39"
-  },
-  "V_CE0": 0.7,
-  "R_CE": 0.002,
-  "E_SW_DEV": 0.001
+  "best_fixed_Wh": 405.83018791638307,
+  "fixed4P_Wh": 420.46850194142183,
+  "saving_vs_best_fixed_pct": -0.008683410237031453
  }
 }

@@ -4,15 +4,17 @@ import json
 import sys
 from pathlib import Path
 
-import numpy as np
-
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT))
+import exp.wmi_fix  # noqa: F401,E402
+
+import numpy as np  # noqa: E402
+
 from coil_fea import solve_coils  # noqa: E402
 from exp.energy_torque import functional_torque  # noqa: E402
 from gen_coil_dataset import connection_currents  # noqa: E402
 
-DTHETA = 7.5
+DTHETA = 15.0
 DI = 0.5
 
 

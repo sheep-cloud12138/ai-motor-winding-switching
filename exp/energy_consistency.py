@@ -8,12 +8,13 @@ import numpy as np
 
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT))
+import exp.wmi_fix  # noqa: F401,E402
 from coil_fea import solve_coils
 from exp.energy_torque import functional_torque
 from gen_coil_dataset import connection_currents
 
 THETA = 30.0
-DTHETA = 7.5
+DTHETA = 15.0
 DI = 0.5
 ip = 40.0 * np.array([
     np.cos(np.pi / 4),

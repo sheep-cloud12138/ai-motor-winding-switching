@@ -1,132 +1,132 @@
 {
- "dtheta_deg": 7.5,
+ "dtheta_deg": 15.0,
  "current_step_A": 0.5,
  "cases": [
   {
    "name": "4S_40A_theta45",
    "theta_deg": 45.0,
    "current_rms_A": 28.284271247461902,
-   "correlation": 0.9997945641530069,
-   "relative_norm_residual": 0.03294265156576972
+   "correlation": 0.9998797592608659,
+   "relative_norm_residual": 0.023008234560110957
   },
   {
    "name": "random_30A_theta45",
    "theta_deg": 45.0,
    "current_rms_A": 30.000000000000004,
-   "correlation": 0.9999372994365435,
-   "relative_norm_residual": 0.014418166019224616
+   "correlation": 0.9999571651384016,
+   "relative_norm_residual": 0.012732208081163663
   },
   {
    "name": "random_50A_theta105",
    "theta_deg": 105.0,
    "current_rms_A": 50.00000000000001,
-   "correlation": 0.9994936019065744,
-   "relative_norm_residual": 0.02834828100450766
+   "correlation": 0.9997340076458499,
+   "relative_norm_residual": 0.02386472018525535
   },
   {
    "name": "random_30A_theta0",
    "theta_deg": 0.0,
    "current_rms_A": 30.000000000000004,
-   "correlation": 0.9996166471833379,
-   "relative_norm_residual": 0.02984673883414118
+   "correlation": 0.999936906451413,
+   "relative_norm_residual": 0.01713765610086519
   },
   {
    "name": "random_30A_theta15",
    "theta_deg": 15.0,
    "current_rms_A": 30.000000000000004,
-   "correlation": 0.99992621192122,
-   "relative_norm_residual": 0.005307006251253938
+   "correlation": 0.9999767737804749,
+   "relative_norm_residual": 0.011643600210702857
   },
   {
    "name": "random_30A_theta30",
    "theta_deg": 30.0,
    "current_rms_A": 30.000000000000004,
-   "correlation": 0.9998950305900236,
-   "relative_norm_residual": 0.01685853151417851
+   "correlation": 0.9999581117968281,
+   "relative_norm_residual": 0.013663168034594856
   },
   {
    "name": "random_30A_theta45",
    "theta_deg": 45.0,
    "current_rms_A": 30.000000000000004,
-   "correlation": 0.9999372994365435,
-   "relative_norm_residual": 0.014418166019224616
+   "correlation": 0.9999571651384016,
+   "relative_norm_residual": 0.012732208081163663
   },
   {
    "name": "random_30A_theta60",
    "theta_deg": 60.0,
    "current_rms_A": 30.000000000000004,
-   "correlation": 0.9999065649786378,
-   "relative_norm_residual": 0.01424119462752268
+   "correlation": 0.9999645986419983,
+   "relative_norm_residual": 0.00933289631718033
   },
   {
    "name": "random_30A_theta75",
    "theta_deg": 75.0,
    "current_rms_A": 30.000000000000004,
-   "correlation": 0.999941940194473,
-   "relative_norm_residual": 0.012615667370015732
+   "correlation": 0.9999414656242541,
+   "relative_norm_residual": 0.012133459585288506
   },
   {
    "name": "random_30A_theta90",
    "theta_deg": 90.0,
    "current_rms_A": 30.000000000000004,
-   "correlation": 0.9998121482231607,
-   "relative_norm_residual": 0.022375664725977986
+   "correlation": 0.9997988988474564,
+   "relative_norm_residual": 0.02161747014135665
   },
   {
    "name": "random_30A_theta105",
    "theta_deg": 105.0,
    "current_rms_A": 30.000000000000004,
-   "correlation": 0.9998811356722528,
-   "relative_norm_residual": 0.014392548890339038
+   "correlation": 0.9999624108207608,
+   "relative_norm_residual": 0.015701038946896343
   },
   {
    "name": "random_30A_theta120",
    "theta_deg": 120.0,
    "current_rms_A": 30.000000000000004,
-   "correlation": 0.999976917104766,
-   "relative_norm_residual": 0.011105612155970255
+   "correlation": 0.9998390683357189,
+   "relative_norm_residual": 0.018765320050961643
   },
   {
    "name": "random_30A_theta135",
    "theta_deg": 135.0,
    "current_rms_A": 30.000000000000004,
-   "correlation": 0.9995606122627324,
-   "relative_norm_residual": 0.0317236371329976
+   "correlation": 0.9998128577735212,
+   "relative_norm_residual": 0.02374208360637927
   },
   {
    "name": "random_30A_theta150",
    "theta_deg": 150.0,
    "current_rms_A": 30.000000000000004,
-   "correlation": 0.9997891370798211,
-   "relative_norm_residual": 0.025756930991126435
+   "correlation": 0.9998049577189129,
+   "relative_norm_residual": 0.02310684256337407
   },
   {
    "name": "random_30A_theta165",
    "theta_deg": 165.0,
    "current_rms_A": 30.000000000000004,
-   "correlation": 0.9999459694596027,
-   "relative_norm_residual": 0.008615239931094334
+   "correlation": 0.9999427462058801,
+   "relative_norm_residual": 0.012841764614046241
   },
   {
    "name": "random_seed1_theta105",
    "theta_deg": 105.0,
    "current_rms_A": 30.0,
-   "correlation": 0.9995550182072431,
-   "relative_norm_residual": 0.018051599788611174
+   "correlation": 0.9998558684633636,
+   "relative_norm_residual": 0.017639198295395057
   },
   {
    "name": "random_seed2_theta105",
    "theta_deg": 105.0,
    "current_rms_A": 29.999999999999996,
-   "correlation": 0.9999410452238832,
-   "relative_norm_residual": 0.01180662546882097
+   "correlation": 0.9998250038081535,
+   "relative_norm_residual": 0.019585212921568763
   },
   {
    "name": "random_seed3_theta105",
    "theta_deg": 105.0,
    "current_rms_A": 30.000000000000007,
-   "correlation": 0.9998826539826127,
-   "relative_norm_residual": 0.009530949009514424
+   "correlation": 0.999618152144689,
+   "relative_norm_residual": 0.026784904633869153
   }
  ]
 }

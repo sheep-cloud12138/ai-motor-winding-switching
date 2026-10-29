@@ -8,7 +8,7 @@ import numpy as np
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT))
 _PM_TORQUE_CACHE = {}
-TORQUE_MODEL = "functional_v5_pmrotor"
+TORQUE_MODEL = "functional_v6_theta15"
 
 
 def magnetic_functional(theta, current, pm_on=True, linear_iron=False,
@@ -45,7 +45,7 @@ def magnetic_functional(theta, current, pm_on=True, linear_iron=False,
     return float(field), float(source_work), float(source_work - field)
 
 
-def functional_torque(theta, current, dtheta_deg=7.5, **kwargs):
+def functional_torque(theta, current, dtheta_deg=15.0, **kwargs):
     """Differentiate the discrete energy functional at fixed currents."""
     if kwargs.get("pm_on", True) and not np.any(current):
         return 0.0

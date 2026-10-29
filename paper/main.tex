@@ -45,22 +45,23 @@ train one connection-invariant surrogate on coil-level FE data. The
 zero-shot problem is characterised by current-space coverage; its measured
 rank correlation with flux error is $0.82$ over seven hold-outs. A
 structured co-energy network preserves reciprocity and the torque--flux
-relation with a local residual of $0.67\,\%$, versus $218\,\%$ for an MLP.
+relation with a local residual of $2.8\times10^{-4}$, versus $45\,\%$ for an MLP.
 On a seven-connection benchmark, sampling kind dominates count: 24
 phase-random groups reduce an
-open-phase hold-out from flux nRMSE $1.25$ to $0.088$ at one quarter of the
+open-phase hold-out from flux nRMSE $1.48$ to $0.066$ at one quarter of the
 cost of magnitude coverage, while magnitude coverage reduces a
-half-winding tap from $1.60$ to $0.31$. Both trends replicate on a
-6-slot/4-pole machine. An independent FEMM check gives $8.0\,\%$ mean PM
-fundamental error, $7.5\,\%$ saturated-torque error, and end-to-end torque
-$R^2=0.89$--$0.92$ for three unseen synchronous connections. The
-64-point coarse/fine torque check remains weak ($R^2=0.377$), so absolute
-torque labels and drive-cycle energies remain surrogate-dependent. In a
+half-winding tap from $1.39$ to $0.36$. Both trends replicate on a
+6-slot/4-pole machine. An independent FEMM check gives $7.9\,\%$ mean PM
+fundamental error, $1.6\,\%$ saturated-torque error at the checked point,
+and end-to-end torque $R^2=0.86$--$0.94$ for three unseen synchronous
+connections. The 64-point coarse/fine torque check has $R^2=0.984$, but a
+$10\,\%$ norm-ratio and $11.8\,\%$ median pointwise difference remain, so
+absolute torque labels and drive-cycle energies remain surrogate-dependent. In a
 540-kg single-motor WLTC class-1 case, every fixed connection completes the
-cycle; DP energy is $0.006\,\%$ higher than fixed 4S. A 105-point bus-voltage and
+cycle; DP energy is within $0.006\,\%$ of fixed 4S. A 105-point bus-voltage and
 gear-ratio sweep finds no case in which reconfiguration supplies
 feasibility absent from a fixed connection; the direct-MLP screen predicts a
-$1\,\%$ or larger gain in 24 of 86 feasible cases (maximum $2.77\,\%$).
+$1\,\%$ or larger gain in 28 of 87 feasible cases (maximum $2.64\,\%$).
 Reconfiguration is therefore a modest, regime-dependent design option,
 not a universal efficiency strategy.
 \end{abstract}
@@ -174,8 +175,8 @@ informative misalignments that delimit when the screen applies.
 Fourier-parameterised, PSD-seeded inductance matrix, harmonic PM flux and a
 zero-initialised residual MLP. Reciprocity, energy conservation and
 torque--flux consistency hold by construction to autograd precision
-($1.1\times10^{-4}$ reciprocity residual and $0.67\,\%$ mixed-partial
-residual), versus $0.168$ and $218\,\%$ for a same-size MLP. The structure
+($1.0\times10^{-4}$ reciprocity residual and $2.8\times10^{-4}$
+mixed-partial residual), versus $0.167$ and $45\,\%$ for a same-size MLP. The structure
 is most accurate on the hard unbalanced, tap and rotor-only hold-outs,
 while the MLP retains a small advantage on in-support flux. We also
 report an instructive negative result: a monotone (PSD-Jacobian,
@@ -190,7 +191,7 @@ families, and a reproducible split protocol. Two findings generalise beyond
 this machine: (i)~48 magnitude-random current patterns reduce the unbalanced
 hold-out from $0.80$ to $0.10$ (co-energy net); (ii)~phase-random patterns
 (a quarter of the magnitude family's FE cost) rescue open-phase connections
-that magnitude patterns cannot ($1.25\!\to\!0.09$).
+that magnitude patterns cannot ($1.48\!\to\!0.066$).
 Coverage \emph{kind} dominates coverage \emph{amount}; both
 principles replicate on a 6-slot/4-pole second machine.
 \item \textbf{Drive-cycle stress test and zero-shot limits
@@ -199,12 +200,12 @@ generates mode-conditioned loss maps in milliseconds; a dynamic program over
 the official WLTC class-1 trace jointly selects connection and operating
 point under voltage envelopes, current limits, minimum dwell and changeover
 energy. In the final single-motor calibration, every fixed connection
-completes the cycle and DP energy is $0.006\,\%$ higher. A 105-point
+completes the cycle and DP energy is within $0.006\,\%$ of fixed 4S. A 105-point
 voltage/gear sweep finds no feasibility window created by reconfiguration,
-but the surrogate predicts $1$--$2.77\,\%$ energy gains in 24 feasible
+but the surrogate predicts $1$--$2.64\,\%$ energy gains in 28 feasible
 designs.
 The same surrogate transfers torque to unseen 3S1P, 4P and tap50
-synchronous trajectories with end-to-end FEMM $R^2=0.89$--$0.92$ over 36
+synchronous trajectories with end-to-end FEMM $R^2=0.86$--$0.94$ over 36
 points each. The drive example therefore exposes a genuine negative result:
 connection flexibility does not automatically produce an energy or
 feasibility benefit.
@@ -432,7 +433,7 @@ with $\sigma=\mathrm{softplus}$ and
 $\mathbf{A}_0=\mathrm{blkdiag}(\mathbf{B}^{\!\top}\mathbf{B}+\epsilon\mathbf{I},0)$,
 which makes the field $g$ the exact gradient of a convex scalar and its
 Jacobian symmetric positive semidefinite everywhere. Despite perfect
-reciprocity ($1.6\times10^{-5}$, Table~\ref{tab:jacobian}), it cannot fit
+reciprocity ($5.1\times10^{-5}$, Table~\ref{tab:jacobian}), it cannot fit
 this machine at any difficulty tier (\S\ref{sec:results:neg}).
 \textbf{Reciprocity-structured ridge.} Linear-in-current model
 $\hat{\psi}_i=\sum_h H_h(\theta)\big[a_{ih}+\sum_{j\le
@@ -483,8 +484,9 @@ W'(\ic,\theta)
 -L_{\mathrm{stack}}\int_\Omega
 \int_0^{B}\nu(b)b\,\mathrm db\,\mathrm dS .
 \end{equation}
-Torque is evaluated by a $\pm7.5^\circ$ central difference of $W'$ at fixed
-currents, and the same treatment is used for the zero-current PM baseline.
+Torque is evaluated by a $\pm15^\circ$ central difference of $W'$ at fixed
+currents, aligned with one production polar-grid sector, and the same
+treatment is used for the zero-current PM baseline.
 The finite angle is required because the fixed polar grid is not conformal
 to the rotating PM arcs; it is a production-grid estimator, not a
 mesh-converged local torque.
@@ -555,12 +557,13 @@ Linear mutual-inductance reciprocity & $3.0\times10^{-6}$ & solver-level \\
 Nonlinear differential reciprocity (20\,A bias) & $3.2\times10^{-4}$ & solver-level \\
 Co-energy path independence (2 paths) & $2.2\,\%$ & solver-level \\
 Maxwell check, $12$-slot ($\partial T/\partial i$ vs.\ $\partial\psi/\partial\theta$)
-& $r=0.99998$, $2.4\,\%$ & coarse grid \\
-Maxwell check, $6$-slot & $r=0.9998$, $2.3\,\%$ & solver-level \\
-Random currents, 12 angles & $r\ge0.9995$, max $3.3\,\%$ & production stencil \\
-Same Maxwell check, $80\times192$ & $r=0.991$, $15.2\,\%$ & not converged \\
+& $r=0.99998$, $2.2\,\%$ & production grid \\
+Maxwell check, $6$-slot & $r=0.99927$, $3.9\,\%$ & solver-level \\
+Random currents, 18 cases & $r\ge0.9996$, max $2.7\,\%$ & production grid \\
+Same Maxwell check, $80\times192$ & $r=0.992$, $20.9\,\%$ & not converged \\
 Flux, $80\times192$ vs $40\times96$ & $r=0.997$, ratio $1.06$ & discretisation \\
-Torque, $80\times192$ vs $40\times96$ & $r=0.751$, $R^2=0.377$ & discretisation \\
+Torque, $80\times192$ vs $40\times96$ & $r=0.996$, $R^2=0.984$ & discretisation \\
+Torque, $7.5^\circ$ stencil, same meshes & $r=0.924$, $R^2=0.836$ & sensitivity \\
 \bottomrule
 \end{tabular}
 }
@@ -569,14 +572,15 @@ Torque, $80\times192$ vs $40\times96$ & $r=0.751$, $R^2=0.377$ & discretisation 
 Table~\ref{tab:femmcheck} reports an independent FEMM 4.2 cross-check of
 the same geometry and material curve, with 40 turns per coil, a 100-mm stack
 and the same BH points. The linear inductance matrix has
-correlation $0.999996$ with a $120\times288$ in-house reference; after one
-global factor of $1.13$, its shape residual is $2.1\,\%$. The remaining
+correlation $0.999992$ with a $120\times288$ in-house reference; after one
+global factor of $1.134$, its shape residual is $2.1\,\%$. The remaining
 global factor is not calibrated away: it indicates that the two solvers do
 not yet share an identical absolute normalisation. After correcting the
 rotating 80\,\% PM arc, the PM-only waveform has correlation $0.9993$ and a
 fundamental-amplitude error of $7.9\,\%$ on average ($8.4\,\%$ maximum),
 while a saturated 4S case reaches flux correlation $0.9992$ with a mean
-pointwise flux difference of $20.2\,\%$ and a $7.5\,\%$ torque difference.
+pointwise flux difference of $20.2\,\%$ and a $1.6\,\%$ torque difference
+at the checked point.
 The absolute flux scale still precludes claims of pointwise accuracy. The
 cross-check also tests zero-shot screening. It samples
 $\theta\in\{0,45,90,135\}^\circ$, so it validates trend transfer rather
@@ -586,13 +590,15 @@ The zero-support MLP is used for 4P and tap50; the drive-cycle MLP, which
 has not seen 3S1P, is used for that connection. Proxy-versus-reference and
 solver-versus-solver errors are
 reported separately in Table~\ref{tab:zeroshot-triad}. The never-trained
-3S1P connection reaches end-to-end torque $R^2=0.895$ against FEMM; the
-4P and tap50 connections reach $0.918$ and $0.887$. Their torque
-correlations are all $0.95$--$0.97$. The flux channel is less transferable
-for the direct MLP (proxy--reference correlations $0.58$--$0.77$), whereas
-the co-energy model raises 4P/tap50 to $0.954$/$0.903$. Zero-shot torque
-screening is therefore useful for prioritizing FE verification, but an
-absolute flux or loss decision still requires an independent solve.
+3S1P connection reaches end-to-end torque $R^2=0.863$ against FEMM; the
+4P and tap50 connections reach $0.929$ and $0.935$. Their torque
+correlations are $0.95$--$0.98$. The direct-MLP flux channel remains much
+less transferable: proxy--FEMM correlations are $0.60$--$0.81$ and the
+tap50 flux $R^2$ is negative. The co-energy model improves flux for
+4P/tap50 ($r=0.954$/$0.816$), but its tap50 torque is weaker
+($R^2=0.832$) than the direct MLP ($0.935$). Zero-shot torque screening is
+therefore useful for prioritizing FE verification, but neither flux nor
+loss should be accepted without an independent solve.
 
 \begin{table}[t]
 \centering\small
@@ -604,10 +610,10 @@ torque uses the weighted-stress integral.}
 \toprule
 Comparison & Correlation & Discrepancy \\
 \midrule
-Linear inductance, fine reference & $0.999996$ & $2.1\,\%$ after $1.13\times$ \\
+Linear inductance, fine reference & $0.999992$ & $2.1\,\%$ after $1.13\times$ \\
 PM-only flux waveform & $0.9993$ & $7.9\,\%$ fundamental (max $8.4\,\%$) \\
 Nonlinear 4S flux (60\,A) & $0.9992$ & $20.2\,\%$ mean pointwise \\
-Nonlinear 4S torque (60\,A) & --- & $7.5\,\%$ \\
+Nonlinear 4S torque (60\,A) & --- & $1.6\,\%$ \\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -627,9 +633,9 @@ solver difference; ``proxy--FEMM'' is the end-to-end error.}
 Hold-out & Flux corr.\ (proxy--ref.) & Torque proxy--ref. &
 Torque ref.--FEMM & Torque proxy--FEMM \\
 \midrule
-4P    & 0.771 & 0.983 / 0.959 (0.357) & 0.988 / 0.951 (0.498) & 0.972 / 0.918 (0.697) \\
-tap50 & 0.580 & 0.957 / 0.835 (1.428) & 0.994 / 0.975 (0.721) & 0.958 / 0.887 (1.389) \\
-3S1P  & 0.940 & 0.952 / 0.857 (1.265) & 0.995 / 0.967 (0.762) & 0.952 / 0.894 (1.274) \\
+4P    & 0.800 & 0.989 / 0.962 (0.357) & 0.995 / 0.964 (0.483) & 0.984 / 0.929 (0.710) \\
+tap50 & 0.586 & 0.973 / 0.886 (1.045) & 0.999 / 0.979 (0.619) & 0.971 / 0.935 (1.015) \\
+3S1P  & 0.880 & 0.952 / 0.872 (1.354) & 0.999 / 0.981 (0.681) & 0.954 / 0.863 (1.677) \\
 \bottomrule
 \end{tabular}
 }
@@ -668,7 +674,7 @@ delta $0.240$, 4S $0.263$, openB $0.288$, tap50 $0.536$. Across the seven
 hold-outs the rank correlation with the zero-shot flux error is
 $\rho=0.82$ ($p=0.02$). The correlation is meaningful but not perfect,
 and the misalignment is informative: openB sits at a modest $\bar d$ yet
-the base MLP remains at $1.17$, because its sign-flipped phase pairs are
+the base MLP remains at $1.26$, because its sign-flipped phase pairs are
 \emph{close} in Euclidean distance to the training support while lying in
 a direction the support barely samples---an unweighted distance metric
 cannot see support density or direction. The 4S hold-out supplies the
@@ -678,26 +684,27 @@ neither a large nor a small value justifies accepting or rejecting a
 connection. Four observations.
 
 \textbf{(1) In-support transfer is essentially free.} For tier-1 hold-outs
-(2S2P, 4P) the shared model reaches flux nRMSE $0.035$--$0.073$ and torque
-$R^2\ge0.981$, i.e.\ in-distribution accuracy: their current subspaces lie
+(2S2P, 4P) the shared model reaches flux nRMSE $0.031$--$0.067$ and torque
+$R^2\ge0.998$, i.e.\ in-distribution accuracy: their current subspaces lie
 inside the training support ($\bar d<0.06$, Prop.~\ref{prop:bound}), so
 the connection adds no error of its own. Notably, 4P was
 \emph{never seen}---it is a rescaled 4S, and the model treats it as such.
 
 \textbf{(2) Without pattern coverage, tier-3 collapses.} When trained on
 the standard connections only (``no-random''), the MLP and co-energy
-network predict asym flux at nRMSE $0.866$ and $0.803$, with torque
-$R^2\approx0.50$; both channels lose the cross-current structure. The
-monotone vector field is worse still. This is the single most
-important negative control in the benchmark: connection labels are
-worthless; current-space coverage is everything.
+network predict asym flux at nRMSE $0.866$ and $0.804$. Their torque
+$R^2$ nevertheless remains $0.972$ and $0.983$: a scalar torque score can
+look good while the underlying current-space geometry is wrong. The
+monotone vector field is worse on both channels. This is the central
+negative control: coverage must be checked on flux and the operating-point
+distribution, not inferred from aggregate torque alone.
 
 \textbf{(3) Magnitude patterns rescue unbalance.} Adding 48 magnitude-random
-groups brings asym to $0.168$ (MLP) and $0.094$ (co-energy net); torque
-$R^2$ reaches $0.980$ and $0.996$, respectively.
+groups brings asym to $0.123$ (MLP) and $0.104$ (co-energy net); torque
+$R^2$ reaches $0.995$ and $0.997$, respectively.
 
 \textbf{(4) Phase patterns rescue open-phase.} Magnitude patterns leave
-openB at $1.17$; 24 phase-random groups bring it to $0.068$
+openB at $1.26$; 24 phase-random groups bring it to $0.066$
 (\S\ref{sec:results:phase})---the second design principle.
 
 \begin{table}[t]
@@ -714,20 +721,20 @@ out connections never seen at all. Best per row in bold.}
 \toprule
 Tier & Hold-out & Direct MLP & Co-energy (ours) & Monotone VF \\
 \midrule
-1 & 4S (LOCO)      & \textbf{0.064}/0.988 & 0.072/\textbf{0.995} & 0.334/0.893 \\
-1 & 2S2P (LOCO)    & \textbf{0.035}/\textbf{0.998} & 0.070/0.997 & 0.270/0.776 \\
-1 & 4P (EXT)       & \textbf{0.036}/\textbf{0.996} & 0.073/0.981 & 0.288/0.495 \\
-2 & delta (LOCO)   & 0.185/0.987 & \textbf{0.165}/\textbf{0.990} & 0.309/0.748 \\
-3 & asym (LOCO)    & 0.168/0.980 & \textbf{0.094}/\textbf{0.996} & 0.483/0.485 \\
-3 & tap50 (EXT)    & 0.354/0.952 & \textbf{0.316}/\textbf{0.977} & 0.386/0.815 \\
-3 & openB (EXT)    & 1.172/\textbf{0.943} & \textbf{0.302}/0.834 & 0.334/0.599 \\
+1 & 4S (LOCO)      & \textbf{0.064}/0.988 & 0.095/\textbf{0.997} & 0.313/0.971 \\
+1 & 2S2P (LOCO)    & \textbf{0.031}/\textbf{0.999} & 0.067/0.998 & 0.262/0.916 \\
+1 & 4P (EXT)       & \textbf{0.033}/\textbf{0.998} & 0.053/0.998 & 0.289/0.783 \\
+2 & delta (LOCO)   & 0.213/0.990 & \textbf{0.154}/0.987 & 0.301/0.901 \\
+3 & asym (LOCO)    & 0.123/0.995 & \textbf{0.086}/\textbf{0.997} & 0.473/0.908 \\
+3 & tap50 (EXT)    & 0.357/0.978 & \textbf{0.287}/\textbf{0.994} & 0.376/0.915 \\
+3 & openB (EXT)    & 1.258/\textbf{0.956} & 0.658/0.469 & \textbf{0.322}/0.787 \\
 \midrule
-\multicolumn{2}{l}{asym, no random patterns} & 0.866/0.493 & 0.803/0.500 & 7.89/$-2.39$ \\
-\multicolumn{2}{l}{asym, per-connection MLP (4S only)} & 0.866/0.483 & --- & --- \\
+\multicolumn{2}{l}{asym, no random patterns} & 0.866/0.972 & 0.804/0.983 & 7.86/$-5.43$ \\
+\multicolumn{2}{l}{asym, per-connection MLP (4S only)} & 0.867/0.973 & --- & --- \\
 \multicolumn{2}{l}{asym, linear ridge (reciprocity-structured)} & \multicolumn{3}{c}{0.545} \\
 \bottomrule
 \multicolumn{5}{l}{\footnotesize $^\dagger$with zero-support patterns included
-(``withz''): tap50 flux nRMSE/R$^2$ becomes 0.284/0.977; openB 0.389/0.866.} \\
+(``withz''): tap50 flux nRMSE/R$^2$ becomes 0.293/0.991; openB 0.604/0.608.} \\
 \end{tabular}
 }
 \end{table}
@@ -739,35 +746,36 @@ Tier & Hold-out & Direct MLP & Co-energy (ours) & Monotone VF \\
 \centering
 \includegraphics[width=\linewidth]{figs/fig_scaling.pdf}
 \caption{Coverage scaling of magnitude-random patterns on the two
-hardest standard hold-outs. The co-energy model improves monotonically on
-asym; delta is insensitive to magnitude coverage and requires phase
-coverage (Table~\ref{tab:phase}).}
+hardest standard hold-outs. The co-energy model improves sharply on asym
+through eight groups and then saturates; delta is insensitive and
+non-monotone to magnitude coverage and requires phase coverage
+(Table~\ref{tab:phase}).}
 \label{fig:scaling}
 \end{figure}
 
 Fig.~\ref{fig:scaling} shows the coverage-scaling curves;
 Table~\ref{tab:phase} isolates the effect: the two pattern families rescue
 \emph{disjoint} connection
-classes. Magnitude patterns bring tap50 from $1.60$ to $0.35$ (they sample
-non-uniform per-coil amplitudes, including small ones) but leave openB at
-$1.37$ (open-phase operation drives sign-flipped phase pairs that
+classes. Magnitude patterns bring tap50 from $1.39$ to $0.36$ (they sample
+non-uniform per-coil amplitudes, including small ones) but leave openB above
+$1.26$ (open-phase operation drives sign-flipped phase pairs that
 multiplicative perturbations of a balanced base never generate). Phase-random
-patterns do the opposite: openB drops to $0.068$ ($R^2=0.99$) and delta from
-$0.364$ to $0.062$ (delta is itself a phase-recombination), while tap50
-degrades to $1.48$ in that pool alone (phase-random patterns keep all coils
+patterns do the opposite: openB drops to $0.066$ ($R^2=0.998$) and delta from
+$0.317$ to $0.062$ (delta is itself a phase-recombination), while tap50
+degrades to $1.55$ in that pool alone (phase-random patterns keep all coils
 energised). With both families in the pool (a quarter of the magnitude
 family's FE cost added on top), each hold-out is served by the family it
-needs: openB $0.09$, delta $0.077$, tap50 $0.384$ (via either family's best).
+needs: openB $0.077$, delta $0.078$, tap50 $0.373$ (via either family's best).
 On delta, scaling the magnitude family from 0 to 48 groups only reaches
-$0.186$ ($0.364$ at zero groups and $0.207$ at 24), while a quarter-sized
-phase family reaches $0.062$: coverage \emph{kind} dominates coverage
+$0.164$ ($0.317$ at zero groups and $0.145$ at 24), while a quarter-sized
+phase family reaches $0.069$: coverage \emph{kind} dominates coverage
 \emph{amount}. This is consistent with the
 qualitative implication of Prop.~\ref{prop:bound}, although the bound itself
 is not tight in Euclidean distance.
 
 \begin{table}[t]
 \centering\small
-\caption{Coverage-kind ablation (flux nRMSE / torque $R^2$). Hold-outs:
+\caption{Coverage-kind ablation for the direct MLP (flux nRMSE / torque $R^2$). Hold-outs:
 openB = phase-B open circuit, tap50 = half-winding series tap, delta =
 star--delta recombination. Magnitude patterns (48 groups, 4{,}608 FE
 samples) and phase patterns (24 groups, 1{,}152 samples) rescue
@@ -777,10 +785,10 @@ samples) and phase patterns (24 groups, 1{,}152 samples) rescue
 \toprule
 Training pool & openB & tap50 & delta \\
 \midrule
-standard only            & 1.37/0.37 & 1.60/0.12 & 0.364/0.88 \\
-+ magnitude (48 groups)  & 1.17/0.94 & \textbf{0.35}/0.95 & 0.186/0.99 \\
-+ phase (24 groups)      & \textbf{0.068}/\textbf{0.99} & 1.48/0.03 & \textbf{0.062}/\textbf{1.00} \\
-+ both                   & 0.092/0.99 & 0.384/0.85 & 0.077/\textbf{1.00} \\
+standard only            & 1.48/0.89 & 1.39/0.93 & 0.317/0.93 \\
++ magnitude (48 groups)  & 1.27/0.94 & \textbf{0.36}/0.98 & 0.214/0.99 \\
++ phase (24 groups)      & \textbf{0.066}/\textbf{0.99} & 1.55/0.90 & \textbf{0.062}/\textbf{1.00} \\
++ both                   & 0.077/0.99 & 0.373/0.95 & 0.078/\textbf{1.00} \\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -800,11 +808,11 @@ magnitude less than the direct MLP.}
 Table~\ref{tab:jacobian} and Fig.~\ref{fig:jacobian} evaluate the flux Jacobian
 $\partial\hat{\psic}/\partial\ic$ by central differences on 24 held-out
 operating points. The co-energy network violates reciprocity by
-$1.1\times10^{-4}$---over three orders of magnitude below the direct MLP's
-$0.168$---and keeps a positive-definite symmetric part (min eigenvalue
-$0.028>0$). A local mixed-partial probe gives a torque-flux residual of
-$0.67\,\%$ for the co-energy network versus $218\,\%$ for the MLP. The
-monotone vector field is symmetric by construction ($5.2\times10^{-5}$) but
+$1.0\times10^{-4}$---over three orders of magnitude below the direct MLP's
+$0.167$---and keeps a positive-definite symmetric part (min eigenvalue
+$0.033>0$). A local mixed-partial probe gives a torque--flux residual of
+$2.8\times10^{-4}$ for the co-energy network versus $45\,\%$ for the MLP. The
+monotone vector field is symmetric by construction ($5.1\times10^{-5}$) but
 has substantially worse accuracy.
 
 \begin{table}[t]
@@ -818,9 +826,9 @@ residual on held-out asym points.}
 Model & $\|J-J^{\!\top}\|_F/\|J\|_F$ & min eig$(\frac{J+J^\top}{2})$ &
 Torque--flux residual \\
 \midrule
-Direct MLP & $0.168$ (max $0.302$) & $0.021$ & $218\,\%$ \\
-Co-energy (ours) & $1.1\times10^{-4}$ (max $3.5\times10^{-4}$) & $0.028$ & $0.67\,\%$ \\
-Monotone VF & $5.2\times10^{-5}$ & $0.015$ & $1.4\,\%$ \\
+Direct MLP & $0.167$ (max $0.367$) & $0.021$ & $45\,\%$ \\
+Co-energy (ours) & $1.0\times10^{-4}$ (max $2.8\times10^{-4}$) & $0.033$ & $2.8\times10^{-4}$ \\
+Monotone VF & $5.1\times10^{-5}$ & $0.014$ & $1.75\,\%$ \\
 \bottomrule
 \end{tabular}
 }
@@ -833,9 +841,8 @@ The monotone vector field enforces joint convexity of the underlying scalar
 in $(\ic,\phi)$. The true co-energy is approximately convex in $\ic$ alone at
 fixed $\theta$, but its $\theta$-dependence through the PM field and slotting
 makes the joint Hessian indefinite; the architecture can therefore only fit a
-compromise, and lands at flux nRMSE $0.27$--$0.48$ and torque $R^2$ no higher
-than $0.89$, including in-support (4S LOCO $0.33$, single-connection-trained
-variant $0.42$), so the shortfall is not an
+compromise, and lands at flux nRMSE $0.26$--$0.47$ and torque $R^2$ between
+$0.78$ and $0.97$, including in-support (4S LOCO $0.31$), so the shortfall is not an
 artefact of cross-connection sharing. Stronger
 training (2$\times$ epochs, $3\times$ learning rate) does not
 close the gap either: the failure is structural rather than one of
@@ -857,23 +864,23 @@ the training pool.}
 \end{figure}
 
 Scaling the magnitude-pattern family on the unbalanced hold-out (asym,
-co-energy net): $0$ groups $0.80$, $2$ groups $0.25$, $8$ groups $0.13$,
-$24$ groups $0.105$, $48$ groups $0.102$---a clean curve that saturates
-near 24 groups, i.e.\ a few thousand FE samples. The direct MLP reaches the
-same range at 24 groups but is non-monotone at 48 ($0.17$), so more samples
+co-energy net): $0$ groups $0.80$, $2$ groups $0.17$, $8$ groups $0.13$,
+$24$ groups $0.13$, $48$ groups $0.10$---a curve that plateaus around
+8--24 groups, i.e.\ a few thousand FE samples. The direct MLP reaches the
+same range at 24 groups but is non-monotone at 48 ($0.12$), so more samples
 of the same family are not uniformly better. On delta the magnitude family
-saturates near $0.15$ while the quarter-sized phase family reaches $0.06$
+remains between $0.14$ and $0.16$ while the quarter-sized phase family reaches $0.07$
 (\S\ref{sec:results:phase}), which is the coverage-kind argument in its
 purest form.
 
 Fig.~\ref{fig:curves} shows subsampling of the full training pool (three
 seeds, hold-out asym): the MLP reaches nRMSE $0.17$ with $10\,\%$ of the
-data, while the co-energy net reaches $0.26$ at $5\,\%$, $0.19$ at
-$10\,\%$, $0.11$ at $25\,\%$, and $0.094$ on the full pool. Its torque
-$R^2$ is $0.85$ even at $5\,\%$ and rises to $0.996$ on the full pool.
+data, while the co-energy net reaches $0.23$ at $5\,\%$, $0.18$ at
+$10\,\%$, $0.12$ at $25\,\%$, and $0.086$ on the full pool. Its torque
+$R^2$ is $0.97$ even at $5\,\%$ and rises to $0.997$ on the full pool.
 The practical reading is therefore conditional: the structured head is
-competitive at very low data, becomes clearly better after a quarter of the
-pool, and does so while retaining physical consistency.
+better at the smallest fraction, becomes comparable around $10\,\%$, and is
+clearly better by $25\,\%$ while retaining physical consistency.
 
 \subsection{Cross-machine replication}
 \label{sec:results:machine2}
@@ -884,11 +891,11 @@ family: a 6-slot/4-pole SPM (different slot count, winding factor,
 inductance matrix and harmonic content; 3{,}084 FE samples in the same
 dataset families). With a direct MLP and the identical protocol, the
 pattern repeats: the half-winding tap hold-out improves with
-\emph{magnitude}-random patterns (flux nRMSE $0.45\!\to\!0.21$; phase
-patterns alone leave it at $0.47$), while the open-phase hold-out is
-rescued by \emph{phase}-random patterns ($0.59\!\to\!0.050$; magnitude
-patterns alone leave it at $0.77$). The union pool again serves both
-($0.21$ and $0.045$). Which family a connection needs tracks the geometry
+\emph{magnitude}-random patterns (flux nRMSE $0.453\!\to\!0.186$; phase
+patterns alone leave it at $0.468$), while the open-phase hold-out is
+rescued by \emph{phase}-random patterns ($0.642\!\to\!0.055$; magnitude
+patterns alone leave it at $0.912$). The union pool again serves both
+($0.200$ and $0.045$). Which family a connection needs tracks the geometry
 of its current vectors, not the machine---as the coverage argument
 requires.
 
@@ -903,8 +910,8 @@ principles rather than architecture ranking.}
 \toprule
 Hold-out & Standard & + magnitude & + phase & + both \\
 \midrule
-tap50 & 0.454/0.705 & \textbf{0.209}/0.940 & 0.466/0.548 & 0.211/\textbf{0.973} \\
-openB & 0.588/0.862 & 0.773/0.607 & 0.050/\textbf{0.996} & \textbf{0.045}/0.994 \\
+tap50 & 0.453/0.876 & \textbf{0.186}/0.974 & 0.468/0.911 & 0.200/\textbf{0.980} \\
+openB & 0.642/0.874 & 0.912/0.901 & 0.055/\textbf{0.998} & \textbf{0.045}/0.997 \\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -973,34 +980,34 @@ sensitivity of cycle energy to the changeover energy, swept from 5\,mJ to
 Table~\ref{tab:drive} and Fig.~\ref{fig:drive} summarise the case study.
 
 \textbf{Reconfiguration has negligible energy value in the nominal case.}
-Fixed 4S is the best fixed connection at $406.56$\,Wh
-($35.58$\,Wh/km); 2S2P, delta and 4P complete the same cycle at
-$412.25$, $410.77$ and $422.63$\,Wh. DP uses $406.58$\,Wh, which is
-$0.006\,\%$ \emph{higher}. Its loss decomposition closes exactly:
-copper increases by $0.32$\,Wh, iron falls by $3.70$\,Wh, inverter loss
-falls by $12.66$\,Wh, mechanical work is unchanged, and auxiliary energy is
+Fixed 4S is the best of the four scheduled fixed connections at $406.06$\,Wh
+($35.53$\,Wh/km); 2S2P, delta and 4P complete the same cycle at
+$411.44$, $410.05$ and $421.14$\,Wh. DP uses $406.03$\,Wh, a
+$0.005\,\%$ reduction relative to fixed 4S. Its loss decomposition closes exactly:
+copper increases by $0.31$\,Wh, iron falls by $3.71$\,Wh, inverter loss
+falls by $11.70$\,Wh, mechanical work is unchanged, and auxiliary energy is
 $111.88$\,Wh in every strategy. The propulsion-loss changes nearly cancel;
 there is no topology-driven efficiency improvement.
 
 \textbf{Scheduling buys switching-burden reduction, not energy.} The
-pointwise greedy sequence uses $406.489$\,Wh with 19 switches; DP uses
-$406.581$\,Wh with 12 switches. DP sacrifices $0.092$\,Wh for a modest
-reduction in switching. A swept two-mode rule uses $407.592$\,Wh with
-eight switches. The modes used by DP are 4S (1{,}545\,s), delta (55\,s),
-and 4P (11\,s); 2S2P is not selected.
+pointwise greedy sequence uses $405.99$\,Wh with 8 switches; DP uses
+$406.03$\,Wh with 4 switches. DP sacrifices $0.040$\,Wh for a modest
+reduction in switching. A swept two-mode rule uses $407.04$\,Wh with
+eight switches. The modes used by DP are 4S (1{,}589\,s) and delta (22\,s);
+2S2P and 4P are not selected.
 
 \textbf{The saving is robust across physically meaningful changeover
 energies.} The default per-event cost is $25$\,mJ, while the winding
 stores about $9$\,J at typical commutation currents. Sweeping over
-$5$\,mJ--$100$\,J keeps the DP schedule at 12 switches; DP energy changes
-from $406.581$ to $406.9$\,Wh. The conclusion is insensitive to a
+$5$\,mJ--$100$\,J keeps the DP schedule at four switches; DP energy changes
+from $406.034$ to $406.145$\,Wh. The conclusion is insensitive to a
 physical changeover-energy range because there is no energy benefit to
 preserve.
 
 \textbf{Surrogate and device sensitivity.} Re-evaluating the same schedule
-with the co-energy surrogate gives a $-0.022\,\%$ saving relative to its
+with the co-energy surrogate gives a $-0.009\,\%$ saving relative to its
 own best fixed connection. Halving $r_{CE}$ with
-$V_{CE0}$ increased by 10\,\% gives $-0.006\,\%$. Both checks agree with
+$V_{CE0}$ increased by 10\,\% gives $+0.005\,\%$. Both checks agree with
 the direct MLP: the result is economically null.
 
 \subsection{Zero-shot modes and connection screening}
@@ -1013,43 +1020,44 @@ retraining, subject to coverage. Two experiments exercise this.
 
 \textbf{A zero-shot candidate is screened and independently checked.} We add
 tap50---never present in the drive surrogate's training pool in any
-form---as a fifth switchable mode. The five-mode DP assigns it 11\,s and
-reduces energy from $406.581$ to $406.566$\,Wh, a negligible
-$0.004\,\%$ gain. The independent FEMM trajectory gives torque
-$R^2=0.887$ for the direct MLP and $0.908$ for the co-energy model,
-supporting the predicted marginal role. The never-trained 3S1P is also credible
-($R^2=0.895$) but consumes $412.1$\,Wh as a fixed connection, so it is not
-selected. Zero-shot torque screening is quantitatively useful, while flux
-and loss remain subject to the
+form---as a fifth switchable mode. The five-mode DP assigns it no time and
+leaves energy at $406.034$\,Wh. The independent FEMM trajectory gives
+torque $R^2=0.935$ for the direct MLP and $0.832$ for the co-energy model;
+the tap50 flux correlation is only $0.60$ for the MLP. The never-trained
+3S1P is also credible on torque ($R^2=0.863$) but consumes $418.7$\,Wh as a
+fixed connection, so it is not selected. Zero-shot torque screening is
+quantitatively useful, while flux and loss remain subject to the
 absolute-scale limitation.
 
 \textbf{Connection screening at design time.} Table~\ref{tab:screen}
 evaluates eight candidate connections (including three tap ratios and an
 unbalanced 3S1P split, all zero-shot for the tap/3S1P entries) as fixed
-connections over the same cycle. All eight entries except tap75 and tap25
-complete the cycle; their energy ranking still requires targeted FE checks
-before a design decision, but the independent tap50 check supports the
-screening direction.
+connections over the same cycle. Seven entries complete the cycle; tap25
+does not. The low nominal energy of tap75 is a model-predicted opportunity,
+not a design conclusion: an independent FEMM trajectory gives only
+$r=0.83$ ($R^2=0.54$) and $4.81$\,N\,m MAE for its torque. The screen is
+therefore a prioritisation tool, not a replacement for targeted FE.
 
 \begin{table}[t]
 \centering\small
 \caption{Exploratory zero-shot screening: fixed-connection cycle energy and
 unmet torque integral (WLTC class 1). Entries marked $^\ast$ are absent from
-the drive training pool. These rankings are hypotheses; missed operating
-points still require targeted FE or measurement validation.}
+the drive training pool; $^\dagger$tap75's attractive surrogate energy was
+not confirmed by FEMM. These rankings are hypotheses and still require
+targeted FE or measurement validation.}
 \label{tab:screen}
 \begin{tabular}{lcc}
 \toprule
 Connection & Energy (Wh) & Unmet torque (N\,m\,s) \\
 \midrule
-4S        & 406.6 & 0.0 \\
-2S2P      & 412.2 & 0.0 \\
-delta     & 410.8 & 0.0 \\
-4P        & 422.6 & 0.0 \\
-3S1P$^\ast$ & 423.6 & 0.0 \\
-tap75$^\ast$ & (342.1) & 135.2 \\
-tap50$^\ast$ & 416.4 & 0.0 \\
-tap25$^\ast$ & (455.3) & 215.0 \\
+4S        & 406.1 & 0.0 \\
+2S2P      & 411.4 & 0.0 \\
+delta     & 410.1 & 0.0 \\
+4P        & 421.1 & 0.0 \\
+3S1P$^\ast$ & 418.7 & 0.0 \\
+tap75$^\ast$ & 282.1$^\dagger$ & 0.0 \\
+tap50$^\ast$ & 413.3 & 0.0 \\
+tap25$^\ast$ & (75.4) & 20.7 \\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -1068,12 +1076,12 @@ energy-benefit regime predicted by the MLP surrogate.}
 \textbf{No reconfiguration-required window in the tested design grid.}
 Fig.~\ref{fig:regimes} evaluates, with the direct-MLP surrogate only,
 105 combinations of three cycles, seven bus voltages
-(180--700\,V) and five gear ratios (8--20). Sixty-two have at least one
+(180--700\,V) and five gear ratios (8--20). Fifty-nine have at least one
 fully feasible fixed connection without a $1\,\%$ surrogate-predicted
-gain, 24 gain at least $1\,\%$ from DP, and 19 are infeasible for both fixed and reconfigurable
+gain, 28 gain at least $1\,\%$ from DP, and 18 are infeasible for both fixed and reconfigurable
 operation. No point is completed by DP while every fixed connection fails.
-Among the 86 feasible cases, the median DP gain is $0.479\,\%$ and the
-maximum is $2.77\,\%$. The gains concentrate in low-voltage or high-speed
+Among the 87 feasible cases, the median DP gain is $0.500\,\%$ and the
+maximum is $2.64\,\%$. The gains concentrate in low-voltage or high-speed
 class-2/3 operating regions; the nominal class-1 design remains in the
 negligible-gain group. The co-energy model was not swept over this grid, so
 the design map is a screening result rather than a cross-model prediction.
@@ -1090,13 +1098,13 @@ dwell 10\,s. All strategies complete the cycle.}
 Strategy & Complete & Energy (Wh) & Wh/km & vs DP & Switches &
 Unmet torque (N\,m\,s) \\
 \midrule
-Fixed 4S         & yes & 406.56 & 35.58 & $-0.006\,\%$ & 0 & 0 \\
-Fixed 2S2P       & yes & 412.25 & 36.08 & +1.375\,\% & 0 & 0 \\
-Fixed delta      & yes & 410.77 & 35.95 & +1.038\,\% & 0 & 0 \\
-Fixed 4P         & yes & 422.63 & 36.98 & +3.794\,\% & 0 & 0 \\
-2-mode rule      & yes & 407.59 & 35.67 & +0.248\,\% & 8 & 0 \\
-Pointwise greedy & yes & 406.49 & 35.57 & $-0.023\,\%$ & 19 & 0 \\
-DP (ours)        & yes & 406.58 & 35.58 & 0 & \textbf{12} & 0 \\
+Fixed 4S         & yes & 406.06 & 35.53 & +0.005\,\% & 0 & 0 \\
+Fixed 2S2P       & yes & 411.44 & 36.00 & +1.332\,\% & 0 & 0 \\
+Fixed delta      & yes & 410.05 & 35.88 & +0.989\,\% & 0 & 0 \\
+Fixed 4P         & yes & 421.14 & 36.85 & +3.720\,\% & 0 & 0 \\
+2-mode rule      & yes & 407.04 & 35.62 & +0.248\,\% & 8 & 0 \\
+Pointwise greedy & yes & 405.99 & 35.53 & $-0.010\,\%$ & 8 & 0 \\
+DP (ours)        & yes & 406.03 & 35.53 & 0 & \textbf{4} & 0 \\
 \bottomrule
 \end{tabular}
 }
@@ -1116,27 +1124,28 @@ reconfiguration studies are the natural next testbeds, where the
 
 \textbf{What structure buys.} The co-energy network is best on the hard
 asym, delta and tap50 flux hold-outs and remains competitive on flux for
-tier-1 connections; the MLP retains a small in-support flux advantage. The
-torque channel no longer collapses after correcting the physical current
-scale: $R^2\ge0.981$ for the standard hold-outs and $0.834$ for the
-open-phase case, while the model's local torque--flux residual is
-$0.67\,\%$. The latter is an architectural property, not evidence that the
-coarse FEA torque labels are mesh-converged. Thus
+tier-1 connections; the MLP retains a small in-support flux advantage. On
+the standard connections the co-energy torque $R^2$ is $0.987$--$0.999$,
+but the open-phase case is a clear exception: the MLP reaches $0.956$ while
+the co-energy head reaches $0.469$. The model-level torque--flux residual is
+$2.8\times10^{-4}$, an architectural property rather than evidence that the
+coarse FEA labels are mesh-converged. Thus
 the same scalar potential now provides both accuracy and consistency for
 the downstream optimisation problem, rather than trading one for the
 other.
 
 \textbf{Limitations.} (i)~2-D magnetostatics with a research-grade solver.
 The 64-point coarse/fine check gives flux correlation $0.997$ and a
-$6\,\%$ norm-ratio difference, but torque correlation $0.751$
-($R^2=0.377$); the same Maxwell stencil on the fine mesh has a $15.2\,\%$
-residual. Pointwise torque labels therefore remain mesh-sensitive even
+$1.06$ norm ratio; torque correlation is $0.996$ with $R^2=0.984$, but the
+norm ratio is $0.90$ and the median pointwise difference is $11.8\,\%$.
+The same Maxwell stencil on the fine mesh has a $20.9\,\%$ residual.
+Pointwise torque labels therefore remain mesh-sensitive even
 though aggregate and external trend checks are consistent. The FEMM check
 shows a $1.13\times$ inductance normalisation factor, $2.1\,\%$
 fine-mesh shape residual, $7.9\,\%$ PM fundamental error, $20.2\,\%$ mean
-nonlinear flux difference, and $7.5\,\%$ torque difference at the tested
+nonlinear flux difference, and $1.6\,\%$ torque difference at the tested
 point. These limit absolute flux claims, while the 36-point end-to-end
-torque trends are stable ($R^2\approx0.9$). The FEMM mesh itself is fixed
+torque trends are $R^2=0.86$--$0.94$. The FEMM mesh itself is fixed
 at a 1-mm element size without an independent mesh-convergence study.
 (ii)~End effects, temperature, mechanical and changeover
 transients are excluded; the changeover circuit enters through a per-event
@@ -1166,12 +1175,15 @@ consistency from a scalar co-energy head. It also yields a
 drive-cycle co-design loop that prices reconfiguration with full loss
 accounting---changeover energy, dwell constraints and system losses. On
 the WLTC class-1 case study, every fixed connection completes the cycle;
-the optimal schedule is $0.006\,\%$ less efficient than fixed 4S. Across 105
+the optimal schedule is within $0.006\,\%$ of fixed 4S. Across 105
 bus-voltage/gear/cycle combinations, no case requires reconfiguration to
-restore feasibility; 24 feasible cases gain at least $1\,\%$, with a
-maximum of $2.77\,\%$. Reconfiguration should therefore be justified by a
+restore feasibility; 28 feasible cases gain at least $1\,\%$, with a
+maximum of $2.64\,\%$. Reconfiguration should therefore be justified by a
 specific
-measured constraint, not assumed to improve efficiency. The benchmark
+measured constraint, not assumed to improve efficiency. Candidate
+screening remains hypothesis-generating: tap50 receives no DP time, while
+the best surrogate candidate, tap75, fails its independent FEMM torque
+check. The benchmark
 and its two data-design
 principles are, we believe, the most durable contributions: they tell the
 next study, whatever its machine, what data to collect and why. Future

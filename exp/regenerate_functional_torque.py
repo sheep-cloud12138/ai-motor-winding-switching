@@ -31,12 +31,20 @@ def one_case(args):
     )
     torque = functional_torque(
         float(theta), np.asarray(ic, dtype=float),
-        nr=nr, nt=nt, dtheta_deg=7.5,
+        nr=nr, nt=nt, dtheta_deg=15.0,
     )
     return np.concatenate([solved["psi"], [torque]])
 
 
-def update_dataset(path, pool, nr, nt):
+def one_torque(args):
+    theta, ic, nr, nt = args
+    return functional_torque(
+        float(theta), np.asarray(ic, dtype=float),
+        nr=nr, nt=nt, dtheta_deg=15.0,
+    )
+
+
+def update_dataset(path, pool, nr, nt, torque_only=False):
     with np.load(path, allow_pickle=True) as data:
         fields = {name: data[name].copy() for name in data.files}
     if fields.get("torque_model", np.array("")) == TAG:
@@ -44,15 +52,17 @@ def update_dataset(path, pool, nr, nt):
         return
     if "Y" in fields and fields["Y"].shape[1] == 13:
         theta, ic = fields["X"][:, 0], fields["X"][:, 1:]
-        result = pool.map(
-            one_case,
-            [(float(t), row, nr, nt) for t, row in zip(theta, ic)],
-            chunksize=4,
-        )
-        result = np.asarray(result, dtype=np.float32)
+        cases = [(float(t), row, nr, nt) for t, row in zip(theta, ic)]
+        if torque_only:
+            torque = pool.map(one_torque, cases, chunksize=4)
+            fields["Y"][:, 12] = np.asarray(torque, dtype=np.float32)
+            result = None
+        else:
+            result = np.asarray(pool.map(one_case, cases, chunksize=4))
         fields["Y"] = fields["Y"].copy()
-        fields["Y"][:, :12] = result[:, :12]
-        fields["Y"][:, 12] = result[:, 12]
+        if result is not None:
+            fields["Y"][:, :12] = result[:, :12]
+            fields["Y"][:, 12] = result[:, 12]
     elif path.name == "coil_fine_check.npz":
         pool_data = {}
         for name in ("full", "ext", "random48"):
@@ -66,9 +76,14 @@ def update_dataset(path, pool, nr, nt):
         for src, row in zip(fields["src"], fields["row"]):
             d = pool_data[str(src)]
             cases.append((float(d["X"][row, 0]), d["X"][row, 1:], 80, 192))
-        result = np.asarray(pool.map(one_case, cases, chunksize=1))
-        fields["psi"] = result[:, :12]
-        fields["T"] = result[:, 12]
+        if torque_only:
+            fields["T"] = np.asarray(
+                pool.map(one_torque, cases, chunksize=1)
+            )
+        else:
+            result = np.asarray(pool.map(one_case, cases, chunksize=1))
+            fields["psi"] = result[:, :12]
+            fields["T"] = result[:, 12]
     else:
         return
     fields["torque_model"] = np.array(TAG)
@@ -82,6 +97,7 @@ def update_dataset(path, pool, nr, nt):
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--workers", type=int, default=8)
+    ap.add_argument("--torque-only", action="store_true")
     args = ap.parse_args()
     paths = [
         ROOT / name for name in (
@@ -103,7 +119,7 @@ def main():
     started = time.time()
     for path in paths:
         t0 = time.time()
-        update_dataset(path, pool, 40, 96)
+        update_dataset(path, pool, 40, 96, torque_only=args.torque_only)
         print(path.name, "%.1fs" % (time.time() - t0), flush=True)
     pool.close()
     pool.join()

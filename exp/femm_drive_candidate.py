@@ -18,6 +18,8 @@ from exp.femm_unseen_withz import compare, solve_femm, solve_reference
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--kind", default="3S1P")
+    ap.add_argument("--reuse-femm", action="store_true",
+                    help="Reuse FEMM arrays from an existing result JSON.")
     args = ap.parse_args()
 
     theta_g, gamma_g, amp_g = np.meshgrid(
@@ -35,7 +37,13 @@ def main():
     ic = ip @ connection_matrix(args.kind).T
     psi_pred, torque_pred = model_psi_T(load_model("mlp"), theta, ic)
     pred = np.c_[psi_pred, torque_pred]
-    psi_femm, torque_femm = solve_femm(theta, ic)
+    out = ROOT / "exp" / f"results_{args.kind.lower()}_femm.json"
+    old = json.loads(out.read_text()) if args.reuse_femm and out.exists() else None
+    if old is None:
+        psi_femm, torque_femm = solve_femm(theta, ic)
+    else:
+        psi_femm = np.asarray(old["psi_femm"])
+        torque_femm = np.asarray(old["torque_femm"])
     psi_ref, torque_ref = solve_reference(theta, ic)
     result = {
         "kind": args.kind,
@@ -56,7 +64,6 @@ def main():
             np.c_[psi_ref, torque_ref], psi_femm, torque_femm,
         ),
     }
-    out = ROOT / "exp" / f"results_{args.kind.lower()}_femm.json"
     out.write_text(json.dumps(result, indent=1), encoding="utf-8")
     print(args.kind, "vs FEMM", {
         k: result["vs_femm"][k] for k in

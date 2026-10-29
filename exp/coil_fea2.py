@@ -9,6 +9,7 @@ Concentrated double-layer-style grouping, one independent current per slot;
 phase axes are computed at import and asserted to sit at 0/120/240 deg.
 """
 
+import exp.wmi_fix  # noqa: F401
 import numpy as np
 import scipy.sparse as sp
 import scipy.sparse.linalg as spl

@@ -7,12 +7,12 @@ import sys
 import time
 from pathlib import Path
 
-import numpy as np
-import torch
-
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT))
 import exp.wmi_fix  # noqa: F401
+
+import numpy as np  # noqa: E402
+import torch  # noqa: E402
 
 from exp.models import make_features, theta_feature_grad  # noqa: E402
 from exp.run_benchmark import Runner, output_transform  # noqa: E402

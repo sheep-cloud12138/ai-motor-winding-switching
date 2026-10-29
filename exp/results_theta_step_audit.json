@@ -1,0 +1,24 @@
+{
+ "comparison": "coarse 40x96 versus fine 80x192",
+ "coarse_7p5_vs_fine_7p5": {
+  "correlation": 0.9235941940749757,
+  "r2": 0.8364833458568041,
+  "norm_ratio": 0.8208783805508144,
+  "median_abs_relative": 0.23901910936979875,
+  "mae": 1.2699393039570905
+ },
+ "coarse_15_vs_fine_15": {
+  "correlation": 0.9960094393525355,
+  "r2": 0.9836475773488723,
+  "norm_ratio": 0.9045007924915207,
+  "median_abs_relative": 0.11752304621712473,
+  "mae": 0.39207957112949776
+ },
+ "coarse_15_vs_fine_7p5": {
+  "correlation": 0.9235941961259153,
+  "r2": 0.8364833494053513,
+  "norm_ratio": 0.820878379029357,
+  "median_abs_relative": 0.23901909446223923,
+  "mae": 1.2699392768627424
+ }
+}

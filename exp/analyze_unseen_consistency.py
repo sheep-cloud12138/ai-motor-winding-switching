@@ -28,6 +28,7 @@ def main():
         ("4P", "results_4p_femm_withz.json"),
         ("tap50", "results_tap50_femm_withz.json"),
         ("3S1P", "results_3s1p_femm.json"),
+        ("tap75", "results_tap75_femm.json"),
     ):
         data = json.loads((ROOT / "exp" / path).read_text())
         if "models" in data:
