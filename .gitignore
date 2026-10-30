@@ -9,6 +9,7 @@ paper/*.spl
 paper/*.synctex.gz
 exp/*.log
 exp/*.err
+paper_blind_review/
 
 Thumbs.db
 desktop.ini

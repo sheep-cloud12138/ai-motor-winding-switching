@@ -74,9 +74,10 @@ class Femm:
         return call
 
 
-def build_geometry(f, theta_deg, pm_on, linear_iron):
+def build_geometry(f, theta_deg, pm_on, linear_iron, mesh_size=1e-3,
+                   arc_seg_deg=10.0, min_angle=30.0):
     f.newdocument(0)
-    f.mi_probdef(0, "meters", "planar", 1e-8, L_STACK, 30, 0)
+    f.mi_probdef(0, "meters", "planar", 1e-8, L_STACK, min_angle, 0)
     f.mi_addmaterial("Air", 1, 1, 0, 0)
     if linear_iron:
         f.mi_addmaterial("IronLin", 4000, 4000, 0, 0)
@@ -129,7 +130,7 @@ def build_geometry(f, theta_deg, pm_on, linear_iron):
         for a in (45.0, 135.0, 225.0, 315.0):
             ar = np.deg2rad(a)
             f.mi_selectarcsegment(radius * np.cos(ar), radius * np.sin(ar))
-            f.mi_setarcsegmentprop(10.0, "azero", 0, 0)
+            f.mi_setarcsegmentprop(arc_seg_deg, "azero", 0, 0)
     f.mi_clearselected()
 
     # PM ring: one annular sector per pole (parallel magnetisation at the
@@ -185,7 +186,7 @@ def build_geometry(f, theta_deg, pm_on, linear_iron):
     def label(x, y, mat, circ="", magdir=0, group=0, turns=0):
         f.mi_addblocklabel(x, y)
         f.mi_selectlabel(x, y)
-        f.mi_setblockprop(mat, 1, 0.001, circ, magdir, group, turns)
+        f.mi_setblockprop(mat, 1, mesh_size, circ, magdir, group, turns)
         f.mi_clearselected()
 
     label(0.5 * RIN, 0.0, "Air")

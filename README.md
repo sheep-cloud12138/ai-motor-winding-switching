@@ -5,8 +5,7 @@ connection-invariant magnetic surrogates for reconfigurable electric
 machines"*.
 
 Source repository:
-<https://github.com/sheep-cloud12138/ai-motor-winding-switching> (private
-until the manuscript is released).
+<https://github.com/sheep-cloud12138/ai-motor-winding-switching> (public).
 
 ## One-command reproduction
 
@@ -32,6 +31,7 @@ python exp/run_scaling.py
 
 # 4. Data-efficiency learning curves
 python exp/run_curves.py
+python exp/run_seed_sweep.py
 
 # 5. Drive-cycle co-design (fixed strategies, DP, and regime grid)
 python exp/train_drive_model.py
@@ -42,10 +42,12 @@ python exp/drive_uncertainty.py
 
 # 6. Independent FEMM cross-check (requires FEMM 4.2 + pywin32)
 python exp/femm_validate.py
+python exp/femm_mesh_convergence.py
 python exp/femm_unseen_withz.py --holdout tap50
 python exp/femm_unseen_withz.py --holdout 4P
 python exp/femm_drive_candidate.py --kind 3S1P
 python exp/femm_drive_candidate.py --kind tap75
+python exp/analyze_cross_model_unseen.py
 
 # 7. All paper figures
 python exp/make_figures.py
@@ -86,6 +88,11 @@ python exp/make_figures.py
 - The 64-point coarse/fine torque check gives `r=0.996`, `R2=0.984`; the
   remaining `0.90` norm ratio and `11.8%` median difference still limit
   absolute energies.
+- Three-level FEMM refinement changes flux by `0.17-0.29%` and torque by
+  `0.21-1.33%` between the two finest levels; the remaining mismatch is a
+  solver-convention difference, not a continued mesh trend.
+- MLP and co-energy families agree on 4P/tap50 torque but disagree on
+  openB/tap75; this is why the agreement and FEMM gates are mandatory.
 - Coverage: phase-random data reduce openB flux nRMSE to `0.066`; magnitude
   data reduce tap50 to `0.36`; both patterns reproduce on the 6-slot machine.
 - Drive cycle: all four fixed connections complete; DP energy is within
@@ -96,6 +103,9 @@ python exp/make_figures.py
 - Torque/flux perturbation (`0.90/1.10` and `0.92/1.08`) keeps every fixed
   connection feasible and changes DP-to-best-fixed by only `-0.011%` to
   `+0.006%`.
+- Three-seed repeatability and training-cost intervals are stored in
+  `exp/results_seed_sweep.json`; the paper reports them instead of only one
+  best run.
 
 ## Notes
 
@@ -146,11 +156,15 @@ python exp/make_figures.py
   and the nonlinear 4S torque differs by `1.6%` at the checked point.
 - Over 36 synchronous points, end-to-end FEMM torque `R2` is `0.929`
   (4P), `0.935` (tap50), and `0.863` (3S1P). Correlations are
-  `0.954-0.984`. Tap75's 282.1 Wh surrogate result is rejected by FEMM
-  (`r=0.83`, `R2=0.54`). No hardware or HIL measurement is available in
-  this workspace.
+  `0.954-0.984`. Tap75's direct-MLP result is rejected by FEMM (`r=0.83`,
+  `R2=0.54`), but the co-energy trajectory reaches `R2=0.99`; the latter
+  remains a hypothesis until the co-energy drive model is rerun. No
+  hardware or HIL measurement is available in this workspace.
 - The drive uncertainty propagation is stored in
   `exp/results_drive_uncertainty.json`.
+- The three-level FEMM and cross-model checks are stored in
+  `exp/results_femm_mesh_convergence.json` and
+  `exp/results_cross_model_unseen.json`.
 
 ## License / citation
 

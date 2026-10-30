@@ -66,7 +66,9 @@ gear-ratio sweep finds no case in which reconfiguration supplies
 feasibility absent from a fixed connection; the direct-MLP screen predicts a
 $1\,\%$ or larger gain in 28 of 87 feasible cases (maximum $2.64\,\%$).
 Reconfiguration is therefore a modest, regime-dependent design option,
-not a universal efficiency strategy.
+not a universal efficiency strategy. All results are simulation-only;
+they support connection screening and design-space exploration, not
+validated absolute performance of a physical vehicle.
 \end{abstract}
 
 \begin{keyword}
@@ -603,6 +605,14 @@ tap50 flux $R^2$ is negative. The co-energy model improves flux for
 therefore useful for prioritizing FE verification, but neither flux nor
 loss should be accepted without an independent solve.
 
+The same trajectory arrays were evaluated with both surrogate families,
+without mixing model error into the solver-difference calculation.
+Table~\ref{tab:crossmodel} shows that the two models agree on 4P/tap50
+torque trends, but disagree sharply on 3S1P and tap75. In particular, the
+co-energy head predicts the 3S1P/tap75 torque trajectory much better than
+the direct MLP; this is why the model-agreement gate is mandatory before a
+candidate is accepted.
+
 \begin{table}[t]
 \centering\small
 \caption{Independent FEMM 4.2 cross-check. The inductance discrepancy is
@@ -620,6 +630,56 @@ Nonlinear 4S torque (60\,A) & --- & $1.6\,\%$ \\
 \bottomrule
 \end{tabular}
 \end{table}
+
+\begin{table}[t]
+\centering\small
+\caption{Two surrogate families on the same unseen trajectories. Entries are
+flux $R^2$ / torque $R^2$ against FEMM; the last column is torque agreement
+between the MLP and co-energy predictions.}
+\label{tab:crossmodel}
+\resizebox{\linewidth}{!}{%
+\begin{tabular}{lccc}
+\toprule
+Hold-out & Direct MLP & Co-energy & Model agreement \\
+\midrule
+4P    & $0.549/0.929$ & $0.903/0.926$ & $0.953$ \\
+tap50 & $-0.823/0.935$ & $0.584/0.832$ & $0.851$ \\
+3S1P  & $0.672/0.863$ & $0.934/0.988$ & $0.849$ \\
+tap75 & $0.275/0.543$ & $0.948/0.992$ & $0.534$ \\
+\bottomrule
+\end{tabular}
+}
+\end{table}
+
+\begin{table}[t]
+\centering\small
+\caption{Three-level FEMM refinement at representative operating points.
+The last two levels use a $0.7$\,mm block mesh, $3^\circ$ arc segments
+and the same circuit conventions.}
+\label{tab:femmmesh}
+\resizebox{\linewidth}{!}{%
+\begin{tabular}{lccc}
+\toprule
+Case & Flux change (fine pair) & Torque change (fine pair) &
+Fine-mesh torque vs reference \\
+\midrule
+4S, 40\,A, $30^\circ$ & $0.19\,\%$ & $1.33\,\%$ & $1.95\,\%$ \\
+4P, 40\,A, $45^\circ$ & $0.29\,\%$ & $0.21\,\%$ & $1.58\,\%$ \\
+tap50, 40\,A, $45^\circ$ & $0.23\,\%$ & $0.29\,\%$ & $0.85\,\%$ \\
+3S1P, 40\,A, $45^\circ$ & $0.17\,\%$ & $0.73\,\%$ & $42.4\,\%$ ($0.80$\,N\,m) \\
+\bottomrule
+\end{tabular}
+}
+\end{table}
+
+Table~\ref{tab:femmmesh} separates FEMM's internal mesh sensitivity from
+the solver-convention difference. Between the two finest FEMM levels,
+flux changes by only $0.17$--$0.29\,\%$ and torque by $0.21$--$1.33\,\%$.
+The 3S1P percentage against the in-house reference remains large because
+its torque is only about $1.9$\,N\,m; the absolute fine-FEMM difference is
+about $0.80$\,N\,m, while the FEMM fine-pair change is $0.73\,\%$. This
+supports treating the remaining scale discrepancy as a model/convention
+issue rather than a mesh-resolution issue.
 
 \begin{table}[t]
 \centering\small
@@ -741,6 +801,38 @@ Tier & Hold-out & Direct MLP & Co-energy (ours) & Monotone VF \\
 \end{tabular}
 }
 \end{table}
+
+\begin{table}[t]
+\centering\small
+\caption{Three-seed repeatability on the fixed base split. Entries are
+mean flux nRMSE [95\% interval] / mean torque $R^2$ [95\% interval].}
+\label{tab:seeds}
+\resizebox{\linewidth}{!}{%
+\begin{tabular}{lcccc}
+\toprule
+Hold-out & MLP flux & MLP torque & Co-energy flux & Co-energy torque \\
+\midrule
+4P & $0.034[0.029,0.039]$ & $0.998[0.998,0.999]$ &
+   $0.077[0.017,0.137]$ & $0.996[0.991,1.001]$ \\
+tap50 & $0.371[0.339,0.404]$ & $0.980[0.972,0.987]$ &
+   $0.308[0.255,0.361]$ & $0.993[0.987,0.998]$ \\
+openB & $1.114[0.744,1.483]$ & $0.953[0.935,0.971]$ &
+   $0.765[0.507,1.022]$ & $0.470[0.376,0.565]$ \\
+\bottomrule
+\end{tabular}
+}
+\end{table}
+
+The three-seed intervals in Table~\ref{tab:seeds} show that the main
+qualitative split is not a single-run artefact: 4P/tap50 remain accurate,
+whereas openB exposes a stable co-energy torque failure. The intervals are
+wide for the co-energy training time and 4P flux because only three seeds
+were run; they are reported to bound the claim, not to imply a production
+performance guarantee.
+Mean single-run training cost across the three splits is $10$--$62$\,s
+for the direct MLP and $50$--$455$\,s for the co-energy network on the
+available GPU; the structured model therefore buys physical consistency
+and several unseen-connection trends at a higher training cost.
 
 \subsection{What kind of coverage matters}
 \label{sec:results:phase}
@@ -922,6 +1014,11 @@ openB & 0.642/0.874 & 0.912/0.901 & 0.055/\textbf{0.998} & \textbf{0.045}/0.997 
 \section{Drive-cycle co-design case study}
 \label{sec:drive}
 
+This section is a simulation-only conditional screening exercise. It asks
+what the surrogate predicts for candidate connections under declared
+vehicle and device assumptions; it is not a claim of measured vehicle
+energy savings.
+
 \subsection{From surrogate to system losses}
 
 Unless stated otherwise, the drive-cycle study uses the direct-MLP
@@ -1045,9 +1142,11 @@ evaluates eight candidate connections (including three tap ratios and an
 unbalanced 3S1P split, all zero-shot for the tap/3S1P entries) as fixed
 connections over the same cycle. Seven entries complete the cycle; tap25
 does not. The low nominal energy of tap75 is a model-predicted opportunity,
-not a design conclusion: an independent FEMM trajectory gives only
-$r=0.83$ ($R^2=0.54$) and $4.81$\,N\,m MAE for its torque. The screen is
-therefore a prioritisation tool, not a replacement for targeted FE.
+not a design conclusion: the direct-MLP trajectory gives only $r=0.83$
+($R^2=0.54$) and $4.81$\,N\,m MAE, while the co-energy trajectory reaches
+$R^2=0.99$ on the same FEMM data. The direct-MLP screen is therefore
+rejected; the co-energy result remains a hypothesis until the co-energy
+drive surrogate is rerun.
 
 \textbf{Use/do-not-use rule.} A candidate is usable for a quantitative
 loss decision only after it passes all three gates: current-space coverage,
@@ -1055,14 +1154,17 @@ agreement between two model families, and an independent FEMM trajectory.
 For openB, the co-energy torque head is rejected and the direct MLP is used
 only for ranking; the absolute result still requires FEMM. For tap50, the
 direct-MLP torque trend is usable but the flux channel is not. tap75 is
-rejected because its independent FEMM torque correlation is only $0.83$.
+rejected for the direct MLP because its independent FEMM torque
+correlation is only $0.83$; the co-energy prediction is retained only as
+a hypothesis, not as an accepted design result.
 
 \begin{table}[t]
 \centering\small
 \caption{Exploratory zero-shot screening: fixed-connection cycle energy and
 unmet torque integral (WLTC class 1). Entries marked $^\ast$ are absent from
-the drive training pool; $^\dagger$tap75's attractive surrogate energy was
-not confirmed by FEMM. These rankings are hypotheses and still require
+the drive training pool; $^\dagger$tap75's direct-MLP energy was not
+confirmed by FEMM, although the co-energy trajectory was. These rankings
+are hypotheses and still require
 targeted FE or measurement validation.}
 \label{tab:screen}
 \begin{tabular}{lcc}
@@ -1164,8 +1266,10 @@ shows a $1.13\times$ inductance normalisation factor, $2.1\,\%$
 fine-mesh shape residual, $7.9\,\%$ PM fundamental error, $20.2\,\%$ mean
 nonlinear flux difference, and $1.6\,\%$ torque difference at the tested
 point. These limit absolute flux claims, while the 36-point end-to-end
-torque trends are $R^2=0.86$--$0.94$. The FEMM mesh itself is fixed
-at a 1-mm element size without an independent mesh-convergence study.
+torque trends are $R^2=0.86$--$0.94$. A three-level FEMM refinement
+reduces the finest-pair flux change to $0.17$--$0.29\,\%$ and torque
+change to $0.21$--$1.33\,\%$; the remaining mismatch is therefore a
+solver-convention difference rather than a mesh-resolution trend.
 (ii)~End effects, temperature, mechanical and changeover
 transients are excluded; the changeover circuit enters through a per-event
 energy, swept over four orders of magnitude ($5$\,mJ--$100$\,J).
@@ -1201,8 +1305,9 @@ maximum of $2.64\,\%$. Reconfiguration should therefore be justified by a
 specific
 measured constraint, not assumed to improve efficiency. Candidate
 screening remains hypothesis-generating: tap50 receives no DP time, while
-the best surrogate candidate, tap75, fails its independent FEMM torque
-check. The benchmark
+the direct-MLP candidate, tap75, fails its independent FEMM torque check;
+the co-energy trajectory passes the same check but still requires a
+co-energy drive rerun before it can enter the conclusion. The benchmark
 and its two data-design
 principles are, we believe, the most durable contributions: they tell the
 next study, whatever its machine, what data to collect and why. Future
@@ -1218,7 +1323,7 @@ code, trained checkpoints, benchmark splits, the official WLTC class-1
 trace preprocessing, the second-machine replication scripts, the FEMM
 cross-check and the 36-point unseen-connection tests, and
 one-command figure scripts are released at
-\todonum{[repository URL on acceptance]}.
+\href{https://github.com/sheep-cloud12138/ai-motor-winding-switching}{github.com/sheep-cloud12138/ai-motor-winding-switching}.
 
 \bibliographystyle{elsarticle-num}
 \begin{thebibliography}{23}
